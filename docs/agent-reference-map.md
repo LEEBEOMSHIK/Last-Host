@@ -60,6 +60,26 @@
 
 - `.codex/skills/unity-prototype-planner/references/unity-architecture.md`
 
+### Unity MCP / Unity Editor 자동화
+
+사용 요청 예시:
+
+- Unity MCP 설정 요청
+- Codex에서 Unity Editor를 MCP로 연결하려는 요청
+- MCP를 통해 씬, 에셋, 패키지, 코드 작업을 준비하려는 요청
+
+필수 참조:
+
+- `docs/unity-mcp-setup.md`
+- `.codex/config.toml`
+- `.agents/unity-architecture-agent.md`
+
+선택 참조:
+
+- `.codex/mcp/start-mcp-unity.ps1`
+- `.codex/skills/unity-prototype-planner/SKILL.md`
+- `_workspace/templates/verification.md`
+
 ### 쥐 숙주 프로토타입 / 핵심 루프
 
 사용 요청 예시:

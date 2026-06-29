@@ -1,0 +1,18 @@
+# Last Host project-local Codex configuration.
+# Unity MCP stays disabled until the Unity project and package are installed.
+
+[mcp_servers.mcp-unity]
+enabled = false
+required = false
+command = "powershell.exe"
+args = [
+  "-NoProfile",
+  "-ExecutionPolicy",
+  "Bypass",
+  "-File",
+  ".codex/mcp/start-mcp-unity.ps1"
+]
+cwd = "."
+startup_timeout_sec = 30
+tool_timeout_sec = 120
+default_tools_approval_mode = "prompt"
