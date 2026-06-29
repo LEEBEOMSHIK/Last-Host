@@ -1,18 +1,34 @@
 # Last Host project-local Codex configuration.
-# Unity MCP stays disabled until the Unity project and package are installed.
+# Unity AI MCP uses Unity's local relay process.
 
-[mcp_servers.mcp-unity]
-enabled = false
-required = false
-command = "powershell.exe"
-args = [
-  "-NoProfile",
-  "-ExecutionPolicy",
-  "Bypass",
-  "-File",
-  ".codex/mcp/start-mcp-unity.ps1"
-]
-cwd = "."
-startup_timeout_sec = 30
-tool_timeout_sec = 120
-default_tools_approval_mode = "prompt"
+[mcp_servers.unity_mcp]
+command = "C:\\Users\\User\\.unity/relay\\relay_win.exe"
+args = ["--mcp"]
+enabled = true
+
+[mcp_servers.unity_mcp.tools.Unity_GetConsoleLogs]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_GetUserGuidelines]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_ManageEditor]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_ManageScene]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_ReadConsole]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_RunCommand]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_ValidateScript]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_ListResources]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_SceneView_CaptureMultiAngleSceneView]
+approval_mode = "approve"

@@ -71,7 +71,8 @@
 ### Node.js를 찾지 못하는 경우
 
 - `node`가 PATH에 있는지 확인한다.
-- 필요하면 Node.js 설치 후 Codex를 다시 시작한다.
+- 현재 래퍼는 Codex 번들 Node를 fallback으로 탐색한다.
+- Unity MCP의 공식 요구사항은 Node.js 18 이상이므로, 문제가 있으면 Node.js LTS를 설치한 뒤 Codex를 다시 시작한다.
 
 ### Codex에서 MCP가 보이지 않는 경우
 

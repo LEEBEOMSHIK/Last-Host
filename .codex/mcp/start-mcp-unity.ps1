@@ -65,11 +65,25 @@ if (-not $serverRecord) {
     Stop-WithMessage "Unity MCP server was not found. Install com.gamelovers.mcp-unity in Unity, then run Tools > MCP Unity > Server Window > Force Install Server."
 }
 
+$nodePath = $null
 $node = Get-Command node -ErrorAction SilentlyContinue | Select-Object -First 1
-if (-not $node) {
-    Stop-WithMessage "Node.js was not found in PATH. Install Node.js or expose node before enabling Unity MCP."
+if ($node) {
+    $nodePath = $node.Source
+}
+
+if (-not $nodePath -and $env:LOCALAPPDATA) {
+    $codexNode = Get-ChildItem -LiteralPath (Join-Path $env:LOCALAPPDATA "OpenAI\Codex\bin") -Recurse -Filter "node.exe" -ErrorAction SilentlyContinue |
+        Sort-Object LastWriteTime -Descending |
+        Select-Object -First 1
+    if ($codexNode) {
+        $nodePath = $codexNode.FullName
+    }
+}
+
+if (-not $nodePath) {
+    Stop-WithMessage "Node.js was not found. Install Node.js 18+ or make node available before enabling Unity MCP."
 }
 
 Set-Location -LiteralPath $serverRecord.UnityRoot
-& $node.Source $serverRecord.Server
+& $nodePath $serverRecord.Server
 exit $LASTEXITCODE
