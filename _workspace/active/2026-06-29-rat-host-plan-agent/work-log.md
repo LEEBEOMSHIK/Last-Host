@@ -41,6 +41,14 @@
 - 판단: 단일 씬과 `_Project` 구조는 적합하나, Input System, Build Settings, 포유류 적응 효과, 재시도 초기화 기준은 구현 전 확정이 필요하다.
 - 다음 작업: 게임플레이 루프 에이전트가 통합 메모를 반영해 계획 초안을 갱신한다.
 
+### 2026-06-29 보조 검토 반영 초안 갱신
+
+- 수행 내용: 보조 검토 통합 메모를 반영해 `artifacts/rat-host-implementation-plan-draft.md`와 `artifacts/open-questions.md`를 갱신했다.
+- 확인한 자료: `AGENTS.md`, `docs/rat-host-prototype.md`, `docs/rat-host-approval-packet.md`, `.agents/gameplay-loop-agent.md`, `.codex/skills/rat-host-loop-builder/SKILL.md`, `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`, `artifacts/review-integration.md`, `architecture-review.md`, `qa-review.md`
+- 반영 내용: `Assets/_Project/Settings/Input/` 구조, Input System 권장안, 새 입력 액션 자산 후보 위치, Build Settings와 `SampleScene.unity` 처리 방침, QA 완료 조건, 실패 후 재시도 초기화 기준 초안, 사용자 승인 필요 항목을 추가했다.
+- 판단: 갱신된 계획은 여전히 공식 `docs/` 문서가 아니라 active 작업 산출물 초안이며, 사용자 승인 전에는 Unity 씬, C# 코드, ProjectSettings, Packages, Build Settings 변경을 진행하지 않는다.
+- 다음 작업: 조정자가 갱신된 승인 질문을 사용자에게 압축해 제시하고, 승인 결과에 따라 공식 문서 승격 또는 구현 작업 패킷 생성 여부를 결정한다.
+
 ## 결정 기록
 
 - `docs/rat-host-implementation-plan.md` 직접 작성 방식은 사용하지 않는다.
