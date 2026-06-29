@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unity Prototype Planner"
+  short_description: "Plans Unity prototype structure and approvals"
+  default_prompt: "Use $unity-prototype-planner to plan Unity prototype structure and approvals."

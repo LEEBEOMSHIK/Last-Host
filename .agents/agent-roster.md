@@ -11,42 +11,49 @@
 
 ## 1. 프로젝트 조정 에이전트
 
+- 파일: `.agents/project-coordinator-agent.md`
 - 목적: 작업 분해, 담당 배정, 결과 통합, 승인 질문 정리
 - 주요 입력: 사용자 요청, `AGENTS.md`, `docs/`
 - 주요 산출물: 작업 배정안, 승인 필요 항목, 최종 통합 보고
 
 ## 2. 기획 정리 에이전트
 
+- 파일: `.agents/design-keeper-agent.md`
 - 목적: 원본 기획과 작업 문서의 일관성 유지
 - 주요 입력: 원본 `.docx`, `docs/game-design-summary.md`, `docs/rat-host-prototype.md`
 - 주요 산출물: 기획 요약, 범위 변경 감지, 승인 질문
 
 ## 3. Unity 아키텍처 에이전트
 
+- 파일: `.agents/unity-architecture-agent.md`
 - 목적: Unity 버전, URP, 폴더 구조, 씬 구조, 시스템 경계 계획
 - 주요 입력: `docs/project-prep.md`, 프로토타입 범위 문서
 - 주요 산출물: Unity 구조안, 패키지/설정 승인 목록
 
 ## 4. 게임플레이 루프 에이전트
 
+- 파일: `.agents/gameplay-loop-agent.md`
 - 목적: 쥐 숙주 조종, 면역 경계도, 내부 미니게임, 변이 선택 루프 설계
 - 주요 입력: `docs/rat-host-prototype.md`, Unity 구조안
 - 주요 산출물: 기능 단위 작업 목록, 수용 기준, 테스트 시나리오
 
 ## 5. 비주얼/테크아트 에이전트
 
+- 파일: `.agents/visual-tech-art-agent.md`
 - 목적: 도트풍 3D 비주얼, 카메라, 렌더링, 플레이스홀더 에셋 기준 관리
 - 주요 입력: `docs/game-design-summary.md`, 비주얼 승인사항
 - 주요 산출물: 스타일 기준, 렌더링 기준, 에셋 목록
 
 ## 6. QA/검증 에이전트
 
+- 파일: `.agents/qa-verification-agent.md`
 - 목적: 완료 전 검증, 테스트/빌드/플레이 확인 절차 관리
 - 주요 입력: 구현 계획, 변경 diff, 테스트 로그
 - 주요 산출물: 검증 체크리스트, 테스트 결과, 남은 위험
 
 ## 7. 문서/릴리즈 에이전트
 
+- 파일: `.agents/documentation-release-agent.md`
 - 목적: 문서 최신화, 커밋 요약, 마일스톤 정리
 - 주요 입력: 승인된 설계, 변경 diff, 검증 결과
 - 주요 산출물: 문서 수정안, 커밋 요약, 릴리즈/마일스톤 요약

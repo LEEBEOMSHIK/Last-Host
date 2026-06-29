@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pixel Lowpoly Style Keeper"
+  short_description: "Maintains pixel low-poly 3D style rules"
+  default_prompt: "Use $pixel-lowpoly-style-keeper to review pixel low-poly 3D style rules."

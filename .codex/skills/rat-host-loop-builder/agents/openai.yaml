@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rat Host Loop Builder"
+  short_description: "Breaks down rat host loop and acceptance criteria"
+  default_prompt: "Use $rat-host-loop-builder to break down the rat host prototype core loop."

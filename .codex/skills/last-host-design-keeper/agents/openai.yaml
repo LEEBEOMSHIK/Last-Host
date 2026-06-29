@@ -1,0 +1,4 @@
+interface:
+  display_name: "Last Host Design Keeper"
+  short_description: "Maintains project design docs and approvals"
+  default_prompt: "Use $last-host-design-keeper to compare the source design with current docs and list approval items."

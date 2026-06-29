@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unity Verification Runner"
+  short_description: "Checks Unity validation and completion criteria"
+  default_prompt: "Use $unity-verification-runner to prepare a Unity validation checklist."
