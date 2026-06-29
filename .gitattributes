@@ -1,0 +1,38 @@
+# UnityProject text and merge rules for the root Last-Host repository.
+
+# Unity-generated YAML/meta files often keep blank values with trailing spaces.
+UnityProject/** -whitespace
+
+[attr]unity-json eol=lf linguist-language=json
+[attr]unity-yaml merge=unityyamlmerge eol=lf linguist-language=yaml
+
+UnityProject/**/*.cs text diff=csharp
+UnityProject/**/*.cginc text
+UnityProject/**/*.compute text linguist-language=hlsl
+UnityProject/**/*.hlsl text linguist-language=hlsl
+UnityProject/**/*.shader text
+
+UnityProject/**/*.asmdef unity-json
+UnityProject/**/*.asmref unity-json
+UnityProject/**/*.inputactions unity-json
+UnityProject/**/*.json unity-json
+
+UnityProject/**/*.anim unity-yaml
+UnityProject/**/*.asset unity-yaml
+UnityProject/**/*.controller unity-yaml
+UnityProject/**/*.mat unity-yaml
+UnityProject/**/*.meta unity-yaml
+UnityProject/**/*.prefab unity-yaml
+UnityProject/**/*.renderTexture unity-yaml
+UnityProject/**/*.unity unity-yaml
+
+UnityProject/Packages/packages-lock.json linguist-generated
+UnityProject/Assets/Plugins/** linguist-generated
+
+UnityProject/**/*.png binary
+UnityProject/**/*.jpg binary
+UnityProject/**/*.jpeg binary
+UnityProject/**/*.psd binary
+UnityProject/**/*.fbx binary
+UnityProject/**/*.wav binary
+UnityProject/**/*.ogg binary

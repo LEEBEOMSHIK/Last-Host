@@ -1,0 +1,6 @@
+# Local IDE files
+/.idea/
+
+# Legacy Unity working folder left by the repository merge.
+# Remove this folder after Unity releases file locks.
+/My project/
