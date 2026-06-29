@@ -58,6 +58,7 @@
 
 선택 참조:
 
+- `docs/unity-baseline-report.md`
 - `.codex/skills/unity-prototype-planner/references/unity-architecture.md`
 
 ### Unity MCP / Unity Editor 자동화
@@ -177,6 +178,7 @@
 
 선택 참조:
 
+- `docs/unity-baseline-report.md`
 - `.codex/skills/unity-verification-runner/references/verification-rules.md`
 
 ### 문서 정리 / 커밋 요약 / 릴리즈 정리
