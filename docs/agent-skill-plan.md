@@ -505,7 +505,7 @@ _workspace/completed/<완료일>-<작업ID>/
 - Unity 버전 확정
 - URP 확정
 - 패키지 설치
-- Unity MCP 활성화
+- Unity MCP 설정 변경 또는 MCP를 통한 프로젝트 변경
 - 실제 Codex 스킬 생성
 - 새 에이전트 역할 추가
 - 기존 에이전트 책임 변경
@@ -566,7 +566,7 @@ _workspace/completed/<완료일>-<작업ID>/
 6. `_workspace/` 에이전트 작업영역과 완료 추적 템플릿
 7. `docs/agent-reference-map.md` 작업별 참조 문서 색인
 8. `.codex/config.toml` 프로젝트 로컬 Codex MCP 설정
-9. `docs/unity-mcp-setup.md` Unity MCP 설정 절차 문서
+9. `docs/unity-mcp-setup.md` Unity MCP 설정과 운영 문서
 
 ## 다음 승인 필요 항목
 
@@ -575,5 +575,5 @@ _workspace/completed/<완료일>-<작업ID>/
 1. 현재 프로젝트 로컬 스킬을 사용자 전역 Codex 스킬 폴더에 설치할지 여부
 2. 추가 에이전트 또는 추가 스킬 생성 여부
 3. 에이전트 작업 결과를 Git 커밋 단위로 묶을지, 문서 승인 단위로 묶을지
-4. Unity 프로젝트 생성 단계로 넘어갈지 여부
-5. Unity MCP 패키지 설치와 `mcp-unity` 활성화 여부
+4. 쥐 숙주 프로토타입 구현 단계로 넘어갈지 여부
+5. Unity MCP로 씬, 에셋, 패키지, 코드, ProjectSettings를 변경할지 여부
