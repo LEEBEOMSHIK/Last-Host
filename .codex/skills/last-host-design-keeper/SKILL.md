@@ -15,7 +15,8 @@ description: 마지막 숙주 프로젝트의 기획 문서, 원본 docx 초안,
 2. `docs/game-design-summary.md`
 3. `docs/rat-host-prototype.md`
 4. `docs/project-prep.md`
-5. 필요 시 원본 `C:\project\game\last_host\last_host_game_plan.docx`
+5. `_workspace/README.md`
+6. 필요 시 원본 `C:\project\game\last_host\last_host_game_plan.docx`
 
 ## 작업 절차
 
@@ -24,6 +25,7 @@ description: 마지막 숙주 프로젝트의 기획 문서, 원본 docx 초안,
 3. 충돌이 있으면 바로 수정하지 말고 승인 질문을 만든다.
 4. 쥐 숙주 프로토타입 범위를 벗어나는 요청은 별도 마일스톤 후보로 분리한다.
 5. 문서 갱신 시 한국어로 작성하고, 원본 초안과의 관계를 명시한다.
+6. 작업 배정, 진행 기록, 완료 기록은 `_workspace` 규칙에 맞춰 남긴다.
 
 ## 판단 기준
 
