@@ -823,7 +823,8 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Standalone: SENTIS_ANALYTICS_ENABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -926,7 +927,7 @@ PlayerSettings:
   cloudProjectId: 9dd47036-eaf6-4ff4-af38-c2404e3b4520
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Last Host
+  projectName: My project
   organizationId: bumcity137
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
