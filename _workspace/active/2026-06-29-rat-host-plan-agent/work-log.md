@@ -34,6 +34,13 @@
 - 판단: 이 결정은 프로토타입 범위를 확대하지 않으며, 벌레 튜토리얼 제외를 명확히 한다.
 - 다음 작업: 문서 변경 검증 후 커밋한다.
 
+### 2026-06-29 보조 검토 통합
+
+- 수행 내용: Unity 아키텍처 에이전트와 QA/검증 에이전트가 구현 계획 초안을 검토했고, 조정자가 공통 결론과 승인 필요 항목을 `artifacts/review-integration.md`에 통합했다.
+- 확인한 자료: `architecture-review.md`, `qa-review.md`, `rat-host-implementation-plan-draft.md`
+- 판단: 단일 씬과 `_Project` 구조는 적합하나, Input System, Build Settings, 포유류 적응 효과, 재시도 초기화 기준은 구현 전 확정이 필요하다.
+- 다음 작업: 게임플레이 루프 에이전트가 통합 메모를 반영해 계획 초안을 갱신한다.
+
 ## 결정 기록
 
 - `docs/rat-host-implementation-plan.md` 직접 작성 방식은 사용하지 않는다.
