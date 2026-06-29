@@ -129,6 +129,7 @@
 
 - `docs/agent-skill-plan.md`
 - `.agents/agent-roster.md`
+- `.agents/project-director-agent.md`
 
 선택 참조:
 

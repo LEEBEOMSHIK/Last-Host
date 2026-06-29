@@ -74,6 +74,8 @@
 
 - 에이전트/스킬 구성 계획은 `docs/agent-skill-plan.md`를 따른다.
 - 실제 에이전트 역할 목록은 `.agents/agent-roster.md`를 참조한다.
+- 프로젝트 총괄 관리자 에이전트는 사용자 최종 승인 전 내부 승인자 역할이며 `.agents/project-director-agent.md`를 따른다.
+- 프로젝트 방향, 범위, 승인 게이트에 영향을 주는 주요 산출물은 사용자에게 올리기 전 총괄 관리자 검토를 거친다.
 - 프로젝트 종속 에이전트 파일은 `.agents/*-agent.md`에 둔다.
 - 프로젝트 종속 Codex 스킬은 `.codex/skills/`에 둔다.
 - 에이전트 간 작업 배정, 진행 기록, 완료 추적은 `_workspace/`를 사용한다.
