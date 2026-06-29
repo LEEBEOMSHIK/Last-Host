@@ -17,7 +17,15 @@
 
 - 원본 초안: `C:\project\game\last_host\last_host_game_plan.docx`
 - 작업 문서는 `docs/` 아래에 둔다.
+- 작업별 참조 문서 색인은 `docs/agent-reference-map.md`를 따른다.
 - `.docx`와 Markdown 문서가 충돌하면, 사용자가 별도로 승인하기 전까지 `.docx`는 원본 초안, Markdown 문서는 현재 작업 해석본으로 본다.
+
+## AGENTS.md 관리
+
+- 이 파일은 200줄 미만을 유지한다.
+- 새 규칙이 길어지면 이 파일에 모두 넣지 말고 작업별 참조 문서로 분리한다.
+- 이 파일에는 전역 원칙, 승인 게이트, 참조 위치만 남긴다.
+- 세부 절차가 필요한 작업은 `docs/agent-reference-map.md`에서 해당 참조 문서를 찾아 읽는다.
 
 ## 확정된 방향
 
