@@ -1,79 +1,79 @@
 # AGENTS.md
 
-## Project
+## 프로젝트
 
-- Project name: `마지막 숙주 / The Last Host`
-- Engine: Unity 3D
-- Primary platform target: PC first, with later mobile portability considered only after prototype validation.
-- Current phase: project preparation and design organization. Do not implement gameplay, scaffold a Unity project, or create code without explicit user approval.
+- 프로젝트명: `마지막 숙주 / The Last Host`
+- 엔진: Unity 3D
+- 1차 플랫폼 목표: PC 우선. 모바일 이식 가능성은 프로토타입 검증 이후 고려한다.
+- 현재 단계: 프로젝트 준비와 기획 정리 단계. 사용자의 명시 승인 없이 Unity 프로젝트 생성, 게임플레이 구현, 코드 작성은 하지 않는다.
 
-## Communication
+## 커뮤니케이션
 
-- Use Korean by default for user-facing explanations and project documents.
-- Keep updates concise and practical.
-- When a decision is required, ask for approval before changing project direction.
+- 사용자에게 설명하거나 프로젝트 문서를 작성할 때는 한국어를 기본으로 사용한다.
+- 진행 상황은 짧고 실무적으로 공유한다.
+- 방향 결정이 필요한 경우, 작업 방향을 바꾸기 전에 사용자 승인을 받는다.
 
-## Source Of Truth
+## 기준 자료
 
-- Original draft: `C:\project\game\last_host\last_host_game_plan.docx`
-- Working documentation lives under `docs/`.
-- If the `.docx` and Markdown docs conflict, treat the `.docx` as the source draft and the Markdown files as the current working interpretation until the user approves otherwise.
+- 원본 초안: `C:\project\game\last_host\last_host_game_plan.docx`
+- 작업 문서는 `docs/` 아래에 둔다.
+- `.docx`와 Markdown 문서가 충돌하면, 사용자가 별도로 승인하기 전까지 `.docx`는 원본 초안, Markdown 문서는 현재 작업 해석본으로 본다.
 
-## Confirmed Direction
+## 확정된 방향
 
-- The game is not a pure 2D sprite game.
-- Visual direction is pixel-style 3D:
-  - low-poly 3D models
-  - pixel-style textures
-  - low-resolution rendering or post-processing
-  - quarter-view or top-down camera composition
-- Core structure:
-  - host-control 3D exploration
-  - internal virus immune-system minigame
-  - mutation choice and growth
-- First validation target: `Rat Host Prototype`.
+- 이 게임은 순수 2D 스프라이트 게임이 아니다.
+- 비주얼 방향은 도트풍 3D다.
+  - 저폴리 3D 모델
+  - 픽셀풍 텍스처
+  - 저해상도 렌더링 또는 후처리
+  - 쿼터뷰 또는 탑다운 카메라 구성
+- 핵심 구조:
+  - 숙주 조종 3D 탐험
+  - 숙주 내부 바이러스 면역 미니게임
+  - 변이 선택과 성장
+- 첫 검증 목표: `쥐 숙주 프로토타입`
 
-## Rat Host Prototype Boundary
+## 쥐 숙주 프로토타입 범위
 
-The first playable prototype should validate only the smallest complete loop:
+첫 플레이어블 프로토타입은 가장 작은 완성 루프만 검증한다.
 
-1. Control a rat host in a small sewer map.
-2. Raise immune alert over time or by risky actions.
-3. Enter an internal virus minigame at 100% immune alert.
-4. Control the virus, avoid white blood cells, collect mutation fragments.
-5. Choose one mutation reward.
-6. Return to rat host play with a visible gameplay change.
+1. 작은 하수도 맵에서 쥐 숙주를 조종한다.
+2. 시간 경과 또는 위험 행동으로 면역 경계도가 상승한다.
+3. 면역 경계도 100%에서 내부 바이러스 미니게임으로 전환한다.
+4. 바이러스를 조종해 백혈구를 피하고 변이 조각을 수집한다.
+5. 변이 보상 1개를 선택한다.
+6. 선택한 변이가 적용된 상태로 쥐 숙주 플레이에 복귀한다.
 
-Do not add the full host chain, story campaign, endings, vaccine systems, or human-stage content unless the user approves a broader milestone.
+사용자 승인 없이 전체 숙주 체인, 스토리 캠페인, 엔딩, 백신 시스템, 인간 단계 콘텐츠를 추가하지 않는다.
 
-## Unity Direction
+## Unity 방향
 
-- Use Unity 3D.
-- URP is the recommended render pipeline, but final setup still needs explicit approval before project creation.
-- Prefer simple placeholder assets during prototype planning.
-- Keep future implementation modular:
-  - host controller
-  - immune alert system
-  - mode transition controller
-  - virus minigame controller
-  - mutation selection system
-  - shared game state
+- Unity 3D를 사용한다.
+- 렌더 파이프라인은 URP를 추천하지만, 실제 프로젝트 생성 전에 최종 승인을 받아야 한다.
+- 프로토타입 준비 단계에서는 단순 플레이스홀더 에셋을 우선한다.
+- 향후 구현 시 모듈 경계를 명확히 둔다.
+  - 숙주 컨트롤러
+  - 면역 경계도 시스템
+  - 모드 전환 컨트롤러
+  - 바이러스 미니게임 컨트롤러
+  - 변이 선택 시스템
+  - 공용 게임 상태
 
-## Approval Gates
+## 승인 게이트
 
-Ask the user before:
+다음 작업은 사용자 승인을 받은 뒤 진행한다.
 
-- creating or modifying a Unity project
-- adding packages
-- generating art assets
-- changing the prototype scope
-- committing to a render pipeline or Unity version
-- creating gameplay code
-- replacing or rewriting approved docs
+- Unity 프로젝트 생성 또는 수정
+- 패키지 추가
+- 아트 에셋 생성
+- 프로토타입 범위 변경
+- 렌더 파이프라인 또는 Unity 버전 확정
+- 게임플레이 코드 작성
+- 승인된 문서의 대규모 교체 또는 재작성
 
-## Git And Files
+## Git과 파일 관리
 
-- Do not revert user changes unless explicitly asked.
-- Avoid unrelated refactors or metadata churn.
-- Keep documentation changes focused and readable.
-- Generated IDE files such as `.idea/` are not part of project design unless the user asks to manage them.
+- 사용자가 명시적으로 요청하지 않는 한 사용자 변경사항을 되돌리지 않는다.
+- 관련 없는 리팩터링이나 메타데이터 변경은 피한다.
+- 문서 변경은 목적에 맞게 작고 읽기 쉽게 유지한다.
+- `.idea/` 같은 IDE 생성 파일은 사용자가 요청하지 않는 한 프로젝트 설계 대상으로 다루지 않는다.

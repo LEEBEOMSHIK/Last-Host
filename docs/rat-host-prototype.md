@@ -1,147 +1,147 @@
-# Rat Host Prototype
+# 쥐 숙주 프로토타입
 
-## Goal
+## 목표
 
-The `Rat Host Prototype` is the first playable validation target for `The Last Host`. It should prove whether the core loop works before the project expands into more hosts, stages, endings, and human-world systems.
+`쥐 숙주 프로토타입`은 `마지막 숙주 / The Last Host`의 첫 플레이어블 검증 목표다. 더 많은 숙주, 스테이지, 엔딩, 인간 사회 시스템을 만들기 전에 핵심 루프가 실제로 작동하는지 확인한다.
 
-## Prototype Question
+## 검증 질문
 
-Is it fun and understandable to:
+플레이어가 다음 흐름을 재미있고 이해하기 쉽게 받아들이는지 확인한다.
 
-1. control a host,
-2. feel immune pressure rising,
-3. switch into an internal virus minigame,
-4. earn a mutation,
-5. return to host control with a visible change?
+1. 숙주를 조종한다.
+2. 면역 압박이 상승하는 것을 느낀다.
+3. 내부 바이러스 미니게임으로 전환된다.
+4. 변이를 획득한다.
+5. 변이 효과가 적용된 상태로 숙주 조종에 복귀한다.
 
-## Included Scope
+## 포함 범위
 
-- Small sewer map
-- Rat host
-- Basic rat movement
-- Simple hazards or blocked paths
-- Immune alert gauge
-- Mode transition at 100% immune alert
-- Internal virus arena
-- Virus movement
-- White blood cell enemy type
-- Mutation fragment collection
-- Success/failure result
-- Mutation choice screen with three options
-- Rat mode resumes after mutation selection
+- 작은 하수도 맵
+- 쥐 숙주
+- 기본 쥐 이동
+- 단순 위험 요소 또는 막힌 경로
+- 면역 경계도 게이지
+- 면역 경계도 100% 시 모드 전환
+- 내부 바이러스 아레나
+- 바이러스 이동
+- 백혈구 적 1종
+- 변이 조각 수집
+- 성공과 실패 결과
+- 세 가지 변이 선택 화면
+- 변이 선택 후 쥐 숙주 모드 복귀
 
-## Excluded Scope
+## 제외 범위
 
-- Full story campaign
-- Insect tutorial
-- Multiple host chain
-- Human host gameplay
-- Hospital and laboratory systems
-- Vaccine development
-- Final endings
-- Full roguelike run structure
-- Permanent progression
-- Finished art assets
+- 전체 스토리 캠페인
+- 벌레 튜토리얼
+- 여러 숙주를 거치는 전이 체인
+- 인간 숙주 플레이
+- 병원과 연구소 시스템
+- 백신 개발 시스템
+- 최종 엔딩
+- 완성형 로그라이크 런 구조
+- 영구 성장 시스템
+- 최종 아트 에셋
 
-## Core Loop
+## 핵심 루프
 
-1. Spawn as virus-controlled rat in the sewer.
-2. Explore a compact map.
-3. Immune alert rises over time or through risky actions.
-4. At 100% immune alert, switch to internal virus mode.
-5. Survive and collect mutation fragments.
-6. On success, show three mutation choices.
-7. Apply selected mutation.
-8. Return to rat control with a changed stat or ability.
+1. 바이러스가 조종하는 쥐로 하수도에 등장한다.
+2. 좁은 맵을 탐색한다.
+3. 시간 경과 또는 위험 행동으로 면역 경계도가 상승한다.
+4. 면역 경계도 100%에서 내부 바이러스 모드로 전환한다.
+5. 내부 미니게임에서 생존하고 변이 조각을 수집한다.
+6. 성공하면 세 가지 변이 선택지를 보여준다.
+7. 선택한 변이를 적용한다.
+8. 변경된 상태로 쥐 조종에 복귀한다.
 
-## Rat Host Mode
+## 쥐 숙주 모드
 
-### Purpose
+### 목적
 
-Rat mode validates whether host control can stand as the main exploration layer.
+쥐 모드는 숙주 조종이 메인 탐험 레이어로 성립하는지 검증한다.
 
-### Minimum Mechanics
+### 최소 기계 요소
 
-- Move
-- Turn
-- Interact with simple points of interest
-- Trigger immune alert over time
-- Show host health and immune alert
+- 이동
+- 방향 전환
+- 간단한 관심 지점 상호작용
+- 시간 경과에 따른 면역 경계도 상승
+- 숙주 생명력과 면역 경계도 표시
 
-### Possible Prototype Hazards
+### 가능한 프로토타입 위험 요소
 
-- toxic puddle
-- human light cone
-- blocked pipe
-- noisy surface
+- 독성 물웅덩이
+- 인간의 손전등 시야
+- 막힌 배관
+- 소리를 내는 바닥
 
-Only one or two hazards are needed for the first validation build.
+첫 검증 빌드에서는 위험 요소 1개나 2개만 있어도 충분하다.
 
-## Internal Virus Mode
+## 내부 바이러스 모드
 
-### Purpose
+### 목적
 
-Virus mode validates the tension break: the player leaves the host body and fights or survives inside the immune system.
+바이러스 모드는 플레이어가 숙주 몸 밖의 탐험에서 잠시 벗어나 숙주 내부의 면역 압박에 대응하는 전환이 긴장감을 주는지 검증한다.
 
-### Minimum Mechanics
+### 최소 기계 요소
 
-- Move virus avatar
-- Avoid white blood cells
-- Collect mutation fragments
-- Survive until the target count or timer condition is met
+- 바이러스 아바타 이동
+- 백혈구 회피
+- 변이 조각 수집
+- 목표 수량 또는 제한 조건을 만족할 때까지 생존
 
-### Recommended Initial Success Condition
+### 권장 초기 성공 조건
 
-Collect a fixed number of mutation fragments before virus stability reaches zero.
+바이러스 안정도가 0이 되기 전에 정해진 수의 변이 조각을 수집한다.
 
-## Mutation Choices
+## 변이 선택지
 
-The first prototype should use three choices from the draft:
+첫 프로토타입은 원본 초안의 세 가지 선택지를 사용한다.
 
-| Mutation | Category | Prototype Effect |
+| 변이 | 계열 | 프로토타입 효과 |
 | --- | --- | --- |
-| 잠복 강화 | Coexistence / mutation | immune alert rises slower |
-| 신경 조종 | Control | rat movement or interaction improves |
-| 포유류 적응 | Transmission | prepares future host expansion; in prototype, improves reward or objective access |
+| 잠복 강화 | 공존 / 변이 | 면역 경계도 상승 속도 감소 |
+| 신경 조종 | 조종 | 쥐 이동 또는 상호작용 능력 향상 |
+| 포유류 적응 | 전이 | 이후 숙주 확장을 준비하는 선택지. 프로토타입에서는 보상이나 목표 접근성을 높이는 임시 효과 필요 |
 
-The third option needs a temporary prototype effect if no second host exists yet.
+세 번째 선택지는 아직 두 번째 숙주가 없으므로, 프로토타입 안에서 체감 가능한 임시 효과를 정해야 한다.
 
-## Minimal Gauges
+## 최소 게이지
 
-- Host health
-- Immune alert
-- Virus stability or virus health
-- Mutation fragments
+- 숙주 생명력
+- 면역 경계도
+- 바이러스 안정도 또는 바이러스 체력
+- 변이 조각 수
 
-Optional for later:
+이후 단계로 넘길 수 있는 게이지:
 
-- erosion
-- coexistence
-- human risk
-- vaccine development
+- 침식도
+- 공존도
+- 인간 위험도
+- 백신 개발도
 
-## Prototype Acceptance Criteria
+## 프로토타입 성공 기준
 
-The prototype is successful if a tester can understand the loop without explanation:
+테스터가 별도 설명 없이 다음 내용을 이해할 수 있으면 프로토타입은 성공으로 본다.
 
-- why immune alert is rising
-- why the game switches to virus mode
-- what to do in the minigame
-- what mutation was gained
-- how the mutation changed rat-mode play
+- 왜 면역 경계도가 오르는지
+- 왜 바이러스 모드로 전환되는지
+- 미니게임에서 무엇을 해야 하는지
+- 어떤 변이를 얻었는지
+- 변이가 쥐 숙주 플레이를 어떻게 바꿨는지
 
-## Main Risks
+## 주요 위험
 
-- The mode switch may feel like an interruption instead of tension.
-- Rat movement may feel too generic without host-specific behavior.
-- Mutation choices may feel abstract if the first prototype has only one host.
-- Pixel-style 3D may require render tuning before it reads as intentional rather than low fidelity.
+- 모드 전환이 긴장감이 아니라 흐름 끊김처럼 느껴질 수 있다.
+- 쥐 조작이 숙주 특유의 재미 없이 평범하게 느껴질 수 있다.
+- 숙주가 하나뿐이면 변이 선택이 추상적으로 느껴질 수 있다.
+- 도트풍 3D는 렌더링 조정 전까지 의도된 스타일이 아니라 단순히 저품질처럼 보일 위험이 있다.
 
-## Approval Needed Before Implementation
+## 구현 전 승인 필요 항목
 
-1. Confirm rat-only first prototype or include insect tutorial.
-2. Confirm URP.
-3. Confirm Unity version.
-4. Confirm first mutation effects.
-5. Confirm initial control scheme.
-6. Confirm whether placeholder assets are acceptable for all prototype visuals.
+1. 쥐 단독 1차 프로토타입으로 갈지, 벌레 튜토리얼을 포함할지
+2. URP 사용 여부
+3. Unity 버전
+4. 첫 변이 효과
+5. 초기 조작 방식
+6. 모든 프로토타입 비주얼에 플레이스홀더 에셋을 사용할지 여부

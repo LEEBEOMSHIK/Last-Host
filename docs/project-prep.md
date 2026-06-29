@@ -1,93 +1,93 @@
-# The Last Host Project Preparation
+# The Last Host 프로젝트 준비안
 
-Last updated: 2026-06-29
+최종 수정일: 2026-06-29
 
-## Purpose
+## 목적
 
-This document organizes the current preparation state for `마지막 숙주 / The Last Host` before implementation starts. It summarizes confirmed decisions, open approvals, repository state, and the recommended order for turning the design draft into a Unity project.
+이 문서는 `마지막 숙주 / The Last Host`의 구현을 시작하기 전에 현재 준비 상태를 정리하기 위한 문서다. 확정된 방향, 승인 대기 항목, 저장소 상태, Unity 프로젝트로 전환하기 전 필요한 순서를 정리한다.
 
-## Current Repository State
+## 현재 저장소 상태
 
-- Workspace: `C:\project\Last-Host`
-- Git remote: `https://github.com/LEEBEOMSHIK/Last-Host.git`
-- Current repository content is minimal. There is no Unity project yet.
-- The current task is documentation and preparation only.
+- 작업 위치: `C:\project\Last-Host`
+- Git 원격 저장소: `https://github.com/LEEBEOMSHIK/Last-Host.git`
+- 현재 저장소에는 Unity 프로젝트가 아직 없다.
+- 현재 단계는 문서 정리와 프로젝트 준비 단계다.
 
-## Original Planning Source
+## 원본 기획 자료
 
-- Draft document: `C:\project\game\last_host\last_host_game_plan.docx`
-- The draft defines a pixel-style low-poly 3D evolution survival roguelike.
-- The draft recommends validating the core loop with a `Rat Host Prototype`.
+- 원본 초안: `C:\project\game\last_host\last_host_game_plan.docx`
+- 초안의 핵심 방향은 도트풍 저폴리 3D 진화 생존 로그라이크다.
+- 초안은 핵심 루프 검증을 위해 `쥐 숙주 프로토타입`부터 시작하는 방향을 제안한다.
 
-## Confirmed Decisions
+## 확정된 결정
 
-- Engine: Unity 3D
-- Visual style: pixel-style 3D, not pure 2D sprite art
-- Rendering direction:
-  - low-poly 3D models
-  - pixel-style textures
-  - low-resolution rendering or post-processing
-- Game structure:
-  - external host-control exploration
-  - internal virus immune-system minigame
-  - mutation selection and growth
-- First prototype focus: rat host in a sewer environment
+- 엔진: Unity 3D
+- 비주얼: 순수 2D 도트가 아닌 도트풍 3D
+- 렌더링 방향:
+  - 저폴리 3D 모델
+  - 픽셀풍 텍스처
+  - 저해상도 렌더링 또는 후처리
+- 게임 구조:
+  - 바깥 세계의 숙주 조종 탐험
+  - 숙주 내부의 바이러스 면역 미니게임
+  - 변이 선택과 성장
+- 첫 프로토타입 초점: 하수도 환경의 쥐 숙주
 
-## Open Approval Items
+## 구현 전 승인 필요 항목
 
-These should be approved before implementation work starts:
+다음 항목은 구현 작업 전에 사용자 승인이 필요하다.
 
-1. Unity version
-2. URP usage
-3. PC-only prototype target
-4. Whether the first prototype excludes the insect tutorial
-5. Exact first prototype win/fail conditions
-6. Initial control scheme
-7. Initial UI gauge set
-8. Placeholder asset strategy
-9. Git ignore and Unity project metadata policy
+1. Unity 버전
+2. URP 사용 여부
+3. PC 우선 프로토타입 확정 여부
+4. 1차 프로토타입에서 벌레 튜토리얼을 제외할지 여부
+5. 첫 프로토타입의 성공과 실패 조건
+6. 초기 조작 방식
+7. 초기 UI 게이지 구성
+8. 플레이스홀더 에셋 사용 범위
+9. Unity용 `.gitignore`와 메타 파일 관리 정책
 
-## Recommended Documentation Set
+## 권장 문서 구성
 
-- `docs/game-design-summary.md`: concise design summary from the `.docx`
-- `docs/rat-host-prototype.md`: first playable prototype scope
-- `docs/project-prep.md`: current preparation and approval plan
-- `AGENTS.md`: project rules for Codex and future agent work
+- `docs/game-design-summary.md`: 원본 `.docx` 기반 게임 기획 요약
+- `docs/rat-host-prototype.md`: 첫 플레이어블 프로토타입 범위
+- `docs/project-prep.md`: 현재 프로젝트 준비 상태와 승인 계획
+- `AGENTS.md`: Codex와 이후 작업자가 따라야 할 프로젝트 규칙
 
-## Recommended Milestones
+## 권장 마일스톤
 
-### Milestone 0: Preparation
+### 마일스톤 0: 준비
 
-- Convert the design draft into working Markdown docs.
-- Confirm engine, visual direction, prototype boundary, and approval gates.
-- Decide Unity version and render pipeline.
+- 기획서 초안을 작업용 Markdown 문서로 정리한다.
+- 엔진, 비주얼 방향, 프로토타입 범위, 승인 게이트를 확정한다.
+- Unity 버전과 렌더 파이프라인을 결정한다.
 
-### Milestone 1: Unity Project Skeleton
+### 마일스톤 1: Unity 프로젝트 골격
 
-- Create the Unity 3D project only after approval.
-- Set up repository hygiene, `.gitignore`, folders, and render pipeline.
-- Add a minimal test scene with placeholder camera and lighting.
+- 사용자 승인 후 Unity 3D 프로젝트를 생성한다.
+- 저장소 정리, `.gitignore`, 기본 폴더, 렌더 파이프라인을 설정한다.
+- 플레이스홀더 카메라와 조명이 있는 최소 테스트 씬을 만든다.
 
-### Milestone 2: Rat Host Core Loop
+### 마일스톤 2: 쥐 숙주 핵심 루프
 
-- Rat movement in a small sewer map.
-- Immune alert gauge.
-- Transition to internal minigame.
-- Virus movement, white blood cell enemy, mutation fragment collection.
-- Mutation choice and return to rat host mode.
+- 작은 하수도 맵에서 쥐를 움직인다.
+- 면역 경계도 게이지를 적용한다.
+- 내부 바이러스 미니게임으로 전환한다.
+- 바이러스 이동, 백혈구 적, 변이 조각 수집을 구현한다.
+- 변이 선택 후 쥐 숙주 모드로 복귀한다.
 
-### Milestone 3: Prototype Feel Pass
+### 마일스톤 3: 프로토타입 감각 조정
 
-- Pixel-style render pass.
-- Camera tuning.
-- Basic UI clarity.
-- Placeholder animations and feedback.
-- Short playtest checklist.
+- 도트풍 3D 렌더링을 조정한다.
+- 카메라를 다듬는다.
+- 기본 UI 가독성을 확인한다.
+- 플레이스홀더 애니메이션과 피드백을 추가한다.
+- 짧은 플레이테스트 체크리스트로 핵심 루프를 검증한다.
 
-## Immediate Next Steps
+## 바로 다음 단계
 
-1. Review and approve these preparation docs.
-2. Approve Unity version and URP direction.
-3. Approve first prototype boundary.
-4. Write an implementation plan.
-5. Create the Unity project only after the plan is approved.
+1. 이 준비 문서를 검토하고 승인한다.
+2. Unity 버전과 URP 사용 여부를 승인한다.
+3. 첫 프로토타입 범위를 승인한다.
+4. 구현 계획서를 작성한다.
+5. 구현 계획 승인 후 Unity 프로젝트를 생성한다.

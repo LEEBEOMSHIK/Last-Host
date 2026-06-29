@@ -1,151 +1,152 @@
-# Game Design Summary
+# 게임 기획 요약
 
-## Identity
+## 정체성
 
-- Korean title: `마지막 숙주`
-- English title: `The Last Host`
-- Genre: pixel-style low-poly 3D evolution survival roguelike
-- Core fantasy: a cute personified virus survives by infecting hosts, adapting, and choosing whether to mutate, dominate, transmit, or coexist.
+- 한국어 제목: `마지막 숙주`
+- 영어 제목: `The Last Host`
+- 장르: 도트풍 저폴리 3D 진화 생존 로그라이크
+- 핵심 판타지: 귀엽게 의인화된 바이러스가 숙주를 감염하고, 적응하고, 변이하며, 전이와 지배와 공존 중 생존 방식을 선택한다.
 
-## Core Concept
+## 핵심 콘셉트
 
-The player starts as a weak virus. Survival requires moving between hosts, controlling the current host, responding to immune-system pressure, and choosing mutations that shape future play. The final direction is not simply infection or conquest. The game asks whether survival means endless mutation, domination, coexistence, extinction, or acceptance.
+플레이어는 약한 바이러스로 시작한다. 살아남기 위해 숙주를 옮겨 다니고, 현재 숙주를 조종하며, 면역체계의 압박에 대응하고, 이후 플레이 방향을 바꾸는 변이를 선택한다. 최종 목표는 단순한 감염이나 정복이 아니다. 게임은 생존이 끝없는 변이인지, 지배인지, 공존인지, 사멸인지, 수용인지 묻는다.
 
-## Message
+## 메시지
 
-The draft frames humans as vulnerable members of an ecosystem rather than absolute controllers of nature. The strongest survival path is not necessarily domination. Coexistence and adaptation are positioned as meaningful alternatives to endless escalation.
+원본 초안은 인간을 자연의 절대적 통제자가 아니라 생태계 안의 약한 존재로 본다. 가장 강한 생존 방식은 반드시 지배가 아니다. 공존과 적응도 중요한 생존 방식으로 제시된다.
 
-## Visual Direction
+## 비주얼 방향
 
-The confirmed direction is pixel-style 3D:
+확정된 비주얼 방향은 도트풍 3D다.
 
-- low-poly 3D characters and environments
-- pixel-style textures
-- low-resolution rendering or post-processing
-- cute but strange virus design
-- early natural environments that become darker as human society, hospitals, laboratories, and vaccines appear
+- 저폴리 3D 캐릭터와 환경
+- 픽셀풍 텍스처
+- 저해상도 렌더링 또는 후처리
+- 귀엽지만 기묘한 바이러스 디자인
+- 초반에는 자연적이고 귀여운 분위기
+- 후반으로 갈수록 인간 사회, 병원, 연구소, 백신으로 인해 어두워지는 분위기
 
-This is not a pure 2D sprite game.
+이 게임은 순수 2D 스프라이트 게임이 아니다.
 
-## Game Structure
+## 게임 구조
 
-The game alternates between two main modes.
+게임은 두 가지 주요 모드를 오간다.
 
-### Host-Control Mode
+### 숙주 조종 모드
 
-The player controls the currently infected host in a 3D environment. Each host functions as a different playable body with unique movement, access, risks, and transmission opportunities.
+플레이어는 현재 감염한 숙주를 3D 환경에서 조종한다. 각 숙주는 단순 이동 수단이 아니라 서로 다른 이동 방식, 접근 가능 구역, 위험 요소, 전이 기회를 가진 플레이어 캐릭터다.
 
-Example hosts:
+예상 숙주:
 
-- insect
-- mosquito
-- rat
-- bird
-- cat
-- dog
-- livestock
-- human
+- 벌레
+- 모기
+- 쥐
+- 새
+- 고양이
+- 개
+- 가축
+- 인간
 
-### Internal Virus Mode
+### 내부 바이러스 모드
 
-When immune alert reaches a threshold, the player controls the virus inside the host. This mode is a compact top-down or fixed quarter-view arena minigame.
+면역 경계도가 임계치에 도달하면 플레이어는 숙주 내부의 바이러스를 직접 조종한다. 이 모드는 탑다운 또는 고정 쿼터뷰의 작은 아레나형 미니게임이다.
 
-Expected actions:
+예상 행동:
 
-- avoid white blood cells
-- dodge antibody or hazard patterns
-- collect mutation fragments
-- reach or infect target cells
-- survive within a time limit
+- 백혈구 회피
+- 항체 또는 위험 패턴 회피
+- 변이 조각 수집
+- 특정 세포 지점 침투
+- 제한 시간 동안 생존
 
-## Core Loop
+## 핵심 루프
 
-1. Control current host.
-2. Search for next host opportunities.
-3. Meet transmission or survival conditions.
-4. Trigger immune-system response.
-5. Play internal virus minigame.
-6. Earn mutation points or fragments.
-7. Choose an upgrade.
-8. Return to host control with changed abilities.
+1. 현재 숙주를 조종한다.
+2. 다음 숙주 또는 생존 기회를 찾는다.
+3. 전이 또는 생존 조건을 충족한다.
+4. 면역체계 반응이 발생한다.
+5. 내부 바이러스 미니게임을 진행한다.
+6. 변이 포인트 또는 변이 조각을 얻는다.
+7. 업그레이드를 선택한다.
+8. 변경된 능력으로 숙주 조종 모드에 복귀한다.
 
-## Growth Categories
+## 성장 계열
 
-### Transmission
+### 전이
 
-Expands access to new hosts and environments.
+새로운 숙주와 환경에 접근할 수 있게 한다.
 
-### Mutation
+### 변이
 
-Improves immune-system and vaccine resistance.
+면역체계와 백신 대응력을 높인다.
 
-### Control
+### 조종
 
-Improves host behavior manipulation and opens domination-oriented routes.
+숙주 행동을 더 강하게 조작하고 지배 계열 루트를 연다.
 
-### Coexistence
+### 공존
 
-Reduces host damage and immune pressure, supporting long-term stability and coexistence endings.
+숙주 손상과 면역 압박을 낮추고, 장기 생존과 공존 엔딩 방향을 강화한다.
 
-## Main Gauges
+## 주요 게이지
 
-- Host health
-- Immune alert
-- Erosion
-- Coexistence
-- Human risk
-- Vaccine development
+- 숙주 생명력
+- 면역 경계도
+- 침식도
+- 공존도
+- 인간 위험도
+- 백신 개발도
 
-The first prototype does not need every gauge. It should focus on host health, immune alert, and one or two mutation-related values.
+첫 프로토타입에 모든 게이지가 필요하지는 않다. 1차 검증에서는 숙주 생명력, 면역 경계도, 변이 관련 값 1개나 2개에 집중하는 편이 적절하다.
 
-## Stage Progression
+## 스테이지 진행
 
-The draft proposes progression from natural ecosystems into human-controlled spaces:
+원본 초안은 자연 생태계에서 인간 통제 공간으로 이동하는 진행을 제안한다.
 
-1. forest floor
-2. pond and grass
-3. farm
-4. city sewer
-5. residential area
-6. hospital
-7. laboratory
+1. 숲 바닥
+2. 연못과 풀숲
+3. 농장
+4. 도시 하수도
+5. 주택가
+6. 병원
+7. 연구소
 
-The first prototype starts at the city sewer stage with a rat host because it best tests host control, human-adjacent risk, and internal immune response without requiring the full early-game chain.
+첫 프로토타입은 도시 하수도 단계의 쥐 숙주에서 시작한다. 쥐는 전체 초반 숙주 체인을 만들지 않아도 숙주 조종, 인간 생활권 접근, 내부 면역 반응을 함께 검증하기 좋다.
 
-## Ending Directions
+## 엔딩 방향
 
-The draft defines five ending directions:
+원본 초안은 다섯 가지 엔딩 방향을 정의한다.
 
-- supervirus
-- domination
-- coexistence
-- extinction
-- acceptance
+- 슈퍼바이러스
+- 지배
+- 공존
+- 사멸
+- 수용
 
-These endings are long-term design targets and should not be implemented in the first prototype.
+엔딩은 장기 설계 목표이며, 첫 프로토타입 구현 범위에는 포함하지 않는다.
 
-## Camera And Controls
+## 카메라와 조작
 
-- Host-control mode: quarter-view 3D is recommended.
-- Internal virus mode: top-down or fixed quarter-view arena is recommended.
-- The control scheme should stay consistent between modes where possible, while giving the virus mode a tighter dodge-and-collect feel.
+- 숙주 조종 모드: 쿼터뷰 3D를 추천한다.
+- 내부 바이러스 모드: 탑다운 또는 고정 쿼터뷰 아레나를 추천한다.
+- 두 모드의 기본 조작감은 최대한 일관되게 유지하되, 바이러스 모드는 더 짧고 긴장감 있는 회피와 수집 중심으로 설계한다.
 
-## UI Direction
+## UI 방향
 
-The full game may show host health, immune alert, erosion, coexistence, mutation slots, host candidates, human risk, and vaccine progress. For the first prototype, UI should be reduced to only what supports the core loop.
+전체 게임에서는 숙주 생명력, 면역 경계도, 침식도, 공존도, 변이 슬롯, 다음 숙주 후보, 인간 위험도, 백신 개발도를 표시할 수 있다. 첫 프로토타입에서는 핵심 루프 이해에 필요한 UI만 남긴다.
 
-Recommended first prototype UI:
+1차 프로토타입 권장 UI:
 
-- host health
-- immune alert
-- current mode
-- mutation fragments during minigame
-- mutation choice screen after success
+- 숙주 생명력
+- 면역 경계도
+- 현재 모드
+- 미니게임 중 변이 조각 수
+- 성공 후 변이 선택 화면
 
-## Key Open Questions
+## 주요 미확정 질문
 
-- Should the first playable build start directly with the rat, or include an insect tutorial first?
-- What is the exact success condition for the internal minigame?
-- How many mutations should be available in the first prototype?
-- How much host control should erosion unlock in the rat prototype?
-- Should coexistence be represented mechanically in the first prototype or saved for the next milestone?
+- 첫 플레이어블 빌드는 쥐부터 바로 시작할지, 벌레 튜토리얼을 포함할지
+- 내부 미니게임의 정확한 성공 조건을 무엇으로 둘지
+- 첫 프로토타입에서 변이 선택지를 몇 개 제공할지
+- 쥐 프로토타입에서 침식도가 어느 정도의 조종 능력을 열어줄지
+- 공존도를 첫 프로토타입에 기계적으로 반영할지, 다음 마일스톤으로 넘길지
