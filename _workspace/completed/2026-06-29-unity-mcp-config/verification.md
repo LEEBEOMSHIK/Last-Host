@@ -16,6 +16,9 @@
 - `docs/unity-mcp-setup.md`: 존재 확인
 - `AGENTS.md`: 102줄로 200줄 미만 유지
 - Unity MCP 래퍼: 패키지 미설치 상태에서 `Unity MCP server was not found...` 메시지와 함께 종료
+- `My project/ProjectSettings/ProjectVersion.txt`: 존재 확인
+- `My project/Packages/manifest.json`: 존재 확인
+- `My project/Library/PackageCache/com.gamelovers.mcp-unity*`: 미설치 확인
 - `git diff --check`: 종료 코드 0
 
 ## 미검증 항목

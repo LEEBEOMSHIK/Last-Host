@@ -11,23 +11,57 @@ function Stop-WithMessage {
 }
 
 $projectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..\..")).Path
-$serverCandidates = @()
+$unityRoots = @()
 
-$packageCacheRoot = Join-Path $projectRoot "Library\PackageCache"
-if (Test-Path -LiteralPath $packageCacheRoot) {
-    $serverCandidates += Get-ChildItem -LiteralPath $packageCacheRoot -Directory -Filter "com.gamelovers.mcp-unity@*" -ErrorAction SilentlyContinue |
-        ForEach-Object { Join-Path $_.FullName "Server~\build\index.js" }
+function Test-UnityProjectRoot {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $Path
+    )
+
+    $projectVersion = Join-Path $Path "ProjectSettings\ProjectVersion.txt"
+    $manifest = Join-Path $Path "Packages\manifest.json"
+    return (Test-Path -LiteralPath $projectVersion) -and (Test-Path -LiteralPath $manifest)
 }
 
-$embeddedPackageServer = Join-Path $projectRoot "Packages\com.gamelovers.mcp-unity\Server~\build\index.js"
-$serverCandidates += $embeddedPackageServer
+if (Test-UnityProjectRoot -Path $projectRoot) {
+    $unityRoots += $projectRoot
+}
 
-$server = $serverCandidates |
-    Where-Object { Test-Path -LiteralPath $_ } |
-    Sort-Object |
+$unityRoots += Get-ChildItem -LiteralPath $projectRoot -Directory -ErrorAction SilentlyContinue |
+    Where-Object { Test-UnityProjectRoot -Path $_.FullName } |
+    ForEach-Object { $_.FullName }
+
+$unityRoots = $unityRoots | Sort-Object -Unique
+
+if (-not $unityRoots) {
+    Stop-WithMessage "Unity project root was not found. Create a Unity project at the repository root or in a direct child folder before enabling Unity MCP."
+}
+
+$serverRecords = foreach ($unityRoot in $unityRoots) {
+    $packageCacheRoot = Join-Path $unityRoot "Library\PackageCache"
+    if (Test-Path -LiteralPath $packageCacheRoot) {
+        Get-ChildItem -LiteralPath $packageCacheRoot -Directory -Filter "com.gamelovers.mcp-unity@*" -ErrorAction SilentlyContinue |
+            ForEach-Object {
+                [pscustomobject]@{
+                    UnityRoot = $unityRoot
+                    Server = Join-Path $_.FullName "Server~\build\index.js"
+                }
+            }
+    }
+
+    [pscustomobject]@{
+        UnityRoot = $unityRoot
+        Server = Join-Path $unityRoot "Packages\com.gamelovers.mcp-unity\Server~\build\index.js"
+    }
+}
+
+$serverRecord = $serverRecords |
+    Where-Object { Test-Path -LiteralPath $_.Server } |
+    Sort-Object UnityRoot, Server |
     Select-Object -First 1
 
-if (-not $server) {
+if (-not $serverRecord) {
     Stop-WithMessage "Unity MCP server was not found. Install com.gamelovers.mcp-unity in Unity, then run Tools > MCP Unity > Server Window > Force Install Server."
 }
 
@@ -36,5 +70,6 @@ if (-not $node) {
     Stop-WithMessage "Node.js was not found in PATH. Install Node.js or expose node before enabling Unity MCP."
 }
 
-& $node.Source $server
+Set-Location -LiteralPath $serverRecord.UnityRoot
+& $node.Source $serverRecord.Server
 exit $LASTEXITCODE
