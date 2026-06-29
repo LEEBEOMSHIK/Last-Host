@@ -20,6 +20,13 @@
 - 판단: 반복 방지를 위해 전역 원칙은 `AGENTS.md`에 짧게 두고, 세부 절차는 `docs/agent-skill-plan.md`에 둔다.
 - 다음 작업: 변경사항 검증 후 커밋한다.
 
+### 2026-06-29 계획 초안 작성
+
+- 수행 내용: 게임플레이 루프 에이전트 산출물로 `artifacts/rat-host-implementation-plan-draft.md`를 작성하고, 열린 질문을 `artifacts/open-questions.md`에 분리했다.
+- 확인한 자료: `AGENTS.md`, `docs/rat-host-prototype.md`, `docs/game-design-summary.md`, `docs/project-prep.md`, `docs/rat-host-approval-packet.md`, `docs/unity-baseline-report.md`, `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
+- 판단: 승인 전 금지 범위를 지키기 위해 실제 C# 코드와 Unity 씬 변경은 포함하지 않고, 기능 단위와 수용 기준, 검증 시나리오를 중심으로 작성했다.
+- 다음 작업: 조정자 검토 후 Unity 아키텍처 에이전트와 QA/검증 에이전트 검토로 넘긴다.
+
 ## 결정 기록
 
 - `docs/rat-host-implementation-plan.md` 직접 작성 방식은 사용하지 않는다.
