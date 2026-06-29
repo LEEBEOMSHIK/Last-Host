@@ -96,6 +96,7 @@
 
 선택 참조:
 
+- `docs/rat-host-approval-packet.md`
 - `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
 
 ### 도트풍 저폴리 3D / 비주얼
