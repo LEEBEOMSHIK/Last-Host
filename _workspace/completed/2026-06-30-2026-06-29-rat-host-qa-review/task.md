@@ -4,7 +4,7 @@
 
 - 작업 ID: `2026-06-29-rat-host-qa-review`
 - 작업명: 쥐 숙주 구현 계획 QA/검증 검토
-- 상태: 진행 중
+- 상태: 완료
 - 생성일: 2026-06-29
 - 담당 에이전트: QA/검증 에이전트
 - 보조 에이전트: 게임플레이 루프 에이전트
@@ -23,7 +23,7 @@
 - `.agents/qa-verification-agent.md`
 - `.codex/skills/unity-verification-runner/SKILL.md`
 - `.codex/skills/unity-verification-runner/references/verification-rules.md`
-- `_workspace/active/2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
+- `_workspace/completed/2026-06-30-2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
 
 ## 해야 할 일
 
@@ -36,8 +36,8 @@
 
 ## 산출물
 
-- `_workspace/active/2026-06-29-rat-host-qa-review/artifacts/qa-review.md`
-- 필요 시 `_workspace/active/2026-06-29-rat-host-qa-review/handoff.md` 갱신
+- `_workspace/completed/2026-06-30-2026-06-29-rat-host-qa-review/artifacts/qa-review.md`
+- 필요 시 `_workspace/completed/2026-06-30-2026-06-29-rat-host-qa-review/handoff.md` 갱신
 
 ## 금지 범위
 
@@ -46,10 +46,11 @@
 - 빌드 실행
 - 구현 범위 확대
 
-## 승인 필요 항목
+## 승인 상태
 
-- 구현 후 테스트/빌드 실행 범위 승인
-- 수동 플레이 체크 기준 승인
+- 2026-06-30 사용자 전체 승인 완료
+- 구현 후 테스트/빌드 실행 범위는 공식 구현 계획 기준으로 승인 완료
+- 수동 플레이 체크 기준 승인 완료
 
 ## 완료 기준
 

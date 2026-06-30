@@ -93,6 +93,7 @@
 필수 참조:
 
 - `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/rat-host-implementation-plan.md`
 - `.codex/skills/rat-host-loop-builder/SKILL.md`
 
 선택 참조:

@@ -4,7 +4,7 @@
 
 - 작업 ID: `2026-06-29-rat-host-architecture-review`
 - 작업명: 쥐 숙주 구현 계획 Unity 아키텍처 검토
-- 상태: 진행 중
+- 상태: 완료
 - 생성일: 2026-06-29
 - 담당 에이전트: Unity 아키텍처 에이전트
 - 보조 에이전트: 게임플레이 루프 에이전트
@@ -25,7 +25,7 @@
 - `.agents/unity-architecture-agent.md`
 - `.codex/skills/unity-prototype-planner/SKILL.md`
 - `.codex/skills/unity-prototype-planner/references/unity-architecture.md`
-- `_workspace/active/2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
+- `_workspace/completed/2026-06-30-2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
 
 ## 해야 할 일
 
@@ -35,12 +35,12 @@
 4. 초기 입력 구현에서 `Input System` 직접 사용 여부를 제안한다.
 5. `RatHostPrototype.unity`를 Build Settings에 바로 추가할지 판단한다.
 6. `SampleScene.unity` 처리 방안을 제안한다.
-7. 구현 전 승인 필요 항목과 위험을 정리한다.
+7. 구현 전 승인 게이트 항목과 위험을 정리한다.
 
 ## 산출물
 
-- `_workspace/active/2026-06-29-rat-host-architecture-review/artifacts/architecture-review.md`
-- 필요 시 `_workspace/active/2026-06-29-rat-host-architecture-review/handoff.md` 갱신
+- `_workspace/completed/2026-06-30-2026-06-29-rat-host-architecture-review/artifacts/architecture-review.md`
+- 필요 시 `_workspace/completed/2026-06-30-2026-06-29-rat-host-architecture-review/handoff.md` 갱신
 
 ## 금지 범위
 
@@ -50,11 +50,11 @@
 - 패키지 추가 또는 제거
 - 게임플레이 범위 변경
 
-## 승인 필요 항목
+## 승인 상태
 
-- `docs/prototype/rat-host-approval-packet.md` 승인
-- Unity MCP를 통한 프로젝트 변경 승인
-- `RatHostPrototype.unity` 생성과 Build Settings 반영 승인
+- 2026-06-30 사용자 전체 승인 완료
+- Unity MCP를 통한 승인 범위 내 프로젝트 변경 승인 완료
+- `RatHostPrototype.unity` 생성과 Build Settings 반영 승인 완료
 
 ## 완료 기준
 

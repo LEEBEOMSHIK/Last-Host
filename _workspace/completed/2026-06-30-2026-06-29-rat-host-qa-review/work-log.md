@@ -9,7 +9,7 @@
 ### 2026-06-29 초기 배정
 
 - 수행 내용: 쥐 숙주 구현 계획 초안의 QA/검증 검토 작업 패킷을 생성했다.
-- 확인한 자료: `AGENTS.md`, `docs/prototype/rat-host-prototype.md`, `_workspace/active/2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
+- 확인한 자료: `AGENTS.md`, `docs/prototype/rat-host-prototype.md`, `_workspace/completed/2026-06-30-2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
 - 판단: 이 작업은 검증 계획 수립이며, 실제 테스트/빌드 실행은 구현 후 승인된 범위에서 수행한다.
 - 다음 작업: QA/검증 에이전트가 `artifacts/qa-review.md`를 작성한다.
 
@@ -27,14 +27,19 @@
 - 판단: 계획 초안은 핵심 루프를 대체로 커버하지만, `포유류 적응` 임시 효과, 재시도 초기화 범위, 입력 방식, 빌드 설정 씬 정책은 구현 전 확정이 필요하다.
 - 검증 상태: Unity 테스트, 플레이, 빌드는 금지 범위에 따라 실행하지 않았다.
 
+### 2026-06-30 승인 반영
+
+- 수행 내용: 사용자의 프로토타입 전체 승인에 따라 QA 검토의 승인 대기 항목을 승인 완료로 갱신했다.
+- 승인 항목: 포유류 적응 특정 통로 접근, 재시도 초기화 기준, Input System, Build Settings 씬 정책, 구현 후 테스트/빌드 실행 범위
+- 판단: QA 검토 작업은 완료되었고, 실제 검증 실행은 구현 후 별도 작업에서 진행한다.
+
 ## 결정 기록
 
 - 쓰기 범위는 이 작업 폴더로 제한한다.
 
 ## 열린 질문
 
-- 구현 완료 조건에 PC 빌드를 포함할지
-- PlayMode 테스트를 필수로 둘지
+- 없음. 승인 완료.
 
 ## 위험과 주의점
 

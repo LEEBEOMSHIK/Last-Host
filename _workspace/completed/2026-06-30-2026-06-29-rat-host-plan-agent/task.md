@@ -4,7 +4,7 @@
 
 - 작업 ID: `2026-06-29-rat-host-plan-agent`
 - 작업명: 쥐 숙주 핵심 루프 구현 계획 에이전트 산출
-- 상태: 검토 중
+- 상태: 완료
 - 생성일: 2026-06-29
 - 담당 에이전트: 게임플레이 루프 에이전트
 - 보조 에이전트: Unity 아키텍처 에이전트, QA/검증 에이전트
@@ -36,31 +36,31 @@
 3. 각 기능 단위별 입력, 처리, 출력, UI 피드백, 수용 기준을 작성한다.
 4. Unity 아키텍처 에이전트가 검토할 폴더/씬/스크립트 책임 경계를 제안한다.
 5. QA/검증 에이전트가 검토할 테스트 시나리오와 수동 플레이 체크리스트를 제안한다.
-6. 범위 초과 항목과 사용자 승인 필요 항목을 별도로 정리한다.
+6. 범위 초과 항목과 승인 게이트 항목을 별도로 정리한다.
 
 ## 산출물
 
-- `_workspace/active/2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
-- `_workspace/active/2026-06-29-rat-host-plan-agent/handoff.md` 갱신
-- 필요 시 `_workspace/active/2026-06-29-rat-host-plan-agent/artifacts/open-questions.md`
+- `_workspace/completed/2026-06-30-2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
+- `_workspace/completed/2026-06-30-2026-06-29-rat-host-plan-agent/handoff.md` 갱신
+- 필요 시 `_workspace/completed/2026-06-30-2026-06-29-rat-host-plan-agent/artifacts/open-questions.md`
 
 ## 금지 범위
 
 - Unity 씬 생성 또는 수정
 - C# 코드 작성
 - 패키지 추가 또는 ProjectSettings 변경
-- `docs/rat-host-implementation-plan.md` 직접 생성
+- 사용자 승인 전 `docs/prototype/rat-host-implementation-plan.md` 직접 생성
 - 승인 패킷의 범위를 넘어서는 벌레 튜토리얼, 다중 숙주, 인간 단계, 백신, 엔딩, 영구 성장 설계
 
-## 승인 필요 항목
+## 승인 상태
 
-- `docs/prototype/rat-host-approval-packet.md` 전체 승인 또는 수정 승인
-- Unity MCP를 통한 프로젝트 변경 승인
-- 구현 계획 산출물을 `docs/`에 반영할지 여부
+- 2026-06-30 사용자 전체 승인 완료
+- Unity MCP를 통한 승인 범위 내 프로젝트 변경 승인 완료
+- 구현 계획 산출물은 `docs/prototype/rat-host-implementation-plan.md` 공식 문서로 승격 완료
 
 ## 완료 기준
 
 - 담당 에이전트 산출물이 `artifacts/rat-host-implementation-plan-draft.md`에 있다.
 - 기능 단위, 수용 기준, 테스트 시나리오, 범위 초과 항목이 분리되어 있다.
-- 구현 전 사용자 승인 필요 항목이 누락되지 않았다.
+- 구현 전 승인 항목이 승인 완료 또는 범위 밖 항목으로 분리되어 있다.
 - 조정자가 산출물을 검토한 뒤에만 `docs/` 반영 여부를 결정할 수 있다.

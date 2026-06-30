@@ -49,18 +49,24 @@
 - 판단: 갱신된 계획은 여전히 공식 `docs/` 문서가 아니라 active 작업 산출물 초안이며, 사용자 승인 전에는 Unity 씬, C# 코드, ProjectSettings, Packages, Build Settings 변경을 진행하지 않는다.
 - 다음 작업: 조정자가 갱신된 승인 질문을 사용자에게 압축해 제시하고, 승인 결과에 따라 공식 문서 승격 또는 구현 작업 패킷 생성 여부를 결정한다.
 
+### 2026-06-30 사용자 전체 승인 반영
+
+- 수행 내용: 사용자가 `일단 프로토 타입이므로 다 승인할게`라고 응답해 승인 패킷과 구현 계획 관련 미결 항목을 전체 승인으로 처리했다.
+- 반영 내용: `포유류 적응`의 1차 프로토타입 임시 효과는 기존 추천안의 첫 후보인 `특정 통로 접근`으로 확정했다.
+- 반영 내용: 구현 계획 공식 요약 문서를 `docs/prototype/rat-host-implementation-plan.md`에 생성했다.
+- 판단: 이 작업의 계획 산출과 보조 검토 통합 목적은 완료되었고, 다음 작업은 Unity 구현 작업 패킷 생성이다.
+
 ## 결정 기록
 
-- `docs/rat-host-implementation-plan.md` 직접 작성 방식은 사용하지 않는다.
+- 사용자 승인 전 `docs/prototype/rat-host-implementation-plan.md` 직접 작성 방식은 사용하지 않는다.
 - 계획 산출물은 먼저 `_workspace/active/.../artifacts/`에 둔다.
-- 조정자 검토 후 사용자 승인에 따라 `docs/` 반영 여부를 결정한다.
+- 조정자 검토와 사용자 승인 후 `docs/prototype/rat-host-implementation-plan.md`로 공식 요약을 반영했다.
 
 ## 열린 질문
 
-- `docs/prototype/rat-host-approval-packet.md` 전체 추천안을 승인할지, 일부 수정할지
-- 구현 계획 산출물을 최종적으로 `docs/rat-host-implementation-plan.md`로 승격할지
+- 없음. 승인 완료.
 
 ## 위험과 주의점
 
-- 승인 전 C# 코드, Unity 씬, 에셋, ProjectSettings를 변경하지 않는다.
-- 계획 산출물이 승인 패킷 범위를 넘어가면 기획 정리 에이전트 검토가 필요하다.
+- 승인 범위 밖의 C# 코드, Unity 씬, 에셋, ProjectSettings를 변경하지 않는다.
+- 다음 구현 작업이 승인 패킷 범위를 넘어가면 기획 정리 에이전트 검토와 사용자 재승인이 필요하다.

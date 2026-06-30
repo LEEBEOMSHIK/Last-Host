@@ -3,11 +3,11 @@
 작성일: 2026-06-29
 작성 주체: 게임플레이 루프 에이전트 산출물 초안
 작업 ID: `2026-06-29-rat-host-plan-agent`
+승인 반영일: 2026-06-30
 
 ## 문서 상태
 
-이 문서는 공식 `docs/` 문서가 아니라 active 작업 산출물 초안이다. 조정자 검토와 사용자 승인 전에는 Unity 씬, C# 코드, 에셋, ProjectSettings 변경을 시작하지 않는다.
-공식 `docs/` 승격 전 상태를 유지하며, 이 문서의 내용은 승인 질문과 후속 구현 작업 패킷을 만들기 위한 근거로만 사용한다.
+이 문서는 active 작업 산출물 초안이며, 사용자 승인 후 공식 요약 문서 `docs/prototype/rat-host-implementation-plan.md`로 승격되었다. 구현자는 공식 문서를 기준으로 삼고, 이 초안은 세부 근거와 이력으로 참조한다.
 
 ## 목표
 
@@ -41,19 +41,18 @@
 - 입력 권장안: Unity Input System 사용
 - 새 입력 액션 자산 후보: `Assets/_Project/Settings/Input/RatHostPrototypeControls.inputactions`
 - 기존 템플릿 입력 자산 `Assets/InputSystem_Actions.inputactions`는 바로 수정하지 않음
-- `RatHostPrototype.unity` 생성 후 사용자 승인에 따라 Build Settings 시작 씬으로 등록
+- `RatHostPrototype.unity` 생성 후 Build Settings 시작 씬으로 등록
 - `Assets/Scenes/SampleScene.unity`는 삭제하지 않고, 프로토타입 빌드 대상에서는 제외하거나 뒤로 미룸
 
-### 구현 전 차단 조건
+### 승인 완료 상태
 
-- `docs/prototype/rat-host-approval-packet.md` 전체 승인 또는 수정 승인이 필요하다.
-- Unity MCP를 통한 씬, 에셋, 패키지, 코드, ProjectSettings 변경 승인이 필요하다.
-- Input System 사용 여부와 새 입력 액션 자산 생성 위치 승인이 필요하다.
-- `RatHostPrototype.unity` 생성, `Assets/_Project/` 하위 폴더 생성, Build Settings 변경 승인이 필요하다.
-- `SampleScene.unity`를 빌드 대상에서 제외하거나 뒤로 미룰지 승인이 필요하다.
-- 실패 후 재시도 시 초기화할 값과 유지할 값 승인이 필요하다.
-- 구현 후 테스트와 빌드 실행 범위 승인이 필요하다.
-- 이 산출물을 공식 구현 계획으로 승격할지 사용자 확인이 필요하다.
+- 2026-06-30 사용자가 프로토타입 승인 항목을 전체 승인했다.
+- Unity MCP를 통한 승인 범위 내 씬, 에셋, 패키지, 코드, ProjectSettings, Build Settings 변경은 승인되었다.
+- Input System 사용과 새 입력 액션 자산 생성 위치는 승인되었다.
+- `RatHostPrototype.unity` 생성, `Assets/_Project/` 하위 폴더 생성, Build Settings 변경은 승인되었다.
+- `SampleScene.unity`는 삭제하지 않고 빌드 대상에서 제외하거나 뒤로 미루기로 승인되었다.
+- 실패 후 재시도 초기화 기준과 테스트/빌드 실행 범위는 공식 구현 계획 기준으로 승인되었다.
+- 이 산출물은 `docs/prototype/rat-host-implementation-plan.md` 공식 요약 문서로 승격되었다.
 
 ## 범위
 
@@ -278,7 +277,7 @@ UI 반응:
 
 - `RatHostPrototype` 단일 씬 시작은 적합하다.
 - `Assets/_Project/Settings/Input/` 구조를 추가한다.
-- Input System 사용을 권장하되 사용자 승인 전 입력 액션 자산은 만들지 않는다.
+- Input System 사용은 승인 완료됐으며, 입력 액션 자산은 승인 범위 안에서 만든다.
 - `RatHostPrototype.unity`는 생성 후 Build Settings 시작 씬 등록을 권장한다.
 - `SampleScene.unity`는 삭제하지 않고 빌드 대상에서 제외하거나 뒤로 미룬다.
 
@@ -561,7 +560,7 @@ UI 반응:
 | --- | --- |
 | 잠복 강화 | 면역 경계도 상승 속도 감소 |
 | 신경 조종 | 쥐 이동 속도 또는 상호작용 속도 증가 |
-| 포유류 적응 | 하수도 맵의 특정 통로 접근 또는 보상 지점 접근 허용 |
+| 포유류 적응 | 하수도 맵의 특정 통로 접근 허용 |
 
 수용 기준:
 
@@ -574,11 +573,11 @@ UI 반응:
 
 - 잠복 강화를 선택하고 면역 상승 속도 감소를 확인한다.
 - 신경 조종을 선택하고 이동 또는 상호작용 변화 확인한다.
-- 포유류 적응을 선택하고 접근 제한 통로 또는 보상 지점 접근을 확인한다.
+- 포유류 적응을 선택하고 접근 제한 통로 접근을 확인한다.
 
-사용자 승인 필요:
+승인 상태:
 
-- 포유류 적응의 임시 효과가 “특정 통로 접근”인지 “보상 지점 접근”인지 최종 선택이 필요하다.
+- 포유류 적응의 임시 효과는 `특정 통로 접근`으로 승인 완료.
 
 ### 8. HUD와 실패/재시도 UI
 
@@ -650,7 +649,7 @@ UI 반응:
 - 쥐 시작 위치
 - 독성 물웅덩이 1개
 - 관심 지점 1개
-- 포유류 적응으로 열리는 통로 또는 보상 지점 1개
+- 포유류 적응으로 열리는 접근 제한 통로 1개
 
 수용 기준:
 
@@ -689,7 +688,7 @@ UI 반응:
 
 - 잠복 강화: 같은 조건에서 면역 경계도 상승 속도가 느려진다.
 - 신경 조종: 이동 또는 상호작용 속도가 증가한다.
-- 포유류 적응: 특정 통로 또는 보상 지점 접근이 가능해진다.
+- 포유류 적응: 특정 통로 접근이 가능해진다.
 
 ### UI와 카메라 확인 기준
 
@@ -759,14 +758,14 @@ UI 통과 기준:
 - 기존 `Assets/InputSystem_Actions.inputactions`는 바로 수정하지 않는다.
 - `RatHostPrototype.unity` 생성 후 Build Settings 시작 씬 등록을 권장한다.
 - `SampleScene.unity`는 삭제하지 않고 빌드 대상에서 제외하거나 뒤로 미룬다.
-- 모든 Unity 씬, 입력 액션 자산, Build Settings, ProjectSettings 변경은 사용자 승인 전에는 수행하지 않는다.
+- 모든 Unity 씬, 입력 액션 자산, Build Settings, ProjectSettings 변경은 승인된 1차 프로토타입 범위 안에서만 수행한다.
 
 ## QA/검증 보조 검토 반영 결과
 
 - 구현 완료 조건은 내부 구현 완료와 플레이어블 프로토타입 완료로 나눈다.
 - 실패 후 재시도 초기화 기준 초안을 계획에 포함한다.
-- `포유류 적응` 임시 효과는 구현 전 사용자 승인이 필요하다.
-- Input System 사용 여부와 Build Settings 씬 정책은 구현 전 사용자 승인이 필요하다.
+- `포유류 적응` 임시 효과는 `특정 통로 접근`으로 승인 완료.
+- Input System 사용 여부와 Build Settings 씬 정책은 승인 완료.
 - UI 확인 기준은 16:9 PC 해상도 `1920x1080`, `1600x900`, `1366x768`, `1280x720`로 둔다.
 - 카메라 프레이밍은 쥐 모드와 바이러스 모드를 별도로 확인한다.
 
@@ -781,39 +780,21 @@ UI 통과 기준:
 - 최종 모델, 애니메이션, AI 생성 아트 에셋 제작
 - 복잡한 백혈구 패턴이나 다중 적 타입 추가
 
-## 사용자 승인 필요
+## 사용자 승인 완료
 
-구현을 시작하려면 다음 항목의 승인 또는 수정 승인이 필요하다.
+2026-06-30 사용자가 프로토타입 구현 관련 항목을 전체 승인했다.
 
-1. `docs/prototype/rat-host-approval-packet.md` 추천안 전체 승인 또는 수정 승인
-2. Input System 사용 여부
+승인 처리한 항목:
+
+1. `docs/prototype/rat-host-approval-packet.md` 추천안 전체 승인
+2. Input System 사용
 3. 새 입력 액션 자산 생성 위치: `Assets/_Project/Settings/Input/RatHostPrototypeControls.inputactions`
-4. `RatHostPrototype.unity` 생성 여부
-5. `Assets/_Project/` 하위 폴더 생성 여부
-6. `RatHostPrototype.unity`를 Build Settings 시작 씬으로 둘지 여부
-7. `SampleScene.unity`를 빌드 대상에서 제외하거나 뒤로 미룰지 여부
-8. `포유류 적응`의 1차 프로토타입 임시 효과
-   - 특정 통로 접근
-   - 보상 지점 접근
-   - 다른 임시 효과
+4. `RatHostPrototype.unity` 생성
+5. `Assets/_Project/` 하위 폴더 생성
+6. `RatHostPrototype.unity`를 Build Settings 시작 씬으로 등록
+7. `SampleScene.unity`를 빌드 대상에서 제외하거나 뒤로 미룸
+8. `포유류 적응`의 1차 프로토타입 임시 효과는 특정 통로 접근
 9. 실패 후 재시도 초기화 기준
 10. 구현 후 테스트와 빌드 실행 범위
-11. Unity MCP를 통한 씬, 에셋, 코드, ProjectSettings, Build Settings 변경 범위
-12. 이 초안을 공식 `docs/rat-host-implementation-plan.md`로 승격할지 여부
-
-승인 예시:
-
-```text
-승인: 쥐 숙주 프로토타입 승인 패킷 전체 승인
-```
-
-수정 승인 예시:
-
-```text
-수정 승인:
-- 2번 Input System 사용 승인
-- 8번 포유류 적응은 특정 통로 접근으로 승인
-- 9번 재시도 초기화 기준은 초안대로 승인
-```
-
-공식 문서 승격 전까지 이 산출물은 `_workspace/active/.../artifacts/`의 작업 초안 상태로 유지한다.
+11. Unity MCP를 통한 승인 범위 내 씬, 에셋, 코드, ProjectSettings, Build Settings 변경
+12. 이 초안을 공식 `docs/prototype/rat-host-implementation-plan.md`로 승격

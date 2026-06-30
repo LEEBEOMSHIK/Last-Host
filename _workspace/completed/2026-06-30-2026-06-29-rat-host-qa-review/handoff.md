@@ -22,12 +22,12 @@ QA/검증 에이전트
 
 ## 이어서 해야 할 일
 
-1. 조정자가 `artifacts/qa-review.md`를 Unity 아키텍처 검토와 함께 통합한다.
-2. 게임플레이 루프 에이전트가 필요한 항목을 구현 계획 초안에 반영한다.
+1. 승인된 공식 구현 계획을 기준으로 Unity 구현 작업 패킷을 만든다.
+2. 구현 후 QA/검증 에이전트가 컴파일, 테스트, 수동 플레이, 빌드 검증을 실행한다.
 
 ## 참고 자료
 
-- `_workspace/active/2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
+- `_workspace/completed/2026-06-30-2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
 - `docs/prototype/rat-host-prototype.md`
 - `.codex/skills/unity-verification-runner/references/verification-rules.md`
 
@@ -36,6 +36,6 @@ QA/검증 에이전트
 - 테스트, 빌드, 플레이를 실제로 실행하지 않는다.
 - 실행하지 않은 검증을 통과로 표현하지 않는다.
 
-## 사용자 승인 필요
+## 사용자 승인 상태
 
-- 구현 후 검증 실행 범위 승인
+- 2026-06-30 전체 승인 완료

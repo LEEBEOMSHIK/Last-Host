@@ -22,20 +22,19 @@ Unity 아키텍처 에이전트
 
 ## 이어서 해야 할 일
 
-1. 조정자가 `artifacts/architecture-review.md`를 QA 검토와 함께 통합한다.
-2. 게임플레이 루프 에이전트가 필요한 항목을 구현 계획 초안에 반영한다.
+1. 승인된 공식 구현 계획을 기준으로 Unity 구현 작업 패킷을 만든다.
+2. 구현 중 아키텍처 충돌이 생기면 이 검토 문서를 참조한다.
 
 ## 참고 자료
 
-- `_workspace/active/2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
+- `_workspace/completed/2026-06-30-2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
 - `docs/unity/unity-baseline-report.md`
 - `.codex/skills/unity-prototype-planner/references/unity-architecture.md`
 
 ## 주의할 점
 
-- Unity 씬, C# 코드, ProjectSettings는 변경하지 않는다.
+- 승인 범위 밖 Unity 씬, C# 코드, ProjectSettings는 변경하지 않는다.
 
-## 사용자 승인 필요
+## 사용자 승인 상태
 
-- 구현 착수 승인
-- Unity 프로젝트 변경 승인
+- 2026-06-30 전체 승인 완료

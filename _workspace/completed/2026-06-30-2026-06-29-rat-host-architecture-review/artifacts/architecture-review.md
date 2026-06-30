@@ -8,7 +8,7 @@
 
 검토 결론: 구현 계획 초안의 Unity 구조안은 1차 쥐 숙주 프로토타입에 적합하다. `Core`, `Host`, `Immune`, `VirusMinigame`, `Mutations`, `UI`로 시스템 경계를 나눈 점은 현재 프로젝트 기준과 맞고, `AGENTS.md`와 Unity 구조 기준 문서가 요구하는 모듈 경계와도 충돌하지 않는다.
 
-다만 이 구조는 아직 승인 전 계획이다. 실제 `UnityProject/Assets` 아래 폴더, 씬, C# 파일, 프리팹, 머티리얼, ProjectSettings를 만들거나 바꾸려면 사용자 승인이 먼저 필요하다.
+작성 당시 이 구조는 승인 전 계획이었다. 2026-06-30 사용자가 프로토타입 전체 승인을 했으므로, 승인된 범위 안에서 `UnityProject/Assets` 아래 폴더, 씬, C# 파일, 프리팹, 머티리얼, ProjectSettings를 만들거나 바꿀 수 있다.
 
 구조상 유지할 기준:
 
@@ -136,7 +136,7 @@ UnityProject/Assets/_Project/
 
 주의:
 
-- Build Settings 변경은 Unity 프로젝트 설정 변경에 해당하므로 사용자 승인 전에는 실행하지 않는다.
+- Build Settings 변경은 Unity 프로젝트 설정 변경에 해당하므로 승인 범위 안에서만 실행한다.
 
 ## 6. `SampleScene.unity` 처리 방안
 
@@ -154,33 +154,33 @@ UnityProject/Assets/_Project/
 - 지금 삭제하면 불필요한 Unity `.meta` 변경과 템플릿 자산 정리 범위가 섞인다.
 - 현재 활성 씬이 저장되지 않은 기본 씬 상태이고 Build Settings에는 `SampleScene.unity`만 있으므로, 구현 전에는 작업 씬 정책을 먼저 확정해야 한다.
 
-## 7. 승인 필요 항목
+## 7. 승인 완료 항목
 
-구현 전 사용자 승인이 필요한 항목:
+2026-06-30 사용자 전체 승인으로 완료된 항목:
 
-- `docs/prototype/rat-host-approval-packet.md` 전체 승인 또는 수정 승인
-- Unity 버전 `6000.4.6f1` 고정 여부
-- URP 사용 확정
-- PC 키보드 우선 프로토타입 확정
-- 초기 입력 방식: Input System 사용 여부와 입력 액션 자산 생성 위치
-- `RatHostPrototype.unity` 생성 승인
-- `Assets/_Project/` 하위 폴더 생성 승인
-- Build Settings에 `RatHostPrototype.unity`를 등록하고 시작 씬으로 둘지 여부
-- `SampleScene.unity`를 빌드 대상에서 제외하거나 뒤로 미룰지 여부
+- `docs/prototype/rat-host-approval-packet.md` 전체 승인
+- Unity 버전 `6000.4.6f1` 고정
+- URP 사용
+- PC 키보드 우선 프로토타입
+- 초기 입력 방식: Input System 사용과 입력 액션 자산 생성 위치
+- `RatHostPrototype.unity` 생성
+- `Assets/_Project/` 하위 폴더 생성
+- Build Settings에 `RatHostPrototype.unity`를 등록하고 시작 씬으로 설정
+- `SampleScene.unity`를 빌드 대상에서 제외하거나 뒤로 미룸
 - 플레이스홀더 에셋 사용 범위
-- `포유류 적응`의 1차 임시 효과를 특정 통로 접근으로 할지, 보상 지점 접근으로 할지
-- Unity MCP를 통한 씬, 에셋, 코드, ProjectSettings 변경 승인
-- 구현 계획 초안을 공식 `docs/` 문서로 승격할지 여부
+- `포유류 적응`의 1차 임시 효과는 특정 통로 접근
+- Unity MCP를 통한 승인 범위 내 씬, 에셋, 코드, ProjectSettings 변경
+- 구현 계획 초안을 공식 `docs/prototype/rat-host-implementation-plan.md` 문서로 승격
 
 ## 8. 구현 전 위험
 
-- 승인 패킷이 아직 최종 승인되지 않았으면 구현 전제가 흔들릴 수 있다.
+- 승인 패킷은 최종 승인되었지만, 범위 밖 콘텐츠가 섞이면 구현 전제가 흔들릴 수 있다.
 - 현재 Build Settings에는 `SampleScene.unity`만 등록되어 있어 빌드 시작 씬이 프로토타입과 어긋날 수 있다.
 - 현재 활성 씬은 저장되지 않은 기본 씬 상태로 기록되어 있어, 구현 시작 시 명시적으로 작업 씬을 열어야 한다.
-- Input System 사용을 권장하지만 Active Input Handling 상태가 맞지 않으면 ProjectSettings 변경 승인이 필요할 수 있다.
+- Input System 사용은 승인되었지만 Active Input Handling 상태가 맞지 않으면 ProjectSettings 변경 내용을 기록해야 한다.
 - 단일 씬 구조는 초기에는 단순하지만, 모드 전환과 리셋 책임이 불명확하면 두 모드의 상태가 서로 오염될 수 있다.
 - UI, 입력, 모드 루트 비활성화가 맞물리면 변이 선택이나 재시도 중 이동 입력이 남는 문제가 생길 수 있다.
-- `포유류 적응` 효과가 확정되지 않으면 맵 구조와 변이 검증 지점 설계가 늦어진다.
+- `포유류 적응` 효과는 특정 통로 접근으로 확정되었으므로 맵에 접근 제한 통로 1개가 필요하다.
 - 도트풍 저폴리 3D 렌더링 조정은 아직 수행되지 않았으므로, 초기 화면이 의도한 비주얼보다 단순한 플레이스홀더로 보일 수 있다.
 - Test Framework는 포함되어 있지만 1차 구현에서 EditMode/PlayMode 테스트 범위가 아직 정해지지 않았다.
 
@@ -188,13 +188,13 @@ UnityProject/Assets/_Project/
 
 다음 담당 순서:
 
-1. 프로젝트 조정 에이전트: 승인 패킷, Input System, 씬/Build Settings 처리 방침을 사용자 승인 항목으로 정리한다.
-2. 게임플레이 루프 에이전트: 이 검토 결과를 반영해 구현 계획 초안의 구조 전제와 차단 조건을 갱신한다.
-3. QA/검증 에이전트: 단일 씬 모드 전환, 입력 충돌, Build Settings, 수동 플레이 체크리스트, 테스트 범위를 검토한다.
-4. 비주얼/테크아트 에이전트: 구현 승인 후 카메라, 조명, 저해상도 렌더링, 플레이스홀더 머티리얼 기준을 별도 검토한다.
+1. 프로젝트 조정 에이전트: 승인된 공식 구현 계획을 기준으로 Unity 구현 작업 패킷을 만든다.
+2. 게임플레이 루프 에이전트: 승인 범위 안에서 핵심 루프 구현을 진행한다.
+3. QA/검증 에이전트: 단일 씬 모드 전환, 입력 충돌, Build Settings, 수동 플레이 체크리스트, 테스트 범위를 검증한다.
+4. 비주얼/테크아트 에이전트: 카메라, 조명, 저해상도 렌더링, 플레이스홀더 머티리얼 기준을 별도 검토한다.
 
 최종 판단:
 
 - 구조안은 1차 쥐 숙주 프로토타입에 사용할 수 있다.
-- 단일 씬과 `Assets/_Project/` 구조는 조건부로 승인 가능하다.
-- 실제 Unity 변경은 승인 패킷과 프로젝트 변경 승인이 끝난 뒤 진행해야 한다.
+- 단일 씬과 `Assets/_Project/` 구조는 승인 완료 상태다.
+- 실제 Unity 변경은 승인된 쥐 숙주 1차 프로토타입 범위 안에서 진행한다.
