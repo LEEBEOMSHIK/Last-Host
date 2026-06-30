@@ -1,6 +1,6 @@
 # 작업별 참조 문서 색인
 
-최종 수정일: 2026-06-29
+최종 수정일: 2026-07-01
 
 ## 목적
 
@@ -129,6 +129,7 @@
 필수 참조:
 
 - `docs/agents/agent-skill-plan.md`
+- `docs/agents/loop-engineering-gates.md`
 - `.agents/agent-roster.md`
 - `.agents/project-director-agent.md`
 
@@ -175,7 +176,10 @@
 
 필수 참조:
 
+- `docs/agents/loop-engineering-gates.md`
 - `.codex/skills/unity-verification-runner/SKILL.md`
+- `.agents/qa-verification-agent.md`
+- `.agents/project-director-agent.md`
 - `_workspace/templates/verification.md`
 
 선택 참조:

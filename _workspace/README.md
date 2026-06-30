@@ -17,6 +17,8 @@
 
 `_workspace`는 루프 엔지니어링의 상태 저장소다. 진행 중 작업은 `active/`에 두고, 루프가 검증과 보고까지 끝나면 `completed/`로 옮긴다. 루프 진행 중 승인 게이트, 범위 충돌, 검증 불가, 에이전트 산출물 충돌, 작업 기록 누락이 생기면 완료 처리하지 않고 사용자에게 문제 사안으로 보고한다.
 
+코드, 씬, ProjectSettings, 승인 문서, 운영 문서 변경은 완료 처리 전에 `docs/agents/loop-engineering-gates.md`의 작업 배정, 담당 산출물, QA/검증, 총괄 관리자 게이트를 확인한다.
+
 ## 폴더 구조
 
 ```text
@@ -85,3 +87,5 @@ YYYY-MM-DD-short-topic
 - `verification.md`
 
 작업 중 산출물이 있으면 `artifacts/` 아래에 보관한다.
+
+코드, 씬, ProjectSettings, 승인 문서, 운영 문서 변경은 `verification.md`에 QA/검증 에이전트 완료 판단이 있고, `completion-report.md`에 프로젝트 총괄 관리자 판정이 있어야 완료로 본다.
