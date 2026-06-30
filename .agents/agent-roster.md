@@ -30,7 +30,7 @@
 
 - 파일: `.agents/design-keeper-agent.md`
 - 목적: 원본 기획과 작업 문서의 일관성 유지
-- 주요 입력: 원본 `.docx`, `docs/design/game-design-summary.md`, `docs/prototype/rat-host-prototype.md`
+- 주요 입력: 원본 `.docx`, `docs/design/game-design-summary.md`, `docs/prototype/official/rat-host-prototype.md`
 - 주요 산출물: 기획 요약, 범위 변경 감지, 승인 질문
 
 ## 4. Unity 아키텍처 에이전트
@@ -44,7 +44,7 @@
 
 - 파일: `.agents/gameplay-loop-agent.md`
 - 목적: 쥐 숙주 조종, 면역 경계도, 내부 미니게임, 변이 선택 루프 설계
-- 주요 입력: `docs/prototype/rat-host-prototype.md`, Unity 구조안
+- 주요 입력: `docs/prototype/official/rat-host-prototype.md`, Unity 구조안
 - 주요 산출물: 기능 단위 작업 목록, 수용 기준, 테스트 시나리오
 
 ## 6. 비주얼/테크아트 에이전트

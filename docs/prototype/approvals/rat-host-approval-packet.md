@@ -20,7 +20,7 @@
 
 - `AGENTS.md`
 - `docs/design/game-design-summary.md`
-- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/official/rat-host-prototype.md`
 - `docs/project/project-prep.md`
 - `docs/unity/unity-mcp-setup.md`
 

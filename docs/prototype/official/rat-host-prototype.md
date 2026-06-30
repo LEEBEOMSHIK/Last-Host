@@ -145,7 +145,7 @@
 
 ## 구현 승인 상태
 
-상세 승인 이력은 `docs/prototype/rat-host-approval-packet.md`에 정리한다. 2026-06-30 기준 사용자가 1차 프로토타입 구현에 필요한 항목을 전체 승인했다.
+상세 승인 이력은 `docs/prototype/approvals/rat-host-approval-packet.md`에 정리한다. 2026-06-30 기준 사용자가 1차 프로토타입 구현에 필요한 항목을 전체 승인했다.
 
 승인된 핵심 항목:
 

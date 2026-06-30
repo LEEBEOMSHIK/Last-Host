@@ -13,7 +13,7 @@ description: 마지막 숙주 프로젝트의 기획 문서, 원본 docx 초안,
 
 1. `AGENTS.md`
 2. `docs/design/game-design-summary.md`
-3. `docs/prototype/rat-host-prototype.md`
+3. `docs/prototype/official/rat-host-prototype.md`
 4. `docs/project/project-prep.md`
 5. `_workspace/README.md`
 6. 필요 시 원본 `C:\project\game\last_host\last_host_game_plan.docx`

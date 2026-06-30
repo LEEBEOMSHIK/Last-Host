@@ -7,8 +7,8 @@
 ## 우선 참조
 
 1. `AGENTS.md`
-2. `docs/prototype/rat-host-prototype.md`
-3. `docs/prototype/rat-host-implementation-plan.md`
+2. `docs/prototype/official/rat-host-prototype.md`
+3. `docs/prototype/plans/rat-host-implementation-plan.md`
 4. `.codex/skills/unity-verification-runner/references/verification-rules.md`
 
 ## 사용 스킬

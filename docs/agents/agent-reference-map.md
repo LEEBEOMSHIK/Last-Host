@@ -35,7 +35,7 @@
 필수 참조:
 
 - `docs/design/game-design-summary.md`
-- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/official/rat-host-prototype.md`
 - `.codex/skills/last-host-design-keeper/SKILL.md`
 
 선택 참조:
@@ -92,13 +92,13 @@
 
 필수 참조:
 
-- `docs/prototype/rat-host-prototype.md`
-- `docs/prototype/rat-host-implementation-plan.md`
+- `docs/prototype/official/rat-host-prototype.md`
+- `docs/prototype/plans/rat-host-implementation-plan.md`
 - `.codex/skills/rat-host-loop-builder/SKILL.md`
 
 선택 참조:
 
-- `docs/prototype/rat-host-approval-packet.md`
+- `docs/prototype/approvals/rat-host-approval-packet.md`
 - `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
 
 ### 도트풍 저폴리 3D / 비주얼

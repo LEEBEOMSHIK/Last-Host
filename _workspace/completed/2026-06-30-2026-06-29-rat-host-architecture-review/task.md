@@ -19,8 +19,8 @@
 - `AGENTS.md`
 - `docs/project/project-prep.md`
 - `docs/unity/unity-mcp-setup.md`
-- `docs/prototype/rat-host-prototype.md`
-- `docs/prototype/rat-host-approval-packet.md`
+- `docs/prototype/official/rat-host-prototype.md`
+- `docs/prototype/approvals/rat-host-approval-packet.md`
 - `docs/unity/unity-baseline-report.md`
 - `.agents/unity-architecture-agent.md`
 - `.codex/skills/unity-prototype-planner/SKILL.md`

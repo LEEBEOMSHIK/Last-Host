@@ -17,8 +17,8 @@
 ## 입력 자료
 
 - 사용자 승인 응답
-- `docs/prototype/rat-host-approval-packet.md`
-- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/approvals/rat-host-approval-packet.md`
+- `docs/prototype/official/rat-host-prototype.md`
 - `docs/project/project-prep.md`
 - `_workspace/completed/2026-06-30-2026-06-29-rat-host-plan-agent/`
 - `_workspace/completed/2026-06-30-2026-06-29-rat-host-architecture-review/`
@@ -47,7 +47,7 @@
 
 ## 완료 결과
 
-- `docs/prototype/rat-host-approval-packet.md`에 전체 승인 상태를 기록했다.
-- `docs/prototype/rat-host-implementation-plan.md`를 추가했다.
+- `docs/prototype/approvals/rat-host-approval-packet.md`에 전체 승인 상태를 기록했다.
+- `docs/prototype/plans/rat-host-implementation-plan.md`를 추가했다.
 - 현재 active 작업 산출물의 승인 대기 항목을 승인 완료 상태로 갱신했다.
 - Unity, 코드, 에셋은 변경하지 않았다.

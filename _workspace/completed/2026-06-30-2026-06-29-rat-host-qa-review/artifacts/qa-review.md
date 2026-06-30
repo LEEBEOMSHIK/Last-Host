@@ -15,8 +15,8 @@
 참조 기준:
 
 - `AGENTS.md`
-- `docs/prototype/rat-host-prototype.md`
-- `docs/prototype/rat-host-approval-packet.md`
+- `docs/prototype/official/rat-host-prototype.md`
+- `docs/prototype/approvals/rat-host-approval-packet.md`
 - `docs/unity/unity-baseline-report.md`
 - `.agents/qa-verification-agent.md`
 - `.codex/skills/unity-verification-runner/SKILL.md`

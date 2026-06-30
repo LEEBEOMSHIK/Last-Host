@@ -11,7 +11,7 @@
 
 ## 사용자 확인 파일
 
-- `docs/prototype/rat-host-implementation-plan.md`
+- `docs/prototype/plans/rat-host-implementation-plan.md`
 
 ## 다음 작업
 

@@ -50,15 +50,15 @@
 7. 플레이스홀더 에셋 사용 범위
 8. 프로토타입 변이 효과
 
-승인 이력은 `docs/prototype/rat-host-approval-packet.md`에 정리한다.
+승인 이력은 `docs/prototype/approvals/rat-host-approval-packet.md`에 정리한다.
 
 참고: 현재 Unity 프로젝트는 `UnityProject/`에 편입되어 있으며, 1차 프로토타입은 Unity `6000.4.6f1`과 URP를 기준으로 진행한다.
 
 ## 권장 문서 구성
 
 - `docs/design/game-design-summary.md`: 원본 `.docx` 기반 게임 기획 요약
-- `docs/prototype/rat-host-prototype.md`: 첫 플레이어블 프로토타입 범위
-- `docs/prototype/rat-host-implementation-plan.md`: 승인된 쥐 숙주 프로토타입 구현 계획
+- `docs/prototype/official/rat-host-prototype.md`: 첫 플레이어블 프로토타입 범위
+- `docs/prototype/plans/rat-host-implementation-plan.md`: 승인된 쥐 숙주 프로토타입 구현 계획
 - `docs/project/project-prep.md`: 현재 프로젝트 준비 상태와 승인 계획
 - `AGENTS.md`: Codex와 이후 작업자가 따라야 할 프로젝트 규칙
 

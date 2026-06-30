@@ -28,7 +28,7 @@ QA/검증 에이전트
 ## 참고 자료
 
 - `_workspace/completed/2026-06-30-2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
-- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/official/rat-host-prototype.md`
 - `.codex/skills/unity-verification-runner/references/verification-rules.md`
 
 ## 주의할 점

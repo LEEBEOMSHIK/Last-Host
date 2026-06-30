@@ -13,7 +13,7 @@
 - 판단: `포유류 적응`은 구현에 단일 기준이 필요하므로 기존 추천안의 첫 후보인 `특정 통로 접근`을 1차 프로토타입 기본 확정값으로 둔다.
 
 - 수행 내용: 승인 패킷, 프로토타입 범위 문서, 프로젝트 준비 문서, 에이전트 참조, active 작업 산출물을 승인 완료 기준으로 갱신했다.
-- 수행 내용: 공식 구현 계획 요약 문서 `docs/prototype/rat-host-implementation-plan.md`를 추가했다.
+- 수행 내용: 공식 구현 계획 요약 문서 `docs/prototype/plans/rat-host-implementation-plan.md`를 추가했다.
 - 검증: `git diff --check`, 잔여 표현 검색, `AGENTS.md` 줄 수, 공식 구현 계획 파일 존재 여부를 확인했다.
 
 ## 열린 질문

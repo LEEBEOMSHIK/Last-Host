@@ -23,14 +23,14 @@
 ### 2026-06-29 계획 초안 작성
 
 - 수행 내용: 게임플레이 루프 에이전트 산출물로 `artifacts/rat-host-implementation-plan-draft.md`를 작성하고, 열린 질문을 `artifacts/open-questions.md`에 분리했다.
-- 확인한 자료: `AGENTS.md`, `docs/prototype/rat-host-prototype.md`, `docs/design/game-design-summary.md`, `docs/project/project-prep.md`, `docs/prototype/rat-host-approval-packet.md`, `docs/unity/unity-baseline-report.md`, `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
+- 확인한 자료: `AGENTS.md`, `docs/prototype/official/rat-host-prototype.md`, `docs/design/game-design-summary.md`, `docs/project/project-prep.md`, `docs/prototype/approvals/rat-host-approval-packet.md`, `docs/unity/unity-baseline-report.md`, `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
 - 판단: 승인 전 금지 범위를 지키기 위해 실제 C# 코드와 Unity 씬 변경은 포함하지 않고, 기능 단위와 수용 기준, 검증 시나리오를 중심으로 작성했다.
 - 다음 작업: 조정자 검토 후 Unity 아키텍처 에이전트와 QA/검증 에이전트 검토로 넘긴다.
 
 ### 2026-06-29 쥐 수직 슬라이스 결정 반영
 
 - 수행 내용: 사용자가 쥐를 벌레보다 상위 숙주로 보되, 첫 프로토타입은 쥐 구간 수직 슬라이스로 진행하는 방향을 승인했다.
-- 확인한 자료: `docs/design/game-design-summary.md`, `docs/prototype/rat-host-prototype.md`, `docs/project/project-prep.md`, `docs/prototype/rat-host-approval-packet.md`
+- 확인한 자료: `docs/design/game-design-summary.md`, `docs/prototype/official/rat-host-prototype.md`, `docs/project/project-prep.md`, `docs/prototype/approvals/rat-host-approval-packet.md`
 - 판단: 이 결정은 프로토타입 범위를 확대하지 않으며, 벌레 튜토리얼 제외를 명확히 한다.
 - 다음 작업: 문서 변경 검증 후 커밋한다.
 
@@ -44,7 +44,7 @@
 ### 2026-06-29 보조 검토 반영 초안 갱신
 
 - 수행 내용: 보조 검토 통합 메모를 반영해 `artifacts/rat-host-implementation-plan-draft.md`와 `artifacts/open-questions.md`를 갱신했다.
-- 확인한 자료: `AGENTS.md`, `docs/prototype/rat-host-prototype.md`, `docs/prototype/rat-host-approval-packet.md`, `.agents/gameplay-loop-agent.md`, `.codex/skills/rat-host-loop-builder/SKILL.md`, `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`, `artifacts/review-integration.md`, `architecture-review.md`, `qa-review.md`
+- 확인한 자료: `AGENTS.md`, `docs/prototype/official/rat-host-prototype.md`, `docs/prototype/approvals/rat-host-approval-packet.md`, `.agents/gameplay-loop-agent.md`, `.codex/skills/rat-host-loop-builder/SKILL.md`, `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`, `artifacts/review-integration.md`, `architecture-review.md`, `qa-review.md`
 - 반영 내용: `Assets/_Project/Settings/Input/` 구조, Input System 권장안, 새 입력 액션 자산 후보 위치, Build Settings와 `SampleScene.unity` 처리 방침, QA 완료 조건, 실패 후 재시도 초기화 기준 초안, 사용자 승인 필요 항목을 추가했다.
 - 판단: 갱신된 계획은 여전히 공식 `docs/` 문서가 아니라 active 작업 산출물 초안이며, 사용자 승인 전에는 Unity 씬, C# 코드, ProjectSettings, Packages, Build Settings 변경을 진행하지 않는다.
 - 다음 작업: 조정자가 갱신된 승인 질문을 사용자에게 압축해 제시하고, 승인 결과에 따라 공식 문서 승격 또는 구현 작업 패킷 생성 여부를 결정한다.
@@ -53,14 +53,14 @@
 
 - 수행 내용: 사용자가 `일단 프로토 타입이므로 다 승인할게`라고 응답해 승인 패킷과 구현 계획 관련 미결 항목을 전체 승인으로 처리했다.
 - 반영 내용: `포유류 적응`의 1차 프로토타입 임시 효과는 기존 추천안의 첫 후보인 `특정 통로 접근`으로 확정했다.
-- 반영 내용: 구현 계획 공식 요약 문서를 `docs/prototype/rat-host-implementation-plan.md`에 생성했다.
+- 반영 내용: 구현 계획 공식 요약 문서를 `docs/prototype/plans/rat-host-implementation-plan.md`에 생성했다.
 - 판단: 이 작업의 계획 산출과 보조 검토 통합 목적은 완료되었고, 다음 작업은 Unity 구현 작업 패킷 생성이다.
 
 ## 결정 기록
 
-- 사용자 승인 전 `docs/prototype/rat-host-implementation-plan.md` 직접 작성 방식은 사용하지 않는다.
+- 사용자 승인 전 `docs/prototype/plans/rat-host-implementation-plan.md` 직접 작성 방식은 사용하지 않는다.
 - 계획 산출물은 먼저 `_workspace/active/.../artifacts/`에 둔다.
-- 조정자 검토와 사용자 승인 후 `docs/prototype/rat-host-implementation-plan.md`로 공식 요약을 반영했다.
+- 조정자 검토와 사용자 승인 후 `docs/prototype/plans/rat-host-implementation-plan.md`로 공식 요약을 반영했다.
 
 ## 열린 질문
 

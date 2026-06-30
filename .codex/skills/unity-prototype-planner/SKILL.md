@@ -14,7 +14,7 @@ Unity 프로젝트를 만들기 전에 구조와 승인 항목을 정리한다. 
 1. `AGENTS.md`
 2. `docs/project/project-prep.md`
 3. `docs/unity/unity-mcp-setup.md`
-4. `docs/prototype/rat-host-prototype.md`
+4. `docs/prototype/official/rat-host-prototype.md`
 5. `docs/agents/agent-skill-plan.md`
 
 ## 작업 절차

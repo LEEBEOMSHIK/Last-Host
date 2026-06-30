@@ -14,8 +14,8 @@
 ## 사용자 확인 파일
 
 - `docs/README.md`
-- `docs/prototype/rat-host-approval-packet.md`
-- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/approvals/rat-host-approval-packet.md`
+- `docs/prototype/official/rat-host-prototype.md`
 - `AGENTS.md`
 
 ## 남은 승인 항목

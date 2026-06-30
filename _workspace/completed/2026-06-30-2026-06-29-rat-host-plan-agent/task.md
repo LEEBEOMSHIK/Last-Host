@@ -19,8 +19,8 @@
 - `AGENTS.md`
 - `docs/agents/agent-reference-map.md`
 - `docs/design/game-design-summary.md`
-- `docs/prototype/rat-host-prototype.md`
-- `docs/prototype/rat-host-approval-packet.md`
+- `docs/prototype/official/rat-host-prototype.md`
+- `docs/prototype/approvals/rat-host-approval-packet.md`
 - `docs/project/project-prep.md`
 - `docs/unity/unity-baseline-report.md`
 - `.agents/gameplay-loop-agent.md`
@@ -31,7 +31,7 @@
 
 ## 해야 할 일
 
-1. `docs/prototype/rat-host-approval-packet.md`의 승인 항목을 확인하고, 미승인 항목을 구현 전 차단 조건으로 분리한다.
+1. `docs/prototype/approvals/rat-host-approval-packet.md`의 승인 항목을 확인하고, 미승인 항목을 구현 전 차단 조건으로 분리한다.
 2. 쥐 숙주 핵심 루프를 기능 단위로 나눈다: 쥐 조종, 면역 경계도, 모드 전환, 내부 바이러스 미니게임, 변이 선택, 쥐 모드 복귀.
 3. 각 기능 단위별 입력, 처리, 출력, UI 피드백, 수용 기준을 작성한다.
 4. Unity 아키텍처 에이전트가 검토할 폴더/씬/스크립트 책임 경계를 제안한다.
@@ -49,14 +49,14 @@
 - Unity 씬 생성 또는 수정
 - C# 코드 작성
 - 패키지 추가 또는 ProjectSettings 변경
-- 사용자 승인 전 `docs/prototype/rat-host-implementation-plan.md` 직접 생성
+- 사용자 승인 전 `docs/prototype/plans/rat-host-implementation-plan.md` 직접 생성
 - 승인 패킷의 범위를 넘어서는 벌레 튜토리얼, 다중 숙주, 인간 단계, 백신, 엔딩, 영구 성장 설계
 
 ## 승인 상태
 
 - 2026-06-30 사용자 전체 승인 완료
 - Unity MCP를 통한 승인 범위 내 프로젝트 변경 승인 완료
-- 구현 계획 산출물은 `docs/prototype/rat-host-implementation-plan.md` 공식 문서로 승격 완료
+- 구현 계획 산출물은 `docs/prototype/plans/rat-host-implementation-plan.md` 공식 문서로 승격 완료
 
 ## 완료 기준
 

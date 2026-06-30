@@ -158,7 +158,7 @@ UnityProject/Assets/_Project/
 
 2026-06-30 사용자 전체 승인으로 완료된 항목:
 
-- `docs/prototype/rat-host-approval-packet.md` 전체 승인
+- `docs/prototype/approvals/rat-host-approval-packet.md` 전체 승인
 - Unity 버전 `6000.4.6f1` 고정
 - URP 사용
 - PC 키보드 우선 프로토타입
@@ -170,7 +170,7 @@ UnityProject/Assets/_Project/
 - 플레이스홀더 에셋 사용 범위
 - `포유류 적응`의 1차 임시 효과는 특정 통로 접근
 - Unity MCP를 통한 승인 범위 내 씬, 에셋, 코드, ProjectSettings 변경
-- 구현 계획 초안을 공식 `docs/prototype/rat-host-implementation-plan.md` 문서로 승격
+- 구현 계획 초안을 공식 `docs/prototype/plans/rat-host-implementation-plan.md` 문서로 승격
 
 ## 8. 구현 전 위험
 

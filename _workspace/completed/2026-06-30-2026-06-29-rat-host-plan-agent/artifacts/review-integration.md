@@ -43,14 +43,14 @@
 
 ## 사용자 승인 완료
 
-1. `docs/prototype/rat-host-approval-packet.md` 추천안 전체 승인
+1. `docs/prototype/approvals/rat-host-approval-packet.md` 추천안 전체 승인
 2. Input System 사용 승인
 3. `RatHostPrototype.unity` 생성 승인
 4. `RatHostPrototype.unity`를 Build Settings 시작 씬으로 등록 승인
 5. `SampleScene.unity`는 빌드 대상에서 제외하거나 뒤로 미룸
 6. `포유류 적응`의 1차 프로토타입 임시 효과는 특정 통로 접근
 7. 실패 후 재시도 초기화 기준은 초안대로 승인
-8. 구현 계획 초안은 공식 `docs/prototype/rat-host-implementation-plan.md`로 승격
+8. 구현 계획 초안은 공식 `docs/prototype/plans/rat-host-implementation-plan.md`로 승격
 9. 구현 후 테스트/빌드 실행 범위는 공식 구현 계획 기준대로 승인
 
 ## 다음 작업 제안

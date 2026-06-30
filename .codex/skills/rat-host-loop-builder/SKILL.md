@@ -12,7 +12,7 @@ description: 마지막 숙주 프로젝트의 쥐 숙주 프로토타입 핵심 
 ## 필수 참조 순서
 
 1. `AGENTS.md`
-2. `docs/prototype/rat-host-prototype.md`
+2. `docs/prototype/official/rat-host-prototype.md`
 3. `docs/design/game-design-summary.md`
 4. 필요 시 `docs/project/project-prep.md`
 

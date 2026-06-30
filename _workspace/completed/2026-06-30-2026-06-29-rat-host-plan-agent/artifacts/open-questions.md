@@ -10,7 +10,7 @@
 
 ## 승인된 결정
 
-1. `docs/prototype/rat-host-approval-packet.md` 추천안 전체 승인
+1. `docs/prototype/approvals/rat-host-approval-packet.md` 추천안 전체 승인
 2. 1차 프로토타입 입력 구현에 Unity Input System 사용
 3. 새 입력 액션 자산 후보 위치 승인
    - `Assets/_Project/Settings/Input/RatHostPrototypeControls.inputactions`
@@ -22,13 +22,13 @@
 9. 실패 후 재시도 초기화 기준은 초안대로 승인
 10. 구현 후 테스트와 빌드 실행 범위는 공식 구현 계획의 검증 기준대로 승인
 11. Unity MCP를 통한 승인 범위 내 씬, 에셋, 코드, ProjectSettings, Build Settings 변경 승인
-12. 구현 계획 초안을 `docs/prototype/rat-host-implementation-plan.md` 공식 문서로 승격
+12. 구현 계획 초안을 `docs/prototype/plans/rat-host-implementation-plan.md` 공식 문서로 승격
 
 ## 확정된 결정
 
 - 쥐는 벌레보다 상위 숙주에 가깝지만, 1차 프로토타입은 쥐 숙주 수직 슬라이스로 진행한다.
 - 벌레 튜토리얼은 1차 프로토타입에 포함하지 않는다.
-- 구현 계획 초안은 공식 요약 문서 `docs/prototype/rat-host-implementation-plan.md`로 승격했다.
+- 구현 계획 초안은 공식 요약 문서 `docs/prototype/plans/rat-host-implementation-plan.md`로 승격했다.
 
 ## Unity 아키텍처 반영 결과
 

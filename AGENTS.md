@@ -102,7 +102,7 @@
 - 추가 Codex 스킬 디렉터리 생성 또는 설치
 - 에이전트 역할 추가, 제거, 책임 범위 변경
 
-참고: 쥐 숙주 1차 프로토타입 승인 범위는 `docs/prototype/rat-host-approval-packet.md`와 `docs/prototype/rat-host-implementation-plan.md`를 따른다. 승인 범위를 넘어서는 콘텐츠나 시스템은 별도 사용자 승인을 다시 받는다.
+참고: 쥐 숙주 1차 프로토타입 승인 범위는 `docs/prototype/approvals/rat-host-approval-packet.md`와 `docs/prototype/plans/rat-host-implementation-plan.md`를 따른다. 승인 범위를 넘어서는 콘텐츠나 시스템은 별도 사용자 승인을 다시 받는다.
 
 ## Git과 파일 관리
 

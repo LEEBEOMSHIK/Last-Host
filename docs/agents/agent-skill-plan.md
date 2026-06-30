@@ -197,7 +197,7 @@
 
 - `C:\project\game\last_host\last_host_game_plan.docx`
 - `docs/design/game-design-summary.md`
-- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/official/rat-host-prototype.md`
 
 산출물:
 
@@ -219,7 +219,7 @@
 
 - `docs/project/project-prep.md`
 - `docs/unity/unity-mcp-setup.md`
-- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/official/rat-host-prototype.md`
 - Unity 관련 사용자 승인사항
 
 산출물:
@@ -239,7 +239,7 @@
 
 주요 입력:
 
-- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/official/rat-host-prototype.md`
 - Unity 아키텍처 에이전트 산출물
 
 산출물:

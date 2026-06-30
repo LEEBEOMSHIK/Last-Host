@@ -7,7 +7,7 @@
 
 ## 문서 상태
 
-이 문서는 active 작업 산출물 초안이며, 사용자 승인 후 공식 요약 문서 `docs/prototype/rat-host-implementation-plan.md`로 승격되었다. 구현자는 공식 문서를 기준으로 삼고, 이 초안은 세부 근거와 이력으로 참조한다.
+이 문서는 active 작업 산출물 초안이며, 사용자 승인 후 공식 요약 문서 `docs/prototype/plans/rat-host-implementation-plan.md`로 승격되었다. 구현자는 공식 문서를 기준으로 삼고, 이 초안은 세부 근거와 이력으로 참조한다.
 
 ## 목표
 
@@ -26,7 +26,7 @@
 
 ### 계획 전제
 
-이 초안은 `docs/prototype/rat-host-approval-packet.md`의 추천안을 기준으로 한다.
+이 초안은 `docs/prototype/approvals/rat-host-approval-packet.md`의 추천안을 기준으로 한다.
 
 - Unity 버전: `6000.4.6f1`
 - 렌더 파이프라인: URP
@@ -52,7 +52,7 @@
 - `RatHostPrototype.unity` 생성, `Assets/_Project/` 하위 폴더 생성, Build Settings 변경은 승인되었다.
 - `SampleScene.unity`는 삭제하지 않고 빌드 대상에서 제외하거나 뒤로 미루기로 승인되었다.
 - 실패 후 재시도 초기화 기준과 테스트/빌드 실행 범위는 공식 구현 계획 기준으로 승인되었다.
-- 이 산출물은 `docs/prototype/rat-host-implementation-plan.md` 공식 요약 문서로 승격되었다.
+- 이 산출물은 `docs/prototype/plans/rat-host-implementation-plan.md` 공식 요약 문서로 승격되었다.
 
 ## 범위
 
@@ -188,7 +188,7 @@ RatHostPrototype
 
 입력:
 
-- `docs/prototype/rat-host-approval-packet.md`
+- `docs/prototype/approvals/rat-host-approval-packet.md`
 - `docs/project/project-prep.md`
 - `docs/unity/unity-baseline-report.md`
 
@@ -214,7 +214,7 @@ UI 반응:
 
 검증 시나리오:
 
-- `docs/prototype/rat-host-approval-packet.md`의 승인 응답을 확인한다.
+- `docs/prototype/approvals/rat-host-approval-packet.md`의 승인 응답을 확인한다.
 - `git status --short`로 작업 전 상태를 확인한다.
 
 ### 2. 프로토타입 씬과 폴더 구조
@@ -786,7 +786,7 @@ UI 통과 기준:
 
 승인 처리한 항목:
 
-1. `docs/prototype/rat-host-approval-packet.md` 추천안 전체 승인
+1. `docs/prototype/approvals/rat-host-approval-packet.md` 추천안 전체 승인
 2. Input System 사용
 3. 새 입력 액션 자산 생성 위치: `Assets/_Project/Settings/Input/RatHostPrototypeControls.inputactions`
 4. `RatHostPrototype.unity` 생성
@@ -797,4 +797,4 @@ UI 통과 기준:
 9. 실패 후 재시도 초기화 기준
 10. 구현 후 테스트와 빌드 실행 범위
 11. Unity MCP를 통한 승인 범위 내 씬, 에셋, 코드, ProjectSettings, Build Settings 변경
-12. 이 초안을 공식 `docs/prototype/rat-host-implementation-plan.md`로 승격
+12. 이 초안을 공식 `docs/prototype/plans/rat-host-implementation-plan.md`로 승격
