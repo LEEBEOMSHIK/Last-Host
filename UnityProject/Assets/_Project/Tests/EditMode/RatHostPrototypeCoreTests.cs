@@ -196,7 +196,7 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
-        public void PrototypeCameraController_TogglesBetweenThirdPersonAndQuarterView()
+        public void PrototypeCameraController_CyclesThroughThirdPersonQuarterViewAndTopView()
         {
             var cameraObject = new GameObject("Prototype Camera");
             var camera = cameraObject.AddComponent<Camera>();
@@ -217,6 +217,73 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.AreEqual(PrototypeCameraMode.QuarterView, controller.CurrentHostMode);
             Assert.True(camera.orthographic);
             Assert.Greater(camera.orthographicSize, 0f);
+
+            controller.ToggleHostCameraMode();
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+
+            Assert.AreEqual(PrototypeCameraMode.TopView, controller.CurrentHostMode);
+            Assert.True(camera.orthographic);
+
+            controller.ToggleHostCameraMode();
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+
+            Assert.AreEqual(PrototypeCameraMode.ThirdPerson, controller.CurrentHostMode);
+            Assert.False(camera.orthographic);
+
+            Object.DestroyImmediate(target);
+            Object.DestroyImmediate(cameraObject);
+        }
+
+        [Test]
+        public void PrototypeCameraController_QuarterViewUsesRearCameraAxis()
+        {
+            var cameraObject = new GameObject("Prototype Camera");
+            cameraObject.AddComponent<Camera>();
+            var controller = cameraObject.AddComponent<PrototypeCameraController>();
+            var target = new GameObject("Rat Target");
+
+            target.transform.position = Vector3.zero;
+            target.transform.rotation = Quaternion.identity;
+            controller.hostTarget = target.transform;
+
+            controller.ToggleHostCameraMode();
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+
+            var offset = cameraObject.transform.position - target.transform.position;
+            var horizontalForward = Vector3.ProjectOnPlane(cameraObject.transform.forward, Vector3.up).normalized;
+
+            Assert.AreEqual(PrototypeCameraMode.QuarterView, controller.CurrentHostMode);
+            Assert.Less(offset.z, -0.1f);
+            Assert.AreEqual(0f, offset.x, 0.001f);
+            Assert.Greater(Vector3.Dot(Vector3.forward, horizontalForward), 0.98f);
+
+            Object.DestroyImmediate(target);
+            Object.DestroyImmediate(cameraObject);
+        }
+
+        [Test]
+        public void PrototypeCameraController_TopViewLooksStraightDown()
+        {
+            var cameraObject = new GameObject("Prototype Camera");
+            var camera = cameraObject.AddComponent<Camera>();
+            var controller = cameraObject.AddComponent<PrototypeCameraController>();
+            var target = new GameObject("Rat Target");
+
+            target.transform.position = Vector3.zero;
+            controller.hostTarget = target.transform;
+
+            controller.ToggleHostCameraMode();
+            controller.ToggleHostCameraMode();
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+
+            var offset = cameraObject.transform.position - target.transform.position;
+
+            Assert.AreEqual(PrototypeCameraMode.TopView, controller.CurrentHostMode);
+            Assert.True(camera.orthographic);
+            Assert.AreEqual(0f, offset.x, 0.001f);
+            Assert.Greater(offset.y, 1f);
+            Assert.AreEqual(0f, offset.z, 0.001f);
+            Assert.Greater(Vector3.Dot(Vector3.down, cameraObject.transform.forward), 0.999f);
 
             Object.DestroyImmediate(target);
             Object.DestroyImmediate(cameraObject);

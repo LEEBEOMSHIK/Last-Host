@@ -9,7 +9,8 @@ namespace LastHost.Prototype.Cameras
     public enum PrototypeCameraMode
     {
         ThirdPerson,
-        QuarterView
+        QuarterView,
+        TopView
     }
 
     [RequireComponent(typeof(Camera))]
@@ -29,9 +30,13 @@ namespace LastHost.Prototype.Cameras
         public float thirdPersonFieldOfView = 50f;
 
         [Header("Quarter View")]
-        public Vector3 quarterViewOffset = new Vector3(6.4f, 7.4f, -6.4f);
+        public Vector3 quarterViewOffset = new Vector3(0f, 7.4f, -6.4f);
         public float quarterViewFocusHeight = 0.3f;
         public float quarterViewOrthographicSize = 5.2f;
+
+        [Header("Top View")]
+        public Vector3 topViewOffset = new Vector3(0f, 9.5f, 0f);
+        public float topViewOrthographicSize = 5.8f;
 
         [Header("Virus View")]
         public Vector3 virusViewOffset = new Vector3(0f, 8f, -0.15f);
@@ -71,9 +76,20 @@ namespace LastHost.Prototype.Cameras
 
         public void ToggleHostCameraMode()
         {
-            CurrentHostMode = CurrentHostMode == PrototypeCameraMode.ThirdPerson
-                ? PrototypeCameraMode.QuarterView
-                : PrototypeCameraMode.ThirdPerson;
+            EnsureInitialized();
+
+            switch (CurrentHostMode)
+            {
+                case PrototypeCameraMode.ThirdPerson:
+                    CurrentHostMode = PrototypeCameraMode.QuarterView;
+                    break;
+                case PrototypeCameraMode.QuarterView:
+                    CurrentHostMode = PrototypeCameraMode.TopView;
+                    break;
+                default:
+                    CurrentHostMode = PrototypeCameraMode.ThirdPerson;
+                    break;
+            }
         }
 
         public void ApplyCameraNow()
@@ -142,7 +158,11 @@ namespace LastHost.Prototype.Cameras
                 return;
             }
 
-            if (CurrentHostMode == PrototypeCameraMode.QuarterView)
+            if (CurrentHostMode == PrototypeCameraMode.TopView)
+            {
+                ApplyTopView(deltaTime, snap);
+            }
+            else if (CurrentHostMode == PrototypeCameraMode.QuarterView)
             {
                 ApplyQuarterView(deltaTime, snap);
             }
@@ -181,6 +201,22 @@ namespace LastHost.Prototype.Cameras
 
             attachedCamera.orthographic = true;
             attachedCamera.orthographicSize = quarterViewOrthographicSize;
+            MoveCamera(position, rotation, deltaTime, snap);
+        }
+
+        private void ApplyTopView(float deltaTime, bool snap)
+        {
+            if (hostTarget == null)
+            {
+                return;
+            }
+
+            var focus = hostTarget.position;
+            var position = hostTarget.position + topViewOffset;
+            var rotation = Quaternion.LookRotation(focus - position, Vector3.forward);
+
+            attachedCamera.orthographic = true;
+            attachedCamera.orthographicSize = topViewOrthographicSize;
             MoveCamera(position, rotation, deltaTime, snap);
         }
 

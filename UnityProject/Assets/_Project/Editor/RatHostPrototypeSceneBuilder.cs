@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using LastHost.Prototype.Cameras;
 using LastHost.Prototype.Core;
 using LastHost.Prototype.Host;
 using LastHost.Prototype.Immune;
@@ -279,6 +280,13 @@ namespace LastHost.Prototype.Editor
             camera.clearFlags = CameraClearFlags.SolidColor;
             camera.backgroundColor = new Color(0.02f, 0.025f, 0.03f, 1f);
             cameraObject.AddComponent<AudioListener>();
+
+            var controller = cameraObject.AddComponent<PrototypeCameraController>();
+            controller.startingHostMode = PrototypeCameraMode.ThirdPerson;
+            controller.quarterViewOffset = new Vector3(0f, 7.4f, -6.4f);
+            controller.quarterViewOrthographicSize = 5.2f;
+            controller.topViewOffset = new Vector3(0f, 9.5f, 0f);
+            controller.topViewOrthographicSize = 5.8f;
         }
 
         private static void BuildLighting(Transform parent)

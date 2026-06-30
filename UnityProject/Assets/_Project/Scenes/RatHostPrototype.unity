@@ -3312,9 +3312,11 @@ MonoBehaviour:
   thirdPersonOffset: {x: 0, y: 3.6, z: -5.2}
   thirdPersonFocusHeight: 0.55
   thirdPersonFieldOfView: 50
-  quarterViewOffset: {x: 6.4, y: 7.4, z: -6.4}
+  quarterViewOffset: {x: 0, y: 7.4, z: -6.4}
   quarterViewFocusHeight: 0.3
   quarterViewOrthographicSize: 5.2
+  topViewOffset: {x: 0, y: 9.5, z: 0}
+  topViewOrthographicSize: 5.8
   virusViewOffset: {x: 0, y: 8, z: -0.15}
   virusViewOrthographicSize: 4.4
   followSharpness: 18
