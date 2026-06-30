@@ -1,6 +1,6 @@
 # 에이전트 역할 목록
 
-이 문서는 `마지막 숙주 / The Last Host` 프로젝트에서 사용할 에이전트 역할을 빠르게 참조하기 위한 목록이다. 상세 운영 절차는 `docs/agent-skill-plan.md`를 따른다.
+이 문서는 `마지막 숙주 / The Last Host` 프로젝트에서 사용할 에이전트 역할을 빠르게 참조하기 위한 목록이다. 상세 운영 절차는 `docs/agents/agent-skill-plan.md`를 따른다.
 
 ## 공통 규칙
 
@@ -30,28 +30,28 @@
 
 - 파일: `.agents/design-keeper-agent.md`
 - 목적: 원본 기획과 작업 문서의 일관성 유지
-- 주요 입력: 원본 `.docx`, `docs/game-design-summary.md`, `docs/rat-host-prototype.md`
+- 주요 입력: 원본 `.docx`, `docs/design/game-design-summary.md`, `docs/prototype/rat-host-prototype.md`
 - 주요 산출물: 기획 요약, 범위 변경 감지, 승인 질문
 
 ## 4. Unity 아키텍처 에이전트
 
 - 파일: `.agents/unity-architecture-agent.md`
 - 목적: Unity 버전, URP, 폴더 구조, 씬 구조, 시스템 경계 계획
-- 주요 입력: `docs/project-prep.md`, 프로토타입 범위 문서
+- 주요 입력: `docs/project/project-prep.md`, 프로토타입 범위 문서
 - 주요 산출물: Unity 구조안, 패키지/설정 승인 목록
 
 ## 5. 게임플레이 루프 에이전트
 
 - 파일: `.agents/gameplay-loop-agent.md`
 - 목적: 쥐 숙주 조종, 면역 경계도, 내부 미니게임, 변이 선택 루프 설계
-- 주요 입력: `docs/rat-host-prototype.md`, Unity 구조안
+- 주요 입력: `docs/prototype/rat-host-prototype.md`, Unity 구조안
 - 주요 산출물: 기능 단위 작업 목록, 수용 기준, 테스트 시나리오
 
 ## 6. 비주얼/테크아트 에이전트
 
 - 파일: `.agents/visual-tech-art-agent.md`
 - 목적: 도트풍 3D 비주얼, 카메라, 렌더링, 플레이스홀더 에셋 기준 관리
-- 주요 입력: `docs/game-design-summary.md`, 비주얼 승인사항
+- 주요 입력: `docs/design/game-design-summary.md`, 비주얼 승인사항
 - 주요 산출물: 스타일 기준, 렌더링 기준, 에셋 목록
 
 ## 7. QA/검증 에이전트

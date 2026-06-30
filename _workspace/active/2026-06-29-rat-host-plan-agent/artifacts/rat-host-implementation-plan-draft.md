@@ -26,7 +26,7 @@
 
 ### 계획 전제
 
-이 초안은 `docs/rat-host-approval-packet.md`의 추천안을 기준으로 한다.
+이 초안은 `docs/prototype/rat-host-approval-packet.md`의 추천안을 기준으로 한다.
 
 - Unity 버전: `6000.4.6f1`
 - 렌더 파이프라인: URP
@@ -46,7 +46,7 @@
 
 ### 구현 전 차단 조건
 
-- `docs/rat-host-approval-packet.md` 전체 승인 또는 수정 승인이 필요하다.
+- `docs/prototype/rat-host-approval-packet.md` 전체 승인 또는 수정 승인이 필요하다.
 - Unity MCP를 통한 씬, 에셋, 패키지, 코드, ProjectSettings 변경 승인이 필요하다.
 - Input System 사용 여부와 새 입력 액션 자산 생성 위치 승인이 필요하다.
 - `RatHostPrototype.unity` 생성, `Assets/_Project/` 하위 폴더 생성, Build Settings 변경 승인이 필요하다.
@@ -189,9 +189,9 @@ RatHostPrototype
 
 입력:
 
-- `docs/rat-host-approval-packet.md`
-- `docs/project-prep.md`
-- `docs/unity-baseline-report.md`
+- `docs/prototype/rat-host-approval-packet.md`
+- `docs/project/project-prep.md`
+- `docs/unity/unity-baseline-report.md`
 
 처리:
 
@@ -215,7 +215,7 @@ UI 반응:
 
 검증 시나리오:
 
-- `docs/rat-host-approval-packet.md`의 승인 응답을 확인한다.
+- `docs/prototype/rat-host-approval-packet.md`의 승인 응답을 확인한다.
 - `git status --short`로 작업 전 상태를 확인한다.
 
 ### 2. 프로토타입 씬과 폴더 구조
@@ -555,7 +555,7 @@ UI 반응:
 - 변이 이름과 효과 설명 표시
 - 선택 후 현재 변이 표시
 
-변이별 1차 효과:
+변이별 1차 프로토타입 임시 효과:
 
 | 변이 | 효과 |
 | --- | --- |
@@ -785,14 +785,14 @@ UI 통과 기준:
 
 구현을 시작하려면 다음 항목의 승인 또는 수정 승인이 필요하다.
 
-1. `docs/rat-host-approval-packet.md` 추천안 전체 승인 또는 수정 승인
+1. `docs/prototype/rat-host-approval-packet.md` 추천안 전체 승인 또는 수정 승인
 2. Input System 사용 여부
 3. 새 입력 액션 자산 생성 위치: `Assets/_Project/Settings/Input/RatHostPrototypeControls.inputactions`
 4. `RatHostPrototype.unity` 생성 여부
 5. `Assets/_Project/` 하위 폴더 생성 여부
 6. `RatHostPrototype.unity`를 Build Settings 시작 씬으로 둘지 여부
 7. `SampleScene.unity`를 빌드 대상에서 제외하거나 뒤로 미룰지 여부
-8. `포유류 적응`의 1차 효과
+8. `포유류 적응`의 1차 프로토타입 임시 효과
    - 특정 통로 접근
    - 보상 지점 접근
    - 다른 임시 효과

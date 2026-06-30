@@ -17,11 +17,11 @@
 ## 입력 자료
 
 - `AGENTS.md`
-- `docs/project-prep.md`
-- `docs/unity-mcp-setup.md`
-- `docs/rat-host-prototype.md`
-- `docs/rat-host-approval-packet.md`
-- `docs/unity-baseline-report.md`
+- `docs/project/project-prep.md`
+- `docs/unity/unity-mcp-setup.md`
+- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/rat-host-approval-packet.md`
+- `docs/unity/unity-baseline-report.md`
 - `.agents/unity-architecture-agent.md`
 - `.codex/skills/unity-prototype-planner/SKILL.md`
 - `.codex/skills/unity-prototype-planner/references/unity-architecture.md`
@@ -52,7 +52,7 @@
 
 ## 승인 필요 항목
 
-- `docs/rat-host-approval-packet.md` 승인
+- `docs/prototype/rat-host-approval-packet.md` 승인
 - Unity MCP를 통한 프로젝트 변경 승인
 - `RatHostPrototype.unity` 생성과 Build Settings 반영 승인
 

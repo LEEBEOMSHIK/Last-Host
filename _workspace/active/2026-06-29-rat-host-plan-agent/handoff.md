@@ -30,9 +30,9 @@
 
 ## 참고 자료
 
-- `docs/rat-host-prototype.md`
-- `docs/rat-host-approval-packet.md`
-- `docs/unity-baseline-report.md`
+- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/rat-host-approval-packet.md`
+- `docs/unity/unity-baseline-report.md`
 - `.agents/gameplay-loop-agent.md`
 - `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
 
@@ -44,5 +44,5 @@
 
 ## 사용자 승인 필요
 
-- `docs/rat-host-approval-packet.md` 승인
+- `docs/prototype/rat-host-approval-packet.md` 승인
 - 구현 계획 산출물을 공식 문서로 승격할지 여부

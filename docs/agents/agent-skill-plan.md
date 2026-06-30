@@ -10,7 +10,7 @@
 
 - 모든 설명과 프로젝트 문서는 한국어로 작성한다.
 - 에이전트는 독립적으로 판단하되, 프로젝트 방향은 `AGENTS.md`와 `docs/` 문서를 따른다.
-- 작업별 세부 참조는 `docs/agent-reference-map.md`를 따른다.
+- 작업별 세부 참조는 `docs/agents/agent-reference-map.md`를 따른다.
 - 에이전트에게 일을 맡길 때는 목적, 입력, 산출물, 금지 범위, 승인 필요 항목을 명확히 준다.
 - 에이전트 결과물은 자동 반영하지 않는다. 조정자가 검토하고 필요한 경우 사용자 승인을 받은 뒤 반영한다.
 - 프로젝트 방향, 범위, 승인 게이트에 영향을 주는 주요 산출물은 사용자 최종 승인 전에 프로젝트 총괄 관리자 에이전트가 내부 승인 여부를 검토한다.
@@ -151,7 +151,7 @@
 - 조정자 통합 보고
 - 에이전트 산출물
 - `AGENTS.md`
-- `docs/agent-skill-plan.md`
+- `docs/agents/agent-skill-plan.md`
 
 산출물:
 
@@ -174,8 +174,8 @@
 
 - 사용자 요청
 - `AGENTS.md`
-- `docs/project-prep.md`
-- `docs/agent-skill-plan.md`
+- `docs/project/project-prep.md`
+- `docs/agents/agent-skill-plan.md`
 
 산출물:
 
@@ -196,8 +196,8 @@
 주요 입력:
 
 - `C:\project\game\last_host\last_host_game_plan.docx`
-- `docs/game-design-summary.md`
-- `docs/rat-host-prototype.md`
+- `docs/design/game-design-summary.md`
+- `docs/prototype/rat-host-prototype.md`
 
 산출물:
 
@@ -217,9 +217,9 @@
 
 주요 입력:
 
-- `docs/project-prep.md`
-- `docs/unity-mcp-setup.md`
-- `docs/rat-host-prototype.md`
+- `docs/project/project-prep.md`
+- `docs/unity/unity-mcp-setup.md`
+- `docs/prototype/rat-host-prototype.md`
 - Unity 관련 사용자 승인사항
 
 산출물:
@@ -239,7 +239,7 @@
 
 주요 입력:
 
-- `docs/rat-host-prototype.md`
+- `docs/prototype/rat-host-prototype.md`
 - Unity 아키텍처 에이전트 산출물
 
 산출물:
@@ -260,8 +260,8 @@
 
 주요 입력:
 
-- `docs/game-design-summary.md`
-- `docs/project-prep.md`
+- `docs/design/game-design-summary.md`
+- `docs/project/project-prep.md`
 - 사용자 비주얼 승인사항
 
 산출물:
@@ -711,9 +711,9 @@ _workspace/completed/<완료일>-<작업ID>/
 4. 각 스킬의 `agents/openai.yaml`
 5. 각 스킬의 `references/` 기준 문서 1개
 6. `_workspace/` 에이전트 작업영역과 완료 추적 템플릿
-7. `docs/agent-reference-map.md` 작업별 참조 문서 색인
+7. `docs/agents/agent-reference-map.md` 작업별 참조 문서 색인
 8. `.codex/config.toml` 프로젝트 로컬 Codex MCP 설정
-9. `docs/unity-mcp-setup.md` Unity MCP 설정과 운영 문서
+9. `docs/unity/unity-mcp-setup.md` Unity MCP 설정과 운영 문서
 
 ## 다음 승인 필요 항목
 

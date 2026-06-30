@@ -17,9 +17,9 @@
 ## 입력 자료
 
 - `AGENTS.md`
-- `docs/rat-host-prototype.md`
-- `docs/rat-host-approval-packet.md`
-- `docs/unity-baseline-report.md`
+- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/rat-host-approval-packet.md`
+- `docs/unity/unity-baseline-report.md`
 - `.agents/qa-verification-agent.md`
 - `.codex/skills/unity-verification-runner/SKILL.md`
 - `.codex/skills/unity-verification-runner/references/verification-rules.md`

@@ -9,7 +9,7 @@
 ### 2026-06-29 초기 배정
 
 - 수행 내용: 쥐 숙주 구현 계획 초안의 Unity 아키텍처 검토 작업 패킷을 생성했다.
-- 확인한 자료: `AGENTS.md`, `docs/agent-skill-plan.md`, `_workspace/active/2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
+- 확인한 자료: `AGENTS.md`, `docs/agents/agent-skill-plan.md`, `_workspace/active/2026-06-29-rat-host-plan-agent/artifacts/rat-host-implementation-plan-draft.md`
 - 판단: 이 작업은 Unity 변경 없이 문서 검토만 수행한다.
 - 다음 작업: Unity 아키텍처 에이전트가 `artifacts/architecture-review.md`를 작성한다.
 

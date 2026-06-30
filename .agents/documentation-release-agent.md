@@ -7,7 +7,7 @@
 ## 우선 참조
 
 1. `AGENTS.md`
-2. `docs/agent-skill-plan.md`
+2. `docs/agents/agent-skill-plan.md`
 3. 변경 diff
 4. 검증 결과
 

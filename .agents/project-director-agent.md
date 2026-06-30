@@ -7,7 +7,7 @@
 ## 우선 참조
 
 1. `AGENTS.md`
-2. `docs/agent-skill-plan.md`
+2. `docs/agents/agent-skill-plan.md`
 3. `.agents/agent-roster.md`
 4. 사용자 요청과 승인 이력
 5. 조정자 통합 보고와 관련 에이전트 산출물

@@ -12,16 +12,16 @@ Unity 프로젝트를 만들기 전에 구조와 승인 항목을 정리한다. 
 ## 필수 참조 순서
 
 1. `AGENTS.md`
-2. `docs/project-prep.md`
-3. `docs/unity-mcp-setup.md`
-4. `docs/rat-host-prototype.md`
-5. `docs/agent-skill-plan.md`
+2. `docs/project/project-prep.md`
+3. `docs/unity/unity-mcp-setup.md`
+4. `docs/prototype/rat-host-prototype.md`
+5. `docs/agents/agent-skill-plan.md`
 
 ## 작업 절차
 
 1. 요청이 프로젝트 생성 전 계획인지, 실제 구현인지 구분한다.
 2. Unity 버전, URP, 플랫폼, 폴더 구조, 씬 구조의 승인 여부를 확인한다.
-3. Unity MCP 작업이면 `.codex/config.toml`의 `unity_mcp` 활성화 상태와 `docs/unity-mcp-setup.md`의 승인 게이트를 확인한다.
+3. Unity MCP 작업이면 `.codex/config.toml`의 `unity_mcp` 활성화 상태와 `docs/unity/unity-mcp-setup.md`의 승인 게이트를 확인한다.
 4. 승인되지 않은 항목은 결정 후보와 장단점만 제시한다.
 5. 시스템 경계를 `숙주`, `면역`, `모드 전환`, `바이러스 미니게임`, `변이`, `공용 상태`로 나눈다.
 6. 구현 계획으로 넘어가기 전 승인 질문 목록을 만든다.

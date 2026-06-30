@@ -7,7 +7,7 @@
 ## 우선 참조
 
 1. `AGENTS.md`
-2. `docs/game-design-summary.md`
+2. `docs/design/game-design-summary.md`
 3. `.codex/skills/pixel-lowpoly-style-keeper/references/pixel-style-rules.md`
 
 ## 사용 스킬

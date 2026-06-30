@@ -48,17 +48,17 @@
 5. 초기 조작 방식
 6. 초기 UI 게이지 구성
 7. 플레이스홀더 에셋 사용 범위
-8. 첫 변이 효과
+8. 프로토타입 변이 효과
 
-승인 질문은 `docs/rat-host-approval-packet.md`에 정리한다.
+승인 질문은 `docs/prototype/rat-host-approval-packet.md`에 정리한다.
 
 참고: 현재 Unity 프로젝트는 `UnityProject/`에 편입되어 있으나, Unity 버전과 URP 사용 여부는 프로토타입 구현 전 최종 확인 대상으로 유지한다.
 
 ## 권장 문서 구성
 
-- `docs/game-design-summary.md`: 원본 `.docx` 기반 게임 기획 요약
-- `docs/rat-host-prototype.md`: 첫 플레이어블 프로토타입 범위
-- `docs/project-prep.md`: 현재 프로젝트 준비 상태와 승인 계획
+- `docs/design/game-design-summary.md`: 원본 `.docx` 기반 게임 기획 요약
+- `docs/prototype/rat-host-prototype.md`: 첫 플레이어블 프로토타입 범위
+- `docs/project/project-prep.md`: 현재 프로젝트 준비 상태와 승인 계획
 - `AGENTS.md`: Codex와 이후 작업자가 따라야 할 프로젝트 규칙
 
 ## 권장 마일스톤
@@ -93,7 +93,7 @@
 
 ## 바로 다음 단계
 
-1. `docs/rat-host-approval-packet.md`의 승인 항목을 검토한다.
+1. `docs/prototype/rat-host-approval-packet.md`의 승인 항목을 검토한다.
 2. 현재 `UnityProject/` 구조, Unity 버전, URP 사용 여부를 승인하거나 수정한다.
 3. 첫 프로토타입 성공/실패 조건을 승인하거나 수정한다.
 4. 게임플레이 루프 에이전트 작업 패킷을 만들고 구현 계획 산출물을 검토한다.

@@ -4,7 +4,7 @@
 
 ## 사용자 결정 필요
 
-1. `docs/rat-host-approval-packet.md` 추천안을 전체 승인할지, 일부 수정할지
+1. `docs/prototype/rat-host-approval-packet.md` 추천안을 전체 승인할지, 일부 수정할지
 2. 1차 프로토타입 입력 구현에 Unity Input System을 사용할지
 3. 새 입력 액션 자산 후보 위치를 승인할지
    - `Assets/_Project/Settings/Input/RatHostPrototypeControls.inputactions`

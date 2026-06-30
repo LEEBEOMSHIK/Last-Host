@@ -34,8 +34,8 @@
 
 필수 참조:
 
-- `docs/game-design-summary.md`
-- `docs/rat-host-prototype.md`
+- `docs/design/game-design-summary.md`
+- `docs/prototype/rat-host-prototype.md`
 - `.codex/skills/last-host-design-keeper/SKILL.md`
 
 선택 참조:
@@ -53,12 +53,12 @@
 
 필수 참조:
 
-- `docs/project-prep.md`
+- `docs/project/project-prep.md`
 - `.codex/skills/unity-prototype-planner/SKILL.md`
 
 선택 참조:
 
-- `docs/unity-baseline-report.md`
+- `docs/unity/unity-baseline-report.md`
 - `.codex/skills/unity-prototype-planner/references/unity-architecture.md`
 
 ### Unity MCP / Unity Editor 자동화
@@ -71,7 +71,7 @@
 
 필수 참조:
 
-- `docs/unity-mcp-setup.md`
+- `docs/unity/unity-mcp-setup.md`
 - `.codex/config.toml`
 - `.agents/unity-architecture-agent.md`
 
@@ -92,12 +92,12 @@
 
 필수 참조:
 
-- `docs/rat-host-prototype.md`
+- `docs/prototype/rat-host-prototype.md`
 - `.codex/skills/rat-host-loop-builder/SKILL.md`
 
 선택 참조:
 
-- `docs/rat-host-approval-packet.md`
+- `docs/prototype/rat-host-approval-packet.md`
 - `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
 
 ### 도트풍 저폴리 3D / 비주얼
@@ -110,7 +110,7 @@
 
 필수 참조:
 
-- `docs/game-design-summary.md`
+- `docs/design/game-design-summary.md`
 - `.codex/skills/pixel-lowpoly-style-keeper/SKILL.md`
 
 선택 참조:
@@ -127,7 +127,7 @@
 
 필수 참조:
 
-- `docs/agent-skill-plan.md`
+- `docs/agents/agent-skill-plan.md`
 - `.agents/agent-roster.md`
 - `.agents/project-director-agent.md`
 
@@ -179,7 +179,7 @@
 
 선택 참조:
 
-- `docs/unity-baseline-report.md`
+- `docs/unity/unity-baseline-report.md`
 - `.codex/skills/unity-verification-runner/references/verification-rules.md`
 
 ### 문서 정리 / 커밋 요약 / 릴리즈 정리
@@ -198,7 +198,7 @@
 
 선택 참조:
 
-- `docs/agent-skill-plan.md`
+- `docs/agents/agent-skill-plan.md`
 - `_workspace/templates/verification.md`
 
 ## AGENTS.md가 200줄에 가까워질 때

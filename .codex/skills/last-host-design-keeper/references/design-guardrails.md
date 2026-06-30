@@ -3,9 +3,9 @@
 ## 기준 자료
 
 - 원본 초안: `C:\project\game\last_host\last_host_game_plan.docx`
-- 작업 요약: `docs/game-design-summary.md`
-- 프로토타입 범위: `docs/rat-host-prototype.md`
-- 프로젝트 준비: `docs/project-prep.md`
+- 작업 요약: `docs/design/game-design-summary.md`
+- 프로토타입 범위: `docs/prototype/rat-host-prototype.md`
+- 프로젝트 준비: `docs/project/project-prep.md`
 
 ## 확정된 방향
 

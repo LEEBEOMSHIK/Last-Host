@@ -42,12 +42,12 @@
 
 ## 구현 전 사용자 승인 필요
 
-1. `docs/rat-host-approval-packet.md` 추천안 전체 승인 또는 수정 승인
+1. `docs/prototype/rat-host-approval-packet.md` 추천안 전체 승인 또는 수정 승인
 2. Input System 사용 여부
 3. `RatHostPrototype.unity` 생성 여부
 4. `RatHostPrototype.unity`를 Build Settings 시작 씬으로 둘지 여부
 5. `SampleScene.unity`를 빌드 대상에서 제외하거나 뒤로 미룰지 여부
-6. `포유류 적응`의 1차 효과
+6. `포유류 적응`의 1차 프로토타입 임시 효과
    - 특정 통로 접근
    - 보상 지점 접근
    - 다른 임시 효과

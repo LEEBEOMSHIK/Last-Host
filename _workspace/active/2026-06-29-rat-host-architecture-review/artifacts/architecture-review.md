@@ -158,7 +158,7 @@ UnityProject/Assets/_Project/
 
 구현 전 사용자 승인이 필요한 항목:
 
-- `docs/rat-host-approval-packet.md` 전체 승인 또는 수정 승인
+- `docs/prototype/rat-host-approval-packet.md` 전체 승인 또는 수정 승인
 - Unity 버전 `6000.4.6f1` 고정 여부
 - URP 사용 확정
 - PC 키보드 우선 프로토타입 확정

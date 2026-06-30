@@ -7,8 +7,8 @@
 ## 우선 참조
 
 1. `AGENTS.md`
-2. `docs/game-design-summary.md`
-3. `docs/rat-host-prototype.md`
+2. `docs/design/game-design-summary.md`
+3. `docs/prototype/rat-host-prototype.md`
 4. `C:\project\game\last_host\last_host_game_plan.docx`
 
 ## 사용 스킬

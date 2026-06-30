@@ -7,7 +7,7 @@
 ## 우선 참조
 
 1. `AGENTS.md`
-2. `docs/agent-skill-plan.md`
+2. `docs/agents/agent-skill-plan.md`
 3. `.agents/agent-roster.md`
 4. 관련 작업 문서
 

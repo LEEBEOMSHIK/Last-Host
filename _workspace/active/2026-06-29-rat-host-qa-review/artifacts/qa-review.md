@@ -15,9 +15,9 @@
 참조 기준:
 
 - `AGENTS.md`
-- `docs/rat-host-prototype.md`
-- `docs/rat-host-approval-packet.md`
-- `docs/unity-baseline-report.md`
+- `docs/prototype/rat-host-prototype.md`
+- `docs/prototype/rat-host-approval-packet.md`
+- `docs/unity/unity-baseline-report.md`
 - `.agents/qa-verification-agent.md`
 - `.codex/skills/unity-verification-runner/SKILL.md`
 - `.codex/skills/unity-verification-runner/references/verification-rules.md`
@@ -45,7 +45,7 @@
 
 구현 전 보완이 필요한 기준:
 
-- `포유류 적응`의 1차 효과를 `특정 통로 접근` 또는 `보상 지점 접근` 중 하나로 확정한다.
+- `포유류 적응`의 1차 프로토타입 임시 효과를 `특정 통로 접근` 또는 `보상 지점 접근` 중 하나로 확정한다.
 - 실패 후 재시도 시 초기화할 값과 유지할 값을 명시한다.
 - 성공과 실패가 같은 프레임에 발생할 때 우선순위를 정한다.
 - `RatHostPrototype.unity`를 빌드 설정에 포함할지 결정한다.
