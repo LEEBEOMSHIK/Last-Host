@@ -235,7 +235,7 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
-        public void PrototypeCameraController_QuarterViewUsesRearCameraAxis()
+        public void PrototypeCameraController_QuarterViewUsesLeftRearDominantCameraAxis()
         {
             var cameraObject = new GameObject("Prototype Camera");
             cameraObject.AddComponent<Camera>();
@@ -253,9 +253,11 @@ namespace LastHost.Prototype.Tests.EditMode
             var horizontalForward = Vector3.ProjectOnPlane(cameraObject.transform.forward, Vector3.up).normalized;
 
             Assert.AreEqual(PrototypeCameraMode.QuarterView, controller.CurrentHostMode);
+            Assert.Less(offset.x, -0.1f);
             Assert.Less(offset.z, -0.1f);
-            Assert.AreEqual(0f, offset.x, 0.001f);
-            Assert.Greater(Vector3.Dot(Vector3.forward, horizontalForward), 0.98f);
+            Assert.Less(Mathf.Abs(offset.x), Mathf.Abs(offset.z));
+            Assert.Greater(horizontalForward.z, 0.85f);
+            Assert.Greater(horizontalForward.x, 0.15f);
 
             Object.DestroyImmediate(target);
             Object.DestroyImmediate(cameraObject);
@@ -357,6 +359,19 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.NotNull(controller);
             Assert.AreEqual(camera, controller.GetComponent<Camera>());
             Assert.AreEqual(PrototypeCameraMode.ThirdPerson, controller.CurrentHostMode);
+        }
+
+        [Test]
+        public void RatHostPrototypeScene_QuarterViewOffsetUsesLeftRearDominantCameraAxis()
+        {
+            EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
+
+            var controller = Object.FindAnyObjectByType<PrototypeCameraController>();
+
+            Assert.NotNull(controller);
+            Assert.Less(controller.quarterViewOffset.x, -0.1f);
+            Assert.Less(controller.quarterViewOffset.z, -0.1f);
+            Assert.Less(Mathf.Abs(controller.quarterViewOffset.x), Mathf.Abs(controller.quarterViewOffset.z));
         }
     }
 }

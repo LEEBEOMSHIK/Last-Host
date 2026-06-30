@@ -30,7 +30,7 @@ namespace LastHost.Prototype.Cameras
         public float thirdPersonFieldOfView = 50f;
 
         [Header("Quarter View")]
-        public Vector3 quarterViewOffset = new Vector3(0f, 7.4f, -6.4f);
+        public Vector3 quarterViewOffset = new Vector3(-2.8f, 7.4f, -6.4f);
         public float quarterViewFocusHeight = 0.3f;
         public float quarterViewOrthographicSize = 5.2f;
 

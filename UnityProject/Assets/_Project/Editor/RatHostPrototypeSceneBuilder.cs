@@ -283,7 +283,7 @@ namespace LastHost.Prototype.Editor
 
             var controller = cameraObject.AddComponent<PrototypeCameraController>();
             controller.startingHostMode = PrototypeCameraMode.ThirdPerson;
-            controller.quarterViewOffset = new Vector3(0f, 7.4f, -6.4f);
+            controller.quarterViewOffset = new Vector3(-2.8f, 7.4f, -6.4f);
             controller.quarterViewOrthographicSize = 5.2f;
             controller.topViewOffset = new Vector3(0f, 9.5f, 0f);
             controller.topViewOrthographicSize = 5.8f;
