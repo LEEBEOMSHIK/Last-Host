@@ -1,7 +1,9 @@
 using LastHost.Prototype.Core;
 using LastHost.Prototype.Immune;
+using LastHost.Prototype.Input;
 using LastHost.Prototype.Mutations;
 using LastHost.Prototype.VirusMinigame;
+using UnityEngine;
 using NUnit.Framework;
 
 namespace LastHost.Prototype.Tests.EditMode
@@ -130,6 +132,35 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
             Assert.AreEqual(0, session.VirusRun.CollectedFragments);
             Assert.AreEqual(session.Config.VirusStartingStability, session.VirusRun.Stability);
+        }
+
+        [Test]
+        public void PrototypeKeyboardInput_ComposesNormalizedMovement()
+        {
+            var input = new PrototypeInputState
+            {
+                MoveRight = true,
+                MoveUp = true
+            };
+
+            var move = PrototypeKeyboardInput.ComposeMoveInput(input);
+
+            Assert.Greater(move.x, 0f);
+            Assert.Greater(move.y, 0f);
+            Assert.AreEqual(1f, move.magnitude, 0.001f);
+        }
+
+        [Test]
+        public void PrototypeKeyboardInput_MapsMutationSelectionKeys()
+        {
+            Assert.True(PrototypeKeyboardInput.TryGetSelectedMutation(new PrototypeInputState { SelectMutation1 = true }, out var first));
+            Assert.AreEqual(MutationType.Dormancy, first);
+
+            Assert.True(PrototypeKeyboardInput.TryGetSelectedMutation(new PrototypeInputState { SelectMutation2 = true }, out var second));
+            Assert.AreEqual(MutationType.NeuralControl, second);
+
+            Assert.True(PrototypeKeyboardInput.TryGetSelectedMutation(new PrototypeInputState { SelectMutation3 = true }, out var third));
+            Assert.AreEqual(MutationType.MammalAdaptation, third);
         }
     }
 }

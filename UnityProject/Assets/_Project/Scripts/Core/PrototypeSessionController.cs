@@ -1,9 +1,9 @@
 using LastHost.Prototype.Host;
+using LastHost.Prototype.Input;
 using LastHost.Prototype.Mutations;
 using LastHost.Prototype.UI;
 using LastHost.Prototype.VirusMinigame;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace LastHost.Prototype.Core
 {
@@ -42,27 +42,15 @@ namespace LastHost.Prototype.Core
             {
                 State.TickRatMode(Time.deltaTime);
             }
-            else if (State.Mode == PrototypeGameMode.MutationSelection && Keyboard.current != null)
+            else if (State.Mode == PrototypeGameMode.MutationSelection)
             {
-                if (Keyboard.current.digit1Key.wasPressedThisFrame)
+                if (PrototypeKeyboardInput.TryGetSelectedMutation(PrototypeKeyboardInput.ReadCurrent(), out var selectedMutation))
                 {
-                    SelectMutation(MutationType.Dormancy);
-                    return;
-                }
-
-                if (Keyboard.current.digit2Key.wasPressedThisFrame)
-                {
-                    SelectMutation(MutationType.NeuralControl);
-                    return;
-                }
-
-                if (Keyboard.current.digit3Key.wasPressedThisFrame)
-                {
-                    SelectMutation(MutationType.MammalAdaptation);
+                    SelectMutation(selectedMutation);
                     return;
                 }
             }
-            else if (State.Mode == PrototypeGameMode.VirusFailed && Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            else if (State.Mode == PrototypeGameMode.VirusFailed && PrototypeKeyboardInput.WasRetryPressed())
             {
                 RetryVirusMinigame();
                 return;

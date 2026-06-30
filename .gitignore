@@ -3,6 +3,8 @@
 /.vscode/
 /UnityProject/.vscode/
 /UnityProject/*.slnx
+/UnityProject/Assets/_Recovery/
+/UnityProject/Assets/_Recovery.meta
 
 # Legacy Unity working folder left by the repository merge.
 # Remove this folder after Unity releases file locks.

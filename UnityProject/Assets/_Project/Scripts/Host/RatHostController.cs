@@ -1,6 +1,6 @@
 using LastHost.Prototype.Core;
+using LastHost.Prototype.Input;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace LastHost.Prototype.Host
 {
@@ -49,35 +49,7 @@ namespace LastHost.Prototype.Host
 
         private static Vector2 ReadMoveInput()
         {
-            if (Keyboard.current == null)
-            {
-                return Vector2.zero;
-            }
-
-            var x = 0f;
-            var y = 0f;
-
-            if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-            {
-                x -= 1f;
-            }
-
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-            {
-                x += 1f;
-            }
-
-            if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed)
-            {
-                y -= 1f;
-            }
-
-            if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)
-            {
-                y += 1f;
-            }
-
-            return new Vector2(x, y);
+            return PrototypeKeyboardInput.ReadMoveInput();
         }
 
         private void ClampToSewerBounds()
