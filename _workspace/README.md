@@ -5,6 +5,7 @@
 ## 목적
 
 - 에이전트별 작업 배정 내용을 한곳에 모은다.
+- 어떤 에이전트가 어떤 일을 맡고 어떤 산출물을 냈는지 작업 단위로 남긴다.
 - 작업 중 의사결정, 조사 내용, 산출물을 잃지 않도록 기록한다.
 - 작업 완료 후 별도 완료 폴더를 만들어 무엇을 했고 어떻게 완료했는지 추적한다.
 - 사용자 승인 여부와 검증 결과를 작업 단위로 남긴다.
@@ -15,7 +16,7 @@
 
 ## 루프 엔지니어링에서의 역할
 
-`_workspace`는 루프 엔지니어링의 상태 저장소다. 진행 중 작업은 `active/`에 두고, 루프가 검증과 보고까지 끝나면 `completed/`로 옮긴다. 루프 진행 중 승인 게이트, 범위 충돌, 검증 불가, 에이전트 산출물 충돌, 작업 기록 누락이 생기면 완료 처리하지 않고 사용자에게 문제 사안으로 보고한다.
+`_workspace`는 루프 엔지니어링의 상태 저장소다. 진행 중 작업은 `active/`에 두고, 루프가 검증과 보고까지 끝나면 `completed/`로 옮긴다. 루프 진행 중 승인 게이트, 범위 충돌, 검증 불가, 에이전트 산출물 충돌, 에이전트 수행 이력 누락, 작업 기록 누락이 생기면 완료 처리하지 않고 사용자에게 문제 사안으로 보고한다.
 
 코드, 씬, ProjectSettings, 승인 문서, 운영 문서 변경은 완료 처리 전에 `docs/agents/loop-engineering-gates.md`의 작업 배정, 담당 산출물, QA/검증, 총괄 관리자 게이트를 확인한다.
 
@@ -27,18 +28,21 @@ _workspace/
     <작업ID>/
       task.md
       work-log.md
+      agent-activity.md
       handoff.md
       artifacts/
   completed/
     <완료일>-<작업ID>/
       task.md
       work-log.md
+      agent-activity.md
       completion-report.md
       verification.md
       artifacts/
   templates/
     task.md
     work-log.md
+    agent-activity.md
     handoff.md
     completion-report.md
     verification.md
@@ -64,17 +68,19 @@ YYYY-MM-DD-short-topic
 
 1. 작업을 시작할 때 `_workspace/active/<작업ID>/`를 만든다.
 2. `templates/task.md`를 복사해 작업 배정 내용을 기록한다.
-3. 진행 중 `work-log.md`에 조사, 판단, 변경 내용을 누적한다.
-4. 다른 에이전트로 넘길 내용은 `handoff.md`에 정리한다.
-5. 작업 완료 시 `_workspace/completed/<완료일>-<작업ID>/`를 만든다.
-6. 완료 폴더에 작업 기록, 검증 기록, 완료 보고서를 남긴다.
-7. 완료 폴더 경로를 최종 보고와 필요 시 커밋 메시지에 포함한다.
+3. `templates/agent-activity.md`를 복사해 참여 에이전트, 역할, 담당 업무, 산출물, 판정을 기록한다.
+4. 진행 중 `work-log.md`에 조사, 판단, 변경 내용을 누적한다.
+5. 다른 에이전트로 넘길 내용은 `handoff.md`에 정리한다.
+6. 작업 완료 시 `_workspace/completed/<완료일>-<작업ID>/`를 만든다.
+7. 완료 폴더에 작업 기록, 에이전트 수행 이력, 검증 기록, 완료 보고서를 남긴다.
+8. 완료 폴더 경로를 최종 보고와 필요 시 커밋 메시지에 포함한다.
 
 ## 금지 사항
 
 - `_workspace`에 빌드 산출물, 대용량 에셋, 임시 캐시를 보관하지 않는다.
 - 승인되지 않은 구현 변경을 완료 폴더에 완료 처리하지 않는다.
 - 검증하지 않은 내용을 완료로 기록하지 않는다.
+- 어떤 에이전트가 어떤 일을 처리했는지 누락한 채 완료 처리하지 않는다.
 - 사용자 승인 대기 항목을 누락한 채 완료 처리하지 않는다.
 
 ## 완료 조건
@@ -83,6 +89,7 @@ YYYY-MM-DD-short-topic
 
 - `task.md`
 - `work-log.md`
+- `agent-activity.md`
 - `completion-report.md`
 - `verification.md`
 
