@@ -11,6 +11,8 @@ using UnityEditor.Build.Reporting;
 using UnityEditor.Events;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -44,6 +46,7 @@ namespace LastHost.Prototype.Editor
             var rat = BuildRatHostMode(ratRoot, session, materials);
             var virus = BuildVirusMinigameMode(virusRoot, session, materials);
             var hud = BuildUi(uiRoot, session);
+            BuildEventSystem(uiRoot);
             BuildCamera(cameraRoot);
             BuildLighting(lightingRoot);
 
@@ -210,6 +213,14 @@ namespace LastHost.Prototype.Editor
             hud.failurePanel = BuildFailurePanel(canvasObject.transform, hud);
 
             return hud;
+        }
+
+        private static void BuildEventSystem(Transform parent)
+        {
+            var eventSystemObject = new GameObject("EventSystem");
+            eventSystemObject.transform.SetParent(parent, false);
+            eventSystemObject.AddComponent<EventSystem>();
+            eventSystemObject.AddComponent<InputSystemUIInputModule>();
         }
 
         private static GameObject BuildMutationPanel(Transform parent, PrototypeSessionController session)

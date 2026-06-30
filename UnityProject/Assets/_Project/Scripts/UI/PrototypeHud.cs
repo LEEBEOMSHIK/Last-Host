@@ -2,6 +2,8 @@ using System.Text;
 using LastHost.Prototype.Core;
 using LastHost.Prototype.Mutations;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 namespace LastHost.Prototype.UI
@@ -23,6 +25,11 @@ namespace LastHost.Prototype.UI
 
         private PrototypeSessionController session;
         private readonly StringBuilder mutationBuilder = new StringBuilder();
+
+        private void Awake()
+        {
+            EnsureEventSystem();
+        }
 
         public void Bind(PrototypeSessionController controller)
         {
@@ -148,6 +155,18 @@ namespace LastHost.Prototype.UI
             {
                 slider.value = Mathf.Clamp01(value);
             }
+        }
+
+        private static void EnsureEventSystem()
+        {
+            if (UnityEngine.Object.FindAnyObjectByType<EventSystem>(FindObjectsInactive.Include) != null)
+            {
+                return;
+            }
+
+            var eventSystemObject = new GameObject("EventSystem");
+            eventSystemObject.AddComponent<EventSystem>();
+            eventSystemObject.AddComponent<InputSystemUIInputModule>();
         }
     }
 }

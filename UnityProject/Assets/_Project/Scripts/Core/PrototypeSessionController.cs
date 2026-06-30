@@ -42,6 +42,26 @@ namespace LastHost.Prototype.Core
             {
                 State.TickRatMode(Time.deltaTime);
             }
+            else if (State.Mode == PrototypeGameMode.MutationSelection && Keyboard.current != null)
+            {
+                if (Keyboard.current.digit1Key.wasPressedThisFrame)
+                {
+                    SelectMutation(MutationType.Dormancy);
+                    return;
+                }
+
+                if (Keyboard.current.digit2Key.wasPressedThisFrame)
+                {
+                    SelectMutation(MutationType.NeuralControl);
+                    return;
+                }
+
+                if (Keyboard.current.digit3Key.wasPressedThisFrame)
+                {
+                    SelectMutation(MutationType.MammalAdaptation);
+                    return;
+                }
+            }
             else if (State.Mode == PrototypeGameMode.VirusFailed && Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 RetryVirusMinigame();
