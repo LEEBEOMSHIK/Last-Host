@@ -1,0 +1,7 @@
+PASS Scene opens
+PASS Core controller references are wired
+PASS Gameplay actors exist
+PASS HUD references are wired
+PASS Assets exist
+PASS Build settings are configured
+PASS No missing scripts in scene

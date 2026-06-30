@@ -5,3 +5,6 @@
 # Legacy Unity working folder left by the repository merge.
 # Remove this folder after Unity releases file locks.
 /My project/
+
+# Local Unity build outputs.
+/Builds/

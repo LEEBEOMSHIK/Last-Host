@@ -1,0 +1,54 @@
+{
+  "name": "RatHostPrototypeControls",
+  "maps": [
+    {
+      "name": "Host",
+      "id": "85c24326-da28-42e6-b54f-b3ee9757d027",
+      "actions": [
+        { "name": "Move", "type": "Value", "id": "1aa9b6d3-834a-4e12-af61-c5895ca9cee4", "expectedControlType": "Vector2", "processors": "", "interactions": "", "initialStateCheck": true },
+        { "name": "Interact", "type": "Button", "id": "117ecbe2-b2a1-421f-bd08-b4f029f63db3", "expectedControlType": "Button", "processors": "", "interactions": "", "initialStateCheck": false }
+      ],
+      "bindings": [
+        { "name": "WASD", "id": "d8d9c368-2b3e-43bc-b82f-94218d823d64", "path": "2DVector", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Move", "isComposite": true, "isPartOfComposite": false },
+        { "name": "up", "id": "3a32857f-48a0-44a8-8861-0c0cd1985f5a", "path": "<Keyboard>/w", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Move", "isComposite": false, "isPartOfComposite": true },
+        { "name": "down", "id": "35c0d866-b01a-4d99-90ef-9f09602a2d29", "path": "<Keyboard>/s", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Move", "isComposite": false, "isPartOfComposite": true },
+        { "name": "left", "id": "d106eef1-abcc-4f77-9719-3129aabb43ea", "path": "<Keyboard>/a", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Move", "isComposite": false, "isPartOfComposite": true },
+        { "name": "right", "id": "3280a681-121a-45e4-bb15-d1d3be4bdfcd", "path": "<Keyboard>/d", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Move", "isComposite": false, "isPartOfComposite": true },
+        { "name": "", "id": "779ffa3d-d41b-4e68-a0a7-3deb45cb3f90", "path": "<Keyboard>/space", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Interact", "isComposite": false, "isPartOfComposite": false }
+      ]
+    },
+    {
+      "name": "VirusMinigame",
+      "id": "1dba968b-32d6-49fc-8f9c-08d9f64fe176",
+      "actions": [
+        { "name": "Move", "type": "Value", "id": "cf032d8c-11cf-4ff6-808e-026c12277b85", "expectedControlType": "Vector2", "processors": "", "interactions": "", "initialStateCheck": true }
+      ],
+      "bindings": [
+        { "name": "WASD", "id": "2e6eaaf5-d2e5-4c44-9176-ce38d526b631", "path": "2DVector", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Move", "isComposite": true, "isPartOfComposite": false },
+        { "name": "up", "id": "db893374-53f8-4e76-95de-cf08e906647b", "path": "<Keyboard>/w", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Move", "isComposite": false, "isPartOfComposite": true },
+        { "name": "down", "id": "77b44035-0bb3-408f-93e3-1d8fd1ba2c01", "path": "<Keyboard>/s", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Move", "isComposite": false, "isPartOfComposite": true },
+        { "name": "left", "id": "774ee232-41a8-41ac-bb7e-929d651ecaef", "path": "<Keyboard>/a", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Move", "isComposite": false, "isPartOfComposite": true },
+        { "name": "right", "id": "04237f30-470b-4520-93f3-810a100c8e48", "path": "<Keyboard>/d", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Move", "isComposite": false, "isPartOfComposite": true }
+      ]
+    },
+    {
+      "name": "UI",
+      "id": "e5853f26-ba44-4983-b602-9c596ff9ecf2",
+      "actions": [
+        { "name": "Confirm", "type": "Button", "id": "8bf24b99-45d9-4d8b-a03a-eafcf12c7e60", "expectedControlType": "Button", "processors": "", "interactions": "", "initialStateCheck": false }
+      ],
+      "bindings": [
+        { "name": "", "id": "62a941c2-b15a-429c-bdb6-484e0ac4fbd8", "path": "<Keyboard>/space", "interactions": "", "processors": "", "groups": "Keyboard", "action": "Confirm", "isComposite": false, "isPartOfComposite": false }
+      ]
+    }
+  ],
+  "controlSchemes": [
+    {
+      "name": "Keyboard",
+      "bindingGroup": "Keyboard",
+      "devices": [
+        { "devicePath": "<Keyboard>", "isOptional": false, "isOR": false }
+      ]
+    }
+  ]
+}
