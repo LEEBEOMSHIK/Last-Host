@@ -159,9 +159,8 @@ namespace LastHost.Prototype.Cameras
                 return;
             }
 
-            var yaw = Quaternion.Euler(0f, hostTarget.eulerAngles.y, 0f);
             var focus = hostTarget.position + Vector3.up * thirdPersonFocusHeight;
-            var position = hostTarget.position + (yaw * thirdPersonOffset);
+            var position = hostTarget.position + thirdPersonOffset;
             var rotation = Quaternion.LookRotation(focus - position, Vector3.up);
 
             attachedCamera.orthographic = false;

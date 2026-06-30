@@ -223,6 +223,36 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void PrototypeCameraController_ThirdPersonDoesNotOrbitWhenRatTurns()
+        {
+            var cameraObject = new GameObject("Prototype Camera");
+            cameraObject.AddComponent<Camera>();
+            var controller = cameraObject.AddComponent<PrototypeCameraController>();
+            var target = new GameObject("Rat Target");
+
+            target.transform.position = Vector3.zero;
+            target.transform.rotation = Quaternion.identity;
+            controller.hostTarget = target.transform;
+
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+
+            var firstOffset = cameraObject.transform.position - target.transform.position;
+            var firstRotation = cameraObject.transform.rotation;
+
+            target.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+
+            var secondOffset = cameraObject.transform.position - target.transform.position;
+
+            Assert.AreEqual(firstOffset.x, secondOffset.x, 0.001f);
+            Assert.AreEqual(firstOffset.z, secondOffset.z, 0.001f);
+            Assert.Less(Quaternion.Angle(firstRotation, cameraObject.transform.rotation), 0.1f);
+
+            Object.DestroyImmediate(target);
+            Object.DestroyImmediate(cameraObject);
+        }
+
+        [Test]
         public void RatHostPrototypeScene_StartsWithRatVisibleToCamera()
         {
             EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
