@@ -139,6 +139,8 @@
 - `.agents/design-keeper-agent.md`
 - `.agents/unity-architecture-agent.md`
 - `.agents/gameplay-loop-agent.md`
+- `.agents/gameplay-implementation-agent.md`
+- `.agents/unity-scene-integration-agent.md`
 - `.agents/visual-tech-art-agent.md`
 - `.agents/qa-verification-agent.md`
 - `.agents/documentation-release-agent.md`
@@ -165,6 +167,32 @@
 - `_workspace/templates/handoff.md`
 - `_workspace/templates/completion-report.md`
 - `_workspace/templates/verification.md`
+
+### Unity 구현 / 씬 통합
+
+사용 요청 예시:
+
+- C# 게임플레이 코드 구현
+- EditMode 테스트 작성 또는 수정
+- Unity 씬, 프리팹, 입력, 카메라, UI 연결
+- 승인된 범위의 Build Settings 또는 ProjectSettings 변경
+
+필수 참조:
+
+- `docs/prototype/plans/rat-host-implementation-plan.md`
+- `docs/agents/loop-engineering-gates.md`
+- `.agents/gameplay-implementation-agent.md`
+- `.agents/unity-scene-integration-agent.md`
+- `.agents/project-coordinator-agent.md`
+
+선택 참조:
+
+- `.agents/gameplay-loop-agent.md`
+- `.agents/unity-architecture-agent.md`
+- `.agents/visual-tech-art-agent.md`
+- `.agents/qa-verification-agent.md`
+- `_workspace/templates/task.md`
+- `_workspace/templates/agent-activity.md`
 
 ### 검증 / 완료 판단
 
