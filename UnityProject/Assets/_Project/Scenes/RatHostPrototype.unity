@@ -3211,6 +3211,7 @@ GameObject:
   - component: {fileID: 1288315316}
   - component: {fileID: 1288315318}
   - component: {fileID: 1288315317}
+  - component: {fileID: 1288315319}
   m_Layer: 0
   m_Name: IsometricCamera
   m_TagString: MainCamera
@@ -3226,8 +3227,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288315315}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2902899, y: -0.3633022, z: 0.120242015, w: 0.8770891}
-  m_LocalPosition: {x: 7.8, y: 8.2, z: -7.8}
+  m_LocalRotation: {x: 0.2621324, y: -0, z: -0, w: 0.9650319}
+  m_LocalPosition: {x: -4.4, y: 3.6, z: -6.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3274,8 +3275,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  field of view: 50
+  orthographic: 0
   orthographic size: 6.2
   m_Depth: 0
   m_CullingMask:
@@ -3292,6 +3293,31 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1288315319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288315315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1afb630eb8d24c34fb23376b9cb87c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LastHost.Prototype::LastHost.Prototype.Cameras.PrototypeCameraController
+  session: {fileID: 2116226513}
+  startingHostMode: 0
+  hostTarget: {fileID: 313740869}
+  virusTarget: {fileID: 1351733410}
+  thirdPersonOffset: {x: 0, y: 3.6, z: -5.2}
+  thirdPersonFocusHeight: 0.55
+  thirdPersonFieldOfView: 50
+  quarterViewOffset: {x: 6.4, y: 7.4, z: -6.4}
+  quarterViewFocusHeight: 0.3
+  quarterViewOrthographicSize: 5.2
+  virusViewOffset: {x: 0, y: 8, z: -0.15}
+  virusViewOrthographicSize: 4.4
+  followSharpness: 18
 --- !u!1 &1291423853
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using LastHost.Prototype.Core;
+using LastHost.Prototype.Cameras;
 using LastHost.Prototype.Host;
 using LastHost.Prototype.Immune;
 using LastHost.Prototype.Input;
@@ -166,12 +167,68 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void PrototypeKeyboardInput_MapsCameraToggleKey()
+        {
+            var input = new PrototypeInputState
+            {
+                ToggleCameraMode = true
+            };
+
+            Assert.True(PrototypeKeyboardInput.WasCameraToggleRequested(input));
+        }
+
+        [Test]
+        public void PrototypeKeyboardInput_ComposesCameraRelativeMovement()
+        {
+            var cameraObject = new GameObject("Camera Input Basis");
+            cameraObject.transform.rotation = Quaternion.LookRotation(new Vector3(1f, -1f, 1f), Vector3.up);
+
+            var move = PrototypeKeyboardInput.ComposeCameraRelativeMoveInput(
+                new PrototypeInputState { MoveUp = true },
+                cameraObject.transform);
+            var expectedForward = Vector3.ProjectOnPlane(cameraObject.transform.forward, Vector3.up).normalized;
+
+            Assert.AreEqual(0f, move.y, 0.001f);
+            Assert.AreEqual(1f, move.magnitude, 0.001f);
+            Assert.Greater(Vector3.Dot(expectedForward, move), 0.999f);
+
+            Object.DestroyImmediate(cameraObject);
+        }
+
+        [Test]
+        public void PrototypeCameraController_TogglesBetweenThirdPersonAndQuarterView()
+        {
+            var cameraObject = new GameObject("Prototype Camera");
+            var camera = cameraObject.AddComponent<Camera>();
+            var controller = cameraObject.AddComponent<PrototypeCameraController>();
+            var target = new GameObject("Rat Target");
+
+            target.transform.position = Vector3.zero;
+            controller.hostTarget = target.transform;
+
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+
+            Assert.AreEqual(PrototypeCameraMode.ThirdPerson, controller.CurrentHostMode);
+            Assert.False(camera.orthographic);
+
+            controller.ToggleHostCameraMode();
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+
+            Assert.AreEqual(PrototypeCameraMode.QuarterView, controller.CurrentHostMode);
+            Assert.True(camera.orthographic);
+            Assert.Greater(camera.orthographicSize, 0f);
+
+            Object.DestroyImmediate(target);
+            Object.DestroyImmediate(cameraObject);
+        }
+
+        [Test]
         public void RatHostPrototypeScene_StartsWithRatVisibleToCamera()
         {
             EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
 
-            var camera = Object.FindFirstObjectByType<Camera>();
-            var rat = Object.FindFirstObjectByType<RatHostController>(FindObjectsInactive.Include);
+            var camera = Object.FindAnyObjectByType<Camera>();
+            var rat = Object.FindAnyObjectByType<RatHostController>(FindObjectsInactive.Include);
 
             Assert.NotNull(camera);
             Assert.NotNull(rat);
@@ -189,6 +246,20 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.LessOrEqual(viewport.x, 0.92f);
             Assert.GreaterOrEqual(viewport.y, 0.08f);
             Assert.LessOrEqual(viewport.y, 0.92f);
+        }
+
+        [Test]
+        public void RatHostPrototypeScene_DefaultsToThirdPersonCameraController()
+        {
+            EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
+
+            var camera = Object.FindAnyObjectByType<Camera>();
+            var controller = Object.FindAnyObjectByType<PrototypeCameraController>();
+
+            Assert.NotNull(camera);
+            Assert.NotNull(controller);
+            Assert.AreEqual(camera, controller.GetComponent<Camera>());
+            Assert.AreEqual(PrototypeCameraMode.ThirdPerson, controller.CurrentHostMode);
         }
     }
 }

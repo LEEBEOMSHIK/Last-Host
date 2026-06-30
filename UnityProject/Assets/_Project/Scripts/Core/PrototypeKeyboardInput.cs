@@ -14,6 +14,7 @@ namespace LastHost.Prototype.Input
         public bool SelectMutation2;
         public bool SelectMutation3;
         public bool Retry;
+        public bool ToggleCameraMode;
     }
 
     public static class PrototypeKeyboardInput
@@ -29,7 +30,8 @@ namespace LastHost.Prototype.Input
                 SelectMutation1 = WasPressedThisFrame(Key.Digit1, KeyCode.Alpha1),
                 SelectMutation2 = WasPressedThisFrame(Key.Digit2, KeyCode.Alpha2),
                 SelectMutation3 = WasPressedThisFrame(Key.Digit3, KeyCode.Alpha3),
-                Retry = WasPressedThisFrame(Key.Space, KeyCode.Space)
+                Retry = WasPressedThisFrame(Key.Space, KeyCode.Space),
+                ToggleCameraMode = WasPressedThisFrame(Key.V, KeyCode.V)
             };
         }
 
@@ -67,6 +69,40 @@ namespace LastHost.Prototype.Input
             return move.sqrMagnitude > 1f ? move.normalized : move;
         }
 
+        public static Vector3 ReadCameraRelativeMoveInput(Transform cameraTransform)
+        {
+            return ComposeCameraRelativeMoveInput(ReadCurrent(), cameraTransform);
+        }
+
+        public static Vector3 ComposeCameraRelativeMoveInput(PrototypeInputState input, Transform cameraTransform)
+        {
+            var move = ComposeMoveInput(input);
+            if (move == Vector2.zero)
+            {
+                return Vector3.zero;
+            }
+
+            if (cameraTransform == null)
+            {
+                return new Vector3(move.x, 0f, move.y);
+            }
+
+            var forward = Vector3.ProjectOnPlane(cameraTransform.forward, Vector3.up);
+            if (forward.sqrMagnitude < 0.0001f)
+            {
+                forward = Vector3.forward;
+            }
+
+            var right = Vector3.ProjectOnPlane(cameraTransform.right, Vector3.up);
+            if (right.sqrMagnitude < 0.0001f)
+            {
+                right = Vector3.right;
+            }
+
+            var worldMove = (right.normalized * move.x) + (forward.normalized * move.y);
+            return worldMove.sqrMagnitude > 1f ? worldMove.normalized : worldMove;
+        }
+
         public static bool TryGetSelectedMutation(PrototypeInputState input, out MutationType type)
         {
             if (input.SelectMutation1)
@@ -94,6 +130,16 @@ namespace LastHost.Prototype.Input
         public static bool WasRetryPressed()
         {
             return ReadCurrent().Retry;
+        }
+
+        public static bool WasCameraToggleRequested()
+        {
+            return WasCameraToggleRequested(ReadCurrent());
+        }
+
+        public static bool WasCameraToggleRequested(PrototypeInputState input)
+        {
+            return input.ToggleCameraMode;
         }
 
         private static bool IsPressed(Key inputSystemKey, KeyCode legacyKey)

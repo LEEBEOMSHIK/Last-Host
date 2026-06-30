@@ -18,8 +18,7 @@ namespace LastHost.Prototype.VirusMinigame
 
         private void Update()
         {
-            var moveInput = ReadMoveInput();
-            var move = new Vector3(moveInput.x, 0f, moveInput.y);
+            var move = ReadMoveInput();
             if (move.sqrMagnitude > 1f)
             {
                 move.Normalize();
@@ -34,9 +33,10 @@ namespace LastHost.Prototype.VirusMinigame
             transform.position = startPosition;
         }
 
-        private static Vector2 ReadMoveInput()
+        private static Vector3 ReadMoveInput()
         {
-            return PrototypeKeyboardInput.ReadMoveInput();
+            var mainCamera = Camera.main;
+            return PrototypeKeyboardInput.ReadCameraRelativeMoveInput(mainCamera != null ? mainCamera.transform : null);
         }
 
         private void ClampToArena()
