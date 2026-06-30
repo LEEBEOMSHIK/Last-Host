@@ -1,6 +1,8 @@
 # Local IDE files
 /.idea/
 /.vscode/
+/UnityProject/.vscode/
+/UnityProject/*.slnx
 
 # Legacy Unity working folder left by the repository merge.
 # Remove this folder after Unity releases file locks.
