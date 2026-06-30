@@ -3213,7 +3213,7 @@ GameObject:
   - component: {fileID: 1288315317}
   m_Layer: 0
   m_Name: IsometricCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3226,7 +3226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288315315}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.44790566, y: 0.3347025, z: -0.18552862, w: 0.80804324}
+  m_LocalRotation: {x: 0.2902899, y: -0.3633022, z: 0.120242015, w: 0.8770891}
   m_LocalPosition: {x: 7.8, y: 8.2, z: -7.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

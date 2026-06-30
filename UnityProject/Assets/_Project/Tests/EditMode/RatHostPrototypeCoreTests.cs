@@ -1,10 +1,12 @@
 using LastHost.Prototype.Core;
+using LastHost.Prototype.Host;
 using LastHost.Prototype.Immune;
 using LastHost.Prototype.Input;
 using LastHost.Prototype.Mutations;
 using LastHost.Prototype.VirusMinigame;
-using UnityEngine;
 using NUnit.Framework;
+using UnityEditor.SceneManagement;
+using UnityEngine;
 
 namespace LastHost.Prototype.Tests.EditMode
 {
@@ -161,6 +163,32 @@ namespace LastHost.Prototype.Tests.EditMode
 
             Assert.True(PrototypeKeyboardInput.TryGetSelectedMutation(new PrototypeInputState { SelectMutation3 = true }, out var third));
             Assert.AreEqual(MutationType.MammalAdaptation, third);
+        }
+
+        [Test]
+        public void RatHostPrototypeScene_StartsWithRatVisibleToCamera()
+        {
+            EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
+
+            var camera = Object.FindFirstObjectByType<Camera>();
+            var rat = Object.FindFirstObjectByType<RatHostController>(FindObjectsInactive.Include);
+
+            Assert.NotNull(camera);
+            Assert.NotNull(rat);
+
+            var ratRenderer = rat.GetComponentInChildren<Renderer>(true);
+
+            Assert.NotNull(ratRenderer);
+            Assert.True(ratRenderer.enabled);
+            Assert.True(ratRenderer.gameObject.activeInHierarchy);
+
+            var viewport = camera.WorldToViewportPoint(ratRenderer.bounds.center);
+
+            Assert.Greater(viewport.z, camera.nearClipPlane);
+            Assert.GreaterOrEqual(viewport.x, 0.08f);
+            Assert.LessOrEqual(viewport.x, 0.92f);
+            Assert.GreaterOrEqual(viewport.y, 0.08f);
+            Assert.LessOrEqual(viewport.y, 0.92f);
         }
     }
 }
