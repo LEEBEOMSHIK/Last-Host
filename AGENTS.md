@@ -19,6 +19,7 @@
 
 - 원본 초안: `C:\project\game\last_host\last_host_game_plan.docx`
 - 작업 문서는 `docs/` 아래에 둔다.
+- 문서는 성격별 폴더에 둔다. 새 문서나 이동 문서가 기존 폴더 성격과 섞이면 하위 폴더와 README 색인을 먼저 정리한다.
 - 작업별 참조 문서 색인은 `docs/agents/agent-reference-map.md`를 따른다.
 - `.docx`와 Markdown 문서가 충돌하면, 사용자가 별도로 승인하기 전까지 `.docx`는 원본 초안, Markdown 문서는 현재 작업 해석본으로 본다.
 

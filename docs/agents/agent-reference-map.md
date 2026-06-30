@@ -194,6 +194,7 @@
 
 필수 참조:
 
+- `docs/README.md`
 - `.agents/documentation-release-agent.md`
 - `_workspace/templates/completion-report.md`
 
