@@ -4,10 +4,12 @@ using LastHost.Prototype.Host;
 using LastHost.Prototype.Immune;
 using LastHost.Prototype.Input;
 using LastHost.Prototype.Mutations;
+using LastHost.Prototype.UI;
 using LastHost.Prototype.VirusMinigame;
 using NUnit.Framework;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace LastHost.Prototype.Tests.EditMode
 {
@@ -86,9 +88,21 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
-        public void Session_ImmuneThresholdMovesFromRatModeToVirusMode()
+        public void Session_DefaultRatModeTickDoesNotRaiseImmuneAlert()
         {
             var session = new PrototypeSessionState();
+
+            Assert.AreEqual(PrototypeGameMode.RatHost, session.Mode);
+
+            Assert.False(session.TickRatMode(10f));
+            Assert.AreEqual(PrototypeGameMode.RatHost, session.Mode);
+            Assert.AreEqual(0f, session.ImmuneAlert.Value);
+        }
+
+        [Test]
+        public void Session_ConfiguredBaseAlertMovesFromRatModeToVirusMode()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig { BaseAlertPerSecond = 2.5f });
 
             Assert.AreEqual(PrototypeGameMode.RatHost, session.Mode);
 
@@ -138,6 +152,60 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void Session_RatRiskInteractionAffordanceTracksPromptAndCanClear()
+        {
+            var session = new PrototypeSessionState();
+
+            Assert.False(session.IsRatRiskInteractionAvailable);
+            Assert.AreEqual(string.Empty, session.RatRiskInteractionPrompt);
+
+            session.SetRatRiskInteractionAffordance(true, "소음 배관 조사 가능");
+
+            Assert.True(session.IsRatRiskInteractionAvailable);
+            Assert.AreEqual("소음 배관 조사 가능", session.RatRiskInteractionPrompt);
+
+            session.SetRatRiskInteractionAffordance(false, "소음 배관 조사 가능");
+
+            Assert.False(session.IsRatRiskInteractionAvailable);
+            Assert.AreEqual(string.Empty, session.RatRiskInteractionPrompt);
+        }
+
+        [Test]
+        public void Session_RatRiskInteractionAffordanceRequiresReadablePrompt()
+        {
+            var session = new PrototypeSessionState();
+
+            Assert.False(session.SetRatRiskInteractionAffordance(true, "   "));
+            Assert.False(session.IsRatRiskInteractionAvailable);
+            Assert.AreEqual(string.Empty, session.RatRiskInteractionPrompt);
+
+            Assert.True(session.SetRatRiskInteractionAffordance(true, "소음 배관 조사 가능"));
+            Assert.True(session.SetRatRiskInteractionAffordance(true, null));
+            Assert.False(session.IsRatRiskInteractionAvailable);
+            Assert.AreEqual(string.Empty, session.RatRiskInteractionPrompt);
+        }
+
+        [Test]
+        public void PrototypeHud_ShowsRiskInteractionPromptWhenRatCanInteract()
+        {
+            var session = new PrototypeSessionState();
+            session.SetRatRiskInteractionAffordance(true, "소음 배관 조사 가능");
+
+            var hudObject = new GameObject("HUD Under Test");
+            var objectiveObject = new GameObject("Objective Text");
+            objectiveObject.transform.SetParent(hudObject.transform, false);
+            var objectiveText = objectiveObject.AddComponent<Text>();
+            var hud = hudObject.AddComponent<PrototypeHud>();
+            hud.objectiveText = objectiveText;
+
+            hud.Refresh(session);
+
+            Assert.AreEqual("소음 배관 조사 가능", objectiveText.text);
+
+            Object.DestroyImmediate(hudObject);
+        }
+
+        [Test]
         public void PrototypeKeyboardInput_ComposesNormalizedMovement()
         {
             var input = new PrototypeInputState
@@ -175,6 +243,12 @@ namespace LastHost.Prototype.Tests.EditMode
             };
 
             Assert.True(PrototypeKeyboardInput.WasCameraToggleRequested(input));
+        }
+
+        [Test]
+        public void PrototypeKeyboardInput_MapsInteractKey()
+        {
+            Assert.True(PrototypeKeyboardInput.WasInteractPressed(new PrototypeInputState { Interact = true }));
         }
 
         [Test]
@@ -358,6 +432,8 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.NotNull(camera);
             Assert.NotNull(controller);
             Assert.AreEqual(camera, controller.GetComponent<Camera>());
+            Assert.True(camera.CompareTag("MainCamera"));
+            Assert.AreEqual(camera, Camera.main);
             Assert.AreEqual(PrototypeCameraMode.ThirdPerson, controller.CurrentHostMode);
         }
 
@@ -373,5 +449,24 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.Less(controller.quarterViewOffset.z, -0.1f);
             Assert.Less(Mathf.Abs(controller.quarterViewOffset.x), Mathf.Abs(controller.quarterViewOffset.z));
         }
+
+        [Test]
+        public void RatHostPrototypeScene_NoisyPipeIncludesReadablePipeValveMarkers()
+        {
+            EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
+
+            var interactableObject = GameObject.Find("NoisyPipeRiskInteractable");
+
+            Assert.NotNull(interactableObject);
+            Assert.NotNull(interactableObject.GetComponent<RatRiskInteractable>());
+            Assert.NotNull(interactableObject.transform.Find("PipeBody"));
+            Assert.NotNull(interactableObject.transform.Find("ValveWheel"));
+
+            var marker = interactableObject.transform.Find("InteractionMarkerRing");
+
+            Assert.NotNull(marker);
+            Assert.Greater(marker.childCount, 0);
+        }
+
     }
 }

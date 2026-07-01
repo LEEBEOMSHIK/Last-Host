@@ -129,6 +129,11 @@ namespace LastHost.Prototype.UI
             switch (state.Mode)
             {
                 case PrototypeGameMode.RatHost:
+                    if (state.IsRatRiskInteractionAvailable)
+                    {
+                        return state.RatRiskInteractionPrompt;
+                    }
+
                     return state.Mutations.CanUseMammalPassage ? "포유류 통로 개방됨" : "하수도 탐색 중";
                 case PrototypeGameMode.InternalVirus:
                     return "변이 조각 수집 / 백혈구 회피";

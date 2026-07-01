@@ -94,6 +94,19 @@ namespace LastHost.Prototype.Core
             hud?.Refresh(State);
         }
 
+        public void SetRatRiskInteractionAffordance(bool isAvailable, string prompt)
+        {
+            if (State == null)
+            {
+                return;
+            }
+
+            if (State.SetRatRiskInteractionAffordance(isAvailable, prompt))
+            {
+                hud?.Refresh(State);
+            }
+        }
+
         public VirusMinigameOutcome ResolveVirusFrame(bool collectedFragment, bool hitByWhiteBloodCell)
         {
             var previousMode = State.Mode;

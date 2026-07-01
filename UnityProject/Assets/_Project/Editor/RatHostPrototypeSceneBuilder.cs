@@ -48,7 +48,7 @@ namespace LastHost.Prototype.Editor
             var virus = BuildVirusMinigameMode(virusRoot, session, materials);
             var hud = BuildUi(uiRoot, session);
             BuildEventSystem(uiRoot);
-            BuildCamera(cameraRoot);
+            BuildCamera(cameraRoot, session, rat, virus);
             BuildLighting(lightingRoot);
 
             session.ratHostModeRoot = ratRoot.gameObject;
@@ -103,11 +103,7 @@ namespace LastHost.Prototype.Editor
             var riskZone = toxicWater.AddComponent<ImmuneRiskZone>();
             riskZone.session = session;
 
-            var noisyPipe = CreatePrimitive(PrimitiveType.Cube, "NoisyPipeRiskInteractable", parent, new Vector3(2.2f, 0.35f, -2.2f), new Vector3(0.9f, 0.7f, 0.9f), materials.NoisyPipe);
-            var noisyPipeCollider = noisyPipe.GetComponent<Collider>();
-            noisyPipeCollider.isTrigger = true;
-            var interactable = noisyPipe.AddComponent<RatRiskInteractable>();
-            interactable.session = session;
+            BuildNoisyPipeInteractable(parent, session, materials);
 
             var gate = CreatePrimitive(PrimitiveType.Cube, "MammalAdaptationGate", parent, new Vector3(5.65f, 0.8f, 0f), new Vector3(0.6f, 1.6f, 1.7f), materials.GateBlocked);
             var gateComponent = gate.AddComponent<MammalAdaptationGate>();
@@ -133,6 +129,99 @@ namespace LastHost.Prototype.Editor
             Object.DestroyImmediate(visual.GetComponent<Collider>());
 
             return ratController;
+        }
+
+        private static void BuildNoisyPipeInteractable(Transform parent, PrototypeSessionController session, PrototypeMaterials materials)
+        {
+            var noisyPipe = new GameObject("NoisyPipeRiskInteractable");
+            noisyPipe.transform.SetParent(parent, false);
+            noisyPipe.transform.localPosition = new Vector3(2.2f, 0f, -2.2f);
+
+            var noisyPipeCollider = noisyPipe.AddComponent<BoxCollider>();
+            noisyPipeCollider.isTrigger = true;
+            noisyPipeCollider.center = new Vector3(0f, 0.55f, 0f);
+            noisyPipeCollider.size = new Vector3(1.9f, 1.25f, 1.9f);
+
+            var interactable = noisyPipe.AddComponent<RatRiskInteractable>();
+            interactable.session = session;
+
+            CreateVisualPrimitive(
+                PrimitiveType.Cylinder,
+                "PipeBody",
+                noisyPipe.transform,
+                new Vector3(0f, 0.42f, 0f),
+                new Vector3(0.28f, 0.78f, 0.28f),
+                Quaternion.Euler(0f, 0f, 90f),
+                materials.NoisyPipeBody);
+            CreateVisualPrimitive(
+                PrimitiveType.Cylinder,
+                "PipeEndCapLeft",
+                noisyPipe.transform,
+                new Vector3(-0.86f, 0.42f, 0f),
+                new Vector3(0.34f, 0.07f, 0.34f),
+                Quaternion.Euler(0f, 0f, 90f),
+                materials.NoisyPipeBody);
+            CreateVisualPrimitive(
+                PrimitiveType.Cylinder,
+                "PipeEndCapRight",
+                noisyPipe.transform,
+                new Vector3(0.86f, 0.42f, 0f),
+                new Vector3(0.34f, 0.07f, 0.34f),
+                Quaternion.Euler(0f, 0f, 90f),
+                materials.NoisyPipeBody);
+            CreateVisualPrimitive(
+                PrimitiveType.Cube,
+                "ValveStem",
+                noisyPipe.transform,
+                new Vector3(0f, 0.72f, 0f),
+                new Vector3(0.14f, 0.36f, 0.14f),
+                Quaternion.identity,
+                materials.NoisyPipeValve);
+            CreateVisualPrimitive(
+                PrimitiveType.Cylinder,
+                "ValveWheel",
+                noisyPipe.transform,
+                new Vector3(0f, 1.02f, 0f),
+                new Vector3(0.42f, 0.05f, 0.42f),
+                Quaternion.identity,
+                materials.NoisyPipeValve);
+            CreateVisualPrimitive(
+                PrimitiveType.Cube,
+                "ValveHandleCrossbarX",
+                noisyPipe.transform,
+                new Vector3(0f, 1.08f, 0f),
+                new Vector3(0.82f, 0.05f, 0.08f),
+                Quaternion.identity,
+                materials.NoisyPipeValve);
+            CreateVisualPrimitive(
+                PrimitiveType.Cube,
+                "ValveHandleCrossbarZ",
+                noisyPipe.transform,
+                new Vector3(0f, 1.09f, 0f),
+                new Vector3(0.08f, 0.05f, 0.82f),
+                Quaternion.identity,
+                materials.NoisyPipeValve);
+            CreateVisualPrimitive(
+                PrimitiveType.Sphere,
+                "NoiseCueDot",
+                noisyPipe.transform,
+                new Vector3(0f, 1.44f, 0f),
+                new Vector3(0.16f, 0.16f, 0.16f),
+                Quaternion.identity,
+                materials.NoisyPipeMarker);
+
+            BuildInteractionMarkerRing(noisyPipe.transform, materials.NoisyPipeMarker);
+        }
+
+        private static void BuildInteractionMarkerRing(Transform parent, Material material)
+        {
+            var markerRoot = CreateChild(parent, "InteractionMarkerRing");
+            markerRoot.localPosition = new Vector3(0f, 0.03f, 0f);
+
+            CreateVisualPrimitive(PrimitiveType.Cube, "NorthMarker", markerRoot, new Vector3(0f, 0f, 0.86f), new Vector3(1.5f, 0.04f, 0.08f), Quaternion.identity, material);
+            CreateVisualPrimitive(PrimitiveType.Cube, "SouthMarker", markerRoot, new Vector3(0f, 0f, -0.86f), new Vector3(1.5f, 0.04f, 0.08f), Quaternion.identity, material);
+            CreateVisualPrimitive(PrimitiveType.Cube, "EastMarker", markerRoot, new Vector3(0.86f, 0f, 0f), new Vector3(0.08f, 0.04f, 1.5f), Quaternion.identity, material);
+            CreateVisualPrimitive(PrimitiveType.Cube, "WestMarker", markerRoot, new Vector3(-0.86f, 0f, 0f), new Vector3(0.08f, 0.04f, 1.5f), Quaternion.identity, material);
         }
 
         private static VirusMinigameController BuildVirusMinigameMode(Transform parent, PrototypeSessionController session, PrototypeMaterials materials)
@@ -267,10 +356,11 @@ namespace LastHost.Prototype.Editor
             option.RefreshLabel();
         }
 
-        private static void BuildCamera(Transform parent)
+        private static void BuildCamera(Transform parent, PrototypeSessionController session, RatHostController rat, VirusMinigameController virus)
         {
             var cameraObject = new GameObject("IsometricCamera");
             cameraObject.transform.SetParent(parent, false);
+            cameraObject.tag = "MainCamera";
             cameraObject.transform.position = new Vector3(7.8f, 8.2f, -7.8f);
             cameraObject.transform.rotation = Quaternion.Euler(58f, 45f, 0f);
 
@@ -282,11 +372,15 @@ namespace LastHost.Prototype.Editor
             cameraObject.AddComponent<AudioListener>();
 
             var controller = cameraObject.AddComponent<PrototypeCameraController>();
+            controller.session = session;
+            controller.hostTarget = rat != null ? rat.transform : null;
+            controller.virusTarget = virus != null && virus.virusPlayer != null ? virus.virusPlayer.transform : null;
             controller.startingHostMode = PrototypeCameraMode.ThirdPerson;
             controller.quarterViewOffset = new Vector3(-2.8f, 7.4f, -6.4f);
             controller.quarterViewOrthographicSize = 5.2f;
             controller.topViewOffset = new Vector3(0f, 9.5f, 0f);
             controller.topViewOrthographicSize = 5.8f;
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
         }
 
         private static void BuildLighting(Transform parent)
@@ -459,6 +553,20 @@ namespace LastHost.Prototype.Editor
             return primitive;
         }
 
+        private static GameObject CreateVisualPrimitive(PrimitiveType type, string name, Transform parent, Vector3 localPosition, Vector3 localScale, Quaternion localRotation, Material material)
+        {
+            var visual = CreatePrimitive(type, name, parent, localPosition, localScale, material);
+            visual.transform.localRotation = localRotation;
+
+            var collider = visual.GetComponent<Collider>();
+            if (collider != null)
+            {
+                Object.DestroyImmediate(collider);
+            }
+
+            return visual;
+        }
+
         private static void EnsureFolders()
         {
             Directory.CreateDirectory(ProjectRoot);
@@ -478,6 +586,9 @@ namespace LastHost.Prototype.Editor
                 SewerWall = CreateMaterial("SewerWall", new Color(0.23f, 0.27f, 0.25f, 1f)),
                 ToxicWater = CreateMaterial("ToxicWater", new Color(0.22f, 0.7f, 0.38f, 1f)),
                 NoisyPipe = CreateMaterial("NoisyPipe", new Color(0.52f, 0.46f, 0.34f, 1f)),
+                NoisyPipeBody = CreateMaterial("NoisyPipeBody", new Color(0.26f, 0.48f, 0.52f, 1f)),
+                NoisyPipeValve = CreateMaterial("NoisyPipeValve", new Color(0.86f, 0.24f, 0.18f, 1f)),
+                NoisyPipeMarker = CreateMaterial("NoisyPipeMarker", new Color(0.92f, 0.8f, 0.18f, 1f)),
                 GateBlocked = CreateMaterial("GateBlocked", new Color(0.62f, 0.18f, 0.16f, 1f)),
                 GateOpen = CreateMaterial("GateOpen", new Color(0.25f, 0.64f, 0.84f, 1f)),
                 Rat = CreateMaterial("Rat", new Color(0.38f, 0.36f, 0.32f, 1f)),
@@ -591,6 +702,9 @@ namespace LastHost.Prototype.Editor
             public Material SewerWall;
             public Material ToxicWater;
             public Material NoisyPipe;
+            public Material NoisyPipeBody;
+            public Material NoisyPipeValve;
+            public Material NoisyPipeMarker;
             public Material GateBlocked;
             public Material GateOpen;
             public Material Rat;

@@ -32,3 +32,12 @@ approval_mode = "approve"
 
 [mcp_servers.unity_mcp.tools.Unity_SceneView_CaptureMultiAngleSceneView]
 approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_ManageAsset]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_ManageGameObject]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_Camera_Capture]
+approval_mode = "approve"

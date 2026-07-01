@@ -3,7 +3,7 @@ namespace LastHost.Prototype.Core
     public sealed class PrototypeConfig
     {
         public float MaxImmuneAlert { get; set; } = 100f;
-        public float BaseAlertPerSecond { get; set; } = 2.5f;
+        public float BaseAlertPerSecond { get; set; } = 0f;
         public float RiskAlertBonus { get; set; } = 20f;
         public float AlertAfterMutationReturn { get; set; } = 25f;
         public float HostMaxHealth { get; set; } = 100f;

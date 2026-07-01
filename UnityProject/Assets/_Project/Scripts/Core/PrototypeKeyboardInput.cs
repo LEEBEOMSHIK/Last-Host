@@ -13,6 +13,7 @@ namespace LastHost.Prototype.Input
         public bool SelectMutation1;
         public bool SelectMutation2;
         public bool SelectMutation3;
+        public bool Interact;
         public bool Retry;
         public bool ToggleCameraMode;
     }
@@ -21,6 +22,8 @@ namespace LastHost.Prototype.Input
     {
         public static PrototypeInputState ReadCurrent()
         {
+            var spacePressed = WasPressedThisFrame(Key.Space, KeyCode.Space);
+
             return new PrototypeInputState
             {
                 MoveLeft = IsPressed(Key.A, KeyCode.A) || IsPressed(Key.LeftArrow, KeyCode.LeftArrow),
@@ -30,7 +33,8 @@ namespace LastHost.Prototype.Input
                 SelectMutation1 = WasPressedThisFrame(Key.Digit1, KeyCode.Alpha1),
                 SelectMutation2 = WasPressedThisFrame(Key.Digit2, KeyCode.Alpha2),
                 SelectMutation3 = WasPressedThisFrame(Key.Digit3, KeyCode.Alpha3),
-                Retry = WasPressedThisFrame(Key.Space, KeyCode.Space),
+                Interact = spacePressed,
+                Retry = spacePressed,
                 ToggleCameraMode = WasPressedThisFrame(Key.V, KeyCode.V)
             };
         }
@@ -130,6 +134,16 @@ namespace LastHost.Prototype.Input
         public static bool WasRetryPressed()
         {
             return ReadCurrent().Retry;
+        }
+
+        public static bool WasInteractPressed()
+        {
+            return WasInteractPressed(ReadCurrent());
+        }
+
+        public static bool WasInteractPressed(PrototypeInputState input)
+        {
+            return input.Interact;
         }
 
         public static bool WasCameraToggleRequested()

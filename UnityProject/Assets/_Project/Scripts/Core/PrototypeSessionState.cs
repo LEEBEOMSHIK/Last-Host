@@ -28,6 +28,8 @@ namespace LastHost.Prototype.Core
         public MutationLoadout Mutations { get; }
         public PrototypeGameMode Mode { get; private set; }
         public float HostHealth { get; private set; }
+        public bool IsRatRiskInteractionAvailable { get; private set; }
+        public string RatRiskInteractionPrompt { get; private set; } = string.Empty;
 
         public bool TickRatMode(float deltaTime)
         {
@@ -82,8 +84,23 @@ namespace LastHost.Prototype.Core
             HostHealth = Mathf.Clamp(HostHealth - Mathf.Max(0f, amount), 0f, Config.HostMaxHealth);
         }
 
+        public bool SetRatRiskInteractionAffordance(bool isAvailable, string prompt)
+        {
+            var nextAvailable = isAvailable && !string.IsNullOrWhiteSpace(prompt);
+            var nextPrompt = nextAvailable ? prompt : string.Empty;
+            if (IsRatRiskInteractionAvailable == nextAvailable && RatRiskInteractionPrompt == nextPrompt)
+            {
+                return false;
+            }
+
+            IsRatRiskInteractionAvailable = nextAvailable;
+            RatRiskInteractionPrompt = nextPrompt;
+            return true;
+        }
+
         public void EnterVirusMinigame()
         {
+            SetRatRiskInteractionAffordance(false, string.Empty);
             VirusRun.ResetRun();
             Mode = PrototypeGameMode.InternalVirus;
         }

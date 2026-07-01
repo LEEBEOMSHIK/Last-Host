@@ -1,6 +1,6 @@
 using LastHost.Prototype.Core;
+using LastHost.Prototype.Input;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace LastHost.Prototype.Host
 {
@@ -9,23 +9,75 @@ namespace LastHost.Prototype.Host
         public PrototypeSessionController session;
         public float riskSeverity = 0.75f;
         public float cooldownSeconds = 1.2f;
+        public string interactionPrompt = "소음 배관 조사 가능";
 
         private float nextAllowedTime;
+        private bool isRatInRange;
 
-        private void OnTriggerStay(Collider other)
+        private void Update()
         {
-            if (session == null || Keyboard.current == null || Time.time < nextAllowedTime)
+            if (!isRatInRange || session == null || Time.time < nextAllowedTime)
             {
                 return;
             }
 
-            if (!Keyboard.current.spaceKey.wasPressedThisFrame || other.GetComponentInParent<RatHostController>() == null)
+            if (!PrototypeKeyboardInput.WasInteractPressed())
             {
                 return;
             }
 
             nextAllowedTime = Time.time + cooldownSeconds;
             session.AddRiskAlert(riskSeverity);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (IsRatCollider(other))
+            {
+                SetRatInRange(true);
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (!IsRatCollider(other))
+            {
+                return;
+            }
+
+            SetRatInRange(true, forceRefresh: true);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (IsRatCollider(other))
+            {
+                SetRatInRange(false);
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (isRatInRange)
+            {
+                SetRatInRange(false, forceRefresh: true);
+            }
+        }
+
+        private static bool IsRatCollider(Collider other)
+        {
+            return other != null && other.GetComponentInParent<RatHostController>() != null;
+        }
+
+        private void SetRatInRange(bool inRange, bool forceRefresh = false)
+        {
+            if (!forceRefresh && isRatInRange == inRange)
+            {
+                return;
+            }
+
+            isRatInRange = inRange;
+            session?.SetRatRiskInteractionAffordance(inRange, interactionPrompt);
         }
     }
 }
