@@ -1,6 +1,6 @@
 # 작업별 참조 문서 색인
 
-최종 수정일: 2026-07-01
+최종 수정일: 2026-07-02
 
 ## 목적
 
@@ -42,6 +42,32 @@
 
 - `C:\project\game\last_host\last_host_game_plan.docx`
 - `.codex/skills/last-host-design-keeper/references/design-guardrails.md`
+
+### 게임 상세 기획 / 시스템과 상호작용 정리
+
+사용 요청 예시:
+
+- 특정 오브젝트가 왜 특정 게임 수치를 바꾸는지 정리
+- 면역 경계도, 변이, 숙주, 위험 행동의 상세 기획 작성
+- 긴 배관, 독성 물웅덩이, 전이 대상 같은 상호작용 의도 정리
+
+필수 참조:
+
+- `docs/design/README.md`
+- `docs/design/game-design-summary.md`
+- `.codex/skills/last-host-design-keeper/SKILL.md`
+
+선택 참조:
+
+- `docs/design/interactions/README.md`
+- `docs/design/interactions/noisy-pipe-risk-interaction.md`
+- `docs/design/hosts/host-instinct-control.md`
+- `docs/design/encounters/internal-immune-response-minigame-types.md`
+- `docs/design/systems/README.md`
+- `docs/design/systems/immune-alert.md`
+- `docs/design/ui-feedback/README.md`
+- `docs/design/ui-feedback/immune-alert-feedback.md`
+- `docs/prototype/official/rat-host-prototype.md`
 
 ### Unity 프로젝트 준비 / 아키텍처
 
