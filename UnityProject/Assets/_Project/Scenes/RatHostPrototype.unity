@@ -5883,6 +5883,7 @@ MonoBehaviour:
   session: {fileID: 812651057}
   alertPerSecond: 12
   hostDamagePerSecond: 4
+  immuneAlertFeedbackLabel: "\uC624\uC5FC \uB178\uCD9C"
 --- !u!23 &1711732932
 MeshRenderer:
   m_ObjectHideFlags: 0

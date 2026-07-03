@@ -9,16 +9,23 @@ namespace LastHost.Prototype.Immune
         public PrototypeSessionController session;
         public float alertPerSecond = 12f;
         public float hostDamagePerSecond = 4f;
+        public string immuneAlertFeedbackLabel = "오염 노출";
 
         private void OnTriggerStay(Collider other)
         {
-            if (session == null || other.GetComponentInParent<RatHostController>() == null)
+            ApplyExposure(other, Time.deltaTime);
+        }
+
+        public void ApplyExposure(Collider other, float deltaTime)
+        {
+            if (session == null || other == null || other.GetComponentInParent<RatHostController>() == null)
             {
                 return;
             }
 
-            session.AddImmuneAlertAmount(alertPerSecond * Time.deltaTime);
-            session.DamageHost(hostDamagePerSecond * Time.deltaTime);
+            var clampedDeltaTime = Mathf.Max(0f, deltaTime);
+            session.AddImmuneAlertAmount(alertPerSecond * clampedDeltaTime, immuneAlertFeedbackLabel);
+            session.DamageHost(hostDamagePerSecond * clampedDeltaTime);
         }
     }
 }

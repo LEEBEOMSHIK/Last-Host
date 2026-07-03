@@ -102,6 +102,7 @@ namespace LastHost.Prototype.Editor
             toxicCollider.isTrigger = true;
             var riskZone = toxicWater.AddComponent<ImmuneRiskZone>();
             riskZone.session = session;
+            riskZone.immuneAlertFeedbackLabel = "오염 노출";
 
             BuildNoisyPipeInteractable(parent, session, materials);
 

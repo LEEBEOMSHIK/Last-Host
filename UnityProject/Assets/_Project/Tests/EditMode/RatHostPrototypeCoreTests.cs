@@ -202,6 +202,50 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void ImmuneRiskZone_RatStayStoresContaminationFeedbackAndActualDelta()
+        {
+            var session = CreateSessionControllerForEditModeTest("Session Under Test");
+            var zoneObject = new GameObject("Contamination Zone Under Test");
+            var zone = zoneObject.AddComponent<ImmuneRiskZone>();
+            var ratObject = new GameObject("Rat Collider Under Test");
+            ratObject.AddComponent<RatHostController>();
+            var ratCollider = ratObject.AddComponent<BoxCollider>();
+            zone.session = session;
+
+            zone.ApplyExposure(ratCollider, 0.5f);
+
+            Assert.AreEqual("오염 노출", session.State.LastImmuneAlertFeedbackLabel);
+            Assert.AreEqual(6f, session.State.LastImmuneAlertFeedbackDelta);
+            Assert.AreEqual("오염 노출 +6", session.State.LastImmuneAlertFeedbackText);
+            Assert.AreEqual(session.State.Config.HostMaxHealth - 2f, session.State.HostHealth);
+
+            Object.DestroyImmediate(ratObject);
+            Object.DestroyImmediate(zoneObject);
+            Object.DestroyImmediate(session.gameObject);
+        }
+
+        [Test]
+        public void ImmuneRiskZone_NonRatStayDoesNotChangeImmuneAlertOrHostHealth()
+        {
+            var session = CreateSessionControllerForEditModeTest("Session Under Test");
+            var zoneObject = new GameObject("Contamination Zone Under Test");
+            var zone = zoneObject.AddComponent<ImmuneRiskZone>();
+            var nonRatObject = new GameObject("Non Rat Collider Under Test");
+            var nonRatCollider = nonRatObject.AddComponent<BoxCollider>();
+            zone.session = session;
+
+            zone.ApplyExposure(nonRatCollider, 0.5f);
+
+            Assert.AreEqual(0f, session.State.ImmuneAlert.Value);
+            Assert.AreEqual(session.State.Config.HostMaxHealth, session.State.HostHealth);
+            Assert.False(session.State.HasImmuneAlertFeedback);
+
+            Object.DestroyImmediate(nonRatObject);
+            Object.DestroyImmediate(zoneObject);
+            Object.DestroyImmediate(session.gameObject);
+        }
+
+        [Test]
         public void PrototypeHud_ShowsImmuneAlertCauseFeedbackBeforeRatObjective()
         {
             var session = new PrototypeSessionState();
@@ -580,6 +624,19 @@ namespace LastHost.Prototype.Tests.EditMode
         private static PrototypeConfig CreateConfigWithFeedbackSeconds(float seconds)
         {
             return new PrototypeConfig { ImmuneAlertFeedbackSeconds = seconds };
+        }
+
+        private static PrototypeSessionController CreateSessionControllerForEditModeTest(string objectName)
+        {
+            var sessionObject = new GameObject(objectName);
+            var session = sessionObject.AddComponent<PrototypeSessionController>();
+            if (session.State == null)
+            {
+                var awake = typeof(PrototypeSessionController).GetMethod("Awake", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                awake.Invoke(session, null);
+            }
+
+            return session;
         }
 
     }
