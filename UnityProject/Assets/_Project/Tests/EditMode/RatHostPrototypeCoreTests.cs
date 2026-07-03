@@ -186,6 +186,115 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void Session_NoisyPipeRiskAlertStoresCauseFeedbackAndActualDelta()
+        {
+            var session = new PrototypeSessionState();
+            var interactableObject = new GameObject("Noisy Pipe Under Test");
+            var interactable = interactableObject.AddComponent<RatRiskInteractable>();
+
+            session.AddRiskAlert(interactable.riskSeverity, interactable.immuneAlertFeedbackLabel);
+
+            Assert.AreEqual("소음/조직 자극", session.LastImmuneAlertFeedbackLabel);
+            Assert.AreEqual(15f, session.LastImmuneAlertFeedbackDelta);
+            Assert.AreEqual("소음/조직 자극 +15", session.LastImmuneAlertFeedbackText);
+
+            Object.DestroyImmediate(interactableObject);
+        }
+
+        [Test]
+        public void PrototypeHud_ShowsImmuneAlertCauseFeedbackBeforeRatObjective()
+        {
+            var session = new PrototypeSessionState();
+            session.AddRiskAlert(0.75f, "소음/조직 자극");
+
+            var hudObject = new GameObject("HUD Under Test");
+            var objectiveObject = new GameObject("Objective Text");
+            objectiveObject.transform.SetParent(hudObject.transform, false);
+            var objectiveText = objectiveObject.AddComponent<Text>();
+            var hud = hudObject.AddComponent<PrototypeHud>();
+            hud.objectiveText = objectiveText;
+
+            hud.Refresh(session);
+
+            Assert.AreEqual("소음/조직 자극 +15", objectiveText.text);
+
+            Object.DestroyImmediate(hudObject);
+        }
+
+        [Test]
+        public void Session_ImmuneAlertFeedbackExpiresAfterConfiguredRatModeTime()
+        {
+            var session = new PrototypeSessionState(CreateConfigWithFeedbackSeconds(1f));
+
+            session.AddRiskAlert(0.75f, "소음/조직 자극");
+
+            Assert.True(session.HasImmuneAlertFeedback);
+
+            session.TickRatMode(0.99f);
+
+            Assert.True(session.HasImmuneAlertFeedback);
+
+            session.TickRatMode(0.01f);
+
+            Assert.False(session.HasImmuneAlertFeedback);
+            Assert.AreEqual(string.Empty, session.LastImmuneAlertFeedbackText);
+        }
+
+        [Test]
+        public void PrototypeHud_ReturnsToRiskPromptAfterImmuneAlertFeedbackExpires()
+        {
+            var session = new PrototypeSessionState(CreateConfigWithFeedbackSeconds(1f));
+            session.SetRatRiskInteractionAffordance(true, "소음 배관 조사 가능");
+            session.AddRiskAlert(0.75f, "소음/조직 자극");
+
+            var hudObject = new GameObject("HUD Under Test");
+            var objectiveObject = new GameObject("Objective Text");
+            objectiveObject.transform.SetParent(hudObject.transform, false);
+            var objectiveText = objectiveObject.AddComponent<Text>();
+            var hud = hudObject.AddComponent<PrototypeHud>();
+            hud.objectiveText = objectiveText;
+
+            hud.Refresh(session);
+
+            Assert.AreEqual("소음/조직 자극 +15", objectiveText.text);
+
+            session.TickRatMode(1f);
+            hud.Refresh(session);
+
+            Assert.AreEqual("소음 배관 조사 가능", objectiveText.text);
+
+            Object.DestroyImmediate(hudObject);
+        }
+
+        [Test]
+        public void Session_ClearsRiskPromptWhenFeedbackAlertEntersVirusMode()
+        {
+            var session = new PrototypeSessionState();
+            session.SetRatRiskInteractionAffordance(true, "소음 배관 조사 가능");
+            session.AddImmuneAlertAmount(90f);
+
+            session.AddRiskAlert(0.75f, "소음/조직 자극");
+
+            Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
+            Assert.False(session.IsRatRiskInteractionAvailable);
+            Assert.AreEqual(string.Empty, session.RatRiskInteractionPrompt);
+            Assert.AreEqual(10f, session.LastImmuneAlertFeedbackDelta);
+
+            var hudObject = new GameObject("HUD Under Test");
+            var objectiveObject = new GameObject("Objective Text");
+            objectiveObject.transform.SetParent(hudObject.transform, false);
+            var objectiveText = objectiveObject.AddComponent<Text>();
+            var hud = hudObject.AddComponent<PrototypeHud>();
+            hud.objectiveText = objectiveText;
+
+            hud.Refresh(session);
+
+            Assert.AreEqual("변이 조각 수집 / 백혈구 회피", objectiveText.text);
+
+            Object.DestroyImmediate(hudObject);
+        }
+
+        [Test]
         public void PrototypeHud_ShowsRiskInteractionPromptWhenRatCanInteract()
         {
             var session = new PrototypeSessionState();
@@ -466,6 +575,11 @@ namespace LastHost.Prototype.Tests.EditMode
 
             Assert.NotNull(marker);
             Assert.Greater(marker.childCount, 0);
+        }
+
+        private static PrototypeConfig CreateConfigWithFeedbackSeconds(float seconds)
+        {
+            return new PrototypeConfig { ImmuneAlertFeedbackSeconds = seconds };
         }
 
     }

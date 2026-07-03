@@ -10,6 +10,7 @@ namespace LastHost.Prototype.Host
         public float riskSeverity = 0.75f;
         public float cooldownSeconds = 1.2f;
         public string interactionPrompt = "소음 배관 조사 가능";
+        public string immuneAlertFeedbackLabel = "소음/조직 자극";
 
         private float nextAllowedTime;
         private bool isRatInRange;
@@ -27,7 +28,7 @@ namespace LastHost.Prototype.Host
             }
 
             nextAllowedTime = Time.time + cooldownSeconds;
-            session.AddRiskAlert(riskSeverity);
+            session.AddRiskAlert(riskSeverity, immuneAlertFeedbackLabel);
         }
 
         private void OnTriggerEnter(Collider other)

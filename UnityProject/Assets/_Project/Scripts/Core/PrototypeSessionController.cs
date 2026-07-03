@@ -66,26 +66,48 @@ namespace LastHost.Prototype.Core
 
         public bool AddRiskAlert(float severityMultiplier)
         {
+            return AddRiskAlert(severityMultiplier, string.Empty);
+        }
+
+        public bool AddRiskAlert(float severityMultiplier, string feedbackLabel)
+        {
             var previousMode = State.Mode;
-            var changed = State.AddRiskAlert(severityMultiplier);
-            if (changed)
+            var previousAlert = State.ImmuneAlert.Value;
+            var enteredVirusMode = State.AddRiskAlert(severityMultiplier, feedbackLabel);
+            if (previousMode != State.Mode)
             {
                 OnModeChanged(previousMode, State.Mode);
             }
 
-            return changed;
+            if (previousMode != State.Mode || !Mathf.Approximately(previousAlert, State.ImmuneAlert.Value))
+            {
+                hud?.Refresh(State);
+            }
+
+            return enteredVirusMode;
         }
 
         public bool AddImmuneAlertAmount(float amount)
         {
+            return AddImmuneAlertAmount(amount, string.Empty);
+        }
+
+        public bool AddImmuneAlertAmount(float amount, string feedbackLabel)
+        {
             var previousMode = State.Mode;
-            var changed = State.AddImmuneAlertAmount(amount);
-            if (changed)
+            var previousAlert = State.ImmuneAlert.Value;
+            var enteredVirusMode = State.AddImmuneAlertAmount(amount, feedbackLabel);
+            if (previousMode != State.Mode)
             {
                 OnModeChanged(previousMode, State.Mode);
             }
 
-            return changed;
+            if (previousMode != State.Mode || !Mathf.Approximately(previousAlert, State.ImmuneAlert.Value))
+            {
+                hud?.Refresh(State);
+            }
+
+            return enteredVirusMode;
         }
 
         public void DamageHost(float amount)

@@ -129,6 +129,11 @@ namespace LastHost.Prototype.UI
             switch (state.Mode)
             {
                 case PrototypeGameMode.RatHost:
+                    if (state.HasImmuneAlertFeedback)
+                    {
+                        return state.LastImmuneAlertFeedbackText;
+                    }
+
                     if (state.IsRatRiskInteractionAvailable)
                     {
                         return state.RatRiskInteractionPrompt;
