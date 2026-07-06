@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="36" result="Passed" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:09Z" duration="2.9763513">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:09Z" duration="2.976351" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1038" name="LastHost.Prototype.Tests.dll" fullname="C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_internal_exposure_red_27e86bb3c1294cf9a239f72f565f78b9/Library/ScriptAssemblies/LastHost.Prototype.Tests.dll" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:09Z" duration="2.966092" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35812" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1039" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:09Z" duration="2.964897" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1040" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:09Z" duration="2.955609" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1041" name="Tests" fullname="LastHost.Prototype.Tests" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:09Z" duration="2.954710" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1042" name="EditMode" fullname="LastHost.Prototype.Tests.EditMode" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:09Z" duration="2.953888" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1001" name="RatHostPrototypeCoreTests" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" testcasecount="36" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:09Z" duration="2.951359" total="36" passed="36" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1002" name="ImmuneAlert_ReachesThresholdOnce_AndCanResetForNextLoop" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.ImmuneAlert_ReachesThresholdOnce_AndCanResetForNextLoop" methodname="ImmuneAlert_ReachesThresholdOnce_AndCanResetForNextLoop" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1589030965" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.018350" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1016" name="ImmuneRiskZone_InternalVirusModeExposureDoesNotChangeImmuneAlertOrHostHealth" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.ImmuneRiskZone_InternalVirusModeExposureDoesNotChangeImmuneAlertOrHostHealth" methodname="ImmuneRiskZone_InternalVirusModeExposureDoesNotChangeImmuneAlertOrHostHealth" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="938504601" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.006624" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1015" name="ImmuneRiskZone_NonRatStayDoesNotChangeImmuneAlertOrHostHealth" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.ImmuneRiskZone_NonRatStayDoesNotChangeImmuneAlertOrHostHealth" methodname="ImmuneRiskZone_NonRatStayDoesNotChangeImmuneAlertOrHostHealth" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="113892900" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.001059" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1017" name="ImmuneRiskZone_OverlappingRatBoundsStoresContaminationFeedbackWithoutTriggerCallback" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.ImmuneRiskZone_OverlappingRatBoundsStoresContaminationFeedbackWithoutTriggerCallback" methodname="ImmuneRiskZone_OverlappingRatBoundsStoresContaminationFeedbackWithoutTriggerCallback" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1278745765" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.005416" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1014" name="ImmuneRiskZone_RatStayStoresContaminationFeedbackAndActualDelta" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.ImmuneRiskZone_RatStayStoresContaminationFeedbackAndActualDelta" methodname="ImmuneRiskZone_RatStayStoresContaminationFeedbackAndActualDelta" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1782338208" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.000600" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1003" name="MutationLoadout_AppliesPrototypeEffects" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.MutationLoadout_AppliesPrototypeEffects" methodname="MutationLoadout_AppliesPrototypeEffects" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1924409797" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.004071" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1028" name="PrototypeCameraController_CyclesThroughThirdPersonQuarterViewAndTopView" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeCameraController_CyclesThroughThirdPersonQuarterViewAndTopView" methodname="PrototypeCameraController_CyclesThroughThirdPersonQuarterViewAndTopView" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="68379715" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.004838" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1029" name="PrototypeCameraController_QuarterViewUsesLeftRearDominantCameraAxis" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeCameraController_QuarterViewUsesLeftRearDominantCameraAxis" methodname="PrototypeCameraController_QuarterViewUsesLeftRearDominantCameraAxis" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1641350209" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.001555" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1031" name="PrototypeCameraController_ThirdPersonDoesNotOrbitWhenRatTurns" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeCameraController_ThirdPersonDoesNotOrbitWhenRatTurns" methodname="PrototypeCameraController_ThirdPersonDoesNotOrbitWhenRatTurns" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="201751994" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.002106" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1030" name="PrototypeCameraController_TopViewLooksStraightDown" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeCameraController_TopViewLooksStraightDown" methodname="PrototypeCameraController_TopViewLooksStraightDown" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1155165244" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.000723" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1020" name="PrototypeHud_ReturnsToRiskPromptAfterImmuneAlertFeedbackExpires" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeHud_ReturnsToRiskPromptAfterImmuneAlertFeedbackExpires" methodname="PrototypeHud_ReturnsToRiskPromptAfterImmuneAlertFeedbackExpires" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="97114938" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.025133" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1018" name="PrototypeHud_ShowsImmuneAlertCauseFeedbackBeforeRatObjective" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeHud_ShowsImmuneAlertCauseFeedbackBeforeRatObjective" methodname="PrototypeHud_ShowsImmuneAlertCauseFeedbackBeforeRatObjective" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1574040681" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.000868" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1022" name="PrototypeHud_ShowsRiskInteractionPromptWhenRatCanInteract" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeHud_ShowsRiskInteractionPromptWhenRatCanInteract" methodname="PrototypeHud_ShowsRiskInteractionPromptWhenRatCanInteract" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="461622674" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.000584" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1027" name="PrototypeKeyboardInput_ComposesCameraRelativeMovement" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeKeyboardInput_ComposesCameraRelativeMovement" methodname="PrototypeKeyboardInput_ComposesCameraRelativeMovement" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="88673982" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.001649" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1023" name="PrototypeKeyboardInput_ComposesNormalizedMovement" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeKeyboardInput_ComposesNormalizedMovement" methodname="PrototypeKeyboardInput_ComposesNormalizedMovement" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="134965173" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.000383" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1025" name="PrototypeKeyboardInput_MapsCameraToggleKey" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeKeyboardInput_MapsCameraToggleKey" methodname="PrototypeKeyboardInput_MapsCameraToggleKey" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="942138667" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.000160" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1026" name="PrototypeKeyboardInput_MapsInteractKey" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeKeyboardInput_MapsInteractKey" methodname="PrototypeKeyboardInput_MapsInteractKey" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="790208905" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.000152" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1024" name="PrototypeKeyboardInput_MapsMutationSelectionKeys" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.PrototypeKeyboardInput_MapsMutationSelectionKeys" methodname="PrototypeKeyboardInput_MapsMutationSelectionKeys" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1362805740" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:06Z" duration="0.000378" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1033" name="RatHostPrototypeScene_DefaultsToThirdPersonCameraController" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.RatHostPrototypeScene_DefaultsToThirdPersonCameraController" methodname="RatHostPrototypeScene_DefaultsToThirdPersonCameraController" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="931396274" result="Passed" start-time="2026-07-06 06:09:06Z" end-time="2026-07-06 06:09:07Z" duration="0.520795" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1035" name="RatHostPrototypeScene_NoisyPipeIncludesReadablePipeValveMarkers" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.RatHostPrototypeScene_NoisyPipeIncludesReadablePipeValveMarkers" methodname="RatHostPrototypeScene_NoisyPipeIncludesReadablePipeValveMarkers" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1247920848" result="Passed" start-time="2026-07-06 06:09:07Z" end-time="2026-07-06 06:09:08Z" duration="0.492014" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1034" name="RatHostPrototypeScene_QuarterViewOffsetUsesLeftRearDominantCameraAxis" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.RatHostPrototypeScene_QuarterViewOffsetUsesLeftRearDominantCameraAxis" methodname="RatHostPrototypeScene_QuarterViewOffsetUsesLeftRearDominantCameraAxis" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="762961794" result="Passed" start-time="2026-07-06 06:09:08Z" end-time="2026-07-06 06:09:08Z" duration="0.531166" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1032" name="RatHostPrototypeScene_StartsWithRatVisibleToCamera" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.RatHostPrototypeScene_StartsWithRatVisibleToCamera" methodname="RatHostPrototypeScene_StartsWithRatVisibleToCamera" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1275278238" result="Passed" start-time="2026-07-06 06:09:08Z" end-time="2026-07-06 06:09:08Z" duration="0.449153" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1037" name="RatHostPrototypeScene_ToxicWaterRiskZoneOverlapRaisesHudFeedback" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.RatHostPrototypeScene_ToxicWaterRiskZoneOverlapRaisesHudFeedback" methodname="RatHostPrototypeScene_ToxicWaterRiskZoneOverlapRaisesHudFeedback" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1058044787" result="Passed" start-time="2026-07-06 06:09:08Z" end-time="2026-07-06 06:09:09Z" duration="0.431406" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1036" name="RatHostPrototypeScene_ToxicWaterRiskZoneSupportsCharacterControllerTriggerDelivery" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.RatHostPrototypeScene_ToxicWaterRiskZoneSupportsCharacterControllerTriggerDelivery" methodname="RatHostPrototypeScene_ToxicWaterRiskZoneSupportsCharacterControllerTriggerDelivery" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1135848118" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.421598" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1021" name="Session_ClearsRiskPromptWhenFeedbackAlertEntersVirusMode" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_ClearsRiskPromptWhenFeedbackAlertEntersVirusMode" methodname="Session_ClearsRiskPromptWhenFeedbackAlertEntersVirusMode" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="216132716" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.001077" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1007" name="Session_ConfiguredBaseAlertMovesFromRatModeToVirusMode" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_ConfiguredBaseAlertMovesFromRatModeToVirusMode" methodname="Session_ConfiguredBaseAlertMovesFromRatModeToVirusMode" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="2120975822" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000591" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1013" name="Session_ContinuousImmuneAlertFeedbackAccumulatesSmallSameCauseDeltas" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_ContinuousImmuneAlertFeedbackAccumulatesSmallSameCauseDeltas" methodname="Session_ContinuousImmuneAlertFeedbackAccumulatesSmallSameCauseDeltas" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1731771020" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000219" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1006" name="Session_DefaultRatModeTickDoesNotRaiseImmuneAlert" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_DefaultRatModeTickDoesNotRaiseImmuneAlert" methodname="Session_DefaultRatModeTickDoesNotRaiseImmuneAlert" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="417596963" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000236" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1009" name="Session_FailedVirusRunCanRetryWithoutLeavingVirusMode" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_FailedVirusRunCanRetryWithoutLeavingVirusMode" methodname="Session_FailedVirusRunCanRetryWithoutLeavingVirusMode" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1660577657" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000622" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1019" name="Session_ImmuneAlertFeedbackExpiresAfterConfiguredRatModeTime" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_ImmuneAlertFeedbackExpiresAfterConfiguredRatModeTime" methodname="Session_ImmuneAlertFeedbackExpiresAfterConfiguredRatModeTime" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="421305498" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000202" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1012" name="Session_NoisyPipeRiskAlertStoresCauseFeedbackAndActualDelta" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_NoisyPipeRiskAlertStoresCauseFeedbackAndActualDelta" methodname="Session_NoisyPipeRiskAlertStoresCauseFeedbackAndActualDelta" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1618010576" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000413" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1011" name="Session_RatRiskInteractionAffordanceRequiresReadablePrompt" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_RatRiskInteractionAffordanceRequiresReadablePrompt" methodname="Session_RatRiskInteractionAffordanceRequiresReadablePrompt" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="235961000" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000231" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1010" name="Session_RatRiskInteractionAffordanceTracksPromptAndCanClear" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_RatRiskInteractionAffordanceTracksPromptAndCanClear" methodname="Session_RatRiskInteractionAffordanceTracksPromptAndCanClear" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="260453483" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000223" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1008" name="Session_SuccessThenMutationSelection_ReturnsToRatModeWithMutationEffect" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_SuccessThenMutationSelection_ReturnsToRatModeWithMutationEffect" methodname="Session_SuccessThenMutationSelection_ReturnsToRatModeWithMutationEffect" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="859207517" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000430" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1005" name="VirusMinigame_RetryRestoresStabilityAndFragmentCount" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.VirusMinigame_RetryRestoresStabilityAndFragmentCount" methodname="VirusMinigame_RetryRestoresStabilityAndFragmentCount" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1370765087" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000286" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1004" name="VirusMinigame_SuccessBeatsFailure_WhenSameFrameCollectsFinalFragmentAndTakesHit" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.VirusMinigame_SuccessBeatsFailure_WhenSameFrameCollectsFinalFragmentAndTakesHit" methodname="VirusMinigame_SuccessBeatsFailure_WhenSameFrameCollectsFinalFragmentAndTakesHit" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="14917602" result="Passed" start-time="2026-07-06 06:09:09Z" end-time="2026-07-06 06:09:09Z" duration="0.000246" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

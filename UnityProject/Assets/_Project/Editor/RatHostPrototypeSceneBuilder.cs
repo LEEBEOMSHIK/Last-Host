@@ -100,6 +100,9 @@ namespace LastHost.Prototype.Editor
             var toxicWater = CreatePrimitive(PrimitiveType.Cube, "ToxicWaterRiskZone", parent, new Vector3(-0.7f, 0.03f, 1.35f), new Vector3(2.6f, 0.08f, 1.5f), materials.ToxicWater);
             var toxicCollider = toxicWater.GetComponent<Collider>();
             toxicCollider.isTrigger = true;
+            var toxicBody = toxicWater.AddComponent<Rigidbody>();
+            toxicBody.isKinematic = true;
+            toxicBody.useGravity = false;
             var riskZone = toxicWater.AddComponent<ImmuneRiskZone>();
             riskZone.session = session;
             riskZone.immuneAlertFeedbackLabel = "오염 노출";

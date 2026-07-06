@@ -1,0 +1,891 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.4/staging' branch; Version is '6000.4.6f1 (0b051c2e5d54) revision 722204'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'ko' Physical Memory: 49060 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-07-06T02:07:24Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bomi" at "2026-07-06T02:07:24.119108Z"
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.4.6f1\Editor\Unity.exe
+-batchmode
+-nographics
+-projectPath
+C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green
+-runTests
+-testPlatform
+editmode
+-testResults
+C:\project\Last-Host\_workspace\active\2026-07-06-contamination-risk-zone-trigger\editmode-all-green.xml
+-logFile
+C:\project\Last-Host\_workspace\active\2026-07-06-contamination-risk-zone-trigger\editmode-all-green.log
+Successfully changed project path to: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green
+C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_toxic_green
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Player connection [29192]  Target information:
+
+Player connection [29192]  * "[IP] 192.168.219.101 [Port] 55505 [Flags] 2 [Guid] 3172481220 [EditorId] 3172481220 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-3DBIB3O) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [29192]  * "[IP] 172.25.64.1 [Port] 55505 [Flags] 2 [Guid] 3172481220 [EditorId] 3172481220 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-3DBIB3O) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [29192] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [29192] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-54992" after 0.3 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-bomi"
+[Licensing::IpcConnector] LicenseClient-bomi channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bomi-6000.4.6" at "2026-07-06T02:07:25.4705672Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 37704, path: "C:/Program Files/Unity/Hub/Editor/6000.4.6f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              e7cf375580e84a9b98ad107f112e2736
+  Correlation Id:          206bda34aa3277d37d831e18b80ed72c
+  External correlation Id: 840265488171797060
+  Machine Id:              8iF7dbUL+YuDd5WWihfViePFuPw=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-bomi-6000.4.6" (connect: 0.00s, validation: 0.00s, handshake: 0.01s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-bomi-6000.4.6-notifications" at "2026-07-06T02:07:25.4812709Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 14569752646128-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Module] Licensing Background thread has ended after 1.37s
+[Licensing::Module] Licensing is initialized (took 0.83s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Initialize engine version: 6000.4.6f1 (0b051c2e5d54)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.4.6f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_toxic_green/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.4.6f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.4.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.4.6f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56992
+CodeReloadManager initialized
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.6f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.6f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.006767 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.369 seconds
+Domain Reload Profiling: 896ms
+	BeginReloadAssembly (189ms)
+		CreateAndSetChildDomain (12ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (95ms)
+	LoadAllAssembliesAndSetupDomain (193ms)
+		LoadAssemblies (168ms)
+		AnalyzeDomain (184ms)
+			TypeCache.Refresh (183ms)
+				TypeCache.ScanAssembly (170ms)
+	FinalizeReload (370ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (50ms)
+			BeforeProcessingInitializeOnLoad (80ms)
+			ProcessInitializeOnLoadAttributes (101ms)
+			ProcessInitializeOnLoadMethodAttributes (82ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 61 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.assistant@2.13.0-pre.2 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.ai.assistant@6fee27370e6a)
+    com.unity.ai.inference@2.6.1 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.ai.inference@9a123aee5df7)
+    com.unity.ai.navigation@2.0.12 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.visualstudio@2.0.27 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.ide.visualstudio@dc1ddd4f09b6)
+    com.unity.inputsystem@1.19.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.timeline@1.8.12 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.timeline@8cd8509afae5)
+    com.unity.visualscripting@1.9.11 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.burst@1.8.29 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.burst@6bb9aca3ef38)
+    com.unity.dt.app-ui@2.1.1 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.dt.app-ui@8ac7e730dd5d)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.mathematics@1.3.3 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.mathematics@19a9377c4ffa)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.searcher@4.9.4 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.searcher@d45a78918735)
+    com.unity.test-framework.performance@3.4.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.test-framework.performance@aa81a99c4a75)
+  Built-in packages:
+    com.unity.multiplayer.center@1.0.1 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.multiplayer.center@f01f4ba8d00a)
+    com.unity.render-pipelines.universal@17.4.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.render-pipelines.universal@0d0659f1368d)
+    com.unity.test-framework@1.6.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.test-framework@76560ee600cb)
+    com.unity.ugui@2.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.ugui@473409526770)
+    com.unity.modules.accessibility@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.ext.nunit@d8c07649098d)
+    com.unity.render-pipelines.core@17.4.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.render-pipelines.core@630143bbfe2b)
+    com.unity.shadergraph@17.4.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.shadergraph@04a6ef07359e)
+    com.unity.render-pipelines.universal-config@17.4.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.render-pipelines.universal-config@0db4263b9e6b)
+    com.unity.collections@6.4.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.collections@65f499a3cc26)
+    com.unity.2d.sprite@1.0.0 (location: C:\Users\User\AppData\Local\Temp\LastHost_UnityProject_Test_20260706_toxic_green\Library\PackageCache\com.unity.2d.sprite@929df5adbb1f)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.accessibility/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.accessibility/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.accessibility/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.accessibility/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.accessibility/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.accessibility/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.accessibility/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.accessibility/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.adaptiveperformance/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.adaptiveperformance/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.adaptiveperformance/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.adaptiveperformance/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.adaptiveperformance/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.adaptiveperformance/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.adaptiveperformance/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.adaptiveperformance/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ai/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ai/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ai/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ai/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ai/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ai/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ai/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ai/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.androidjni/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.androidjni/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.androidjni/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.androidjni/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.androidjni/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.androidjni/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.androidjni/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.androidjni/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.animation/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.animation/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.animation/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.animation/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.animation/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.animation/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.animation/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.animation/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.assetbundle/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.assetbundle/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.assetbundle/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.assetbundle/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.assetbundle/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.assetbundle/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.assetbundle/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.assetbundle/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.audio/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.audio/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.audio/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.audio/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.audio/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.audio/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.audio/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.audio/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.cloth/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.cloth/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.cloth/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.cloth/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.cloth/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.cloth/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.cloth/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.cloth/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.director/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.director/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.director/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.director/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.director/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.director/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.director/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.director/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imageconversion/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imageconversion/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imageconversion/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imageconversion/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imageconversion/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imageconversion/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imageconversion/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imageconversion/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imgui/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imgui/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imgui/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imgui/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imgui/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imgui/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imgui/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.imgui/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.jsonserialize/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.jsonserialize/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.jsonserialize/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.jsonserialize/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.jsonserialize/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.jsonserialize/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.jsonserialize/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.jsonserialize/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.particlesystem/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.particlesystem/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.particlesystem/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.particlesystem/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.particlesystem/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.particlesystem/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.particlesystem/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.particlesystem/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics2d/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics2d/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics2d/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics2d/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics2d/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics2d/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics2d/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.physics2d/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.screencapture/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.screencapture/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.screencapture/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.screencapture/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.screencapture/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.screencapture/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.screencapture/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.screencapture/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrain/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrain/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrain/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrain/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrain/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrain/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrain/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrain/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrainphysics/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrainphysics/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrainphysics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrainphysics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrainphysics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrainphysics/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrainphysics/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.terrainphysics/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.tilemap/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.tilemap/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.tilemap/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.tilemap/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.tilemap/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.tilemap/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.tilemap/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.tilemap/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ui/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ui/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ui/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ui/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ui/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ui/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ui/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.ui/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.uielements/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.uielements/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.uielements/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.uielements/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.uielements/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.uielements/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.uielements/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.uielements/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.umbra/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.umbra/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.umbra/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.umbra/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.umbra/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.umbra/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.umbra/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.umbra/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unityanalytics/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unityanalytics/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unityanalytics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unityanalytics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unityanalytics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unityanalytics/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unityanalytics/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unityanalytics/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequest/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequest/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequest/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequest/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequest/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequest/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequest/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequest/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestassetbundle/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestassetbundle/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestassetbundle/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestassetbundle/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestassetbundle/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestassetbundle/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestassetbundle/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestassetbundle/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestaudio/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestaudio/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestaudio/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestaudio/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestaudio/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestaudio/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestaudio/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestaudio/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequesttexture/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequesttexture/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequesttexture/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequesttexture/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequesttexture/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequesttexture/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequesttexture/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequesttexture/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestwww/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestwww/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestwww/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestwww/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestwww/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestwww/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestwww/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.unitywebrequestwww/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vectorgraphics/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vectorgraphics/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vectorgraphics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vectorgraphics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vectorgraphics/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vectorgraphics/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vectorgraphics/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vectorgraphics/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vehicles/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vehicles/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vehicles/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vehicles/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vehicles/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vehicles/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vehicles/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vehicles/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.video/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.video/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.video/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.video/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.video/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.video/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.video/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.video/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vr/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vr/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vr/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vr/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vr/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vr/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vr/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.vr/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.wind/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.wind/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.wind/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.wind/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.wind/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.wind/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.wind/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.wind/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.xr/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.xr/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.xr/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.xr/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.xr/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.xr/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.xr/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.xr/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.subsystems/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.subsystems/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.subsystems/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.subsystems/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.subsystems/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.subsystems/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.subsystems/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.subsystems/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.hierarchycore/04a6ef07359e/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.hierarchycore/04a6ef07359e/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.hierarchycore/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.hierarchycore/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.hierarchycore/04a6ef07359e/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.hierarchycore/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.hierarchycore/04a6ef07359e/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.modules.hierarchycore/04a6ef07359e/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.shadergraph/Editor/Generation/Contexts/TargetSetupContext.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.shadergraph/Editor/Generation/Processors/ShaderSpliceUtil.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.shadergraph/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInCanvasSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.shadergraph/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInLitSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.shadergraph/Editor/Generation/Targets/BuiltIn/Editor/ShaderGraph/Targets/BuiltInTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.shadergraph/Editor/Generation/Targets/CustomRenderTexture/CustomRenderTextureTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.shadergraph/Editor/Generation/Targets/CustomRenderTexture/CustomTextureSubTarget.cs.
+[Package Manager] Could not restore immutable package asset: Packages/com.unity.shadergraph/Editor/Generation/Targets/Fullscreen/FullscreenSubTarget.cs.
+[Package Manager] Done registering packages in 0.15 seconds
+Refreshing native plugins compatible for Editor in 9.50 ms, found 5 plugins.
+Starting: C:\Program Files\Unity\Hub\Editor\6000.4.6f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_toxic_green
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s643ms
+[1173/1543  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.59 seconds), 1 items updated, 1543 evaluated
+AssetDatabase: script compilation time: 1.195445s
+Begin MonoManager ReloadAssembly
+Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
+Assembly DocCodeExamples.dll at Library/ScriptAssemblies/DocCodeExamples.dll not valid. Loading of assembly skipped.
+Assembly TestNewCustomAssembly.dll at Library/ScriptAssemblies/TestNewCustomAssembly.dll not valid. Loading of assembly skipped.
+Assembly Unity.2D.Sprite.Package.EditorTests.dll at Library/ScriptAssemblies/Unity.2D.Sprite.Package.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.AI.Assistant.Integrations.Sample.Editor.dll at Library/ScriptAssemblies/Unity.AI.Assistant.Integrations.Sample.Editor.dll not valid. Loading of assembly skipped.
+Assembly Unity.AppUI.Editor.Tests.dll at Library/ScriptAssemblies/Unity.AppUI.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.AppUI.Tests.dll at Library/ScriptAssemblies/Unity.AppUI.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.BurstCompatibilityGen.dll at Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.DocCodeSamples.dll at Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.PerformanceTests.dll at Library/ScriptAssemblies/Unity.Collections.PerformanceTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.dll at Library/ScriptAssemblies/Unity.Collections.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.Playmode.dll at Library/ScriptAssemblies/Unity.Collections.Tests.Playmode.dll not valid. Loading of assembly skipped.
+Assembly Unity.InputSystem.IntegrationTests.dll at Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Mathematics.Tests.dll at Library/ScriptAssemblies/Unity.Mathematics.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Editor.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Nuget.Mono-Cecil.dll at Library/ScriptAssemblies/Unity.Nuget.Mono-Cecil.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Config.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Config.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Searcher.EditorTests.dll at Library/ScriptAssemblies/Unity.Searcher.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.ShaderGraph.Editor.Tests.dll at Library/ScriptAssemblies/Unity.ShaderGraph.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Editor.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.UnifiedRayTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.UnifiedRayTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
+Refreshing native plugins compatible for Editor in 6.90 ms, found 5 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 7.32 ms, found 5 plugins.
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.500 seconds
+Domain Reload Profiling: 7162ms
+	BeginReloadAssembly (371ms)
+		DisableScriptedObjects (23ms)
+		CreateAndSetChildDomain (175ms)
+	RebuildCommonClasses (34ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (163ms)
+	LoadAllAssembliesAndSetupDomain (1081ms)
+		LoadAssemblies (756ms)
+		AnalyzeDomain (451ms)
+			TypeCache.Refresh (347ms)
+				TypeCache.ScanAssembly (329ms)
+			BuildScriptInfoCaches (94ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (5501ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (30ms)
+			BeforeProcessingInitializeOnLoad (294ms)
+			ProcessInitializeOnLoadAttributes (4536ms)
+			ProcessInitializeOnLoadMethodAttributes (337ms)
+			AfterProcessingInitializeOnLoad (20ms)
+		AwakeInstancesAfterBackupRestoration (23ms)
+(Values over 0.050ms)
+Asset Pipeline Refresh (id=92d78425c96095744a20a908e40ad557): Total: 9.444 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=6214 ms
+		Asset DB Callback time: managed=68 ms, native=155 ms
+		Scripting: domain reloads=1, domain reload time=1681 ms, compile time=1197 ms, other=125 ms
+		Project Asset Count: scripts=2096, non-scripts=5398
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 159.793ms
+	ApplyChangesToAssetFolders: 0.835ms
+	Scan: 151.070ms
+	CategorizeScriptCompilationAssets: 78.418ms
+	ProcessAssetsWithTransientArtifactChanges: 105.976ms
+	CategorizeAssets: 87.733ms
+	CompileScripts: 1197.100ms
+	ImportOutOfDateAssets: 5528.564ms (5526.430ms without children)
+		UnloadImportedAssets: 0.784ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.844ms
+		OnDemandSchedulerStart: 0.465ms
+	PostProcessAllAssets: 68.835ms
+		MonoPostProcessAllAssets: 68.745ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 33.777ms
+			SyncVS.PostprocessSyncProject 15.225ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 2.696ms
+			GraphRefreshPostprocessor.OnPostprocessAllAssets 1.914ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.578ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 1.088ms
+			AssetChangeDetector.OnPostprocessAllAssets 0.806ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.660ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.365ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.316ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.290ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.153ms
+	UnloadStreamsBegin: 3.191ms
+	PersistCurrentRevisions: 0.157ms
+	GenerateScriptTypeHashes: 3.195ms
+	GenerateScriptTypeSerializationHashes: 5.492ms
+	Untracked: 2054.283ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 14.717ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Last Host
+Unloading 71 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 10139 unused Assets / (6.7 MB). Loaded Objects now: 11002.
+Memory consumption went from 244.8 MB to 238.1 MB.
+Total: 21.844400 ms (FindLiveObjects: 1.241200 ms CreateObjectMapping: 1.397800 ms MarkObjects: 14.852700 ms  DeleteObjects: 4.349200 ms)
+
+Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
+[Project] Loading completed in 13.261 seconds
+	Project init time: 				12.699 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		1.113 seconds
+		Asset Database init time: 		0.227 seconds
+		Global illumination init time: 	0.003 seconds
+		Assemblies load time: 			0.972 seconds
+		Unity extensions init time: 	0.050 seconds
+		Asset Database refresh time: 	9.445 seconds
+	Scene opening time: 			0.307 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1783303657297,"processId":54992,"projectLoad":13.2606591,"projectInit":12.6992262,"templateInit":0.0,"packageManagerInit":1.1128015,"assetDatabaseInit":0.227022,"globalIlluminationInit":0.0031028,"assembliesLoad":0.9718539,"unityExtensionsInit":0.0502063,"assetDatabaseRefresh":9.4446432,"sceneOpening":0.3071272}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1783303657297,"processId":54992,"editorVersion":"6000.4.6f1 (0b051c2e5d54)","branch":"6000.4/staging","buildType":"Release","platform":"Windows"}
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Successfully resolved entitlement details
+Running tests for ExecutionSettings with details:
+targetPlatform = 
+playerHeartbeatTimeout = 600
+filters[0] = 
+   Filter with settings:
+   testMode = EditMode
+   targetPlatform = 
+   testNames = null
+   groupNames = null
+   categoryNames = null
+   assemblyNames = null
+ignoreTests = {}
+featureFlags = null
+
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:InitializeAndExecuteRun (string[]) (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/CommandLineTest/Executer.cs:53)
+UnityEditor.TestTools.TestRunner.CommandLineTest.TestStarter:InitializeAndExecuteRun () (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/CommandLineTest/TestStarter.cs:64)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 53)
+
+Start Indexing on Editor startup
+[Indexing] Starting Initial Indexing for Assets
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Created GICache directory at C:/Users/User/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.037s, timestamps: [13.271 - 13.308]
+Starting new worker id: 0 with log in C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_toxic_green/Logs/AssetImportWorker0.log
+Starting new worker id: 1 with log in C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_toxic_green/Logs/AssetImportWorker1.log
+Starting new worker id: 2 with log in C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_toxic_green/Logs/AssetImportWorker2.log
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4 unused Assets / (57.2 KB). Loaded Objects now: 11029.
+Memory consumption went from 232.4 MB to 232.3 MB.
+Total: 27.522400 ms (FindLiveObjects: 0.864400 ms CreateObjectMapping: 0.393000 ms MarkObjects: 26.167200 ms  DeleteObjects: 0.096000 ms)
+
+Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:173)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:108)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Opening scene 'Assets/_Project/Scenes/RatHostPrototype.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/RatHostPrototype.unity'
+	Deserialize:            21.806 ms
+	Integration:            540.412 ms
+	Integration of assets:  0.060 ms
+	Thread Wait Time:       0.019 ms
+	Total Operation Time:   562.298 ms
+Unloading 1 unused Assets / (0.8 KB). Loaded Objects now: 11366.
+Memory consumption went from 230.6 MB to 230.6 MB.
+Total: 24.219700 ms (FindLiveObjects: 0.901200 ms CreateObjectMapping: 0.477900 ms MarkObjects: 22.797900 ms  DeleteObjects: 0.041100 ms)
+
+Opening scene 'Assets/_Project/Scenes/RatHostPrototype.unity'
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/RatHostPrototype.unity'
+	Deserialize:            7.961 ms
+	Integration:            480.037 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.011 ms
+	Total Operation Time:   488.013 ms
+Unloading 1 unused Assets / (0.5 KB). Loaded Objects now: 11366.
+Memory consumption went from 231.0 MB to 231.0 MB.
+Total: 24.616900 ms (FindLiveObjects: 0.718200 ms CreateObjectMapping: 0.446000 ms MarkObjects: 23.408200 ms  DeleteObjects: 0.043300 ms)
+
+Opening scene 'Assets/_Project/Scenes/RatHostPrototype.unity'
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/RatHostPrototype.unity'
+	Deserialize:            8.885 ms
+	Integration:            414.872 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.018 ms
+	Total Operation Time:   423.779 ms
+Unloading 1 unused Assets / (0.5 KB). Loaded Objects now: 11366.
+Memory consumption went from 231.0 MB to 231.0 MB.
+Total: 19.751700 ms (FindLiveObjects: 1.222800 ms CreateObjectMapping: 0.323100 ms MarkObjects: 18.167000 ms  DeleteObjects: 0.037900 ms)
+
+Opening scene 'Assets/_Project/Scenes/RatHostPrototype.unity'
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Worker ready: AssetImportWorker1 1
+Worker ready: AssetImportWorker2 2
+Worker ready: AssetImportWorker0 0
+Loaded scene 'Assets/_Project/Scenes/RatHostPrototype.unity'
+	Deserialize:            7.501 ms
+	Integration:            415.838 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.007 ms
+	Total Operation Time:   423.350 ms
+Unloading 1 unused Assets / (Unknown). Loaded Objects now: 11366.
+Memory consumption went from 231.8 MB to 231.8 MB.
+Total: 23.417300 ms (FindLiveObjects: 0.743500 ms CreateObjectMapping: 0.341200 ms MarkObjects: 22.288000 ms  DeleteObjects: 0.043400 ms)
+
+Opening scene 'Assets/_Project/Scenes/RatHostPrototype.unity'
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Project/Scenes/RatHostPrototype.unity'
+	Deserialize:            6.414 ms
+	Integration:            435.929 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.013 ms
+	Total Operation Time:   442.357 ms
+Unloading 1 unused Assets / (0.5 KB). Loaded Objects now: 11366.
+Memory consumption went from 231.8 MB to 231.8 MB.
+Total: 26.173600 ms (FindLiveObjects: 1.058600 ms CreateObjectMapping: 0.411400 ms MarkObjects: 24.666600 ms  DeleteObjects: 0.035900 ms)
+
+Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+Saving results to: C:\project\Last-Host\_workspace\active\2026-07-06-contamination-risk-zone-trigger\editmode-all-green.xml
+Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:173)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:108)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 13 unused Assets / (4.8 KB). Loaded Objects now: 11037.
+Memory consumption went from 233.9 MB to 233.9 MB.
+Total: 26.296000 ms (FindLiveObjects: 0.495200 ms CreateObjectMapping: 0.223600 ms MarkObjects: 25.509300 ms  DeleteObjects: 0.066800 ms)
+
+DisplayProgressbar: Undo
+Test run completed. Exiting with code 0 (Ok). Run completed.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitApplication (UnityEditor.TestTools.TestRunner.CommandLineTest.Executer/ReturnCodes,string) (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/CommandLineTest/Executer.cs:81)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitIfRunIsCompleted () (at ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/CommandLineTest/Executer.cs:74)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@76560ee600cb/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 81)
+
+Start importing ProjectSettings/EditorBuildSettings.asset using Guid(0000000000000000b000000000000000) (LibraryAssetImporter) -> (Import Result ID: 'af7e4231c151f3f60e03b1faa87ef48a') in 0.0095072 seconds [static dependencies only]. Details - ImportResultOutputID=d777934f36c664454d62eda103573334 DependenciesID=873ec69a78ac63af047d3e9f6c37bb7c StaticDependenciesID=f45b286c27e446f60641be8a562df8e2 
+Refreshing native plugins compatible for Editor in 8.08 ms, found 5 plugins.
+(Values over 0.050ms)
+Asset Pipeline Refresh (id=078c11a36cd9c514387c76869a5017d5): Total: 0.570 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+	Summary:
+		Imports: total=1 (actual=1, local cache=0, cache server=0)
+		Asset DB Process Time: managed=2 ms, native=117 ms
+		Asset DB Callback time: managed=426 ms, native=22 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=2096, non-scripts=5398
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 1
+	ApplyChangesToAssetFolders: 0.114ms
+	Scan: 27.739ms
+	ProcessAssetsWithTransientArtifactChanges: 0.058ms
+	CategorizeAssets: 66.780ms
+	ImportOutOfDateAssets: 14.227ms (0.424ms without children)
+		ImportManagerImport: 11.440ms (1.521ms without children)
+		UnloadImportedAssets: 0.454ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.423ms
+		OnDemandSchedulerStart: 0.445ms
+	PostProcessAllAssets: 440.952ms
+		XRBuildSystem.XRAssetImported 13.425ms
+		MonoPostProcessAllAssets: 426.924ms
+			AssetPostprocessor.OnPostprocessAllAssets 122.777ms
+			AssetReferenceReimportMonitor.OnPostprocessAllAssets 35.269ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 25.706ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 6.689ms
+			SyncVS.PostprocessSyncProject 1.932ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 1.794ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 1.518ms
+			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 0.713ms
+			MaterialPostprocessor.OnPostprocessAllAssets 0.594ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.495ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.487ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.424ms
+			SkillsProjectAssetPostprocessor.OnPostprocessAllAssets 0.376ms
+			ModelAssetProcessor.OnPostprocessAllAssets 0.359ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.345ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.335ms
+			AssetEvents.OnPostprocessAllAssets 0.296ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.294ms
+			PostProcessor.OnPostprocessAllAssets 0.235ms
+			AssetChangedListener.OnPostprocessAllAssets 0.232ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.188ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.182ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.160ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.147ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.140ms
+			GraphRefreshPostprocessor.OnPostprocessAllAssets 0.137ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.096ms
+			TrackSelectedAssetsProcessor.OnPostprocessAllAssets 0.088ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.067ms
+	PostAssetChangesProfiler: 8.525ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.408ms
+	PersistCurrentRevisions: 0.195ms
+	Untracked: 10.593ms
+
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-bomi-6000.4.6-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-bomi-6000.4.6 channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1783303665021,"processId":54992,"allocatedMemory":19610163,"memoryLabels":[{"Default":190105},{"Permanent":15276},{"NewDelete":65355},{"Thread":4230344},{"Manager":36173},{"VertexData":8},{"Geometry":816},{"Texture":24},{"Shader":852055},{"Material":24},{"GfxDevice":55321},{"Animation":392},{"Audio":3008},{"FreeType":8},{"FontEngine":736},{"Physics":2090},{"Physics2D":16},{"Serialization":696},{"Input":9880},{"JobScheduler":33024},{"TextLib":216},{"Mono":32},{"MonoCode":320},{"ScriptingNativeRuntime":155052},{"BaseObject":1620368},{"Resource":1184},{"Renderer":3008},{"Transform":4685},{"File":4017},{"WebCam":616},{"Culling":32},{"Terrain":11394},{"Wind":24},{"STL":40},{"String":13015},{"StaticString":6718},{"Utility":2672774},{"Curl":2559},{"PoolAlloc":2744},{"AI":80},{"TypeTree":13637},{"ScriptManager":448},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":120},{"GI":7792},{"Director":8320},{"CloudService":288},{"WebRequest":808},{"VR":48050},{"SceneManager":504},{"Video":64},{"LazyScriptCache":32},{"Camera":17},{"Secure":2113},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":336},{"Hierarchy":608},{"CoreStats":13032},{"Identifiers":12960},{"Gui":128},{"EditorUtility":121774},{"VersionControl":4},{"Undo":931},{"AssetDatabase":8981464},{"EditorGi":328},{"UnityConnect":37777},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":64},{"DrivenProperties":72},{"LocalIPC":210},{"ProfilerEditor":9746},{"CoreBusinessMetrics":2595},{"Windowing":456},{"Licensing":664},{"AssetReference":32},{"IPCStream":32}]}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-06 02:04:37Z" end-time="2026-07-06 02:04:38Z" duration="0.9982533">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-07-06 02:04:37Z" end-time="2026-07-06 02:04:38Z" duration="0.998253" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1034" name="LastHost.Prototype.Tests.dll" fullname="C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_toxic_green/Library/ScriptAssemblies/LastHost.Prototype.Tests.dll" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-07-06 02:04:37Z" end-time="2026-07-06 02:04:38Z" duration="0.987645" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="40836" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1035" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-07-06 02:04:37Z" end-time="2026-07-06 02:04:38Z" duration="0.986083" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1036" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-07-06 02:04:37Z" end-time="2026-07-06 02:04:38Z" duration="0.984922" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1037" name="Tests" fullname="LastHost.Prototype.Tests" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-07-06 02:04:37Z" end-time="2026-07-06 02:04:38Z" duration="0.983735" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1038" name="EditMode" fullname="LastHost.Prototype.Tests.EditMode" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-07-06 02:04:37Z" end-time="2026-07-06 02:04:38Z" duration="0.982464" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1001" name="RatHostPrototypeCoreTests" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" testcasecount="32" result="Passed" start-time="2026-07-06 02:04:37Z" end-time="2026-07-06 02:04:38Z" duration="0.980298" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1033" name="RatHostPrototypeScene_ToxicWaterRiskZoneSupportsCharacterControllerTriggerDelivery" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.RatHostPrototypeScene_ToxicWaterRiskZoneSupportsCharacterControllerTriggerDelivery" methodname="RatHostPrototypeScene_ToxicWaterRiskZoneSupportsCharacterControllerTriggerDelivery" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="994857254" result="Passed" start-time="2026-07-06 02:04:37Z" end-time="2026-07-06 02:04:38Z" duration="0.955187" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

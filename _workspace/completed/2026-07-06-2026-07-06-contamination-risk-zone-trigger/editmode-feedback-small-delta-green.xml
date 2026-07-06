@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-06 05:48:49Z" end-time="2026-07-06 05:48:49Z" duration="0.0682902">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-06 05:48:49Z" end-time="2026-07-06 05:48:49Z" duration="0.068290" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1037" name="LastHost.Prototype.Tests.dll" fullname="C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_feedback_red_278da106b41340fe899813e9008cfcd6/Library/ScriptAssemblies/LastHost.Prototype.Tests.dll" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-06 05:48:49Z" end-time="2026-07-06 05:48:49Z" duration="0.055711" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="20600" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1038" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-06 05:48:49Z" end-time="2026-07-06 05:48:49Z" duration="0.053836" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1039" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-06 05:48:49Z" end-time="2026-07-06 05:48:49Z" duration="0.052423" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1040" name="Tests" fullname="LastHost.Prototype.Tests" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-06 05:48:49Z" end-time="2026-07-06 05:48:49Z" duration="0.050970" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1041" name="EditMode" fullname="LastHost.Prototype.Tests.EditMode" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-06 05:48:49Z" end-time="2026-07-06 05:48:49Z" duration="0.049639" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1001" name="RatHostPrototypeCoreTests" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-07-06 05:48:49Z" end-time="2026-07-06 05:48:49Z" duration="0.046778" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1013" name="Session_ContinuousImmuneAlertFeedbackAccumulatesSmallSameCauseDeltas" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.Session_ContinuousImmuneAlertFeedbackAccumulatesSmallSameCauseDeltas" methodname="Session_ContinuousImmuneAlertFeedbackAccumulatesSmallSameCauseDeltas" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="2103896228" result="Passed" start-time="2026-07-06 05:48:49Z" end-time="2026-07-06 05:48:49Z" duration="0.021394" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

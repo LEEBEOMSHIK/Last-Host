@@ -8,6 +8,7 @@ namespace LastHost.Prototype.Core
     public sealed class PrototypeSessionState
     {
         private float immuneAlertFeedbackRemainingSeconds;
+        private float ratHostRiskZoneGraceRemainingSeconds;
 
         public PrototypeSessionState()
             : this(new PrototypeConfig())
@@ -36,8 +37,9 @@ namespace LastHost.Prototype.Core
         public float LastImmuneAlertFeedbackDelta { get; private set; }
         public bool HasImmuneAlertFeedback => !string.IsNullOrEmpty(LastImmuneAlertFeedbackLabel) && LastImmuneAlertFeedbackDelta > 0f;
         public string LastImmuneAlertFeedbackText => HasImmuneAlertFeedback
-            ? $"{LastImmuneAlertFeedbackLabel} +{LastImmuneAlertFeedbackDelta:0.#}"
+            ? $"{LastImmuneAlertFeedbackLabel} +{LastImmuneAlertFeedbackDelta:0.##}"
             : string.Empty;
+        public bool IsRatHostRiskZoneGraceActive => Mode == PrototypeGameMode.RatHost && ratHostRiskZoneGraceRemainingSeconds > 0f;
 
         public bool TickRatMode(float deltaTime)
         {
@@ -46,6 +48,7 @@ namespace LastHost.Prototype.Core
                 return false;
             }
 
+            TickRatHostRiskZoneGrace(deltaTime);
             TickImmuneAlertFeedback(deltaTime);
 
             if (!ImmuneAlert.Tick(deltaTime, Mutations.ImmuneAlertRateMultiplier))
@@ -128,6 +131,7 @@ namespace LastHost.Prototype.Core
 
         public void EnterVirusMinigame()
         {
+            ClearRatHostRiskZoneGrace();
             SetRatRiskInteractionAffordance(false, string.Empty);
             VirusRun.ResetRun();
             Mode = PrototypeGameMode.InternalVirus;
@@ -177,6 +181,7 @@ namespace LastHost.Prototype.Core
             ClearImmuneAlertFeedback();
             VirusRun.ResetRun();
             Mode = PrototypeGameMode.RatHost;
+            StartRatHostRiskZoneGrace();
             return true;
         }
 
@@ -200,8 +205,11 @@ namespace LastHost.Prototype.Core
                 return;
             }
 
-            LastImmuneAlertFeedbackLabel = label.Trim();
-            LastImmuneAlertFeedbackDelta = delta;
+            var trimmedLabel = label.Trim();
+            LastImmuneAlertFeedbackDelta = HasImmuneAlertFeedback && LastImmuneAlertFeedbackLabel == trimmedLabel
+                ? LastImmuneAlertFeedbackDelta + delta
+                : delta;
+            LastImmuneAlertFeedbackLabel = trimmedLabel;
             immuneAlertFeedbackRemainingSeconds = duration;
         }
 
@@ -217,6 +225,30 @@ namespace LastHost.Prototype.Core
             {
                 ClearImmuneAlertFeedback();
             }
+        }
+
+        private void StartRatHostRiskZoneGrace()
+        {
+            ratHostRiskZoneGraceRemainingSeconds = Mathf.Max(0f, Config.RiskZoneGraceAfterMutationReturnSeconds);
+        }
+
+        private void TickRatHostRiskZoneGrace(float deltaTime)
+        {
+            if (ratHostRiskZoneGraceRemainingSeconds <= 0f)
+            {
+                return;
+            }
+
+            ratHostRiskZoneGraceRemainingSeconds -= Mathf.Max(0f, deltaTime);
+            if (ratHostRiskZoneGraceRemainingSeconds < 0f)
+            {
+                ratHostRiskZoneGraceRemainingSeconds = 0f;
+            }
+        }
+
+        private void ClearRatHostRiskZoneGrace()
+        {
+            ratHostRiskZoneGraceRemainingSeconds = 0f;
         }
 
         private void ClearImmuneAlertFeedback()

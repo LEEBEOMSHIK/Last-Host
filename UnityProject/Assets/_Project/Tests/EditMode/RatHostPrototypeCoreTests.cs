@@ -202,6 +202,19 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void Session_ContinuousImmuneAlertFeedbackAccumulatesSmallSameCauseDeltas()
+        {
+            var session = new PrototypeSessionState();
+
+            session.AddImmuneAlertAmount(0.04f, "오염 노출");
+            session.AddImmuneAlertAmount(0.04f, "오염 노출");
+
+            Assert.AreEqual("오염 노출", session.LastImmuneAlertFeedbackLabel);
+            Assert.AreEqual(0.08f, session.LastImmuneAlertFeedbackDelta, 0.001f);
+            Assert.AreEqual("오염 노출 +0.08", session.LastImmuneAlertFeedbackText);
+        }
+
+        [Test]
         public void ImmuneRiskZone_RatStayStoresContaminationFeedbackAndActualDelta()
         {
             var session = CreateSessionControllerForEditModeTest("Session Under Test");
@@ -241,6 +254,97 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.False(session.State.HasImmuneAlertFeedback);
 
             Object.DestroyImmediate(nonRatObject);
+            Object.DestroyImmediate(zoneObject);
+            Object.DestroyImmediate(session.gameObject);
+        }
+
+        [Test]
+        public void ImmuneRiskZone_InternalVirusModeExposureDoesNotChangeImmuneAlertOrHostHealth()
+        {
+            var session = CreateSessionControllerForEditModeTest("Session Under Test");
+            session.State.EnterVirusMinigame();
+
+            var zoneObject = new GameObject("Contamination Zone Under Test");
+            var zone = zoneObject.AddComponent<ImmuneRiskZone>();
+            var ratObject = new GameObject("Rat Collider Under Test");
+            ratObject.AddComponent<RatHostController>();
+            var ratCollider = ratObject.AddComponent<BoxCollider>();
+            zone.session = session;
+
+            zone.ApplyExposure(ratCollider, 1f);
+
+            Assert.AreEqual(0f, session.State.ImmuneAlert.Value);
+            Assert.AreEqual(session.State.Config.HostMaxHealth, session.State.HostHealth);
+            Assert.False(session.State.HasImmuneAlertFeedback);
+
+            Object.DestroyImmediate(ratObject);
+            Object.DestroyImmediate(zoneObject);
+            Object.DestroyImmediate(session.gameObject);
+        }
+
+        [Test]
+        public void ImmuneRiskZone_MutationReturnGraceSuppressesImmediateContaminationOnly()
+        {
+            var session = CreateSessionControllerForEditModeTest("Session Under Test");
+            var zoneObject = new GameObject("Contamination Zone Under Test");
+            var zone = zoneObject.AddComponent<ImmuneRiskZone>();
+            var ratObject = new GameObject("Rat Collider Under Test");
+            ratObject.AddComponent<RatHostController>();
+            var ratCollider = ratObject.AddComponent<BoxCollider>();
+            zone.session = session;
+
+            MoveSessionToMutationSelection(session);
+            session.SelectMutation(MutationType.Dormancy);
+
+            var returnAlert = session.State.Config.AlertAfterMutationReturn;
+            zone.ApplyExposure(ratCollider, 1f);
+
+            Assert.AreEqual(returnAlert, session.State.ImmuneAlert.Value);
+            Assert.AreEqual(session.State.Config.HostMaxHealth, session.State.HostHealth);
+            Assert.False(session.State.HasImmuneAlertFeedback);
+
+            session.State.TickRatMode(2f);
+            zone.ApplyExposure(ratCollider, 1f);
+
+            Assert.AreEqual(returnAlert + 12f, session.State.ImmuneAlert.Value);
+            Assert.AreEqual(session.State.Config.HostMaxHealth - 4f, session.State.HostHealth);
+            Assert.AreEqual("오염 노출 +12", session.State.LastImmuneAlertFeedbackText);
+
+            Object.DestroyImmediate(ratObject);
+            Object.DestroyImmediate(zoneObject);
+            Object.DestroyImmediate(session.gameObject);
+        }
+
+        [Test]
+        public void ImmuneRiskZone_OverlappingRatBoundsStoresContaminationFeedbackWithoutTriggerCallback()
+        {
+            var session = CreateSessionControllerForEditModeTest("Session Under Test");
+            var zoneObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            zoneObject.name = "Contamination Zone Under Test";
+            zoneObject.transform.position = new Vector3(0f, 0.03f, 0f);
+            zoneObject.transform.localScale = new Vector3(2.6f, 0.08f, 1.5f);
+            var zoneCollider = zoneObject.GetComponent<BoxCollider>();
+            zoneCollider.isTrigger = true;
+            var zone = zoneObject.AddComponent<ImmuneRiskZone>();
+            zone.session = session;
+
+            var ratObject = new GameObject("Rat Controller Under Test");
+            ratObject.transform.position = Vector3.zero;
+            ratObject.AddComponent<RatHostController>();
+            var controller = ratObject.AddComponent<CharacterController>();
+            controller.height = 0.7f;
+            controller.radius = 0.25f;
+            controller.center = new Vector3(0f, 0.35f, 0f);
+            Physics.SyncTransforms();
+
+            zone.ApplyOverlappingRatExposure(0.5f);
+
+            Assert.AreEqual("오염 노출", session.State.LastImmuneAlertFeedbackLabel);
+            Assert.AreEqual(6f, session.State.LastImmuneAlertFeedbackDelta);
+            Assert.AreEqual("오염 노출 +6", session.State.LastImmuneAlertFeedbackText);
+            Assert.AreEqual(session.State.Config.HostMaxHealth - 2f, session.State.HostHealth);
+
+            Object.DestroyImmediate(ratObject);
             Object.DestroyImmediate(zoneObject);
             Object.DestroyImmediate(session.gameObject);
         }
@@ -621,6 +725,67 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.Greater(marker.childCount, 0);
         }
 
+        [Test]
+        public void RatHostPrototypeScene_ToxicWaterRiskZoneSupportsCharacterControllerTriggerDelivery()
+        {
+            EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
+
+            var rat = Object.FindAnyObjectByType<RatHostController>(FindObjectsInactive.Include);
+            var riskZoneObject = GameObject.Find("ToxicWaterRiskZone");
+
+            Assert.NotNull(rat);
+            Assert.NotNull(rat.GetComponent<CharacterController>());
+            Assert.NotNull(riskZoneObject);
+            Assert.NotNull(riskZoneObject.GetComponent<ImmuneRiskZone>());
+
+            var trigger = riskZoneObject.GetComponent<BoxCollider>();
+            var body = riskZoneObject.GetComponent<Rigidbody>();
+
+            Assert.NotNull(trigger);
+            Assert.True(trigger.isTrigger);
+            Assert.NotNull(body);
+            Assert.True(body.isKinematic);
+            Assert.False(body.useGravity);
+        }
+
+        [Test]
+        public void RatHostPrototypeScene_ToxicWaterRiskZoneOverlapRaisesHudFeedback()
+        {
+            EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
+
+            var session = Object.FindAnyObjectByType<PrototypeSessionController>(FindObjectsInactive.Include);
+            var rat = Object.FindAnyObjectByType<RatHostController>(FindObjectsInactive.Include);
+            var riskZoneObject = GameObject.Find("ToxicWaterRiskZone");
+
+            Assert.NotNull(session);
+            Assert.NotNull(rat);
+            Assert.NotNull(riskZoneObject);
+
+            EnsureSessionControllerAwake(session);
+
+            var zone = riskZoneObject.GetComponent<ImmuneRiskZone>();
+            var zoneCollider = riskZoneObject.GetComponent<Collider>();
+            var ratCollider = rat.GetComponent<Collider>();
+
+            Assert.NotNull(zone);
+            Assert.NotNull(zoneCollider);
+            Assert.NotNull(ratCollider);
+            Assert.NotNull(session.hud);
+            Assert.NotNull(session.hud.objectiveText);
+
+            var zoneCenter = zoneCollider.bounds.center;
+            rat.transform.position = new Vector3(zoneCenter.x, rat.transform.position.y, zoneCenter.z);
+            Physics.SyncTransforms();
+
+            Assert.True(zoneCollider.bounds.Intersects(ratCollider.bounds));
+
+            zone.ApplyOverlappingRatExposure(0.5f);
+
+            Assert.AreEqual("오염 노출 +6", session.State.LastImmuneAlertFeedbackText);
+            Assert.AreEqual("오염 노출 +6", session.hud.objectiveText.text);
+            Assert.Greater(session.State.ImmuneAlert.Value, 0f);
+        }
+
         private static PrototypeConfig CreateConfigWithFeedbackSeconds(float seconds)
         {
             return new PrototypeConfig { ImmuneAlertFeedbackSeconds = seconds };
@@ -630,13 +795,30 @@ namespace LastHost.Prototype.Tests.EditMode
         {
             var sessionObject = new GameObject(objectName);
             var session = sessionObject.AddComponent<PrototypeSessionController>();
-            if (session.State == null)
-            {
-                var awake = typeof(PrototypeSessionController).GetMethod("Awake", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-                awake.Invoke(session, null);
-            }
+            EnsureSessionControllerAwake(session);
 
             return session;
+        }
+
+        private static void MoveSessionToMutationSelection(PrototypeSessionController session)
+        {
+            session.State.EnterVirusMinigame();
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+
+            Assert.AreEqual(PrototypeGameMode.MutationSelection, session.CurrentMode);
+        }
+
+        private static void EnsureSessionControllerAwake(PrototypeSessionController session)
+        {
+            if (session.State != null)
+            {
+                return;
+            }
+
+            var awake = typeof(PrototypeSessionController).GetMethod("Awake", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            awake.Invoke(session, null);
         }
 
     }

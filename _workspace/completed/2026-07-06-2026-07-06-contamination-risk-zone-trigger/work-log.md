@@ -1,0 +1,91 @@
+# Work Log
+
+## 2026-07-06
+
+- 사용자 증상 접수: `ToxicWaterRiskZone`까지 쥐를 이동해도 HUD 숫자가 오르지 않는다.
+- 1차 조사:
+  - `ImmuneRiskZone.ApplyExposure` 직접 호출과 HUD 표시 로직은 작동한다.
+  - 현재 씬 `ToxicWaterRiskZone`에는 trigger `BoxCollider`와 `ImmuneRiskZone`은 있으나 Rigidbody가 없었다.
+  - `RatHostController`는 `CharacterController` 기반이라 트리거 전달 구성을 테스트로 고정할 필요가 있었다.
+- 1차 보정:
+  - 실제 씬과 씬 빌더의 `ToxicWaterRiskZone`에 kinematic `Rigidbody`를 추가했다.
+  - `RatHostPrototypeScene_ToxicWaterRiskZoneSupportsCharacterControllerTriggerDelivery` 테스트를 추가했다.
+  - RED: Rigidbody 누락으로 실패.
+  - GREEN: targeted 1/1, 전체 EditMode 32/32 통과.
+- 사용자 재보고:
+  - 1차 보정 후에도 실제 조작 시 HUD 숫자가 오르지 않는다고 보고됨.
+- 2차 원인 분리:
+  - HUD 값/문구가 아니라 실제 이동 경로에서 `OnTriggerStay`가 들어오지 않는 감지 경로 문제로 좁혔다.
+  - `ToxicWaterRiskZone` bounds와 쥐 `CharacterController` bounds는 위치가 겹치면 교차할 수 있음을 확인했다.
+- 2차 RED:
+  - trigger callback 없이 bounds 겹침만으로 오염 노출이 적용되어야 한다는 테스트를 추가했다.
+  - `ApplyOverlappingRatExposure`가 없어 컴파일 실패한 상태를 RED로 기록했다.
+- 2차 보정:
+  - `ImmuneRiskZone.Update`에서 zone collider와 쥐 collider bounds 겹침을 polling한다.
+  - 같은 프레임 중복 적용을 막는 frame guard를 추가했다.
+- 2차 GREEN:
+  - targeted 1/1 통과.
+  - 전체 EditMode 33/33 통과.
+  - Unity MCP Play 스모크 Error 0 확인.
+- QA/총괄 read-only 재검토:
+  - QA/검증 에이전트는 자동화 기준 PASS로 판단하되 실제 조작 HUD 확인은 남은 위험으로 분리했다.
+  - 프로젝트 총괄 관리자 에이전트는 내부 승인 가능으로 판단하되 사용자 보고 시 실제 조작 완료를 주장하지 말라고 확인했다.
+- 3차 보강:
+  - 실제 `RatHostPrototype` 씬의 쥐를 `ToxicWaterRiskZone` 중심으로 배치하고 bounds overlap 감지를 적용한 뒤 HUD objective가 `오염 노출 +6`으로 갱신되는 테스트를 추가했다.
+  - targeted 1/1 통과.
+  - 전체 EditMode 34/34 통과.
+- 사용자 지적에 따른 QA 재검증:
+  - 이전 QA는 실제로 돌렸지만 read-only 검토였고 Unity MCP 직접 검증이 아니었다.
+  - Volta QA/검증 에이전트를 다시 배정해 Unity MCP로 프로젝트 루트, Play 스모크, Console Error 0, 현재 씬 배선을 확인했다.
+  - Volta 판정은 PASS.
+- 사용자 추가 지적:
+  - 실제 플레이에서 `오염 노출 +0`으로 고정되어 보이면서 면역 경계도만 오른다고 보고됨.
+- 원인:
+  - 오염 노출은 프레임마다 소량 상승한다.
+  - 기존 피드백은 마지막 프레임 증가량만 보관하고 소수 한 자리까지만 표시해 고주사율 환경에서 `+0`처럼 보일 수 있었다.
+- 보정:
+  - 같은 원인 라벨의 연속 피드백 증가량을 누적한다.
+  - 피드백 문구를 소수 둘째 자리까지 표시한다.
+- 검증:
+  - RED: `editmode-feedback-small-delta-red.xml`에서 0.08 기대 대비 0.04만 저장되어 실패.
+  - GREEN targeted: `editmode-feedback-small-delta-green.xml` 1/1 통과.
+  - GREEN full: `editmode-all-green4.xml` 35/35 통과.
+- 사용자 추가 지적:
+  - 오염 지역에서 미니게임을 진행하고 나온 뒤 면역 경계도가 약 35%로 보여, 미니게임 중에도 면역 경계도가 오르는 것 같다고 보고됨.
+- 원인 분리:
+  - 면역 경계도는 `RatHost` 모드가 아니면 오르지 않는다.
+  - 성공 후 변이 선택으로 쥐 모드에 복귀하면 기존 설계상 면역 경계도가 25%로 돌아온다.
+  - 쥐가 오염 구역에 그대로 있으면 복귀 직후 오염 노출이 다시 적용되어 25%보다 더 올라갈 수 있다.
+  - 다만 `ImmuneRiskZone.ApplyExposure`는 내부 바이러스 모드에서 호출되면 숙주 피해를 줄 수 있는 누수가 있었다.
+- 보정:
+  - `ImmuneRiskZone.ApplyExposure`가 `RatHost` 모드에서만 면역 경계도, 숙주 피해, 피드백을 적용하도록 가드했다.
+- 검증:
+  - RED: `editmode-internal-exposure-red.xml`에서 InternalVirus 모드 노출 호출 시 숙주 생명력이 100 -> 96으로 감소해 실패.
+  - GREEN targeted: `editmode-internal-exposure-green.xml` 1/1 통과.
+  - GREEN full: `editmode-all-green5.xml` 36/36 통과.
+  - Unity MCP: Play 4초 Error 0, Edit 상태 RunCommand로 InternalVirus 모드 노출 후 alert=0, health=100, feedback='' 확인.
+- 사용자 질문:
+  - "복귀 후 짧은 오염 무시 시간 등의 처리는 한거야? 해야된다는거야?"라고 확인함.
+- 답변/판단:
+  - 이전 단계까지는 구현된 것이 아니라 필요한 후속 보정으로 판단한 상태였다.
+  - 증상상 내부 미니게임 중 오염 누수와 별도로, 변이 선택 후 쥐 모드로 돌아온 직후 같은 오염 구역 위에 남아 있어 즉시 다시 노출되는 경로를 막아야 했다.
+- RED:
+  - 신규 테스트 `ImmuneRiskZone_MutationReturnGraceSuppressesImmediateContaminationOnly`를 추가했다.
+  - `editmode-return-grace-red4.xml`에서 복귀 기준값 25%를 기대했지만 기존 구현은 오염 1초치가 즉시 더해져 37%가 되어 실패했다.
+  - 초기 RED 시도 2건은 임시 Unity 복사본의 `com.unity.ai.assistant` PackageCache 권한 오류로 테스트 도달 전 종료되어 근거로 채택하지 않았다.
+- 보정:
+  - `PrototypeConfig.RiskZoneGraceAfterMutationReturnSeconds = 1.5f` 기본값을 추가했다.
+  - `PrototypeSessionState`가 변이 선택 후 `RatHost` 복귀 시 위험 구역 보호 시간을 시작하고, `TickRatMode`에서 시간을 소진하도록 했다.
+  - `ImmuneRiskZone.ApplyExposure`가 `session.State.IsRatHostRiskZoneGraceActive`인 동안 면역 경계도, 숙주 피해, 피드백을 적용하지 않도록 했다.
+  - 보호 시간이 끝나면 기존 오염 구역 효과는 다시 정상 적용된다.
+- GREEN:
+  - targeted: `editmode-return-grace-green.xml` 1/1 통과.
+  - full: `editmode-all-green6.xml` 37/37 통과.
+- Unity MCP:
+  - Play 4초 진입/정지 후 Console Error 0.
+  - Edit 상태 `Unity_RunCommand`에서 `returnGraceCheck mode=RatHost alert=25 graceAfterReturn=True graceAfterTick=False` 확인.
+
+## 남은 확인
+
+- 실제 사람이 에디터 Play 상태에서 키보드로 쥐를 `ToxicWaterRiskZone`까지 이동하는 장면을 내가 눈으로 확인하지는 못했다.
+- 다만 실제 씬 배선 기준으로 오염 구역 overlap 시 HUD objective에 `오염 노출 +6`이 표시되는 경로는 자동화 테스트로 확인했다.

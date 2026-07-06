@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-06 04:04:46Z" end-time="2026-07-06 04:04:46Z" duration="0.7250073">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="34" result="Passed" start-time="2026-07-06 04:04:46Z" end-time="2026-07-06 04:04:46Z" duration="0.725007" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1036" name="LastHost.Prototype.Tests.dll" fullname="C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_toxic_overlap_green_1ac1b412a38840d89d00cf3eda4dea08/Library/ScriptAssemblies/LastHost.Prototype.Tests.dll" runstate="Runnable" testcasecount="34" result="Passed" start-time="2026-07-06 04:04:46Z" end-time="2026-07-06 04:04:46Z" duration="0.713954" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="15624" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1037" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="34" result="Passed" start-time="2026-07-06 04:04:46Z" end-time="2026-07-06 04:04:46Z" duration="0.712175" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1038" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="34" result="Passed" start-time="2026-07-06 04:04:46Z" end-time="2026-07-06 04:04:46Z" duration="0.710802" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1039" name="Tests" fullname="LastHost.Prototype.Tests" runstate="Runnable" testcasecount="34" result="Passed" start-time="2026-07-06 04:04:46Z" end-time="2026-07-06 04:04:46Z" duration="0.709373" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1040" name="EditMode" fullname="LastHost.Prototype.Tests.EditMode" runstate="Runnable" testcasecount="34" result="Passed" start-time="2026-07-06 04:04:46Z" end-time="2026-07-06 04:04:46Z" duration="0.708050" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1001" name="RatHostPrototypeCoreTests" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" testcasecount="34" result="Passed" start-time="2026-07-06 04:04:46Z" end-time="2026-07-06 04:04:46Z" duration="0.705575" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1035" name="RatHostPrototypeScene_ToxicWaterRiskZoneOverlapRaisesHudFeedback" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.RatHostPrototypeScene_ToxicWaterRiskZoneOverlapRaisesHudFeedback" methodname="RatHostPrototypeScene_ToxicWaterRiskZoneOverlapRaisesHudFeedback" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="628410153" result="Passed" start-time="2026-07-06 04:04:46Z" end-time="2026-07-06 04:04:46Z" duration="0.678100" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

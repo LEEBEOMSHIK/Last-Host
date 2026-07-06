@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-06 03:10:43Z" end-time="2026-07-06 03:10:43Z" duration="0.0787257">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-07-06 03:10:43Z" end-time="2026-07-06 03:10:43Z" duration="0.078726" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1035" name="LastHost.Prototype.Tests.dll" fullname="C:/Users/User/AppData/Local/Temp/LastHost_UnityProject_Test_20260706_toxic_overlap_green_1ac1b412a38840d89d00cf3eda4dea08/Library/ScriptAssemblies/LastHost.Prototype.Tests.dll" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-07-06 03:10:43Z" end-time="2026-07-06 03:10:43Z" duration="0.064061" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="27996" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1036" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-07-06 03:10:43Z" end-time="2026-07-06 03:10:43Z" duration="0.062713" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1037" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-07-06 03:10:43Z" end-time="2026-07-06 03:10:43Z" duration="0.061771" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1038" name="Tests" fullname="LastHost.Prototype.Tests" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-07-06 03:10:43Z" end-time="2026-07-06 03:10:43Z" duration="0.060682" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1039" name="EditMode" fullname="LastHost.Prototype.Tests.EditMode" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-07-06 03:10:43Z" end-time="2026-07-06 03:10:43Z" duration="0.059190" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1001" name="RatHostPrototypeCoreTests" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-07-06 03:10:43Z" end-time="2026-07-06 03:10:43Z" duration="0.056480" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1015" name="ImmuneRiskZone_OverlappingRatBoundsStoresContaminationFeedbackWithoutTriggerCallback" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.ImmuneRiskZone_OverlappingRatBoundsStoresContaminationFeedbackWithoutTriggerCallback" methodname="ImmuneRiskZone_OverlappingRatBoundsStoresContaminationFeedbackWithoutTriggerCallback" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1053528304" result="Passed" start-time="2026-07-06 03:10:43Z" end-time="2026-07-06 03:10:43Z" duration="0.030398" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

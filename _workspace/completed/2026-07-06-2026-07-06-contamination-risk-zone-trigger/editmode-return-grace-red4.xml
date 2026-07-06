@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-06 06:29:02Z" end-time="2026-07-06 06:29:02Z" duration="0.0782949">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="37" result="Failed" site="Child" start-time="2026-07-06 06:29:02Z" end-time="2026-07-06 06:29:02Z" duration="0.078295" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1039" name="LastHost.Prototype.Tests.dll" fullname="C:/tmp/LastHost_UnityProject_Test_20260706_return_grace_red_pkgtrim_e5bd86758e46457995764945ca512e76/Library/ScriptAssemblies/LastHost.Prototype.Tests.dll" runstate="Runnable" testcasecount="37" result="Failed" site="Child" start-time="2026-07-06 06:29:02Z" end-time="2026-07-06 06:29:02Z" duration="0.066954" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="54568" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1040" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="37" result="Failed" site="Child" start-time="2026-07-06 06:29:02Z" end-time="2026-07-06 06:29:02Z" duration="0.065816" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1041" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="37" result="Failed" site="Child" start-time="2026-07-06 06:29:02Z" end-time="2026-07-06 06:29:02Z" duration="0.065053" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1042" name="Tests" fullname="LastHost.Prototype.Tests" runstate="Runnable" testcasecount="37" result="Failed" site="Child" start-time="2026-07-06 06:29:02Z" end-time="2026-07-06 06:29:02Z" duration="0.064257" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestSuite" id="1043" name="EditMode" fullname="LastHost.Prototype.Tests.EditMode" runstate="Runnable" testcasecount="37" result="Failed" site="Child" start-time="2026-07-06 06:29:02Z" end-time="2026-07-06 06:29:02Z" duration="0.063417" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-suite type="TestFixture" id="1001" name="RatHostPrototypeCoreTests" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" testcasecount="37" result="Failed" site="Child" start-time="2026-07-06 06:29:02Z" end-time="2026-07-06 06:29:02Z" duration="0.061361" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1017" name="ImmuneRiskZone_MutationReturnGraceSuppressesImmediateContaminationOnly" fullname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.ImmuneRiskZone_MutationReturnGraceSuppressesImmediateContaminationOnly" methodname="ImmuneRiskZone_MutationReturnGraceSuppressesImmediateContaminationOnly" classname="LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests" runstate="Runnable" seed="1456504200" result="Failed" start-time="2026-07-06 06:29:02Z" end-time="2026-07-06 06:29:02Z" duration="0.035363" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  Expected: 25.0f
+  But was:  37.0f
+]]></message>
+                    <stack-trace><![CDATA[at LastHost.Prototype.Tests.EditMode.RatHostPrototypeCoreTests.ImmuneRiskZone_MutationReturnGraceSuppressesImmediateContaminationOnly () [0x00065] in C:\tmp\LastHost_UnityProject_Test_20260706_return_grace_red_pkgtrim_e5bd86758e46457995764945ca512e76\Assets\_Project\Tests\EditMode\RatHostPrototypeCoreTests.cs:302
+]]></stack-trace>
+                  </failure>
+                  <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
