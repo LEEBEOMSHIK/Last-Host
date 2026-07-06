@@ -62,6 +62,7 @@
 - `docs/design/interactions/README.md`
 - `docs/design/interactions/noisy-pipe-risk-interaction.md`
 - `docs/design/hosts/host-instinct-control.md`
+- `docs/design/progression/host-experience-traits.md`
 - `docs/design/encounters/internal-immune-response-minigame-types.md`
 - `docs/design/systems/README.md`
 - `docs/design/systems/immune-alert.md`
@@ -125,6 +126,7 @@
 선택 참조:
 
 - `docs/prototype/approvals/rat-host-approval-packet.md`
+- `docs/design/progression/host-experience-traits.md`
 - `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
 
 ### 도트풍 저폴리 3D / 비주얼

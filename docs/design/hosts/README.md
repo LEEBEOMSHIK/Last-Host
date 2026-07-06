@@ -5,6 +5,7 @@
 ## 포함 문서
 
 - `host-instinct-control.md`: 숙주 본능, AI 행동 패턴, 플레이어 강제 조종, 면역 경계도 연결 기준
+- 숙주별 고유 특성과 바이러스가 배울 수 있는 숙주 경험 특성은 `../progression/host-experience-traits.md`와 함께 참조한다.
 - 쥐 숙주
 - 벌레 숙주
 - 인간 숙주

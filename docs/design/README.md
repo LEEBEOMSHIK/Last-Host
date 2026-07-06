@@ -25,6 +25,7 @@
 - `ui-feedback/immune-alert-feedback.md`: 면역 경계도 상승 원인과 변화량을 플레이어에게 보여주는 피드백 규칙.
 - `hosts/host-instinct-control.md`: 숙주 본능과 플레이어 강제 조종이 면역 경계도에 연결되는 기준.
 - `encounters/internal-immune-response-minigame-types.md`: 내부 미니게임을 백혈구 전투로 고정하지 않기 위한 유형 기준.
+- `progression/host-experience-traits.md`: 바이러스 변이와 별개로, 숙주 경험을 통해 얻는 장기 특성 구조.
 
 ## 작성 규칙
 
