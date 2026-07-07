@@ -52,7 +52,7 @@ namespace LastHost.Prototype.Core
             }
             else if (State.Mode == PrototypeGameMode.VirusFailed && PrototypeKeyboardInput.WasRetryPressed())
             {
-                RetryVirusMinigame();
+                ReturnToRatHostAfterVirusFailure();
                 return;
             }
 
@@ -144,8 +144,13 @@ namespace LastHost.Prototype.Core
 
         public void RetryVirusMinigame()
         {
+            ReturnToRatHostAfterVirusFailure();
+        }
+
+        public void ReturnToRatHostAfterVirusFailure()
+        {
             var previousMode = State.Mode;
-            if (!State.RetryVirusMinigame())
+            if (!State.ReturnToRatHostAfterVirusFailure())
             {
                 return;
             }

@@ -24,7 +24,7 @@ namespace LastHost.Prototype.Mutations
                 case MutationType.Dormancy:
                     return "면역 경계도 상승 속도 감소";
                 case MutationType.NeuralControl:
-                    return "쥐 이동 속도 증가";
+                    return "쥐 조종력과 이동 속도 증가";
                 case MutationType.MammalAdaptation:
                     return "하수도 특정 통로 접근 허용";
                 default:

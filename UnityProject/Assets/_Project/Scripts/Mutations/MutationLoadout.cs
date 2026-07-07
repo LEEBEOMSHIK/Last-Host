@@ -8,6 +8,7 @@ namespace LastHost.Prototype.Mutations
 
         public float ImmuneAlertRateMultiplier => Has(MutationType.Dormancy) ? 0.55f : 1f;
         public float RatSpeedMultiplier => Has(MutationType.NeuralControl) ? 1.35f : 1f;
+        public float RatControlPower => Has(MutationType.NeuralControl) ? 1.1f : 0.35f;
         public bool CanUseMammalPassage => Has(MutationType.MammalAdaptation);
 
         public bool Has(MutationType type)

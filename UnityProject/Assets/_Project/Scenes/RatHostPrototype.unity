@@ -197,7 +197,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBCC0\uC774 \uC870\uAC01"
+  m_Text: "\uBCC0\uC774 \uC870\uAC01 0/3"
 --- !u!1 &15829816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2730,7 +2730,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBC14\uC774\uB7EC\uC2A4 \uC548\uC815\uB3C4 \uC18C\uC9C4"
+  m_Text: "\uBA74\uC5ED \uBC18\uC751 \uB3CC\uD30C \uC2E4\uD328"
 --- !u!222 &858239049
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3454,6 +3454,7 @@ MonoBehaviour:
   riskSeverity: 0.75
   cooldownSeconds: 1.2
   interactionPrompt: "\uC18C\uC74C \uBC30\uAD00 \uC870\uC0AC \uAC00\uB2A5"
+  immuneAlertFeedbackLabel: "\uC18C\uC74C/\uC870\uC9C1 \uC790\uADF9"
 --- !u!65 &1158448023
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3701,7 +3702,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC7AC\uC2DC\uB3C4"
+  m_Text: "\uC950 \uC219\uC8FC\uB85C \uBCF5\uADC0"
 --- !u!222 &1204772093
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4102,7 +4103,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD558\uC218\uB3C4 \uD0D0\uC0C9 \uC911"
+  m_Text: "\uC624\uC5FC \uB178\uCD9C +6"
 --- !u!1 &1315543127
 GameObject:
   m_ObjectHideFlags: 0
@@ -4583,7 +4584,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBC14\uC774\uB7EC\uC2A4 \uC548\uC815\uB3C4"
+  m_Text: "\uBC14\uC774\uB7EC\uC2A4 \uC548\uC815\uB3C4 100/100"
 --- !u!1 &1367922037
 GameObject:
   m_ObjectHideFlags: 0
@@ -4781,7 +4782,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.98
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5486,7 +5487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBA74\uC5ED \uACBD\uACC4\uB3C4"
+  m_Text: "\uBA74\uC5ED \uACBD\uACC4\uB3C4 6%"
 --- !u!1 &1651268915
 GameObject:
   m_ObjectHideFlags: 0
@@ -5844,9 +5845,9 @@ GameObject:
   - component: {fileID: 1711732930}
   - component: {fileID: 1711732934}
   - component: {fileID: 1711732933}
-  - component: {fileID: 1711732935}
   - component: {fileID: 1711732932}
   - component: {fileID: 1711732931}
+  - component: {fileID: 1711732935}
   m_Layer: 0
   m_Name: ToxicWaterRiskZone
   m_TagString: Untagged
@@ -5885,33 +5886,12 @@ MonoBehaviour:
   alertPerSecond: 12
   hostDamagePerSecond: 4
   immuneAlertFeedbackLabel: "\uC624\uC5FC \uB178\uCD9C"
---- !u!54 &1711732935
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1711732929}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  forcedControlAlertAmount: 8
+  forcedControlHoldSeconds: 0.5
+  forcedControlCooldownSeconds: 1.2
+  forcedControlDirectionDotThreshold: 0.7
+  forcedControlDetectionDistance: 1.5
+  forcedControlFeedbackLabel: "\uAC15\uC81C \uC870\uC885"
 --- !u!23 &1711732932
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5990,6 +5970,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711732929}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1711732935
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711732929}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1781767607
 GameObject:
   m_ObjectHideFlags: 0
@@ -6294,7 +6301,7 @@ Transform:
   m_GameObject: {fileID: 1870119191}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4, y: 0, z: -1}
+  m_LocalPosition: {x: -0.70000005, y: 0, z: 1.3499999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6317,6 +6324,13 @@ MonoBehaviour:
   baseSpeed: 3.2
   xBounds: {x: -5.4, y: 5.4}
   zBounds: {x: -3.4, y: 3.4}
+  hostInstinctMoveDirection: {x: 0, y: 0, z: 1}
+  passiveInstinctSpeedMultiplier: 0.45
+  forcedControlSpeedMultiplier: 0.65
+  forcedControlConflictDotThreshold: -0.25
+  forcedControlAlertAmount: 6
+  forcedControlAlertCooldownSeconds: 1.2
+  forcedControlFeedbackLabel: "\uAC15\uC81C \uC870\uC885"
 --- !u!143 &1870119194
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6633,7 +6647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC219\uC8FC \uC0DD\uBA85\uB825"
+  m_Text: "\uC219\uC8FC \uC0DD\uBA85\uB825 98/100"
 --- !u!1 &2000368888
 GameObject:
   m_ObjectHideFlags: 0
@@ -7101,7 +7115,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.06
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

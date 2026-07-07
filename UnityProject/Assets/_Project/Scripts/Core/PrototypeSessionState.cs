@@ -159,13 +159,21 @@ namespace LastHost.Prototype.Core
 
         public bool RetryVirusMinigame()
         {
+            return ReturnToRatHostAfterVirusFailure();
+        }
+
+        public bool ReturnToRatHostAfterVirusFailure()
+        {
             if (Mode != PrototypeGameMode.VirusFailed)
             {
                 return false;
             }
 
+            ImmuneAlert.ResetAfterInternalBattle(Config.AlertAfterVirusFailureReturn);
+            ClearImmuneAlertFeedback();
             VirusRun.ResetRun();
-            Mode = PrototypeGameMode.InternalVirus;
+            Mode = PrototypeGameMode.RatHost;
+            StartRatHostRiskZoneGrace();
             return true;
         }
 

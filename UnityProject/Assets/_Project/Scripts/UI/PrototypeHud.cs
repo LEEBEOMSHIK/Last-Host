@@ -78,7 +78,7 @@ namespace LastHost.Prototype.UI
 
         public void RetryVirusMinigame()
         {
-            session?.RetryVirusMinigame();
+            session?.ReturnToRatHostAfterVirusFailure();
         }
 
         private string BuildMutationStatus(MutationLoadout loadout)
@@ -116,7 +116,7 @@ namespace LastHost.Prototype.UI
                 case PrototypeGameMode.InternalVirus:
                     return "내부 바이러스";
                 case PrototypeGameMode.VirusFailed:
-                    return "바이러스 실패";
+                    return "면역 반응 돌파 실패";
                 case PrototypeGameMode.MutationSelection:
                     return "변이 선택";
                 default:
@@ -143,7 +143,7 @@ namespace LastHost.Prototype.UI
                 case PrototypeGameMode.InternalVirus:
                     return "변이 조각 수집 / 백혈구 회피";
                 case PrototypeGameMode.VirusFailed:
-                    return "바이러스 안정도 소진";
+                    return "보상 없이 쥐 숙주로 복귀";
                 case PrototypeGameMode.MutationSelection:
                     return "변이 선택";
                 default:

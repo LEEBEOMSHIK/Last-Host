@@ -43,6 +43,7 @@ namespace LastHost.Prototype.Tests.EditMode
 
             Assert.AreEqual(1f, loadout.ImmuneAlertRateMultiplier);
             Assert.AreEqual(1f, loadout.RatSpeedMultiplier);
+            Assert.Less(loadout.RatControlPower, 1f);
             Assert.False(loadout.CanUseMammalPassage);
 
             loadout.Apply(MutationType.Dormancy);
@@ -51,6 +52,7 @@ namespace LastHost.Prototype.Tests.EditMode
 
             Assert.Less(loadout.ImmuneAlertRateMultiplier, 1f);
             Assert.Greater(loadout.RatSpeedMultiplier, 1f);
+            Assert.Greater(loadout.RatControlPower, 1f);
             Assert.True(loadout.CanUseMammalPassage);
         }
 
@@ -133,12 +135,12 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
-        public void Session_FailedVirusRunCanRetryWithoutLeavingVirusMode()
+        public void Session_FailedVirusRunReturnsToRatModeWithoutMutationReward()
         {
             var session = new PrototypeSessionState();
 
             session.EnterVirusMinigame();
-            session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: true);
             session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
             session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
 
@@ -146,7 +148,13 @@ namespace LastHost.Prototype.Tests.EditMode
 
             session.RetryVirusMinigame();
 
-            Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
+            Assert.AreEqual(PrototypeGameMode.RatHost, session.Mode);
+            Assert.False(session.Mutations.Has(MutationType.Dormancy));
+            Assert.False(session.Mutations.Has(MutationType.NeuralControl));
+            Assert.False(session.Mutations.Has(MutationType.MammalAdaptation));
+            Assert.Greater(session.ImmuneAlert.Value, session.Config.AlertAfterMutationReturn);
+            Assert.Less(session.ImmuneAlert.Value, session.Config.MaxImmuneAlert);
+            Assert.True(session.IsRatHostRiskZoneGraceActive);
             Assert.AreEqual(0, session.VirusRun.CollectedFragments);
             Assert.AreEqual(session.Config.VirusStartingStability, session.VirusRun.Stability);
         }
@@ -316,6 +324,160 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void RatHostControlModel_NoInputFollowsHostInstinctAtPassiveSpeed()
+        {
+            var frame = RatHostControlModel.Resolve(
+                Vector3.forward,
+                Vector3.zero,
+                virusControlPower: 0.35f,
+                hostInstinctResistance: 1f,
+                conflictDotThreshold: -0.25f,
+                passiveInstinctSpeedMultiplier: 0.45f,
+                forcedControlSpeedMultiplier: 0.65f);
+
+            Assert.AreEqual(Vector3.forward, frame.MoveDirection);
+            Assert.AreEqual(0.45f, frame.SpeedMultiplier);
+            Assert.False(frame.IsForcedControl);
+        }
+
+        [Test]
+        public void RatHostControlModel_LowControlBlendsPlayerInputIntoInstinct()
+        {
+            var frame = RatHostControlModel.Resolve(
+                Vector3.forward,
+                Vector3.right,
+                virusControlPower: 0.35f,
+                hostInstinctResistance: 1f,
+                conflictDotThreshold: -0.25f,
+                passiveInstinctSpeedMultiplier: 0.45f,
+                forcedControlSpeedMultiplier: 0.65f);
+
+            Assert.Greater(Vector3.Dot(frame.MoveDirection, Vector3.forward), Vector3.Dot(frame.MoveDirection, Vector3.right));
+            Assert.Greater(Vector3.Dot(frame.MoveDirection, Vector3.right), 0f);
+            Assert.AreEqual(1f, frame.SpeedMultiplier);
+            Assert.False(frame.IsForcedControl);
+        }
+
+        [Test]
+        public void RatHostControlModel_HighControlOverridesHostInstinct()
+        {
+            var frame = RatHostControlModel.Resolve(
+                Vector3.forward,
+                Vector3.right,
+                virusControlPower: 1.1f,
+                hostInstinctResistance: 1f,
+                conflictDotThreshold: -0.25f,
+                passiveInstinctSpeedMultiplier: 0.45f,
+                forcedControlSpeedMultiplier: 0.65f);
+
+            Assert.AreEqual(Vector3.right, frame.MoveDirection);
+            Assert.AreEqual(1f, frame.SpeedMultiplier);
+            Assert.False(frame.IsForcedControl);
+        }
+
+        [Test]
+        public void RatHostControlModel_LowControlAgainstInstinctAppliesDemerit()
+        {
+            var frame = RatHostControlModel.Resolve(
+                Vector3.forward,
+                Vector3.back,
+                virusControlPower: 0.35f,
+                hostInstinctResistance: 1f,
+                conflictDotThreshold: -0.25f,
+                passiveInstinctSpeedMultiplier: 0.45f,
+                forcedControlSpeedMultiplier: 0.65f);
+
+            Assert.AreEqual(Vector3.forward, frame.MoveDirection);
+            Assert.AreEqual(0.65f, frame.SpeedMultiplier);
+            Assert.True(frame.IsForcedControl);
+        }
+
+        [Test]
+        public void HostInstinctControlSpike_RepeatedInputTowardDangerTriggersForcedControlOnce()
+        {
+            var spike = new HostInstinctControlSpike(
+                requiredHoldSeconds: 0.5f,
+                cooldownSeconds: 1f,
+                directionDotThreshold: 0.7f);
+
+            Assert.False(spike.Tick(Vector3.zero, Vector3.forward, Vector3.forward, 0.24f, 0f));
+
+            Assert.True(spike.Tick(Vector3.zero, Vector3.forward, Vector3.forward, 0.26f, 0.24f));
+
+            Assert.False(spike.Tick(Vector3.zero, Vector3.forward, Vector3.forward, 0.5f, 0.5f));
+        }
+
+        [Test]
+        public void HostInstinctControlSpike_MovementAwayFromDangerResetsForcedControlHold()
+        {
+            var spike = new HostInstinctControlSpike(
+                requiredHoldSeconds: 0.5f,
+                cooldownSeconds: 1f,
+                directionDotThreshold: 0.7f);
+
+            Assert.False(spike.Tick(Vector3.zero, Vector3.forward, Vector3.forward, 0.35f, 0f));
+            Assert.False(spike.Tick(Vector3.zero, Vector3.forward, Vector3.back, 0.1f, 0.35f));
+            Assert.False(spike.Tick(Vector3.zero, Vector3.forward, Vector3.forward, 0.2f, 0.45f));
+        }
+
+        [Test]
+        public void ImmuneRiskZone_ForcedControlSpikeStoresFeedbackWithoutHostDamage()
+        {
+            var session = CreateSessionControllerForEditModeTest("Session Under Test");
+            var zoneObject = new GameObject("Contamination Zone Under Test");
+            zoneObject.transform.position = Vector3.forward;
+            var zone = zoneObject.AddComponent<ImmuneRiskZone>();
+            var ratObject = new GameObject("Rat Controller Under Test");
+            var rat = ratObject.AddComponent<RatHostController>();
+            zone.session = session;
+            zone.forcedControlHoldSeconds = 0.5f;
+            zone.forcedControlCooldownSeconds = 1f;
+            zone.forcedControlAlertAmount = 8f;
+
+            zone.ApplyForcedControlInput(rat, Vector3.forward, 0.24f, 0f);
+            zone.ApplyForcedControlInput(rat, Vector3.forward, 0.26f, 0.24f);
+
+            Assert.AreEqual("강제 조종", session.State.LastImmuneAlertFeedbackLabel);
+            Assert.AreEqual(8f, session.State.LastImmuneAlertFeedbackDelta);
+            Assert.AreEqual("강제 조종 +8", session.State.LastImmuneAlertFeedbackText);
+            Assert.AreEqual(8f, session.State.ImmuneAlert.Value);
+            Assert.AreEqual(session.State.Config.HostMaxHealth, session.State.HostHealth);
+
+            Object.DestroyImmediate(ratObject);
+            Object.DestroyImmediate(zoneObject);
+            Object.DestroyImmediate(session.gameObject);
+        }
+
+        [Test]
+        public void ImmuneRiskZone_NearbyRatInputTowardZoneTriggersForcedControlFeedback()
+        {
+            EditorSceneManager.NewScene(NewSceneSetup.EmptyScene);
+
+            var session = CreateSessionControllerForEditModeTest("Session Under Test");
+            var zoneObject = new GameObject("Contamination Zone Under Test");
+            zoneObject.transform.position = Vector3.forward;
+            zoneObject.AddComponent<BoxCollider>().isTrigger = true;
+            var zone = zoneObject.AddComponent<ImmuneRiskZone>();
+            var ratObject = new GameObject("Rat Controller Under Test");
+            var rat = ratObject.AddComponent<RatHostController>();
+            zone.session = session;
+            zone.forcedControlHoldSeconds = 0.5f;
+            zone.forcedControlCooldownSeconds = 1f;
+            zone.forcedControlAlertAmount = 8f;
+
+            SetRatCurrentMoveWorldDirection(rat, Vector3.forward);
+
+            InvokeNearbyForcedControlInput(zone, 0.5f, 0f);
+
+            Assert.AreEqual("강제 조종 +8", session.State.LastImmuneAlertFeedbackText);
+            Assert.AreEqual(8f, session.State.ImmuneAlert.Value);
+
+            Object.DestroyImmediate(ratObject);
+            Object.DestroyImmediate(zoneObject);
+            Object.DestroyImmediate(session.gameObject);
+        }
+
+        [Test]
         public void ImmuneRiskZone_OverlappingRatBoundsStoresContaminationFeedbackWithoutTriggerCallback()
         {
             var session = CreateSessionControllerForEditModeTest("Session Under Test");
@@ -347,6 +509,35 @@ namespace LastHost.Prototype.Tests.EditMode
             Object.DestroyImmediate(ratObject);
             Object.DestroyImmediate(zoneObject);
             Object.DestroyImmediate(session.gameObject);
+        }
+
+        [Test]
+        public void PrototypeHud_ShowsRecommendedVirusFailureCopyAndReturnPanel()
+        {
+            var session = new PrototypeSessionState();
+            MoveSessionToVirusFailure(session);
+
+            var hudObject = new GameObject("HUD Under Test");
+            var modeObject = new GameObject("Mode Text");
+            var objectiveObject = new GameObject("Objective Text");
+            var failurePanel = new GameObject("Failure Panel");
+            modeObject.transform.SetParent(hudObject.transform, false);
+            objectiveObject.transform.SetParent(hudObject.transform, false);
+            failurePanel.transform.SetParent(hudObject.transform, false);
+            var modeText = modeObject.AddComponent<Text>();
+            var objectiveText = objectiveObject.AddComponent<Text>();
+            var hud = hudObject.AddComponent<PrototypeHud>();
+            hud.modeText = modeText;
+            hud.objectiveText = objectiveText;
+            hud.failurePanel = failurePanel;
+
+            hud.Refresh(session);
+
+            Assert.AreEqual("면역 반응 돌파 실패", modeText.text);
+            Assert.AreEqual("보상 없이 쥐 숙주로 복귀", objectiveText.text);
+            Assert.True(failurePanel.activeSelf);
+
+            Object.DestroyImmediate(hudObject);
         }
 
         [Test]
@@ -726,6 +917,26 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void RatHostPrototypeScene_FailurePanelUsesReturnCopy()
+        {
+            EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
+
+            var titleObject = FindSceneGameObjectIncludingInactive("FailureTitle");
+            var buttonObject = FindSceneGameObjectIncludingInactive("RetryButton");
+
+            Assert.NotNull(titleObject);
+            Assert.NotNull(buttonObject);
+
+            var title = titleObject.GetComponent<Text>();
+            var buttonText = buttonObject.GetComponentInChildren<Text>(true);
+
+            Assert.NotNull(title);
+            Assert.NotNull(buttonText);
+            Assert.AreEqual("면역 반응 돌파 실패", title.text);
+            Assert.AreEqual("쥐 숙주로 복귀", buttonText.text);
+        }
+
+        [Test]
         public void RatHostPrototypeScene_ToxicWaterRiskZoneSupportsCharacterControllerTriggerDelivery()
         {
             EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
@@ -810,6 +1021,29 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.AreEqual(PrototypeGameMode.MutationSelection, session.CurrentMode);
         }
 
+        private static void MoveSessionToVirusFailure(PrototypeSessionState session)
+        {
+            session.EnterVirusMinigame();
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: true);
+            session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
+            session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
+
+            Assert.AreEqual(PrototypeGameMode.VirusFailed, session.Mode);
+        }
+
+        private static GameObject FindSceneGameObjectIncludingInactive(string objectName)
+        {
+            foreach (var gameObject in Resources.FindObjectsOfTypeAll<GameObject>())
+            {
+                if (gameObject.name == objectName && gameObject.scene.IsValid())
+                {
+                    return gameObject;
+                }
+            }
+
+            return null;
+        }
+
         private static void EnsureSessionControllerAwake(PrototypeSessionController session)
         {
             if (session.State != null)
@@ -819,6 +1053,23 @@ namespace LastHost.Prototype.Tests.EditMode
 
             var awake = typeof(PrototypeSessionController).GetMethod("Awake", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             awake.Invoke(session, null);
+        }
+
+        private static void SetRatCurrentMoveWorldDirection(RatHostController rat, Vector3 direction)
+        {
+            var property = typeof(RatHostController).GetProperty(nameof(RatHostController.CurrentMoveWorldDirection));
+            property.SetValue(rat, direction);
+        }
+
+        private static void InvokeNearbyForcedControlInput(ImmuneRiskZone zone, float deltaTime, float currentTimeSeconds)
+        {
+            var method = typeof(ImmuneRiskZone).GetMethod(
+                "ApplyNearbyForcedControlInput",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+                null,
+                new[] { typeof(float), typeof(float) },
+                null);
+            method.Invoke(zone, new object[] { deltaTime, currentTimeSeconds });
         }
 
     }
