@@ -5,6 +5,7 @@
 ## 포함 문서
 
 - `internal-immune-response-minigame-types.md`: 내부 면역 대응 미니게임 유형과 경계도 원인별 연결 기준
+- `immune-signal-suppression-rhythm-minigame.md`: 면역 신호 억제 리듬형 미니게임 상세 기준
 - 내부 면역 미니게임
 - 백혈구
 - 항체 또는 위험 패턴

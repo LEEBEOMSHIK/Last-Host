@@ -90,6 +90,69 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void ImmuneSignalSuppression_AccurateInputsReachSuccess()
+        {
+            var minigame = new ImmuneSignalSuppressionModel(
+                totalSignals: 4,
+                requiredSuppressions: 3,
+                startingStability: 100f,
+                mistakeDamage: 25f,
+                accurateWindowSeconds: 0.1f,
+                signalIntervalSeconds: 1f);
+
+            for (var i = 0; i < 3; i++)
+            {
+                minigame.Tick(1f);
+                Assert.AreEqual(ImmuneSignalSuppressionJudgement.Accurate, minigame.ResolveInput());
+            }
+
+            Assert.AreEqual(VirusMinigameOutcome.Success, minigame.Outcome);
+            Assert.AreEqual(3, minigame.SuppressedSignals);
+            Assert.AreEqual(0, minigame.MissedSignals);
+        }
+
+        [Test]
+        public void ImmuneSignalSuppression_MistimedInputsDamageStabilityAndCanFail()
+        {
+            var minigame = new ImmuneSignalSuppressionModel(
+                totalSignals: 4,
+                requiredSuppressions: 3,
+                startingStability: 40f,
+                mistakeDamage: 20f,
+                accurateWindowSeconds: 0.1f,
+                signalIntervalSeconds: 1f);
+
+            minigame.Tick(0.5f);
+            Assert.AreEqual(ImmuneSignalSuppressionJudgement.Early, minigame.ResolveInput());
+            Assert.AreEqual(20f, minigame.Stability);
+
+            minigame.Tick(1.2f);
+            Assert.AreEqual(ImmuneSignalSuppressionJudgement.Late, minigame.ResolveInput());
+
+            Assert.AreEqual(VirusMinigameOutcome.Failed, minigame.Outcome);
+            Assert.AreEqual(0f, minigame.Stability);
+            Assert.AreEqual(2, minigame.MissedSignals);
+        }
+
+        [Test]
+        public void ImmuneSignalSuppression_MissedSignalsFailWhenGoalIsImpossible()
+        {
+            var minigame = new ImmuneSignalSuppressionModel(
+                totalSignals: 3,
+                requiredSuppressions: 3,
+                startingStability: 100f,
+                mistakeDamage: 10f,
+                accurateWindowSeconds: 0.1f,
+                signalIntervalSeconds: 1f);
+
+            Assert.AreEqual(ImmuneSignalSuppressionJudgement.Missed, minigame.ResolveMissedSignal());
+
+            Assert.AreEqual(VirusMinigameOutcome.Failed, minigame.Outcome);
+            Assert.AreEqual(0, minigame.SuppressedSignals);
+            Assert.AreEqual(1, minigame.MissedSignals);
+        }
+
+        [Test]
         public void Session_DefaultRatModeTickDoesNotRaiseImmuneAlert()
         {
             var session = new PrototypeSessionState();
@@ -132,6 +195,72 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.AreEqual(PrototypeGameMode.RatHost, session.Mode);
             Assert.True(session.Mutations.CanUseMammalPassage);
             Assert.AreEqual(session.Config.AlertAfterMutationReturn, session.ImmuneAlert.Value);
+        }
+
+        [Test]
+        public void Session_DefaultInternalMinigameTypeRemainsWhiteBloodCellEvasion()
+        {
+            var session = new PrototypeSessionState();
+
+            session.EnterVirusMinigame();
+
+            Assert.AreEqual(InternalVirusMinigameType.WhiteBloodCellEvasion, session.CurrentInternalMinigameType);
+            Assert.AreEqual("변이 조각 수집 / 백혈구 회피", session.InternalMinigameObjectiveText);
+        }
+
+        [Test]
+        public void Session_ImmuneSignalSuppressionSuccessMovesToMutationSelection()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                SignalSuppressionRequiredSuppressions = 2,
+                SignalSuppressionTotalSignals = 3,
+                SignalSuppressionSignalIntervalSeconds = 1f
+            });
+
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+
+            Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
+            Assert.AreEqual(InternalVirusMinigameType.ImmuneSignalSuppression, session.CurrentInternalMinigameType);
+            Assert.AreEqual("면역 신호 억제", session.InternalMinigameObjectiveText);
+            Assert.AreEqual("신호 차단 0/2 / 다음 신호 1.0초", session.InternalMinigameProgressText);
+
+            session.TickSignalSuppression(1f);
+            Assert.AreEqual("지금 차단", session.SignalSuppressionTimingText);
+            Assert.AreEqual(ImmuneSignalSuppressionJudgement.Accurate, session.ResolveSignalSuppressionInput());
+            Assert.AreEqual("신호 차단 1/2", session.InternalMinigameObjectiveText);
+            Assert.AreEqual("신호 차단 1/2 / 다음 신호 1.0초", session.InternalMinigameProgressText);
+
+            session.TickSignalSuppression(1f);
+            Assert.AreEqual(ImmuneSignalSuppressionJudgement.Accurate, session.ResolveSignalSuppressionInput());
+
+            Assert.AreEqual(PrototypeGameMode.MutationSelection, session.Mode);
+        }
+
+        [Test]
+        public void Session_ImmuneSignalSuppressionFailureReturnsWithoutMutationReward()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                SignalSuppressionRequiredSuppressions = 3,
+                SignalSuppressionTotalSignals = 3,
+                SignalSuppressionStartingStability = 20f,
+                SignalSuppressionMistakeDamage = 20f,
+                SignalSuppressionSignalIntervalSeconds = 1f
+            });
+
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+            session.TickSignalSuppression(0.5f);
+            Assert.AreEqual(ImmuneSignalSuppressionJudgement.Early, session.ResolveSignalSuppressionInput());
+
+            Assert.AreEqual(PrototypeGameMode.VirusFailed, session.Mode);
+            Assert.AreEqual("경보 증폭 1", session.InternalMinigameObjectiveText);
+
+            session.ReturnToRatHostAfterVirusFailure();
+
+            Assert.AreEqual(PrototypeGameMode.RatHost, session.Mode);
+            Assert.False(session.Mutations.Has(MutationType.Dormancy));
+            Assert.AreEqual(session.Config.AlertAfterVirusFailureReturn, session.ImmuneAlert.Value);
         }
 
         [Test]

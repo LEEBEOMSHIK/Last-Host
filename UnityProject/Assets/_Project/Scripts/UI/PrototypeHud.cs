@@ -41,14 +41,14 @@ namespace LastHost.Prototype.UI
             SetText(modeText, GetModeName(state.Mode));
             SetText(hostHealthText, $"숙주 생명력 {state.HostHealth:0}/{state.Config.HostMaxHealth:0}");
             SetText(immuneAlertText, $"면역 경계도 {state.ImmuneAlert.Value:0}%");
-            SetText(virusStabilityText, $"바이러스 안정도 {state.VirusRun.Stability:0}/{state.VirusRun.StartingStability:0}");
-            SetText(mutationFragmentsText, $"변이 조각 {state.VirusRun.CollectedFragments}/{state.VirusRun.RequiredFragments}");
+            SetText(virusStabilityText, $"바이러스 안정도 {state.ActiveVirusStability:0}/{state.ActiveVirusStartingStability:0}");
+            SetText(mutationFragmentsText, state.InternalMinigameProgressText);
             SetText(mutationStatusText, BuildMutationStatus(state.Mutations));
             SetText(objectiveText, GetObjective(state));
 
             SetSlider(hostHealthSlider, state.HostHealth / state.Config.HostMaxHealth);
             SetSlider(immuneAlertSlider, state.ImmuneAlert.NormalizedValue);
-            SetSlider(virusStabilitySlider, state.VirusRun.NormalizedStability);
+            SetSlider(virusStabilitySlider, state.ActiveVirusNormalizedStability);
 
             if (mutationPanel != null)
             {
@@ -146,7 +146,7 @@ namespace LastHost.Prototype.UI
                         return state.LastVirusPatternExposureFeedbackText;
                     }
 
-                    return "변이 조각 수집 / 백혈구 회피";
+                    return state.InternalMinigameObjectiveText;
                 case PrototypeGameMode.VirusFailed:
                     return "보상 없이 쥐 숙주로 복귀";
                 case PrototypeGameMode.MutationSelection:

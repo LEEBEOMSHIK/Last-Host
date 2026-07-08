@@ -20,16 +20,26 @@ namespace LastHost.Prototype.Core
             Config = config;
             ImmuneAlert = new ImmuneAlertModel(config.MaxImmuneAlert, config.BaseAlertPerSecond, config.RiskAlertBonus);
             VirusRun = new VirusMinigameModel(config.VirusRequiredFragments, config.VirusStartingStability, config.VirusWhiteBloodCellDamage);
+            SignalSuppressionRun = new ImmuneSignalSuppressionModel(
+                config.SignalSuppressionTotalSignals,
+                config.SignalSuppressionRequiredSuppressions,
+                config.SignalSuppressionStartingStability,
+                config.SignalSuppressionMistakeDamage,
+                config.SignalSuppressionAccurateWindowSeconds,
+                config.SignalSuppressionSignalIntervalSeconds);
             Mutations = new MutationLoadout();
             HostHealth = config.HostMaxHealth;
             Mode = PrototypeGameMode.RatHost;
+            CurrentInternalMinigameType = config.DefaultInternalMinigameType;
         }
 
         public PrototypeConfig Config { get; }
         public ImmuneAlertModel ImmuneAlert { get; }
         public VirusMinigameModel VirusRun { get; }
+        public ImmuneSignalSuppressionModel SignalSuppressionRun { get; }
         public MutationLoadout Mutations { get; }
         public PrototypeGameMode Mode { get; private set; }
+        public InternalVirusMinigameType CurrentInternalMinigameType { get; private set; }
         public float HostHealth { get; private set; }
         public bool IsRatRiskInteractionAvailable { get; private set; }
         public string RatRiskInteractionPrompt { get; private set; } = string.Empty;
@@ -51,6 +61,60 @@ namespace LastHost.Prototype.Core
             ? $"{LastVirusPatternExposureLabel} 흔적 +{VirusPatternExposureTotal:0.##}"
             : string.Empty;
         public bool IsRatHostRiskZoneGraceActive => Mode == PrototypeGameMode.RatHost && ratHostRiskZoneGraceRemainingSeconds > 0f;
+        public float ActiveVirusStability => CurrentInternalMinigameType == InternalVirusMinigameType.ImmuneSignalSuppression
+            ? SignalSuppressionRun.Stability
+            : VirusRun.Stability;
+        public float ActiveVirusStartingStability => CurrentInternalMinigameType == InternalVirusMinigameType.ImmuneSignalSuppression
+            ? SignalSuppressionRun.StartingStability
+            : VirusRun.StartingStability;
+        public float ActiveVirusNormalizedStability => CurrentInternalMinigameType == InternalVirusMinigameType.ImmuneSignalSuppression
+            ? SignalSuppressionRun.NormalizedStability
+            : VirusRun.NormalizedStability;
+        public string InternalMinigameProgressText => CurrentInternalMinigameType == InternalVirusMinigameType.ImmuneSignalSuppression
+            ? $"신호 차단 {SignalSuppressionRun.SuppressedSignals}/{SignalSuppressionRun.RequiredSuppressions} / {SignalSuppressionTimingText}"
+            : $"변이 조각 {VirusRun.CollectedFragments}/{VirusRun.RequiredFragments}";
+        public string SignalSuppressionTimingText
+        {
+            get
+            {
+                if (CurrentInternalMinigameType != InternalVirusMinigameType.ImmuneSignalSuppression)
+                {
+                    return string.Empty;
+                }
+
+                var timeUntilSignal = SignalSuppressionRun.TimeUntilSignal;
+                if (Mathf.Abs(timeUntilSignal) <= Config.SignalSuppressionAccurateWindowSeconds)
+                {
+                    return "지금 차단";
+                }
+
+                return timeUntilSignal > 0f
+                    ? $"다음 신호 {timeUntilSignal:0.0}초"
+                    : "늦음 위험";
+            }
+        }
+        public string InternalMinigameObjectiveText
+        {
+            get
+            {
+                if (CurrentInternalMinigameType != InternalVirusMinigameType.ImmuneSignalSuppression)
+                {
+                    return "변이 조각 수집 / 백혈구 회피";
+                }
+
+                switch (SignalSuppressionRun.LastJudgement)
+                {
+                    case ImmuneSignalSuppressionJudgement.Accurate:
+                        return $"신호 차단 {SignalSuppressionRun.SuppressedSignals}/{SignalSuppressionRun.RequiredSuppressions}";
+                    case ImmuneSignalSuppressionJudgement.Early:
+                    case ImmuneSignalSuppressionJudgement.Late:
+                    case ImmuneSignalSuppressionJudgement.Missed:
+                        return $"경보 증폭 {SignalSuppressionRun.MissedSignals}";
+                    default:
+                        return "면역 신호 억제";
+                }
+            }
+        }
 
         public bool TickRatMode(float deltaTime)
         {
@@ -142,16 +206,23 @@ namespace LastHost.Prototype.Core
 
         public void EnterVirusMinigame()
         {
+            EnterVirusMinigame(Config.DefaultInternalMinigameType);
+        }
+
+        public void EnterVirusMinigame(InternalVirusMinigameType minigameType)
+        {
             ClearRatHostRiskZoneGrace();
             SetRatRiskInteractionAffordance(false, string.Empty);
             ClearVirusPatternExposure();
+            CurrentInternalMinigameType = minigameType;
             VirusRun.ResetRun();
+            SignalSuppressionRun.ResetRun();
             Mode = PrototypeGameMode.InternalVirus;
         }
 
         public VirusMinigameOutcome ResolveVirusFrame(bool collectedFragment, bool hitByWhiteBloodCell)
         {
-            if (Mode != PrototypeGameMode.InternalVirus)
+            if (Mode != PrototypeGameMode.InternalVirus || CurrentInternalMinigameType != InternalVirusMinigameType.WhiteBloodCellEvasion)
             {
                 return VirusRun.Outcome;
             }
@@ -174,6 +245,42 @@ namespace LastHost.Prototype.Core
             return outcome;
         }
 
+        public VirusMinigameOutcome TickSignalSuppression(float deltaTime)
+        {
+            if (Mode != PrototypeGameMode.InternalVirus || CurrentInternalMinigameType != InternalVirusMinigameType.ImmuneSignalSuppression)
+            {
+                return SignalSuppressionRun.Outcome;
+            }
+
+            var outcome = SignalSuppressionRun.Tick(deltaTime);
+            ApplyInternalMinigameOutcome(outcome);
+            return outcome;
+        }
+
+        public ImmuneSignalSuppressionJudgement ResolveSignalSuppressionInput()
+        {
+            if (Mode != PrototypeGameMode.InternalVirus || CurrentInternalMinigameType != InternalVirusMinigameType.ImmuneSignalSuppression)
+            {
+                return ImmuneSignalSuppressionJudgement.Ignored;
+            }
+
+            var judgement = SignalSuppressionRun.ResolveInput();
+            ApplyInternalMinigameOutcome(SignalSuppressionRun.Outcome);
+            return judgement;
+        }
+
+        public ImmuneSignalSuppressionJudgement ResolveSignalSuppressionMissedSignal()
+        {
+            if (Mode != PrototypeGameMode.InternalVirus || CurrentInternalMinigameType != InternalVirusMinigameType.ImmuneSignalSuppression)
+            {
+                return ImmuneSignalSuppressionJudgement.Ignored;
+            }
+
+            var judgement = SignalSuppressionRun.ResolveMissedSignal();
+            ApplyInternalMinigameOutcome(SignalSuppressionRun.Outcome);
+            return judgement;
+        }
+
         public bool RetryVirusMinigame()
         {
             return ReturnToRatHostAfterVirusFailure();
@@ -190,6 +297,7 @@ namespace LastHost.Prototype.Core
             ClearImmuneAlertFeedback();
             ClearVirusPatternExposure();
             VirusRun.ResetRun();
+            SignalSuppressionRun.ResetRun();
             Mode = PrototypeGameMode.RatHost;
             StartRatHostRiskZoneGrace();
             return true;
@@ -208,9 +316,22 @@ namespace LastHost.Prototype.Core
             ClearImmuneAlertFeedback();
             ClearVirusPatternExposure();
             VirusRun.ResetRun();
+            SignalSuppressionRun.ResetRun();
             Mode = PrototypeGameMode.RatHost;
             StartRatHostRiskZoneGrace();
             return true;
+        }
+
+        private void ApplyInternalMinigameOutcome(VirusMinigameOutcome outcome)
+        {
+            if (outcome == VirusMinigameOutcome.Success)
+            {
+                Mode = PrototypeGameMode.MutationSelection;
+            }
+            else if (outcome == VirusMinigameOutcome.Failed)
+            {
+                Mode = PrototypeGameMode.VirusFailed;
+            }
         }
 
         private void RecordImmuneAlertFeedback(string label, float delta)

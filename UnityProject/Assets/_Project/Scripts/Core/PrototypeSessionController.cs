@@ -17,13 +17,17 @@ namespace LastHost.Prototype.Core
         public RatHostController ratHostController;
         public VirusMinigameController virusMinigameController;
         public PrototypeHud hud;
+        public InternalVirusMinigameType defaultInternalMinigameType = InternalVirusMinigameType.WhiteBloodCellEvasion;
 
         public PrototypeSessionState State { get; private set; }
         public PrototypeGameMode CurrentMode => State.Mode;
 
         private void Awake()
         {
-            State = new PrototypeSessionState();
+            State = new PrototypeSessionState(new PrototypeConfig
+            {
+                DefaultInternalMinigameType = defaultInternalMinigameType
+            });
             AutoWireIfNeeded();
         }
 
@@ -48,6 +52,14 @@ namespace LastHost.Prototype.Core
                 {
                     SelectMutation(selectedMutation);
                     return;
+                }
+            }
+            else if (State.Mode == PrototypeGameMode.InternalVirus && State.CurrentInternalMinigameType == InternalVirusMinigameType.ImmuneSignalSuppression)
+            {
+                State.TickSignalSuppression(Time.deltaTime);
+                if (State.Mode == PrototypeGameMode.InternalVirus && PrototypeKeyboardInput.WasInteractPressed())
+                {
+                    State.ResolveSignalSuppressionInput();
                 }
             }
             else if (State.Mode == PrototypeGameMode.VirusFailed && PrototypeKeyboardInput.WasRetryPressed())
@@ -142,6 +154,27 @@ namespace LastHost.Prototype.Core
             return outcome;
         }
 
+        public void EnterImmuneSignalSuppressionMinigame()
+        {
+            var previousMode = State.Mode;
+            State.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+            OnModeChanged(previousMode, State.Mode);
+            hud?.Refresh(State);
+        }
+
+        public ImmuneSignalSuppressionJudgement ResolveSignalSuppressionInput()
+        {
+            var previousMode = State.Mode;
+            var judgement = State.ResolveSignalSuppressionInput();
+            if (previousMode != State.Mode)
+            {
+                OnModeChanged(previousMode, State.Mode);
+            }
+
+            hud?.Refresh(State);
+            return judgement;
+        }
+
         public void RetryVirusMinigame()
         {
             ReturnToRatHostAfterVirusFailure();
@@ -201,14 +234,16 @@ namespace LastHost.Prototype.Core
 
         private void OnModeChanged(PrototypeGameMode previousMode, PrototypeGameMode nextMode)
         {
-            ApplyModeVisibility(resetVirusScene: nextMode == PrototypeGameMode.InternalVirus);
+            ApplyModeVisibility(resetVirusScene: nextMode == PrototypeGameMode.InternalVirus
+                && State.CurrentInternalMinigameType == InternalVirusMinigameType.WhiteBloodCellEvasion);
         }
 
         private void ApplyModeVisibility(bool resetVirusScene)
         {
             var ratActive = State.Mode == PrototypeGameMode.RatHost;
             var virusVisible = State.Mode == PrototypeGameMode.InternalVirus || State.Mode == PrototypeGameMode.VirusFailed;
-            var virusPlayable = State.Mode == PrototypeGameMode.InternalVirus;
+            var virusPlayable = State.Mode == PrototypeGameMode.InternalVirus
+                && State.CurrentInternalMinigameType == InternalVirusMinigameType.WhiteBloodCellEvasion;
 
             if (ratHostModeRoot != null)
             {
