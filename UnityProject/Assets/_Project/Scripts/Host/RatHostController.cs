@@ -20,15 +20,21 @@ namespace LastHost.Prototype.Host
         public bool randomizeInstinctDirection = true;
         public Vector2 instinctTurnIntervalRange = new Vector2(1.2f, 2.8f);
         public float instinctTurnAngleDegrees = 55f;
+        public bool enableInstinctPauses = true;
+        public Vector2 instinctMoveDurationRange = new Vector2(1.1f, 2.3f);
+        public Vector2 instinctPauseDurationRange = new Vector2(0.25f, 0.75f);
 
         private CharacterController characterController;
         private Vector3 currentHostInstinctMoveDirection;
         private float nextForcedControlAlertTime;
         private float nextInstinctTurnTime;
+        private float nextInstinctActivityTime;
+        private bool isHostInstinctPaused;
 
         public Vector3 CurrentMoveWorldDirection { get; private set; }
         public Vector3 CurrentResolvedMoveDirection { get; private set; }
         public Vector3 CurrentHostInstinctMoveDirection => currentHostInstinctMoveDirection;
+        public bool IsHostInstinctPaused => isHostInstinctPaused;
 
         private void Awake()
         {
@@ -40,6 +46,8 @@ namespace LastHost.Prototype.Host
                     Random.Range(25f, 135f))
                 : NormalizeOrFallback(hostInstinctMoveDirection, Vector3.forward);
             ScheduleNextInstinctTurn(Time.time);
+            isHostInstinctPaused = false;
+            ScheduleNextInstinctActivity(Time.time);
         }
 
         private void Update()
@@ -51,6 +59,7 @@ namespace LastHost.Prototype.Host
             }
 
             UpdateHostInstinctDirection();
+            UpdateHostInstinctActivity();
 
             CurrentMoveWorldDirection = playerInput;
             var state = session != null ? session.State : null;
@@ -61,7 +70,8 @@ namespace LastHost.Prototype.Host
                 state != null ? state.Config.RatHostInstinctResistance : 1f,
                 forcedControlConflictDotThreshold,
                 passiveInstinctSpeedMultiplier,
-                forcedControlSpeedMultiplier);
+                forcedControlSpeedMultiplier,
+                isHostInstinctPaused);
             CurrentResolvedMoveDirection = controlFrame.MoveDirection;
             ApplyForcedControlDemerit(controlFrame);
             if (!CanContinueRatHostMovement(state))
@@ -134,6 +144,17 @@ namespace LastHost.Prototype.Host
             }
         }
 
+        private void UpdateHostInstinctActivity()
+        {
+            if (!enableInstinctPauses || Time.time < nextInstinctActivityTime)
+            {
+                return;
+            }
+
+            isHostInstinctPaused = !isHostInstinctPaused;
+            ScheduleNextInstinctActivity(Time.time);
+        }
+
         private void ApplyForcedControlDemerit(RatHostControlFrame controlFrame)
         {
             if (!controlFrame.IsForcedControl || session == null || Time.time < nextForcedControlAlertTime)
@@ -150,6 +171,14 @@ namespace LastHost.Prototype.Host
             var minInterval = Mathf.Max(0.2f, Mathf.Min(instinctTurnIntervalRange.x, instinctTurnIntervalRange.y));
             var maxInterval = Mathf.Max(minInterval, Mathf.Max(instinctTurnIntervalRange.x, instinctTurnIntervalRange.y));
             nextInstinctTurnTime = currentTime + Random.Range(minInterval, maxInterval);
+        }
+
+        private void ScheduleNextInstinctActivity(float currentTime)
+        {
+            var range = isHostInstinctPaused ? instinctPauseDurationRange : instinctMoveDurationRange;
+            var minInterval = Mathf.Max(0.05f, Mathf.Min(range.x, range.y));
+            var maxInterval = Mathf.Max(minInterval, Mathf.Max(range.x, range.y));
+            nextInstinctActivityTime = currentTime + Random.Range(minInterval, maxInterval);
         }
 
         private static Vector3 NormalizeOrFallback(Vector3 value, Vector3 fallback)

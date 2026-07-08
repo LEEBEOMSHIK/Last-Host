@@ -2475,6 +2475,8 @@ MonoBehaviour:
   ratHostController: {fileID: 1870119193}
   virusMinigameController: {fileID: 1074785635}
   hud: {fileID: 1482783420}
+  defaultInternalMinigameType: 0
+  enableDebugMinigameHotkeys: 1
 --- !u!4 &812651058
 Transform:
   m_ObjectHideFlags: 0
@@ -6331,6 +6333,12 @@ MonoBehaviour:
   forcedControlAlertAmount: 6
   forcedControlAlertCooldownSeconds: 1.2
   forcedControlFeedbackLabel: "\uAC15\uC81C \uC870\uC885"
+  randomizeInstinctDirection: 1
+  instinctTurnIntervalRange: {x: 1.2, y: 2.8}
+  instinctTurnAngleDegrees: 55
+  enableInstinctPauses: 1
+  instinctMoveDurationRange: {x: 1.1, y: 2.3}
+  instinctPauseDurationRange: {x: 0.25, y: 0.75}
 --- !u!143 &1870119194
 CharacterController:
   m_ObjectHideFlags: 0

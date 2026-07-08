@@ -27,7 +27,8 @@ namespace LastHost.Prototype.Host
             float hostInstinctResistance,
             float conflictDotThreshold,
             float passiveInstinctSpeedMultiplier,
-            float forcedControlSpeedMultiplier)
+            float forcedControlSpeedMultiplier,
+            bool hostInstinctPaused = false)
         {
             var instinct = FlattenNormalizedOrFallback(hostInstinctDirection, Vector3.forward);
             var input = FlattenNormalizedOrFallback(playerInputDirection, Vector3.zero);
@@ -37,6 +38,15 @@ namespace LastHost.Prototype.Host
 
             if (input == Vector3.zero)
             {
+                if (hostInstinctPaused)
+                {
+                    return new RatHostControlFrame(
+                        Vector3.zero,
+                        0f,
+                        isForcedControl: false,
+                        controlRatio);
+                }
+
                 return new RatHostControlFrame(
                     instinct,
                     Mathf.Clamp01(passiveInstinctSpeedMultiplier),

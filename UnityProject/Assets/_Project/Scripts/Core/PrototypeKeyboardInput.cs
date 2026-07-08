@@ -16,6 +16,7 @@ namespace LastHost.Prototype.Input
         public bool Interact;
         public bool Retry;
         public bool ToggleCameraMode;
+        public bool DebugSignalSuppression;
     }
 
     public static class PrototypeKeyboardInput
@@ -35,7 +36,8 @@ namespace LastHost.Prototype.Input
                 SelectMutation3 = WasPressedThisFrame(Key.Digit3, KeyCode.Alpha3),
                 Interact = spacePressed,
                 Retry = spacePressed,
-                ToggleCameraMode = WasPressedThisFrame(Key.V, KeyCode.V)
+                ToggleCameraMode = WasPressedThisFrame(Key.V, KeyCode.V),
+                DebugSignalSuppression = WasPressedThisFrame(Key.F6, KeyCode.F6)
             };
         }
 
@@ -154,6 +156,16 @@ namespace LastHost.Prototype.Input
         public static bool WasCameraToggleRequested(PrototypeInputState input)
         {
             return input.ToggleCameraMode;
+        }
+
+        public static bool WasDebugSignalSuppressionRequested()
+        {
+            return WasDebugSignalSuppressionRequested(ReadCurrent());
+        }
+
+        public static bool WasDebugSignalSuppressionRequested(PrototypeInputState input)
+        {
+            return input.DebugSignalSuppression;
         }
 
         private static bool IsPressed(Key inputSystemKey, KeyCode legacyKey)

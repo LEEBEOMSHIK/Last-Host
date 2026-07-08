@@ -516,6 +516,43 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void RatHostControlModel_NoInputStopsWhenHostInstinctIsPaused()
+        {
+            var frame = RatHostControlModel.Resolve(
+                Vector3.forward,
+                Vector3.zero,
+                virusControlPower: 0.35f,
+                hostInstinctResistance: 1f,
+                conflictDotThreshold: -0.25f,
+                passiveInstinctSpeedMultiplier: 0.45f,
+                forcedControlSpeedMultiplier: 0.65f,
+                hostInstinctPaused: true);
+
+            Assert.AreEqual(Vector3.zero, frame.MoveDirection);
+            Assert.AreEqual(0f, frame.SpeedMultiplier);
+            Assert.False(frame.IsForcedControl);
+        }
+
+        [Test]
+        public void RatHostControlModel_PlayerInputStillWorksWhileHostInstinctIsPaused()
+        {
+            var frame = RatHostControlModel.Resolve(
+                Vector3.forward,
+                Vector3.right,
+                virusControlPower: 0.35f,
+                hostInstinctResistance: 1f,
+                conflictDotThreshold: -0.25f,
+                passiveInstinctSpeedMultiplier: 0.45f,
+                forcedControlSpeedMultiplier: 0.65f,
+                hostInstinctPaused: true);
+
+            Assert.Greater(frame.MoveDirection.x, 0f);
+            Assert.Greater(frame.MoveDirection.z, 0f);
+            Assert.AreEqual(1f, frame.SpeedMultiplier);
+            Assert.False(frame.IsForcedControl);
+        }
+
+        [Test]
         public void RatHostControlModel_LowControlBlendsPlayerInputIntoInstinct()
         {
             var frame = RatHostControlModel.Resolve(
@@ -565,6 +602,23 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.AreEqual(Vector3.forward, frame.MoveDirection);
             Assert.AreEqual(0.65f, frame.SpeedMultiplier);
             Assert.True(frame.IsForcedControl);
+        }
+
+        [Test]
+        public void RatHostControlModel_HighControlAgainstInstinctDoesNotApplyDemerit()
+        {
+            var frame = RatHostControlModel.Resolve(
+                Vector3.forward,
+                Vector3.back,
+                virusControlPower: 1.1f,
+                hostInstinctResistance: 1f,
+                conflictDotThreshold: -0.25f,
+                passiveInstinctSpeedMultiplier: 0.45f,
+                forcedControlSpeedMultiplier: 0.65f);
+
+            Assert.AreEqual(Vector3.back, frame.MoveDirection);
+            Assert.AreEqual(1f, frame.SpeedMultiplier);
+            Assert.False(frame.IsForcedControl);
         }
 
         [Test]
@@ -890,6 +944,61 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void PrototypeHud_ShowsSignalSuppressionPanelWithMovingMarker()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                SignalSuppressionTotalSignals = 3,
+                SignalSuppressionRequiredSuppressions = 2,
+                SignalSuppressionSignalIntervalSeconds = 1f
+            });
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+
+            var canvasObject = new GameObject("Canvas Under Test");
+            var hudObject = new GameObject("HUD Under Test");
+            hudObject.transform.SetParent(canvasObject.transform, false);
+            var hud = hudObject.AddComponent<PrototypeHud>();
+
+            hud.Refresh(session);
+
+            var panel = FindChildIncludingInactive(canvasObject.transform, "SignalSuppressionPanel");
+            Assert.NotNull(panel);
+            Assert.True(panel.gameObject.activeSelf);
+
+            var markerTransform = FindChildIncludingInactive(panel, "SignalMarker");
+            var timingTransform = FindChildIncludingInactive(panel, "SignalTimingText");
+            var progressTransform = FindChildIncludingInactive(panel, "SignalProgressText");
+
+            Assert.NotNull(markerTransform);
+            Assert.NotNull(timingTransform);
+            Assert.NotNull(progressTransform);
+
+            var marker = markerTransform.GetComponent<RectTransform>();
+            var timingText = timingTransform.GetComponent<Text>();
+            var progressText = progressTransform.GetComponent<Text>();
+
+            Assert.NotNull(marker);
+            Assert.NotNull(timingText);
+            Assert.NotNull(progressText);
+            Assert.AreEqual("신호 차단 0/2 / 다음 신호 1.0초", progressText.text);
+
+            var startX = marker.anchoredPosition.x;
+
+            session.TickSignalSuppression(0.5f);
+            hud.Refresh(session);
+
+            Assert.Greater(marker.anchoredPosition.x, startX);
+
+            session.TickSignalSuppression(0.5f);
+            hud.Refresh(session);
+
+            Assert.AreEqual("지금 차단", timingText.text);
+            Assert.AreEqual(0f, marker.anchoredPosition.x, 3f);
+
+            Object.DestroyImmediate(canvasObject);
+        }
+
+        [Test]
         public void PrototypeHud_ShowsRiskInteractionPromptWhenRatCanInteract()
         {
             var session = new PrototypeSessionState();
@@ -947,6 +1056,17 @@ namespace LastHost.Prototype.Tests.EditMode
             };
 
             Assert.True(PrototypeKeyboardInput.WasCameraToggleRequested(input));
+        }
+
+        [Test]
+        public void PrototypeKeyboardInput_MapsDebugSignalSuppressionKey()
+        {
+            var input = new PrototypeInputState
+            {
+                DebugSignalSuppression = true
+            };
+
+            Assert.True(PrototypeKeyboardInput.WasDebugSignalSuppressionRequested(input));
         }
 
         [Test]
@@ -1294,6 +1414,25 @@ namespace LastHost.Prototype.Tests.EditMode
                 if (gameObject.name == objectName && gameObject.scene.IsValid())
                 {
                     return gameObject;
+                }
+            }
+
+            return null;
+        }
+
+        private static Transform FindChildIncludingInactive(Transform parent, string childName)
+        {
+            if (parent.name == childName)
+            {
+                return parent;
+            }
+
+            foreach (Transform child in parent)
+            {
+                var found = FindChildIncludingInactive(child, childName);
+                if (found != null)
+                {
+                    return found;
                 }
             }
 

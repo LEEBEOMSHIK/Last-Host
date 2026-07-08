@@ -19,6 +19,9 @@ namespace LastHost.Prototype.Core
         public PrototypeHud hud;
         public InternalVirusMinigameType defaultInternalMinigameType = InternalVirusMinigameType.WhiteBloodCellEvasion;
 
+        [Header("Debug")]
+        public bool enableDebugMinigameHotkeys = true;
+
         public PrototypeSessionState State { get; private set; }
         public PrototypeGameMode CurrentMode => State.Mode;
 
@@ -44,6 +47,12 @@ namespace LastHost.Prototype.Core
 
             if (State.Mode == PrototypeGameMode.RatHost)
             {
+                if (enableDebugMinigameHotkeys && PrototypeKeyboardInput.WasDebugSignalSuppressionRequested())
+                {
+                    EnterImmuneSignalSuppressionMinigame();
+                    return;
+                }
+
                 State.TickRatMode(Time.deltaTime);
             }
             else if (State.Mode == PrototypeGameMode.MutationSelection)
