@@ -39,6 +39,17 @@ namespace LastHost.Prototype.Core
         public string LastImmuneAlertFeedbackText => HasImmuneAlertFeedback
             ? $"{LastImmuneAlertFeedbackLabel} +{LastImmuneAlertFeedbackDelta:0.##}"
             : string.Empty;
+        public string LastVirusPatternExposureLabel { get; private set; } = string.Empty;
+        public float LastVirusPatternExposureDelta { get; private set; }
+        public float VirusPatternExposureTotal { get; private set; }
+        public bool HasVirusPatternExposureFeedback => !string.IsNullOrEmpty(LastVirusPatternExposureLabel) && LastVirusPatternExposureDelta > 0f;
+        public bool HasVirusPatternExposure => VirusPatternExposureTotal > 0f;
+        public string LastVirusPatternExposureFeedbackText => HasVirusPatternExposureFeedback
+            ? $"{LastVirusPatternExposureLabel} +{LastVirusPatternExposureDelta:0.##}"
+            : string.Empty;
+        public string VirusPatternExposureSummaryText => HasVirusPatternExposureFeedback && HasVirusPatternExposure
+            ? $"{LastVirusPatternExposureLabel} 흔적 +{VirusPatternExposureTotal:0.##}"
+            : string.Empty;
         public bool IsRatHostRiskZoneGraceActive => Mode == PrototypeGameMode.RatHost && ratHostRiskZoneGraceRemainingSeconds > 0f;
 
         public bool TickRatMode(float deltaTime)
@@ -133,6 +144,7 @@ namespace LastHost.Prototype.Core
         {
             ClearRatHostRiskZoneGrace();
             SetRatRiskInteractionAffordance(false, string.Empty);
+            ClearVirusPatternExposure();
             VirusRun.ResetRun();
             Mode = PrototypeGameMode.InternalVirus;
         }
@@ -142,6 +154,11 @@ namespace LastHost.Prototype.Core
             if (Mode != PrototypeGameMode.InternalVirus)
             {
                 return VirusRun.Outcome;
+            }
+
+            if (hitByWhiteBloodCell)
+            {
+                RecordVirusPatternExposure(Config.VirusPatternExposureFeedbackLabel, Config.VirusPatternExposurePerWhiteBloodCellHit);
             }
 
             var outcome = VirusRun.ResolveFrame(collectedFragment, hitByWhiteBloodCell);
@@ -171,6 +188,7 @@ namespace LastHost.Prototype.Core
 
             ImmuneAlert.ResetAfterInternalBattle(Config.AlertAfterVirusFailureReturn);
             ClearImmuneAlertFeedback();
+            ClearVirusPatternExposure();
             VirusRun.ResetRun();
             Mode = PrototypeGameMode.RatHost;
             StartRatHostRiskZoneGrace();
@@ -185,8 +203,10 @@ namespace LastHost.Prototype.Core
             }
 
             Mutations.Apply(type);
-            ImmuneAlert.ResetAfterInternalBattle(Config.AlertAfterMutationReturn);
+            var returnAlert = Config.AlertAfterMutationReturn + VirusPatternExposureTotal;
+            ImmuneAlert.ResetAfterInternalBattle(returnAlert);
             ClearImmuneAlertFeedback();
+            ClearVirusPatternExposure();
             VirusRun.ResetRun();
             Mode = PrototypeGameMode.RatHost;
             StartRatHostRiskZoneGrace();
@@ -219,6 +239,21 @@ namespace LastHost.Prototype.Core
                 : delta;
             LastImmuneAlertFeedbackLabel = trimmedLabel;
             immuneAlertFeedbackRemainingSeconds = duration;
+        }
+
+        private void RecordVirusPatternExposure(string label, float delta)
+        {
+            if (delta <= 0f || string.IsNullOrWhiteSpace(label))
+            {
+                return;
+            }
+
+            var trimmedLabel = label.Trim();
+            LastVirusPatternExposureDelta = HasVirusPatternExposureFeedback && LastVirusPatternExposureLabel == trimmedLabel
+                ? LastVirusPatternExposureDelta + delta
+                : delta;
+            LastVirusPatternExposureLabel = trimmedLabel;
+            VirusPatternExposureTotal += delta;
         }
 
         private void TickImmuneAlertFeedback(float deltaTime)
@@ -264,6 +299,13 @@ namespace LastHost.Prototype.Core
             LastImmuneAlertFeedbackLabel = string.Empty;
             LastImmuneAlertFeedbackDelta = 0f;
             immuneAlertFeedbackRemainingSeconds = 0f;
+        }
+
+        private void ClearVirusPatternExposure()
+        {
+            LastVirusPatternExposureLabel = string.Empty;
+            LastVirusPatternExposureDelta = 0f;
+            VirusPatternExposureTotal = 0f;
         }
     }
 }

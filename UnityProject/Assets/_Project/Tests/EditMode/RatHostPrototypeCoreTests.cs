@@ -135,6 +135,48 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void Session_WhiteBloodCellHitRecordsVirusPatternExposureFeedback()
+        {
+            var session = new PrototypeSessionState();
+
+            session.EnterVirusMinigame();
+            session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
+
+            Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
+            Assert.True(session.HasVirusPatternExposureFeedback);
+            Assert.AreEqual("면역 포착", session.LastVirusPatternExposureLabel);
+            Assert.AreEqual(session.Config.VirusPatternExposurePerWhiteBloodCellHit, session.LastVirusPatternExposureDelta);
+            Assert.AreEqual(session.Config.VirusPatternExposurePerWhiteBloodCellHit, session.VirusPatternExposureTotal);
+            Assert.AreEqual("면역 포착 +8", session.LastVirusPatternExposureFeedbackText);
+        }
+
+        [Test]
+        public void Session_VirusPatternExposureRaisesSuccessfulReturnImmuneAlertAndClears()
+        {
+            var session = new PrototypeSessionState();
+
+            session.EnterVirusMinigame();
+            session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+
+            Assert.AreEqual(PrototypeGameMode.MutationSelection, session.Mode);
+            Assert.AreEqual("면역 포착 흔적 +8", session.VirusPatternExposureSummaryText);
+
+            session.SelectMutation(MutationType.Dormancy);
+
+            Assert.AreEqual(PrototypeGameMode.RatHost, session.Mode);
+            Assert.True(session.Mutations.Has(MutationType.Dormancy));
+            Assert.AreEqual(
+                session.Config.AlertAfterMutationReturn + session.Config.VirusPatternExposurePerWhiteBloodCellHit,
+                session.ImmuneAlert.Value);
+            Assert.False(session.HasVirusPatternExposureFeedback);
+            Assert.False(session.HasVirusPatternExposure);
+            Assert.AreEqual(0f, session.VirusPatternExposureTotal);
+        }
+
+        [Test]
         public void Session_FailedVirusRunReturnsToRatModeWithoutMutationReward()
         {
             var session = new PrototypeSessionState();
@@ -157,6 +199,9 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.True(session.IsRatHostRiskZoneGraceActive);
             Assert.AreEqual(0, session.VirusRun.CollectedFragments);
             Assert.AreEqual(session.Config.VirusStartingStability, session.VirusRun.Stability);
+            Assert.False(session.HasVirusPatternExposureFeedback);
+            Assert.False(session.HasVirusPatternExposure);
+            Assert.AreEqual(0f, session.VirusPatternExposureTotal);
         }
 
         [Test]
@@ -629,6 +674,34 @@ namespace LastHost.Prototype.Tests.EditMode
             hud.Refresh(session);
 
             Assert.AreEqual("변이 조각 수집 / 백혈구 회피", objectiveText.text);
+
+            Object.DestroyImmediate(hudObject);
+        }
+
+        [Test]
+        public void PrototypeHud_ShowsVirusPatternExposureDuringInternalAndMutationSelection()
+        {
+            var session = new PrototypeSessionState();
+            var hudObject = new GameObject("HUD Under Test");
+            var objectiveObject = new GameObject("Objective Text");
+            objectiveObject.transform.SetParent(hudObject.transform, false);
+            var objectiveText = objectiveObject.AddComponent<Text>();
+            var hud = hudObject.AddComponent<PrototypeHud>();
+            hud.objectiveText = objectiveText;
+
+            session.EnterVirusMinigame();
+            session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
+            hud.Refresh(session);
+
+            Assert.AreEqual("면역 포착 +8", objectiveText.text);
+
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+            hud.Refresh(session);
+
+            Assert.AreEqual(PrototypeGameMode.MutationSelection, session.Mode);
+            Assert.AreEqual("면역 포착 흔적 +8", objectiveText.text);
 
             Object.DestroyImmediate(hudObject);
         }

@@ -14,5 +14,7 @@ namespace LastHost.Prototype.Core
         public int VirusRequiredFragments { get; set; } = 3;
         public float VirusStartingStability { get; set; } = 100f;
         public float VirusWhiteBloodCellDamage { get; set; } = 34f;
+        public float VirusPatternExposurePerWhiteBloodCellHit { get; set; } = 8f;
+        public string VirusPatternExposureFeedbackLabel { get; set; } = "면역 포착";
     }
 }
