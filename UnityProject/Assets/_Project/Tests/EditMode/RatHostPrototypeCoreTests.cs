@@ -9,6 +9,7 @@ using LastHost.Prototype.VirusMinigame;
 using NUnit.Framework;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.TestTools;
 using UnityEngine.UI;
 
 namespace LastHost.Prototype.Tests.EditMode
@@ -567,6 +568,41 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void RatHostInstinctWander_PeriodicTurnChangesInstinctDirection()
+        {
+            var nextDirection = RatHostInstinctWanderModel.ResolveNextDirection(
+                Vector3.forward,
+                Vector3.forward,
+                Vector3.zero,
+                new Vector2(-5f, 5f),
+                new Vector2(-3f, 3f),
+                turnRequested: true,
+                turnAngleDegrees: 60f,
+                turnSign: 1f);
+
+            Assert.Greater(nextDirection.x, 0.5f);
+            Assert.Greater(nextDirection.z, 0.1f);
+            Assert.AreEqual(1f, nextDirection.magnitude, 0.001f);
+        }
+
+        [Test]
+        public void RatHostInstinctWander_BoundarySteersAlongWallInsteadOfVerticalBounce()
+        {
+            var nextDirection = RatHostInstinctWanderModel.ResolveNextDirection(
+                Vector3.forward,
+                Vector3.forward,
+                new Vector3(0f, 0f, 2.95f),
+                new Vector2(-5f, 5f),
+                new Vector2(-3f, 3f),
+                turnRequested: false,
+                turnAngleDegrees: 60f,
+                turnSign: 1f);
+
+            Assert.Greater(nextDirection.x, 0.9f);
+            Assert.AreEqual(0f, nextDirection.z, 0.001f);
+        }
+
+        [Test]
         public void HostInstinctControlSpike_RepeatedInputTowardDangerTriggersForcedControlOnce()
         {
             var spike = new HostInstinctControlSpike(
@@ -649,6 +685,24 @@ namespace LastHost.Prototype.Tests.EditMode
             Object.DestroyImmediate(ratObject);
             Object.DestroyImmediate(zoneObject);
             Object.DestroyImmediate(session.gameObject);
+        }
+
+        [Test]
+        public void RatHostController_UpdateDoesNotMoveInactiveCharacterController()
+        {
+            EditorSceneManager.NewScene(NewSceneSetup.EmptyScene);
+
+            var ratObject = new GameObject("Rat Controller Under Test");
+            var rat = ratObject.AddComponent<RatHostController>();
+            var controller = ratObject.AddComponent<CharacterController>();
+            InvokeRatHostAwake(rat);
+            controller.enabled = false;
+
+            InvokeRatHostUpdate(rat);
+
+            LogAssert.NoUnexpectedReceived();
+
+            Object.DestroyImmediate(ratObject);
         }
 
         [Test]
@@ -1261,6 +1315,22 @@ namespace LastHost.Prototype.Tests.EditMode
         {
             var property = typeof(RatHostController).GetProperty(nameof(RatHostController.CurrentMoveWorldDirection));
             property.SetValue(rat, direction);
+        }
+
+        private static void InvokeRatHostAwake(RatHostController rat)
+        {
+            var method = typeof(RatHostController).GetMethod(
+                "Awake",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            method.Invoke(rat, null);
+        }
+
+        private static void InvokeRatHostUpdate(RatHostController rat)
+        {
+            var method = typeof(RatHostController).GetMethod(
+                "Update",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            method.Invoke(rat, null);
         }
 
         private static void InvokeNearbyForcedControlInput(ImmuneRiskZone zone, float deltaTime, float currentTimeSeconds)

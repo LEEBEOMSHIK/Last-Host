@@ -17,18 +17,29 @@ namespace LastHost.Prototype.Host
         public float forcedControlAlertAmount = 6f;
         public float forcedControlAlertCooldownSeconds = 1.2f;
         public string forcedControlFeedbackLabel = "강제 조종";
+        public bool randomizeInstinctDirection = true;
+        public Vector2 instinctTurnIntervalRange = new Vector2(1.2f, 2.8f);
+        public float instinctTurnAngleDegrees = 55f;
 
         private CharacterController characterController;
         private Vector3 currentHostInstinctMoveDirection;
         private float nextForcedControlAlertTime;
+        private float nextInstinctTurnTime;
 
         public Vector3 CurrentMoveWorldDirection { get; private set; }
         public Vector3 CurrentResolvedMoveDirection { get; private set; }
+        public Vector3 CurrentHostInstinctMoveDirection => currentHostInstinctMoveDirection;
 
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
-            currentHostInstinctMoveDirection = NormalizeOrFallback(hostInstinctMoveDirection, Vector3.forward);
+            currentHostInstinctMoveDirection = randomizeInstinctDirection
+                ? RatHostInstinctWanderModel.CreateInitialDirection(
+                    hostInstinctMoveDirection,
+                    Random.value < 0.5f ? -1f : 1f,
+                    Random.Range(25f, 135f))
+                : NormalizeOrFallback(hostInstinctMoveDirection, Vector3.forward);
+            ScheduleNextInstinctTurn(Time.time);
         }
 
         private void Update()
@@ -53,12 +64,21 @@ namespace LastHost.Prototype.Host
                 forcedControlSpeedMultiplier);
             CurrentResolvedMoveDirection = controlFrame.MoveDirection;
             ApplyForcedControlDemerit(controlFrame);
+            if (!CanContinueRatHostMovement(state))
+            {
+                return;
+            }
 
             var speedMultiplier = state != null ? state.Mutations.RatSpeedMultiplier : 1f;
             var delta = CurrentResolvedMoveDirection * (baseSpeed * speedMultiplier * controlFrame.SpeedMultiplier * Time.deltaTime);
 
             if (characterController != null)
             {
+                if (!characterController.enabled || !characterController.gameObject.activeInHierarchy)
+                {
+                    return;
+                }
+
                 characterController.Move(delta);
             }
             else
@@ -72,6 +92,13 @@ namespace LastHost.Prototype.Host
             {
                 transform.rotation = Quaternion.LookRotation(CurrentResolvedMoveDirection, Vector3.up);
             }
+        }
+
+        private bool CanContinueRatHostMovement(PrototypeSessionState state)
+        {
+            return isActiveAndEnabled
+                && gameObject.activeInHierarchy
+                && (state == null || state.Mode == PrototypeGameMode.RatHost);
         }
 
         private static Vector3 ReadMoveInput()
@@ -90,23 +117,21 @@ namespace LastHost.Prototype.Host
 
         private void UpdateHostInstinctDirection()
         {
-            currentHostInstinctMoveDirection = NormalizeOrFallback(currentHostInstinctMoveDirection, hostInstinctMoveDirection);
-            var position = transform.position;
-            var nextDirection = currentHostInstinctMoveDirection;
+            var shouldTurn = randomizeInstinctDirection && Time.time >= nextInstinctTurnTime;
+            currentHostInstinctMoveDirection = RatHostInstinctWanderModel.ResolveNextDirection(
+                currentHostInstinctMoveDirection,
+                hostInstinctMoveDirection,
+                transform.position,
+                xBounds,
+                zBounds,
+                shouldTurn,
+                instinctTurnAngleDegrees,
+                Random.value < 0.5f ? -1f : 1f);
 
-            if ((position.x <= xBounds.x + 0.2f && nextDirection.x < 0f)
-                || (position.x >= xBounds.y - 0.2f && nextDirection.x > 0f))
+            if (shouldTurn)
             {
-                nextDirection.x = -nextDirection.x;
+                ScheduleNextInstinctTurn(Time.time);
             }
-
-            if ((position.z <= zBounds.x + 0.2f && nextDirection.z < 0f)
-                || (position.z >= zBounds.y - 0.2f && nextDirection.z > 0f))
-            {
-                nextDirection.z = -nextDirection.z;
-            }
-
-            currentHostInstinctMoveDirection = NormalizeOrFallback(nextDirection, Vector3.forward);
         }
 
         private void ApplyForcedControlDemerit(RatHostControlFrame controlFrame)
@@ -118,6 +143,13 @@ namespace LastHost.Prototype.Host
 
             nextForcedControlAlertTime = Time.time + Mathf.Max(0f, forcedControlAlertCooldownSeconds);
             session.AddImmuneAlertAmount(forcedControlAlertAmount, forcedControlFeedbackLabel);
+        }
+
+        private void ScheduleNextInstinctTurn(float currentTime)
+        {
+            var minInterval = Mathf.Max(0.2f, Mathf.Min(instinctTurnIntervalRange.x, instinctTurnIntervalRange.y));
+            var maxInterval = Mathf.Max(minInterval, Mathf.Max(instinctTurnIntervalRange.x, instinctTurnIntervalRange.y));
+            nextInstinctTurnTime = currentTime + Random.Range(minInterval, maxInterval);
         }
 
         private static Vector3 NormalizeOrFallback(Vector3 value, Vector3 fallback)
