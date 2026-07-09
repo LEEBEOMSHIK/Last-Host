@@ -17,6 +17,7 @@
 
 ## 총괄 판정
 
+- 판정: 내부 승인 가능
 - 승인 범위: 사용자 요청의 `면역 신호 억제 미니게임 선구현` 범위 안이다.
 - 기존 루프 영향: 기본 내부 미니게임 타입은 백혈구 회피로 유지되어 기존 프로토타입 흐름을 바꾸지 않는다.
-- 남은 확인: Unity MCP 승인이 해제되어 MCP Play 체크와 에디터 Test Runner 실행은 미완료다. 대체로 Roslyn 컴파일과 리플렉션 스모크 검증을 수행했다.
+- MCP 복구 후 확인: Unity Test Runner EditMode 64개 통과, MCP Play 체크 통과, Unity Console Error/Warning 0건으로 이전 조건부 보류가 해소됐다.

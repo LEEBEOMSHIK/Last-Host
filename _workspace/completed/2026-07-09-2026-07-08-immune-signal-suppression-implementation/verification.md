@@ -2,9 +2,9 @@
 
 ## 요약
 
-- 결과: 제한적 통과
-- 통과: C# 런타임 컴파일, 테스트 어셈블리 컴파일, 핵심 수용 기준 스모크 실행, 공백 검사
-- 미완료: Unity MCP Play 체크, Unity Test Runner 실행
+- 결과: 통과
+- 통과: C# 런타임 컴파일, 테스트 어셈블리 컴파일, 핵심 수용 기준 스모크 실행, 공백 검사, Unity Test Runner EditMode, Unity MCP Play/Console 체크
+- 미완료: Windows 빌드
 
 ## RED
 
@@ -54,9 +54,32 @@
 
 ## MCP / 에디터 제한
 
-- Unity MCP: `Connection revoked. Go to Unity Editor > Project Settings > AI > Unity MCP to change approval.`
-- 열린 Unity 에디터의 `Library/ScriptAssemblies`는 아직 새 스크립트를 반영하지 않았다.
-- 같은 프로젝트가 Unity 에디터에서 열려 있어 별도 배치모드 Test Runner는 프로젝트 잠금과 충돌할 수 있어 실행하지 않았다.
+- 이전 상태: Unity MCP가 `Connection revoked. Go to Unity Editor > Project Settings > AI > Unity MCP to change approval.` 오류로 차단됐다.
+- 2026-07-09 01:19 KST 복구 후 `Unity_ManageEditor GetState`가 정상 응답했고, 열린 Unity 에디터에서 검증을 재개했다.
+
+## MCP 복구 후 추가 검증
+
+### Unity Test Runner EditMode
+
+- 실행: `Unity_RunCommand: Codex EditMode Test Runner Retry`
+- 대상: `LastHost.Prototype.Tests`
+- 결과: 64개 통과, 실패 0, 스킵 0, 소요 3.6566505초
+- 결과 파일: `UnityProject/Temp/CodexMcpValidation/editmode-summary.txt`
+
+### Unity MCP Play 체크
+
+- 실행:
+  - `Unity_ManageEditor Play`
+  - `Unity_RunCommand: Codex MCP Play Loop Check`
+  - `Unity_ManageEditor Stop`
+- 결과:
+  - `RatHostPrototype` 씬 Play 진입/종료 통과
+  - 면역 신호 억제 미니게임 진입 시 HUD 루트 활성화 확인
+  - 신호 마커가 Tick 후 이동하는지 확인
+  - 정확 입력 8회 누적 후 변이 선택 전환 확인
+  - 변이 선택 후 쥐 숙주 복귀 및 면역 경계도 `25` 확인
+  - Play 종료 후 씬 `isDirty=false`
+  - Unity Console Error/Warning 0건
 
 ## 제외 변경
 
@@ -64,5 +87,5 @@
 
 ## 남은 확인
 
-- Unity Editor에서 MCP 승인을 다시 허용한 뒤 Play 체크를 수행해야 한다.
-- Unity Test Runner EditMode 전체 실행은 에디터가 새 스크립트를 컴파일한 뒤 확인해야 한다.
+- Windows 빌드는 아직 실행하지 않았다.
+- 사운드 싱크, 노트 프리팹, 이펙트는 후속 확장 후보이며 이번 검증 범위 밖이다.

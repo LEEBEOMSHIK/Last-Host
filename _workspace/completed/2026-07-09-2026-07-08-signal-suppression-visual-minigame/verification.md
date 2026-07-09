@@ -104,6 +104,37 @@ Unity Editor > Project Settings > AI > Unity MCP 승인 복구 전까지 MCP Pla
 
 ```text
 검증 방법:
+2026-07-09 01:19 KST MCP 복구 후 Unity Test Runner EditMode 실행
+
+실행:
+Unity_RunCommand: Codex EditMode Test Runner Retry
+
+결과:
+LastHost.Prototype.Tests 64개 통과
+FailCount=0
+SkipCount=0
+```
+
+```text
+검증 방법:
+2026-07-09 01:19 KST MCP 복구 후 Play 체크
+
+실행:
+Unity_ManageEditor Play
+Unity_RunCommand: Codex MCP Play Loop Check
+Unity_ManageEditor Stop
+
+결과:
+면역 신호 억제 HUD 루트 활성화 확인
+신호 마커 Tick 후 이동 확인
+정확 입력 8회 후 변이 선택 전환 확인
+변이 선택 후 쥐 숙주 복귀와 면역 경계도 25 확인
+Unity Console Error/Warning 0건
+Play 종료 후 씬 isDirty=false
+```
+
+```text
+검증 방법:
 사용자 수동 플레이 확인
 
 결과:
@@ -113,9 +144,9 @@ Unity Editor > Project Settings > AI > Unity MCP 승인 복구 전까지 MCP Pla
 
 ## 검증하지 못한 항목
 
-- Unity MCP Play 진입/종료 및 Console Error/Warning 확인은 `Connection revoked`로 수행하지 못했다.
-- 신규 HUD 테스트를 Unity Test Runner 또는 Unity MCP 안에서 실제 실행하지 못했다.
-- 실제 화면의 1차 시각화는 사용자 수동 확인을 받았다. 다만 MCP로 동일 흐름을 재현하지는 못했다.
+- Unity MCP Play 진입/종료 및 Console Error/Warning 확인은 2026-07-09 01:19 KST 복구 후 수행 완료했다.
+- 신규 HUD 테스트를 포함한 EditMode 테스트는 2026-07-09 01:19 KST 복구 후 `LastHost.Prototype.Tests` 64개 통과로 확인했다.
+- 실제 화면의 1차 시각화는 사용자 수동 확인을 받았고, MCP 복구 후 동일 흐름의 상태 전환/HUD 활성화도 재현했다.
 - Windows 빌드는 실행하지 않았다.
 
 ## 남은 위험
@@ -126,4 +157,4 @@ Unity Editor > Project Settings > AI > Unity MCP 승인 복구 전까지 MCP Pla
 
 ## 완료 판단
 
-사용자 수동 확인과 fresh 컴파일 검증 기준으로 커밋 가능. 단, MCP 승인 복구 후 Play/Console 검증을 다시 수행하는 편이 안전하다.
+사용자 수동 확인, fresh 컴파일, Unity Test Runner EditMode, MCP Play/Console 검증 기준으로 통과. Windows 빌드는 별도 미수행이다.

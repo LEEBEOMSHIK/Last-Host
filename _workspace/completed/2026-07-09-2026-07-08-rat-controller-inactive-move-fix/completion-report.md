@@ -14,8 +14,12 @@
 
 - 런타임/테스트 어셈블리 수동 컴파일 통과
 - `git diff --check` 통과
+- 2026-07-09 MCP 복구 후 `LastHost.Prototype.Tests` EditMode 64개 통과
+- MCP Play 체크 중 내부 미니게임 진입 시 `RatHostController` 비활성화, 복귀 시 재활성화 확인
+- Play 종료 후 Unity Console Error/Warning 0건
 
 ## 총괄 판정
 
 - 내부 승인 가능
 - 사용자 제보 오류에 대한 국소 수정이며 프로토타입 범위 변경이 없다.
+- MCP 복구 후 남은 Play/Console 검증도 통과했다.

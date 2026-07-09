@@ -10,3 +10,4 @@
 - 구현: 신호 억제 판정 모델, 내부 미니게임 타입, 세션 전환, HUD 상태 표시, 개발용 진입 API, EditMode 테스트를 추가했다.
 - 검증: 런타임/테스트 어셈블리 수동 컴파일 통과, 리플렉션 스모크 검증 통과, `git diff --check` 통과.
 - 제한: Unity MCP는 `Connection revoked` 상태라 MCP Play 체크와 Unity Test Runner 실행은 완료하지 못했다.
+- 2026-07-09 MCP 복구 후 `LastHost.Prototype.Tests` EditMode 64개 통과, MCP Play 체크 통과, Unity Console Error/Warning 0건을 확인했다.

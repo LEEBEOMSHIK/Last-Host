@@ -14,3 +14,4 @@
 - 구현 후 확인: Unity Editor 로그상 스크립트 컴파일 성공, 테스트 어셈블리 50개 테스트 포함, PowerShell 리플렉션 상태/HUD 검증 통과.
 - 미수행: Unity MCP Play 체크는 `Connection revoked`로 차단되어 수행하지 못했다.
 - 루프 게이트 상태: QA/검증 조건부, 총괄 관리자 조건부 보류.
+- 2026-07-09 MCP 복구 후 `LastHost.Prototype.Tests` EditMode 64개 통과, MCP Play 체크에서 `면역 포착 +8`, `면역 포착 흔적 +8`, 복귀 경계도 `33`, Console Error/Warning 0건을 확인했다.

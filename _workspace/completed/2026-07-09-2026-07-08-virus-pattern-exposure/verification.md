@@ -72,28 +72,35 @@
 
 ### Unity MCP Play 체크
 
-- 상태: 미수행
-- 사유: Unity MCP 호출이 `Connection revoked. Go to Unity Editor > Project Settings > AI > Unity MCP to change approval.` 오류로 차단됨.
-- 시도한 항목:
+- 상태: 2026-07-09 01:19 KST MCP 복구 후 수행 완료
+- 이전 차단 사유: Unity MCP 호출이 `Connection revoked. Go to Unity Editor > Project Settings > AI > Unity MCP to change approval.` 오류로 차단됨.
+- 이전 시도 항목:
   - `Unity_ManageEditor.GetState`
   - `Unity_ReadConsole`
   - `Unity_Grep`
-- 영향:
-  - 실제 Play 모드에서 씬 진입, HUD 렌더링, 콘솔 Error 0건은 아직 완료 주장 불가.
-  - 사용자 최종 확인 전 MCP 승인을 다시 활성화한 뒤 QA/검증 에이전트 Play 체크가 필요하다.
+- 복구 후 실행:
+  - `Unity_ManageEditor Play`, `Unity_RunCommand: Codex MCP Play Loop Check`, `Unity_ManageEditor Stop`
+  - `Unity_ReadConsole` Error/Warning 확인
+- 복구 후 결과:
+  - `RatHostPrototype` 씬 Play 진입/종료 통과
+  - 백혈구 접촉 후 HUD `면역 포착 +8` 확인
+  - 변이 선택 화면 HUD `면역 포착 흔적 +8` 확인
+  - 변이 선택 후 쥐 숙주 복귀 경계도 `33` 확인
+  - Play 종료 후 씬 `isDirty=false`
+  - Unity Console Error/Warning 0건
 
 ### Unity Test Runner 실행
 
-- 상태: 미수행
-- 사유:
-  - MCP 연결 해제로 에디터 내 테스트 실행 불가.
-  - Unity batchmode 대체 실행은 열린 에디터 세션 상태에서 결과 파일을 생성하지 못해 유효 검증으로 보지 않는다.
+- 상태: 2026-07-09 01:19 KST MCP 복구 후 수행 완료
+- 실행: `Unity_RunCommand: Codex EditMode Test Runner Retry`
+- 결과: `LastHost.Prototype.Tests` EditMode 64개 통과, 실패 0, 스킵 0
+- 결과 파일: `UnityProject/Temp/CodexMcpValidation/editmode-summary.txt`
 
 ## QA/검증 에이전트 판정
 
 - 코드 컴파일 산출물과 순수 상태/HUD 결정 로직은 수용 기준을 충족한다.
-- Unity MCP Play 체크가 차단되어 플레이어블 변경 완료 판정은 조건부다.
-- MCP 승인을 복구한 뒤 다음 항목을 재검증해야 한다.
+- Unity MCP Play 체크와 Unity Test Runner가 복구 후 통과하여 이전 조건부 항목은 해소됐다.
+- 복구 후 재검증 완료 항목:
   - `RatHostPrototype` 씬 Play 진입
   - 내부 바이러스 모드에서 백혈구 접촉 후 HUD `면역 포착 +8`
   - 변이 선택 화면 HUD `면역 포착 흔적 +8`
