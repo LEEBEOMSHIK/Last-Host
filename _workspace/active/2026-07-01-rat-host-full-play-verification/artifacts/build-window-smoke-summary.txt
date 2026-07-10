@@ -1,0 +1,13 @@
+initial 1920x1080 pid=34196 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-initial-1920x1080.png|1936x1119
+alive-before-stop 1920x1080=True
+initial 1600x900 pid=54328 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-initial-1600x900.png|1616x939
+alive-before-stop 1600x900=True
+initial 1366x768 pid=3176 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-initial-1366x768.png|1382x807
+alive-before-stop 1366x768=True
+initial 1280x720 pid=86348 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-initial-1280x720.png|1296x759
+after-f6 1280x720 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-1280x720-after-f6.png|1296x759
+after-timed-spaces 1280x720 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-1280x720-after-timed-spaces.png|1296x759
+after-select-3 1280x720 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-1280x720-after-select-3.png|1296x759
+after-missed-f6 1280x720 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-1280x720-after-missed-f6.png|1296x759
+after-failure-space 1280x720 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-1280x720-after-failure-space.png|1296x759
+alive-before-stop 1280x720=True

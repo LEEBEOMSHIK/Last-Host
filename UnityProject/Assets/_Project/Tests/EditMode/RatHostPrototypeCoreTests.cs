@@ -210,6 +210,72 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void Session_UnlabeledAlertThresholdUsesDefaultInternalMinigame()
+        {
+            var session = new PrototypeSessionState();
+
+            Assert.True(session.AddImmuneAlertAmount(100f));
+
+            Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
+            Assert.AreEqual(InternalVirusMinigameType.WhiteBloodCellEvasion, session.CurrentInternalMinigameType);
+            Assert.AreEqual("변이 조각 수집 / 백혈구 회피", session.InternalMinigameObjectiveText);
+        }
+
+        [Test]
+        public void Session_ForcedControlAlertThresholdSelectsSignalSuppression()
+        {
+            var session = new PrototypeSessionState();
+
+            Assert.True(session.AddImmuneAlertAmount(100f, "강제 조종"));
+
+            Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
+            Assert.AreEqual(InternalVirusMinigameType.ImmuneSignalSuppression, session.CurrentInternalMinigameType);
+            Assert.AreEqual("면역 신호 억제", session.InternalMinigameObjectiveText);
+        }
+
+        [Test]
+        public void Session_NoisyTissueAlertThresholdSelectsSignalSuppression()
+        {
+            var session = new PrototypeSessionState();
+
+            Assert.True(session.AddRiskAlert(5f, "소음/조직 자극"));
+
+            Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
+            Assert.AreEqual(InternalVirusMinigameType.ImmuneSignalSuppression, session.CurrentInternalMinigameType);
+            Assert.AreEqual("면역 신호 억제", session.InternalMinigameObjectiveText);
+        }
+
+        [Test]
+        public void Session_ContaminationAlertThresholdKeepsWhiteBloodCellEvasion()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                DefaultInternalMinigameType = InternalVirusMinigameType.ImmuneSignalSuppression
+            });
+
+            Assert.True(session.AddImmuneAlertAmount(100f, "오염 노출"));
+
+            Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
+            Assert.AreEqual(InternalVirusMinigameType.WhiteBloodCellEvasion, session.CurrentInternalMinigameType);
+            Assert.AreEqual("변이 조각 수집 / 백혈구 회피", session.InternalMinigameObjectiveText);
+        }
+
+        [Test]
+        public void Session_VirusPatternAlertThresholdKeepsWhiteBloodCellEvasion()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                DefaultInternalMinigameType = InternalVirusMinigameType.ImmuneSignalSuppression
+            });
+
+            Assert.True(session.AddImmuneAlertAmount(100f, "면역 포착"));
+
+            Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
+            Assert.AreEqual(InternalVirusMinigameType.WhiteBloodCellEvasion, session.CurrentInternalMinigameType);
+            Assert.AreEqual("변이 조각 수집 / 백혈구 회피", session.InternalMinigameObjectiveText);
+        }
+
+        [Test]
         public void Session_FirstWhiteBloodCellResponseKeepsBaseDifficulty()
         {
             var session = new PrototypeSessionState();

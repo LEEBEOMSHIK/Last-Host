@@ -63,6 +63,15 @@
 - 검증: Unity MCP GREEN 명령 통과, 영향 테스트 메서드 3개 직접 호출 통과, Unity Console Error 0건, `git diff --check` 공백 오류 없음(LF/CRLF 경고만 출력)
 - 제한: 전체 Unity Test Runner 실행 메뉴/API는 이번 MCP 경로에서 즉시 배치 실행하지 못해, 영향 범위 메서드 직접 호출을 Unity MCP 동등 검증으로 사용함.
 
+### 2026-07-10
+
+- 수행 내용: 사용자 수동 플레이 체감 확인 분리와 상호작용 식별성 작업 최종 완료 처리
+- 확인한 자료: 사용자 지시, `verification.md`, `agent-activity.md`, `docs/project-handoff/current-task-board.md`, 현재 UnityProject diff
+- 판단: 사용자가 직접 확인해야 하는 수동 플레이 체감 항목은 `docs/project-handoff/manual-play-checklist.md`로 분리하고 보류한다. 상호작용 식별성 작업은 기존 QA/검증, 코드 리뷰, 프로젝트 총괄 관리자 내부 승인, 현재 코드 반영 상태를 근거로 완료 처리한다.
+- 루프 게이트 상태: 완료 처리
+- `agent-activity.md` 갱신 여부: 예
+- 다음 작업: active 작업 폴더를 completed로 이동하고 상태판 갱신
+
 ## 결정 기록
 
 - 보정 방향은 기존 `NoisyPipeRiskInteractable`을 유지하고 식별성만 개선한다.
@@ -72,6 +81,7 @@
 - 별도 worktree는 만들지 않는다. 현재 Unity Editor가 현재 체크아웃의 씬을 열고 있어 검증 대상이 갈라질 수 있기 때문이다.
 - `IsometricCamera`는 `RatHostController`의 `Camera.main` 의존성 때문에 씬 빌더에서 `MainCamera` 태그를 명시한다.
 - `.codex/config.toml` 변경은 이번 작업 산출물이 아니며 커밋 대상에서 제외한다.
+- 2026-07-10 사용자 지시에 따라 사용자 수동 플레이 체감 확인은 별도 체크리스트로 보류하고, 상호작용 식별성 작업은 자동/내부 검증 기준으로 완료 처리한다.
 
 ## 열린 질문
 
@@ -89,6 +99,6 @@
 - 작업 배정 게이트: 생성됨
 - 담당 산출물 게이트: 구현 산출물 기록 완료
 - 에이전트 수행 이력 게이트: 구현 수행 이력 기록 완료
-- QA/검증 게이트: 부분 통과
+- QA/검증 게이트: 부분 통과. 사용자 수동 확인은 별도 체크리스트로 분리
 - 총괄 관리자 게이트: 내부 승인 가능
-- 커밋 전 차단 조건: 사용자 Game View 수동 확인 전 보류
+- 커밋 전 차단 조건: 해소. 사용자 Game View 수동 확인은 별도 보류 항목

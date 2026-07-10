@@ -3,41 +3,48 @@
 ## 현재 이어받을 작업
 
 - 작업 ID: 없음
-- 상태: MCP 누락 검증 완료, 다음 작업 선택 대기
-- 최신 사용자 요청: 끊어져서 완료 못했던 작업 계속 진행.
+- 상태: 내부 대응 원인별 미니게임 선택 완료 처리, 커밋/푸시 준비 중
+- 최신 사용자 요청: 커밋 푸쉬할 수 있도록 하고, 불필요한 파일은 정리.
 
 ## 먼저 읽을 파일
 
 1. `docs/project-handoff/current-task-board.md`
-2. `_workspace/completed/2026-07-10-2026-07-10-mcp-recovered-signal-cue-verification/verification.md`
-3. `_workspace/completed/2026-07-10-2026-07-10-mcp-recovered-signal-cue-verification/completion-report.md`
+2. `docs/project-handoff/manual-play-checklist.md`
+3. `_workspace/completed/2026-07-10-2026-07-10-internal-response-cause-minigame-selection/completion-report.md`
+4. `_workspace/completed/2026-07-10-2026-07-10-internal-response-cause-minigame-selection/verification.md`
 
 ## 바로 이어서 할 작업
 
-1. 사용자에게 MCP 누락 검증 완료와 남은 후속 후보를 보고한다.
-2. 사용자가 다음 작업을 지시하면 `전체 플레이어블 검증 재정리`를 우선 후보로 시작한다.
-3. 커밋 요청 시 ProjectSettings 변경이 없는지 다시 확인하고 문서 변경만 선별한다.
+1. ProjectSettings 변경이 없는지 다시 확인한다.
+2. 관련 코드/테스트/작업 기록을 커밋하고 원격에 푸시한다.
+3. 다음 작업은 `면역 신호 억제 2단계 리듬 확장`, `원인 라벨 enum 전환 검토`, 또는 보류 중인 사용자 수동 플레이 체크 결과 반영 중 선택한다.
 
 ## 제외하거나 건드리면 안 되는 변경
 
 - `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` 재기록분은 사용자 요청에 따라 되돌린 상태를 유지한다.
-- 이전 active 작업 4건은 이번 작업에서 임의 완료 처리하지 않는다.
-- Windows 빌드 실행본 직접 플레이와 해상도별 UI/카메라 검증은 이번 MCP 누락 검증 범위가 아니며 별도 작업으로 남긴다.
+- 이전 active 작업은 이번 작업에서 임의 완료 처리하지 않는다.
+- F6 `면역 신호 억제` 성공 루프와 자연 경계도/백혈구 회피 성공 루프를 혼동해 기록하지 않는다.
+- 사용자 수동 플레이 체감 확인은 보류 상태로 유지한다.
+- 내부 대응 원인별 미니게임 선택의 Unity MCP 직접 `RunCommand` 검증은 이번 턴에서 완료 결과가 없으므로 완료로 주장하지 않는다.
 
 ## 마지막 성공 검증
 
-- 2026-07-10 MCP 승인 복구 후 Unity MCP Play 진입/종료 통과.
-- 2026-07-10 실제 F6 입력으로 `InternalVirus / ImmuneSignalSuppression` 진입 확인.
-- 2026-07-10 HUD `다음 신호 1.0초`, `신호 접근 0.3초`, `지금 차단` cue 상태 확인.
-- 2026-07-10 Unity Console Error/Warning 0건, Play 종료 후 씬 `RatHostPrototype` dirty=false.
-- 2026-07-10 `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` 재기록분 되돌림 완료.
+- 2026-07-10 Editor Play 전체 성공 루프와 실패 복귀 루프 통과.
+- 2026-07-10 Windows 빌드 실행본 `1920x1080`, `1600x900`, `1366x768`, `1280x720` 구동과 기본 화면 확인.
+- 2026-07-10 빌드 실행본 1280x720에서 F6 내부 미니게임 진입, 실패 패널, Space 복귀 확인.
+- 2026-07-10 빌드 실행본 1280x720에서 F6 `면역 신호 억제` 성공, 변이 선택, `잠복 강화` 적용 RatHost 복귀 확인.
+- 2026-07-10 Player.log 크래시/예외 패턴 없음.
+- 2026-07-10 빌드 자동 UnityProject 변경 되돌림 완료.
+- 2026-07-10 상호작용 식별성 작업 completed 이동 완료.
+- 2026-07-10 내부 대응 원인별 미니게임 선택 제품/테스트 어셈블리 임시 컴파일 통과.
+- 2026-07-10 내부 대응 원인별 미니게임 선택 임시 실행 하니스 `CAUSE_SELECTION_HARNESS_OK 6/6`.
 
 ## 차단 항목
 
-- 현재 MCP 누락 검증 관련 차단 항목 없음.
-- 남은 후속 검증: 전체 플레이어블 검증 재정리, 사용자 Game View 수동 확인이 필요한 상호작용 식별성 작업.
+- 남은 체감 확인: 사용자 조작감, 난이도, 설명 없이 목표 이해 여부.
+- Unity MCP 직접 검증: relay 응답 제한으로 내부 대응 원인별 선택 `RunCommand` 완료 결과 미확보.
 
 ## 갱신 정보
 
-- 마지막 갱신: 2026-07-10 16:35 KST
+- 마지막 갱신: 2026-07-10 23:50 KST
 - 갱신자: 프로젝트 조정 에이전트 / QA 검증 에이전트 / 프로젝트 총괄 관리자 에이전트

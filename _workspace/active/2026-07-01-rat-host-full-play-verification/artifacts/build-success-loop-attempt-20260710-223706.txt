@@ -1,0 +1,10 @@
+AttemptStamp=20260710-223706
+BuildExe=C:\project\Last-Host\Builds\RatHostPrototype\LastHostPrototype.exe
+Focused=True
+AliveBeforeStop=True
+StartShot=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-success-loop-start-20260710-223706.png
+SignalShot=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-success-loop-signal-20260710-223706.png
+MutationShot=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-success-loop-mutation-20260710-223706.png
+ReturnShot=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-success-loop-return-20260710-223706.png
+PlayerLog=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\player-success-loop-20260710-223706.log
+LogErrorPatternCount=0

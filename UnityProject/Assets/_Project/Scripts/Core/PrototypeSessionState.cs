@@ -203,7 +203,7 @@ namespace LastHost.Prototype.Core
                 return false;
             }
 
-            EnterVirusMinigame();
+            EnterVirusMinigame(SelectInternalMinigameTypeForAlertCause(feedbackLabel));
             return true;
         }
 
@@ -228,7 +228,7 @@ namespace LastHost.Prototype.Core
                 return false;
             }
 
-            EnterVirusMinigame();
+            EnterVirusMinigame(SelectInternalMinigameTypeForAlertCause(feedbackLabel));
             return true;
         }
 
@@ -387,6 +387,43 @@ namespace LastHost.Prototype.Core
                 RecordInternalResponseFailure();
                 Mode = PrototypeGameMode.VirusFailed;
             }
+        }
+
+        private InternalVirusMinigameType SelectInternalMinigameTypeForAlertCause(string feedbackLabel)
+        {
+            if (string.IsNullOrWhiteSpace(feedbackLabel))
+            {
+                return Config.DefaultInternalMinigameType;
+            }
+
+            var normalizedLabel = feedbackLabel.Trim();
+            if (IsWhiteBloodCellCauseLabel(normalizedLabel))
+            {
+                return InternalVirusMinigameType.WhiteBloodCellEvasion;
+            }
+
+            if (IsSignalSuppressionCauseLabel(normalizedLabel))
+            {
+                return InternalVirusMinigameType.ImmuneSignalSuppression;
+            }
+
+            return Config.DefaultInternalMinigameType;
+        }
+
+        private static bool IsSignalSuppressionCauseLabel(string label)
+        {
+            return label.Contains("강제 조종")
+                || label.Contains("소음")
+                || label.Contains("조직 자극")
+                || label.Contains("면역 신호")
+                || label.Contains("경보");
+        }
+
+        private static bool IsWhiteBloodCellCauseLabel(string label)
+        {
+            return label.Contains("오염")
+                || label.Contains("면역 포착")
+                || label.Contains("바이러스 흔적");
         }
 
         private void RecordInternalResponseEntry()

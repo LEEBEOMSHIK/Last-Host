@@ -8,12 +8,12 @@
 
 | 에이전트 | 역할 | 담당 업무 | 산출물 | 판정 |
 | --- | --- | --- | --- | --- |
-| Codex 메인 에이전트 | 조정자 | 작업 패킷 생성, 위임, 통합, 검증 요청 | 작업 기록 | 진행 중 |
+| Codex 메인 에이전트 | 조정자 | 작업 패킷 생성, 위임, 통합, 검증 요청, 완료 처리 | 작업 기록 | 완료 처리 |
 | Unity 씬/통합 구현 에이전트 | 구현 담당 | 씬 빌더, 씬 오브젝트, UI 연결, MainCamera 태그 보정 | `RatHostPrototypeSceneBuilder.cs`, `RatHostPrototype.unity`, placeholder 머티리얼 | 구현 완료 |
 | 게임플레이 구현 에이전트 | 구현 보조 | 런타임 상태, HUD 문구, 회귀 테스트, MainCamera 태그 테스트, 코드 리뷰 LOW 보정 | `PrototypeSessionState.cs`, `PrototypeSessionController.cs`, `RatRiskInteractable.cs`, `PrototypeHud.cs`, `RatHostPrototypeCoreTests.cs` | 리뷰 보정 완료 |
-| QA/검증 에이전트 `Leibniz` | 검증 담당 | 테스트/Play/콘솔 검증 | QA 판정 | 부분 통과 |
+| QA/검증 에이전트 `Leibniz` | 검증 담당 | 테스트/Play/콘솔 검증 | QA 판정 | 부분 통과, 사용자 수동 확인 별도 |
 | 코드 품질 리뷰어 `Popper` | 리뷰어 | 코드/씬/테스트 품질 리뷰 | 코드 리뷰 판정 | 통과 |
-| 프로젝트 총괄 관리자 에이전트 `Cicero` | 내부 승인자 | 범위와 게이트 판정 | 총괄 판정 | 내부 승인 가능 |
+| 프로젝트 총괄 관리자 에이전트 `Cicero` | 내부 승인자 | 범위와 게이트 판정 | 총괄 판정 | 내부 승인 가능, 완료 처리 가능 |
 
 ## 상세 기록
 
@@ -92,6 +92,16 @@
 - 제한 사항: 전체 Unity Test Runner는 이번 MCP 경로에서 즉시 배치 실행하지 못해 영향 범위 메서드 직접 호출을 동등 검증으로 기록
 - 다음 인계 대상: QA/검증 에이전트
 
+### 2026-07-10
+
+- 에이전트: Codex 메인 에이전트
+- 역할: 조정자
+- 수행 내용: 사용자 요청에 따라 수동 플레이 체감 확인을 별도 체크리스트로 분리하고, 상호작용 식별성 작업을 자동/내부 검증 기준으로 최종 완료 처리
+- 입력 자료: 사용자 지시, `verification.md`, `work-log.md`, `docs/project-handoff/current-task-board.md`, 현재 UnityProject diff
+- 생성/수정 산출물: `completion-report.md`, `docs/project-handoff/manual-play-checklist.md`, 상태판 갱신
+- 검증 또는 판정: 현재 UnityProject diff 없음. 기존 검증과 내부 승인 근거로 완료 처리 가능
+- 다음 인계 대상: 사용자 보고
+
 ## 위임 기록
 
 | 시각 | 위임한 에이전트 | 받은 에이전트 | 요청한 일 | 결과 | 산출물 |
@@ -109,6 +119,6 @@
 - 담당 산출물 확인: 구현 산출물 기록 완료
 - 실제 구현 담당 확인: 완료
 - 메인 에이전트 직접 구현 예외 여부: 해당 없음
-- QA/검증 에이전트 판정: 부분 통과
+- QA/검증 에이전트 판정: 부분 통과. 사용자 수동 확인은 별도 보류 체크리스트로 분리
 - 프로젝트 총괄 관리자 판정: 내부 승인 가능
-- 사용자 승인 필요 여부: 보정 후 Game View 수동 확인 필요
+- 사용자 승인 필요 여부: 없음. 사용자 수동 플레이 체감 확인은 별도 후속 항목

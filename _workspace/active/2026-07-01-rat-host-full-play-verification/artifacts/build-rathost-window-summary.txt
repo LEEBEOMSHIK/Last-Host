@@ -1,0 +1,8 @@
+rathost-after-w 1920x1080 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-rathost-after-w-1920x1080.png|1936x1119
+alive-before-stop-rathost 1920x1080=True
+rathost-after-w 1600x900 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-rathost-after-w-1600x900.png|1616x939
+alive-before-stop-rathost 1600x900=True
+rathost-after-w 1366x768 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-rathost-after-w-1366x768.png|1382x807
+alive-before-stop-rathost 1366x768=True
+rathost-after-w 1280x720 capture=C:\project\Last-Host\_workspace\active\2026-07-01-rat-host-full-play-verification\artifacts\build-rathost-after-w-1280x720.png|1296x759
+alive-before-stop-rathost 1280x720=True
