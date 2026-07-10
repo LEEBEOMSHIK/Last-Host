@@ -2,55 +2,42 @@
 
 ## 현재 이어받을 작업
 
-- 작업 ID: `2026-07-10-signal-suppression-approach-cue`
-- 상태: 구현 및 검증 완료, 사용자 보고 대기
-- 최신 사용자 요청: 면역 신호 억제 후속 확장 작업 진행.
+- 작업 ID: 없음
+- 상태: MCP 누락 검증 완료, 다음 작업 선택 대기
+- 최신 사용자 요청: 끊어져서 완료 못했던 작업 계속 진행.
 
 ## 먼저 읽을 파일
 
-1. `_workspace/active/2026-07-10-signal-suppression-approach-cue/task.md`
-2. `docs/design/encounters/immune-signal-suppression-rhythm-minigame.md`
-3. `UnityProject/Assets/_Project/Scripts/Core/PrototypeSessionState.cs`
-4. `UnityProject/Assets/_Project/Scripts/UI/ImmuneSignalSuppressionHud.cs`
+1. `docs/project-handoff/current-task-board.md`
+2. `_workspace/completed/2026-07-10-2026-07-10-mcp-recovered-signal-cue-verification/verification.md`
+3. `_workspace/completed/2026-07-10-2026-07-10-mcp-recovered-signal-cue-verification/completion-report.md`
 
 ## 바로 이어서 할 작업
 
-1. 사용자에게 변경 내용과 검증 결과를 보고한다.
-2. MCP 승인 복구 후 필요하면 F6 진입/HUD 펄스 수동 또는 자동 확인을 재시도한다.
-3. 커밋 요청 시 `ProjectSettings.asset` 기존 변경을 제외하고 관련 파일만 선별한다.
+1. 사용자에게 MCP 누락 검증 완료와 남은 후속 후보를 보고한다.
+2. 사용자가 다음 작업을 지시하면 `전체 플레이어블 검증 재정리`를 우선 후보로 시작한다.
+3. 커밋 요청 시 ProjectSettings 변경이 없는지 다시 확인하고 문서 변경만 선별한다.
 
 ## 제외하거나 건드리면 안 되는 변경
 
-- `UnityProject/ProjectSettings/ProjectSettings.asset`의 기존 `APP_UI_EDITOR_ONLY` define 변경은 이번 작업 범위가 아니다.
-- 이전 작업의 미커밋 변경을 되돌리지 않는다.
-- `2026-07-09-white-blood-cell-response-scaling`의 구현/검증 완료 미커밋 변경은 별도 작업으로 보존한다.
-- 사용자 결정 필요 또는 수동 확인 필요 상태인 active 작업 2건을 임의 완료 처리하지 않는다.
-- 백혈구 수, 새 스폰 패턴, 씬 배치, ProjectSettings, 사운드/프리팹/새 에셋은 이번 작업에서 변경하지 않는다.
+- `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` 재기록분은 사용자 요청에 따라 되돌린 상태를 유지한다.
+- 이전 active 작업 4건은 이번 작업에서 임의 완료 처리하지 않는다.
+- Windows 빌드 실행본 직접 플레이와 해상도별 UI/카메라 검증은 이번 MCP 누락 검증 범위가 아니며 별도 작업으로 남긴다.
 
 ## 마지막 성공 검증
 
-- 2026-07-09 01:19 KST Unity Test Runner EditMode: `LastHost.Prototype.Tests` 64개 통과, 실패 0, 스킵 0
-- 2026-07-09 백혈구 회피 수정 EditMode: `LastHost.Prototype.Tests` 69개 통과, 실패 0, 스킵 0
-- 2026-07-09 백혈구 회피 수정 MCP Play 체크: 첫 진입 배율 1.0, 두 번째 1.1, 실패 후 다음 진입 1.3, Console Error/Warning 0건, 씬 `isDirty=false`
-- 2026-07-10 면역 신호 억제 접근 예고: Unity Roslyn 런타임/테스트 컴파일과 cue 스모크 `SIGNAL_SUPPRESSION_CUE_COMPILE_SMOKE_PASS`
-- 2026-07-10 면역 신호 억제 접근 예고: `git diff --check` 통과, CRLF 변환 경고만 출력
-- 2026-07-10 면역 신호 억제 접근 예고: Unity MCP Play 진입, 콘솔 Error/Warning 0건, 활성 씬 `RatHostPrototype` dirty=false 확인
-- 2026-07-09 01:19 KST Unity MCP Play 체크: 신호 억제 HUD/마커/성공 전환, 백혈구 포착 HUD/복귀 경계도 33, 루트/컨트롤러 상태 통과
-- 2026-07-09 01:19 KST Unity Console Error/Warning 0건, Play 종료 후 씬 `isDirty=false`
-- Unity MCP `Unity_RunCommand` 관련 테스트 13/13 통과
-- 2026-07-09 `git diff --check` 종료 코드 0, CRLF 변환 경고만 표시
-- 2026-07-09 Unity Roslyn 런타임/테스트 어셈블리 fresh 컴파일 통과
-- 사용자 수동 플레이 확인 완료
+- 2026-07-10 MCP 승인 복구 후 Unity MCP Play 진입/종료 통과.
+- 2026-07-10 실제 F6 입력으로 `InternalVirus / ImmuneSignalSuppression` 진입 확인.
+- 2026-07-10 HUD `다음 신호 1.0초`, `신호 접근 0.3초`, `지금 차단` cue 상태 확인.
+- 2026-07-10 Unity Console Error/Warning 0건, Play 종료 후 씬 `RatHostPrototype` dirty=false.
+- 2026-07-10 `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` 재기록분 되돌림 완료.
 
 ## 차단 항목
 
-- `2026-07-01-rat-host-full-play-verification`: 전체 완료가 아니라 사용자 결정 필요 상태
-- `2026-07-01-rat-interaction-affordance`: 사용자 Game View 수동 확인 후 최종 완료 처리 필요
-- `ProjectSettings.asset` 기존 define 변경은 제외
-- Windows 빌드와 사용자 직접 난이도 체감 확인은 미수행
-- Unity MCP가 2026-07-10 Play Stop 호출 시 승인 해제되어 F6 진입/HUD 펄스 자동 플레이 검증과 종료 후 MCP 상태 재확인은 미수행
+- 현재 MCP 누락 검증 관련 차단 항목 없음.
+- 남은 후속 검증: 전체 플레이어블 검증 재정리, 사용자 Game View 수동 확인이 필요한 상호작용 식별성 작업.
 
 ## 갱신 정보
 
-- 마지막 갱신: 2026-07-09 백혈구 회피 수정 검증 완료
-- 갱신자: 프로젝트 조정 에이전트 / QA 검증 에이전트 / 문서 릴리즈 에이전트
+- 마지막 갱신: 2026-07-10 16:35 KST
+- 갱신자: 프로젝트 조정 에이전트 / QA 검증 에이전트 / 프로젝트 총괄 관리자 에이전트
