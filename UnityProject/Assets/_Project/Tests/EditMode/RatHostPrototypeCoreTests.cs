@@ -210,6 +210,106 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void Session_FirstWhiteBloodCellResponseKeepsBaseDifficulty()
+        {
+            var session = new PrototypeSessionState();
+
+            Assert.AreEqual(0, session.ImmuneResponseExperience);
+            Assert.AreEqual(1f, session.WhiteBloodCellSpeedMultiplier);
+
+            session.EnterVirusMinigame();
+
+            Assert.AreEqual(1, session.ImmuneResponseExperience);
+            Assert.AreEqual(1f, session.WhiteBloodCellSpeedMultiplier);
+        }
+
+        [Test]
+        public void Session_RepeatedInternalResponsesIncreaseWhiteBloodCellSpeedMultiplier()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                WhiteBloodCellSpeedMultiplierPerExperience = 0.1f,
+                MaxWhiteBloodCellSpeedMultiplier = 1.4f
+            });
+
+            CompleteWhiteBloodCellResponseAndSelectMutation(session);
+            session.EnterVirusMinigame();
+
+            Assert.AreEqual(2, session.ImmuneResponseExperience);
+            Assert.AreEqual(1.1f, session.WhiteBloodCellSpeedMultiplier, 0.001f);
+            Assert.AreEqual(InternalVirusMinigameType.WhiteBloodCellEvasion, session.CurrentInternalMinigameType);
+        }
+
+        [Test]
+        public void Session_FailedInternalResponseAddsExtraWhiteBloodCellPressure()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                WhiteBloodCellSpeedMultiplierPerExperience = 0.1f,
+                MaxWhiteBloodCellSpeedMultiplier = 1.4f
+            });
+
+            session.EnterVirusMinigame();
+            session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
+            session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
+            session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
+
+            Assert.AreEqual(PrototypeGameMode.VirusFailed, session.Mode);
+            Assert.AreEqual(2, session.ImmuneResponseExperience);
+            Assert.AreEqual(1.1f, session.WhiteBloodCellSpeedMultiplier, 0.001f);
+
+            session.ReturnToRatHostAfterVirusFailure();
+            session.EnterVirusMinigame();
+
+            Assert.AreEqual(3, session.ImmuneResponseExperience);
+            Assert.AreEqual(1.2f, session.WhiteBloodCellSpeedMultiplier, 0.001f);
+        }
+
+        [Test]
+        public void Session_WhiteBloodCellSpeedMultiplierIsCapped()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                WhiteBloodCellSpeedMultiplierPerExperience = 0.5f,
+                MaxWhiteBloodCellSpeedMultiplier = 1.5f
+            });
+
+            for (var i = 0; i < 5; i++)
+            {
+                CompleteWhiteBloodCellResponseAndSelectMutation(session);
+            }
+
+            Assert.AreEqual(5, session.ImmuneResponseExperience);
+            Assert.AreEqual(1.5f, session.WhiteBloodCellSpeedMultiplier, 0.001f);
+        }
+
+        [Test]
+        public void VirusMinigameController_AppliesSessionWhiteBloodCellSpeedMultiplier()
+        {
+            var session = CreateSessionControllerForEditModeTest("Session Under Test");
+            var controllerObject = new GameObject("Virus Controller Under Test");
+            var controller = controllerObject.AddComponent<VirusMinigameController>();
+            var whiteBloodCellObject = new GameObject("White Blood Cell Under Test");
+            var whiteBloodCell = whiteBloodCellObject.AddComponent<WhiteBloodCellChaser>();
+
+            controller.session = session;
+            controller.whiteBloodCells = new[] { whiteBloodCell };
+            controller.mutationFragments = new MutationFragmentPickup[0];
+            whiteBloodCell.speed = 2f;
+
+            CompleteWhiteBloodCellResponseAndSelectMutation(session.State);
+            session.State.EnterVirusMinigame();
+            controller.ResetRun();
+
+            Assert.Greater(session.State.WhiteBloodCellSpeedMultiplier, 1f);
+            Assert.AreEqual(2f * session.State.WhiteBloodCellSpeedMultiplier, whiteBloodCell.CurrentSpeed, 0.001f);
+
+            Object.DestroyImmediate(whiteBloodCellObject);
+            Object.DestroyImmediate(controllerObject);
+            Object.DestroyImmediate(session.gameObject);
+        }
+
+        [Test]
         public void Session_ImmuneSignalSuppressionSuccessMovesToMutationSelection()
         {
             var session = new PrototypeSessionState(new PrototypeConfig
@@ -236,6 +336,35 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.AreEqual(ImmuneSignalSuppressionJudgement.Accurate, session.ResolveSignalSuppressionInput());
 
             Assert.AreEqual(PrototypeGameMode.MutationSelection, session.Mode);
+        }
+
+        [Test]
+        public void Session_SignalSuppressionCueActivatesBeforeAccurateWindow()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                SignalSuppressionSignalIntervalSeconds = 1f,
+                SignalSuppressionAccurateWindowSeconds = 0.1f,
+                SignalSuppressionCueLeadSeconds = 0.35f
+            });
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+
+            Assert.False(session.IsSignalSuppressionCueActive);
+            Assert.AreEqual(0f, session.SignalSuppressionCueIntensity);
+            Assert.AreEqual("다음 신호 1.0초", session.SignalSuppressionTimingText);
+
+            session.TickSignalSuppression(0.7f);
+
+            Assert.True(session.IsSignalSuppressionCueActive);
+            Assert.Greater(session.SignalSuppressionCueIntensity, 0f);
+            Assert.Less(session.SignalSuppressionCueIntensity, 1f);
+            Assert.AreEqual("신호 접근 0.3초", session.SignalSuppressionTimingText);
+
+            session.TickSignalSuppression(0.21f);
+
+            Assert.True(session.IsSignalSuppressionCueActive);
+            Assert.AreEqual(1f, session.SignalSuppressionCueIntensity);
+            Assert.AreEqual("지금 차단", session.SignalSuppressionTimingText);
         }
 
         [Test]
@@ -999,6 +1128,52 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void PrototypeHud_SignalSuppressionCuePulsesMarkerBeforeReady()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                SignalSuppressionTotalSignals = 3,
+                SignalSuppressionRequiredSuppressions = 2,
+                SignalSuppressionSignalIntervalSeconds = 1f,
+                SignalSuppressionAccurateWindowSeconds = 0.1f,
+                SignalSuppressionCueLeadSeconds = 0.4f
+            });
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+
+            var canvasObject = new GameObject("Canvas Under Test");
+            var hudObject = new GameObject("HUD Under Test");
+            hudObject.transform.SetParent(canvasObject.transform, false);
+            var hud = hudObject.AddComponent<PrototypeHud>();
+
+            hud.Refresh(session);
+
+            var panel = FindChildIncludingInactive(canvasObject.transform, "SignalSuppressionPanel");
+            var markerTransform = FindChildIncludingInactive(panel, "SignalMarker");
+            var timingTransform = FindChildIncludingInactive(panel, "SignalTimingText");
+            var marker = markerTransform.GetComponent<RectTransform>();
+            var markerImage = markerTransform.GetComponent<Image>();
+            var timingText = timingTransform.GetComponent<Text>();
+            var waitingColor = markerImage.color;
+            var waitingScale = marker.localScale.x;
+
+            session.TickSignalSuppression(0.7f);
+            hud.Refresh(session);
+
+            Assert.AreEqual("신호 접근 0.3초", timingText.text);
+            Assert.Greater(marker.localScale.x, waitingScale);
+            Assert.Greater(markerImage.color.r, waitingColor.r);
+            Assert.Less(markerImage.color.b, waitingColor.b);
+
+            session.TickSignalSuppression(0.21f);
+            hud.Refresh(session);
+
+            Assert.AreEqual("지금 차단", timingText.text);
+            Assert.Greater(marker.localScale.x, waitingScale);
+
+            Object.DestroyImmediate(canvasObject);
+        }
+
+        [Test]
         public void PrototypeHud_ShowsRiskInteractionPromptWhenRatCanInteract()
         {
             var session = new PrototypeSessionState();
@@ -1395,6 +1570,20 @@ namespace LastHost.Prototype.Tests.EditMode
             session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
 
             Assert.AreEqual(PrototypeGameMode.MutationSelection, session.CurrentMode);
+        }
+
+        private static void CompleteWhiteBloodCellResponseAndSelectMutation(PrototypeSessionState session)
+        {
+            session.EnterVirusMinigame();
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+            session.ResolveVirusFrame(collectedFragment: true, hitByWhiteBloodCell: false);
+
+            Assert.AreEqual(PrototypeGameMode.MutationSelection, session.Mode);
+
+            session.SelectMutation(MutationType.Dormancy);
+
+            Assert.AreEqual(PrototypeGameMode.RatHost, session.Mode);
         }
 
         private static void MoveSessionToVirusFailure(PrototypeSessionState session)

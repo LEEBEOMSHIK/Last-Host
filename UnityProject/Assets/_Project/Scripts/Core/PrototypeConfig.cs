@@ -17,11 +17,14 @@ namespace LastHost.Prototype.Core
         public float VirusWhiteBloodCellDamage { get; set; } = 34f;
         public float VirusPatternExposurePerWhiteBloodCellHit { get; set; } = 8f;
         public string VirusPatternExposureFeedbackLabel { get; set; } = "면역 포착";
+        public float WhiteBloodCellSpeedMultiplierPerExperience { get; set; } = 0.1f;
+        public float MaxWhiteBloodCellSpeedMultiplier { get; set; } = 1.4f;
         public int SignalSuppressionTotalSignals { get; set; } = 12;
         public int SignalSuppressionRequiredSuppressions { get; set; } = 8;
         public float SignalSuppressionStartingStability { get; set; } = 100f;
         public float SignalSuppressionMistakeDamage { get; set; } = 20f;
         public float SignalSuppressionAccurateWindowSeconds { get; set; } = 0.12f;
+        public float SignalSuppressionCueLeadSeconds { get; set; } = 0.35f;
         public float SignalSuppressionSignalIntervalSeconds { get; set; } = 1f;
     }
 }

@@ -89,6 +89,7 @@ namespace LastHost.Prototype.VirusMinigame
         {
             pendingFragments.Clear();
             pendingWhiteBloodCellHit = false;
+            ApplyWhiteBloodCellDifficulty();
 
             if (virusPlayer != null)
             {
@@ -109,6 +110,10 @@ namespace LastHost.Prototype.VirusMinigame
         public void SetGameplayActive(bool active)
         {
             gameplayActive = active;
+            if (active)
+            {
+                ApplyWhiteBloodCellDifficulty();
+            }
 
             if (virusPlayer != null)
             {
@@ -135,6 +140,21 @@ namespace LastHost.Prototype.VirusMinigame
             foreach (var fragment in mutationFragments)
             {
                 fragment.controller = this;
+            }
+        }
+
+        private void ApplyWhiteBloodCellDifficulty()
+        {
+            var speedMultiplier = session != null && session.State != null
+                ? session.State.WhiteBloodCellSpeedMultiplier
+                : 1f;
+
+            foreach (var whiteBloodCell in whiteBloodCells)
+            {
+                if (whiteBloodCell != null)
+                {
+                    whiteBloodCell.SetSpeedMultiplier(speedMultiplier);
+                }
             }
         }
     }

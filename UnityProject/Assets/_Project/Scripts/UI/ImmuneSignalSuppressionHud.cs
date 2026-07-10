@@ -7,6 +7,7 @@ namespace LastHost.Prototype.UI
     public sealed class ImmuneSignalSuppressionHud : MonoBehaviour
     {
         private static readonly Color WaitingColor = new Color(0.38f, 0.78f, 0.96f, 1f);
+        private static readonly Color CueColor = new Color(0.96f, 0.78f, 0.28f, 1f);
         private static readonly Color ReadyColor = new Color(0.45f, 0.96f, 0.58f, 1f);
         private static readonly Color LateColor = new Color(0.96f, 0.34f, 0.28f, 1f);
 
@@ -63,9 +64,13 @@ namespace LastHost.Prototype.UI
             signalMarker.anchoredPosition = new Vector2(xPosition, signalMarker.anchoredPosition.y);
 
             var isReady = Mathf.Abs(timeUntilSignal) <= state.Config.SignalSuppressionAccurateWindowSeconds;
-            var markerColor = isReady ? ReadyColor : timeUntilSignal < 0f ? LateColor : WaitingColor;
+            var cueIntensity = state.SignalSuppressionCueIntensity;
+            var isApproachCue = timeUntilSignal > state.Config.SignalSuppressionAccurateWindowSeconds && cueIntensity > 0f;
+            var cueColor = Color.Lerp(WaitingColor, CueColor, cueIntensity);
+            var markerColor = isReady ? ReadyColor : timeUntilSignal < 0f ? LateColor : isApproachCue ? cueColor : WaitingColor;
             SetImageColor(signalMarkerImage, markerColor);
-            SetImageColor(judgementLineImage, isReady ? ReadyColor : WaitingColor);
+            SetImageColor(judgementLineImage, isReady ? ReadyColor : isApproachCue ? cueColor : WaitingColor);
+            signalMarker.localScale = Vector3.one * (1f + (isReady ? 0.22f : 0.18f * cueIntensity));
 
             if (accurateWindowRect != null)
             {
@@ -77,9 +82,11 @@ namespace LastHost.Prototype.UI
                 accurateWindowRect.sizeDelta = new Vector2(windowWidth, accurateWindowRect.sizeDelta.y);
             }
 
+            var waitingWindowColor = new Color(1f, 1f, 1f, 0.12f);
+            var cueWindowColor = new Color(0.96f, 0.78f, 0.28f, 0.28f);
             SetImageColor(accurateWindowImage, isReady
                 ? new Color(0.45f, 0.96f, 0.58f, 0.35f)
-                : new Color(1f, 1f, 1f, 0.12f));
+                : isApproachCue ? Color.Lerp(waitingWindowColor, cueWindowColor, cueIntensity) : waitingWindowColor);
         }
 
         private static float CalculateApproachX(float timeUntilSignal, float intervalSeconds, float halfTravelWidth)

@@ -9,6 +9,7 @@ namespace LastHost.Prototype.Core
     {
         private float immuneAlertFeedbackRemainingSeconds;
         private float ratHostRiskZoneGraceRemainingSeconds;
+        private bool hasRecordedCurrentInternalFailureExperience;
 
         public PrototypeSessionState()
             : this(new PrototypeConfig())
@@ -40,6 +41,7 @@ namespace LastHost.Prototype.Core
         public MutationLoadout Mutations { get; }
         public PrototypeGameMode Mode { get; private set; }
         public InternalVirusMinigameType CurrentInternalMinigameType { get; private set; }
+        public int ImmuneResponseExperience { get; private set; }
         public float HostHealth { get; private set; }
         public bool IsRatRiskInteractionAvailable { get; private set; }
         public string RatRiskInteractionPrompt { get; private set; } = string.Empty;
@@ -70,6 +72,46 @@ namespace LastHost.Prototype.Core
         public float ActiveVirusNormalizedStability => CurrentInternalMinigameType == InternalVirusMinigameType.ImmuneSignalSuppression
             ? SignalSuppressionRun.NormalizedStability
             : VirusRun.NormalizedStability;
+        public float WhiteBloodCellSpeedMultiplier
+        {
+            get
+            {
+                var experienceBeyondFirstResponse = Mathf.Max(0, ImmuneResponseExperience - 1);
+                var multiplier = 1f + experienceBeyondFirstResponse * Mathf.Max(0f, Config.WhiteBloodCellSpeedMultiplierPerExperience);
+                return Mathf.Min(Mathf.Max(1f, Config.MaxWhiteBloodCellSpeedMultiplier), multiplier);
+            }
+        }
+        public bool IsSignalSuppressionCueActive => SignalSuppressionCueIntensity > 0f;
+        public float SignalSuppressionCueIntensity
+        {
+            get
+            {
+                if (CurrentInternalMinigameType != InternalVirusMinigameType.ImmuneSignalSuppression)
+                {
+                    return 0f;
+                }
+
+                var timeUntilSignal = SignalSuppressionRun.TimeUntilSignal;
+                var accurateWindow = Mathf.Max(0.01f, Config.SignalSuppressionAccurateWindowSeconds);
+                if (Mathf.Abs(timeUntilSignal) <= accurateWindow)
+                {
+                    return 1f;
+                }
+
+                if (timeUntilSignal < 0f)
+                {
+                    return 0f;
+                }
+
+                var cueLead = Mathf.Max(accurateWindow, Config.SignalSuppressionCueLeadSeconds);
+                if (timeUntilSignal > cueLead || cueLead <= accurateWindow)
+                {
+                    return 0f;
+                }
+
+                return 1f - Mathf.Clamp01((timeUntilSignal - accurateWindow) / (cueLead - accurateWindow));
+            }
+        }
         public string InternalMinigameProgressText => CurrentInternalMinigameType == InternalVirusMinigameType.ImmuneSignalSuppression
             ? $"신호 차단 {SignalSuppressionRun.SuppressedSignals}/{SignalSuppressionRun.RequiredSuppressions} / {SignalSuppressionTimingText}"
             : $"변이 조각 {VirusRun.CollectedFragments}/{VirusRun.RequiredFragments}";
@@ -86,6 +128,11 @@ namespace LastHost.Prototype.Core
                 if (Mathf.Abs(timeUntilSignal) <= Config.SignalSuppressionAccurateWindowSeconds)
                 {
                     return "지금 차단";
+                }
+
+                if (timeUntilSignal > 0f && IsSignalSuppressionCueActive)
+                {
+                    return $"신호 접근 {timeUntilSignal:0.0}초";
                 }
 
                 return timeUntilSignal > 0f
@@ -211,12 +258,18 @@ namespace LastHost.Prototype.Core
 
         public void EnterVirusMinigame(InternalVirusMinigameType minigameType)
         {
+            var startsNewInternalResponse = Mode != PrototypeGameMode.InternalVirus;
             ClearRatHostRiskZoneGrace();
             SetRatRiskInteractionAffordance(false, string.Empty);
             ClearVirusPatternExposure();
             CurrentInternalMinigameType = minigameType;
             VirusRun.ResetRun();
             SignalSuppressionRun.ResetRun();
+            if (startsNewInternalResponse)
+            {
+                RecordInternalResponseEntry();
+            }
+
             Mode = PrototypeGameMode.InternalVirus;
         }
 
@@ -239,6 +292,7 @@ namespace LastHost.Prototype.Core
             }
             else if (outcome == VirusMinigameOutcome.Failed)
             {
+                RecordInternalResponseFailure();
                 Mode = PrototypeGameMode.VirusFailed;
             }
 
@@ -330,8 +384,26 @@ namespace LastHost.Prototype.Core
             }
             else if (outcome == VirusMinigameOutcome.Failed)
             {
+                RecordInternalResponseFailure();
                 Mode = PrototypeGameMode.VirusFailed;
             }
+        }
+
+        private void RecordInternalResponseEntry()
+        {
+            ImmuneResponseExperience++;
+            hasRecordedCurrentInternalFailureExperience = false;
+        }
+
+        private void RecordInternalResponseFailure()
+        {
+            if (hasRecordedCurrentInternalFailureExperience)
+            {
+                return;
+            }
+
+            ImmuneResponseExperience++;
+            hasRecordedCurrentInternalFailureExperience = true;
         }
 
         private void RecordImmuneAlertFeedback(string label, float delta)

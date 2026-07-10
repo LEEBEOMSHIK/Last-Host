@@ -11,6 +11,9 @@ namespace LastHost.Prototype.VirusMinigame
 
         private Vector3 startPosition;
         private float nextHitTime;
+        private float speedMultiplier = 1f;
+
+        public float CurrentSpeed => speed * speedMultiplier;
 
         private void Awake()
         {
@@ -31,7 +34,7 @@ namespace LastHost.Prototype.VirusMinigame
                 return;
             }
 
-            transform.position += direction.normalized * (speed * Time.deltaTime);
+            transform.position += direction.normalized * (CurrentSpeed * Time.deltaTime);
         }
 
         private void OnTriggerStay(Collider other)
@@ -48,6 +51,11 @@ namespace LastHost.Prototype.VirusMinigame
         {
             transform.position = startPosition;
             nextHitTime = 0f;
+        }
+
+        public void SetSpeedMultiplier(float multiplier)
+        {
+            speedMultiplier = Mathf.Max(0.01f, multiplier);
         }
 
         private void TryQueueHit(Collider other)
