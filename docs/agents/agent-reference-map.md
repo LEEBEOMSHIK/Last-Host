@@ -196,6 +196,27 @@
 - `_workspace/templates/completion-report.md`
 - `_workspace/templates/verification.md`
 
+### 프로젝트 핸드오프 / 다음 작업 후보 현황
+
+사용 요청 예시:
+
+- 현재 작업 후보를 한곳에서 확인
+- 다음 작업 발굴 결과의 사용자 확인용 상태판 갱신
+- 최근 작업 요약과 미결 검증 항목 정리
+- Codex와 사용자가 함께 보는 handoff 문서 확인
+
+필수 참조:
+
+- `docs/project-handoff/README.md`
+- `docs/project-handoff/current-task-board.md`
+- `docs/agents/loop-engineering-gates.md`
+
+선택 참조:
+
+- `_workspace/active/CURRENT.md`
+- `_workspace/active/`
+- `_workspace/completed/`
+
 ### Unity 구현 / 씬 통합
 
 사용 요청 예시:
