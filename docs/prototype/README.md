@@ -14,6 +14,7 @@
 - `approvals/rat-host-approval-packet.md`: 2026-06-30 전체 승인 이력과 승인된 결정
 - `plans/rat-host-implementation-plan.md`: 승인된 Unity 구현 계획과 검증 기준
 - `plans/rat-host-immune-alert-work-direction.md`: 면역 경계도 상세 기획을 기준으로 한 다음 작업 방향과 우선순위
+- `plans/rat-host-ai-assisted-art-workflow.md`: AI 보조 래스터 초안의 승인·선별·저폴리 3D 준비·Unity 적용·QA 순서
 
 ## 확인 순서
 
@@ -23,3 +24,4 @@
 2. `approvals/rat-host-approval-packet.md`
 3. `plans/rat-host-implementation-plan.md`
 4. `plans/rat-host-immune-alert-work-direction.md`
+5. `plans/rat-host-ai-assisted-art-workflow.md` (실제 AI 보조 아트 작업을 검토할 때)

@@ -18,24 +18,21 @@
 
 ## 현재 저장소 상태
 
-- 최신 커밋: `2b1fa26 feat: refine immune response verification flow`
+- 최신 커밋: `9659ff9 docs: enforce current task board synchronization`
 - 원격 반영: `origin/main` 반영 완료
 - Unity 코드·씬·테스트·설정 변경: 없음
-- 미커밋 작업 기록: 현재 상태판 동기화와 `_workspace/active/2026-07-13-manual-play-candidate-cleanup/`
+- 미커밋 작업: 도트풍 저폴리 3D 제작 가이드의 visual 문서·색인, AI 보조 도트풍 3D 아트 제작 규칙·작업 순서와 완료 패킷, 작업 없음 상태의 `_workspace/active/CURRENT.md` 포인터 갱신, 현재 상태판 동기화
 - 작업 범위 밖 로컬 변경: `.codex/config.toml`
 
 ## 최근 작업 요약
 
 | 작업 | 상태 | 핵심 결과 | 확인 위치 |
 | --- | --- | --- | --- |
+| AI 보조 도트풍 3D 아트 제작 규칙과 작업 순서 | 완료 | ChatGPT 등 이미지 생성은 콘셉트·픽셀 텍스처·타일·HUD 아이콘의 래스터 초안으로만 한정하고, 자산 묶음별 사용자 승인·출처 기록·사람 선별·별도 저폴리 3D/Unity 승인·QA의 7단계를 문서화 | `_workspace/completed/2026-07-13-2026-07-13-ai-assisted-pixel-art-workflow/` |
+| 도트풍 저폴리 3D 제작 가이드 | 완료 | 순수 2D가 아닌 도트풍 3D를 위한 저폴리 모델·픽셀 텍스처·URP 저해상도/픽셀화 적용 순서·카메라·조명·UI·플레이스홀더·씬 검토 기준을 문서화 | `_workspace/completed/2026-07-13-2026-07-13-pixel-lowpoly-production-guide/` |
 | Unity MCP 입력 검증 방식 표준화 | 완료 | 실제 Game View 네이티브 키 입력, MCP 직접 상태 전환 대체 검증, `SendKeys`·포커스·승인·relay 차단을 분리한 표준 절차와 기록 양식을 운영 문서에 반영 | `_workspace/completed/2026-07-13-2026-07-13-unity-mcp-input-verification-standard/` |
 | 원인 라벨 enum/event type 전환 | 완료, 사용자 체감 확인 별도 | `FeedbackLabel`과 원인 타입을 분리해 타입 기반 미니게임 선택으로 전환. `면역 신호`·`경보`의 면역 신호 억제 매핑을 보존했고, EditMode 90/90 및 Unity MCP Play·Console 검증을 통과 | `_workspace/completed/2026-07-13-2026-07-13-alert-cause-event-type-review/` |
 | 면역 신호 억제 2단계 리듬 확장 | 완료, 사용자 체감 확인 별도 | 두 번째 내부 대응부터 변칙 간격·빠른 신호와 리듬 HUD를 적용. EditMode 81/81 통과, 체감 난이도·HUD 배치만 사용자 확인 필요 | `_workspace/completed/2026-07-13-2026-07-13-immune-signal-suppression-stage2-rhythm/` |
-| 내부 대응 원인별 미니게임 선택 | 완료, Unity MCP 직접 검증 제한 | 경계도 원인 라벨에 따라 백혈구 회피 또는 면역 신호 억제를 선택. 임시 실행 하니스 `CAUSE_SELECTION_HARNESS_OK 6/6` 통과 | `_workspace/completed/2026-07-10-2026-07-10-internal-response-cause-minigame-selection/` |
-| 전체 플레이어블 검증 재정리 / 빌드 성공 루프 최종 확인 | 자동/대리 입력 기준 통과, 사용자 체감 확인 별도 | Editor Play 성공/실패 루프 통과, 빌드 실행본 4개 해상도 구동/화면 확인, 1280x720 실패 복귀와 F6 `면역 신호 억제` 성공 루프 확인 | `_workspace/active/2026-07-01-rat-host-full-play-verification/` |
-| 상호작용 대상 식별성 보정 | 완료 처리, 사용자 체감 확인 별도 | 배관/밸브/표식 링, 근접 HUD, `Space` 면역 경계도 상승 검증 기록 확인. active 작업을 completed로 이동 | `_workspace/completed/2026-07-10-2026-07-01-rat-interaction-affordance/` |
-| MCP 승인 복구 후 누락 검증 | 완료 | 실제 F6 진입, HUD 접근 cue/정확 판정 cue, 콘솔 Error/Warning 0건, 씬 dirty=false 확인 | `_workspace/completed/2026-07-10-2026-07-10-mcp-recovered-signal-cue-verification/` |
-| 백혈구 회피 대응 경험 스케일링 | 커밋/푸시 완료 | 내부 대응 경험에 따라 백혈구 속도 배율 증가, 실패 시 추가 압박 | `_workspace/active/2026-07-09-white-blood-cell-response-scaling/` |
 
 ## 보류 항목
 

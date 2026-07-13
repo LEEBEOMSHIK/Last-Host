@@ -140,11 +140,13 @@
 필수 참조:
 
 - `docs/design/game-design-summary.md`
+- `docs/design/visual/pixel-lowpoly-3d-production-guide.md`
 - `.codex/skills/pixel-lowpoly-style-keeper/SKILL.md`
 
 선택 참조:
 
 - `.codex/skills/pixel-lowpoly-style-keeper/references/pixel-style-rules.md`
+- `docs/prototype/plans/rat-host-ai-assisted-art-workflow.md` (AI 보조 콘셉트·텍스처·타일·UI 아이콘 초안의 승인·선별·후속 3D/Unity 작업 순서를 정할 때)
 
 ### 에이전트 배정 / 스킬 운영
 
