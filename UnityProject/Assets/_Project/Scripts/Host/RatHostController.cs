@@ -163,7 +163,7 @@ namespace LastHost.Prototype.Host
             }
 
             nextForcedControlAlertTime = Time.time + Mathf.Max(0f, forcedControlAlertCooldownSeconds);
-            session.AddImmuneAlertAmount(forcedControlAlertAmount, forcedControlFeedbackLabel);
+            session.AddImmuneAlertAmount(forcedControlAlertAmount, new ImmuneAlertEvent(ImmuneAlertCauseType.ForcedHostControl, forcedControlFeedbackLabel));
         }
 
         private void ScheduleNextInstinctTurn(float currentTime)

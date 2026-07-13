@@ -154,6 +154,46 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void ImmuneSignalSuppression_StageOneKeepsFixedNormalIntervals()
+        {
+            var minigame = new ImmuneSignalSuppressionModel(4, 3, 100f, 20f, 0.1f, 1f);
+
+            Assert.AreEqual(1, minigame.RhythmStage);
+            Assert.False(minigame.IsNextSignalFast);
+            Assert.AreEqual(1f, minigame.CurrentSignalIntervalSeconds);
+
+            minigame.Tick(1f);
+            minigame.ResolveInput();
+
+            Assert.False(minigame.IsNextSignalFast);
+            Assert.AreEqual(1f, minigame.TimeUntilSignal);
+        }
+
+        [Test]
+        public void ImmuneSignalSuppression_StageTwoUsesDeterministicFastSignalIntervalAndResets()
+        {
+            var minigame = new ImmuneSignalSuppressionModel(5, 4, 100f, 20f, 0.1f, 1f);
+            minigame.ResetRun(2);
+
+            Assert.AreEqual(2, minigame.RhythmStage);
+            Assert.False(minigame.IsNextSignalFast);
+            Assert.AreEqual(1f, minigame.CurrentSignalIntervalSeconds);
+
+            minigame.Tick(1f);
+            Assert.AreEqual(ImmuneSignalSuppressionJudgement.Accurate, minigame.ResolveInput());
+
+            Assert.True(minigame.IsNextSignalFast);
+            Assert.AreEqual(0.7f, minigame.TimeUntilSignal, 0.001f);
+
+            minigame.ResetRun();
+
+            Assert.AreEqual(2, minigame.RhythmStage);
+            Assert.AreEqual(0, minigame.ResolvedSignals);
+            Assert.False(minigame.IsNextSignalFast);
+            Assert.AreEqual(1f, minigame.TimeUntilSignal);
+        }
+
+        [Test]
         public void Session_DefaultRatModeTickDoesNotRaiseImmuneAlert()
         {
             var session = new PrototypeSessionState();
@@ -226,7 +266,7 @@ namespace LastHost.Prototype.Tests.EditMode
         {
             var session = new PrototypeSessionState();
 
-            Assert.True(session.AddImmuneAlertAmount(100f, "강제 조종"));
+            Assert.True(session.AddImmuneAlertAmount(100f, new ImmuneAlertEvent(ImmuneAlertCauseType.ForcedHostControl, "강제 조종")));
 
             Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
             Assert.AreEqual(InternalVirusMinigameType.ImmuneSignalSuppression, session.CurrentInternalMinigameType);
@@ -238,7 +278,7 @@ namespace LastHost.Prototype.Tests.EditMode
         {
             var session = new PrototypeSessionState();
 
-            Assert.True(session.AddRiskAlert(5f, "소음/조직 자극"));
+            Assert.True(session.AddRiskAlert(5f, new ImmuneAlertEvent(ImmuneAlertCauseType.NoiseOrTissueIrritation, "소음/조직 자극")));
 
             Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
             Assert.AreEqual(InternalVirusMinigameType.ImmuneSignalSuppression, session.CurrentInternalMinigameType);
@@ -253,7 +293,7 @@ namespace LastHost.Prototype.Tests.EditMode
                 DefaultInternalMinigameType = InternalVirusMinigameType.ImmuneSignalSuppression
             });
 
-            Assert.True(session.AddImmuneAlertAmount(100f, "오염 노출"));
+            Assert.True(session.AddImmuneAlertAmount(100f, new ImmuneAlertEvent(ImmuneAlertCauseType.ContaminationExposure, "오염 노출")));
 
             Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
             Assert.AreEqual(InternalVirusMinigameType.WhiteBloodCellEvasion, session.CurrentInternalMinigameType);
@@ -268,11 +308,60 @@ namespace LastHost.Prototype.Tests.EditMode
                 DefaultInternalMinigameType = InternalVirusMinigameType.ImmuneSignalSuppression
             });
 
-            Assert.True(session.AddImmuneAlertAmount(100f, "면역 포착"));
+            Assert.True(session.AddImmuneAlertAmount(100f, new ImmuneAlertEvent(ImmuneAlertCauseType.ImmuneDetection, "면역 포착")));
 
             Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
             Assert.AreEqual(InternalVirusMinigameType.WhiteBloodCellEvasion, session.CurrentInternalMinigameType);
             Assert.AreEqual("변이 조각 수집 / 백혈구 회피", session.InternalMinigameObjectiveText);
+        }
+
+        [TestCase(ImmuneAlertCauseType.ContaminationExposure, InternalVirusMinigameType.WhiteBloodCellEvasion)]
+        [TestCase(ImmuneAlertCauseType.ImmuneDetection, InternalVirusMinigameType.WhiteBloodCellEvasion)]
+        [TestCase(ImmuneAlertCauseType.VirusPatternExposure, InternalVirusMinigameType.WhiteBloodCellEvasion)]
+        [TestCase(ImmuneAlertCauseType.ForcedHostControl, InternalVirusMinigameType.ImmuneSignalSuppression)]
+        [TestCase(ImmuneAlertCauseType.NoiseOrTissueIrritation, InternalVirusMinigameType.ImmuneSignalSuppression)]
+        [TestCase(ImmuneAlertCauseType.ImmuneSignalOrAlarm, InternalVirusMinigameType.ImmuneSignalSuppression)]
+        public void Session_TypedAlertCauseSelectsMappedMinigameRegardlessOfFeedbackLabel(
+            ImmuneAlertCauseType causeType,
+            InternalVirusMinigameType expectedMinigameType)
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                DefaultInternalMinigameType = expectedMinigameType == InternalVirusMinigameType.WhiteBloodCellEvasion
+                    ? InternalVirusMinigameType.ImmuneSignalSuppression
+                    : InternalVirusMinigameType.WhiteBloodCellEvasion
+            });
+
+            Assert.True(session.AddImmuneAlertAmount(100f, new ImmuneAlertEvent(causeType, "표시 문구 변경")));
+
+            Assert.AreEqual(expectedMinigameType, session.CurrentInternalMinigameType);
+            Assert.AreEqual("표시 문구 변경", session.LastImmuneAlertFeedbackLabel);
+        }
+
+        [TestCase("면역 신호")]
+        [TestCase("경보")]
+        public void Session_ImmuneSignalOrAlarmCausePreservesSignalSuppressionWithExistingFeedbackLabels(string feedbackLabel)
+        {
+            var session = new PrototypeSessionState();
+
+            Assert.True(session.AddImmuneAlertAmount(100f, new ImmuneAlertEvent(ImmuneAlertCauseType.ImmuneSignalOrAlarm, feedbackLabel)));
+
+            Assert.AreEqual(InternalVirusMinigameType.ImmuneSignalSuppression, session.CurrentInternalMinigameType);
+            Assert.AreEqual(feedbackLabel, session.LastImmuneAlertFeedbackLabel);
+        }
+
+        [Test]
+        public void Session_UnspecifiedTypedAndLegacyLabeledAlertsUseConfiguredDefaultMinigame()
+        {
+            var config = new PrototypeConfig { DefaultInternalMinigameType = InternalVirusMinigameType.ImmuneSignalSuppression };
+            var typedSession = new PrototypeSessionState(config);
+            var legacySession = new PrototypeSessionState(config);
+
+            Assert.True(typedSession.AddImmuneAlertAmount(100f, new ImmuneAlertEvent(ImmuneAlertCauseType.Unspecified, string.Empty)));
+            Assert.True(legacySession.AddImmuneAlertAmount(100f, "표시만 하는 기존 라벨"));
+
+            Assert.AreEqual(InternalVirusMinigameType.ImmuneSignalSuppression, typedSession.CurrentInternalMinigameType);
+            Assert.AreEqual(InternalVirusMinigameType.ImmuneSignalSuppression, legacySession.CurrentInternalMinigameType);
         }
 
         [Test]
@@ -402,6 +491,61 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.AreEqual(ImmuneSignalSuppressionJudgement.Accurate, session.ResolveSignalSuppressionInput());
 
             Assert.AreEqual(PrototypeGameMode.MutationSelection, session.Mode);
+        }
+
+        [Test]
+        public void Session_SecondInternalResponseUsesSignalSuppressionStageTwoAndPreservesOutcomeFlow()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                SignalSuppressionRequiredSuppressions = 2,
+                SignalSuppressionTotalSignals = 3,
+                SignalSuppressionSignalIntervalSeconds = 1f
+            });
+
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+
+            Assert.AreEqual(1, session.SignalSuppressionRun.RhythmStage);
+            session.TickSignalSuppression(1f);
+            session.ResolveSignalSuppressionInput();
+            session.TickSignalSuppression(1f);
+            session.ResolveSignalSuppressionInput();
+            Assert.AreEqual(PrototypeGameMode.MutationSelection, session.Mode);
+
+            session.SelectMutation(MutationType.Dormancy);
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+
+            Assert.AreEqual(2, session.SignalSuppressionRun.RhythmStage);
+            Assert.AreEqual("리듬 2단계 · 다음 신호 일반", session.SignalSuppressionRhythmText);
+            session.TickSignalSuppression(1f);
+            session.ResolveSignalSuppressionInput();
+            Assert.True(session.SignalSuppressionRun.IsNextSignalFast);
+            Assert.AreEqual(0.7f, session.SignalSuppressionRun.TimeUntilSignal, 0.001f);
+            session.TickSignalSuppression(0.7f);
+            session.ResolveSignalSuppressionInput();
+            Assert.AreEqual(PrototypeGameMode.MutationSelection, session.Mode);
+        }
+
+        [Test]
+        public void Session_SignalSuppressionFailureMakesNextInternalResponseStageTwo()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                SignalSuppressionStartingStability = 20f,
+                SignalSuppressionMistakeDamage = 20f
+            });
+
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+            session.TickSignalSuppression(0.5f);
+            session.ResolveSignalSuppressionInput();
+
+            Assert.AreEqual(PrototypeGameMode.VirusFailed, session.Mode);
+            Assert.True(session.ReturnToRatHostAfterVirusFailure());
+
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+
+            Assert.AreEqual(2, session.SignalSuppressionRun.RhythmStage);
+            Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
         }
 
         [Test]
@@ -584,8 +728,8 @@ namespace LastHost.Prototype.Tests.EditMode
         {
             var session = new PrototypeSessionState();
 
-            session.AddImmuneAlertAmount(0.04f, "오염 노출");
-            session.AddImmuneAlertAmount(0.04f, "오염 노출");
+            session.AddImmuneAlertAmount(0.04f, new ImmuneAlertEvent(ImmuneAlertCauseType.ContaminationExposure, "오염 노출"));
+            session.AddImmuneAlertAmount(0.04f, new ImmuneAlertEvent(ImmuneAlertCauseType.ContaminationExposure, "오염 노출"));
 
             Assert.AreEqual("오염 노출", session.LastImmuneAlertFeedbackLabel);
             Assert.AreEqual(0.08f, session.LastImmuneAlertFeedbackDelta, 0.001f);
@@ -1021,7 +1165,7 @@ namespace LastHost.Prototype.Tests.EditMode
         public void PrototypeHud_ShowsImmuneAlertCauseFeedbackBeforeRatObjective()
         {
             var session = new PrototypeSessionState();
-            session.AddRiskAlert(0.75f, "소음/조직 자극");
+            session.AddRiskAlert(0.75f, new ImmuneAlertEvent(ImmuneAlertCauseType.NoiseOrTissueIrritation, "소음/조직 자극"));
 
             var hudObject = new GameObject("HUD Under Test");
             var objectiveObject = new GameObject("Objective Text");
@@ -1042,7 +1186,7 @@ namespace LastHost.Prototype.Tests.EditMode
         {
             var session = new PrototypeSessionState(CreateConfigWithFeedbackSeconds(1f));
 
-            session.AddRiskAlert(0.75f, "소음/조직 자극");
+            session.AddRiskAlert(0.75f, new ImmuneAlertEvent(ImmuneAlertCauseType.NoiseOrTissueIrritation, "소음/조직 자극"));
 
             Assert.True(session.HasImmuneAlertFeedback);
 
@@ -1061,7 +1205,7 @@ namespace LastHost.Prototype.Tests.EditMode
         {
             var session = new PrototypeSessionState(CreateConfigWithFeedbackSeconds(1f));
             session.SetRatRiskInteractionAffordance(true, "소음 배관 조사 가능");
-            session.AddRiskAlert(0.75f, "소음/조직 자극");
+            session.AddRiskAlert(0.75f, new ImmuneAlertEvent(ImmuneAlertCauseType.NoiseOrTissueIrritation, "소음/조직 자극"));
 
             var hudObject = new GameObject("HUD Under Test");
             var objectiveObject = new GameObject("Objective Text");
@@ -1089,9 +1233,10 @@ namespace LastHost.Prototype.Tests.EditMode
             session.SetRatRiskInteractionAffordance(true, "소음 배관 조사 가능");
             session.AddImmuneAlertAmount(90f);
 
-            session.AddRiskAlert(0.75f, "소음/조직 자극");
+            session.AddRiskAlert(0.75f, new ImmuneAlertEvent(ImmuneAlertCauseType.NoiseOrTissueIrritation, "소음/조직 자극"));
 
             Assert.AreEqual(PrototypeGameMode.InternalVirus, session.Mode);
+            Assert.AreEqual(InternalVirusMinigameType.ImmuneSignalSuppression, session.CurrentInternalMinigameType);
             Assert.False(session.IsRatRiskInteractionAvailable);
             Assert.AreEqual(string.Empty, session.RatRiskInteractionPrompt);
             Assert.AreEqual(10f, session.LastImmuneAlertFeedbackDelta);
@@ -1105,7 +1250,7 @@ namespace LastHost.Prototype.Tests.EditMode
 
             hud.Refresh(session);
 
-            Assert.AreEqual("변이 조각 수집 / 백혈구 회피", objectiveText.text);
+            Assert.AreEqual("면역 신호 억제", objectiveText.text);
 
             Object.DestroyImmediate(hudObject);
         }
@@ -1189,6 +1334,40 @@ namespace LastHost.Prototype.Tests.EditMode
 
             Assert.AreEqual("지금 차단", timingText.text);
             Assert.AreEqual(0f, marker.anchoredPosition.x, 3f);
+
+            Object.DestroyImmediate(canvasObject);
+        }
+
+        [Test]
+        public void PrototypeHud_ShowsStageTwoAndFastNextSignalStatus()
+        {
+            var session = new PrototypeSessionState(new PrototypeConfig
+            {
+                SignalSuppressionTotalSignals = 3,
+                SignalSuppressionRequiredSuppressions = 2,
+                SignalSuppressionSignalIntervalSeconds = 1f
+            });
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+            session.TickSignalSuppression(1f);
+            session.ResolveSignalSuppressionInput();
+            session.TickSignalSuppression(1f);
+            session.ResolveSignalSuppressionInput();
+            session.SelectMutation(MutationType.Dormancy);
+            session.EnterVirusMinigame(InternalVirusMinigameType.ImmuneSignalSuppression);
+            session.TickSignalSuppression(1f);
+            session.ResolveSignalSuppressionInput();
+
+            var canvasObject = new GameObject("Canvas Under Test");
+            var hudObject = new GameObject("HUD Under Test");
+            hudObject.transform.SetParent(canvasObject.transform, false);
+            var hud = hudObject.AddComponent<PrototypeHud>();
+
+            hud.Refresh(session);
+
+            var panel = FindChildIncludingInactive(canvasObject.transform, "SignalSuppressionPanel");
+            var rhythmText = FindChildIncludingInactive(panel, "SignalRhythmText").GetComponent<Text>();
+
+            Assert.AreEqual("리듬 2단계 · 다음 신호 빠름", rhythmText.text);
 
             Object.DestroyImmediate(canvasObject);
         }

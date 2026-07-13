@@ -87,14 +87,19 @@ namespace LastHost.Prototype.Core
 
         public bool AddRiskAlert(float severityMultiplier)
         {
-            return AddRiskAlert(severityMultiplier, string.Empty);
+            return AddRiskAlert(severityMultiplier, new ImmuneAlertEvent(ImmuneAlertCauseType.Unspecified, string.Empty));
         }
 
         public bool AddRiskAlert(float severityMultiplier, string feedbackLabel)
         {
+            return AddRiskAlert(severityMultiplier, new ImmuneAlertEvent(ImmuneAlertCauseType.Unspecified, feedbackLabel));
+        }
+
+        public bool AddRiskAlert(float severityMultiplier, ImmuneAlertEvent alertEvent)
+        {
             var previousMode = State.Mode;
             var previousAlert = State.ImmuneAlert.Value;
-            var enteredVirusMode = State.AddRiskAlert(severityMultiplier, feedbackLabel);
+            var enteredVirusMode = State.AddRiskAlert(severityMultiplier, alertEvent);
             if (previousMode != State.Mode)
             {
                 OnModeChanged(previousMode, State.Mode);
@@ -110,14 +115,19 @@ namespace LastHost.Prototype.Core
 
         public bool AddImmuneAlertAmount(float amount)
         {
-            return AddImmuneAlertAmount(amount, string.Empty);
+            return AddImmuneAlertAmount(amount, new ImmuneAlertEvent(ImmuneAlertCauseType.Unspecified, string.Empty));
         }
 
         public bool AddImmuneAlertAmount(float amount, string feedbackLabel)
         {
+            return AddImmuneAlertAmount(amount, new ImmuneAlertEvent(ImmuneAlertCauseType.Unspecified, feedbackLabel));
+        }
+
+        public bool AddImmuneAlertAmount(float amount, ImmuneAlertEvent alertEvent)
+        {
             var previousMode = State.Mode;
             var previousAlert = State.ImmuneAlert.Value;
-            var enteredVirusMode = State.AddImmuneAlertAmount(amount, feedbackLabel);
+            var enteredVirusMode = State.AddImmuneAlertAmount(amount, alertEvent);
             if (previousMode != State.Mode)
             {
                 OnModeChanged(previousMode, State.Mode);

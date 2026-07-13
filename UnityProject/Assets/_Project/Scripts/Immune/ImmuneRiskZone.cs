@@ -76,7 +76,7 @@ namespace LastHost.Prototype.Immune
             }
 
             var clampedDeltaTime = Mathf.Max(0f, deltaTime);
-            session.AddImmuneAlertAmount(alertPerSecond * clampedDeltaTime, immuneAlertFeedbackLabel);
+            session.AddImmuneAlertAmount(alertPerSecond * clampedDeltaTime, new ImmuneAlertEvent(ImmuneAlertCauseType.ContaminationExposure, immuneAlertFeedbackLabel));
             session.DamageHost(hostDamagePerSecond * clampedDeltaTime);
         }
 
@@ -101,7 +101,7 @@ namespace LastHost.Prototype.Immune
                 return;
             }
 
-            session.AddImmuneAlertAmount(forcedControlAlertAmount, forcedControlFeedbackLabel);
+            session.AddImmuneAlertAmount(forcedControlAlertAmount, new ImmuneAlertEvent(ImmuneAlertCauseType.ForcedHostControl, forcedControlFeedbackLabel));
         }
 
         private void ApplyDetectedExposure(Collider other, float deltaTime)

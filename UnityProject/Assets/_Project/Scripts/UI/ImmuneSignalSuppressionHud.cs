@@ -20,6 +20,7 @@ namespace LastHost.Prototype.UI
         public Image judgementLineImage;
         public Image accurateWindowImage;
         public Text titleText;
+        public Text rhythmText;
         public Text timingText;
         public Text resultText;
         public Text progressText;
@@ -39,6 +40,7 @@ namespace LastHost.Prototype.UI
             }
 
             SetText(titleText, "면역 신호 억제");
+            SetText(rhythmText, state.SignalSuppressionRhythmText);
             SetText(timingText, state.SignalSuppressionTimingText);
             SetText(resultText, state.InternalMinigameObjectiveText);
             SetText(progressText, state.InternalMinigameProgressText);
@@ -58,7 +60,7 @@ namespace LastHost.Prototype.UI
             var halfTravelWidth = Mathf.Max(1f, (trackWidth - markerWidth) * 0.5f);
             var timeUntilSignal = state.SignalSuppressionRun.TimeUntilSignal;
             var xPosition = timeUntilSignal >= 0f
-                ? CalculateApproachX(timeUntilSignal, state.Config.SignalSuppressionSignalIntervalSeconds, halfTravelWidth)
+                ? CalculateApproachX(timeUntilSignal, state.SignalSuppressionRun.CurrentSignalIntervalSeconds, halfTravelWidth)
                 : CalculateLateX(timeUntilSignal, state.Config.SignalSuppressionAccurateWindowSeconds, halfTravelWidth);
 
             signalMarker.anchoredPosition = new Vector2(xPosition, signalMarker.anchoredPosition.y);
@@ -74,7 +76,7 @@ namespace LastHost.Prototype.UI
 
             if (accurateWindowRect != null)
             {
-                var interval = Mathf.Max(0.01f, state.Config.SignalSuppressionSignalIntervalSeconds);
+                var interval = Mathf.Max(0.01f, state.SignalSuppressionRun.CurrentSignalIntervalSeconds);
                 var windowWidth = Mathf.Clamp(
                     trackWidth * (state.Config.SignalSuppressionAccurateWindowSeconds / interval) * 2f,
                     34f,

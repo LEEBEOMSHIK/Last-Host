@@ -4,6 +4,9 @@ namespace LastHost.Prototype.VirusMinigame
 {
     public sealed class ImmuneSignalSuppressionModel
     {
+        private static readonly float[] StageTwoIntervalMultipliers = { 1f, 0.7f, 1.2f, 0.65f, 1f, 0.8f };
+        private static readonly bool[] StageTwoFastSignals = { false, true, false, true, false, true };
+
         private readonly int totalSignals;
         private readonly int requiredSuppressions;
         private readonly float startingStability;
@@ -39,6 +42,9 @@ namespace LastHost.Prototype.VirusMinigame
         public float StartingStability => startingStability;
         public float NormalizedStability => Mathf.Clamp01(Stability / startingStability);
         public float TimeUntilSignal { get; private set; }
+        public int RhythmStage { get; private set; } = 1;
+        public float CurrentSignalIntervalSeconds => GetSignalIntervalSeconds(ResolvedSignals);
+        public bool IsNextSignalFast => RhythmStage >= 2 && StageTwoFastSignals[ResolvedSignals % StageTwoFastSignals.Length];
         public ImmuneSignalSuppressionJudgement LastJudgement { get; private set; }
         public VirusMinigameOutcome Outcome { get; private set; }
 
@@ -88,11 +94,17 @@ namespace LastHost.Prototype.VirusMinigame
 
         public void ResetRun()
         {
+            ResetRun(RhythmStage);
+        }
+
+        public void ResetRun(int rhythmStage)
+        {
+            RhythmStage = Mathf.Max(1, rhythmStage);
             ResolvedSignals = 0;
             SuppressedSignals = 0;
             MissedSignals = 0;
             Stability = startingStability;
-            TimeUntilSignal = signalIntervalSeconds;
+            TimeUntilSignal = CurrentSignalIntervalSeconds;
             LastJudgement = ImmuneSignalSuppressionJudgement.None;
             Outcome = VirusMinigameOutcome.Running;
         }
@@ -115,10 +127,21 @@ namespace LastHost.Prototype.VirusMinigame
             UpdateOutcome();
             if (Outcome == VirusMinigameOutcome.Running)
             {
-                TimeUntilSignal = signalIntervalSeconds;
+                TimeUntilSignal = CurrentSignalIntervalSeconds;
             }
 
             return judgement;
+        }
+
+        private float GetSignalIntervalSeconds(int signalIndex)
+        {
+            if (RhythmStage < 2)
+            {
+                return signalIntervalSeconds;
+            }
+
+            var multiplier = StageTwoIntervalMultipliers[signalIndex % StageTwoIntervalMultipliers.Length];
+            return Mathf.Max(accurateWindowSeconds, signalIntervalSeconds * multiplier);
         }
 
         private void UpdateOutcome()

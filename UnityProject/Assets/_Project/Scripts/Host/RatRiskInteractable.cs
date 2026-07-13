@@ -28,7 +28,7 @@ namespace LastHost.Prototype.Host
             }
 
             nextAllowedTime = Time.time + cooldownSeconds;
-            session.AddRiskAlert(riskSeverity, immuneAlertFeedbackLabel);
+            session.AddRiskAlert(riskSeverity, new ImmuneAlertEvent(ImmuneAlertCauseType.NoiseOrTissueIrritation, immuneAlertFeedbackLabel));
         }
 
         private void OnTriggerEnter(Collider other)

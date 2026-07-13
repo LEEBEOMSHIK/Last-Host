@@ -115,6 +115,9 @@ namespace LastHost.Prototype.Core
         public string InternalMinigameProgressText => CurrentInternalMinigameType == InternalVirusMinigameType.ImmuneSignalSuppression
             ? $"신호 차단 {SignalSuppressionRun.SuppressedSignals}/{SignalSuppressionRun.RequiredSuppressions} / {SignalSuppressionTimingText}"
             : $"변이 조각 {VirusRun.CollectedFragments}/{VirusRun.RequiredFragments}";
+        public string SignalSuppressionRhythmText => CurrentInternalMinigameType == InternalVirusMinigameType.ImmuneSignalSuppression
+            ? $"리듬 {SignalSuppressionRun.RhythmStage}단계 · 다음 신호 {(SignalSuppressionRun.IsNextSignalFast ? "빠름" : "일반")}"
+            : string.Empty;
         public string SignalSuppressionTimingText
         {
             get
@@ -184,10 +187,15 @@ namespace LastHost.Prototype.Core
 
         public bool AddRiskAlert(float severityMultiplier)
         {
-            return AddRiskAlert(severityMultiplier, string.Empty);
+            return AddRiskAlert(severityMultiplier, new ImmuneAlertEvent(ImmuneAlertCauseType.Unspecified, string.Empty));
         }
 
         public bool AddRiskAlert(float severityMultiplier, string feedbackLabel)
+        {
+            return AddRiskAlert(severityMultiplier, new ImmuneAlertEvent(ImmuneAlertCauseType.Unspecified, feedbackLabel));
+        }
+
+        public bool AddRiskAlert(float severityMultiplier, ImmuneAlertEvent alertEvent)
         {
             if (Mode != PrototypeGameMode.RatHost)
             {
@@ -196,23 +204,28 @@ namespace LastHost.Prototype.Core
 
             var previousAlert = ImmuneAlert.Value;
             var reachedThreshold = ImmuneAlert.AddRiskEvent(severityMultiplier);
-            RecordImmuneAlertFeedback(feedbackLabel, ImmuneAlert.Value - previousAlert);
+            RecordImmuneAlertFeedback(alertEvent.FeedbackLabel, ImmuneAlert.Value - previousAlert);
 
             if (!reachedThreshold)
             {
                 return false;
             }
 
-            EnterVirusMinigame(SelectInternalMinigameTypeForAlertCause(feedbackLabel));
+            EnterVirusMinigame(SelectInternalMinigameTypeForAlertCause(alertEvent.CauseType));
             return true;
         }
 
         public bool AddImmuneAlertAmount(float amount)
         {
-            return AddImmuneAlertAmount(amount, string.Empty);
+            return AddImmuneAlertAmount(amount, new ImmuneAlertEvent(ImmuneAlertCauseType.Unspecified, string.Empty));
         }
 
         public bool AddImmuneAlertAmount(float amount, string feedbackLabel)
+        {
+            return AddImmuneAlertAmount(amount, new ImmuneAlertEvent(ImmuneAlertCauseType.Unspecified, feedbackLabel));
+        }
+
+        public bool AddImmuneAlertAmount(float amount, ImmuneAlertEvent alertEvent)
         {
             if (Mode != PrototypeGameMode.RatHost)
             {
@@ -221,14 +234,14 @@ namespace LastHost.Prototype.Core
 
             var previousAlert = ImmuneAlert.Value;
             var reachedThreshold = ImmuneAlert.AddRawAmount(amount);
-            RecordImmuneAlertFeedback(feedbackLabel, ImmuneAlert.Value - previousAlert);
+            RecordImmuneAlertFeedback(alertEvent.FeedbackLabel, ImmuneAlert.Value - previousAlert);
 
             if (!reachedThreshold)
             {
                 return false;
             }
 
-            EnterVirusMinigame(SelectInternalMinigameTypeForAlertCause(feedbackLabel));
+            EnterVirusMinigame(SelectInternalMinigameTypeForAlertCause(alertEvent.CauseType));
             return true;
         }
 
@@ -263,12 +276,13 @@ namespace LastHost.Prototype.Core
             SetRatRiskInteractionAffordance(false, string.Empty);
             ClearVirusPatternExposure();
             CurrentInternalMinigameType = minigameType;
-            VirusRun.ResetRun();
-            SignalSuppressionRun.ResetRun();
             if (startsNewInternalResponse)
             {
                 RecordInternalResponseEntry();
             }
+
+            VirusRun.ResetRun();
+            SignalSuppressionRun.ResetRun(GetSignalSuppressionRhythmStage());
 
             Mode = PrototypeGameMode.InternalVirus;
         }
@@ -389,47 +403,32 @@ namespace LastHost.Prototype.Core
             }
         }
 
-        private InternalVirusMinigameType SelectInternalMinigameTypeForAlertCause(string feedbackLabel)
+        private InternalVirusMinigameType SelectInternalMinigameTypeForAlertCause(ImmuneAlertCauseType causeType)
         {
-            if (string.IsNullOrWhiteSpace(feedbackLabel))
+            switch (causeType)
             {
-                return Config.DefaultInternalMinigameType;
+                case ImmuneAlertCauseType.ContaminationExposure:
+                case ImmuneAlertCauseType.ImmuneDetection:
+                case ImmuneAlertCauseType.VirusPatternExposure:
+                    return InternalVirusMinigameType.WhiteBloodCellEvasion;
+                case ImmuneAlertCauseType.ForcedHostControl:
+                case ImmuneAlertCauseType.NoiseOrTissueIrritation:
+                case ImmuneAlertCauseType.ImmuneSignalOrAlarm:
+                    return InternalVirusMinigameType.ImmuneSignalSuppression;
+                default:
+                    return Config.DefaultInternalMinigameType;
             }
-
-            var normalizedLabel = feedbackLabel.Trim();
-            if (IsWhiteBloodCellCauseLabel(normalizedLabel))
-            {
-                return InternalVirusMinigameType.WhiteBloodCellEvasion;
-            }
-
-            if (IsSignalSuppressionCauseLabel(normalizedLabel))
-            {
-                return InternalVirusMinigameType.ImmuneSignalSuppression;
-            }
-
-            return Config.DefaultInternalMinigameType;
-        }
-
-        private static bool IsSignalSuppressionCauseLabel(string label)
-        {
-            return label.Contains("강제 조종")
-                || label.Contains("소음")
-                || label.Contains("조직 자극")
-                || label.Contains("면역 신호")
-                || label.Contains("경보");
-        }
-
-        private static bool IsWhiteBloodCellCauseLabel(string label)
-        {
-            return label.Contains("오염")
-                || label.Contains("면역 포착")
-                || label.Contains("바이러스 흔적");
         }
 
         private void RecordInternalResponseEntry()
         {
             ImmuneResponseExperience++;
             hasRecordedCurrentInternalFailureExperience = false;
+        }
+
+        private int GetSignalSuppressionRhythmStage()
+        {
+            return ImmuneResponseExperience >= 2 ? 2 : 1;
         }
 
         private void RecordInternalResponseFailure()

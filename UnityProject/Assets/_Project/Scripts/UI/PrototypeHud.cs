@@ -95,8 +95,9 @@ namespace LastHost.Prototype.UI
             var hud = panel.AddComponent<ImmuneSignalSuppressionHud>();
             hud.root = panel;
             hud.titleText = CreateRuntimeText(panel.transform, "SignalTitleText", "면역 신호 억제", 28, TextAnchor.MiddleCenter, new Vector2(0f, -28f), new Vector2(560f, 38f));
-            hud.timingText = CreateRuntimeText(panel.transform, "SignalTimingText", "다음 신호", 22, TextAnchor.MiddleCenter, new Vector2(0f, -64f), new Vector2(560f, 32f));
-            hud.resultText = CreateRuntimeText(panel.transform, "SignalResultText", "면역 신호 억제", 20, TextAnchor.MiddleCenter, new Vector2(0f, -104f), new Vector2(560f, 30f));
+            hud.rhythmText = CreateRuntimeText(panel.transform, "SignalRhythmText", "리듬 1단계 · 다음 신호 일반", 18, TextAnchor.MiddleCenter, new Vector2(0f, -60f), new Vector2(560f, 26f));
+            hud.timingText = CreateRuntimeText(panel.transform, "SignalTimingText", "다음 신호", 22, TextAnchor.MiddleCenter, new Vector2(0f, -88f), new Vector2(560f, 32f));
+            hud.resultText = CreateRuntimeText(panel.transform, "SignalResultText", "면역 신호 억제", 20, TextAnchor.MiddleCenter, new Vector2(0f, -122f), new Vector2(560f, 30f));
             hud.progressText = CreateRuntimeText(panel.transform, "SignalProgressText", "신호 차단 0/8", 18, TextAnchor.MiddleCenter, new Vector2(0f, -214f), new Vector2(560f, 28f));
 
             var track = CreateRuntimeImage(panel.transform, "SignalTrack", new Color(1f, 1f, 1f, 0.12f));
