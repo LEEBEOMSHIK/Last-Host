@@ -87,6 +87,7 @@
 - 프로젝트 종속 에이전트 파일은 `.agents/*-agent.md`에 둔다.
 - 프로젝트 종속 Codex 스킬은 `.codex/skills/`에 둔다.
 - 에이전트 간 작업 배정, 진행 기록, 완료 추적은 `_workspace/`를 사용한다.
+- `docs/project-handoff/current-task-board.md`는 사용자와 Codex의 공유 현황판이다. 작업 시작·보류 전환·완료/보관·커밋 전에 상태, 후보, 보류, 최근 요약, 완료 경로, Git 상태를 동기화하고 QA 대조 전에는 완료·커밋 보고를 하지 않는다.
 - 진행 중 작업은 `_workspace/active/<작업ID>/`에 기록한다.
 - 완료된 작업은 `_workspace/completed/<완료일>-<작업ID>/`에 별도 폴더로 보관한다.
 - 각 작업 폴더에는 `agent-activity.md`를 두고 어떤 에이전트가 어떤 업무, 산출물, 판정을 남겼는지 기록한다.
