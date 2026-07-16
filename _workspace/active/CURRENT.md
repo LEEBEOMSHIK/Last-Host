@@ -2,38 +2,51 @@
 
 ## 현재 이어받을 작업
 
-- 작업 ID: 없음
-- 상태: AI 보조 도트풍 3D 아트 제작 규칙과 작업 순서 완료 보관·QA·총괄 관리자 게이트 충족, 커밋·푸시 요청 처리 중
-- 최신 사용자 요청: AI 보조 도트풍 3D 아트 제작 규칙과 작업 순서 문서를 완료 보관하고 커밋·푸시한다.
+- 작업 ID: `2026-07-16-natural-alert-build-loop-verification`
+- 상태: 차단 — Windows Computer Use 연결 복구 또는 사용자 수동 검증 필요.
+- 작업 경로: `_workspace/active/2026-07-16-natural-alert-build-loop-verification/`
+- 최신 사용자 요청: “일단 커밋 푸쉬해” — 기능 완료가 아닌 현재 차단 상태와 누적 완료 보관·현황판 기록의 커밋·푸시 예외 지시.
 
 ## 먼저 읽을 파일
 
-1. `docs/project-handoff/current-task-board.md`
-2. `_workspace/completed/2026-07-13-2026-07-13-ai-assisted-pixel-art-workflow/completion-report.md`
-3. `docs/prototype/plans/rat-host-ai-assisted-art-workflow.md`
+1. `_workspace/active/2026-07-16-natural-alert-build-loop-verification/task.md`
+2. `_workspace/active/2026-07-16-natural-alert-build-loop-verification/handoff.md`
+3. `docs/project-handoff/current-task-board.md`
 
 ## 바로 이어서 할 작업
 
-1. 사용자 요청 범위의 문서·완료 패킷·상태판 변경을 범위 밖 `.codex/config.toml`과 분리해 커밋·푸시한다.
-2. 사용자 수동 플레이 체감 확인이 들어오면 체크리스트 결과를 보류 항목에 기록한다.
-3. 사용자가 실제 자산 생성을 요청하면 자산 묶음별 승인과 별도 작업 패킷을 먼저 만든다.
+1. QA/총괄이 사용자 커밋 예외 범위, `.codex/config.toml` 제외, Unity/Builds 무변경을 재대조한다.
+2. 재검토 통과 뒤 현재 차단 기록과 누적 완료 보관·현황판 기록만 커밋·푸시한다. 기능 완료·보관은 하지 않는다.
+3. 커밋 후에도 Computer Use helper 복구 또는 사용자 수동 증거로 엄격 검증을 재개한다.
 
 ## 제외하거나 건드리면 안 되는 변경
 
-- `.codex/config.toml`은 작업 범위 밖 로컬 변경으로 유지한다.
-- 사용자 수동 플레이 체감 확인은 상태판의 보류 항목 1개로 유지하며, 다음 작업 후보로 옮기지 않는다.
-- 실제 이미지·텍스처·모델·UI 에셋, Unity 코드·씬·URP·Import·ProjectSettings·패키지를 이번 문서 커밋에 포함하지 않는다.
+- `.codex/config.toml`은 작업 범위 밖 로컬 변경으로 유지하며 수정·복원·스테이징·커밋하지 않는다.
+- 사용자 수동 플레이 체감 확인은 상태판의 보류 항목 한 곳에만 유지한다.
+- Unity 코드·씬·테스트·ProjectSettings·패키지·에셋, `Builds/`, `docs/project-handoff/manual-play-checklist.md`는 수정하지 않는다.
+- 이전 완료 작업 패킷을 수정하거나 이동하지 않는다.
+- `F6`, 직접 상태 주입, Unity Editor 대체 검증을 이번 Windows 빌드 자연 성공 루프의 통과 근거로 사용하지 않는다.
 
-## 마지막 성공 검증
+## 마지막 정상·실패·재개 조건
 
-- QA/검증 에이전트가 visual 가이드 §10, 7단계 작업 계획, README·참조 색인·상태판·Git 변경 범위를 독립 대조했다.
-- 실제 이미지·Unity 변경이 없고 `git diff --check`가 공백 오류 없이 통과했다. MCP 플레이 체크는 적용 대상이 아니다.
+- 마지막 정상: 기존 빌드 존재·SHA-256 식별, 시작 전 `UnityProject/`·`Builds/` 변경 0, 정적 구성상 자연 경계도 상승 경로 확인.
+- 실패: Computer Use native pipe가 초기 연결과 세션 초기화·재-bootstrap 후 허용 재시도 1회 모두 `os error 2`로 실패.
+- 미검증: 빌드 실행, 창 포커스, 실제 입력, 자연 경계도 100%, 단계별 화면, 조각 3개, 변이 선택·복귀, 동일 세션 `Player.log`.
+- 재개 조건: Computer Use helper의 `list_apps` 정상 응답 또는 사용자 수동 플레이의 연속 단계·해당 세션 로그 증거.
+- QA/검증 에이전트 판정: `차단`.
+- 프로젝트 총괄 관리자 판정: `보류` — 핵심 실제 플레이 증거 미검증으로 완료·보관·커밋·푸시 금지.
+- 커밋·푸시: 사용자 명시 지시로 차단 기록 커밋 예외 허용. 기능 완료가 아니며 QA/총괄 범위 재검토 전에는 스테이징하지 않는다.
 
-## 차단 항목
+## 보류와 검증 경계
 
-- 사용자 수동 플레이 체감 확인은 사용자 확인 전까지 별도 보류 항목으로 유지한다.
+- 이전 F6 `면역 신호 억제` 빌드 성공 루프는 자연 경계도 100%와 기본 백혈구 회피 성공의 증거가 아니다.
+- 성공 증거는 같은 실행 세션의 창 포커스, 자연 전환, 조각 3개, 변이 선택, RatHost 복귀 화면과 `Player.log`로 연결해야 한다.
+- 사용자 수동 플레이 체감·난이도·무설명 이해 여부는 계속 보류한다.
+- 누적 완료 작업 보관과 상태판 변경은 최종 커밋에 포함하되 `.codex/config.toml`은 제외한다.
+- PowerShell, SendKeys, Start-Process, 별도 네이티브 입력으로 Computer Use 연결 실패를 우회하지 않는다.
+- 차단 기록 커밋 후에도 현재 작업은 active, QA `차단`, 총괄 `보류`, 재개 조건 A·B를 유지한다.
 
 ## 갱신 정보
 
-- 마지막 갱신: 2026-07-13
-- 갱신자: 문서/릴리즈 에이전트
+- 마지막 갱신: 2026-07-16 10:52 KST
+- 갱신자: 프로젝트 조정/문서 릴리즈 에이전트

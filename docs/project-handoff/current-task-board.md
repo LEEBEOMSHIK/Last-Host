@@ -1,6 +1,6 @@
 # 현재 작업 후보와 핸드오프 현황
 
-최종 갱신: 2026-07-13
+최종 갱신: 2026-07-16 10:52 KST
 
 ## 목적
 
@@ -18,21 +18,27 @@
 
 ## 현재 저장소 상태
 
-- 최신 커밋: `9659ff9 docs: enforce current task board synchronization`
-- 원격 반영: `origin/main` 반영 완료
+- 최신 커밋: `866fd8a docs: add AI-assisted pixel art workflow`
+- 원격 반영: `origin/main`이 `866fd8a`로 HEAD와 일치
 - Unity 코드·씬·테스트·설정 변경: 없음
-- 미커밋 작업: 도트풍 저폴리 3D 제작 가이드의 visual 문서·색인, AI 보조 도트풍 3D 아트 제작 규칙·작업 순서와 완료 패킷, 작업 없음 상태의 `_workspace/active/CURRENT.md` 포인터 갱신, 현재 상태판 동기화
+- 미커밋 작업: 현황판·`CURRENT.md`·완료 작업 보관 정합성 복구 기록, 면역 신호 억제 접근 예고 완료 보관 기록, 자연 경계도 100% 엄격 검증 작업 패킷
 - 작업 범위 밖 로컬 변경: `.codex/config.toml`
+
+## 현재 진행 중
+
+| 작업 | 상태 | 목적 | 상세 기록 |
+| --- | --- | --- | --- |
+| 자연 경계도 100% Windows 빌드 성공 루프 엄격 검증 | 차단 — Windows Computer Use 연결 복구 또는 사용자 수동 검증 필요 | native pipe `os error 2`가 초기 시도와 허용 복구 1회 모두 반복되어 빌드·입력·단계 화면·동일 세션 로그를 검증하지 못했다. | `_workspace/active/2026-07-16-natural-alert-build-loop-verification/` |
 
 ## 최근 작업 요약
 
 | 작업 | 상태 | 핵심 결과 | 확인 위치 |
 | --- | --- | --- | --- |
-| AI 보조 도트풍 3D 아트 제작 규칙과 작업 순서 | 완료 | ChatGPT 등 이미지 생성은 콘셉트·픽셀 텍스처·타일·HUD 아이콘의 래스터 초안으로만 한정하고, 자산 묶음별 사용자 승인·출처 기록·사람 선별·별도 저폴리 3D/Unity 승인·QA의 7단계를 문서화 | `_workspace/completed/2026-07-13-2026-07-13-ai-assisted-pixel-art-workflow/` |
-| 도트풍 저폴리 3D 제작 가이드 | 완료 | 순수 2D가 아닌 도트풍 3D를 위한 저폴리 모델·픽셀 텍스처·URP 저해상도/픽셀화 적용 순서·카메라·조명·UI·플레이스홀더·씬 검토 기준을 문서화 | `_workspace/completed/2026-07-13-2026-07-13-pixel-lowpoly-production-guide/` |
-| Unity MCP 입력 검증 방식 표준화 | 완료 | 실제 Game View 네이티브 키 입력, MCP 직접 상태 전환 대체 검증, `SendKeys`·포커스·승인·relay 차단을 분리한 표준 절차와 기록 양식을 운영 문서에 반영 | `_workspace/completed/2026-07-13-2026-07-13-unity-mcp-input-verification-standard/` |
-| 원인 라벨 enum/event type 전환 | 완료, 사용자 체감 확인 별도 | `FeedbackLabel`과 원인 타입을 분리해 타입 기반 미니게임 선택으로 전환. `면역 신호`·`경보`의 면역 신호 억제 매핑을 보존했고, EditMode 90/90 및 Unity MCP Play·Console 검증을 통과 | `_workspace/completed/2026-07-13-2026-07-13-alert-cause-event-type-review/` |
-| 면역 신호 억제 2단계 리듬 확장 | 완료, 사용자 체감 확인 별도 | 두 번째 내부 대응부터 변칙 간격·빠른 신호와 리듬 HUD를 적용. EditMode 81/81 통과, 체감 난이도·HUD 배치만 사용자 확인 필요 | `_workspace/completed/2026-07-13-2026-07-13-immune-signal-suppression-stage2-rhythm/` |
+| 면역 신호 억제 접근 예고 검증 종결 | 완료 보관 | EditMode 90/90과 직접 상태 전환 Play에서 대기·접근·정확 HUD, cue, 색·scale, 콘솔 0건, 종료·씬 무변경을 확인했고 총괄 `내부 승인 가능` 판정을 받았다. | `_workspace/completed/2026-07-16-2026-07-10-signal-suppression-approach-cue/` |
+| 현황판·완료 작업 보관 정합성 복구 | 완료 보관 | 게이트를 충족한 두 작업을 보관하고 상태판·`CURRENT.md`를 실제 Git·작업 경로와 맞췄다. QA `완료 가능`과 총괄 `내부 승인 가능` 판정을 받은 뒤 이번 작업도 완료 보관했다. | `_workspace/completed/2026-07-16-2026-07-16-current-task-board-consistency/` |
+| 쥐 숙주 전체 플레이 검증 | 완료 보관 | 자동/대리 입력 기준 성공 루프와 완료 게이트를 충족한 기록을 보관했다. 사용자 조작감·난이도·무설명 이해 여부는 별도 보류다. | `_workspace/completed/2026-07-10-2026-07-01-rat-host-full-play-verification/` |
+| 백혈구 반응 스케일링 | 완료 보관 | 검증 통과와 총괄 관리자 `내부 승인 가능` 판정이 있는 작업 기록을 보관했다. | `_workspace/completed/2026-07-09-2026-07-09-white-blood-cell-response-scaling/` |
+| AI 보조 도트풍 3D 아트 제작 규칙과 작업 순서 | 완료 | 래스터 초안 범위, 자산 묶음별 승인, 출처 기록, 선별, 후속 저폴리 3D·Unity·QA 순서를 문서화했다. | `_workspace/completed/2026-07-13-2026-07-13-ai-assisted-pixel-art-workflow/` |
 
 ## 보류 항목
 
@@ -45,24 +51,44 @@
 
 ## 다음 작업 후보
 
-현재 후보 없음. 사용자 수동 플레이 체감 확인은 `보류 항목`과 체크리스트에서만 관리한다.
+현재 신규 기능 후보는 등록하지 않는다. 차단된 엄격 검증은 다음 중 하나가 충족되면 재개한다.
+
+- Windows Computer Use helper가 복구되어 `list_apps`가 정상 응답한다.
+- 사용자가 기존 Windows 빌드를 직접 플레이하고 같은 연속 루프의 단계별 화면·해당 세션 `Player.log`를 확인하거나 제공한다.
 
 ## 최근 판단 항목
 
-### 내부 대응 원인별 미니게임 선택
+### 완료 작업 보관 기준
 
-- 상태: 완료, Unity MCP 직접 검증 제한
-- 변경 내용: `오염`, `면역 포착`, `바이러스 흔적` 계열은 백혈구 회피를 우선하고 `강제 조종`, `소음`, `조직 자극`, `면역 신호`, `경보` 계열은 면역 신호 억제로 연결한다.
-- 검증: Unity 내장 Mono/Roslyn 제품/테스트 어셈블리 임시 컴파일 통과, 임시 실행 하니스 `CAUSE_SELECTION_HARNESS_OK 6/6`.
-- 제한: Unity MCP `RunCommand` 직접 검증은 relay 응답 문제로 완료 결과 미확보.
+- `2026-07-01-rat-host-full-play-verification`과 `2026-07-09-white-blood-cell-response-scaling`은 QA 완료 판단과 총괄 관리자 판정 기록이 있어 `completed/`로 이동했다.
+- `2026-07-10-signal-suppression-approach-cue`는 QA `완료 가능`과 총괄 `내부 승인 가능` 판정을 받아 `_workspace/completed/2026-07-16-2026-07-10-signal-suppression-approach-cue/`로 보관했다.
+- 보류 작업은 완료나 다음 작업 후보로 중복 기재하지 않는다.
 
-### ProjectSettings `APP_UI_EDITOR_ONLY`
+### 접근 예고 검증 종결 경계
 
-- 상태: 되돌림 완료
-- 변경 내용: `Standalone` scripting define에 `APP_UI_EDITOR_ONLY`가 추가되어 있었다.
-- 의미: Unity `com.unity.dt.app-ui` 패키지의 Editor Only 설정으로, App UI 런타임 어셈블리를 플레이어 빌드에서 제외하는 define이다.
-- 판단: 현재 프로토타입은 `UnityEngine.UI` 기반이고 App UI 런타임을 직접 쓰지 않지만, 사용자가 되돌림을 요청했으므로 ProjectSettings 변경은 커밋하지 않고 되돌렸다.
+- computer-use 네이티브 연결 불가로 실제 F6 수신은 미검증이다.
+- 완료 근거는 `MCP 직접 상태 전환 대체 검증`이며 F6 키 입력 통과를 의미하지 않는다.
+- 사용자 수동 플레이 체감 확인은 별도 보류로 유지한다.
+
+### 자연 성공 루프 엄격 검증 경계
+
+- 이번 통과 주장은 같은 Windows 빌드 실행 세션의 `RatHost 시작 → 자연 경계도 100% → 기본 WhiteBloodCellEvasion → 조각 3개 → 변이 선택 → 변이 적용 RatHost 복귀`로 제한한다.
+- `F6`, 직접 상태 전환, Unity Editor 대체 검증은 성공 근거로 인정하지 않는다.
+- 사용자 수동 플레이 체감·난이도·무설명 이해 여부는 별도 보류로 유지한다.
+- 누적 완료 보관·현황판 변경은 이번 최종 커밋에 포함하되 `.codex/config.toml`은 제외한다.
+
+### 엄격 검증 차단 판정
+
+- QA 판정: `차단`.
+- 프로젝트 총괄 관리자 판정: `보류`.
+- 마지막 정상 확인: 빌드 존재·SHA-256 식별, 시작 전 `UnityProject/`·`Builds/` 변경 0, 정적 구성상 자연 경계도 상승과 기본 WhiteBloodCellEvasion 진입 경로 확인.
+- 실패: Computer Use native pipe가 초기 시도와 허용 복구 1회 모두 `os error 2`로 연결되지 않았다.
+- 미검증: Windows 빌드 실행, 창 포커스, 실제 입력, 단계별 화면, 자연 성공 루프, 동일 성공 세션 `Player.log`.
+- 커밋·푸시: 사용자 명시 지시로 현재 차단 기록과 누적 완료 보관 기록의 커밋은 예외 허용한다. 이는 기능 완료 승인이 아니며 작업은 active·QA `차단`·총괄 `보류`로 유지한다.
 
 ## 추천 순서
 
-현재 새 작업 추천 없음. 사용자 수동 플레이 체감 확인은 보류 상태와 체크리스트만 유지한다.
+1. Computer Use helper 복구 여부를 확인한다. 복구되면 QA가 새 Windows 빌드 세션에서 전체 엄격 검증을 다시 수행한다.
+2. helper 복구가 어렵다면 사용자가 기존 빌드를 직접 플레이해 연속 성공 루프와 해당 세션 로그를 확인한다.
+3. QA/총괄이 사용자 커밋 예외 범위와 제외 파일을 재대조한 뒤 차단 기록만 커밋·푸시한다. 기능 완료 보관은 하지 않는다.
+4. 사용자 수동 플레이 체감 확인은 사용자가 재개할 때까지 별도 보류한다.
