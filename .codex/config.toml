@@ -41,3 +41,32 @@ approval_mode = "approve"
 
 [mcp_servers.unity_mcp.tools.Unity_Camera_Capture]
 approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_FindProjectAssets]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_GetProjectData]
+approval_mode = "approve"
+
+[mcp_servers.unity_mcp.tools.Unity_ReadResource]
+approval_mode = "approve"
+
+# Blender MCP is project-local. It connects to the Blender add-on bridge
+# running on the local machine; it does not modify global Codex settings.
+[mcp_servers.blender]
+command = "cmd"
+args = ["/c", "uvx", "blender-mcp"]
+enabled = true
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.blender.env]
+BLENDER_HOST = "localhost"
+BLENDER_PORT = "9876"
+DISABLE_TELEMETRY = "true"
+
+[mcp_servers.blender.tools.get_scene_info]
+approval_mode = "approve"
+
+[mcp_servers.blender.tools.execute_blender_code]
+approval_mode = "approve"
