@@ -1,0 +1,195 @@
+{
+  "asset_id": "rat-host-directional-trial-v1",
+  "status": "trial-placeholder-not-final-art",
+  "source": {
+    "definition": "source/render_rat_8dir.py::build_rat",
+    "export": "source/rat-trial-v1.obj",
+    "vertex_count": 528,
+    "triangle_count": 924,
+    "source_forward": "+X",
+    "root_pivot": [
+      0,
+      0,
+      0
+    ]
+  },
+  "render": {
+    "algorithm": "dependency-free deterministic orthographic triangle z-buffer",
+    "cell_px": [
+      64,
+      64
+    ],
+    "sheet_px": [
+      512,
+      64
+    ],
+    "transparent_background": true,
+    "anti_aliasing": false,
+    "filter_preview": "nearest-neighbor / Point",
+    "camera_to_object": [
+      6.0,
+      -8.0,
+      6.0
+    ],
+    "projection": "orthographic",
+    "scale_px_per_unit": 9.0,
+    "pivot_px_top_left": [
+      32,
+      48
+    ],
+    "key_light": [
+      -0.45,
+      -0.55,
+      1.0
+    ],
+    "palette_rgba": {
+      "body_dark": [
+        73,
+        64,
+        59,
+        255
+      ],
+      "body_mid": [
+        112,
+        96,
+        86,
+        255
+      ],
+      "body_light": [
+        151,
+        129,
+        113,
+        255
+      ],
+      "pink_dark": [
+        140,
+        87,
+        88,
+        255
+      ],
+      "pink_light": [
+        190,
+        128,
+        124,
+        255
+      ],
+      "eye": [
+        27,
+        29,
+        31,
+        255
+      ],
+      "eye_glint": [
+        222,
+        207,
+        180,
+        255
+      ]
+    },
+    "direction_order": [
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N",
+      "NE",
+      "E",
+      "SE"
+    ]
+  },
+  "files": [
+    {
+      "index": 0,
+      "direction": "S",
+      "screen_heading": [
+        0.0,
+        -1.0
+      ],
+      "source_yaw_degrees": -53.130102,
+      "file": "rat-00-s.png",
+      "sha256": "e009143c8fb5858b6e5edd75afe97234801d93962368081fedbb751e162877f6"
+    },
+    {
+      "index": 1,
+      "direction": "SW",
+      "screen_heading": [
+        -1.0,
+        -1.0
+      ],
+      "source_yaw_degrees": -25.904474,
+      "file": "rat-01-sw.png",
+      "sha256": "eb4bea531ef9cf954dc0a3220c8b19f5d01eac88e3c9a35517ebe5b77081c813"
+    },
+    {
+      "index": 2,
+      "direction": "W",
+      "screen_heading": [
+        -1.0,
+        0.0
+      ],
+      "source_yaw_degrees": 36.869898,
+      "file": "rat-02-w.png",
+      "sha256": "7da8c8febda54546704e1379b45a22c25a73887030c416fa11db979d7990b802"
+    },
+    {
+      "index": 3,
+      "direction": "NW",
+      "screen_heading": [
+        -1.0,
+        1.0
+      ],
+      "source_yaw_degrees": 99.64427,
+      "file": "rat-03-nw.png",
+      "sha256": "3f209b5fd24b8012aa33719e4edf9a67e83b652bd7e5abd2b8b6af84772dc309"
+    },
+    {
+      "index": 4,
+      "direction": "N",
+      "screen_heading": [
+        0.0,
+        1.0
+      ],
+      "source_yaw_degrees": 126.869898,
+      "file": "rat-04-n.png",
+      "sha256": "afc1afd7fd6733e43654734a1c0d4facfc95037635ee35d5423d04d27f758e7b"
+    },
+    {
+      "index": 5,
+      "direction": "NE",
+      "screen_heading": [
+        1.0,
+        1.0
+      ],
+      "source_yaw_degrees": 154.095526,
+      "file": "rat-05-ne.png",
+      "sha256": "4baa1571b931bcbdc3dba42f80f7f0c949e5a1e55f074a75617b2e625ca4d16b"
+    },
+    {
+      "index": 6,
+      "direction": "E",
+      "screen_heading": [
+        1.0,
+        0.0
+      ],
+      "source_yaw_degrees": -143.130102,
+      "file": "rat-06-e.png",
+      "sha256": "6736974a6574ec2d902134d69624f666f68ad28a33586ac2c7e2429a3db08439"
+    },
+    {
+      "index": 7,
+      "direction": "SE",
+      "screen_heading": [
+        1.0,
+        -1.0
+      ],
+      "source_yaw_degrees": -80.35573,
+      "file": "rat-07-se.png",
+      "sha256": "f10fb2cc2711bf096fe34fe7e086a814516fdfcc48796d0d09bbc6ed73253f14"
+    }
+  ],
+  "sheet": {
+    "file": "rat-8dir-sheet.png",
+    "sha256": "961ace066b18501973acde238b2521a75254a040fc2271994edfff4058db4db5"
+  },
+  "reproduce": "python source/render_rat_8dir.py"
+}

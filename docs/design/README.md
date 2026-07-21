@@ -16,7 +16,7 @@
 - `balancing/`: 수치 기준, 튜닝 테이블, 난이도 조정 기록
 - `narrative/`: 세계관, 테마, 스토리 사건, 문구 톤
 - `glossary/`: 용어 정의와 명명 기준
-- `visual/`: 도트풍 저폴리 3D의 모델, 픽셀 텍스처, 렌더링, 카메라, 조명, UI 제작 기준
+- `visual/`: 도트풍 하이브리드 2.5D의 3D 환경, 캐릭터 3D 원본·8방향 스프라이트, 렌더링, 카메라, 조명, UI 제작 기준
 
 ## 현재 문서
 
@@ -28,7 +28,7 @@
 - `encounters/internal-immune-response-minigame-types.md`: 내부 미니게임을 백혈구 전투로 고정하지 않기 위한 유형 기준.
 - `encounters/immune-signal-suppression-rhythm-minigame.md`: 면역 신호 억제 리듬형 미니게임 상세 기준.
 - `progression/host-experience-traits.md`: 바이러스 변이와 별개로, 숙주 경험을 통해 얻는 장기 특성 구조.
-- `visual/pixel-lowpoly-3d-production-guide.md`: 순수 2D가 아닌 도트풍 저폴리 3D를 위한 모델·픽셀 텍스처·URP 렌더링·카메라·UI의 권장 시작 기준과 씬 검토 순서.
+- `visual/pixel-lowpoly-3d-production-guide.md`: 순수 2D가 아닌 도트풍 하이브리드 2.5D를 위한 3D 환경·캐릭터 원본·8방향 스프라이트·URP 렌더링·카메라·UI의 권장 시작 기준과 씬 검토 순서.
 - `../prototype/plans/rat-host-ai-assisted-art-workflow.md`: AI 보조 래스터 초안의 자산 묶음 승인·선별·3D/Unity 분리·QA 순서. 실제 생성·적용 계획은 `prototype/`에 둔다.
 
 ## 작성 규칙

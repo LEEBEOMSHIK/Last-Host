@@ -1,0 +1,24 @@
+# Flat preview materials; renderer uses the documented quantized palette.
+newmtl body
+Kd 0.439216 0.376471 0.337255
+Ka 0 0 0
+Ks 0 0 0
+d 1.0
+
+newmtl pink
+Kd 0.745098 0.501961 0.486275
+Ka 0 0 0
+Ks 0 0 0
+d 1.0
+
+newmtl eye
+Kd 0.105882 0.113725 0.121569
+Ka 0 0 0
+Ks 0 0 0
+d 1.0
+
+newmtl eye_glint
+Kd 0.870588 0.811765 0.705882
+Ka 0 0 0
+Ks 0 0 0
+d 1.0

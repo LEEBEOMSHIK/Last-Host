@@ -34,6 +34,12 @@ namespace LastHost.Prototype.Cameras
         public float quarterViewFocusHeight = 0.3f;
         public float quarterViewOrthographicSize = 5.2f;
 
+        [Header("Quarter View Output Pixel Snap")]
+        [Tooltip("Snaps only the final quarter-view camera output position to the internal render grid.")]
+        public bool enableQuarterViewOutputPixelSnap;
+        [Min(1)]
+        public int quarterViewOutputPixelHeight = 540;
+
         [Header("Top View")]
         public Vector3 topViewOffset = new Vector3(0f, 9.5f, 0f);
         public float topViewOrthographicSize = 5.8f;
@@ -202,6 +208,7 @@ namespace LastHost.Prototype.Cameras
             attachedCamera.orthographic = true;
             attachedCamera.orthographicSize = quarterViewOrthographicSize;
             MoveCamera(position, rotation, deltaTime, snap);
+            RefreshQuarterViewOutputPixelSnap();
         }
 
         private void ApplyTopView(float deltaTime, bool snap)
@@ -247,6 +254,77 @@ namespace LastHost.Prototype.Cameras
             var t = 1f - Mathf.Exp(-followSharpness * deltaTime);
             transform.position = Vector3.Lerp(transform.position, position, t);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, t);
+        }
+
+        private void RefreshQuarterViewOutputPixelSnap()
+        {
+            if (!enableQuarterViewOutputPixelSnap || attachedCamera == null || !attachedCamera.orthographic)
+            {
+                return;
+            }
+
+            transform.position = PrototypeCameraOutputPixelSnapper.SnapPosition(
+                transform.position,
+                transform.right,
+                transform.up,
+                attachedCamera.orthographic,
+                attachedCamera.orthographicSize,
+                quarterViewOutputPixelHeight);
+        }
+    }
+
+    /// <summary>
+    /// Snaps an orthographic camera's output position on its screen plane. The forward-depth
+    /// component is retained so camera focus, rotation, and gameplay-space transforms are untouched.
+    /// </summary>
+    public static class PrototypeCameraOutputPixelSnapper
+    {
+        public static bool TryGetWorldUnitsPerPixel(float orthographicSize, int internalPixelHeight, out float unitsPerPixel)
+        {
+            unitsPerPixel = 0f;
+            if (float.IsNaN(orthographicSize)
+                || float.IsInfinity(orthographicSize)
+                || orthographicSize <= 0f
+                || internalPixelHeight <= 0)
+            {
+                return false;
+            }
+
+            unitsPerPixel = 2f * orthographicSize / internalPixelHeight;
+            return !float.IsNaN(unitsPerPixel)
+                && !float.IsInfinity(unitsPerPixel)
+                && unitsPerPixel > 0f;
+        }
+
+        public static Vector3 SnapPosition(
+            Vector3 worldPosition,
+            Vector3 cameraRight,
+            Vector3 cameraUp,
+            bool isOrthographic,
+            float orthographicSize,
+            int internalPixelHeight)
+        {
+            if (!isOrthographic
+                || !TryGetWorldUnitsPerPixel(orthographicSize, internalPixelHeight, out var unitsPerPixel)
+                || cameraRight.sqrMagnitude < 0.999f
+                || cameraUp.sqrMagnitude < 0.999f)
+            {
+                return worldPosition;
+            }
+
+            var right = cameraRight.normalized;
+            var up = cameraUp.normalized;
+            var forward = Vector3.Cross(right, up);
+            if (forward.sqrMagnitude < 0.999f)
+            {
+                return worldPosition;
+            }
+
+            forward.Normalize();
+            var rightCoordinate = Mathf.Round(Vector3.Dot(worldPosition, right) / unitsPerPixel) * unitsPerPixel;
+            var upCoordinate = Mathf.Round(Vector3.Dot(worldPosition, up) / unitsPerPixel) * unitsPerPixel;
+            var forwardCoordinate = Vector3.Dot(worldPosition, forward);
+            return right * rightCoordinate + up * upCoordinate + forward * forwardCoordinate;
         }
     }
 }

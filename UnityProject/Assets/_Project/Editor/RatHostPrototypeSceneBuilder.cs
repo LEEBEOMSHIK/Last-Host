@@ -25,12 +25,40 @@ namespace LastHost.Prototype.Editor
         private const string ProjectRoot = "Assets/_Project";
         private const string ScenePath = ProjectRoot + "/Scenes/RatHostPrototype.unity";
         private const string InputActionPath = ProjectRoot + "/Settings/Input/RatHostPrototypeControls.inputactions";
+        private const string RatSpriteRoot = ProjectRoot + "/Sprites/Characters/Rat/TrialV1";
+        private const float RatSpritePixelsPerUnit = 32f;
+        private const float RatSouthVisibleFootBottomOffset = 0.1875f;
+        private const float RatSouthWestVisibleFootBottomOffset = 0.15625f;
+        private const float RatWestVisibleFootBottomOffset = 0.09375f;
+        private const float RatNorthWestVisibleFootBottomOffset = 0.28125f;
+        private const float RatNorthVisibleFootBottomOffset = 0.375f;
+        private const float RatNorthEastVisibleFootBottomOffset = 0.40625f;
+        private const float RatEastVisibleFootBottomOffset = 0.15625f;
+        private const float RatSouthEastVisibleFootBottomOffset = 0.15625f;
+        private const float RatVisibleFootGroundClearance = 0.005f;
+        private const float SewerFloorTopY = -0.02f;
+        private const float ToxicWaterVisualSurfaceOffset = 0.002f;
+        private const float ToxicWaterVisualThickness = 0.01f;
+        private static readonly Vector2 RatSpritePivot = new Vector2(0.5f, 0.25f);
+        private static readonly string[] RatSpriteFileNames =
+        {
+            "rat-00-s.png",
+            "rat-01-sw.png",
+            "rat-02-w.png",
+            "rat-03-nw.png",
+            "rat-04-n.png",
+            "rat-05-ne.png",
+            "rat-06-e.png",
+            "rat-07-se.png"
+        };
 
         [MenuItem("Last Host/Prototype/Rebuild Rat Host Prototype Scene")]
         public static void RebuildScene()
         {
             EnsureFolders();
             WriteInputActionsAsset();
+            AssetDatabase.Refresh();
+            ConfigureRatSpriteImports();
 
             var materials = CreateMaterials();
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
@@ -98,6 +126,7 @@ namespace LastHost.Prototype.Editor
             CreatePrimitive(PrimitiveType.Cube, "EastWallUpper", parent, new Vector3(6.1f, 0.75f, 2.6f), new Vector3(0.3f, 1.5f, 3f), materials.SewerWall);
 
             var toxicWater = CreatePrimitive(PrimitiveType.Cube, "ToxicWaterRiskZone", parent, new Vector3(-0.7f, 0.03f, 1.35f), new Vector3(2.6f, 0.08f, 1.5f), materials.ToxicWater);
+            toxicWater.GetComponent<Renderer>().enabled = false;
             var toxicCollider = toxicWater.GetComponent<Collider>();
             toxicCollider.isTrigger = true;
             var toxicBody = toxicWater.AddComponent<Rigidbody>();
@@ -106,6 +135,16 @@ namespace LastHost.Prototype.Editor
             var riskZone = toxicWater.AddComponent<ImmuneRiskZone>();
             riskZone.session = session;
             riskZone.immuneAlertFeedbackLabel = "오염 노출";
+
+            var toxicWaterVisualY = SewerFloorTopY + ToxicWaterVisualSurfaceOffset - ToxicWaterVisualThickness * 0.5f;
+            CreateVisualPrimitive(
+                PrimitiveType.Cube,
+                "ToxicWaterVisual",
+                parent,
+                new Vector3(-0.7f, toxicWaterVisualY, 1.35f),
+                new Vector3(2.6f, ToxicWaterVisualThickness, 1.5f),
+                Quaternion.identity,
+                materials.ToxicWater);
 
             BuildNoisyPipeInteractable(parent, session, materials);
 
@@ -129,10 +168,59 @@ namespace LastHost.Prototype.Editor
             var ratController = rat.AddComponent<RatHostController>();
             ratController.session = session;
 
-            var visual = CreatePrimitive(PrimitiveType.Capsule, "RatVisual", rat.transform, new Vector3(0f, 0.35f, 0f), new Vector3(0.45f, 0.45f, 0.58f), materials.Rat);
-            Object.DestroyImmediate(visual.GetComponent<Collider>());
+            BuildRatDirectionalSpriteVisual(rat.transform, ratController);
 
             return ratController;
+        }
+
+        private static void BuildRatDirectionalSpriteVisual(Transform parent, RatHostController ratController)
+        {
+            var sprites = new Sprite[RatSpriteFileNames.Length];
+            for (var i = 0; i < RatSpriteFileNames.Length; i++)
+            {
+                var path = $"{RatSpriteRoot}/{RatSpriteFileNames[i]}";
+                sprites[i] = AssetDatabase.LoadAssetAtPath<Sprite>(path);
+                if (sprites[i] == null)
+                {
+                    throw new InvalidOperationException($"Rat trial sprite is missing or not imported as Sprite: {path}");
+                }
+            }
+
+            var visual = new GameObject("RatVisual");
+            visual.transform.SetParent(parent, false);
+
+            var spriteRenderer = visual.AddComponent<SpriteRenderer>();
+            spriteRenderer.sprite = sprites[0];
+            spriteRenderer.spriteSortPoint = SpriteSortPoint.Pivot;
+            spriteRenderer.sortingOrder = 5;
+            spriteRenderer.receiveShadows = false;
+
+            var directionalView = visual.AddComponent<RatDirectionalSpriteView>();
+            directionalView.ratHostController = ratController;
+            directionalView.spriteRenderer = spriteRenderer;
+            directionalView.south = sprites[0];
+            directionalView.southWest = sprites[1];
+            directionalView.west = sprites[2];
+            directionalView.northWest = sprites[3];
+            directionalView.north = sprites[4];
+            directionalView.northEast = sprites[5];
+            directionalView.east = sprites[6];
+            directionalView.southEast = sprites[7];
+            directionalView.groundProbeHeight = 1f;
+            directionalView.groundProbeDistance = 1.6f;
+            directionalView.maxSurfaceRise = 0.2f;
+            directionalView.maxSurfaceDrop = 0.5f;
+            directionalView.minSurfaceNormalY = 0.5f;
+            directionalView.southVisibleFootBottomOffset = RatSouthVisibleFootBottomOffset;
+            directionalView.southWestVisibleFootBottomOffset = RatSouthWestVisibleFootBottomOffset;
+            directionalView.westVisibleFootBottomOffset = RatWestVisibleFootBottomOffset;
+            directionalView.northWestVisibleFootBottomOffset = RatNorthWestVisibleFootBottomOffset;
+            directionalView.northVisibleFootBottomOffset = RatNorthVisibleFootBottomOffset;
+            directionalView.northEastVisibleFootBottomOffset = RatNorthEastVisibleFootBottomOffset;
+            directionalView.eastVisibleFootBottomOffset = RatEastVisibleFootBottomOffset;
+            directionalView.southEastVisibleFootBottomOffset = RatSouthEastVisibleFootBottomOffset;
+            directionalView.groundClearance = RatVisibleFootGroundClearance;
+            spriteRenderer.sprite = sprites[0];
         }
 
         private static void BuildNoisyPipeInteractable(Transform parent, PrototypeSessionController session, PrototypeMaterials materials)
@@ -379,7 +467,7 @@ namespace LastHost.Prototype.Editor
             controller.session = session;
             controller.hostTarget = rat != null ? rat.transform : null;
             controller.virusTarget = virus != null && virus.virusPlayer != null ? virus.virusPlayer.transform : null;
-            controller.startingHostMode = PrototypeCameraMode.ThirdPerson;
+            controller.startingHostMode = PrototypeCameraMode.QuarterView;
             controller.quarterViewOffset = new Vector3(-2.8f, 7.4f, -6.4f);
             controller.quarterViewOrthographicSize = 5.2f;
             controller.topViewOffset = new Vector3(0f, 9.5f, 0f);
@@ -579,7 +667,37 @@ namespace LastHost.Prototype.Editor
             Directory.CreateDirectory(ProjectRoot + "/Settings/Input");
             Directory.CreateDirectory(ProjectRoot + "/Materials/Placeholder");
             Directory.CreateDirectory(ProjectRoot + "/Prefabs");
+            Directory.CreateDirectory(RatSpriteRoot);
             Directory.CreateDirectory(ProjectRoot + "/Tests/EditMode");
+        }
+
+        private static void ConfigureRatSpriteImports()
+        {
+            foreach (var fileName in RatSpriteFileNames)
+            {
+                var path = $"{RatSpriteRoot}/{fileName}";
+                var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+                if (importer == null)
+                {
+                    throw new InvalidOperationException($"Rat trial texture importer is unavailable: {path}");
+                }
+
+                importer.textureType = TextureImporterType.Sprite;
+                importer.spriteImportMode = SpriteImportMode.Single;
+                importer.spritePixelsPerUnit = RatSpritePixelsPerUnit;
+                var textureSettings = new TextureImporterSettings();
+                importer.ReadTextureSettings(textureSettings);
+                textureSettings.spriteAlignment = (int)SpriteAlignment.Custom;
+                textureSettings.spritePivot = RatSpritePivot;
+                importer.SetTextureSettings(textureSettings);
+                importer.alphaIsTransparency = true;
+                importer.mipmapEnabled = false;
+                importer.filterMode = FilterMode.Point;
+                importer.wrapMode = TextureWrapMode.Clamp;
+                importer.textureCompression = TextureImporterCompression.Uncompressed;
+                importer.npotScale = TextureImporterNPOTScale.None;
+                importer.SaveAndReimport();
+            }
         }
 
         private static PrototypeMaterials CreateMaterials()

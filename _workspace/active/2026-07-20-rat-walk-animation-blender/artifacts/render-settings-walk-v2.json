@@ -1,0 +1,103 @@
+{
+  "asset_id": "rat-walk-trial-v2",
+  "status": "trial-placeholder-not-final-art",
+  "blender_version": "5.1.2",
+  "source": {
+    "read_only_input": "C:\\project\\Last-Host\\_workspace\\completed\\2026-07-16-2026-07-16-rat-8-direction-trial-asset\\artifacts\\source\\rat-trial-v1.obj",
+    "root_pivot": [
+      0,
+      0,
+      0
+    ],
+    "source_forward": "+X",
+    "ground_lift_applied_to_mesh_vertices": 0.01
+  },
+  "timeline": {
+    "frames": [
+      1,
+      8
+    ],
+    "loop_repeat": "frame 9 is frame 1",
+    "fps": 8
+  },
+  "camera": {
+    "projection": "orthographic",
+    "camera_to_object": [
+      6.0,
+      -8.0,
+      6.0
+    ],
+    "orthographic_scale": 7.111111111111111,
+    "scale_px_per_unit": 9.0,
+    "animated_per_frame": false
+  },
+  "lighting": {
+    "type": "single_sun_key",
+    "direction": [
+      -0.45,
+      -0.55,
+      1.0
+    ],
+    "animated_per_frame": false
+  },
+  "canvas": {
+    "width_px": 64,
+    "height_px": 64,
+    "transparent_background": true,
+    "anti_aliasing": false,
+    "filter_preview": "Point/Nearest"
+  },
+  "pivot_px_top_left": [
+    32,
+    48
+  ],
+  "animation": {
+    "root_location_scale_z_keyed": false,
+    "root_transform_keyframes": 0,
+    "leg_motion": "diagonal pairs alternate; swing paws move in local X and lift in Z while planted paws remain on the ground",
+    "tail_motion": "small opposite one-frame-lag local Y swing"
+  },
+  "directions": [
+    {
+      "index": 0,
+      "direction": "S",
+      "source_yaw_degrees": -53.130102
+    },
+    {
+      "index": 1,
+      "direction": "SW",
+      "source_yaw_degrees": -25.904474
+    },
+    {
+      "index": 2,
+      "direction": "W",
+      "source_yaw_degrees": 36.869898
+    },
+    {
+      "index": 3,
+      "direction": "NW",
+      "source_yaw_degrees": 99.64427
+    },
+    {
+      "index": 4,
+      "direction": "N",
+      "source_yaw_degrees": 126.869898
+    },
+    {
+      "index": 5,
+      "direction": "NE",
+      "source_yaw_degrees": 154.095526
+    },
+    {
+      "index": 6,
+      "direction": "E",
+      "source_yaw_degrees": -143.130102
+    },
+    {
+      "index": 7,
+      "direction": "SE",
+      "source_yaw_degrees": -80.35573
+    }
+  ],
+  "renderer": "deterministic orthographic triangle z-buffer run inside Blender background Python; no anti-aliasing"
+}

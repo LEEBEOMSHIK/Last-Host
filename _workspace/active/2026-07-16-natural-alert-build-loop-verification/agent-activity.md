@@ -133,3 +133,13 @@
 - 생성/수정 산출물: `director-review.md`, `completion-report.md`, `work-log.md`, `agent-activity.md`
 - 검증 또는 판정: 기능 `보류`, QA 기능 `차단`, active 유지, 완료 보관·기능 완료 주장 금지. `_workspace/**`와 상태판만 포함하고 `.codex/config.toml`·UnityProject·Builds를 제외하는 조건으로 차단 기록 커밋·푸시 예외 `허용`. post-push QA 필수.
 - 다음 인계 대상: Codex 메인 에이전트, 커밋 후 QA/검증 에이전트
+
+### 2026-07-20 재개 조건 재점검
+
+- 에이전트: QA/검증 에이전트
+- 역할: 차단 해소 가능성 독립 확인
+- 수행 내용: Computer Use 표준 bootstrap→`list_apps`, 2초 후 재시도, 세션 초기화 후 재-bootstrap→`list_apps`를 순서대로 실행했다.
+- 결과: 세 시도 모두 native pipe unavailable `os error 2`로 실패했다.
+- 미실행: Windows 빌드 실행·포커스·실제 입력·자연 경계도 100%·단계별 화면·동일 세션 `Player.log` 검사.
+- 금지 준수: 코드·Unity·Builds 변경, F6·상태 주입·PowerShell/SendKeys 우회를 수행하지 않았다.
+- 판정: QA **차단 유지**. 재개 조건은 helper `list_apps` 정상 응답 또는 사용자 연속 증거·동일 세션 `Player.log` 제공이다.

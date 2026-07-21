@@ -1,6 +1,6 @@
 # 현재 작업 후보와 핸드오프 현황
 
-최종 갱신: 2026-07-16 10:52 KST
+최종 갱신: 2026-07-21 KST
 
 ## 목적
 
@@ -18,26 +18,33 @@
 
 ## 현재 저장소 상태
 
-- 최신 커밋: `866fd8a docs: add AI-assisted pixel art workflow`
-- 원격 반영: `origin/main`이 `866fd8a`로 HEAD와 일치
-- Unity 코드·씬·테스트·설정 변경: 없음
-- 미커밋 작업: 현황판·`CURRENT.md`·완료 작업 보관 정합성 복구 기록, 면역 신호 억제 접근 예고 완료 보관 기록, 자연 경계도 100% 엄격 검증 작업 패킷
-- 작업 범위 밖 로컬 변경: `.codex/config.toml`
+- 최신 커밋: `d5d1ade docs: record verification handoff state`
+- 원격 반영: `origin/main`이 `d5d1ade`로 HEAD와 일치
+- Unity 변경: 쥐 방향 표시 코드·씬·EditMode 테스트·8개 Sprite/Import 변경 있음. ProjectSettings·Build Settings·패키지 순변경 없음
+- 미커밋 작업: 도트풍 하이브리드 2.5D 방향 문서·완료 보관 기록, 8방향 쥐 시험 에셋과 Unity 시험 반입 구현·검증 패킷
+- 작업 범위 밖 로컬 변경: `.codex/config.toml`, `_workspace/previews/`
 
 ## 현재 진행 중
 
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
+| 쥐 v3 걷기 Unity 실제 화면 시험 | 회귀 QA 통과 — 사용자 WASD 체감·EditMode TestRunner·총괄 판정 대기 | 뒤로 걷는 축 반전, 정지 시 TrialV1로 바뀌던 경로, 기본 원근 시점을 각각 보정했다. 독립 QA가 dirty 씬을 저장·재로드하지 않고 QuarterView 직교 Play, 8방향 v3 `f01→f04→f01`, 접지, 콘솔을 재확인했다. | `_workspace/active/2026-07-20-rat-walk-unity-visual-trial/` |
+| 캐릭터 스프라이트 해상도 상향·공통 기준 | 회귀 QA 통과 — 사용자 화면 확인·TestRunner·총괄 재검토 대기 | v4 `128×128 / PPU64` 64장을 반입해 기존과 같은 2 Unity unit 폭을 유지했다. 독립 QA가 쿼터뷰 Play에서 Importer 64/64, 8방향 `f01→f04→f01`, 접지, 콘솔, 캡처를 통과시켰다. 이후 프리렌더 캐릭터·전경 게임플레이 오브젝트의 공통 시작 규격은 제작 가이드에 기록했다. | `_workspace/active/2026-07-21-character-sprite-resolution-standard/` |
+| 쥐 v5b 고밀도 픽셀 처리 시험 | 회귀 QA 통과 — 사용자 화면 수용 대기 | v5a 저밀도 16색안은 보류하고, v5b의 27색 공통 팔레트·이진 알파·무디더 프레임과 `960×540` Point 정수 2배 출력·시각/카메라 픽셀 스냅을 실제 Play에서 통과시켰다. 그래픽 관리 문서는 내부 승인으로 연결했으며, v4 공통 기준은 사용자가 v5b 화면을 수용하기 전까지 유지한다. | `_workspace/active/2026-07-21-rat-pixel-treatment-v5/` |
 | 자연 경계도 100% Windows 빌드 성공 루프 엄격 검증 | 차단 — Windows Computer Use 연결 복구 또는 사용자 수동 검증 필요 | native pipe `os error 2`가 초기 시도와 허용 복구 1회 모두 반복되어 빌드·입력·단계 화면·동일 세션 로그를 검증하지 못했다. | `_workspace/active/2026-07-16-natural-alert-build-loop-verification/` |
+| 쥐 걷기 애니메이션 Blender 시험 제작 | 사용자 시각 검토 대기 | v2에서 대각선 다리쌍·스윙 발 변형을 추가했고, 새 Blender 애니메이션 테크아트 에이전트가 CSV 출력 경로·64 PNG·루프·접지를 재검증했다. 저해상도 다리 실루엣과 정지 대비 W 바닥선은 별도 시각·QA 판단이 남아 있으며 Unity 통합은 제외한다. | `_workspace/active/2026-07-20-rat-walk-animation-blender/` |
 
 ## 최근 작업 요약
 
 | 작업 | 상태 | 핵심 결과 | 확인 위치 |
 | --- | --- | --- | --- |
+| Blender 애니메이션 테크아트 에이전트 역할 통합 | 완료 보관 | 사용자 승인으로 Blender 원본·리깅·보행·8방향 시험 렌더의 실제 제작 역할과 위임 절차를 추가했다. QA `완료 가능`, 총괄 `내부 승인 가능`; v2 시각 품질·Unity 통합은 별도 작업으로 유지한다. | `_workspace/completed/2026-07-20-2026-07-20-blender-animation-agent-role-integration/` |
+| 쥐 정지 8방향 스프라이트 Unity 시험 반입 | 완료 보관 | 사용자 2차 접지 피드백을 수용했다. 위험 trigger를 유지한 채 시각 표면을 분리했고, QA MCP Play에서 8방향 실제 발 y `-0.015`, clearance `0.005`, 구역 안·밖 차이 `0.000`을 확인했다. QA `완료 가능`, 총괄 `내부 승인 가능`; EditMode 전체 재실행과 연속 WASD·경계 체감은 남은 확인이다. | `_workspace/completed/2026-07-20-2026-07-16-rat-directional-sprite-unity-integration/` |
+| 8방향 쥐 시험 에셋 | 완료 보관 | 단일 저폴리 원본과 정지 8방향 PNG·시트·프리뷰를 만들고 QA·총괄 판정을 거쳤으며, 사용자가 `index.html`로 결과를 확인했다. | `_workspace/completed/2026-07-16-2026-07-16-rat-8-direction-trial-asset/` |
+| 3D 원본 기반 8방향 캐릭터 스프라이트 방향 정리 | 완료 보관 | 쥐 프로토타입은 3D 환경·게임플레이 루트를 유지하고 쥐·바이러스·백혈구를 3D 원본 기반 8방향 스프라이트로 표시하도록 문서화했다. 실제 에셋·Unity 적용과 정확 사양은 후속 승인으로 분리했고 QA `완료 가능`, 총괄 `내부 승인 가능` 판정을 받았다. | `_workspace/completed/2026-07-16-2026-07-16-prerendered-character-sprite-direction/` |
 | 면역 신호 억제 접근 예고 검증 종결 | 완료 보관 | EditMode 90/90과 직접 상태 전환 Play에서 대기·접근·정확 HUD, cue, 색·scale, 콘솔 0건, 종료·씬 무변경을 확인했고 총괄 `내부 승인 가능` 판정을 받았다. | `_workspace/completed/2026-07-16-2026-07-10-signal-suppression-approach-cue/` |
 | 현황판·완료 작업 보관 정합성 복구 | 완료 보관 | 게이트를 충족한 두 작업을 보관하고 상태판·`CURRENT.md`를 실제 Git·작업 경로와 맞췄다. QA `완료 가능`과 총괄 `내부 승인 가능` 판정을 받은 뒤 이번 작업도 완료 보관했다. | `_workspace/completed/2026-07-16-2026-07-16-current-task-board-consistency/` |
 | 쥐 숙주 전체 플레이 검증 | 완료 보관 | 자동/대리 입력 기준 성공 루프와 완료 게이트를 충족한 기록을 보관했다. 사용자 조작감·난이도·무설명 이해 여부는 별도 보류다. | `_workspace/completed/2026-07-10-2026-07-01-rat-host-full-play-verification/` |
-| 백혈구 반응 스케일링 | 완료 보관 | 검증 통과와 총괄 관리자 `내부 승인 가능` 판정이 있는 작업 기록을 보관했다. | `_workspace/completed/2026-07-09-2026-07-09-white-blood-cell-response-scaling/` |
 | AI 보조 도트풍 3D 아트 제작 규칙과 작업 순서 | 완료 | 래스터 초안 범위, 자산 묶음별 승인, 출처 기록, 선별, 후속 저폴리 3D·Unity·QA 순서를 문서화했다. | `_workspace/completed/2026-07-13-2026-07-13-ai-assisted-pixel-art-workflow/` |
 
 ## 보류 항목
@@ -51,7 +58,9 @@
 
 ## 다음 작업 후보
 
-현재 신규 기능 후보는 등록하지 않는다. 차단된 엄격 검증은 다음 중 하나가 충족되면 재개한다.
+### 자연 경계도 엄격 검증 재개
+
+차단된 엄격 검증은 다음 중 하나가 충족되면 재개한다.
 
 - Windows Computer Use helper가 복구되어 `list_apps`가 정상 응답한다.
 - 사용자가 기존 Windows 빌드를 직접 플레이하고 같은 연속 루프의 단계별 화면·해당 세션 `Player.log`를 확인하거나 제공한다.
@@ -89,6 +98,4 @@
 ## 추천 순서
 
 1. Computer Use helper 복구 여부를 확인한다. 복구되면 QA가 새 Windows 빌드 세션에서 전체 엄격 검증을 다시 수행한다.
-2. helper 복구가 어렵다면 사용자가 기존 빌드를 직접 플레이해 연속 성공 루프와 해당 세션 로그를 확인한다.
-3. QA/총괄이 사용자 커밋 예외 범위와 제외 파일을 재대조한 뒤 차단 기록만 커밋·푸시한다. 기능 완료 보관은 하지 않는다.
-4. 사용자 수동 플레이 체감 확인은 사용자가 재개할 때까지 별도 보류한다.
+2. 사용자 수동 플레이 체감 확인은 사용자가 재개할 때까지 별도 보류한다.

@@ -1,0 +1,947 @@
+{
+  "png_count": 64,
+  "palette_limit_nontransparent": 32,
+  "alpha_threshold": 128,
+  "dithering": "none",
+  "shared_palette_rgb": [
+    [
+      165,
+      147,
+      145
+    ],
+    [
+      153,
+      134,
+      132
+    ],
+    [
+      128,
+      116,
+      113
+    ],
+    [
+      121,
+      114,
+      110
+    ],
+    [
+      120,
+      114,
+      110
+    ],
+    [
+      122,
+      112,
+      109
+    ],
+    [
+      118,
+      111,
+      107
+    ],
+    [
+      116,
+      110,
+      106
+    ],
+    [
+      114,
+      105,
+      101
+    ],
+    [
+      108,
+      100,
+      97
+    ],
+    [
+      104,
+      98,
+      94
+    ],
+    [
+      101,
+      95,
+      91
+    ],
+    [
+      99,
+      93,
+      89
+    ],
+    [
+      98,
+      89,
+      86
+    ],
+    [
+      90,
+      84,
+      81
+    ],
+    [
+      86,
+      78,
+      76
+    ],
+    [
+      81,
+      70,
+      68
+    ],
+    [
+      67,
+      63,
+      61
+    ],
+    [
+      65,
+      61,
+      58
+    ],
+    [
+      58,
+      53,
+      52
+    ],
+    [
+      49,
+      41,
+      39
+    ],
+    [
+      48,
+      38,
+      37
+    ],
+    [
+      36,
+      33,
+      32
+    ],
+    [
+      30,
+      27,
+      26
+    ],
+    [
+      27,
+      25,
+      24
+    ],
+    [
+      27,
+      24,
+      23
+    ],
+    [
+      26,
+      24,
+      23
+    ],
+    [
+      26,
+      24,
+      22
+    ],
+    [
+      23,
+      24,
+      25
+    ],
+    [
+      26,
+      23,
+      22
+    ],
+    [
+      25,
+      23,
+      22
+    ],
+    [
+      7,
+      8,
+      8
+    ]
+  ],
+  "frames": [
+    {
+      "file": "rat-walk-v5b-f01-00-s.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 27,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 10
+    },
+    {
+      "file": "rat-walk-v5b-f01-01-sw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 27,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 10
+    },
+    {
+      "file": "rat-walk-v5b-f01-02-w.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 9
+    },
+    {
+      "file": "rat-walk-v5b-f01-03-nw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 16
+    },
+    {
+      "file": "rat-walk-v5b-f01-04-n.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 21,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 12
+    },
+    {
+      "file": "rat-walk-v5b-f01-05-ne.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 8
+    },
+    {
+      "file": "rat-walk-v5b-f01-06-e.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 23
+    },
+    {
+      "file": "rat-walk-v5b-f01-07-se.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 16
+    },
+    {
+      "file": "rat-walk-v5b-f02-00-s.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 10
+    },
+    {
+      "file": "rat-walk-v5b-f02-01-sw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 12
+    },
+    {
+      "file": "rat-walk-v5b-f02-02-w.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 10
+    },
+    {
+      "file": "rat-walk-v5b-f02-03-nw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 11
+    },
+    {
+      "file": "rat-walk-v5b-f02-04-n.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 22,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 11
+    },
+    {
+      "file": "rat-walk-v5b-f02-05-ne.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 21
+    },
+    {
+      "file": "rat-walk-v5b-f02-06-e.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 21
+    },
+    {
+      "file": "rat-walk-v5b-f02-07-se.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 14
+    },
+    {
+      "file": "rat-walk-v5b-f03-00-s.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 27,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 11
+    },
+    {
+      "file": "rat-walk-v5b-f03-01-sw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 8
+    },
+    {
+      "file": "rat-walk-v5b-f03-02-w.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 7
+    },
+    {
+      "file": "rat-walk-v5b-f03-03-nw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 6
+    },
+    {
+      "file": "rat-walk-v5b-f03-04-n.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 21,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 10
+    },
+    {
+      "file": "rat-walk-v5b-f03-05-ne.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 27,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 15
+    },
+    {
+      "file": "rat-walk-v5b-f03-06-e.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 20
+    },
+    {
+      "file": "rat-walk-v5b-f03-07-se.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 15
+    },
+    {
+      "file": "rat-walk-v5b-f04-00-s.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 9
+    },
+    {
+      "file": "rat-walk-v5b-f04-01-sw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 27,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 12
+    },
+    {
+      "file": "rat-walk-v5b-f04-02-w.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 16
+    },
+    {
+      "file": "rat-walk-v5b-f04-03-nw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 10
+    },
+    {
+      "file": "rat-walk-v5b-f04-04-n.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 23,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 11
+    },
+    {
+      "file": "rat-walk-v5b-f04-05-ne.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 22
+    },
+    {
+      "file": "rat-walk-v5b-f04-06-e.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 20
+    },
+    {
+      "file": "rat-walk-v5b-f04-07-se.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 14
+    },
+    {
+      "file": "rat-walk-v5b-f05-00-s.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 27,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 9
+    },
+    {
+      "file": "rat-walk-v5b-f05-01-sw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 9
+    },
+    {
+      "file": "rat-walk-v5b-f05-02-w.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 14
+    },
+    {
+      "file": "rat-walk-v5b-f05-03-nw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 16
+    },
+    {
+      "file": "rat-walk-v5b-f05-04-n.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 23,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 13
+    },
+    {
+      "file": "rat-walk-v5b-f05-05-ne.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 9
+    },
+    {
+      "file": "rat-walk-v5b-f05-06-e.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 21
+    },
+    {
+      "file": "rat-walk-v5b-f05-07-se.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 16
+    },
+    {
+      "file": "rat-walk-v5b-f06-00-s.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 9
+    },
+    {
+      "file": "rat-walk-v5b-f06-01-sw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 27,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 12
+    },
+    {
+      "file": "rat-walk-v5b-f06-02-w.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 16
+    },
+    {
+      "file": "rat-walk-v5b-f06-03-nw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 10
+    },
+    {
+      "file": "rat-walk-v5b-f06-04-n.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 23,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 12
+    },
+    {
+      "file": "rat-walk-v5b-f06-05-ne.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 22
+    },
+    {
+      "file": "rat-walk-v5b-f06-06-e.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 20
+    },
+    {
+      "file": "rat-walk-v5b-f06-07-se.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 14
+    },
+    {
+      "file": "rat-walk-v5b-f07-00-s.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 27,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 11
+    },
+    {
+      "file": "rat-walk-v5b-f07-01-sw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 8
+    },
+    {
+      "file": "rat-walk-v5b-f07-02-w.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 7
+    },
+    {
+      "file": "rat-walk-v5b-f07-03-nw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 7
+    },
+    {
+      "file": "rat-walk-v5b-f07-04-n.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 21,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 14
+    },
+    {
+      "file": "rat-walk-v5b-f07-05-ne.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 27,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 15
+    },
+    {
+      "file": "rat-walk-v5b-f07-06-e.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 20
+    },
+    {
+      "file": "rat-walk-v5b-f07-07-se.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 14
+    },
+    {
+      "file": "rat-walk-v5b-f08-00-s.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 10
+    },
+    {
+      "file": "rat-walk-v5b-f08-01-sw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 12
+    },
+    {
+      "file": "rat-walk-v5b-f08-02-w.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 10
+    },
+    {
+      "file": "rat-walk-v5b-f08-03-nw.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 11
+    },
+    {
+      "file": "rat-walk-v5b-f08-04-n.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 22,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 14
+    },
+    {
+      "file": "rat-walk-v5b-f08-05-ne.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 24,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 21
+    },
+    {
+      "file": "rat-walk-v5b-f08-06-e.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 25,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 21
+    },
+    {
+      "file": "rat-walk-v5b-f08-07-se.png",
+      "width": 128,
+      "height": 128,
+      "nontransparent_colours": 26,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "intermediate_alpha_pixels": 0,
+      "isolated_low_contrast_pixels_merged": 14
+    }
+  ],
+  "maximum_nontransparent_colours": 27,
+  "total_intermediate_alpha_pixels": 0,
+  "total_isolated_low_contrast_pixels_merged": 851,
+  "all_dimensions": [
+    [
+      128,
+      128
+    ]
+  ]
+}

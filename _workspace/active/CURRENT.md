@@ -2,51 +2,28 @@
 
 ## 현재 이어받을 작업
 
-- 작업 ID: `2026-07-16-natural-alert-build-loop-verification`
-- 상태: 차단 — Windows Computer Use 연결 복구 또는 사용자 수동 검증 필요.
-- 작업 경로: `_workspace/active/2026-07-16-natural-alert-build-loop-verification/`
-- 최신 사용자 요청: “일단 커밋 푸쉬해” — 기능 완료가 아닌 현재 차단 상태와 누적 완료 보관·현황판 기록의 커밋·푸시 예외 지시.
+- 작업 ID: `2026-07-21-rat-pixel-treatment-v5`
+- 상태: v5b 회귀 QA 통과 — 27색 고밀도 픽셀 처리·960×540 정수 2배 출력·시각/카메라 픽셀 스냅 적용 후 사용자 화면 수용·총괄 재검토 대기.
+- 작업 경로: `_workspace/active/2026-07-21-rat-pixel-treatment-v5/`
 
 ## 먼저 읽을 파일
 
-1. `_workspace/active/2026-07-16-natural-alert-build-loop-verification/task.md`
-2. `_workspace/active/2026-07-16-natural-alert-build-loop-verification/handoff.md`
-3. `docs/project-handoff/current-task-board.md`
+1. `_workspace/active/2026-07-21-rat-pixel-treatment-v5/task.md`
+2. `_workspace/active/2026-07-21-rat-pixel-treatment-v5/handoff.md`
+3. `docs/design/visual/pixel-lowpoly-3d-production-guide.md`
 
 ## 바로 이어서 할 작업
 
-1. QA/총괄이 사용자 커밋 예외 범위, `.codex/config.toml` 제외, Unity/Builds 무변경을 재대조한다.
-2. 재검토 통과 뒤 현재 차단 기록과 누적 완료 보관·현황판 기록만 커밋·푸시한다. 기능 완료·보관은 하지 않는다.
-3. 커밋 후에도 Computer Use helper 복구 또는 사용자 수동 증거로 엄격 검증을 재개한다.
+1. 사용자가 v5b의 픽셀 군집·선명도·정지/이동 안정성을 실제 화면에서 수용하는지 확인한다.
+2. 총괄 관리자가 QA 기록과 사용자 수용 전 기준 유지 경계를 재검토한다.
+3. 수용 시에만 공통 제작 가이드의 v4 기본 기준을 v5b로 교체할지 결정한다.
 
 ## 제외하거나 건드리면 안 되는 변경
 
-- `.codex/config.toml`은 작업 범위 밖 로컬 변경으로 유지하며 수정·복원·스테이징·커밋하지 않는다.
-- 사용자 수동 플레이 체감 확인은 상태판의 보류 항목 한 곳에만 유지한다.
-- Unity 코드·씬·테스트·ProjectSettings·패키지·에셋, `Builds/`, `docs/project-handoff/manual-play-checklist.md`는 수정하지 않는다.
-- 이전 완료 작업 패킷을 수정하거나 이동하지 않는다.
-- `F6`, 직접 상태 주입, Unity Editor 대체 검증을 이번 Windows 빌드 자연 성공 루프의 통과 근거로 사용하지 않는다.
-
-## 마지막 정상·실패·재개 조건
-
-- 마지막 정상: 기존 빌드 존재·SHA-256 식별, 시작 전 `UnityProject/`·`Builds/` 변경 0, 정적 구성상 자연 경계도 상승 경로 확인.
-- 실패: Computer Use native pipe가 초기 연결과 세션 초기화·재-bootstrap 후 허용 재시도 1회 모두 `os error 2`로 실패.
-- 미검증: 빌드 실행, 창 포커스, 실제 입력, 자연 경계도 100%, 단계별 화면, 조각 3개, 변이 선택·복귀, 동일 세션 `Player.log`.
-- 재개 조건: Computer Use helper의 `list_apps` 정상 응답 또는 사용자 수동 플레이의 연속 단계·해당 세션 로그 증거.
-- QA/검증 에이전트 판정: `차단`.
-- 프로젝트 총괄 관리자 판정: `보류` — 핵심 실제 플레이 증거 미검증으로 완료·보관·커밋·푸시 금지.
-- 커밋·푸시: 사용자 명시 지시로 차단 기록 커밋 예외 허용. 기능 완료가 아니며 QA/총괄 범위 재검토 전에는 스테이징하지 않는다.
-
-## 보류와 검증 경계
-
-- 이전 F6 `면역 신호 억제` 빌드 성공 루프는 자연 경계도 100%와 기본 백혈구 회피 성공의 증거가 아니다.
-- 성공 증거는 같은 실행 세션의 창 포커스, 자연 전환, 조각 3개, 변이 선택, RatHost 복귀 화면과 `Player.log`로 연결해야 한다.
-- 사용자 수동 플레이 체감·난이도·무설명 이해 여부는 계속 보류한다.
-- 누적 완료 작업 보관과 상태판 변경은 최종 커밋에 포함하되 `.codex/config.toml`은 제외한다.
-- PowerShell, SendKeys, Start-Process, 별도 네이티브 입력으로 Computer Use 연결 실패를 우회하지 않는다.
-- 차단 기록 커밋 후에도 현재 작업은 active, QA `차단`, 총괄 `보류`, 재개 조건 A·B를 유지한다.
+- `.codex/config.toml`, `_workspace/previews/`는 범위 밖이다.
+- 자연 경계도 엄격 검증의 active·QA `차단`·총괄 `보류` 판정은 사용자 또는 검증 근거 없이 바꾸지 않는다.
 
 ## 갱신 정보
 
-- 마지막 갱신: 2026-07-16 10:52 KST
-- 갱신자: 프로젝트 조정/문서 릴리즈 에이전트
+- 마지막 갱신: 2026-07-21 KST
+- 갱신자: Codex 메인 에이전트

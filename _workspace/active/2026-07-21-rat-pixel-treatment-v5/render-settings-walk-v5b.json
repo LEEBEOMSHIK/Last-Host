@@ -1,0 +1,169 @@
+{
+  "asset_id": "rat-walk-trial-v5b-high-density-pixel",
+  "status": "trial-placeholder-not-final-art",
+  "blender_version": "5.1.2",
+  "source": {
+    "read_only_input": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-21-character-sprite-resolution-standard\\source\\rat-walk-trial-v4-128px.blend",
+    "output_blend": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-21-rat-pixel-treatment-v5\\source\\rat-walk-trial-v5b-high-density-pixel.blend",
+    "content_change_from_v4": "single-sample raw render for a separate shared-32-colour v5b pixel treatment",
+    "root_pivot": [
+      0,
+      0,
+      0
+    ],
+    "source_forward": "+X"
+  },
+  "timeline": {
+    "frames": [
+      1,
+      8
+    ],
+    "loop_repeat": "f08 advances to f01",
+    "fps": 8
+  },
+  "camera": {
+    "name": "RatWalkCamera",
+    "projection": "ORTHO",
+    "location": [
+      6.0,
+      -8.0,
+      6.0
+    ],
+    "orthographic_scale": 7.111111164093018
+  },
+  "lighting": {
+    "name": "RatWalkKeyLight",
+    "type": "SUN",
+    "location": [
+      -4.5,
+      -5.5,
+      10.0
+    ],
+    "energy": 2.0
+  },
+  "canvas": {
+    "width_px": 128,
+    "height_px": 128,
+    "transparent_background": true,
+    "color_mode": "RGBA",
+    "eevee_taa_samples": 1,
+    "eevee_taa_render_samples": 1,
+    "reconstruction_filter_size": 0.009999999776482582
+  },
+  "pixel_postprocess": {
+    "script": "source/postprocess_rat_walk_v5b.py",
+    "shared_palette_limit_nontransparent": 32,
+    "alpha": "binary 0/255",
+    "edge_treatment": "opaque intermediate-brightness palette clusters",
+    "dithering": "none",
+    "isolated_pixel_cleanup": "only low-contrast one-pixel components surrounded by a dominant opaque neighbour colour"
+  },
+  "unity_handoff": {
+    "pixels_per_unit": 64,
+    "custom_pivot_normalized": [
+      0.5,
+      0.25
+    ],
+    "pivot_px_top_left": [
+      64,
+      96
+    ]
+  },
+  "animation": {
+    "shape_keys": [
+      "walk_f01",
+      "walk_f02",
+      "walk_f03",
+      "walk_f04",
+      "walk_f05",
+      "walk_f06",
+      "walk_f07",
+      "walk_f08"
+    ],
+    "frame_phase_sequence": [
+      "left-front_right-rear_contact",
+      "lift_and_advance",
+      "pass",
+      "lift_and_advance",
+      "right-front_left-rear_contact",
+      "lift_and_advance",
+      "pass",
+      "lift_and_return_to_loop"
+    ],
+    "root_location_scale_z_keyed": false,
+    "root_transform_keyframes": 0
+  },
+  "directions": [
+    {
+      "index": 0,
+      "direction": "S",
+      "source_yaw_degrees": -53.130102
+    },
+    {
+      "index": 1,
+      "direction": "SW",
+      "source_yaw_degrees": -25.904474
+    },
+    {
+      "index": 2,
+      "direction": "W",
+      "source_yaw_degrees": 36.869898
+    },
+    {
+      "index": 3,
+      "direction": "NW",
+      "source_yaw_degrees": 99.64427
+    },
+    {
+      "index": 4,
+      "direction": "N",
+      "source_yaw_degrees": 126.869898
+    },
+    {
+      "index": 5,
+      "direction": "NE",
+      "source_yaw_degrees": 154.095526
+    },
+    {
+      "index": 6,
+      "direction": "E",
+      "source_yaw_degrees": -143.130102
+    },
+    {
+      "index": 7,
+      "direction": "SE",
+      "source_yaw_degrees": -80.35573
+    }
+  ],
+  "verification_before_postprocess": {
+    "png_count": 64,
+    "all_png_dimensions": [
+      128,
+      128
+    ],
+    "all_png_channels": "RGBA",
+    "per_key_min_z": {
+      "f01": 0.0,
+      "f02": 0.0,
+      "f03": 0.0,
+      "f04": 0.0,
+      "f05": 0.0,
+      "f06": 0.0,
+      "f07": 0.0,
+      "f08": 0.0
+    },
+    "root_location": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "root_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "root_fcurves": 0,
+    "loop_transition": "f08 -> f01",
+    "camera_lighting_preserved_from_v4": true
+  }
+}

@@ -7,6 +7,7 @@ using LastHost.Prototype.Mutations;
 using LastHost.Prototype.UI;
 using LastHost.Prototype.VirusMinigame;
 using NUnit.Framework;
+using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -1514,6 +1515,288 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
+        public void RatDirectionQuantizer_MapsAllEightCameraRelativeDirections()
+        {
+            var cameraRight = Vector3.right;
+            var cameraForward = Vector3.forward;
+
+            Assert.AreEqual(RatSpriteDirection.South, RatDirectionQuantizer.Quantize(Vector3.back, cameraRight, cameraForward));
+            Assert.AreEqual(RatSpriteDirection.SouthWest, RatDirectionQuantizer.Quantize(Vector3.back + Vector3.left, cameraRight, cameraForward));
+            Assert.AreEqual(RatSpriteDirection.West, RatDirectionQuantizer.Quantize(Vector3.left, cameraRight, cameraForward));
+            Assert.AreEqual(RatSpriteDirection.NorthWest, RatDirectionQuantizer.Quantize(Vector3.forward + Vector3.left, cameraRight, cameraForward));
+            Assert.AreEqual(RatSpriteDirection.North, RatDirectionQuantizer.Quantize(Vector3.forward, cameraRight, cameraForward));
+            Assert.AreEqual(RatSpriteDirection.NorthEast, RatDirectionQuantizer.Quantize(Vector3.forward + Vector3.right, cameraRight, cameraForward));
+            Assert.AreEqual(RatSpriteDirection.East, RatDirectionQuantizer.Quantize(Vector3.right, cameraRight, cameraForward));
+            Assert.AreEqual(RatSpriteDirection.SouthEast, RatDirectionQuantizer.Quantize(Vector3.back + Vector3.right, cameraRight, cameraForward));
+        }
+
+        [Test]
+        public void RatDirectionalSpriteView_IdleKeepsLastResolvedDirection()
+        {
+            var cameraObject = new GameObject("Rat Sprite Camera");
+            var viewObject = new GameObject("Rat Sprite View");
+            var spriteRenderer = viewObject.AddComponent<SpriteRenderer>();
+            var view = viewObject.AddComponent<RatDirectionalSpriteView>();
+
+            view.spriteRenderer = spriteRenderer;
+            view.RefreshDirection(Vector3.right, cameraObject.transform);
+            // Blender's pre-render camera basis is horizontally mirrored from Unity's.
+            Assert.AreEqual(RatSpriteDirection.West, view.CurrentDirection);
+
+            view.RefreshDirection(Vector3.zero, cameraObject.transform);
+            Assert.AreEqual(RatSpriteDirection.West, view.CurrentDirection);
+
+            Object.DestroyImmediate(viewObject);
+            Object.DestroyImmediate(cameraObject);
+        }
+
+        [Test]
+        public void RatDirectionalSpriteView_WalkCyclesAtEightFpsAndReturnsToLastIdleDirection()
+        {
+            var cameraObject = new GameObject("Rat Walk Sprite Camera");
+            var viewObject = new GameObject("Rat Walk Sprite View");
+            var spriteRenderer = viewObject.AddComponent<SpriteRenderer>();
+            var view = viewObject.AddComponent<RatDirectionalSpriteView>();
+            var staticSouth = CreateTestSprite("Static South");
+            var staticEast = CreateTestSprite("Static East");
+            var staticNorth = CreateTestSprite("Static North");
+            var westFrames = CreateTestWalkFrames("West");
+            var northFrames = CreateTestWalkFrames("North");
+            var sharedFrames = CreateTestWalkFrames("Shared");
+
+            view.spriteRenderer = spriteRenderer;
+            view.south = staticSouth;
+            view.east = staticEast;
+            view.north = staticNorth;
+            view.southWalkFrames = sharedFrames;
+            view.southWestWalkFrames = sharedFrames;
+            view.westWalkFrames = westFrames;
+            view.northWestWalkFrames = sharedFrames;
+            view.northWalkFrames = northFrames;
+            view.northEastWalkFrames = sharedFrames;
+            view.eastWalkFrames = sharedFrames;
+            view.southEastWalkFrames = sharedFrames;
+            view.walkFramesPerSecond = 8f;
+
+            view.RefreshDirection(Vector3.right, cameraObject.transform);
+            view.RefreshWalkAnimation(Vector3.right, 0f);
+            Assert.True(view.IsUsingWalkSprite);
+            Assert.AreEqual(0, view.CurrentWalkFrameIndex);
+            Assert.AreEqual(RatSpriteDirection.West, view.CurrentDirection);
+            Assert.AreSame(westFrames[0], spriteRenderer.sprite);
+
+            view.RefreshWalkAnimation(Vector3.right, 0.375f);
+            Assert.AreEqual(3, view.CurrentWalkFrameIndex);
+            Assert.AreSame(westFrames[3], spriteRenderer.sprite);
+
+            view.RefreshDirection(Vector3.forward, cameraObject.transform);
+            view.RefreshWalkAnimation(Vector3.forward, 0.375f);
+            Assert.AreEqual(RatSpriteDirection.North, view.CurrentDirection);
+            Assert.AreEqual(3, view.CurrentWalkFrameIndex);
+            Assert.AreSame(northFrames[3], spriteRenderer.sprite);
+
+            view.RefreshWalkAnimation(Vector3.zero, 0.5f);
+            Assert.False(view.IsUsingWalkSprite);
+            Assert.AreEqual(RatSpriteDirection.North, view.CurrentDirection);
+            Assert.AreSame(northFrames[0], spriteRenderer.sprite);
+
+            view.northWalkFrames = null;
+            view.RefreshWalkAnimation(Vector3.zero, 0.5f);
+            Assert.False(view.IsUsingWalkSprite);
+            Assert.AreSame(staticNorth, spriteRenderer.sprite);
+
+            Object.DestroyImmediate(viewObject);
+            Object.DestroyImmediate(cameraObject);
+            DestroyTestSprite(staticSouth);
+            DestroyTestSprite(staticEast);
+            DestroyTestSprite(staticNorth);
+            DestroyTestSprites(westFrames);
+            DestroyTestSprites(northFrames);
+            DestroyTestSprites(sharedFrames);
+        }
+
+        [Test]
+        public void RatDirectionalSpriteAssets_ShareCanvasAndPivotForDirectionalVisibleFootOffsets()
+        {
+            var spriteNames = new[]
+            {
+                "rat-00-s.png", "rat-01-sw.png", "rat-02-w.png", "rat-03-nw.png",
+                "rat-04-n.png", "rat-05-ne.png", "rat-06-e.png", "rat-07-se.png"
+            };
+
+            foreach (var spriteName in spriteNames)
+            {
+                var path = $"Assets/_Project/Sprites/Characters/Rat/TrialV1/{spriteName}";
+                var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+                var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+                Assert.NotNull(texture, path);
+                Assert.NotNull(importer, path);
+                Assert.AreEqual(64, texture.width, path);
+                Assert.AreEqual(64, texture.height, path);
+                Assert.AreEqual(32f, importer.spritePixelsPerUnit, 0.0001f, path);
+
+                var settings = new TextureImporterSettings();
+                importer.ReadTextureSettings(settings);
+                Assert.AreEqual((int)SpriteAlignment.Custom, settings.spriteAlignment, path);
+                Assert.AreEqual(new Vector2(0.5f, 0.25f), settings.spritePivot, path);
+            }
+
+        }
+
+        [Test]
+        public void RatVisualGroundingResolver_ExcludesTriggersAndSelectsGroundSurface()
+        {
+            var candidates = new[]
+            {
+                new RatGroundSurfaceCandidate(-0.02f, 1f, false, false, true),
+                new RatGroundSurfaceCandidate(0.07f, 1f, false, true, true),
+                new RatGroundSurfaceCandidate(0.7f, 1f, true, false, false),
+                new RatGroundSurfaceCandidate(0.15f, 1f, false, false, false),
+                new RatGroundSurfaceCandidate(0.18f, 0f, false, false, true)
+            };
+
+            var found = RatVisualGroundingResolver.TrySelectHighestSurface(
+                candidates,
+                candidates.Length,
+                0f,
+                0.2f,
+                0.5f,
+                0.5f,
+                out var surfaceHeight);
+
+            Assert.True(found);
+            Assert.AreEqual(-0.02f, surfaceHeight, 0.0001f);
+        }
+
+        [Test]
+        public void RatDirectionalSpriteView_KeepsGroundHeightAcrossRiskTriggerAndExcludesOwnCharacterController()
+        {
+            var floor = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            floor.name = "Grounding Test Floor";
+            floor.transform.position = new Vector3(0f, -0.12f, 0f);
+            floor.transform.localScale = new Vector3(10f, 0.2f, 10f);
+
+            var toxicSurface = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            toxicSurface.name = "Grounding Test Trigger Surface";
+            toxicSurface.transform.position = new Vector3(0f, 0.03f, 0f);
+            toxicSurface.transform.localScale = new Vector3(2.6f, 0.08f, 1.5f);
+            toxicSurface.GetComponent<BoxCollider>().isTrigger = true;
+
+            var host = new GameObject("Grounding Test RatHost");
+            var characterController = host.AddComponent<CharacterController>();
+            characterController.height = 0.7f;
+            characterController.radius = 0.25f;
+            characterController.center = new Vector3(0f, 0.35f, 0f);
+            var ratController = host.AddComponent<RatHostController>();
+
+            var visual = new GameObject("Grounding Test RatVisual");
+            visual.transform.SetParent(host.transform, false);
+            var spriteRenderer = visual.AddComponent<SpriteRenderer>();
+            var view = visual.AddComponent<RatDirectionalSpriteView>();
+            view.ratHostController = ratController;
+            view.spriteRenderer = spriteRenderer;
+
+            Physics.SyncTransforms();
+            view.RefreshGrounding();
+
+            Assert.True(view.HasGroundSurface);
+            Assert.AreEqual(-0.02f, view.CurrentGroundSurfaceY, 0.001f);
+            Assert.AreEqual(0.1875f, view.CurrentVisibleFootBottomOffset, 0.001f);
+            Assert.AreEqual(0.1725f, visual.transform.position.y, 0.001f);
+            Assert.AreEqual(-0.015f, view.CurrentVisibleFootY, 0.001f);
+            Assert.AreEqual(0.005f, view.CurrentGroundClearance, 0.001f);
+
+            var cameraObject = new GameObject("Grounding Direction Camera");
+            var directions = new[]
+            {
+                RatSpriteDirection.South, RatSpriteDirection.SouthEast, RatSpriteDirection.East, RatSpriteDirection.NorthEast,
+                RatSpriteDirection.North, RatSpriteDirection.NorthWest, RatSpriteDirection.West, RatSpriteDirection.SouthWest
+            };
+            var moves = new[]
+            {
+                Vector3.back, Vector3.back + Vector3.left, Vector3.left, Vector3.forward + Vector3.left,
+                Vector3.forward, Vector3.forward + Vector3.right, Vector3.right, Vector3.back + Vector3.right
+            };
+            var expectedFootOffsets = new[] { 0.1875f, 0.15625f, 0.15625f, 0.40625f, 0.375f, 0.28125f, 0.09375f, 0.15625f };
+
+            for (var i = 0; i < directions.Length; i++)
+            {
+                host.transform.position = Vector3.zero;
+                Physics.SyncTransforms();
+                view.RefreshDirection(moves[i], cameraObject.transform);
+                view.RefreshGrounding();
+
+                Assert.AreEqual(directions[i], view.CurrentDirection);
+                Assert.AreEqual(expectedFootOffsets[i], view.CurrentVisibleFootBottomOffset, 0.001f);
+                Assert.AreEqual(-0.02f + expectedFootOffsets[i] + 0.005f, visual.transform.position.y, 0.001f);
+                Assert.AreEqual(-0.015f, view.CurrentVisibleFootY, 0.001f);
+                Assert.AreEqual(0.005f, view.CurrentGroundClearance, 0.001f);
+
+                var insideRiskFootY = view.CurrentVisibleFootY;
+                host.transform.position = new Vector3(3f, 0f, 0f);
+                Physics.SyncTransforms();
+                view.RefreshGrounding();
+
+                Assert.AreEqual(-0.02f + expectedFootOffsets[i] + 0.005f, visual.transform.position.y, 0.001f);
+                Assert.AreEqual(insideRiskFootY, view.CurrentVisibleFootY, 0.001f);
+                Assert.AreEqual(0.005f, view.CurrentGroundClearance, 0.001f);
+            }
+
+            Object.DestroyImmediate(cameraObject);
+            Object.DestroyImmediate(host);
+            Object.DestroyImmediate(toxicSurface);
+            Object.DestroyImmediate(floor);
+        }
+
+        [Test]
+        public void RatDirectionalSpriteView_PixelSnapKeepsHostAndGroundClearanceWhileSnappingVisualHorizontally()
+        {
+            var floor = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            floor.transform.position = new Vector3(0f, -0.12f, 0f);
+            floor.transform.localScale = new Vector3(10f, 0.2f, 10f);
+
+            var host = new GameObject("Pixel Snap RatHost");
+            host.transform.position = new Vector3(0.1234f, 0f, -0.0987f);
+            var ratController = host.AddComponent<RatHostController>();
+            var visual = new GameObject("Pixel Snap RatVisual");
+            visual.transform.SetParent(host.transform, false);
+            var view = visual.AddComponent<RatDirectionalSpriteView>();
+            view.ratHostController = ratController;
+            view.enablePixelSnap = true;
+            view.pixelSnapPixelsPerUnit = 64f;
+
+            Physics.SyncTransforms();
+            view.RefreshGrounding();
+            var expectedGroundedY = visual.transform.position.y;
+            view.RefreshPixelSnap();
+
+            Assert.AreEqual(new Vector3(0.1234f, 0f, -0.0987f), host.transform.position);
+            Assert.AreEqual(0.125f, visual.transform.position.x, 0.0001f);
+            Assert.AreEqual(-0.09375f, visual.transform.position.z, 0.0001f);
+            Assert.AreEqual(expectedGroundedY, visual.transform.position.y, 0.0001f);
+            Assert.AreEqual(0.005f, view.CurrentGroundClearance, 0.0001f);
+
+            var unsnappedVisualPosition = new Vector3(0.1234f, expectedGroundedY, -0.0987f);
+            visual.transform.position = unsnappedVisualPosition;
+            view.enablePixelSnap = false;
+            view.RefreshPixelSnap();
+            Assert.AreEqual(unsnappedVisualPosition, visual.transform.position);
+
+            Object.DestroyImmediate(host);
+            Object.DestroyImmediate(floor);
+        }
+
+        [Test]
+        public void RatVisualPixelSnapper_InvalidPixelsPerUnitUsesOriginalPosition()
+        {
+            var position = new Vector3(0.1234f, 0.1725f, -0.0987f);
+
+            Assert.AreEqual(position, RatVisualPixelSnapper.SnapHorizontal(position, 0f));
+            Assert.AreEqual(position, RatVisualPixelSnapper.SnapHorizontal(position, float.NaN));
+            Assert.AreEqual(position, RatVisualPixelSnapper.SnapHorizontal(position, float.PositiveInfinity));
+        }
+
+        [Test]
         public void PrototypeCameraController_CyclesThroughThirdPersonQuarterViewAndTopView()
         {
             var cameraObject = new GameObject("Prototype Camera");
@@ -1579,6 +1862,70 @@ namespace LastHost.Prototype.Tests.EditMode
 
             Object.DestroyImmediate(target);
             Object.DestroyImmediate(cameraObject);
+        }
+
+        [Test]
+        public void PrototypeCameraController_QuarterViewOutputPixelSnapOnlySnapsCameraScreenPlane()
+        {
+            var cameraObject = new GameObject("Quarter View Pixel Snap Camera");
+            var camera = cameraObject.AddComponent<Camera>();
+            var controller = cameraObject.AddComponent<PrototypeCameraController>();
+            var target = new GameObject("Quarter View Pixel Snap Target");
+            target.transform.position = new Vector3(0.1234f, 0f, -0.0987f);
+            controller.hostTarget = target.transform;
+            controller.enableQuarterViewOutputPixelSnap = true;
+            controller.quarterViewOutputPixelHeight = 540;
+
+            controller.ToggleHostCameraMode();
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+
+            var unsnappedPosition = target.transform.position + controller.quarterViewOffset;
+            var expectedPosition = PrototypeCameraOutputPixelSnapper.SnapPosition(
+                unsnappedPosition,
+                cameraObject.transform.right,
+                cameraObject.transform.up,
+                true,
+                camera.orthographicSize,
+                540);
+            var expectedRotation = Quaternion.LookRotation(
+                target.transform.position + Vector3.up * controller.quarterViewFocusHeight - unsnappedPosition,
+                Vector3.up);
+
+            Assert.AreEqual(PrototypeCameraMode.QuarterView, controller.CurrentHostMode);
+            Assert.True(camera.orthographic);
+            Assert.AreEqual(expectedPosition, cameraObject.transform.position);
+            Assert.Less(Quaternion.Angle(expectedRotation, cameraObject.transform.rotation), 0.001f);
+            Assert.AreEqual(
+                Vector3.Dot(unsnappedPosition, cameraObject.transform.forward),
+                Vector3.Dot(cameraObject.transform.position, cameraObject.transform.forward),
+                0.0001f);
+            Assert.AreEqual(new Vector3(0.1234f, 0f, -0.0987f), target.transform.position);
+
+            controller.enableQuarterViewOutputPixelSnap = false;
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+            Assert.AreEqual(unsnappedPosition, cameraObject.transform.position);
+
+            Object.DestroyImmediate(target);
+            Object.DestroyImmediate(cameraObject);
+        }
+
+        [Test]
+        public void PrototypeCameraOutputPixelSnapper_UsesOriginalPositionForNonOrthographicOrInvalidHeight()
+        {
+            var position = new Vector3(0.1234f, 7.4f, -6.4987f);
+
+            Assert.True(PrototypeCameraOutputPixelSnapper.TryGetWorldUnitsPerPixel(5.2f, 540, out var unitsPerPixel));
+            Assert.AreEqual(2f * 5.2f / 540f, unitsPerPixel, 0.000001f);
+
+            Assert.AreEqual(
+                position,
+                PrototypeCameraOutputPixelSnapper.SnapPosition(position, Vector3.right, Vector3.up, false, 5.2f, 540));
+            Assert.AreEqual(
+                position,
+                PrototypeCameraOutputPixelSnapper.SnapPosition(position, Vector3.right, Vector3.up, true, 5.2f, 0));
+            Assert.AreEqual(
+                position,
+                PrototypeCameraOutputPixelSnapper.SnapPosition(position, Vector3.right, Vector3.up, true, float.NaN, 540));
         }
 
         [Test]
@@ -1739,20 +2086,44 @@ namespace LastHost.Prototype.Tests.EditMode
 
             var rat = Object.FindAnyObjectByType<RatHostController>(FindObjectsInactive.Include);
             var riskZoneObject = GameObject.Find("ToxicWaterRiskZone");
+            var ratVisualObject = GameObject.Find("RatVisual");
 
             Assert.NotNull(rat);
             Assert.NotNull(rat.GetComponent<CharacterController>());
             Assert.NotNull(riskZoneObject);
             Assert.NotNull(riskZoneObject.GetComponent<ImmuneRiskZone>());
+            Assert.NotNull(ratVisualObject);
 
             var trigger = riskZoneObject.GetComponent<BoxCollider>();
             var body = riskZoneObject.GetComponent<Rigidbody>();
 
             Assert.NotNull(trigger);
             Assert.True(trigger.isTrigger);
+            Assert.AreEqual(new Vector3(-0.7f, 0.03f, 1.35f), riskZoneObject.transform.localPosition);
+            Assert.AreEqual(new Vector3(2.6f, 0.08f, 1.5f), riskZoneObject.transform.localScale);
             Assert.NotNull(body);
             Assert.True(body.isKinematic);
             Assert.False(body.useGravity);
+
+            var ratVisual = ratVisualObject.GetComponent<RatDirectionalSpriteView>();
+            Assert.NotNull(ratVisual);
+            Assert.AreEqual(0.1875f, ratVisual.southVisibleFootBottomOffset, 0.0001f);
+            Assert.AreEqual(0.15625f, ratVisual.southWestVisibleFootBottomOffset, 0.0001f);
+            Assert.AreEqual(0.09375f, ratVisual.westVisibleFootBottomOffset, 0.0001f);
+            Assert.AreEqual(0.28125f, ratVisual.northWestVisibleFootBottomOffset, 0.0001f);
+            Assert.AreEqual(0.375f, ratVisual.northVisibleFootBottomOffset, 0.0001f);
+            Assert.AreEqual(0.40625f, ratVisual.northEastVisibleFootBottomOffset, 0.0001f);
+            Assert.AreEqual(0.15625f, ratVisual.eastVisibleFootBottomOffset, 0.0001f);
+            Assert.AreEqual(0.15625f, ratVisual.southEastVisibleFootBottomOffset, 0.0001f);
+            Assert.AreEqual(0.005f, ratVisual.groundClearance, 0.0001f);
+
+            var visual = GameObject.Find("ToxicWaterVisual");
+            var visualRenderer = visual != null ? visual.GetComponent<Renderer>() : null;
+            Assert.NotNull(visualRenderer);
+            Assert.True(visualRenderer.enabled);
+            Assert.AreEqual(-0.018f, visualRenderer.bounds.max.y, 0.0001f);
+            Assert.Less(visualRenderer.bounds.max.y, -0.015f);
+            Assert.False(riskZoneObject.GetComponent<Renderer>().enabled);
         }
 
         [Test]
@@ -1839,6 +2210,40 @@ namespace LastHost.Prototype.Tests.EditMode
             session.ResolveVirusFrame(collectedFragment: false, hitByWhiteBloodCell: true);
 
             Assert.AreEqual(PrototypeGameMode.VirusFailed, session.Mode);
+        }
+
+        private static Sprite CreateTestSprite(string name)
+        {
+            var texture = new Texture2D(1, 1) { name = name + " Texture" };
+            texture.SetPixel(0, 0, Color.white);
+            texture.Apply();
+            return Sprite.Create(texture, new Rect(0f, 0f, 1f, 1f), new Vector2(0.5f, 0.5f));
+        }
+
+        private static Sprite[] CreateTestWalkFrames(string direction)
+        {
+            var frames = new Sprite[8];
+            for (var i = 0; i < frames.Length; i++)
+            {
+                frames[i] = CreateTestSprite($"{direction} f{i + 1:00}");
+            }
+
+            return frames;
+        }
+
+        private static void DestroyTestSprites(Sprite[] sprites)
+        {
+            foreach (var sprite in sprites)
+            {
+                DestroyTestSprite(sprite);
+            }
+        }
+
+        private static void DestroyTestSprite(Sprite sprite)
+        {
+            var texture = sprite.texture;
+            Object.DestroyImmediate(sprite);
+            Object.DestroyImmediate(texture);
         }
 
         private static GameObject FindSceneGameObjectIncludingInactive(string objectName)

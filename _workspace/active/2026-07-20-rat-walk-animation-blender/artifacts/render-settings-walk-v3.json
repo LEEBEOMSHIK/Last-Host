@@ -1,0 +1,130 @@
+{
+  "asset_id": "rat-walk-trial-v3-exaggerated-motion",
+  "status": "trial-placeholder-not-final-art",
+  "blender_version": "5.1.2",
+  "source": {
+    "read_only_input": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-20-rat-walk-animation-blender\\artifacts\\source\\rat-walk-trial-v2.blend",
+    "output_blend": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-20-rat-walk-animation-blender\\artifacts\\source\\rat-walk-trial-v3-exaggerated-motion.blend",
+    "root_pivot": [
+      0,
+      0,
+      0
+    ],
+    "source_forward": "+X"
+  },
+  "timeline": {
+    "frames": [
+      1,
+      8
+    ],
+    "loop_repeat": "frame 9 is frame 1",
+    "fps": 8
+  },
+  "camera": {
+    "name": "RatWalkCamera",
+    "projection": "ORTHO",
+    "location": [
+      6.0,
+      -8.0,
+      6.0
+    ],
+    "orthographic_scale": 7.111111164093018
+  },
+  "lighting": {
+    "name": "RatWalkKeyLight",
+    "type": "SUN",
+    "location": [
+      -4.5,
+      -5.5,
+      10.0
+    ],
+    "energy": 2.0
+  },
+  "canvas": {
+    "width_px": 64,
+    "height_px": 64,
+    "transparent_background": true,
+    "rendered_with": "bpy.ops.render.render(write_still=True)"
+  },
+  "pivot_px_top_left": [
+    32,
+    48
+  ],
+  "animation": {
+    "root_location_scale_z_keyed": false,
+    "root_transform_keyframes": 0,
+    "leg_motion": "exaggerated diagonal-pair trot: 0.40 local-X paw stride and 0.28 local-Z swing lift",
+    "body_motion": "0.045 local-Z mesh-only two-pulse rhythm",
+    "tail_motion": "0.11 local-Y counter-swing"
+  },
+  "directions": [
+    {
+      "index": 0,
+      "direction": "S",
+      "source_yaw_degrees": -53.130102
+    },
+    {
+      "index": 1,
+      "direction": "SW",
+      "source_yaw_degrees": -25.904474
+    },
+    {
+      "index": 2,
+      "direction": "W",
+      "source_yaw_degrees": 36.869898
+    },
+    {
+      "index": 3,
+      "direction": "NW",
+      "source_yaw_degrees": 99.64427
+    },
+    {
+      "index": 4,
+      "direction": "N",
+      "source_yaw_degrees": 126.869898
+    },
+    {
+      "index": 5,
+      "direction": "NE",
+      "source_yaw_degrees": 154.095526
+    },
+    {
+      "index": 6,
+      "direction": "E",
+      "source_yaw_degrees": -143.130102
+    },
+    {
+      "index": 7,
+      "direction": "SE",
+      "source_yaw_degrees": -80.35573
+    }
+  ],
+  "verification": {
+    "png_count": 64,
+    "all_png_dimensions": [
+      64,
+      64
+    ],
+    "per_key_min_z": {
+      "f01": 0.0,
+      "f02": 0.0,
+      "f03": 0.0,
+      "f04": 0.0,
+      "f05": 0.0,
+      "f06": 0.0,
+      "f07": 0.0,
+      "f08": 0.0
+    },
+    "root_location": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "root_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "root_fcurves": 0
+  }
+}

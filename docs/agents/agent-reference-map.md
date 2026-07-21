@@ -1,6 +1,6 @@
 # 작업별 참조 문서 색인
 
-최종 수정일: 2026-07-13
+최종 수정일: 2026-07-21
 
 ## 목적
 
@@ -129,17 +129,19 @@
 - `docs/design/progression/host-experience-traits.md`
 - `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
 
-### 도트풍 저폴리 3D / 비주얼
+### 도트풍 하이브리드 2.5D / 비주얼
 
 사용 요청 예시:
 
 - 비주얼 스타일 확인
-- 저폴리 모델, 픽셀 텍스처, 저해상도 렌더링 기준 확인
+- 3D 환경, 저폴리 3D 캐릭터 원본, 8방향 프리렌더드 스프라이트 기준 확인
+- 방향별 피벗·애니메이션·가림·그림자와 저해상도 렌더링 기준 확인
 - 카메라와 플레이스홀더 에셋 기준 정리
 
 필수 참조:
 
 - `docs/design/game-design-summary.md`
+- `docs/design/visual/graphics-direction-management.md`
 - `docs/design/visual/pixel-lowpoly-3d-production-guide.md`
 - `.codex/skills/pixel-lowpoly-style-keeper/SKILL.md`
 
@@ -147,6 +149,32 @@
 
 - `.codex/skills/pixel-lowpoly-style-keeper/references/pixel-style-rules.md`
 - `docs/prototype/plans/rat-host-ai-assisted-art-workflow.md` (AI 보조 콘셉트·텍스처·타일·UI 아이콘 초안의 승인·선별·후속 3D/Unity 작업 순서를 정할 때)
+
+### Blender 원본 / 리깅 / 애니메이션 시험 렌더
+
+사용 요청 예시:
+
+- Blender에서 저폴리 캐릭터 원본을 만들거나 수정해 달라는 요청
+- 쥐의 걷기·대기·피격 같은 시험 애니메이션 제작 또는 수정
+- 8방향 프리렌더드 스프라이트용 카메라·피벗·루프·접지 검증
+
+필수 참조:
+
+- `.agents/blender-animation-tech-artist-agent.md`
+- `docs/design/visual/pixel-lowpoly-3d-production-guide.md`
+- `.codex/skills/pixel-lowpoly-style-keeper/SKILL.md`
+- 해당 `_workspace/active/<작업ID>/task.md`
+
+선택 참조:
+
+- `.agents/visual-tech-art-agent.md`
+- `.agents/qa-verification-agent.md`
+- 해당 작업의 기존 `.blend`, 프레임 맵, 렌더 설정, 시각 검토 기록
+
+운영 경계:
+
+- 실제 Blender 원본·애니메이션·시험 렌더는 Blender 애니메이션 테크아트 에이전트에 배정한다.
+- Unity 반입은 사용자 별도 승인 뒤 Unity 씬/통합 구현 에이전트에 분리 배정한다.
 
 ### 에이전트 배정 / 스킬 운영
 

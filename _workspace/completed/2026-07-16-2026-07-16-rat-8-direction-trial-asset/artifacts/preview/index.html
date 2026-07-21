@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>마지막 숙주 — 쥐 8방향 시험 에셋</title>
+  <style>
+    :root { color-scheme: dark; --bg:#17181b; --panel:#24262a; --line:#3a3e45; --text:#f2eee7; --muted:#aaa59d; --pink:#be807c; --green:#9fcf9c; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at top,#25272b 0,#17181b 46rem); color:var(--text); font:15px/1.55 system-ui,"Malgun Gothic",sans-serif; }
+    main { width:min(1180px,calc(100% - 32px)); margin:36px auto 72px; }
+    h1 { margin:0 0 6px; font-size:clamp(25px,4vw,42px); letter-spacing:-.04em; }
+    h2 { margin:0 0 14px; font-size:19px; }
+    p { margin:6px 0; }
+    .lead { color:var(--muted); max-width:78ch; }
+    .badge { display:inline-block; margin-right:7px; padding:3px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:12px; }
+    section { margin-top:28px; padding:20px; border:1px solid var(--line); border-radius:14px; background:rgba(36,38,42,.9); box-shadow:0 16px 45px #0005; }
+    .concept { display:grid; grid-template-columns:minmax(260px,420px) 1fr; gap:22px; align-items:center; }
+    .concept img { width:100%; border-radius:10px; display:block; }
+    .grid { display:grid; grid-template-columns:repeat(4,minmax(150px,1fr)); gap:14px; }
+    .card { border:1px solid var(--line); border-radius:10px; padding:10px; background:#1b1d20; }
+    .label { display:flex; justify-content:space-between; margin-bottom:8px; font-weight:700; }
+    .index { color:var(--muted); font-weight:400; }
+    .sprite-frame { position:relative; width:256px; max-width:100%; aspect-ratio:1; margin:auto; overflow:hidden; background-color:#303237; background-image:linear-gradient(45deg,#3b3e44 25%,transparent 25%),linear-gradient(-45deg,#3b3e44 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#3b3e44 75%),linear-gradient(-45deg,transparent 75%,#3b3e44 75%); background-size:32px 32px; background-position:0 0,0 16px,16px -16px,-16px 0; }
+    .sprite-frame img { width:100%; height:100%; display:block; image-rendering:pixelated; image-rendering:crisp-edges; }
+    body.show-pivot .sprite-frame::before, body.show-pivot .sprite-frame::after { content:""; position:absolute; z-index:2; background:#fff8; pointer-events:none; }
+    body.show-pivot .sprite-frame::before { left:50%; top:calc(48 / 64 * 100% - 5px); width:1px; height:11px; }
+    body.show-pivot .sprite-frame::after { left:calc(50% - 5px); top:calc(48 / 64 * 100%); width:11px; height:1px; }
+    .sheet-wrap { overflow:auto; padding:16px; background:#151619; border-radius:10px; }
+    .sheet { display:block; width:1024px; max-width:none; height:128px; image-rendering:pixelated; image-rendering:crisp-edges; background:#2b2d31; }
+    button { margin-top:12px; padding:8px 12px; border:1px solid var(--line); border-radius:8px; background:#30333a; color:var(--text); cursor:pointer; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { width:190px; color:var(--muted); font-weight:500; }
+    .ok { color:var(--green); }
+    @media (max-width:850px) { .grid { grid-template-columns:repeat(2,minmax(140px,1fr)); } .concept { grid-template-columns:1fr; } }
+    @media (max-width:480px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body class="show-pivot">
+<main>
+  <header>
+    <span class="badge">시험 플레이스홀더</span><span class="badge">Unity 미반입</span><span class="badge">64×64 / 투명 PNG</span>
+    <h1>쥐 8방향 프리렌더 시험</h1>
+    <p class="lead">하나의 저폴리 3D 메시를 고정 직교 카메라와 고정 조명 아래 회전해 출력했습니다. 각 방향을 따로 생성한 AI 이미지가 아닙니다.</p>
+  </header>
+
+  <section class="concept">
+    <img src="../concept/rat-concept-reference-v1.png" alt="쥐 저폴리 실루엣과 팔레트 콘셉트 참고안">
+    <div>
+      <h2>콘셉트 참고 1안</h2>
+      <p>built-in imagegen으로 만든 실루엣·비율·팔레트 참고용 이미지입니다. 실제 방향 프레임의 형태나 픽셀을 생성하는 데 사용하지 않았습니다.</p>
+      <p class="lead">선별 반영: 큰 몸통, 긴 주둥이, 둥근 귀, 탁한 회갈색과 분홍색. 미반영: 사실적인 발가락·수염·고밀도 면 분할.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>방향별 4배 Point 확대</h2>
+    <p class="lead">순서: S, SW, W, NW, N, NE, E, SE. 흰 십자선은 모든 셀에 동일한 루트 피벗 (32, 48)을 표시합니다.</p>
+    <div class="grid">
+      <article class="card"><div class="label">S <span class="index">00</span></div><div class="sprite-frame"><img src="../renders/rat-00-s.png" alt="남쪽 방향 쥐"></div></article>
+      <article class="card"><div class="label">SW <span class="index">01</span></div><div class="sprite-frame"><img src="../renders/rat-01-sw.png" alt="남서 방향 쥐"></div></article>
+      <article class="card"><div class="label">W <span class="index">02</span></div><div class="sprite-frame"><img src="../renders/rat-02-w.png" alt="서쪽 방향 쥐"></div></article>
+      <article class="card"><div class="label">NW <span class="index">03</span></div><div class="sprite-frame"><img src="../renders/rat-03-nw.png" alt="북서 방향 쥐"></div></article>
+      <article class="card"><div class="label">N <span class="index">04</span></div><div class="sprite-frame"><img src="../renders/rat-04-n.png" alt="북쪽 방향 쥐"></div></article>
+      <article class="card"><div class="label">NE <span class="index">05</span></div><div class="sprite-frame"><img src="../renders/rat-05-ne.png" alt="북동 방향 쥐"></div></article>
+      <article class="card"><div class="label">E <span class="index">06</span></div><div class="sprite-frame"><img src="../renders/rat-06-e.png" alt="동쪽 방향 쥐"></div></article>
+      <article class="card"><div class="label">SE <span class="index">07</span></div><div class="sprite-frame"><img src="../renders/rat-07-se.png" alt="남동 방향 쥐"></div></article>
+    </div>
+    <button type="button" id="pivot">피벗 표시 켜기/끄기</button>
+  </section>
+
+  <section>
+    <h2>512×64 스프라이트 시트</h2>
+    <div class="sheet-wrap"><img class="sheet" src="../renders/rat-8dir-sheet.png" alt="쥐 8방향 스프라이트 시트"></div>
+  </section>
+
+  <section>
+    <h2>재현 기준</h2>
+    <table>
+      <tr><th>원본</th><td><code>source/rat-trial-v1.obj</code> — 528 vertices, 924 triangles</td></tr>
+      <tr><th>렌더 명령</th><td><code>python source/render_rat_8dir.py</code></td></tr>
+      <tr><th>카메라·조명</th><td>고정 직교 카메라, 고정 단일 키 라이트, 안티앨리어싱 없음</td></tr>
+      <tr><th>팔레트</th><td>투명 제외 7색, 큰 면 단위 양자화</td></tr>
+      <tr><th>현재 판정</th><td class="ok">파이프라인·방향 비교용 시험 에셋. 최종 아트와 Unity 적용값은 미확정.</td></tr>
+    </table>
+  </section>
+</main>
+<script>document.getElementById('pivot').addEventListener('click',()=>document.body.classList.toggle('show-pivot'));</script>
+</body>
+</html>

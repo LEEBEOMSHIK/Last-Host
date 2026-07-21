@@ -14,6 +14,12 @@
 - 여기서 멈춤: bundled client의 `list_apps`가 첫 시도와 규정된 복구 1회 모두 native pipe unavailable `os error 2`로 실패했다. 금지된 UI 우회 없이 중단했다.
 - 다음 세션의 첫 목표: Computer Use helper 연결 복구 또는 사용자 수동 검증 가능 여부를 확인한 뒤, 같은 새 Windows 빌드 세션의 전체 단계·화면·로그 증거를 확보한다.
 
+## 2026-07-20 재개 조건 재점검
+
+- Computer Use 표준 bootstrap→`list_apps`, 2초 후 재시도, 세션 초기화 후 재-bootstrap→`list_apps`가 모두 native pipe unavailable `os error 2`로 실패했다.
+- Windows 빌드·창 포커스·실제 입력·자연 경계도 100%·내부 성공 루프·동일 세션 `Player.log` 검사는 실행하지 않았다. 코드·Unity·Builds는 변경하지 않았다.
+- 상태는 QA `차단`·총괄 `보류`로 유지한다. 재개하려면 helper `list_apps` 정상 응답 또는 사용자 제공의 같은 연속 루프 화면·`Player.log`가 필요하다.
+
 ## 넘기는 에이전트
 
 프로젝트 조정/문서 릴리즈 에이전트 `natural_loop_coordinator`
