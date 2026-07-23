@@ -18,11 +18,10 @@
 
 ## 현재 저장소 상태
 
-- 최신 커밋: `d5d1ade docs: record verification handoff state`
-- 원격 반영: `origin/main`이 `d5d1ade`로 HEAD와 일치
-- Unity 변경: 쥐 방향 표시 코드·씬·EditMode 테스트·8개 Sprite/Import 변경 있음. ProjectSettings·Build Settings·패키지 순변경 없음
-- 미커밋 작업: 도트풍 하이브리드 2.5D 방향 문서·완료 보관 기록, 8방향 쥐 시험 에셋과 Unity 시험 반입 구현·검증 패킷
-- 작업 범위 밖 로컬 변경: `.codex/config.toml`, `_workspace/previews/`
+- 최신 커밋: `63012d5 fix: restore game view camera output`
+- 원격 반영: `origin/main`이 `63012d5`로 HEAD와 일치
+- 이번 커밋: `RatHostPrototype`의 Display 1 프레임 카메라, Game 뷰 출력 복구 작업 패킷·실제 OS 입력 증적·현황판
+- 작업 범위 밖 로컬 변경: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY`, `_workspace/previews/`
 
 ## 현재 진행 중
 
