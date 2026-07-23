@@ -1,6 +1,6 @@
 # 현재 작업 후보와 핸드오프 현황
 
-최종 갱신: 2026-07-21 KST
+최종 갱신: 2026-07-23 KST
 
 ## 목적
 
@@ -28,6 +28,7 @@
 
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
+| Game 뷰 카메라 출력 복구 | 보류 — 실제 W·idle 안정화 통과 / D·W+D 시각·이번 세션 Console 재검증 필요 | 실제 OS `W` 2초 입력에서 Game HUD·쥐·월드·카메라 출력 변화를 확인했고, 키 해제 후 0.25~1.25초 화면은 SHA-256까지 동일했다. 다만 D·W+D는 입력 전송만 확인됐고, native MCP 전송 단절로 이번 세션 Console 상세도 미검증이다. `APP_UI_EDITOR_ONLY`은 범위 밖 자동 변경으로 계속 제외한다. | `_workspace/active/2026-07-21-game-view-camera-output-fix/` |
 | 쥐 v3 걷기 Unity 실제 화면 시험 | 회귀 QA 통과 — 사용자 WASD 체감·EditMode TestRunner·총괄 판정 대기 | 뒤로 걷는 축 반전, 정지 시 TrialV1로 바뀌던 경로, 기본 원근 시점을 각각 보정했다. 독립 QA가 dirty 씬을 저장·재로드하지 않고 QuarterView 직교 Play, 8방향 v3 `f01→f04→f01`, 접지, 콘솔을 재확인했다. | `_workspace/active/2026-07-20-rat-walk-unity-visual-trial/` |
 | 캐릭터 스프라이트 해상도 상향·공통 기준 | 회귀 QA 통과 — 사용자 화면 확인·TestRunner·총괄 재검토 대기 | v4 `128×128 / PPU64` 64장을 반입해 기존과 같은 2 Unity unit 폭을 유지했다. 독립 QA가 쿼터뷰 Play에서 Importer 64/64, 8방향 `f01→f04→f01`, 접지, 콘솔, 캡처를 통과시켰다. 이후 프리렌더 캐릭터·전경 게임플레이 오브젝트의 공통 시작 규격은 제작 가이드에 기록했다. | `_workspace/active/2026-07-21-character-sprite-resolution-standard/` |
 | 쥐 v5b 고밀도 픽셀 처리 시험 | 회귀 QA 통과 — 사용자 화면 수용 대기 | v5a 저밀도 16색안은 보류하고, v5b의 27색 공통 팔레트·이진 알파·무디더 프레임과 `960×540` Point 정수 2배 출력·시각/카메라 픽셀 스냅을 실제 Play에서 통과시켰다. 그래픽 관리 문서는 내부 승인으로 연결했으며, v4 공통 기준은 사용자가 v5b 화면을 수용하기 전까지 유지한다. | `_workspace/active/2026-07-21-rat-pixel-treatment-v5/` |
