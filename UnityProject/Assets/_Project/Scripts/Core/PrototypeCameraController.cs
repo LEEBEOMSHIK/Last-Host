@@ -31,7 +31,10 @@ namespace LastHost.Prototype.Cameras
 
         [Header("Quarter View")]
         public Vector3 quarterViewOffset = new Vector3(-2.8f, 7.4f, -6.4f);
-        public float quarterViewFocusHeight = 0.3f;
+        // RatHost is a ground/collision root while RatVisual is a raised sprite child.
+        // Aim at the rendered body centre rather than the root/feet so switching
+        // directional sprites keeps the visible rat anchored in the quarter-view frame.
+        public float quarterViewFocusHeight = 0.9f;
         public float quarterViewOrthographicSize = 5.2f;
 
         [Header("Quarter View Output Pixel Snap")]
@@ -207,7 +210,10 @@ namespace LastHost.Prototype.Cameras
 
             attachedCamera.orthographic = true;
             attachedCamera.orthographicSize = quarterViewOrthographicSize;
-            MoveCamera(position, rotation, deltaTime, snap);
+            // The host is the fixed visual anchor in quarter view. Smoothing here lets the
+            // moving rat drift away from the intended screen center, so apply this mode
+            // immediately before snapping the final output position to the render grid.
+            MoveCamera(position, rotation, deltaTime, snap: true);
             RefreshQuarterViewOutputPixelSnap();
         }
 

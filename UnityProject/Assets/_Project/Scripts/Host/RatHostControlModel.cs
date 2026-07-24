@@ -47,6 +47,9 @@ namespace LastHost.Prototype.Host
                         controlRatio);
                 }
 
+                // Passive host instinct is intentionally autonomous. RatVisual and the
+                // follow camera now stay anchored to RatHost, so idle wandering no longer
+                // creates the previous root/visual separation.
                 return new RatHostControlFrame(
                     instinct,
                     Mathf.Clamp01(passiveInstinctSpeedMultiplier),
@@ -55,12 +58,12 @@ namespace LastHost.Prototype.Host
             }
 
             var isForcedControl = controlRatio < 1f && Vector3.Dot(instinct, input) <= conflictDotThreshold;
-            var blended = controlRatio >= 1f
-                ? input
-                : FlattenNormalizedOrFallback((instinct * (1f - controlRatio)) + (input * controlRatio), input);
             var speedMultiplier = isForcedControl ? Mathf.Clamp01(forcedControlSpeedMultiplier) : 1f;
 
-            return new RatHostControlFrame(blended, speedMultiplier, isForcedControl, controlRatio);
+            // Player input must remain a reliable camera-relative direction. Host instinct
+            // still drives the rat when idle and can apply the forced-control penalty, but
+            // it must not bend an active WASD direction into an unintended path.
+            return new RatHostControlFrame(input, speedMultiplier, isForcedControl, controlRatio);
         }
 
         private static Vector3 FlattenNormalizedOrFallback(Vector3 value, Vector3 fallback)

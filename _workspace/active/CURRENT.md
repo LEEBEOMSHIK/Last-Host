@@ -2,28 +2,30 @@
 
 ## 현재 이어받을 작업
 
-- 작업 ID: `2026-07-21-game-view-camera-output-fix`
-- 상태: 보류 — 실제 W 이동·idle 안정화는 통과했으나 D·W+D 시각 결과와 이번 세션 Console 재검증이 남음.
-- 작업 경로: `_workspace/active/2026-07-21-game-view-camera-output-fix/`
+- 작업 ID: `2026-07-16-natural-alert-build-loop-verification`
+- 상태: 차단 — Computer Use 연결과 새 빌드 실행은 복구됐지만 게임 창 캡처가 `SetIsBorderRequired 0x80004002`로 최초·복구 1회 모두 실패했다. 화면·포커스 증거 없이 입력하지 않았으며 자연 성공 루프는 미검증.
+- 작업 경로: `_workspace/active/2026-07-16-natural-alert-build-loop-verification/`
 
 ## 먼저 읽을 파일
 
-1. `_workspace/active/2026-07-21-game-view-camera-output-fix/task.md`
-2. `_workspace/active/2026-07-21-game-view-camera-output-fix/handoff.md`
-3. `_workspace/active/2026-07-21-rat-pixel-treatment-v5/verification.md`
+1. `_workspace/active/2026-07-16-natural-alert-build-loop-verification/handoff.md`
+2. `_workspace/active/2026-07-16-natural-alert-build-loop-verification/verification.md`
+3. `_workspace/active/2026-07-16-natural-alert-build-loop-verification/task.md`
 
 ## 바로 이어서 할 작업
 
-1. native MCP transport를 복구한 뒤 QA가 이번 세션 Console 상세과 D·W+D 이동 중 Game 뷰를 재검증한다.
-2. 사용자가 Display 1에서 직선·대각 이동 중 쥐-카메라 정합을 확인한다.
-3. QA·총괄 보류가 해소된 뒤에만 커밋을 판단한다.
+1. 사용자가 지시한 카메라·이동 완료 변경, 완료 보관 기록, 자연 경계도 재개 차단 기록, `CURRENT.md`, 상태판만 선별 스테이징한다.
+2. `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, 그 외 예상 밖 경로가 제외됐는지 QA 대조한 뒤 커밋·푸시한다.
+3. 다음 작업은 쥐 걷기·스프라이트·픽셀·카메라 관련 EditMode 회귀 테스트 일괄 실행 및 기술 게이트 종결을 우선한다.
+4. Windows 게임 창 캡처가 지원되는 환경으로 바뀌거나 사용자가 같은 연속 루프의 단계별 화면·해당 세션 `Player.log`를 제공하면 현재 엄격 검증을 재개한다.
 
 ## 제외하거나 건드리면 안 되는 변경
 
-- `.codex/config.toml`, `_workspace/previews/`는 범위 밖이다.
-- 자연 경계도 엄격 검증의 active·QA `차단`·총괄 `보류` 판정은 사용자 또는 검증 근거 없이 바꾸지 않는다.
+- `UnityProject/`, `Builds/`, 패키지·에셋은 이 검증에서 수정하거나 재생성하지 않는다.
+- `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` 변경과 `_workspace/previews/`는 이전 작업의 범위 밖 변경으로 유지한다.
+- `F6`, MCP/Inspector/메모리 상태 주입, 서로 다른 실행 세션의 증거 조합은 엄격 성공 근거로 사용하지 않는다.
 
 ## 갱신 정보
 
-- 마지막 갱신: 2026-07-23 KST
-- 갱신자: Codex 메인 에이전트
+- 마지막 갱신: 2026-07-24 KST
+- 갱신자: 문서/릴리즈 에이전트

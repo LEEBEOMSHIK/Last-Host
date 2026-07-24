@@ -4,7 +4,7 @@
 
 - 작업 ID: `2026-07-16-natural-alert-build-loop-verification`
 - 작업명: 자연 경계도 100% Windows 빌드 성공 루프 엄격 검증
-- 상태: 차단 — Windows Computer Use 연결 복구 또는 사용자 수동 검증 필요
+- 상태: 차단 — Computer Use 연결은 복구됐으나 게임 창 캡처가 `SetIsBorderRequired 0x80004002`로 실패
 - 생성일: 2026-07-16
 - 담당 에이전트: QA/검증 에이전트
 - 보조 에이전트: 프로젝트 총괄 관리자 에이전트, 문서/릴리즈 에이전트
@@ -141,23 +141,37 @@
 - 재개 조건 B: 사용자가 기존 Windows 빌드를 직접 조작하고 같은 연속 루프의 단계별 화면·해당 세션 `Player.log`를 제공하거나 확인하면 QA가 그 증거를 판정한다.
 - 재개 전 기능 완료 커밋·푸시: 금지. 다만 사용자 명시 지시에 따른 차단 상태 기록 커밋은 QA/총괄의 예외 범위 재대조 후 허용한다.
 
+## 2026-07-24 재개 승인
+
+- 사용자 지시: 현재 카메라·이동 작업을 종료·보관하고, Computer Use 연결을 확인한 뒤 이 엄격 검증을 재개한다.
+- 재개 범위: 기존 Windows 빌드와 실제 플레이 입력·화면·동일 세션 `Player.log`의 읽기·실행 검증.
+- 유지되는 금지: 빌드 재생성, Unity 코드·씬·설정 수정, F6, 상태 직접 주입, 다른 세션 증거 조합.
+- 첫 게이트: Computer Use 표준 클라이언트의 `list_apps` 정상 응답.
+
+## 2026-07-24 재개 결과
+
+- `list_apps`, `list_windows`, 새 빌드 실행과 단일 `Last Host` 창 식별은 통과했다.
+- 게임 창 `get_window_state` 캡처는 최초와 새 창 객체 복구 1회 모두 `SetIsBorderRequired 0x80004002`로 실패했다.
+- 화면·포커스·입력 전달 증거 없이 키를 보내지 않았고, 자연 경계도 100% 이후 필수 단계는 모두 미검증이다.
+- 새 차단 해소 조건: Computer Use가 해당 게임 창을 정상 캡처하거나, 사용자가 같은 연속 성공 루프의 단계별 화면과 해당 세션 `Player.log`를 제공한다.
+
 ## 커밋 범위
 
-- `_workspace/`의 누적 active→completed 이동과 완료 패킷.
-- 현재 active 차단 작업 `_workspace/active/2026-07-16-natural-alert-build-loop-verification/`의 기록.
-- `docs/project-handoff/current-task-board.md`.
-- `_workspace/active/CURRENT.md`.
-- 검증 중 생성한 소형 화면·텍스트·로그 증거는 작업 패킷의 `artifacts/`에 한해 포함할 수 있다.
-- `.codex/config.toml`은 작업 범위 밖 사용자 로컬 변경으로 반드시 제외한다.
-- `UnityProject/`와 `Builds/`에 새 diff가 생기면 커밋을 중지하고 원인과 처리 방향을 보고한다.
+- 완료된 카메라·이동 Unity 변경 5개: `RatHostPrototype.unity`, `PrototypeCameraController.cs`, `RatDirectionalSpriteView.cs`, `RatHostControlModel.cs`, `RatHostPrototypeCoreTests.cs`.
+- `_workspace/active/2026-07-21-game-view-camera-output-fix/`에서 `_workspace/completed/2026-07-24-2026-07-21-game-view-camera-output-fix/`로 이동한 전체 패킷과 완료 보고·증거.
+- 현재 active 차단 작업 `_workspace/active/2026-07-16-natural-alert-build-loop-verification/`의 2026-07-24 재개 QA·총괄 차단 기록과 `artifacts/Player-NATURAL-20260724-attempt-1.log`, `artifacts/attempt-NATURAL-20260724-1.md`.
+- `_workspace/active/CURRENT.md`와 `docs/project-handoff/current-task-board.md`.
+- 명시 제외: `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, 그 외 예상 밖 경로.
+- `Builds/`와 위 5개를 제외한 `UnityProject/`에 새 diff가 생기면 커밋을 중지하고 원인과 처리 방향을 보고한다.
 
 ## 사용자 커밋 예외 경계
 
-- 목적: 현재 저장소의 누적 완료 보관과 엄격 검증 차단 상태를 원격에 보존한다.
-- 기능 판정: 완료 아님. QA `차단`, 총괄 `보류`, active 유지.
-- 제외: `.codex/config.toml`, `UnityProject/`, `Builds/`.
-- 사전 게이트: QA/총괄이 포함·제외 범위와 기능 완료 아님 표기를 재검토하기 전에는 `git add`, `commit`, `push`하지 않는다.
-- 후속: 커밋·푸시 후에도 재개 조건 A 또는 B를 충족해 엄격 검증을 다시 수행한다.
+- 2026-07-24 최신 사용자 지시: “일단 커밋 푸쉬하고, current-task-board.md 이 파일에 왜 업데이트 안했어?”
+- 목적: 완료된 카메라·이동 변경과 보관 기록, 최신 active 차단 상태, 실제 다음 작업 후보를 함께 원격에 보존한다.
+- 기능 판정: 카메라·이동 작업은 완료 보관. 자연 경계도 엄격 검증은 완료 아님, QA `차단`, 총괄 `보류`, active 유지.
+- 제외: `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/`, 그 외 예상 밖 경로.
+- 사전 게이트: 지정 범위만 스테이징하고 staged 경계·`git diff --cached --check`를 재확인한다.
+- 후속: 커밋·푸시 후에도 자연 경계도 엄격 검증은 재개 조건 A 또는 B를 충족해 다시 수행한다.
 
 ## 커밋 전 차단 조건
 

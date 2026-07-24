@@ -147,3 +147,30 @@
 - 커밋·푸시 후에도 active·차단·재개 조건을 유지하고 기능 완료를 주장하지 않는다.
 - post-push QA가 HEAD·원격 반영·제외 범위·active 차단 상태를 대조해야 한다.
 - 총괄 에이전트는 `git add`, commit, push를 실행하지 않았다.
+
+## 2026-07-24 KST — Computer Use 연결 재확인 준비
+
+- 사용자가 이전 카메라·이동 작업의 종료·보관과 본 엄격 검증 재개를 명시했다.
+- 현재 성공 주장은 기존 기준 그대로 유지한다: 같은 Windows 빌드 실행 세션에서 `RatHost 시작 → 자연 경계도 100% → 기본 WhiteBloodCellEvasion → 조각 3개 → 변이 선택 → 변이 적용 RatHost 복귀`.
+- 첫 실행 게이트는 Computer Use bundled client의 `list_apps` 정상 응답이다.
+- 연결 전에는 빌드를 실행하거나 다른 입력 도구로 우회하지 않는다.
+
+## 2026-07-24 11:05 KST — Windows 빌드 엄격 검증 재개 시도 1
+
+- 담당 수행 주체: QA/검증 에이전트 `qa_natural_alert_windows_loop`
+- Computer Use 표준 bundled client의 `list_apps`와 `list_windows`가 정상 응답해 이전 native pipe `os error 2` 차단 해소를 확인했다.
+- 기존 해시의 빌드를 명시적 exe 경로로 실행했고, 실행 전 0개였던 대상 빌드 창이 PID `73708`, window id `15532732`, title `Last Host`인 정확히 1개 새 창으로 나타났다.
+- 시작 화면 캡처는 `SetIsBorderRequired failed ... 0x80004002`로 실패했다. 새 창 목록과 반환 객체로 재선택한 규정 복구 1회도 동일했다.
+- 화면·포커스 증거 없이 플레이 입력을 보내지 않았다. F6와 모든 상태 주입·우회 입력은 사용하지 않았다.
+- 대상 창을 Computer Use `Alt+F4`로 종료했고 창·프로세스 0개를 확인했다.
+- 동일 시도 `Player.log`를 `artifacts/Player-NATURAL-20260724-attempt-1.log`로 보존했다. Exception/Error/Crash/fatal/abort는 0건이며 비치명적 D3D12 `failed` 메시지 1건이 있다.
+- QA 판정: `차단`. 연결은 복구됐지만 단계별 화면과 핵심 플레이 전체가 미검증이다.
+
+## 2026-07-24 KST — 사용자 커밋·푸시 지시 및 상태판 후보 반영
+
+- 최신 사용자 지시: 완료된 변경을 우선 커밋·푸시하고, 누락된 `current-task-board.md` 다음 작업 후보를 갱신한다.
+- 상태판에 현재 active·보류와 중복하지 않는 후보를 반영했다: EditMode 회귀 테스트 일괄 실행 및 기술 게이트 종결(높음), v5b 사용자 최종 수용과 v3/v4/v5b 통합 종결(높음), Blender v3 과장 보행 사용자 시각 검토(중간).
+- 포함 범위를 완료된 카메라·이동 Unity 변경 5개, 해당 completed 이동 전체, 본 작업의 2026-07-24 재개 차단 기록과 두 artifact, `CURRENT.md`, 상태판으로 고정했다.
+- 제외 범위는 `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/`, 그 외 예상 밖 경로다.
+- 커밋 메시지 후보: `fix: stabilize rat movement and sync verification state`.
+- 문서/릴리즈 에이전트는 `git add`, commit, push를 실행하지 않았다.

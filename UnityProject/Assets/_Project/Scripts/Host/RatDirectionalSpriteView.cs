@@ -232,6 +232,9 @@ namespace LastHost.Prototype.Host
 
         /// <summary>
         /// Keeps only the billboard's horizontal world position on the configured sprite grid.
+        /// The gameplay root is the source anchor every frame; snapping the visual's previous
+        /// world position would feed the rounded result back into its local child position and
+        /// let the visible rat progressively detach from RatHost.
         /// Vertical snapping is intentionally excluded: the visible foot must retain its exact
         /// groundClearance even when a ground surface or clearance is not a grid multiple.
         /// </summary>
@@ -242,7 +245,14 @@ namespace LastHost.Prototype.Host
                 return;
             }
 
-            transform.position = RatVisualPixelSnapper.SnapHorizontal(transform.position, pixelSnapPixelsPerUnit);
+            var anchorPosition = ratHostController != null
+                ? ratHostController.transform.position
+                : transform.position;
+            var snappedAnchor = RatVisualPixelSnapper.SnapHorizontal(anchorPosition, pixelSnapPixelsPerUnit);
+            var visualPosition = transform.position;
+            visualPosition.x = snappedAnchor.x;
+            visualPosition.z = snappedAnchor.z;
+            transform.position = visualPosition;
         }
 
         private void ResolveReferences()

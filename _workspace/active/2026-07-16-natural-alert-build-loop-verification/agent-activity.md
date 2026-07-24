@@ -143,3 +143,88 @@
 - 미실행: Windows 빌드 실행·포커스·실제 입력·자연 경계도 100%·단계별 화면·동일 세션 `Player.log` 검사.
 - 금지 준수: 코드·Unity·Builds 변경, F6·상태 주입·PowerShell/SendKeys 우회를 수행하지 않았다.
 - 판정: QA **차단 유지**. 재개 조건은 helper `list_apps` 정상 응답 또는 사용자 연속 증거·동일 세션 `Player.log` 제공이다.
+
+### 2026-07-24 KST — 사용자 지시에 따른 엄격 검증 재개
+
+- 에이전트: 프로젝트 조정
+- 역할: 이전 차단 작업 재활성화와 검증 경계 복원
+- 수행 내용: 완료된 카메라·이동 작업을 `_workspace/completed/2026-07-24-2026-07-21-game-view-camera-output-fix/`로 보관하고, CURRENT·공유 현황판의 현재 작업을 본 엄격 검증으로 전환했다.
+- 유지 범위: 기존 Windows 빌드 실행, 실제 플레이 입력, 단계별 화면, 동일 세션 `Player.log`만 사용한다. F6·상태 주입·빌드 재생성·Unity 변경은 금지한다.
+- 판정: Computer Use `list_apps` 연결 확인부터 QA 재개.
+
+### 2026-07-24 KST — QA 차단 결과 통합
+
+- 에이전트: 프로젝트 조정
+- 역할: 재개 시도 결과 대조와 상태판 동기화
+- 수행 내용: Computer Use 연결·새 빌드 실행·단일 창 식별·정상 종료·동일 시도 로그 보존은 통과했으나, 게임 창 캡처가 `SetIsBorderRequired 0x80004002`로 실패해 실제 입력과 핵심 루프가 미검증인 QA 기록을 확인했다.
+- 증거 경계: 시작 HUD 화면이 없으므로 실제 플레이 입력을 보내지 않은 것은 엄격 검증 기준에 부합한다. 실패 시도 로그를 성공 근거로 확대하지 않는다.
+- 판정: QA `차단`을 CURRENT·공유 현황판에 반영하고 총괄 재판정 대기.
+
+### 2026-07-24 KST — 총괄 보류 판정·최신 차단 보고 동기화
+
+- 에이전트: 프로젝트 조정
+- 역할: 총괄 재판정 반영과 최신 보고 문서 정합화
+- 수행 내용: 총괄 `보류`와 QA `차단`을 확인했다. 기존 `completion-report.md`의 2026-07-16 native pipe 차단 설명을 2026-07-24 현재의 게임 창 캡처 오류, 현재 Git 경계, 새 재개 조건으로 갱신했다.
+- 완료 작업 확인: 카메라·이동 작업은 `_workspace/completed/2026-07-24-2026-07-21-game-view-camera-output-fix/`에 보관돼 있으며 공유 현황판과 일치한다.
+- 판정: 본 엄격 검증은 active `차단` 유지. 이번 요청에는 커밋·푸시 지시가 없어 수행하지 않는다.
+
+### 2026-07-24 11:05 KST — QA 재개 시도 1
+
+- 에이전트: QA/검증 에이전트 `qa_natural_alert_windows_loop`
+- 역할: 기존 Windows 빌드의 자연 경계도 100% 연속 성공 루프 독립 검증자
+- 수행 내용: 필수 기준과 `unity-verification-runner`, `computer-use` 지침을 확인했다. bundled client 연결, 빌드 해시·변경 경계, 새 실행본·정확한 단일 창 식별, 시작 화면 캡처·규정 복구 1회, 종료와 동일 시도 로그 보존을 수행했다.
+- 결과: `list_apps/list_windows` 연결과 새 빌드 창 생성은 통과했다. 게임 창 캡처가 `SetIsBorderRequired 0x80004002`로 최초·복구 모두 실패해 플레이 입력은 중단했다.
+- 산출물: `verification.md`, `work-log.md`, `handoff.md`, `artifacts/attempt-NATURAL-20260724-1.md`, `artifacts/Player-NATURAL-20260724-attempt-1.log`
+- 금지 준수: F6, Unity Editor/MCP/Inspector/reflection/메모리·세션 상태 주입, 터미널 UI·SendKeys 우회, 빌드·UnityProject 변경 없음.
+- 검증 또는 판정: `차단`. 이전 native pipe 연결 차단은 해소됐으나 필수 시각 관찰·실제 입력·자연 성공 루프·성공 세션 로그는 미검증이다.
+- 다음 인계 대상: Codex 메인 에이전트, 프로젝트 총괄 관리자 에이전트
+
+### 2026-07-24 KST — 재개 QA 총괄 재검토
+
+- 에이전트: 프로젝트 총괄 관리자 에이전트 `director_natural_alert_recheck`
+- 역할: 범위·증거·차단 판정 내부 재검토자
+- 수행 내용: AGENTS, 총괄 역할, 루프 엔지니어링 게이트, 공식 프로토타입·구현 계획, 작업 패킷 전체, 재개 시도 요약·`Player.log`, `CURRENT.md`, 공유 상태판, Git status/diff를 대조했다. Computer Use 연결·기존 빌드 실행·단일 창 식별은 확인됐지만 게임 창 캡처가 최초와 규정 복구 1회 모두 실패했고 화면 미확인 입력을 중단한 것이 엄격 검증 기준에 맞음을 확인했다.
+- 증거 경계: 시작 HUD부터 자연 100%, 기본 `WhiteBloodCellEvasion`, 조각 3개, 변이 선택, 적용 RatHost 복귀, 같은 성공 세션 로그는 모두 미검증이다. 짧은 실패 시도 로그의 정상 종료와 D3D12 `failed` 1줄을 전체 루프 안전성으로 확대하지 않는다.
+- 변경 경계: `Builds/` 변경 0, staged 0, 기존 Unity 미커밋 추적 경로 6개 유지, F6·상태 주입·빌드 재생성 없음. 완료된 카메라 작업의 completed 경로와 상태판·CURRENT의 현재 active 차단 포인터가 일치한다.
+- 생성/수정 산출물: `director-review.md`, `agent-activity.md`
+- 검증 또는 판정: `보류`. QA `차단` 유지, 기능 완료·완료 보관·기능 완료 커밋 주장 금지.
+- 재개 조건: Computer Use 게임 창 캡처 복구 또는 사용자의 같은 연속 세션 단계별 화면·해당 세션 `Player.log` 제공.
+- 문서 유의: `completion-report.md`는 아직 2026-07-16 native pipe 차단 기준이므로 최신 사용자 보고 근거로 사용하지 않고, 완료나 새 커밋 판정 전 최신 시도로 동기화해야 한다.
+
+## 2026-07-24 KST — 상태판 후보 동기화와 릴리즈 범위 준비
+
+- 담당: 문서/릴리즈 에이전트 `release_board_sync`
+- 역할: 공유 상태판·세션 포인터·작업 패킷의 최신 사용자 지시 반영
+- 수행 내용: 직전 다음 작업 발굴 결과를 `current-task-board.md`에 실제 반영하고, 현재 active·보류 항목과 중복하지 않는 후보 3개와 추천 순서를 기록했다. 완료된 카메라·이동 변경, completed 이동, 자연 경계도 재개 차단 기록, 상태판을 이번 커밋 범위로 고정했다.
+- 포함 범위: 카메라·이동 Unity 변경 5개, `2026-07-24-2026-07-21-game-view-camera-output-fix` completed 패킷 전체, 본 active 작업의 최신 차단 기록과 두 artifact, `CURRENT.md`, 상태판.
+- 제외 범위: `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/`, 그 외 예상 밖 경로.
+- 검증 또는 판정: 자연 경계도 엄격 검증은 active·QA `차단`·총괄 `보류`를 유지한다. 문서/릴리즈 에이전트는 스테이징·커밋·푸시를 실행하지 않았다.
+- 커밋 메시지 후보: `fix: stabilize rat movement and sync verification state`
+- 다음 인계 대상: Codex 메인 에이전트, staged 범위 QA/총괄 대조
+- 다음 인계 대상: Codex 메인 에이전트
+
+### 2026-07-24 KST — 선별 커밋 전 QA
+
+- 에이전트: QA/검증 에이전트
+- 역할: 이동·카메라 수정/보관 및 자연 경계도 차단 기록의 staged 범위 독립 검증자
+- 수행 내용: staged 38개 경로를 사용자 지시·루프 게이트·완료 카메라 패킷·active 자연 경계도 패킷·`CURRENT.md`·공유 상태판과 대조했다. `ProjectSettings.asset`, `_workspace/previews/`, `Builds/` staged 0, 예상 밖 staged 경로 0을 확인했다. 완료 카메라 패킷의 필수 문서와 QA `기능 통과 — MCP 대체 입력 범위`, 총괄 `내부 승인 가능`, 사용자 종료·보관 근거를 확인했다. 자연 경계도 작업은 active·QA `차단`·총괄 `보류`이며 기능 완료·보관 금지가 유지됨을 확인했다.
+- 증적 무결성: 전체 cached diff-check의 유일한 실패는 원본 `Player-NATURAL-20260724-attempt-1.log` 43줄의 CRLF 줄끝이다. 해당 로그 제외 cached diff-check는 종료 코드 0이다. 로그 SHA-256 `D6634589E1E1B4EE5763598937099ED474857F0909CF18F851843A6726D5B2C9`, index/worktree blob `82f14f1d15c92effc812af9e8074e8419cdd8608` 일치를 확인했고 원본은 수정하지 않았다.
+- 상태판 대조: 완료 카메라 경로가 실제 completed 경로와 일치하고, 자연 경계도 작업은 다음 후보에 중복되지 않는다. 후보 3개는 현재 active 시각 작업의 기술 회귀 종결·사용자 수용·Blender 시각 판정으로 현재 사실과 맞다. 추적 파일 없는 빈 `_workspace/active/2026-07-16-current-task-board-consistency/` 디렉터리는 staged/Git 작업 패킷이 아니며 완료 패킷은 completed 경로에 존재한다.
+- 실행하지 않은 항목: Unity·Windows 빌드 재실행, 커밋, push, post-push HEAD·원격 대조.
+- 남은 위험: 원본 로그를 포함한 전체 diff-check는 줄끝 형식 때문에 종료 코드 2를 유지한다. 로그를 정리하면 증적 해시가 달라지므로 예외를 보존해야 한다. 자연 경계도 연속 성공 루프와 카메라 completed 패킷의 물리 키·자연 시간 리듬·전체 Test Runner 미검증은 별도다.
+- 검증 또는 판정: **선별 커밋 범위 적합 — 커밋 실행 가능(자연 경계도 기능 완료 아님)**. 본 두 기록을 조정자가 검토·재스테이징하고 총괄 커밋 게이트를 받은 뒤 실행한다. push 후 QA가 HEAD·`origin/main`·제외 범위·active 차단 상태를 다시 대조해야 한다.
+
+### 2026-07-24 KST — 선별 커밋 최종 게이트
+
+- 에이전트: 프로젝트 총괄 관리자 에이전트 `director_natural_alert_recheck`
+- 역할: 사용자 명시 선별 커밋의 최종 내부 승인자
+- 수행 내용: 완료 카메라·이동 패킷의 QA·총괄·사용자 보관 근거, active 자연 경계도 최신 차단 기록, staged 38개 name-status, CURRENT·공유 상태판, 필수 제외 경로, raw `Player.log` 해시를 대조했다.
+- 포함 판정: 승인·검증된 카메라·이동 Unity 변경 5개와 completed 패킷, 자연 경계도 active 최신 차단 기록과 두 artifact, CURRENT·상태판은 커밋 범위에 포함 가능하다.
+- 제외 확인: `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/` staged 0, 예상 밖 staged 경로 0.
+- 증적 예외: 원본 `Player-NATURAL-20260724-attempt-1.log`의 CRLF 때문에 전체 cached diff-check만 실패한다. 해당 로그 제외 검사는 통과했고 SHA-256 `D6634589E1E1B4EE5763598937099ED474857F0909CF18F851843A6726D5B2C9`, worktree/index blob `82f14f1d15c92effc812af9e8074e8419cdd8608`가 일치하므로 수정하지 않는 증적 보존 예외로 인정했다.
+- 기능 분리: 카메라·이동 작업은 기존 `내부 승인 가능`과 사용자 종료·보관 지시로 커밋 가능하다. 자연 경계도 기능은 QA `차단`, 총괄 `보류`, active 유지이며 최신 차단 기록만 커밋 가능하다.
+- 생성/수정 산출물: `director-review.md`, `agent-activity.md`
+- 검증 또는 판정: **선별 커밋 범위 `내부 승인 가능`**. 자연 경계도 기능 판정은 변경하지 않는다.
+- 실행 조건: 본 두 기록을 기존 staged 경로에 다시 반영한 뒤 staged 38개·필수 제외 0·예상 밖 0·원본 로그 해시 유지를 재확인한다. 커밋·push 후 QA post-push 대조가 필요하다.
+- 금지 준수: `git add`, commit, push, Unity/Windows 실행을 수행하지 않았다.
+- 다음 인계 대상: Codex 메인 에이전트, 커밋 후 QA/검증 에이전트

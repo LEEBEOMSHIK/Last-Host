@@ -886,14 +886,13 @@ namespace LastHost.Prototype.Tests.EditMode
                 forcedControlSpeedMultiplier: 0.65f,
                 hostInstinctPaused: true);
 
-            Assert.Greater(frame.MoveDirection.x, 0f);
-            Assert.Greater(frame.MoveDirection.z, 0f);
+            Assert.AreEqual(Vector3.right, frame.MoveDirection);
             Assert.AreEqual(1f, frame.SpeedMultiplier);
             Assert.False(frame.IsForcedControl);
         }
 
         [Test]
-        public void RatHostControlModel_LowControlBlendsPlayerInputIntoInstinct()
+        public void RatHostControlModel_LowControlKeepsPlayerInputDirection()
         {
             var frame = RatHostControlModel.Resolve(
                 Vector3.forward,
@@ -904,8 +903,7 @@ namespace LastHost.Prototype.Tests.EditMode
                 passiveInstinctSpeedMultiplier: 0.45f,
                 forcedControlSpeedMultiplier: 0.65f);
 
-            Assert.Greater(Vector3.Dot(frame.MoveDirection, Vector3.forward), Vector3.Dot(frame.MoveDirection, Vector3.right));
-            Assert.Greater(Vector3.Dot(frame.MoveDirection, Vector3.right), 0f);
+            Assert.AreEqual(Vector3.right, frame.MoveDirection);
             Assert.AreEqual(1f, frame.SpeedMultiplier);
             Assert.False(frame.IsForcedControl);
         }
@@ -939,7 +937,7 @@ namespace LastHost.Prototype.Tests.EditMode
                 passiveInstinctSpeedMultiplier: 0.45f,
                 forcedControlSpeedMultiplier: 0.65f);
 
-            Assert.AreEqual(Vector3.forward, frame.MoveDirection);
+            Assert.AreEqual(Vector3.back, frame.MoveDirection);
             Assert.AreEqual(0.65f, frame.SpeedMultiplier);
             Assert.True(frame.IsForcedControl);
         }
@@ -1776,6 +1774,19 @@ namespace LastHost.Prototype.Tests.EditMode
             Assert.AreEqual(expectedGroundedY, visual.transform.position.y, 0.0001f);
             Assert.AreEqual(0.005f, view.CurrentGroundClearance, 0.0001f);
 
+            for (var i = 1; i <= 240; i++)
+            {
+                host.transform.position = new Vector3(0.1234f + (0.003f * i), 0f, -0.0987f);
+                view.RefreshGrounding();
+                view.RefreshPixelSnap();
+
+                var expectedSnappedRoot = RatVisualPixelSnapper.SnapHorizontal(host.transform.position, 64f);
+                Assert.AreEqual(expectedSnappedRoot.x, visual.transform.position.x, 0.0001f);
+                Assert.AreEqual(expectedSnappedRoot.z, visual.transform.position.z, 0.0001f);
+                Assert.Less(Mathf.Abs(visual.transform.localPosition.x), 1f / 128f + 0.0001f);
+                Assert.Less(Mathf.Abs(visual.transform.localPosition.z), 1f / 128f + 0.0001f);
+            }
+
             var unsnappedVisualPosition = new Vector3(0.1234f, expectedGroundedY, -0.0987f);
             visual.transform.position = unsnappedVisualPosition;
             view.enablePixelSnap = false;
@@ -1904,6 +1915,34 @@ namespace LastHost.Prototype.Tests.EditMode
             controller.enableQuarterViewOutputPixelSnap = false;
             controller.ApplyCameraNow(PrototypeGameMode.RatHost);
             Assert.AreEqual(unsnappedPosition, cameraObject.transform.position);
+
+            Object.DestroyImmediate(target);
+            Object.DestroyImmediate(cameraObject);
+        }
+
+        [Test]
+        public void PrototypeCameraController_QuarterViewFollowsHostWithoutSmoothingLag()
+        {
+            var cameraObject = new GameObject("Quarter View Immediate Follow Camera");
+            cameraObject.AddComponent<Camera>();
+            var controller = cameraObject.AddComponent<PrototypeCameraController>();
+            var target = new GameObject("Quarter View Immediate Follow Target");
+            target.transform.position = new Vector3(1.25f, 0f, -0.75f);
+            controller.hostTarget = target.transform;
+            controller.enableQuarterViewOutputPixelSnap = false;
+            controller.ToggleHostCameraMode();
+            controller.ApplyCameraNow(PrototypeGameMode.RatHost);
+
+            cameraObject.transform.position += new Vector3(2f, 0f, -1f);
+            target.transform.position += new Vector3(0.5f, 0f, 0.25f);
+
+            var applyQuarterView = typeof(PrototypeCameraController).GetMethod(
+                "ApplyQuarterView",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            applyQuarterView.Invoke(controller, new object[] { 1f / 60f, false });
+
+            var expectedPosition = target.transform.position + controller.quarterViewOffset;
+            Assert.AreEqual(expectedPosition, cameraObject.transform.position);
 
             Object.DestroyImmediate(target);
             Object.DestroyImmediate(cameraObject);
