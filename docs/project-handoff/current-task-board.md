@@ -18,11 +18,11 @@
 
 ## 현재 저장소 상태
 
-- 최신 커밋: `3beb976 fix: stabilize rat movement and sync verification state`
-- 원격 반영: HEAD·`origin/main`·GitHub ref가 `3beb97635a067403ccc6486dd4a7e71be6d4d8fa`로 일치
+- 기능 변경 기준 커밋: `3beb976 fix: stabilize rat movement and sync verification state`
+- 원격 반영: 기능 변경과 후속 검증 문서 동기화까지 `origin/main` 반영 완료
 - 반영 범위: 카메라·이동 수정, 완료 작업 보관, 자연 경계도 재개 차단 기록과 상태판 등 38개 경로
 - 제외 확인: `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/` 포함 0
-- post-push 문서 동기화: 상태판·`CURRENT.md`·QA 기록 2개·총괄 기록 등 5개 문서 변경이 별도 동기화 커밋 예정
+- post-push 문서 동기화: 후속 검증 기록 5개를 별도 문서 동기화 커밋으로 반영 완료
 - 범위 밖 로컬 변경: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` unstaged 변경과 `_workspace/previews/` untracked
 
 ## 현재 진행 중

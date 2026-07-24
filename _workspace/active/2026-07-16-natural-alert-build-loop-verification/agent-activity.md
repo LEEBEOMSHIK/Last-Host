@@ -270,3 +270,23 @@
 - 실행 조건: 위 5개만 스테이징하고 예상 밖 0·제외 범위 0·diff-check 통과를 재확인한다.
 - 금지 준수: `git add`, commit, push 및 다른 파일 수정을 수행하지 않았다.
 - 다음 인계 대상: Codex 메인 에이전트, 커밋 후 QA/검증 에이전트
+
+### 2026-07-24 KST — 상태판 자기참조 보정 QA
+
+- 에이전트: QA/검증 에이전트
+- 수행 내용: 상태판의 기능 기준 커밋 `3beb976`, 기능·후속 문서 원격 반영 완료, `23a9770`의 후속 기록 5개 반영 완료, 범위 밖 로컬 변경 표현, 자연 차단·후보·다음 작업·재개 조건, diff-check를 대조했다.
+- 결과: 현재 `23a9770`과 논리적으로 일치하고 이후 QA 문서 커밋이 추가돼도 기존 기능/후속 5문서 반영 완료 사실을 유지하는 표현이다. ProjectSettings/previews는 보정 범위에서 제외됐고 상태판 diff-check는 종료 코드 0이다.
+- 검증 또는 판정: **상태판 자기참조 보정 커밋 범위 적합**. 자연 경계도 기능은 active·QA `차단`·총괄 `보류`로 유지한다.
+- 금지 준수: `git add`, commit, push 및 다른 파일 수정을 수행하지 않았다.
+
+### 2026-07-24 KST — 상태판 자기참조 보정 최종 게이트
+
+- 에이전트: 프로젝트 총괄 관리자 에이전트 `director_natural_alert_recheck`
+- 역할: 상태판 자기참조 보정 커밋 내부 승인자
+- 수행 내용: HEAD·origin `23a9770`, 기능 기준 `3beb976`, 후속 5문서 반영 완료 표현, QA 적합 판정, 자연 기능 상태, 후보·재개 조건·제외 범위를 대조했다.
+- 커밋 예정 범위: `verification.md`, `agent-activity.md`, `director-review.md`, `docs/project-handoff/current-task-board.md` 정확히 4개.
+- 검증 또는 판정: **문서 4개 보정 커밋 범위 `내부 승인 가능`**. 자연 경계도 기능은 active·QA `차단`·총괄 `보류`로 유지한다.
+- 제외 범위: `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/`, 그 외 모든 경로.
+- 실행 조건: 위 4개만 스테이징하고 예상 밖 0·제외 범위 0·diff-check 통과를 재확인한다.
+- 금지 준수: `git add`, commit, push 및 다른 파일 수정을 수행하지 않았다.
+- 다음 인계 대상: Codex 메인 에이전트, 커밋 후 QA/검증 에이전트

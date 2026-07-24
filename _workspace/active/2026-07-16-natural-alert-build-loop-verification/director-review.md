@@ -265,3 +265,17 @@
 - 자연 경계도 기능은 active·QA `차단`·총괄 `보류`이며 완료·보관·기능 완료 주장으로 변경하지 않는다.
 - 위 5개만 스테이징한 뒤 예상 밖 경로 0과 diff-check 통과를 재확인하는 조건으로 별도 문서 동기화 커밋·push를 허용한다.
 - 본 총괄 에이전트는 `git add`, commit, push를 수행하지 않았다.
+
+## 2026-07-24 상태판 자기참조 보정 최종 게이트
+
+### 판정
+
+**내부 승인 가능 — 문서 4개 보정 커밋 범위**
+
+- QA 판정 `상태판 자기참조 보정 커밋 범위 적합`을 확인했다.
+- 상태판은 기능 변경 기준 `3beb976`과 후속 검증 문서 동기화 `23a9770`의 반영 완료를 구분해, 이후 기록 커밋이 추가돼도 기존 완료 사실이 낡지 않는 표현이다.
+- 커밋 예정 문서는 `verification.md`, `agent-activity.md`, `director-review.md`, `docs/project-handoff/current-task-board.md` 정확히 4개로 한정한다.
+- 네 문서 밖의 `UnityProject/ProjectSettings/ProjectSettings.asset` unstaged 변경과 `_workspace/previews/` untracked 파일은 보존·제외하며 `Builds/`는 변경하지 않는다.
+- 자연 경계도 기능은 active·QA `차단`·총괄 `보류`, 후보 비중복, 기존 재개 조건을 그대로 유지한다.
+- 위 4개만 스테이징한 뒤 예상 밖 경로 0·제외 범위 0·diff-check 통과를 재확인하는 조건으로 보정 커밋·push를 허용한다.
+- 본 총괄 에이전트는 `git add`, commit, push를 수행하지 않았다.
