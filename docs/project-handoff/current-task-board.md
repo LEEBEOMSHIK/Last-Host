@@ -18,12 +18,12 @@
 
 ## 현재 저장소 상태
 
-- 이번 선별 커밋 전 기준 HEAD: `b6ad154 docs: sync game view verification handoff`
-- 이번 선별 커밋 전 원격 기준: `origin/main`이 `b6ad154`로 HEAD와 일치
-- 최근 커밋: `63012d5`의 `RatHostPrototype` Display 1 프레임 카메라·Game 뷰 출력 복구 작업 패킷·실제 OS 입력 증적과, `b6ad154`의 현황판 동기화
-- 현재 로컬 변경: 카메라 즉시 추적, RatVisual 누적 스냅 수정, WASD 입력 우선, 숙주 본능 이동 복구, 완료 작업 보관, 자연 경계도 엄격 검증 재개 차단 기록이 미커밋 상태
-- 현재 릴리즈 작업: 사용자가 위 변경과 상태판을 선별 커밋·푸시하도록 지시했다. 지정 범위 스테이징·QA 대조 후 실행한다.
-- 작업 범위 밖 로컬 변경: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY`, `_workspace/previews/`
+- 최신 커밋: `3beb976 fix: stabilize rat movement and sync verification state`
+- 원격 반영: HEAD·`origin/main`·GitHub ref가 `3beb97635a067403ccc6486dd4a7e71be6d4d8fa`로 일치
+- 반영 범위: 카메라·이동 수정, 완료 작업 보관, 자연 경계도 재개 차단 기록과 상태판 등 38개 경로
+- 제외 확인: `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/` 포함 0
+- post-push 문서 동기화: 상태판·`CURRENT.md`·QA 기록 2개·총괄 기록 등 5개 문서 변경이 별도 동기화 커밋 예정
+- 범위 밖 로컬 변경: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` unstaged 변경과 `_workspace/previews/` untracked
 
 ## 현재 진행 중
 
@@ -87,7 +87,7 @@
 - 이번 통과 주장은 같은 Windows 빌드 실행 세션의 `RatHost 시작 → 자연 경계도 100% → 기본 WhiteBloodCellEvasion → 조각 3개 → 변이 선택 → 변이 적용 RatHost 복귀`로 제한한다.
 - `F6`, 직접 상태 전환, Unity Editor 대체 검증은 성공 근거로 인정하지 않는다.
 - 사용자 수동 플레이 체감·난이도·무설명 이해 여부는 별도 보류로 유지한다.
-- 완료된 카메라·이동 변경, 완료 보관, 최신 차단·현황판 기록은 이번 선별 커밋에 포함한다. `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/`, 그 외 예상 밖 경로는 제외한다.
+- 완료된 카메라·이동 변경, 완료 보관, 최신 차단·현황판 기록은 이번 선별 커밋에 포함해 반영했다. `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/`, 그 외 예상 밖 경로는 제외했다.
 
 ### 엄격 검증 차단 판정
 
@@ -96,7 +96,7 @@
 - 마지막 정상 확인: Computer Use 연결, 기존 Windows 빌드 실행, 단일 `Last Host` 창 식별, 실패 시도 정상 종료, 같은 시도 `Player.log` 보존.
 - 실패: 게임 창 캡처가 최초와 새 창 객체 복구 1회 모두 `SetIsBorderRequired 0x80004002`로 실패했다.
 - 미검증: 창 포커스와 실제 입력, 단계별 화면, 자연 성공 루프, 동일 성공 세션 `Player.log`.
-- 커밋·푸시: 사용자 명시 지시로 완료된 카메라·이동 변경과 현재 차단 기록의 선별 커밋을 진행한다. 이는 자연 경계도 기능 완료 승인이 아니며 작업은 active·QA `차단`·총괄 `보류`로 유지한다.
+- 커밋·푸시: 사용자 명시 지시에 따라 완료된 카메라·이동 변경과 현재 차단 기록의 선별 커밋·푸시를 완료했다. 이는 자연 경계도 기능 완료 승인이 아니며 작업은 active·QA `차단`·총괄 `보류`로 유지한다.
 
 ## 추천 순서
 

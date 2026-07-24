@@ -476,3 +476,142 @@ staged 경로를 대상으로 `ProjectSettings.asset`, `_workspace/previews/`, `
 ### 완료 판단 근거
 
 staged 38개가 승인·검증된 카메라·이동 변경/보관과 최신 자연 경계도 차단 기록으로 한정됐고, 예상 밖 경로와 필수 제외 경로가 0개다. 완료 카메라 패킷은 QA·총괄·사용자 보관 근거를 갖췄으며 본 작업은 active·QA `차단`·총괄 `보류`로 유지된다. 원본 로그는 기록된 SHA-256과 index/worktree blob이 일치하고, 이를 제외한 cached diff-check가 통과했다. 커밋·push 후 post-push QA를 조건으로 커밋 범위만 적합하다고 판정한다.
+
+## 2026-07-24 post-push QA
+
+### 검증 대상
+
+사용자가 지시한 선별 커밋 `3beb976`이 `origin/main`에 정확히 반영됐는지, 제외 범위와 로컬 범위 밖 변경이 보존됐는지, 자연 경계도 엄격 검증의 active·차단·재개 조건이 유지됐는지 독립 대조한다.
+
+### 실행한 검증
+
+명령:
+`git rev-parse HEAD`
+
+결과:
+`3beb97635a067403ccc6486dd4a7e71be6d4d8fa`
+
+명령:
+`git rev-parse refs/remotes/origin/main`
+
+결과:
+`3beb97635a067403ccc6486dd4a7e71be6d4d8fa`
+
+명령:
+`git ls-remote origin refs/heads/main`
+
+결과:
+샌드박스 내부 첫 조회는 GitHub 443 연결 제한으로 실패했다. 같은 읽기 전용 명령을 승인된 외부 네트워크 경계에서 재실행해 `3beb97635a067403ccc6486dd4a7e71be6d4d8fa refs/heads/main`을 확인했다.
+
+해석:
+로컬 HEAD, 원격 추적 참조, GitHub의 실제 `origin/main`이 모두 같은 커밋이다.
+
+명령:
+`git show --stat --oneline 3beb976`
+
+결과:
+- 커밋 제목: `fix: stabilize rat movement and sync verification state`.
+- rename 감지 기준 변경 엔트리 38개, 1,713 insertions, 370 deletions.
+
+명령:
+`git diff-tree --no-commit-id --name-status -r -M 3beb976`
+
+결과:
+- rename 감지 기준 엔트리 수: 38개.
+- rename을 삭제·추가 양끝 경로로 풀어 센 원시 endpoint는 45개다. 차이 7개는 `R050` 1건, `R100` 5건, `R073` 1건의 이동이며 예상 밖 파일 추가가 아니다.
+
+해석:
+pre-commit QA가 확인한 “38개”와 실제 커밋이 rename 감지 기준으로 일치한다.
+
+명령:
+커밋의 원시 endpoint 경로에서 제외 범위 포함 수 집계.
+
+결과:
+- `UnityProject/ProjectSettings/ProjectSettings.asset`: 0개.
+- `_workspace/previews/`: 0개.
+- `Builds/`: 0개.
+
+해석:
+필수 제외 범위가 실제 커밋에도 포함되지 않았다.
+
+명령:
+`git status --short`, `git diff --cached --name-only`, `git diff --name-status`
+
+결과:
+- post-push QA 기록을 추가하기 전 index 변경: 0개.
+- post-push QA 기록을 추가하기 전 tracked worktree 변경: `UnityProject/ProjectSettings/ProjectSettings.asset` 1개.
+- post-push QA 기록을 추가하기 전 untracked: `_workspace/previews/`만 존재.
+
+해석:
+커밋 범위 밖의 사용자 로컬 변경 두 종류가 그대로 보존됐고, 커밋 누락으로 의심되는 staged 변경은 없다.
+
+명령:
+`CURRENT.md`, 공유 상태판, 본 active 패킷의 기능 상태·재개 조건 검색 및 active 경로 존재 확인.
+
+결과:
+- `_workspace/active/2026-07-16-natural-alert-build-loop-verification/`가 존재한다.
+- `CURRENT.md`와 상태판은 게임 창 캡처 `SetIsBorderRequired 0x80004002` 차단, 화면 미확인 입력 중단, 자연 성공 루프 미검증을 유지한다.
+- 상태판은 QA `차단`, 총괄 `보류`, 기능 완료가 아님을 유지하고 자연 경계도 작업을 다음 후보에 중복하지 않는다.
+- 재개 조건은 Computer Use 게임 창 캡처 복구 또는 사용자의 같은 연속 세션 단계별 화면·해당 `Player.log` 제공으로 유지된다.
+
+해석:
+자연 경계도 기능 상태와 재개 경계는 push 후에도 변하지 않았다.
+
+### 상태판·포인터 post-push 유의
+
+- `CURRENT.md`의 바로 이어서 할 작업 1~2와 상태판의 `현재 로컬 변경`·`현재 릴리즈 작업`은 아직 “선별 스테이징·커밋·푸시 예정/미커밋” 단계로 적혀 있다.
+- 실제 Git은 이미 `3beb976` push 완료 상태이므로 위 릴리즈 단계 문구는 post-push 현재 사실보다 한 단계 뒤다.
+- 이번 QA는 두 QA 기록 외 다른 파일 수정이 금지되어 `CURRENT.md`와 상태판을 직접 고치지 않았다.
+- 이 문구 불일치는 push 내용·원격 반영을 무효로 만들지는 않지만, 다음 작업 시작 전 문서/릴리즈 담당자가 완료 hash와 post-push 결과로 동기화해야 한다.
+
+### 미검증 항목
+
+- 자연 경계도 100%부터 변이 적용 RatHost 복귀까지의 기능 성공 루프는 여전히 미검증이다.
+- 이번 QA는 Unity·Windows 빌드를 재실행하지 않았다.
+
+### 완료 판단
+
+`push 반영 적합 — 자연 경계도 기능 완료 아님, 상태판·포인터 post-push 문구 동기화 필요`
+
+### 완료 판단 근거
+
+로컬 HEAD, 원격 추적 참조, GitHub 실제 `origin/main`이 `3beb97635a067403ccc6486dd4a7e71be6d4d8fa`로 일치한다. 커밋은 rename 감지 기준 38개 엔트리이며 세 제외 범위를 포함하지 않았다. 기록 추가 전 worktree에는 의도대로 범위 밖 `ProjectSettings.asset`과 `_workspace/previews/`만 남았다. 자연 경계도 작업은 active·QA `차단`·총괄 `보류`와 재개 조건을 유지한다. 따라서 push 반영은 적합하지만, 이미 끝난 릴리즈 단계를 예정으로 적은 `CURRENT.md`·상태판 문구는 후속 동기화가 필요하다.
+
+## 2026-07-24 post-push 문서 동기화 QA
+
+### 확인 결과
+
+- HEAD, 원격 추적 참조, GitHub `origin/main`은 모두 `3beb97635a067403ccc6486dd4a7e71be6d4d8fa`로 일치한다.
+- 상태판 상단의 최신 커밋, 원격 일치, rename 감지 기준 38개, `ProjectSettings.asset`·`_workspace/previews/`·`Builds/` 포함 0은 실제 Git과 일치한다.
+- 문서 동기화 대상은 `verification.md`, `agent-activity.md`, `CURRENT.md`, `current-task-board.md` 정확히 4개이며 예상 밖 문서 변경과 누락은 0개다.
+- `CURRENT.md`는 완료된 스테이징·커밋·푸시 단계를 제거했고 EditMode 회귀 테스트 일괄 실행을 우선 작업으로 둔다. Computer Use 게임 창 캡처 복구 또는 사용자의 같은 세션 화면·`Player.log` 제공이라는 자연 경계도 재개 조건도 유지한다.
+- 자연 경계도 작업은 active·QA `차단`·총괄 `보류`이며 다음 후보에 중복되지 않는다.
+- `ProjectSettings.asset`은 기존 `APP_UI_EDITOR_ONLY` 1줄 변경 그대로이고 `_workspace/previews/`는 기존 untracked 파일 1개로 남아 있다. 두 범위는 문서 동기화 대상에 포함되지 않았다.
+- 네 문서의 `git diff --check`는 통과했다.
+
+### 불일치
+
+- `current-task-board.md` 하단의 `자연 성공 루프 엄격 검증 경계`에는 아직 “이번 선별 커밋에 포함한다”가 남아 있다.
+- 같은 문서의 `엄격 검증 차단 판정`에는 “선별 커밋을 진행한다”가 남아 있다.
+- 상단은 `3beb976` push 완료로 갱신됐으므로 위 두 완료 전 시제와 현재 사실이 충돌한다. 각각 반영 완료/반영됨으로 동기화해야 한다.
+- 상태판의 `현재 로컬 변경`은 네 문서 동기화 커밋 이후 남을 범위 밖 잔여 상태로는 맞지만, 현재 worktree에는 이 네 문서도 미커밋이다. 문구를 post-sync 잔여 기준으로 명시하면 커밋 전후 해석 충돌을 줄일 수 있다.
+
+### 완료 판단
+
+`커밋 범위 수정 필요 — 경로 범위와 diff-check는 적합하나 상태판 완료 전 시제 2곳 동기화 필요`
+
+자연 경계도 기능 판정은 변경하지 않는다.
+
+## 2026-07-24 post-push 문서 동기화 QA 재대조
+
+- 예정 변경은 `verification.md`, `agent-activity.md`, `CURRENT.md`, `current-task-board.md` 정확히 4개이며 누락·예상 밖 경로는 0개다.
+- 상태판의 완료 전 시제 2곳은 `포함해 반영했다`, `선별 커밋·푸시를 완료했다`로 수정됐다. 로컬 상태도 post-push 문서 4개 동기화 예정과 범위 밖 ProjectSettings/previews로 분리됐다.
+- `CURRENT.md`는 EditMode 회귀 테스트 우선과 자연 경계도 재개 조건을 유지한다.
+- 자연 경계도 active·QA `차단`·총괄 `보류` 및 후보 비중복은 유지된다.
+- `ProjectSettings.asset`과 `_workspace/previews/`는 예정 4개 경로에서 제외됐고, 네 문서 `git diff --check`는 종료 코드 0이다.
+
+### 재판정
+
+`문서 동기화 커밋 범위 적합`
+
+이 판정은 이전 상태판 시제 불일치에 대한 `수정 필요`를 해제한다. 자연 경계도 기능 판정은 변경하지 않는다.

@@ -246,3 +246,22 @@
 - 자연 경계도 QA: `차단`
 - 완료 보관: 카메라·이동 작업만 허용, 자연 경계도 작업은 금지
 - 커밋·push 실행: 본 총괄 에이전트는 수행하지 않음
+
+## 2026-07-24 post-push 문서 동기화 커밋 게이트
+
+### 판정
+
+**내부 승인 가능 — 문서 5개 동기화 커밋 범위**
+
+- QA가 최초 지적한 상태판 완료 전 시제 두 곳은 반영 완료 시제로 수정됐고, 재대조 판정은 `문서 동기화 커밋 범위 적합`이다.
+- `HEAD`, `origin/main`, GitHub 실제 ref는 `3beb97635a067403ccc6486dd4a7e71be6d4d8fa`로 일치하고, 선별 커밋은 rename 감지 기준 38개·필수 제외 경로 0으로 확인됐다.
+- 동기화 커밋 예정 문서는 다음 5개로 한정한다.
+  - `_workspace/active/2026-07-16-natural-alert-build-loop-verification/verification.md`
+  - `_workspace/active/2026-07-16-natural-alert-build-loop-verification/agent-activity.md`
+  - `_workspace/active/2026-07-16-natural-alert-build-loop-verification/director-review.md`
+  - `_workspace/active/CURRENT.md`
+  - `docs/project-handoff/current-task-board.md`
+- 위 5개 밖의 `UnityProject/ProjectSettings/ProjectSettings.asset` unstaged 변경과 `_workspace/previews/` untracked 파일은 그대로 보존하고 커밋에서 제외한다. `Builds/` 변경은 없다.
+- 자연 경계도 기능은 active·QA `차단`·총괄 `보류`이며 완료·보관·기능 완료 주장으로 변경하지 않는다.
+- 위 5개만 스테이징한 뒤 예상 밖 경로 0과 diff-check 통과를 재확인하는 조건으로 별도 문서 동기화 커밋·push를 허용한다.
+- 본 총괄 에이전트는 `git add`, commit, push를 수행하지 않았다.

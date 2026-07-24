@@ -214,6 +214,19 @@
 - 남은 위험: 원본 로그를 포함한 전체 diff-check는 줄끝 형식 때문에 종료 코드 2를 유지한다. 로그를 정리하면 증적 해시가 달라지므로 예외를 보존해야 한다. 자연 경계도 연속 성공 루프와 카메라 completed 패킷의 물리 키·자연 시간 리듬·전체 Test Runner 미검증은 별도다.
 - 검증 또는 판정: **선별 커밋 범위 적합 — 커밋 실행 가능(자연 경계도 기능 완료 아님)**. 본 두 기록을 조정자가 검토·재스테이징하고 총괄 커밋 게이트를 받은 뒤 실행한다. push 후 QA가 HEAD·`origin/main`·제외 범위·active 차단 상태를 다시 대조해야 한다.
 
+### 2026-07-24 KST — post-push QA
+
+- 에이전트: QA/검증 에이전트
+- 역할: 선별 커밋 원격 반영·제외 범위·기능 차단 상태 독립 대조자
+- 수행 내용: `git rev-parse HEAD`, 원격 추적 참조, 승인된 외부 네트워크 경계의 `git ls-remote origin refs/heads/main`, commit show와 rename 감지 path 목록, Git status/index/worktree, `CURRENT.md`·공유 상태판·active 패킷을 대조했다.
+- 원격 결과: HEAD, `refs/remotes/origin/main`, GitHub 실제 `refs/heads/main`이 모두 `3beb97635a067403ccc6486dd4a7e71be6d4d8fa`로 일치한다.
+- 커밋 범위: rename 감지 기준 38개 엔트리다. 원시 endpoint 45개와의 차이 7개는 기록된 파일 이동이며 예상 밖 추가가 아니다. `ProjectSettings.asset`, `_workspace/previews/`, `Builds/` 커밋 포함은 각각 0개다.
+- 기록 추가 전 로컬 상태: index 변경 0, tracked worktree는 `UnityProject/ProjectSettings/ProjectSettings.asset`만 수정, untracked는 `_workspace/previews/`만 유지됐다.
+- 기능 상태: 자연 경계도 작업은 active, QA `차단`, 총괄 `보류`, 완료 보관 금지다. Computer Use 게임 창 캡처 복구 또는 사용자의 같은 세션 단계별 화면·해당 `Player.log` 제공이라는 재개 조건도 유지됐다.
+- 상태판 유의: 기능 차단·재개 조건은 정합하지만 `CURRENT.md`와 상태판의 릴리즈 단계 문구는 아직 스테이징·커밋·푸시 예정/미커밋으로 남아 post-push 현재 사실보다 한 단계 뒤다. 이번 QA의 다른 파일 수정 금지 범위 때문에 직접 고치지 않았다.
+- 실행하지 않은 항목: Unity·Windows 빌드 재실행, 자연 성공 루프 검증, git add/commit/push.
+- 검증 또는 판정: **push 반영 적합 — 자연 경계도 기능 완료 아님, 상태판·포인터 post-push 문구 동기화 필요**.
+
 ### 2026-07-24 KST — 선별 커밋 최종 게이트
 
 - 에이전트: 프로젝트 총괄 관리자 에이전트 `director_natural_alert_recheck`
@@ -227,4 +240,33 @@
 - 검증 또는 판정: **선별 커밋 범위 `내부 승인 가능`**. 자연 경계도 기능 판정은 변경하지 않는다.
 - 실행 조건: 본 두 기록을 기존 staged 경로에 다시 반영한 뒤 staged 38개·필수 제외 0·예상 밖 0·원본 로그 해시 유지를 재확인한다. 커밋·push 후 QA post-push 대조가 필요하다.
 - 금지 준수: `git add`, commit, push, Unity/Windows 실행을 수행하지 않았다.
+- 다음 인계 대상: Codex 메인 에이전트, 커밋 후 QA/검증 에이전트
+
+### 2026-07-24 KST — post-push 문서 동기화 QA
+
+- 에이전트: QA/검증 에이전트
+- 역할: post-push 상태판·세션 포인터 최종 동기화 검증자
+- 대조 결과: 문서 변경은 지정된 4개로 정확하고, HEAD·원격 `3beb976`, 38개, 제외 0, `CURRENT.md`의 EditMode 회귀 우선·자연 경계도 재개 조건, active·QA `차단`·총괄 `보류`·후보 비중복, 기존 ProjectSettings/previews 보존, 네 문서 diff-check 통과를 확인했다.
+- 불일치: `current-task-board.md` 하단에 이미 완료된 선별 커밋을 “포함한다”, “진행한다”로 적은 완료 전 시제 2곳이 남아 상단의 push 완료 상태와 충돌한다. `현재 로컬 변경`은 네 문서 동기화 후 잔여 상태임을 명시하면 더 정확하다.
+- 검증 또는 판정: **커밋 범위 수정 필요**. 경로 범위는 적합하지만 상태판 위 문구를 반영 완료 시제로 고친 뒤 다시 QA 대조해야 한다. 자연 경계도 기능 판정은 변경하지 않는다.
+- 금지 준수: `git add`, commit, push 및 다른 파일 수정을 수행하지 않았다.
+
+### 2026-07-24 KST — post-push 문서 동기화 QA 재대조
+
+- 에이전트: QA/검증 에이전트
+- 수행 내용: 지정 4개 문서, 상태판 완료 시제 수정, post-push 로컬 상태 분리, `CURRENT.md` 우선순위·재개 조건, 기능 차단·후보 비중복, 제외 범위, diff-check를 재대조했다.
+- 결과: 예상 경로 4개, 누락·예상 밖 0, ProjectSettings/previews 제외 유지, 네 문서 diff-check 종료 코드 0.
+- 검증 또는 판정: **문서 동기화 커밋 범위 적합**. 이전 `수정 필요`는 해제하며 자연 경계도 기능은 active·QA `차단`·총괄 `보류`로 유지한다.
+- 금지 준수: `git add`, commit, push를 수행하지 않았다.
+
+### 2026-07-24 KST — post-push 문서 동기화 커밋 게이트
+
+- 에이전트: 프로젝트 총괄 관리자 에이전트 `director_natural_alert_recheck`
+- 역할: post-push 문서 동기화 커밋 내부 승인자
+- 수행 내용: QA 최초 시제 충돌과 수정 후 재대조, HEAD·origin·GitHub `3beb976` 일치, 기존 선별 커밋 38개·제외 0, 현재 문서 diff-check, 자연 경계도 기능 상태를 확인했다.
+- 커밋 예정 범위: `verification.md`, `agent-activity.md`, `director-review.md`, `_workspace/active/CURRENT.md`, `docs/project-handoff/current-task-board.md` 정확히 5개.
+- 제외 범위: `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/`, 그 외 모든 경로.
+- 검증 또는 판정: **문서 5개 동기화 커밋 범위 `내부 승인 가능`**. 자연 경계도 기능은 active·QA `차단`·총괄 `보류`로 유지한다.
+- 실행 조건: 위 5개만 스테이징하고 예상 밖 0·제외 범위 0·diff-check 통과를 재확인한다.
+- 금지 준수: `git add`, commit, push 및 다른 파일 수정을 수행하지 않았다.
 - 다음 인계 대상: Codex 메인 에이전트, 커밋 후 QA/검증 에이전트
