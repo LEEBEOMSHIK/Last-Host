@@ -1,0 +1,17 @@
+pose,frame,direction_index,direction,source_yaw_degrees,file,phase
+idle,1,0,S,-53.130102,renders/idle/rat-final-sample-v2-natural-idle-00-s.png,neutral_idle
+idle,1,1,SW,-25.904474,renders/idle/rat-final-sample-v2-natural-idle-01-sw.png,neutral_idle
+idle,1,2,W,36.869898,renders/idle/rat-final-sample-v2-natural-idle-02-w.png,neutral_idle
+idle,1,3,NW,99.644270,renders/idle/rat-final-sample-v2-natural-idle-03-nw.png,neutral_idle
+idle,1,4,N,126.869898,renders/idle/rat-final-sample-v2-natural-idle-04-n.png,neutral_idle
+idle,1,5,NE,154.095526,renders/idle/rat-final-sample-v2-natural-idle-05-ne.png,neutral_idle
+idle,1,6,E,-143.130102,renders/idle/rat-final-sample-v2-natural-idle-06-e.png,neutral_idle
+idle,1,7,SE,-80.355730,renders/idle/rat-final-sample-v2-natural-idle-07-se.png,neutral_idle
+walk-key,4,0,S,-53.130102,renders/walk-key/rat-final-sample-v2-natural-walk-f04-00-s.png,advancing_diagonal_pair_lift
+walk-key,4,1,SW,-25.904474,renders/walk-key/rat-final-sample-v2-natural-walk-f04-01-sw.png,advancing_diagonal_pair_lift
+walk-key,4,2,W,36.869898,renders/walk-key/rat-final-sample-v2-natural-walk-f04-02-w.png,advancing_diagonal_pair_lift
+walk-key,4,3,NW,99.644270,renders/walk-key/rat-final-sample-v2-natural-walk-f04-03-nw.png,advancing_diagonal_pair_lift
+walk-key,4,4,N,126.869898,renders/walk-key/rat-final-sample-v2-natural-walk-f04-04-n.png,advancing_diagonal_pair_lift
+walk-key,4,5,NE,154.095526,renders/walk-key/rat-final-sample-v2-natural-walk-f04-05-ne.png,advancing_diagonal_pair_lift
+walk-key,4,6,E,-143.130102,renders/walk-key/rat-final-sample-v2-natural-walk-f04-06-e.png,advancing_diagonal_pair_lift
+walk-key,4,7,SE,-80.355730,renders/walk-key/rat-final-sample-v2-natural-walk-f04-07-se.png,advancing_diagonal_pair_lift

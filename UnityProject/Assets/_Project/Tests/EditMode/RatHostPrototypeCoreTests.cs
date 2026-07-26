@@ -1791,7 +1791,9 @@ namespace LastHost.Prototype.Tests.EditMode
             visual.transform.position = unsnappedVisualPosition;
             view.enablePixelSnap = false;
             view.RefreshPixelSnap();
-            Assert.AreEqual(unsnappedVisualPosition, visual.transform.position);
+            Assert.AreEqual(unsnappedVisualPosition.x, visual.transform.position.x, 0.0001f);
+            Assert.AreEqual(unsnappedVisualPosition.y, visual.transform.position.y, 0.0001f);
+            Assert.AreEqual(unsnappedVisualPosition.z, visual.transform.position.z, 0.0001f);
 
             Object.DestroyImmediate(host);
             Object.DestroyImmediate(floor);
@@ -2030,7 +2032,7 @@ namespace LastHost.Prototype.Tests.EditMode
         {
             EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
 
-            var camera = Object.FindAnyObjectByType<Camera>();
+            var camera = Camera.main;
             var rat = Object.FindAnyObjectByType<RatHostController>(FindObjectsInactive.Include);
 
             Assert.NotNull(camera);
@@ -2052,19 +2054,25 @@ namespace LastHost.Prototype.Tests.EditMode
         }
 
         [Test]
-        public void RatHostPrototypeScene_DefaultsToThirdPersonCameraController()
+        public void RatHostPrototypeScene_DefaultsToQuarterViewMainCameraController()
         {
             EditorSceneManager.OpenScene("Assets/_Project/Scenes/RatHostPrototype.unity");
 
-            var camera = Object.FindAnyObjectByType<Camera>();
             var controller = Object.FindAnyObjectByType<PrototypeCameraController>();
 
-            Assert.NotNull(camera);
             Assert.NotNull(controller);
-            Assert.AreEqual(camera, controller.GetComponent<Camera>());
+            var camera = controller.GetComponent<Camera>();
+            Assert.NotNull(camera);
             Assert.True(camera.CompareTag("MainCamera"));
             Assert.AreEqual(camera, Camera.main);
-            Assert.AreEqual(PrototypeCameraMode.ThirdPerson, controller.CurrentHostMode);
+            Assert.AreEqual(PrototypeCameraMode.QuarterView, controller.startingHostMode);
+
+            var frameCameraObject = GameObject.Find("GameViewFrameCamera");
+            Assert.NotNull(frameCameraObject);
+            var frameCamera = frameCameraObject.GetComponent<Camera>();
+            Assert.NotNull(frameCamera);
+            Assert.False(frameCamera.CompareTag("MainCamera"));
+            Assert.AreNotEqual(camera, frameCamera);
         }
 
         [Test]

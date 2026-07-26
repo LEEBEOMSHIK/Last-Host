@@ -2,28 +2,42 @@
 
 ## 현재 이어받을 작업
 
-- 작업 ID: `2026-07-16-natural-alert-build-loop-verification`
-- 상태: 차단 — Computer Use 연결과 새 빌드 실행은 복구됐지만 게임 창 캡처가 `SetIsBorderRequired 0x80004002`로 최초·복구 1회 모두 실패했다. 화면·포커스 증거 없이 입력하지 않았으며 자연 성공 루프는 미검증.
-- 작업 경로: `_workspace/active/2026-07-16-natural-alert-build-loop-verification/`
+- 작업 ID: `2026-07-24-rat-final-appearance-sample`
+- 상태: r6 QA·총괄 통과 — 사용자 최종 외형 수용 대기
+- 작업 경로: `_workspace/active/2026-07-24-rat-final-appearance-sample/`
+- 최신 사용자 요청: neutral idle 수정과 QA·총괄 검토를 통과한 A2 Blender r6를 최종 외형 후보로 확인한다.
 
 ## 먼저 읽을 파일
 
-1. `_workspace/active/2026-07-16-natural-alert-build-loop-verification/handoff.md`
-2. `_workspace/active/2026-07-16-natural-alert-build-loop-verification/verification.md`
-3. `_workspace/active/2026-07-16-natural-alert-build-loop-verification/task.md`
+1. `_workspace/active/2026-07-24-rat-final-appearance-sample/artifacts/ai-concepts/rat-concept-a2-refined.png`
+2. `_workspace/active/2026-07-24-rat-final-appearance-sample/artifacts/a2-blender-revision-6/rat-final-appearance-a2-r6-contact-sheet-2048.png`
+3. `_workspace/active/2026-07-24-rat-final-appearance-sample/artifacts/a2-blender-revision-6/rat-final-appearance-a2-r6-turnaround-preview-2048.png`
 
 ## 바로 이어서 할 작업
 
-1. 쥐 걷기·스프라이트·픽셀·카메라 관련 EditMode 회귀 테스트 일괄 실행 및 기술 게이트 종결을 우선한다.
-2. Windows 게임 창 캡처가 지원되는 환경으로 바뀌거나 사용자가 같은 연속 루프의 단계별 화면·해당 세션 `Player.log`를 제공하면 현재 엄격 검증을 재개한다.
+1. A2 참고안과 r6 비교표·턴어라운드를 대조해 최종 외형 수용 여부를 결정한다.
+2. 몸통의 캡슐/패널형 띠와 큰 귀·어두운 얼굴 대비를 수용할지 확인한다.
+3. 사용자 결정 전 active를 유지하고 전체 64프레임·atlas·Unity 반입을 진행하지 않는다.
+
+## 승인 경계
+
+- 완료: A2 기반 Blender r6 제작, neutral idle 수정, 독립 QA 통과.
+- 총괄 판정: `사용자 제시 가능 / 최종 외형 승인 후보 / 사용자 결정 필요`.
+- 정리 이력: r1~r5 중간 바이너리는 삭제·커밋 제외했고 반려 사유만 문서로 보존한다. A/B/C와 기존 v1·v2는 읽기 전용 기준으로 유지한다.
+- 미승인: A2 또는 이번 샘플의 최종 런타임 스프라이트·최종 제품용 8방향 시트 확정, 전체 64프레임, runtime atlas/스프라이트 시트 구성, Unity 반입.
+
+## 병행 차단 작업
+
+- `2026-07-16-natural-alert-build-loop-verification`: Computer Use 게임 창 캡처 오류로 QA `차단`·총괄 `보류`.
+- 재개 조건: Windows 게임 창 캡처 지원 복구 또는 사용자의 같은 연속 루프 단계별 화면과 해당 세션 `Player.log`.
 
 ## 제외하거나 건드리면 안 되는 변경
 
-- `UnityProject/`, `Builds/`, 패키지·에셋은 이 검증에서 수정하거나 재생성하지 않는다.
-- `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` 변경과 `_workspace/previews/`는 이전 작업의 범위 밖 변경으로 유지한다.
-- `F6`, MCP/Inspector/메모리 상태 주입, 서로 다른 실행 세션의 증거 조합은 엄격 성공 근거로 사용하지 않는다.
+- Unity 코드·씬·Sprite Import·ProjectSettings·패키지와 `Builds/`를 변경하지 않는다.
+- 기존 completed 작업과 v1~v5b 원본·PNG를 수정하지 않는다.
+- `UnityProject/ProjectSettings/ProjectSettings.asset`의 기존 범위 밖 변경과 `_workspace/previews/`를 보존한다.
 
 ## 갱신 정보
 
-- 마지막 갱신: 2026-07-24 KST
+- 마지막 갱신: 2026-07-27 KST
 - 갱신자: 문서/릴리즈 에이전트

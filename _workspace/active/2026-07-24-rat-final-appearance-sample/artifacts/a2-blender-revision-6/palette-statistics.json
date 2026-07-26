@@ -1,0 +1,181 @@
+{
+  "shared_palette_limit": 32,
+  "defined_opaque_colors": 27,
+  "used_opaque_colors": 25,
+  "used_rgba": [
+    [
+      24,
+      21,
+      20,
+      255
+    ],
+    [
+      37,
+      29,
+      25,
+      255
+    ],
+    [
+      50,
+      37,
+      31,
+      255
+    ],
+    [
+      63,
+      46,
+      37,
+      255
+    ],
+    [
+      74,
+      62,
+      52,
+      255
+    ],
+    [
+      76,
+      55,
+      43,
+      255
+    ],
+    [
+      86,
+      53,
+      51,
+      255
+    ],
+    [
+      90,
+      66,
+      50,
+      255
+    ],
+    [
+      94,
+      79,
+      65,
+      255
+    ],
+    [
+      105,
+      78,
+      59,
+      255
+    ],
+    [
+      111,
+      69,
+      65,
+      255
+    ],
+    [
+      118,
+      101,
+      82,
+      255
+    ],
+    [
+      121,
+      91,
+      69,
+      255
+    ],
+    [
+      137,
+      88,
+      82,
+      255
+    ],
+    [
+      139,
+      108,
+      84,
+      255
+    ],
+    [
+      145,
+      126,
+      103,
+      255
+    ],
+    [
+      158,
+      127,
+      101,
+      255
+    ],
+    [
+      164,
+      110,
+      103,
+      255
+    ],
+    [
+      171,
+      153,
+      128,
+      255
+    ],
+    [
+      176,
+      148,
+      121,
+      255
+    ],
+    [
+      188,
+      137,
+      127,
+      255
+    ],
+    [
+      196,
+      171,
+      143,
+      255
+    ],
+    [
+      199,
+      183,
+      156,
+      255
+    ],
+    [
+      210,
+      167,
+      153,
+      255
+    ],
+    [
+      220,
+      204,
+      177,
+      255
+    ]
+  ],
+  "alpha_values": [
+    0,
+    255
+  ],
+  "binary_alpha": true,
+  "dithering": false,
+  "per_file_opaque_color_count": {
+    "renders/idle/rat-a2-r6-idle-00-s.png": 24,
+    "renders/idle/rat-a2-r6-idle-01-sw.png": 24,
+    "renders/idle/rat-a2-r6-idle-02-w.png": 24,
+    "renders/idle/rat-a2-r6-idle-03-nw.png": 23,
+    "renders/idle/rat-a2-r6-idle-04-n.png": 20,
+    "renders/idle/rat-a2-r6-idle-05-ne.png": 24,
+    "renders/idle/rat-a2-r6-idle-06-e.png": 24,
+    "renders/idle/rat-a2-r6-idle-07-se.png": 24,
+    "renders/walk-key/rat-a2-r6-walk-key-f04-00-s.png": 24,
+    "renders/walk-key/rat-a2-r6-walk-key-f04-01-sw.png": 24,
+    "renders/walk-key/rat-a2-r6-walk-key-f04-02-w.png": 24,
+    "renders/walk-key/rat-a2-r6-walk-key-f04-03-nw.png": 23,
+    "renders/walk-key/rat-a2-r6-walk-key-f04-04-n.png": 20,
+    "renders/walk-key/rat-a2-r6-walk-key-f04-05-ne.png": 23,
+    "renders/walk-key/rat-a2-r6-walk-key-f04-06-e.png": 24,
+    "renders/walk-key/rat-a2-r6-walk-key-f04-07-se.png": 24
+  }
+}

@@ -1,6 +1,6 @@
 # 현재 작업 후보와 핸드오프 현황
 
-최종 갱신: 2026-07-24 KST
+최종 갱신: 2026-07-27 KST
 
 ## 목적
 
@@ -23,22 +23,24 @@
 - 반영 범위: 카메라·이동 수정, 완료 작업 보관, 자연 경계도 재개 차단 기록과 상태판 등 38개 경로
 - 제외 확인: `UnityProject/ProjectSettings/ProjectSettings.asset`, `_workspace/previews/`, `Builds/` 포함 0
 - post-push 문서 동기화: 후속 검증 기록 5개를 별도 문서 동기화 커밋으로 반영 완료
+- 현재 작업 변경: A2 기반 Blender r6 제작과 neutral idle 수정이 완료됐고 QA를 통과했다. 총괄은 `사용자 제시 가능 / 최종 외형 승인 후보 / 사용자 결정 필요`로 판정했다. r1~r5와 r6 임시 preview 중간 바이너리 1.38 MiB는 삭제·커밋 제외하고 반려 사유만 문서에 보존했다.
+- 커밋 준비 포함: 현재 작업 패킷 문서, AI concepts, v1·v2-natural, A2/r6 최종 스크립트·`.blend`·idle 8·walk-key 8·contact·turnaround·settings·stats·frame-map.
+- 커밋 준비 제외: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY`, `_workspace/previews/`, `Builds/`, 삭제한 r1~r5와 r6 임시 preview 바이너리.
 - 범위 밖 로컬 변경: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` unstaged 변경과 `_workspace/previews/` untracked
 
 ## 현재 진행 중
 
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
-| 쥐 v3 걷기 Unity 실제 화면 시험 | 회귀 QA 통과 — 사용자 WASD 체감·EditMode TestRunner·총괄 판정 대기 | 뒤로 걷는 축 반전, 정지 시 TrialV1로 바뀌던 경로, 기본 원근 시점을 각각 보정했다. 독립 QA가 dirty 씬을 저장·재로드하지 않고 QuarterView 직교 Play, 8방향 v3 `f01→f04→f01`, 접지, 콘솔을 재확인했다. | `_workspace/active/2026-07-20-rat-walk-unity-visual-trial/` |
-| 캐릭터 스프라이트 해상도 상향·공통 기준 | 회귀 QA 통과 — 사용자 화면 확인·TestRunner·총괄 재검토 대기 | v4 `128×128 / PPU64` 64장을 반입해 기존과 같은 2 Unity unit 폭을 유지했다. 독립 QA가 쿼터뷰 Play에서 Importer 64/64, 8방향 `f01→f04→f01`, 접지, 콘솔, 캡처를 통과시켰다. 이후 프리렌더 캐릭터·전경 게임플레이 오브젝트의 공통 시작 규격은 제작 가이드에 기록했다. | `_workspace/active/2026-07-21-character-sprite-resolution-standard/` |
-| 쥐 v5b 고밀도 픽셀 처리 시험 | 회귀 QA 통과 — 사용자 화면 수용 대기 | v5a 저밀도 16색안은 보류하고, v5b의 27색 공통 팔레트·이진 알파·무디더 프레임과 `960×540` Point 정수 2배 출력·시각/카메라 픽셀 스냅을 실제 Play에서 통과시켰다. 그래픽 관리 문서는 내부 승인으로 연결했으며, v4 공통 기준은 사용자가 v5b 화면을 수용하기 전까지 유지한다. | `_workspace/active/2026-07-21-rat-pixel-treatment-v5/` |
+| 쥐 최종 외형 방향과 근접 샘플 | r6 QA·총괄 통과 — 사용자 최종 외형 수용 대기 | A2 기반 r6와 neutral idle 수정본이 QA를 통과했고 총괄이 사용자 제시 가능한 최종 외형 승인 후보로 판정했다. 사용자는 A2·r6 비교표·턴어라운드에서 몸통 캡슐/패널형 띠와 큰 귀·어두운 얼굴 대비를 확인한다. r1~r5 중간 바이너리는 삭제·커밋 제외하고 반려 사유만 문서에 보존했으며 전체 64프레임·atlas·Unity 반입은 미승인이다. | `_workspace/active/2026-07-24-rat-final-appearance-sample/` |
 | 자연 경계도 100% Windows 빌드 성공 루프 엄격 검증 | 차단 — Computer Use 게임 창 캡처 오류 | `list_apps`와 새 빌드 실행·단일 창 식별은 복구됐지만 `get_window_state`가 `SetIsBorderRequired 0x80004002`로 최초·복구 1회 모두 실패했다. 화면 미확인 입력을 보내지 않아 자연 100% 이후 루프는 미검증이며, 실패 시도 로그와 정상 종료만 보존했다. | `_workspace/active/2026-07-16-natural-alert-build-loop-verification/` |
-| 쥐 걷기 애니메이션 Blender 시험 제작 | 사용자 시각 검토 대기 | v2에서 대각선 다리쌍·스윙 발 변형을 추가했고, 새 Blender 애니메이션 테크아트 에이전트가 CSV 출력 경로·64 PNG·루프·접지를 재검증했다. 저해상도 다리 실루엣과 정지 대비 W 바닥선은 별도 시각·QA 판단이 남아 있으며 Unity 통합은 제외한다. | `_workspace/active/2026-07-20-rat-walk-animation-blender/` |
 
 ## 최근 작업 요약
 
 | 작업 | 상태 | 핵심 결과 | 확인 위치 |
 | --- | --- | --- | --- |
+| 쥐 v3/v4/v5b 제작·표시 방식 통합 종결 | 완료 보관 | QA `완료 가능 — 총괄 수정 조건 해소`, 총괄 `내부 승인 가능`으로 Blender v3·Unity v3·v4 해상도·v5b 픽셀 처리와 umbrella를 보관했다. v5b 제작·표시 방식은 수용됐지만 현재 쥐의 체형·색감·얼굴·실루엣·보행은 최종 미승인이며 후속 재작업 대상이다. | `_workspace/completed/2026-07-24-2026-07-24-rat-visual-v3-v4-v5b-closeout/` |
+| 쥐 시각·카메라 EditMode 회귀 기술 게이트 | 완료 보관 | 단일 테스트 계약 최소 수정 후 전체 EditMode `101/101`, 실패·skip·inconclusive 0, MCP Play의 RatHost·두 카메라·RatVisual·HUD·960×540 RT, Console 0, Stop/Edit clean과 씬·ProjectSettings·Builds 비변경을 확인했다. 총괄 `내부 승인 가능`; v4 직접 규격 자동화 공백과 사용자 시각 수용은 별도 유지한다. | `_workspace/completed/2026-07-24-2026-07-24-rat-visual-camera-editmode-regression/` |
 | Game 뷰 카메라 출력 복구와 이동 정합 | 완료 보관 | Display 1 출력 복구, RatVisual 누적 픽셀 이탈 수정, WASD 입력 우선과 숙주 본능 복구를 완료했다. 독립 QA에서 무입력 360스텝 이탈 0, D/A/W/S 방향 내적 1, Console 0을 확인했고 총괄 `내부 승인 가능`, 사용자 종료·보관 승인을 받았다. | `_workspace/completed/2026-07-24-2026-07-21-game-view-camera-output-fix/` |
 | Blender 애니메이션 테크아트 에이전트 역할 통합 | 완료 보관 | 사용자 승인으로 Blender 원본·리깅·보행·8방향 시험 렌더의 실제 제작 역할과 위임 절차를 추가했다. QA `완료 가능`, 총괄 `내부 승인 가능`; v2 시각 품질·Unity 통합은 별도 작업으로 유지한다. | `_workspace/completed/2026-07-20-2026-07-20-blender-animation-agent-role-integration/` |
 | 쥐 정지 8방향 스프라이트 Unity 시험 반입 | 완료 보관 | 사용자 2차 접지 피드백을 수용했다. 위험 trigger를 유지한 채 시각 표면을 분리했고, QA MCP Play에서 8방향 실제 발 y `-0.015`, clearance `0.005`, 구역 안·밖 차이 `0.000`을 확인했다. QA `완료 가능`, 총괄 `내부 승인 가능`; EditMode 전체 재실행과 연속 WASD·경계 체감은 남은 확인이다. | `_workspace/completed/2026-07-20-2026-07-16-rat-directional-sprite-unity-integration/` |
@@ -60,13 +62,7 @@
 
 ## 다음 작업 후보
 
-자연 경계도 엄격 검증은 이미 active 차단 작업이므로 후보에 중복하지 않는다. Computer Use 게임 창 캡처가 복구되거나 사용자가 같은 세션의 단계별 화면·`Player.log`를 제공할 때 재개한다.
-
-| 우선순위 | 후보 | 목적과 완료 경계 |
-| --- | --- | --- |
-| 높음 | 쥐 걷기·스프라이트·픽셀·카메라 관련 EditMode 회귀 테스트 일괄 실행 및 기술 게이트 종결 | 현재 분산된 v3 걷기, v4 해상도, v5b 픽셀 처리, 카메라 회귀 테스트를 함께 실행하고 Console·씬 비변경을 확인해 기술 검증 잔여를 닫는다. |
-| 높음 | v5b 픽셀 화면 사용자 최종 수용과 v3/v4/v5b 시각 작업 통합 종결 | 현재 Game 뷰의 보행·선명도·방향 전환·접지·픽셀 안정성을 사용자가 최종 수용하면 연계된 세 시각 작업을 정리하고 공통 기준을 확정한다. |
-| 중간 | Blender v3 과장 보행 사용자 시각 검토와 동작 기준 판정 | 보폭, 발 들림, 몸통 리듬, 꼬리 흔들림, 대각선 가림과 W 방향 바닥선 차이를 읽기 전용으로 검토해 수정 필요 여부를 판정한다. Unity 통합은 포함하지 않는다. |
+쥐 최종 외형 작업은 A2 기반 Blender r6 제작, neutral idle 수정, QA·총괄 검토까지 통과했다. 현재 r6는 사용자에게 제시 가능한 최종 외형 승인 후보이며, 몸통 캡슐/패널형 띠와 큰 귀·어두운 얼굴 대비의 수용 여부를 사용자가 결정해야 한다. r1~r5 중간 바이너리는 삭제·커밋 제외하고 반려 사유만 문서에 보존하며 전체 64프레임·atlas·Unity 반입은 진행하지 않는다.
 
 ## 최근 판단 항목
 
@@ -100,7 +96,6 @@
 
 ## 추천 순서
 
-1. 현재 승인된 변경과 검증 기록을 선별 커밋·푸시한다.
-2. 쥐 걷기·스프라이트·픽셀·카메라 관련 EditMode 회귀 테스트를 일괄 실행해 기술 게이트를 종결한다.
-3. v5b 화면을 사용자가 최종 수용하면 v3/v4/v5b 시각 작업을 통합 종결한다.
-4. Blender v3 과장 보행은 별도 사용자 시각 검토로 판정한다.
+1. A2 참고안, r6 비교표, r6 턴어라운드를 사용자에게 제시해 최종 외형 수용 여부를 확인한다.
+2. 수용·수정·반려 중 사용자 결정을 기록하고 그전까지 active 상태를 유지한다.
+3. 최종 제품용 8방향 시트, 전체 64프레임, runtime atlas/스프라이트 시트, Unity 반입은 이후 각각 별도 승인한다.
