@@ -27,8 +27,9 @@
 
 ## Git 상태
 
-- 기준: `HEAD = origin/main = c2298db`
-- 현재 현황판·`CURRENT.md` 완료 보관 동기화는 아직 미커밋이다.
+- 2D 방향 전환 반영: `e654429 docs: adopt 2d isometric project direction`
+- 푸시 상태: `e654429`까지 `origin/main` 반영 완료
+- 후속 상태 동기화: 이 `CURRENT.md`와 현황판의 푸시 기록만 별도 docs-only 커밋으로 반영한다.
 
 ## 갱신 정보
 

@@ -18,11 +18,13 @@
 
 ## 현재 저장소 상태
 
-- 현재 Git 기준: `HEAD = origin/main = c2298db docs: clarify rat appearance commit baseline`
+- 2D 방향 전환 반영 기준: `e654429 docs: adopt 2d isometric project direction`
+- 푸시 상태: `e654429`까지 `origin/main` 반영 완료
+- 후속 상태 동기화: 이 현황판과 `CURRENT.md`의 푸시 기록만 별도 docs-only 커밋으로 반영한다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
 - 정리 반영: 사용자 요청에 따라 r1~r5·r6 임시 preview 중간 바이너리 `1.38 MiB`를 삭제·커밋 제외하고 반려 사유만 문서로 보존
-- 현재 로컬 작업: 2D 방향 전환과 r6 레거시 작업의 완료 보관을 현황판·`CURRENT.md`에 동기화 중이며 아직 미커밋이다.
+- 현재 로컬 작업: 2D 방향 전환과 r6 레거시 완료 보관은 푸시됐고, 해당 푸시 기록을 현황판·`CURRENT.md`에 동기화한다.
 - 로컬 제외 유지: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` unstaged 변경, `_workspace/previews/` untracked
 - `Builds/` 제외: 현재 완료 보관 동기화에 포함하지 않음
 
