@@ -199,3 +199,13 @@
 - 이력 경계: r1~r5의 반려 사유는 `work-log.md`, `verification.md`, `agent-activity.md`에 문서로 남기고 삭제한 중간 바이너리는 커밋하지 않는다.
 - 상태 경계: r6는 사용자 최종 외형 수용 대기이며 작업은 active 상태다. 완료 처리·보관하지 않는다.
 - 미승인 유지: 전체 64프레임, runtime atlas/스프라이트 시트, Unity 반입.
+
+## 2026-07-27 — 선별 커밋·푸시와 post-push 동기화
+
+- 사용자 요청 cleanup: r1~r5·r6 임시 preview 중간 바이너리 `1.38 MiB` 삭제, 최종 r6와 반려 사유 문서 유지.
+- 커밋 전 QA staged 감사: 통과.
+- 프로젝트 총괄 내부 승인: 커밋·푸시 가능.
+- 커밋: `ba883a2 art: integrate rat appearance candidate and visual gates`.
+- 푸시: `origin/main`에 `5303731..ba883a2` 반영 완료. 로컬 `HEAD`와 `origin/main`은 `ba883a2679209d243d7b5d998c33ec1635883101`로 일치한다.
+- post-push 상태: r6는 사용자 최종 외형 수용 대기인 active 후보이며 최종 채택·완료·보관 상태가 아니다.
+- 로컬 제외 유지: `ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY`, `_workspace/previews/`; `Builds/`는 커밋·푸시에서 제외.

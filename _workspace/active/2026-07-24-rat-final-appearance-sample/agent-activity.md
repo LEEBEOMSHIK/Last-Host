@@ -277,3 +277,14 @@
 - 이력 처리: r1~r5 중간 바이너리는 커밋 제외하고 반려 사유만 문서에 보존한다.
 - 상태: 사용자 최종 외형 수용 대기, active 유지, 완료 처리·보관 없음.
 - 제외: `ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY`, `_workspace/previews/`, `Builds/`.
+
+### 2026-07-27 — 선별 커밋·푸시와 post-push 상태 기록
+
+- 에이전트: 메인 조정자, QA/검증, 프로젝트 총괄, 문서/릴리즈
+- QA 판정: 선별 staged 감사 통과.
+- 총괄 판정: 내부 승인, 커밋·푸시 가능.
+- 커밋·푸시: `ba883a2 art: integrate rat appearance candidate and visual gates`, `origin/main` 범위 `5303731..ba883a2`.
+- HEAD 대조: 로컬 `HEAD`와 `origin/main`이 `ba883a2679209d243d7b5d998c33ec1635883101`로 일치.
+- 정리 포함: 사용자 요청에 따른 중간 바이너리 `1.38 MiB` cleanup과 반려 사유 문서 보존.
+- 상태 경계: r6는 active 사용자 최종 수용 대기이며 최종 외형 채택·완료·보관 판정이 아니다.
+- 제외 유지: `ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY`, `_workspace/previews/`, `Builds/`.
