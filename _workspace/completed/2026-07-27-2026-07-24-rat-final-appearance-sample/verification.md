@@ -64,7 +64,7 @@
 ### 재현성과 보존 범위
 
 - 재현 스크립트는 현재 활성 작업 절대 경로를 사용한다. 작업 폴더 보관 후에는 산출물을 보관 폴더 옆이 아니라 기존 `_workspace/active/...`에 다시 만들 수 있으므로, 재작업 시 스크립트 위치 기준 경로로 바꾸거나 보관 후 재현 절차를 명시하는 것이 안전하다.
-- 현재 작업 산출물은 `_workspace/active/2026-07-24-rat-final-appearance-sample/` 아래에만 추가되어 있다.
+- 현재 작업 산출물은 `_workspace/completed/2026-07-27-2026-07-24-rat-final-appearance-sample/` 아래에 보관되어 있다.
 - `UnityProject/`, `Builds/`, `_workspace/completed/`는 존재하며 이 QA에서 변경하지 않았다. UnityProject의 기존 수정 2건은 유지되어 있고 삭제 상태는 없다.
 - 범위에 따라 Unity 실행·반입·Import 설정·씬·ProjectSettings·Builds 검증은 수행하지 않았다.
 

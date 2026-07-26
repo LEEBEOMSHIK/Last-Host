@@ -209,3 +209,18 @@
 - 푸시: `origin/main`에 `5303731..ba883a2` 반영 완료. 로컬 `HEAD`와 `origin/main`은 `ba883a2679209d243d7b5d998c33ec1635883101`로 일치한다.
 - post-push 상태: r6는 사용자 최종 외형 수용 대기인 active 후보이며 최종 채택·완료·보관 상태가 아니다.
 - 로컬 제외 유지: `ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY`, `_workspace/previews/`; `Builds/`는 커밋·푸시에서 제외.
+
+## 2026-07-27 — 순수 2D 도트 게임 비교 샘플
+
+- 사용자 요청: 순수 2D 도트 게임으로 전환한다고 가정했을 때의 화면을 먼저 확인한다.
+- 생성 방식: OpenAI 내장 이미지 생성, `rat-concept-a-natural.png`를 쥐 외형 참고 이미지로 사용.
+- 산출물: `docs/design/visual/references/rat-host-2d-isometric-gameplay-mockup-v1.png`로 이동해 프로젝트 기준 reference로 보관.
+- 표현 범위: 자연형 갈색쥐, 쿼터 탑다운 하수도 탐험 공간, 최소 HUD를 포함한 16:9 게임플레이 목업.
+- 승인 경계: 비교·방향 판단용 샘플이며 순수 2D 전환, Unity 적용, 제작 파이프라인 변경을 승인하거나 실행한 것이 아니다.
+
+## 2026-07-27 — 사용자 2D 아이소메트릭 방향 전환
+
+- 사용자가 목업 형태를 프로젝트 전체 방향으로 채택했다.
+- r6와 기존 2.5D/Blender 산출물은 최종 후보가 아니라 레거시 비교·재현 이력으로 전환한다.
+- 목업은 실제 타일셋·스프라이트 시트가 아닌 목표 화면 reference이며, Unity 2D 기술 샘플은 별도 후속 작업이다.
+- 프로젝트 전역 동기화 작업은 `_workspace/completed/2026-07-27-2026-07-27-project-2d-direction-transition/`으로 인계해 완료·보관했다.

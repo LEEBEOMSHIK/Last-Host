@@ -18,25 +18,26 @@
 
 ## 현재 저장소 상태
 
-- 작업 반영 기준 커밋: `ba883a2 art: integrate rat appearance candidate and visual gates`
-- 후속 현황판 동기화: `350d520 docs: sync rat appearance push state`도 `origin/main` 반영 완료
-- 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
+- 현재 Git 기준: `HEAD = origin/main = c2298db docs: clarify rat appearance commit baseline`
+- 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
+- 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
 - 정리 반영: 사용자 요청에 따라 r1~r5·r6 임시 preview 중간 바이너리 `1.38 MiB`를 삭제·커밋 제외하고 반려 사유만 문서로 보존
-- post-push 상태: r6는 active 사용자 최종 외형 수용 대기이며 최종 채택·완료·보관 상태가 아니다.
+- 현재 로컬 작업: 2D 방향 전환과 r6 레거시 작업의 완료 보관을 현황판·`CURRENT.md`에 동기화 중이며 아직 미커밋이다.
 - 로컬 제외 유지: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` unstaged 변경, `_workspace/previews/` untracked
-- `Builds/` 제외: 이번 커밋·푸시와 현재 post-push 변경에 포함하지 않음
+- `Builds/` 제외: 현재 완료 보관 동기화에 포함하지 않음
 
 ## 현재 진행 중
 
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
-| 쥐 최종 외형 방향과 근접 샘플 | r6 QA·총괄 통과 — 사용자 최종 외형 수용 대기 | A2 기반 r6와 neutral idle 수정본이 QA를 통과했고 총괄이 사용자 제시 가능한 최종 외형 승인 후보로 판정했다. 사용자는 A2·r6 비교표·턴어라운드에서 몸통 캡슐/패널형 띠와 큰 귀·어두운 얼굴 대비를 확인한다. r1~r5 중간 바이너리는 삭제·커밋 제외하고 반려 사유만 문서에 보존했으며 전체 64프레임·atlas·Unity 반입은 미승인이다. | `_workspace/active/2026-07-24-rat-final-appearance-sample/` |
 | 자연 경계도 100% Windows 빌드 성공 루프 엄격 검증 | 차단 — Computer Use 게임 창 캡처 오류 | `list_apps`와 새 빌드 실행·단일 창 식별은 복구됐지만 `get_window_state`가 `SetIsBorderRequired 0x80004002`로 최초·복구 1회 모두 실패했다. 화면 미확인 입력을 보내지 않아 자연 100% 이후 루프는 미검증이며, 실패 시도 로그와 정상 종료만 보존했다. | `_workspace/active/2026-07-16-natural-alert-build-loop-verification/` |
 
 ## 최근 작업 요약
 
 | 작업 | 상태 | 핵심 결과 | 확인 위치 |
 | --- | --- | --- | --- |
+| 프로젝트 2D 아이소메트릭 방향 전환 | 완료 보관 | 목업 기반 2D 방향, reference, ChatGPT 이미지 연계 워크플로와 전담 에이전트를 동기화했다. 최종 QA `PASS — 완료 가능`, 총괄 `내부 승인 가능`; Unity 플레이어블은 변경하지 않았다. | `_workspace/completed/2026-07-27-2026-07-27-project-2d-direction-transition/` |
+| 쥐 최종 외형 방향과 근접 샘플 | 레거시 완료 보관 | r6는 당시 QA·총괄을 통과한 후보였으나 사용자 최종 채택 전 2D 방향으로 전환됐다. 신규 제작 기준이 아닌 2.5D/Blender 레거시 이력으로 보관했다. | `_workspace/completed/2026-07-27-2026-07-24-rat-final-appearance-sample/` |
 | 쥐 v3/v4/v5b 제작·표시 방식 통합 종결 | 완료 보관 | QA `완료 가능 — 총괄 수정 조건 해소`, 총괄 `내부 승인 가능`으로 Blender v3·Unity v3·v4 해상도·v5b 픽셀 처리와 umbrella를 보관했다. v5b 제작·표시 방식은 수용됐지만 현재 쥐의 체형·색감·얼굴·실루엣·보행은 최종 미승인이며 후속 재작업 대상이다. | `_workspace/completed/2026-07-24-2026-07-24-rat-visual-v3-v4-v5b-closeout/` |
 | 쥐 시각·카메라 EditMode 회귀 기술 게이트 | 완료 보관 | 단일 테스트 계약 최소 수정 후 전체 EditMode `101/101`, 실패·skip·inconclusive 0, MCP Play의 RatHost·두 카메라·RatVisual·HUD·960×540 RT, Console 0, Stop/Edit clean과 씬·ProjectSettings·Builds 비변경을 확인했다. 총괄 `내부 승인 가능`; v4 직접 규격 자동화 공백과 사용자 시각 수용은 별도 유지한다. | `_workspace/completed/2026-07-24-2026-07-24-rat-visual-camera-editmode-regression/` |
 | Game 뷰 카메라 출력 복구와 이동 정합 | 완료 보관 | Display 1 출력 복구, RatVisual 누적 픽셀 이탈 수정, WASD 입력 우선과 숙주 본능 복구를 완료했다. 독립 QA에서 무입력 360스텝 이탈 0, D/A/W/S 방향 내적 1, Console 0을 확인했고 총괄 `내부 승인 가능`, 사용자 종료·보관 승인을 받았다. | `_workspace/completed/2026-07-24-2026-07-21-game-view-camera-output-fix/` |
@@ -60,9 +61,17 @@
 
 ## 다음 작업 후보
 
-쥐 최종 외형 작업은 A2 기반 Blender r6 제작, neutral idle 수정, QA·총괄 검토까지 통과했다. 현재 r6는 사용자에게 제시 가능한 최종 외형 승인 후보이며, 몸통 캡슐/패널형 띠와 큰 귀·어두운 얼굴 대비의 수용 여부를 사용자가 결정해야 한다. r1~r5 중간 바이너리는 삭제·커밋 제외하고 반려 사유만 문서에 보존하며 전체 64프레임·atlas·Unity 반입은 진행하지 않는다.
+다음 구현 후보는 실제 2D 플레이어블 기술 샘플이다. Tilemap, 2D 물리, SpriteRenderer/Animator, Y축 깊이 정렬, 픽셀 카메라와 실제 플레이 해상도 규격을 먼저 정하고 구현 계획과 승인 범위를 확정해야 한다. 현재 목업·문서 전환은 이 기술 샘플의 구현 완료나 Unity 변경 승인이 아니다.
 
 ## 최근 판단 항목
+
+### 2D 아이소메트릭 방향 전환 경계
+
+- 사용자 승인으로 목업 기반 2D 아이소메트릭 도트가 현재 프로젝트 비주얼·공간 표현 기준이 됐다.
+- `docs/design/visual/references/rat-host-2d-isometric-gameplay-mockup-v1.png`는 목표 분위기와 화면 구성 reference이며 반복 타일셋·스프라이트 시트·애니메이션 프레임이 아니다.
+- 기존 3D 환경·저폴리 원본·Blender 프리렌더와 r6는 삭제하지 않고 레거시 이력으로 보관한다.
+- ChatGPT 이미지 아트 에이전트와 AI 연계 워크플로는 후보 생성·기록·사람 선별을 담당하며, 게임 규격 재제작과 QA 전에는 최종 에셋으로 선언하지 않는다.
+- 이번 전환 작업에는 Unity 씬·코드·ProjectSettings·패키지 변경과 실제 2D 플레이어블 기술 샘플 구현이 포함되지 않는다.
 
 ### 완료 작업 보관 기준
 
@@ -94,6 +103,6 @@
 
 ## 추천 순서
 
-1. A2 참고안, r6 비교표, r6 턴어라운드를 사용자에게 제시해 최종 외형 수용 여부를 확인한다.
-2. 수용·수정·반려 중 사용자 결정을 기록하고 그전까지 active 상태를 유지한다.
-3. 최종 제품용 8방향 시트, 전체 64프레임, runtime atlas/스프라이트 시트, Unity 반입은 이후 각각 별도 승인한다.
+1. 실제 2D 플레이어블 기술 샘플의 규격과 구현 계획을 작성한다.
+2. Tilemap·2D 물리·Y 정렬·픽셀 카메라·쥐 스프라이트 검증 범위를 사용자에게 승인받는다.
+3. 승인 후 별도 작업 패킷에서 Unity 구현과 QA를 시작한다.

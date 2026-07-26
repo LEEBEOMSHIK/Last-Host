@@ -1,6 +1,6 @@
 # 작업별 참조 문서 색인
 
-최종 수정일: 2026-07-21
+최종 수정일: 2026-07-27
 
 ## 목적
 
@@ -129,34 +129,66 @@
 - `docs/design/progression/host-experience-traits.md`
 - `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
 
-### 도트풍 하이브리드 2.5D / 비주얼
+### 2D 아이소메트릭 도트 / 비주얼
 
 사용 요청 예시:
 
 - 비주얼 스타일 확인
-- 3D 환경, 저폴리 3D 캐릭터 원본, 8방향 프리렌더드 스프라이트 기준 확인
-- 방향별 피벗·애니메이션·가림·그림자와 저해상도 렌더링 기준 확인
-- 카메라와 플레이스홀더 에셋 기준 정리
+- 2D 환경 타일, 방향별 캐릭터 스프라이트 기준 확인
+- 방향·프레임·피벗·앞뒤 정렬·가림과 픽셀 출력 기준 확인
+- 고정 아이소메트릭 카메라와 플레이스홀더 기준 정리
 
 필수 참조:
 
 - `docs/design/game-design-summary.md`
 - `docs/design/visual/graphics-direction-management.md`
-- `docs/design/visual/pixel-lowpoly-3d-production-guide.md`
+- `docs/design/visual/pixel-isometric-2d-production-guide.md`
+- `docs/design/visual/references/README.md`
 - `.codex/skills/pixel-lowpoly-style-keeper/SKILL.md`
 
 선택 참조:
 
 - `.codex/skills/pixel-lowpoly-style-keeper/references/pixel-style-rules.md`
-- `docs/prototype/plans/rat-host-ai-assisted-art-workflow.md` (AI 보조 콘셉트·텍스처·타일·UI 아이콘 초안의 승인·선별·후속 3D/Unity 작업 순서를 정할 때)
+- `docs/design/visual/references/rat-host-2d-isometric-gameplay-mockup-v1.png`
+- `docs/prototype/plans/rat-host-ai-assisted-art-workflow.md`
+- `docs/design/visual/pixel-lowpoly-3d-production-guide.md` (기존 2.5D 산출물과 테스트를 해석할 때만)
 
-### Blender 원본 / 리깅 / 애니메이션 시험 렌더
+### ChatGPT 이미지 생성 / 목업·콘셉트·래스터 후보
 
 사용 요청 예시:
 
-- Blender에서 저폴리 캐릭터 원본을 만들거나 수정해 달라는 요청
-- 쥐의 걷기·대기·피격 같은 시험 애니메이션 제작 또는 수정
-- 8방향 프리렌더드 스프라이트용 카메라·피벗·루프·접지 검증
+- ChatGPT 이미지 모델로 게임플레이 목업이나 캐릭터 콘셉트 생성
+- 프로젝트 reference를 사용한 환경·타일·HUD 이미지 후보 생성
+- 생성 프롬프트·입력 출처·선별 기록 정리
+
+필수 참조:
+
+- `.agents/chatgpt-image-art-agent.md`
+- `docs/design/visual/references/README.md`
+- `docs/design/visual/graphics-direction-management.md`
+- `docs/prototype/plans/rat-host-ai-assisted-art-workflow.md`
+- 해당 `_workspace/active/<작업ID>/task.md`
+
+선택 참조:
+
+- `docs/design/visual/pixel-isometric-2d-production-guide.md`
+- `.agents/visual-tech-art-agent.md`
+- `.agents/qa-verification-agent.md`
+
+운영 경계:
+
+- OpenAI 내장 `imagegen`을 우선 사용한다.
+- 생성 결과는 후보이며 최종 타일·스프라이트로 자동 승인하지 않는다.
+- 프롬프트, 도구·날짜, 입력 reference 출처, 출력 경로와 선별 결과를 기록한다.
+- 방향·프레임 일관성, 게임 규격 재제작, Unity 적용과 QA는 후속 역할로 분리한다.
+
+### 레거시 Blender 원본 / 리깅 / 프리렌더 조사
+
+사용 요청 예시:
+
+- 기존 Blender 저폴리 캐릭터 원본이나 렌더 이력 확인
+- 레거시 쥐 보행·대기 프리렌더의 재현 또는 보존
+- 기존 8방향 프리렌더 카메라·피벗·루프·접지 문제 조사
 
 필수 참조:
 
@@ -173,7 +205,8 @@
 
 운영 경계:
 
-- 실제 Blender 원본·애니메이션·시험 렌더는 Blender 애니메이션 테크아트 에이전트에 배정한다.
+- 신규 2D 제작에는 Blender 애니메이션 테크아트 에이전트를 기본 배정하지 않는다.
+- 레거시 원본·애니메이션·시험 렌더의 조사·재현·보존만 Blender 애니메이션 테크아트 에이전트에 배정한다.
 - Unity 반입은 사용자 별도 승인 뒤 Unity 씬/통합 구현 에이전트에 분리 배정한다.
 
 ### 에이전트 배정 / 스킬 운영
@@ -200,6 +233,7 @@
 - `.agents/gameplay-implementation-agent.md`
 - `.agents/unity-scene-integration-agent.md`
 - `.agents/visual-tech-art-agent.md`
+- `.agents/chatgpt-image-art-agent.md`
 - `.agents/qa-verification-agent.md`
 - `.agents/documentation-release-agent.md`
 

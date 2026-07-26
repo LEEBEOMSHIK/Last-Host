@@ -25,14 +25,16 @@
 - `agents/agent-skill-plan.md`: 에이전트 역할, 루프 엔지니어링, 승인 흐름
 - `design/game-design-summary.md`: 게임 기획 요약
 - `design/README.md`: 상세 게임 기획 폴더 구조와 작성 기준
-- `design/visual/README.md`: 도트풍 하이브리드 2.5D 비주얼 제작 문서 색인
-- `design/visual/graphics-direction-management.md`: 그래픽 방향 관리, 참고 게임의 그래픽 판단 기준, 공통 규격과 시험안 수용 경계
-- `design/visual/pixel-lowpoly-3d-production-guide.md`: 3D 환경, 캐릭터 3D 원본·8방향 스프라이트, 픽셀 표면, URP 저해상도 렌더링, 카메라·조명·UI의 제작 가이드
+- `design/visual/README.md`: 2D 아이소메트릭 도트 비주얼 제작 문서 색인
+- `design/visual/references/README.md`: 목표 목업의 출처·용도·한계와 reference 사용 규칙
+- `design/visual/graphics-direction-management.md`: 현재 2D 그래픽 방향, 공통 규격과 시험안 수용 경계
+- `design/visual/pixel-isometric-2d-production-guide.md`: 2D 타일·캐릭터 스프라이트·깊이 정렬·픽셀 출력·QA 제작 가이드
+- `design/visual/pixel-lowpoly-3d-production-guide.md`: 2026-07-27 이전 2.5D/Blender 제작 이력과 기존 산출물 해석을 위한 레거시 가이드
 - `prototype/README.md`: 프로토타입 문서 성격별 하위 폴더 색인
 - `prototype/official/rat-host-prototype.md`: 쥐 숙주 프로토타입 범위
 - `prototype/approvals/rat-host-approval-packet.md`: 프로토타입 승인 이력과 승인 항목
 - `prototype/plans/rat-host-implementation-plan.md`: 승인된 쥐 숙주 프로토타입 구현 계획
-- `prototype/plans/rat-host-ai-assisted-art-workflow.md`: AI 보조 래스터 초안의 승인·기록·선별·캐릭터 3D 원본·방향 렌더·Unity 적용·QA 작업 순서
+- `prototype/plans/rat-host-ai-assisted-art-workflow.md`: ChatGPT 내장 이미지 생성의 승인·프롬프트·입력 출처·선별·2D 게임 에셋 재제작·Unity QA 작업 순서
 - `project/project-prep.md`: 현재 프로젝트 준비 상태
 - `project-handoff/current-task-board.md`: 현재 작업 후보, 미결 검증, 최근 작업 요약
 - `unity/unity-baseline-report.md`: Unity 프로젝트 읽기 전용 기준 상태

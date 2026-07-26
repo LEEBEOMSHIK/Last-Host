@@ -1,23 +1,26 @@
 # 비주얼 제작 문서
 
-`docs/design/visual/`은 `마지막 숙주`의 도트풍 하이브리드 2.5D 비주얼을 일관되게 만들기 위한 제작 기준을 둔다. 3D 환경과 게임플레이 루트, 저폴리 3D 캐릭터 원본, 8방향 프리렌더드 스프라이트의 경계를 다루며 실제 Unity 설정값이나 에셋 파일은 보관하지 않는다.
+`docs/design/visual/`은 `마지막 숙주`의 현재 승인된 2D 아이소메트릭 도트 방향과, 이전 하이브리드 2.5D 방향의 이력을 구분해 관리한다.
 
 ## 확인 순서
 
-1. `graphics-direction-management.md`에서 그래픽 방향, 참고 게임의 허용된 판단 범위, 현재 기준과 시험안의 경계를 확인한다.
-2. `pixel-lowpoly-3d-production-guide.md`에서 3D 환경, 캐릭터 원본·8방향 스프라이트, 픽셀 표면, 렌더링, 카메라, 조명 기준과 씬 검토 순서를 확인한다.
-3. AI 보조 래스터 초안을 실제로 생성하려면 `../../prototype/plans/rat-host-ai-assisted-art-workflow.md`에서 자산 묶음 승인, 기록, 선별, 후속 3D/Unity 분리 절차를 확인한다.
-4. 실제 모델, 텍스처, URP Renderer, 카메라, 포스트 프로세싱을 변경하기 전에는 해당 작업 패킷에서 이 가이드의 권장값을 프로젝트 조건에 맞게 검증한다.
-5. 쥐 숙주 프로토타입의 플레이 가능 범위는 `../../prototype/official/rat-host-prototype.md`를 우선한다.
+1. `references/README.md`와 `references/rat-host-2d-isometric-gameplay-mockup-v1.png`에서 목표 화면의 용도와 한계를 확인한다.
+2. `graphics-direction-management.md`에서 현재 그래픽 방향과 수용 경계를 확인한다.
+3. `pixel-isometric-2d-production-guide.md`에서 타일, 스프라이트, 픽셀 격자, 정렬, 카메라와 기술 샘플 기준을 확인한다.
+4. ChatGPT 이미지 생성이 필요하면 `../../prototype/plans/rat-host-ai-assisted-art-workflow.md`와 `.agents/chatgpt-image-art-agent.md`를 따른다.
+5. 기존 구현이나 과거 산출물을 해석할 때만 `pixel-lowpoly-3d-production-guide.md`를 레거시 문서로 확인한다.
 
 ## 현재 문서
 
-- `graphics-direction-management.md`: 그래픽 방향 관리 기준, Dave the Diver·The Binding of Isaac의 그래픽 판단 원칙, 공통 기준과 시험안의 수용 경계.
-- `pixel-lowpoly-3d-production-guide.md`: 도트풍 하이브리드 2.5D의 3D 환경·캐릭터 원본·8방향 스프라이트·URP 렌더링·카메라·UI·검토 기준.
-- `../../prototype/plans/rat-host-ai-assisted-art-workflow.md`: AI 보조 래스터 초안의 승인·선별과 캐릭터 3D 원본·방향 렌더·Unity 적용 분리 계획.
+- `graphics-direction-management.md`: 현재 2D 아이소메트릭 도트 그래픽 방향과 reference·수용 관리 기준.
+- `pixel-isometric-2d-production-guide.md`: 2D 타일·캐릭터 스프라이트·깊이 정렬·픽셀 출력·QA 제작 기준.
+- `references/`: 승인된 목표 화면 reference와 출처·용도·한계.
+- `../../prototype/plans/rat-host-ai-assisted-art-workflow.md`: OpenAI 내장 `imagegen`을 이용한 후보 생성, 기록, 선별, 후속 제작·Unity 적용 분리 절차.
+- `pixel-lowpoly-3d-production-guide.md`: 2026-07-27 이전 하이브리드 2.5D/Blender 프리렌더 제작 이력. 신규 제작 기본 경로가 아니다.
 
 ## 범위
 
-- 이 폴더의 수치와 예시는 결정된 실제 설정이 아니라 검증을 시작하기 위한 문서 기준이다.
-- 실제 Unity 설정, URP Renderer, 에셋 Import, 모델·텍스처 제작과 적용은 별도 사용자 승인과 검증을 거친다.
-- 이 문서는 3D 환경·게임플레이 루트를 폐기하는 순수 2D 전환이나 쥐 숙주 프로토타입 범위 확장을 제안하지 않는다.
+- Unity 엔진, PC 우선, 쥐 숙주 핵심 루프는 유지한다.
+- 환경·캐릭터·효과의 신규 제작 기본 경로는 2D 아이소메트릭 타일과 스프라이트다.
+- 목업과 AI 생성 결과는 목표·후보 자료이며 실제 타일셋이나 최종 스프라이트로 자동 승인하지 않는다.
+- 실제 Unity 설정, 에셋 Import, 타일맵·씬·코드 적용은 별도 작업 패킷과 사용자 승인·검증을 거친다.

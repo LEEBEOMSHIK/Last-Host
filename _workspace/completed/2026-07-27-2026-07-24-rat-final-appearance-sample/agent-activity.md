@@ -288,3 +288,20 @@
 - 정리 포함: 사용자 요청에 따른 중간 바이너리 `1.38 MiB` cleanup과 반려 사유 문서 보존.
 - 상태 경계: r6는 active 사용자 최종 수용 대기이며 최종 외형 채택·완료·보관 판정이 아니다.
 - 제외 유지: `ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY`, `_workspace/previews/`, `Builds/`.
+
+### 2026-07-27 — 순수 2D 도트 게임 비교 샘플 생성
+
+- 에이전트: 메인 조정자
+- 사용 스킬: `pixel-lowpoly-style-keeper`, `imagegen`
+- 역할: 기존 2.5D 방향을 변경하지 않은 상태에서 순수 2D 전환 가정의 게임플레이 화면을 비교용으로 생성.
+- 참고 이미지: `artifacts/ai-concepts/rat-concept-a-natural.png`.
+- 산출물: `docs/design/visual/references/rat-host-2d-isometric-gameplay-mockup-v1.png`로 이동.
+- 상태 경계: 사용자 시각 판단 대기. 순수 2D 방향 전환·Unity 반입·최종 에셋 승인은 발생하지 않았다.
+
+### 2026-07-27 — 2D 방향 전환 인계
+
+- 에이전트: 메인 조정자
+- 역할: 사용자 방향 전환 결정 반영과 후속 작업 분리
+- 판정: r6 최종 후보 상태 종료, 기존 2.5D/Blender 기술·시각 이력으로 보존.
+- 후속 작업: `_workspace/completed/2026-07-27-2026-07-27-project-2d-direction-transition/`에서 완료·보관.
+- 금지: 기존 산출물 삭제, Unity 즉시 전환, 목업을 실제 게임 에셋으로 오인.

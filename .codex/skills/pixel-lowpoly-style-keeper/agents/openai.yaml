@@ -1,4 +1,4 @@
 interface:
-  display_name: "Pixel Lowpoly Style Keeper"
-  short_description: "Maintains pixel low-poly 3D style rules"
-  default_prompt: "Use $pixel-lowpoly-style-keeper to review pixel low-poly 3D style rules."
+  display_name: "2D Isometric Style Keeper"
+  short_description: "Maintains the 2D isometric pixel-art direction"
+  default_prompt: "Use $pixel-lowpoly-style-keeper to review 2D isometric tiles, sprites, pixel output, and AI-reference boundaries."
