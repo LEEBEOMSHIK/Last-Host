@@ -18,8 +18,8 @@
 
 ## 현재 저장소 상태
 
-- 최신 반영 커밋: `ba883a2 art: integrate rat appearance candidate and visual gates`
-- 원격 반영: 로컬 `HEAD`와 `origin/main` 모두 `ba883a2679209d243d7b5d998c33ec1635883101`; 푸시 범위 `5303731..ba883a2`
+- 작업 반영 기준 커밋: `ba883a2 art: integrate rat appearance candidate and visual gates`
+- 후속 현황판 동기화: `350d520 docs: sync rat appearance push state`도 `origin/main` 반영 완료
 - 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
 - 정리 반영: 사용자 요청에 따라 r1~r5·r6 임시 preview 중간 바이너리 `1.38 MiB`를 삭제·커밋 제외하고 반려 사유만 문서로 보존
 - post-push 상태: r6는 active 사용자 최종 외형 수용 대기이며 최종 채택·완료·보관 상태가 아니다.
