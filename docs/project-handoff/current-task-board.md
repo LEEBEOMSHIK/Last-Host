@@ -18,8 +18,8 @@
 
 ## 현재 저장소 상태
 
-- 현재 Git 기준: `HEAD = origin/main = f34ca43 docs: sync 2d transition push state`
-- 현재 로컬 작업: 별도 2D 플레이어블 기술 샘플을 사용자 수용·QA `완료 가능`·총괄 `내부 승인 가능`으로 완료 보관했고 선별 커밋 직전이다.
+- 현재 Git 기준: `HEAD = a2cfe20 feat: add 2d playable technical sample`, `origin/main = f34ca43 docs: sync 2d transition push state`
+- 현재 로컬 작업: 별도 2D 플레이어블 기술 샘플을 사용자 수용·QA `완료 가능`·총괄 `내부 승인 가능`으로 완료 보관하고 구현 커밋했다. 현황판 동기화 커밋과 원격 푸시만 남았다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
 - 정리 반영: 사용자 요청에 따라 r1~r5·r6 임시 preview 중간 바이너리 `1.38 MiB`를 삭제·커밋 제외하고 반려 사유만 문서로 보존
@@ -37,7 +37,7 @@
 
 | 작업 | 상태 | 핵심 결과 | 확인 위치 |
 | --- | --- | --- | --- |
-| 실제 2D 플레이어블 기술 샘플 | 완료 보관·커밋 직전 | 별도 2D 씬에 Tilemap 3개, 2D 충돌, WASD·8방향 쥐, 카메라, Y 정렬, HUD를 구현했다. 사용자 피드백으로 Pipe/Barrel 하단 충돌도 보강했고 전체 EditMode 139/139, 실제 Host/Move 충돌·우회·Y-sort, 최신 Windows 임시 빌드, 보호 설정을 통과했다. 사용자 플레이 수용, QA `완료 가능`, 총괄 `내부 승인 가능`; Windows 실행본은 빌드 성공/실행 미검증 경계를 유지한다. | `_workspace/completed/2026-07-27-2026-07-27-2d-playable-technical-sample/` |
+| 실제 2D 플레이어블 기술 샘플 | 완료 보관·구현 커밋 `a2cfe20` | 별도 2D 씬에 Tilemap 3개, 2D 충돌, WASD·8방향 쥐, 카메라, Y 정렬, HUD를 구현했다. 사용자 피드백으로 Pipe/Barrel 하단 충돌도 보강했고 전체 EditMode 139/139, 실제 Host/Move 충돌·우회·Y-sort, 최신 Windows 임시 빌드, 보호 설정을 통과했다. 사용자 플레이 수용, QA `완료 가능`, 총괄 `내부 승인 가능`; Windows 실행본은 빌드 성공/실행 미검증 경계를 유지한다. | `_workspace/completed/2026-07-27-2026-07-27-2d-playable-technical-sample/` |
 | 프로젝트 2D 아이소메트릭 방향 전환 | 완료 보관 | 목업 기반 2D 방향, reference, ChatGPT 이미지 연계 워크플로와 전담 에이전트를 동기화했다. 최종 QA `PASS — 완료 가능`, 총괄 `내부 승인 가능`; Unity 플레이어블은 변경하지 않았다. | `_workspace/completed/2026-07-27-2026-07-27-project-2d-direction-transition/` |
 | 쥐 최종 외형 방향과 근접 샘플 | 레거시 완료 보관 | r6는 당시 QA·총괄을 통과한 후보였으나 사용자 최종 채택 전 2D 방향으로 전환됐다. 신규 제작 기준이 아닌 2.5D/Blender 레거시 이력으로 보관했다. | `_workspace/completed/2026-07-27-2026-07-24-rat-final-appearance-sample/` |
 | 쥐 v3/v4/v5b 제작·표시 방식 통합 종결 | 완료 보관 | QA `완료 가능 — 총괄 수정 조건 해소`, 총괄 `내부 승인 가능`으로 Blender v3·Unity v3·v4 해상도·v5b 픽셀 처리와 umbrella를 보관했다. v5b 제작·표시 방식은 수용됐지만 현재 쥐의 체형·색감·얼굴·실루엣·보행은 최종 미승인이며 후속 재작업 대상이다. | `_workspace/completed/2026-07-24-2026-07-24-rat-visual-v3-v4-v5b-closeout/` |
