@@ -1,18 +1,23 @@
 # 현재 세션 포인터
 
-## 활성 구현 작업
+## 현재 이어받을 작업
 
-- 상태: 없음
-- 최근 완료: `_workspace/completed/2026-07-27-2026-07-27-project-2d-direction-transition/`
-- 레거시 보관: `_workspace/completed/2026-07-27-2026-07-24-rat-final-appearance-sample/`
-- 현재 프로젝트 기준: 목업 기반 2D 아이소메트릭 도트 타일·방향별 스프라이트
+- 작업 ID: 없음 — `2026-07-27-2d-playable-technical-sample` 완료 보관
+- 상태: 사용자 수용·QA 완료 가능·총괄 내부 승인 가능, 선별 커밋 직전
+- 완료 경로: `_workspace/completed/2026-07-27-2026-07-27-2d-playable-technical-sample/`
+- 최신 사용자 요청: 수정된 소품 충돌을 확인했으며 현재 기술 샘플을 커밋·푸시한다.
 
-## 다음 작업 후보
+## 먼저 읽을 파일
 
-- 작업: 실제 2D 플레이어블 기술 샘플 계획·승인
-- 범위 후보: 작은 하수도 방 1개, Tilemap, 2D Collider, SpriteRenderer/Animator, Y축 깊이 정렬, 고정 직교 픽셀 카메라, 실제 쥐 스프라이트와 플레이 해상도 규격
-- 승인 경계: 별도 규격·구현 계획과 사용자 승인 전에는 Unity 씬·코드·Import·ProjectSettings·패키지를 변경하지 않는다.
-- 목업 경계: `docs/design/visual/references/rat-host-2d-isometric-gameplay-mockup-v1.png`는 reference이며 실제 타일셋·스프라이트 시트·플레이어블 완료 증거가 아니다.
+1. `_workspace/completed/2026-07-27-2026-07-27-2d-playable-technical-sample/completion-report.md`
+2. `_workspace/completed/2026-07-27-2026-07-27-2d-playable-technical-sample/verification.md`
+3. `docs/project-handoff/current-task-board.md`
+
+## 바로 이어서 할 작업
+
+1. 기술 샘플 관련 파일만 선별 스테이징해 커밋·푸시한다.
+2. 실제 커밋 SHA와 Git 상태를 현황판에 동기화한다.
+3. 다음 후보는 쥐 숙주 핵심 루프의 단계적 2D 이관 범위·승인 브리프다.
 
 ## 병행 차단 작업
 
@@ -23,13 +28,12 @@
 
 - `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` 로컬 변경을 보존한다.
 - `_workspace/previews/`를 보존한다.
-- `Builds/`를 현재 작업 범위에서 제외한다.
+- 저장소 `Builds/`는 건드리지 않고 Windows 검증 빌드는 임시 경로에 출력한다.
 
 ## Git 상태
 
-- 2D 방향 전환 반영: `e654429 docs: adopt 2d isometric project direction`
-- 푸시 상태: `e654429`까지 `origin/main` 반영 완료
-- 후속 상태 동기화: 이 `CURRENT.md`와 현황판의 푸시 기록만 별도 docs-only 커밋으로 반영한다.
+- 기준: `HEAD = origin/main = f34ca43`
+- 현재 2D 기술 샘플 작업은 미커밋이다.
 
 ## 갱신 정보
 
