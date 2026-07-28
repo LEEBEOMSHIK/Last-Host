@@ -2,27 +2,28 @@
 
 ## 현재 이어받을 작업
 
-- 작업 ID: 없음 — `2026-07-27-2d-playable-technical-sample` 완료 보관
-- 상태: 사용자 수용·QA 완료 가능·총괄 내부 승인 가능, 구현 커밋 완료·현황판 동기화 및 푸시 직전
-- 완료 경로: `_workspace/completed/2026-07-27-2026-07-27-2d-playable-technical-sample/`
-- 최신 사용자 요청: 수정된 소품 충돌을 확인했으며 현재 기술 샘플을 커밋·푸시한다.
+- 작업 ID: `2026-07-28-rat-host-2d-stage2-minigame`
+- 상태: 구현 커밋 완료·푸시 준비 — `d12146f`, 원본 Reload·MCP Play·Console 사용자 결정 대기
+- 작업 경로: `_workspace/active/2026-07-28-rat-host-2d-stage2-minigame/`
+- 최신 사용자 요청: 2단계 2D 백혈구 회피 미니게임과 성공·실패 인계 작업을 진행한다.
 
 ## 먼저 읽을 파일
 
-1. `_workspace/completed/2026-07-27-2026-07-27-2d-playable-technical-sample/completion-report.md`
-2. `_workspace/completed/2026-07-27-2026-07-27-2d-playable-technical-sample/verification.md`
-3. `docs/project-handoff/current-task-board.md`
+1. `_workspace/active/2026-07-28-rat-host-2d-stage2-minigame/task.md`
+2. `_workspace/active/2026-07-28-rat-host-2d-stage1-integration/handoff.md`
+3. `docs/prototype/approvals/rat-host-2d-core-loop-migration-brief.md`
 
 ## 바로 이어서 할 작업
 
-1. 구현 커밋 `a2cfe20 feat: add 2d playable technical sample`을 현황판에 동기화한다.
-2. 현황판 동기화 커밋을 생성한 뒤 두 커밋을 원격 `main`에 푸시한다.
-3. 다음 후보는 쥐 숙주 핵심 루프의 단계적 2D 이관 범위·승인 브리프다.
+1. 현황판과 CURRENT를 실제 구현 커밋 `d12146f`에 맞춰 동기화하고 푸시한다.
+2. 사용자가 원본 Unity 외부 씬 변경 모달의 `Reload` 실행 여부를 결정한다.
+3. 승인 후 원본 씬을 Stage2로 Rebuild·Save하고 MCP Play·Console·보호 diff를 검증한다.
 
 ## 병행 차단 작업
 
 - `2026-07-16-natural-alert-build-loop-verification`: Computer Use 게임 창 캡처 오류로 QA `차단`·총괄 `보류`.
 - 재개 조건: Windows 게임 창 캡처 지원 복구 또는 사용자의 같은 연속 루프 단계별 화면과 해당 세션 `Player.log`.
+- `2026-07-28-rat-host-2d-stage1-integration`: 구현과 전체 EditMode는 통과했으나 Unity 외부 씬 변경 모달 때문에 원본 MCP Play·최신 QA 빌드가 차단됐다.
 
 ## 제외하거나 건드리면 안 되는 변경
 
@@ -32,11 +33,11 @@
 
 ## Git 상태
 
-- 현재 HEAD: `a2cfe20 feat: add 2d playable technical sample`
-- 원격 기준: `origin/main = f34ca43`
-- 2D 기술 샘플 구현은 커밋됐고 현황판 동기화 커밋과 푸시만 남았다.
+- 현재 HEAD: `d12146f feat: add staged 2d rat host core loop`
+- 원격 기준: `origin/main = 0dea64e docs: sync 2d sample commit state`
+- 구현·테스트·승인/QA 기록은 커밋됐고 현황판 동기화 커밋과 푸시가 남았다.
 
 ## 갱신 정보
 
-- 마지막 갱신: 2026-07-27 KST
+- 마지막 갱신: 2026-07-28 KST
 - 갱신자: 메인 조정자

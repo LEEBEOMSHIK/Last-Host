@@ -1,6 +1,6 @@
 # 현재 작업 후보와 핸드오프 현황
 
-최종 갱신: 2026-07-27 KST
+최종 갱신: 2026-07-28 KST
 
 ## 목적
 
@@ -18,25 +18,29 @@
 
 ## 현재 저장소 상태
 
-- 현재 Git 기준: `HEAD = a2cfe20 feat: add 2d playable technical sample`, `origin/main = f34ca43 docs: sync 2d transition push state`
-- 현재 로컬 작업: 별도 2D 플레이어블 기술 샘플을 사용자 수용·QA `완료 가능`·총괄 `내부 승인 가능`으로 완료 보관하고 구현 커밋했다. 현황판 동기화 커밋과 원격 푸시만 남았다.
+- 현재 Git 기준: `HEAD = d12146f feat: add staged 2d rat host core loop`, `origin/main = 0dea64e docs: sync 2d sample commit state`
+- 현재 로컬 작업: 2단계 2D 백혈구 회피 미니게임 구현 후보를 만들고 신규 EditMode `10/10`, 전체 `186/186`, 임시 복제본 씬 계약 2회, Windows 빌드를 통과했다. Stage1/Stage2 구현·테스트·승인/QA 기록은 `d12146f`로 커밋했다. 원본 Unity 외부 씬 변경 모달 때문에 원본 씬은 아직 Stage1이며 MCP Play·Console은 차단됐다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
 - 정리 반영: 사용자 요청에 따라 r1~r5·r6 임시 preview 중간 바이너리 `1.38 MiB`를 삭제·커밋 제외하고 반려 사유만 문서로 보존
 - 기술 샘플 경계: 신규 패키지·최종 아트·기존 3D 교체 없이 별도 씬에서 시험 규격을 검증한다.
 - 로컬 제외 유지: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` unstaged 변경, `_workspace/previews/` untracked
 - `Builds/` 제외: 현재 완료 보관 동기화에 포함하지 않음
+- Stage2 임시 정리: QA 빌드 성공 기록은 문서로 남기고 `C:\tmp\LastHostRatHost2DStage2` 약 `205 MB`와 정적 컴파일 DLL/PDB는 사용자 요청으로 삭제
 
 ## 현재 진행 중
 
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
+| 2단계 2D 백혈구 회피 미니게임과 성공·실패 인계 | 구현 커밋 `d12146f` / 원본 Reload 사용자 결정 대기 | 자동 기술 게이트를 통과했고 임시 빌드·정적 컴파일 산출물은 사용자 요청으로 삭제했다. 구현·기록은 커밋됐지만 원본 씬 적용·MCP Play·Console과 사용자 수동 플레이 전에는 완료가 아니다. | `_workspace/active/2026-07-28-rat-host-2d-stage2-minigame/` |
+| 1단계 2D 쥐 숙주·면역 경계도·자연 100% 전환 통합 | 차단 — 구현·EditMode 통과, Unity Reload 승인 대기 | 별도 `RatHost2DPrototype` 씬에 기존 상태·숙주 본능/WASD 인계·2D 오염 노출·자연 100%·내부 모드 전환 셸을 연결했다. 씬은 직전 `isDirty=false`였으나 외부 변경 모달이 MCP를 막아 원본 Play·Console·최신 Windows 빌드를 마감하지 못했다. | `_workspace/active/2026-07-28-rat-host-2d-stage1-integration/` |
 | 자연 경계도 100% Windows 빌드 성공 루프 엄격 검증 | 차단 — Computer Use 게임 창 캡처 오류 | `list_apps`와 새 빌드 실행·단일 창 식별은 복구됐지만 `get_window_state`가 `SetIsBorderRequired 0x80004002`로 최초·복구 1회 모두 실패했다. 화면 미확인 입력을 보내지 않아 자연 100% 이후 루프는 미검증이며, 실패 시도 로그와 정상 종료만 보존했다. | `_workspace/active/2026-07-16-natural-alert-build-loop-verification/` |
 
 ## 최근 작업 요약
 
 | 작업 | 상태 | 핵심 결과 | 확인 위치 |
 | --- | --- | --- | --- |
+| 쥐 숙주 핵심 루프 단계적 2D 이관 승인 브리프 | 완료 보관 | 사용자 전체 추천안 승인으로 3단계 이관, 별도 2D 프로토타입 씬, 상태 재사용·2D 어댑터, 오염 노출 자연 100%, 신호 억제 보류, 레거시 보존과 1단계 착수를 확정했다. | `_workspace/completed/2026-07-28-2026-07-27-rat-core-loop-2d-migration-brief/` |
 | 실제 2D 플레이어블 기술 샘플 | 완료 보관·구현 커밋 `a2cfe20` | 별도 2D 씬에 Tilemap 3개, 2D 충돌, WASD·8방향 쥐, 카메라, Y 정렬, HUD를 구현했다. 사용자 피드백으로 Pipe/Barrel 하단 충돌도 보강했고 전체 EditMode 139/139, 실제 Host/Move 충돌·우회·Y-sort, 최신 Windows 임시 빌드, 보호 설정을 통과했다. 사용자 플레이 수용, QA `완료 가능`, 총괄 `내부 승인 가능`; Windows 실행본은 빌드 성공/실행 미검증 경계를 유지한다. | `_workspace/completed/2026-07-27-2026-07-27-2d-playable-technical-sample/` |
 | 프로젝트 2D 아이소메트릭 방향 전환 | 완료 보관 | 목업 기반 2D 방향, reference, ChatGPT 이미지 연계 워크플로와 전담 에이전트를 동기화했다. 최종 QA `PASS — 완료 가능`, 총괄 `내부 승인 가능`; Unity 플레이어블은 변경하지 않았다. | `_workspace/completed/2026-07-27-2026-07-27-project-2d-direction-transition/` |
 | 쥐 최종 외형 방향과 근접 샘플 | 레거시 완료 보관 | r6는 당시 QA·총괄을 통과한 후보였으나 사용자 최종 채택 전 2D 방향으로 전환됐다. 신규 제작 기준이 아닌 2.5D/Blender 레거시 이력으로 보관했다. | `_workspace/completed/2026-07-27-2026-07-24-rat-final-appearance-sample/` |
@@ -63,7 +67,7 @@
 
 ## 다음 작업 후보
 
-다음 후보는 `쥐 숙주 핵심 루프의 단계적 2D 이관 범위·승인 브리프`다. 기술 샘플에서 확인한 이동·충돌·카메라·Y 정렬 구조를 기반으로 면역 경계도, 내부 바이러스 미니게임, 변이 선택·복귀 중 어디까지 먼저 이관할지 사용자 승인을 받는다. `960×540`, `64×32`, PPU `64`와 기술 플레이스홀더는 아직 최종 규격·최종 아트가 아니다.
+2단계 구현 후보와 자동 QA는 통과했지만 원본 Unity 적용·MCP Play·Console이 남아 있다. 다음 후보 `3단계 변이 선택·효과·2D 쥐 복귀`는 2단계 원본 검증과 사용자 수용 뒤 착수한다. `960×540`, `64×32`, PPU `64`와 기술 플레이스홀더는 아직 최종 규격·최종 아트가 아니다.
 
 ## 최근 판단 항목
 
@@ -105,6 +109,6 @@
 
 ## 추천 순서
 
-1. 쥐 숙주 핵심 루프의 단계적 2D 이관 범위·승인 브리프를 만든다.
-2. 면역 경계도와 모드 전환부터 이관할지, 내부 미니게임까지 한 작업으로 묶을지 결정한다.
-3. 시험 화면·타일·PPU와 최종 아트 제작은 별도 비교·승인 게이트로 유지한다.
+1. Unity 외부 씬 변경 모달의 `Reload`를 사용자가 직접 클릭하거나 에이전트 실행을 명시 승인한다.
+2. 원본 `RatHost2DPrototype`을 Stage2로 Rebuild·Save하고 MCP Play·Console·보호 diff를 검증한다.
+3. 원본 검증 통과 후 필요할 때만 새 임시 Windows 빌드를 생성해 사용자 성공·실패 플레이와 총괄 재검토를 진행하고, 통과 후 3단계를 승인한다.

@@ -39,3 +39,4 @@
 - 공유 현황판·세션 포인터·일부 승인/계획 문서를 QA 최종 상태로 동기화하고, 기존 테스트 최소 수정 수행 주체를 게임플레이 구현 에이전트로 정합화했다.
 - 사용자 요청에 따라 `C:\tmp\LastHostRatHost2DStage2`의 임시 Windows 빌드 `205,441,545 bytes`와 `C:\tmp\LastHost.Prototype.RatHost2D.Stage2*` 정적 컴파일 DLL/PDB를 삭제했다. 저장소 파일, `ProjectSettings.asset` 사용자 변경과 `_workspace/previews/`는 보존했다.
 - 커밋 요청에 따라 Stage1/Stage2 구현·테스트·승인/QA 기록만 선별 스테이징하려 했으나 `.git/index.lock` 쓰기 권한이 필요했다. 권한 승인 사용량 한도 도달로 `git add`가 거부되어 staged 파일 없이 커밋·푸시를 중단했다. 사용자 `ProjectSettings.asset` 변경과 `_workspace/previews/`는 계속 제외한다.
+- 2026-07-29 사용자가 Git 쓰기 실행을 다시 명시 승인했다. 같은 선별 범위로 스테이징하고 Markdown 공백 형식 경고를 정리한 뒤 `d12146f feat: add staged 2d rat host core loop` 커밋을 생성했다. `ProjectSettings.asset`, `_workspace/previews/`, 현황판·CURRENT는 첫 커밋에서 제외했다.
