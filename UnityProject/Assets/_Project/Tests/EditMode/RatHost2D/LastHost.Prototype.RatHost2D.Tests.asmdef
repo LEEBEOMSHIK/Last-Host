@@ -1,0 +1,26 @@
+{
+  "name": "LastHost.Prototype.RatHost2D.Tests",
+  "rootNamespace": "LastHost.Prototype.RatHost2D.Tests",
+  "references": [
+    "LastHost.Prototype",
+    "LastHost.Prototype.TechnicalSample2D",
+    "LastHost.Prototype.RatHost2D",
+    "Unity.InputSystem",
+    "UnityEngine.UI",
+    "UnityEngine.TestRunner",
+    "UnityEditor.TestRunner"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

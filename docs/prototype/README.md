@@ -12,6 +12,7 @@
 
 - `official/rat-host-prototype.md`: 쥐 숙주 프로토타입의 공식 범위, 포함/제외 항목, 성공 기준
 - `approvals/rat-host-approval-packet.md`: 2026-06-30 전체 승인 이력과 승인된 결정
+- `approvals/rat-host-2d-core-loop-migration-brief.md`: 2D 기술 샘플 이후 핵심 루프의 3단계 이관 범위, 구조 추천과 사용자 승인 항목
 - `plans/rat-host-implementation-plan.md`: 승인된 Unity 구현 계획과 검증 기준
 - `plans/rat-host-immune-alert-work-direction.md`: 면역 경계도 상세 기획을 기준으로 한 다음 작업 방향과 우선순위
 - `plans/rat-host-ai-assisted-art-workflow.md`: ChatGPT 이미지 생성 후보의 승인·출처 기록·사람 선별·2D 게임 규격 재제작·Unity 적용·QA 순서
@@ -22,6 +23,7 @@
 
 1. `official/rat-host-prototype.md`
 2. `approvals/rat-host-approval-packet.md`
-3. `plans/rat-host-implementation-plan.md`
-4. `plans/rat-host-immune-alert-work-direction.md`
-5. `plans/rat-host-ai-assisted-art-workflow.md` (실제 AI 보조 아트 작업을 검토할 때)
+3. `approvals/rat-host-2d-core-loop-migration-brief.md` (실제 2D 핵심 루프 이관을 결정할 때)
+4. `plans/rat-host-implementation-plan.md`
+5. `plans/rat-host-immune-alert-work-direction.md`
+6. `plans/rat-host-ai-assisted-art-workflow.md` (실제 AI 보조 아트 작업을 검토할 때)

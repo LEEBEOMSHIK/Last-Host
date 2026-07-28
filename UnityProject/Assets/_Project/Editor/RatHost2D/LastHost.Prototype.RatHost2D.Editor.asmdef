@@ -1,0 +1,21 @@
+{
+  "name": "LastHost.Prototype.RatHost2D.Editor",
+  "rootNamespace": "LastHost.Prototype.RatHost2D.Editor",
+  "references": [
+    "LastHost.Prototype.RatHost2D",
+    "LastHost.Prototype.TechnicalSample2D",
+    "Unity.InputSystem",
+    "UnityEngine.UI"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

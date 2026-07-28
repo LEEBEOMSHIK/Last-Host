@@ -1,0 +1,19 @@
+{
+  "name": "LastHost.Prototype.RatHost2D",
+  "rootNamespace": "LastHost.Prototype.RatHost2D",
+  "references": [
+    "LastHost.Prototype",
+    "LastHost.Prototype.TechnicalSample2D",
+    "Unity.InputSystem",
+    "UnityEngine.UI"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
