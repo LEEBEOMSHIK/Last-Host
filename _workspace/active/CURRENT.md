@@ -3,7 +3,7 @@
 ## 현재 이어받을 작업
 
 - 작업 ID: `2026-07-30-production2d-occlusion-hud-correction`
-- 상태: 커밋 준비 — 내부 승인 완료, 사용자 실제 WASD 재확인 대기
+- 상태: 구현 커밋 완료·푸시 준비 — 내부 승인 완료, 사용자 실제 WASD 재확인 대기
 - 작업 경로: `_workspace/active/2026-07-30-production2d-occlusion-hud-correction/`
 - 최신 사용자 요청: 검증을 통과한 고품질 2D 에셋·Unity 반입·가림/HUD 수정 체인을 선별 커밋하고 푸시한다.
 
@@ -15,9 +15,9 @@
 
 ## 바로 이어서 할 작업
 
-1. 현재 작업 체인만 선별 스테이징하고 Stage2·Stage3·보호 변경 제외를 감사한다.
-2. 현황판과 작업 포인터를 포함해 커밋·푸시한다.
-3. 푸시 뒤 사용자가 실제 WASD로 통·상자·벽 모서리 왕복과 짧은 방향 반전을 확인한다.
+1. 구현 커밋 `e7220a7`과 현황판 동기화 커밋을 `origin/main`에 푸시한다.
+2. 푸시 상태와 제외 변경 보존을 재확인한다.
+3. 사용자가 실제 WASD로 통·상자·벽 모서리 왕복과 짧은 방향 반전을 확인한다.
 
 ## 병행 차단 작업
 
@@ -36,8 +36,9 @@
 
 ## Git 상태
 
-- 현재 HEAD = origin/main: `73c5750 docs: sync stage2 commit and handoff state`
-- 이번 커밋 예정: 첫 아트 후보, 통합 기준, 아트 로드맵, 품질 마스터, 실제 에셋, Unity 기술 샘플 반입, 오브젝트 가림·HUD 수정과 관련 검증 기록.
+- 현재 HEAD: `e7220a7 feat: integrate production 2d art sample`
+- 원격 기준: `origin/main = 73c5750 docs: sync stage2 commit and handoff state`
+- `e7220a7` 포함: 첫 아트 후보, 통합 기준, 아트 로드맵, 품질 마스터, 실제 에셋, Unity 기술 샘플 반입, 오브젝트 가림·HUD 수정과 관련 검증 기록.
 - 제외 유지: Stage2 원본 씬 복구, Stage3 구현·검증, `APP_UI_EDITOR_ONLY`, 반려된 저품질 규격 시험 산출물, `_workspace/previews/`, `Builds/`.
 
 ## 갱신 정보
