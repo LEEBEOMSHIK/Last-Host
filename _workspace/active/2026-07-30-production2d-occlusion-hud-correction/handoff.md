@@ -13,7 +13,7 @@
 - 관련 EditMode `44/44`, 전체 EditMode `198/198`, MCP Play 충돌·정렬·HUD, Console `0`, scene dirty `false`까지 구현 자체 검증을 통과했다.
 - 독립 QA clean clone에서 관련 EditMode `44/44`, 전체 EditMode `198/198`을 다시 통과했고 비주얼 postfix 검토도 PASS다.
 - Stage2·Stage3, `RatHost2DPrototype`, ProjectSettings 보호 해시는 구현 전 기준과 동일하다.
-- 고품질 2D 아트 체인과 Unity 반입·가림/HUD 수정은 `e7220a7 feat: integrate production 2d art sample`로 선별 커밋했다. Stage2·Stage3·ProjectSettings·반려된 규격 시험 산출물·캐시는 제외했다.
+- 고품질 2D 아트 체인과 Unity 반입·가림/HUD 수정은 `e7220a7 feat: integrate production 2d art sample`, 상태판은 `7adef75 docs: sync production 2d push state`로 선별 커밋해 `origin/main`에 푸시했다. Stage2·Stage3·ProjectSettings·반려된 규격 시험 산출물·캐시는 제외했다.
 
 ## 보호 대상
 
@@ -25,6 +25,6 @@
 
 ## 다음 작업
 
-1. `e7220a7`과 현황판 동기화 커밋을 `origin/main`에 푸시한다.
-2. 사용자가 실제 Game View 포커스의 WASD로 wall·barrel·crate의 앞/옆/뒤 연속 통과와 충돌 체감을 확인한다.
-3. 사용자가 HUD 초상 상단 잔여 조각 제거와 쥐 본체 보존을 최종 화면에서 확인한다.
+1. 사용자가 실제 Game View 포커스의 WASD로 wall·barrel·crate의 앞/옆/뒤 연속 통과와 충돌 체감을 확인한다.
+2. 사용자가 HUD 초상 상단 잔여 조각 제거와 쥐 본체 보존을 최종 화면에서 확인한다.
+3. 사용자 수용 뒤 PPU 128·전체 8방향·전체 아트 적용 범위를 결정한다.

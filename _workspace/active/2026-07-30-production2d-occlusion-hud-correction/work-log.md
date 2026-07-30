@@ -102,3 +102,4 @@
 - 독립 QA와 프로젝트 총괄이 staged `222`파일, `47.23 MiB`, 금지 경로·민감정보·예상 밖 파일 `0`, `git diff --cached --check` 통과를 재확인했다.
 - 첫 아트 후보→통합 기준→아트 로드맵→품질 마스터→실제 에셋→Unity 반입→가림/HUD 수정 체인을 `e7220a7 feat: integrate production 2d art sample`로 커밋했다.
 - Stage2·Stage3·`RatHost2DPrototype`·ProjectSettings·반려된 규격 시험 산출물·루트 `_workspace/previews/`·`Builds/`·Python 캐시는 제외했다.
+- 구현 `e7220a7`과 1차 상태 동기화 `7adef75`를 `origin/main`에 푸시했다.

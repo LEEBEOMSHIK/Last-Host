@@ -18,8 +18,8 @@
 
 ## 현재 저장소 상태
 
-- 현재 Git 기준: `HEAD = e7220a7 feat: integrate production 2d art sample`, `origin/main = 73c5750 docs: sync stage2 commit and handoff state`
-- 현재 로컬 작업: 고품질 실제 RGBA 환경·쥐·HUD 제작, 분리된 `RatHost2DTechnicalSample` 반입, 오브젝트 가림·HUD 초상 잔여 조각 수정까지 기술·비주얼·독립 QA와 총괄 검토를 통과해 `e7220a7`로 선별 커밋했다. 첫 아트 후보→통합 기준→품질 마스터→실제 에셋→Unity 반입→가림/HUD 수정 체인과 현재 상태판만 포함했으며, 사용자 실제 WASD·PPU 128·상대 크기 수용은 커밋과 별도로 남는다.
+- 현재 Git 기준: `main` 푸시 완료. 구현 `e7220a7 feat: integrate production 2d art sample`, 1차 상태 동기화 `7adef75 docs: sync production 2d push state`
+- 현재 로컬 작업: 고품질 실제 RGBA 환경·쥐·HUD 제작, 분리된 `RatHost2DTechnicalSample` 반입, 오브젝트 가림·HUD 초상 잔여 조각 수정까지 기술·비주얼·독립 QA와 총괄 검토를 통과해 `origin/main`에 푸시했다. 첫 아트 후보→통합 기준→품질 마스터→실제 에셋→Unity 반입→가림/HUD 수정 체인과 현재 상태판만 포함했으며, 사용자 실제 WASD·PPU 128·상대 크기 수용은 커밋과 별도로 남는다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
 - 정리 반영: 사용자 요청에 따라 r1~r5·r6 임시 preview 중간 바이너리 `1.38 MiB`를 삭제·커밋 제외하고 반려 사유만 문서로 보존
