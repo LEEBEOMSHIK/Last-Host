@@ -1,0 +1,24 @@
+{
+  "portrait": {
+    "frame": "hud_portrait_frame_256.png",
+    "subject": "hud_rat_portrait_184.png",
+    "subject_offset_top_left": [
+      36,
+      40
+    ]
+  },
+  "bar": {
+    "frame": "hud_bar_frame_512x80.png",
+    "fill_offset_top_left": [
+      56,
+      14
+    ],
+    "fill_size": [
+      400,
+      52
+    ],
+    "health_fill": "hud_health_fill_400x52.png",
+    "immune_fill": "hud_immune_fill_400x52.png"
+  },
+  "display_scale_candidate": 0.5
+}

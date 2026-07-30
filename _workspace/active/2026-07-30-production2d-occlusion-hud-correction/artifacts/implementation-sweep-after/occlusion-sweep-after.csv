@@ -1,0 +1,10 @@
+﻿object,state,object_pivot_y,rat_foot_y,rat_order,object_order,order_relation,collider_distance,collider_overlap,visual_overlap,rat_collider_min_y,rat_collider_max_y,object_collider_min_y,object_collider_max_y,rat_collider_width,object_collider_width
+Barrel_A,front_separated,-0.750,-1.035,104,76,rat_front,0.0150,False,True,-1.035,-0.775,-0.750,-0.530,0.920,0.600
+Barrel_A,same_pivot,-0.750,-0.750,75,76,rat_behind,-0.2300,True,True,-0.750,-0.490,-0.750,-0.530,0.920,0.600
+Barrel_A,behind_separated,-0.750,-0.505,50,76,rat_behind,0.0150,False,True,-0.505,-0.245,-0.750,-0.530,0.920,0.600
+Crate_A,front_separated,0.250,-0.035,3,-24,rat_front,0.0150,False,True,-0.035,0.225,0.250,0.490,0.920,0.700
+Crate_A,same_pivot,0.250,0.250,-25,-24,rat_behind,-0.2500,True,True,0.250,0.510,0.250,0.490,0.920,0.700
+Crate_A,behind_separated,0.250,0.515,-52,-24,rat_behind,0.0150,False,True,0.515,0.775,0.250,0.490,0.920,0.700
+WallStraight_Occlusion,front_separated,0.750,0.455,-46,-74,rat_front,0.0150,False,True,0.455,0.715,0.740,0.920,0.920,1.050
+WallStraight_Occlusion,same_pivot,0.750,0.750,-75,-74,rat_behind,-0.1800,True,True,0.750,1.010,0.740,0.920,0.920,1.050
+WallStraight_Occlusion,behind_separated,0.750,0.945,-95,-74,rat_behind,0.0150,False,True,0.945,1.205,0.740,0.920,0.920,1.050

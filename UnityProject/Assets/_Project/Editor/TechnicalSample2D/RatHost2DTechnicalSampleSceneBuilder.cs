@@ -39,7 +39,7 @@ namespace LastHost.Prototype.TechnicalSample2D.Editor
         [MenuItem("Last Host/Technical Sample 2D/Rebuild Scene")]
         public static void RebuildScene()
         {
-            BuildAndSaveScene();
+            RatHost2DProductionSampleSceneBuilder.BuildAndSaveScene();
         }
 
         [MenuItem("Last Host/Technical Sample 2D/Build Windows Temporary")]
@@ -116,7 +116,7 @@ namespace LastHost.Prototype.TechnicalSample2D.Editor
 
         internal static void BuildTemporaryWindowsPlayer()
         {
-            BuildAndSaveScene();
+            RatHost2DProductionSampleSceneBuilder.BuildAndSaveScene();
 
             var runId = DateTime.Now.ToString(
                 "yyyyMMdd-HHmmss",

@@ -36,6 +36,9 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             var sorters = Object.FindObjectsByType<YSortSprite2D>(
                 FindObjectsInactive.Include,
                 FindObjectsSortMode.None);
+            var sideViews = Object.FindObjectsByType<RatSide3FrameView>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
 
             Assert.That(controllers, Has.Length.EqualTo(1));
             Assert.That(controllers[0].GetComponent<Rigidbody2D>(), Is.Not.Null);
@@ -43,13 +46,15 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             Assert.That(followCameras, Has.Length.EqualTo(1));
             Assert.That(followCameras[0].TargetCamera.orthographic, Is.True);
             Assert.That(sorters.Length, Is.GreaterThanOrEqualTo(2));
-            Assert.That(Object.FindFirstObjectByType<TechnicalSample2DHud>(
+            Assert.That(sideViews, Has.Length.EqualTo(1));
+            Assert.That(sideViews[0].FrameCount, Is.EqualTo(3));
+            Assert.That(Object.FindFirstObjectByType<Production2DSampleHud>(
                 FindObjectsInactive.Include), Is.Not.Null);
 
             var propsRoot = GameObject.Find(
                 "TechnicalSample2D/Environment/YSortProps");
             Assert.That(propsRoot, Is.Not.Null);
-            Assert.That(propsRoot.transform.childCount, Is.EqualTo(2));
+            Assert.That(propsRoot.transform.childCount, Is.GreaterThanOrEqualTo(3));
             var propColliders = propsRoot.GetComponentsInChildren<BoxCollider2D>(true);
             Assert.That(propColliders, Has.Length.EqualTo(2));
             foreach (var propCollider in propColliders)
@@ -63,8 +68,8 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             }
         }
 
-        [TestCase("Pipe_A")]
         [TestCase("Barrel_A")]
+        [TestCase("Crate_A")]
         public void YSortPropFootprintBlocksRigidbodyMovementWithoutPenetration(
             string propName)
         {
@@ -93,9 +98,10 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             OpenRequiredSampleScene();
 
             AssertHudTextIsPresent("SampleTitle");
-            AssertHudTextIsPresent("SpecText");
-            AssertHudTextIsPresent("ControlsText");
             AssertHudTextIsPresent("RuntimeStatusText");
+            Assert.That(GameObject.Find("HostPortraitFrame"), Is.Not.Null);
+            Assert.That(GameObject.Find("HostHealthFrame"), Is.Not.Null);
+            Assert.That(GameObject.Find("HostImmuneFrame"), Is.Not.Null);
             Assert.That(SceneManager.GetActiveScene().path, Is.EqualTo(SampleScenePath));
         }
 

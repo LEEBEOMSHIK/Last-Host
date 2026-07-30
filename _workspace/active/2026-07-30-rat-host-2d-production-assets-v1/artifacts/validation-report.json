@@ -1,0 +1,650 @@
+{
+  "summary": {
+    "passed": 128,
+    "failed": 0,
+    "total": 128
+  },
+  "unity_import": "not run; explicitly out of scope",
+  "checks": [
+    {
+      "name": "exists:environment/floor_clean_128x64.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\environment\\floor_clean_128x64.png"
+    },
+    {
+      "name": "rgba:environment/floor_clean_128x64.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:environment/floor_clean_128x64.png",
+      "passed": true,
+      "detail": "size=(128, 64)"
+    },
+    {
+      "name": "transparent-corners:environment/floor_clean_128x64.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:environment/floor_clean_128x64.png",
+      "passed": true,
+      "detail": "visible_pixels=4096"
+    },
+    {
+      "name": "no-key-color:environment/floor_clean_128x64.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:environment/floor_worn_128x64.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\environment\\floor_worn_128x64.png"
+    },
+    {
+      "name": "rgba:environment/floor_worn_128x64.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:environment/floor_worn_128x64.png",
+      "passed": true,
+      "detail": "size=(128, 64)"
+    },
+    {
+      "name": "transparent-corners:environment/floor_worn_128x64.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:environment/floor_worn_128x64.png",
+      "passed": true,
+      "detail": "visible_pixels=4096"
+    },
+    {
+      "name": "no-key-color:environment/floor_worn_128x64.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:environment/water_center_128x64.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\environment\\water_center_128x64.png"
+    },
+    {
+      "name": "rgba:environment/water_center_128x64.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:environment/water_center_128x64.png",
+      "passed": true,
+      "detail": "size=(128, 64)"
+    },
+    {
+      "name": "transparent-corners:environment/water_center_128x64.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:environment/water_center_128x64.png",
+      "passed": true,
+      "detail": "visible_pixels=4096"
+    },
+    {
+      "name": "no-key-color:environment/water_center_128x64.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:environment/wall_straight_160x160.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\environment\\wall_straight_160x160.png"
+    },
+    {
+      "name": "rgba:environment/wall_straight_160x160.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:environment/wall_straight_160x160.png",
+      "passed": true,
+      "detail": "size=(160, 160)"
+    },
+    {
+      "name": "transparent-corners:environment/wall_straight_160x160.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:environment/wall_straight_160x160.png",
+      "passed": true,
+      "detail": "visible_pixels=11939"
+    },
+    {
+      "name": "no-key-color:environment/wall_straight_160x160.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:environment/wall_corner_192x160.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\environment\\wall_corner_192x160.png"
+    },
+    {
+      "name": "rgba:environment/wall_corner_192x160.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:environment/wall_corner_192x160.png",
+      "passed": true,
+      "detail": "size=(192, 160)"
+    },
+    {
+      "name": "transparent-corners:environment/wall_corner_192x160.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:environment/wall_corner_192x160.png",
+      "passed": true,
+      "detail": "visible_pixels=18252"
+    },
+    {
+      "name": "no-key-color:environment/wall_corner_192x160.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:environment/water_edge_128x96.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\environment\\water_edge_128x96.png"
+    },
+    {
+      "name": "rgba:environment/water_edge_128x96.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:environment/water_edge_128x96.png",
+      "passed": true,
+      "detail": "size=(128, 96)"
+    },
+    {
+      "name": "transparent-corners:environment/water_edge_128x96.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:environment/water_edge_128x96.png",
+      "passed": true,
+      "detail": "visible_pixels=5338"
+    },
+    {
+      "name": "no-key-color:environment/water_edge_128x96.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:environment/prop_barrel_96x112.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\environment\\prop_barrel_96x112.png"
+    },
+    {
+      "name": "rgba:environment/prop_barrel_96x112.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:environment/prop_barrel_96x112.png",
+      "passed": true,
+      "detail": "size=(96, 112)"
+    },
+    {
+      "name": "transparent-corners:environment/prop_barrel_96x112.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:environment/prop_barrel_96x112.png",
+      "passed": true,
+      "detail": "visible_pixels=6191"
+    },
+    {
+      "name": "no-key-color:environment/prop_barrel_96x112.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:environment/prop_crate_112x112.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\environment\\prop_crate_112x112.png"
+    },
+    {
+      "name": "rgba:environment/prop_crate_112x112.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:environment/prop_crate_112x112.png",
+      "passed": true,
+      "detail": "size=(112, 112)"
+    },
+    {
+      "name": "transparent-corners:environment/prop_crate_112x112.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:environment/prop_crate_112x112.png",
+      "passed": true,
+      "detail": "visible_pixels=7311"
+    },
+    {
+      "name": "no-key-color:environment/prop_crate_112x112.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:environment/prop_drain_128x80.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\environment\\prop_drain_128x80.png"
+    },
+    {
+      "name": "rgba:environment/prop_drain_128x80.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:environment/prop_drain_128x80.png",
+      "passed": true,
+      "detail": "size=(128, 80)"
+    },
+    {
+      "name": "transparent-corners:environment/prop_drain_128x80.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:environment/prop_drain_128x80.png",
+      "passed": true,
+      "detail": "visible_pixels=6364"
+    },
+    {
+      "name": "no-key-color:environment/prop_drain_128x80.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:rat/rat_side_neutral_256x192.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\rat\\rat_side_neutral_256x192.png"
+    },
+    {
+      "name": "rgba:rat/rat_side_neutral_256x192.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:rat/rat_side_neutral_256x192.png",
+      "passed": true,
+      "detail": "size=(256, 192)"
+    },
+    {
+      "name": "transparent-corners:rat/rat_side_neutral_256x192.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:rat/rat_side_neutral_256x192.png",
+      "passed": true,
+      "detail": "visible_pixels=7914"
+    },
+    {
+      "name": "no-key-color:rat/rat_side_neutral_256x192.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:rat/rat_side_contact_256x192.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\rat\\rat_side_contact_256x192.png"
+    },
+    {
+      "name": "rgba:rat/rat_side_contact_256x192.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:rat/rat_side_contact_256x192.png",
+      "passed": true,
+      "detail": "size=(256, 192)"
+    },
+    {
+      "name": "transparent-corners:rat/rat_side_contact_256x192.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:rat/rat_side_contact_256x192.png",
+      "passed": true,
+      "detail": "visible_pixels=8171"
+    },
+    {
+      "name": "no-key-color:rat/rat_side_contact_256x192.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:rat/rat_side_passing_256x192.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\rat\\rat_side_passing_256x192.png"
+    },
+    {
+      "name": "rgba:rat/rat_side_passing_256x192.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:rat/rat_side_passing_256x192.png",
+      "passed": true,
+      "detail": "size=(256, 192)"
+    },
+    {
+      "name": "transparent-corners:rat/rat_side_passing_256x192.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:rat/rat_side_passing_256x192.png",
+      "passed": true,
+      "detail": "visible_pixels=8076"
+    },
+    {
+      "name": "no-key-color:rat/rat_side_passing_256x192.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:rat/rat_side_walk_3f_sheet.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\rat\\rat_side_walk_3f_sheet.png"
+    },
+    {
+      "name": "rgba:rat/rat_side_walk_3f_sheet.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:rat/rat_side_walk_3f_sheet.png",
+      "passed": true,
+      "detail": "size=(768, 192)"
+    },
+    {
+      "name": "transparent-corners:rat/rat_side_walk_3f_sheet.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:rat/rat_side_walk_3f_sheet.png",
+      "passed": true,
+      "detail": "visible_pixels=24161"
+    },
+    {
+      "name": "no-key-color:rat/rat_side_walk_3f_sheet.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:hud/hud_portrait_frame_256.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\hud\\hud_portrait_frame_256.png"
+    },
+    {
+      "name": "rgba:hud/hud_portrait_frame_256.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:hud/hud_portrait_frame_256.png",
+      "passed": true,
+      "detail": "size=(256, 256)"
+    },
+    {
+      "name": "transparent-corners:hud/hud_portrait_frame_256.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:hud/hud_portrait_frame_256.png",
+      "passed": true,
+      "detail": "visible_pixels=17801"
+    },
+    {
+      "name": "no-key-color:hud/hud_portrait_frame_256.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:hud/hud_rat_portrait_184.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\hud\\hud_rat_portrait_184.png"
+    },
+    {
+      "name": "rgba:hud/hud_rat_portrait_184.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:hud/hud_rat_portrait_184.png",
+      "passed": true,
+      "detail": "size=(184, 184)"
+    },
+    {
+      "name": "transparent-corners:hud/hud_rat_portrait_184.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:hud/hud_rat_portrait_184.png",
+      "passed": true,
+      "detail": "visible_pixels=17443"
+    },
+    {
+      "name": "no-key-color:hud/hud_rat_portrait_184.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:hud/hud_bar_frame_512x80.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\hud\\hud_bar_frame_512x80.png"
+    },
+    {
+      "name": "rgba:hud/hud_bar_frame_512x80.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:hud/hud_bar_frame_512x80.png",
+      "passed": true,
+      "detail": "size=(512, 80)"
+    },
+    {
+      "name": "transparent-corners:hud/hud_bar_frame_512x80.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:hud/hud_bar_frame_512x80.png",
+      "passed": true,
+      "detail": "visible_pixels=34412"
+    },
+    {
+      "name": "no-key-color:hud/hud_bar_frame_512x80.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:hud/hud_health_fill_400x52.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\hud\\hud_health_fill_400x52.png"
+    },
+    {
+      "name": "rgba:hud/hud_health_fill_400x52.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:hud/hud_health_fill_400x52.png",
+      "passed": true,
+      "detail": "size=(400, 52)"
+    },
+    {
+      "name": "transparent-corners:hud/hud_health_fill_400x52.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:hud/hud_health_fill_400x52.png",
+      "passed": true,
+      "detail": "visible_pixels=18595"
+    },
+    {
+      "name": "no-key-color:hud/hud_health_fill_400x52.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "exists:hud/hud_immune_fill_400x52.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets\\hud\\hud_immune_fill_400x52.png"
+    },
+    {
+      "name": "rgba:hud/hud_immune_fill_400x52.png",
+      "passed": true,
+      "detail": "mode=RGBA"
+    },
+    {
+      "name": "size:hud/hud_immune_fill_400x52.png",
+      "passed": true,
+      "detail": "size=(400, 52)"
+    },
+    {
+      "name": "transparent-corners:hud/hud_immune_fill_400x52.png",
+      "passed": true,
+      "detail": "alpha=(0, 0, 0, 0)"
+    },
+    {
+      "name": "visible:hud/hud_immune_fill_400x52.png",
+      "passed": true,
+      "detail": "visible_pixels=17998"
+    },
+    {
+      "name": "no-key-color:hud/hud_immune_fill_400x52.png",
+      "passed": true,
+      "detail": "magenta=0, green=0"
+    },
+    {
+      "name": "repeat:floor_clean_128x64.png",
+      "passed": true,
+      "detail": "visible_components=1, holes=0"
+    },
+    {
+      "name": "repeat:floor_worn_128x64.png",
+      "passed": true,
+      "detail": "visible_components=1, holes=0"
+    },
+    {
+      "name": "repeat:water_center_128x64.png",
+      "passed": true,
+      "detail": "visible_components=1, holes=0"
+    },
+    {
+      "name": "rat-groundline:neutral",
+      "passed": true,
+      "detail": "alpha_bbox=(9, 78, 247, 152), expected_bottom_top_y=152"
+    },
+    {
+      "name": "rat-groundline:contact",
+      "passed": true,
+      "detail": "alpha_bbox=(9, 76, 247, 152), expected_bottom_top_y=152"
+    },
+    {
+      "name": "rat-groundline:passing",
+      "passed": true,
+      "detail": "alpha_bbox=(9, 79, 247, 152), expected_bottom_top_y=152"
+    },
+    {
+      "name": "rat-width-consistency",
+      "passed": true,
+      "detail": "widths=[238, 238, 238]"
+    },
+    {
+      "name": "rat-height-consistency",
+      "passed": true,
+      "detail": "heights=[74, 76, 73]"
+    },
+    {
+      "name": "rat-pivot",
+      "passed": true,
+      "detail": "{\"coordinate_system\": \"bottom-left\", \"pixels\": [128, 40], \"normalized\": [0.5, 0.208333]}"
+    },
+    {
+      "name": "rat-frame-order",
+      "passed": true,
+      "detail": "['neutral', 'contact', 'passing']"
+    },
+    {
+      "name": "hud-fill-layout",
+      "passed": true,
+      "detail": "{\"frame\": \"hud_bar_frame_512x80.png\", \"fill_offset_top_left\": [56, 14], \"fill_size\": [400, 52], \"health_fill\": \"hud_health_fill_400x52.png\", \"immune_fill\": \"hud_immune_fill_400x52.png\"}"
+    },
+    {
+      "name": "preview:environment_repeat_checker.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\previews\\environment_repeat_checker.png"
+    },
+    {
+      "name": "preview:environment_room_preview.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\previews\\environment_room_preview.png"
+    },
+    {
+      "name": "preview:rat_actual_size.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\previews\\rat_actual_size.png"
+    },
+    {
+      "name": "preview:rat_50_percent.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\previews\\rat_50_percent.png"
+    },
+    {
+      "name": "preview:rat_2x.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\previews\\rat_2x.png"
+    },
+    {
+      "name": "preview:hud_states.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\previews\\hud_states.png"
+    },
+    {
+      "name": "preview:master_asset_comparison.png",
+      "passed": true,
+      "detail": "C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\previews\\master_asset_comparison.png"
+    },
+    {
+      "name": "rebuild-exit",
+      "passed": true,
+      "detail": "built environment=9 rat=4 hud=5 into C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets"
+    },
+    {
+      "name": "rebuild-reproducible",
+      "passed": true,
+      "detail": "files=20, matching=20"
+    }
+  ]
+}

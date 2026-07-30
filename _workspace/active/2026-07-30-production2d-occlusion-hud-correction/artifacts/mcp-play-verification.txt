@@ -1,0 +1,8 @@
+﻿MCP Play verification
+mode=Play + Physics2D.Script stepping
+rat_collider_size=(0.920, 0.260)
+Barrel_A: initial_distance=0.2100, final_distance=0.0006, overlap=False, clamped_steps=77, rat_order=75, object_order=76, relation=rat_behind, stationary_jitter_changes=0, object_collider_width=0.600
+Crate_A: initial_distance=0.2100, final_distance=0.0006, overlap=False, clamped_steps=77, rat_order=-25, object_order=-24, relation=rat_behind, stationary_jitter_changes=0, object_collider_width=0.700
+WallStraight_Occlusion: initial_distance=0.2100, final_distance=0.0006, overlap=False, clamped_steps=77, rat_order=-75, object_order=-74, relation=rat_behind, stationary_jitter_changes=0, object_collider_width=1.050
+hud_portrait_asset=Assets/_Project/Art/Production2D/V1/HUD/hud_rat_portrait_184.png
+hud_portrait_native_size=184x184

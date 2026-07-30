@@ -1,0 +1,48 @@
+{
+  "build_exit": 0,
+  "build_stdout": "built environment=9 rat=4 hud=5 into C:\\project\\Last-Host\\_workspace\\active\\2026-07-30-rat-host-2d-production-assets-v1\\artifacts\\game-assets",
+  "target": "hud/hud_rat_portrait_184.png",
+  "before_sha256": "1f927aa42bb626fc8324caafb394f27be0d2b63151a2b58b848ed13b733b113d",
+  "after_sha256": "76bc4a430fc170c24c704cf54b2fafc57eaed0cd2fe5da5a0f52521f28371908",
+  "game_asset_file_count": 20,
+  "other_files_unchanged": "19/19",
+  "only_target_changed": true,
+  "changed_pixel_count": 2173,
+  "max_changed_top_y": 26,
+  "rows_y27_and_below_identical": true,
+  "top_rows_0_to_26_transparent": true,
+  "before_components": [
+    {
+      "x": 5,
+      "y": 38,
+      "width": 173,
+      "height": 141,
+      "area": 15270
+    },
+    {
+      "x": 35,
+      "y": 5,
+      "width": 135,
+      "height": 22,
+      "area": 2173
+    }
+  ],
+  "after_components": [
+    {
+      "x": 5,
+      "y": 38,
+      "width": 173,
+      "height": 141,
+      "area": 15270
+    }
+  ],
+  "checks": {
+    "source_build_reproducible": true,
+    "other_19_files_sha_unchanged": true,
+    "portrait_sha_changed": true,
+    "only_top_artifact_pixels_changed": true,
+    "rat_pixels_byte_identical": true,
+    "after_has_single_visible_component": true
+  },
+  "passed": true
+}

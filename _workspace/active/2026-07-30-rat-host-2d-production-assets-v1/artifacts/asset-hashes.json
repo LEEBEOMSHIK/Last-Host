@@ -1,0 +1,22 @@
+{
+  "artifacts/game-assets/environment/floor_clean_128x64.png": "f6053b741581bee801602b88c2079949e12382e6b1d2a97f54627f38655651d9",
+  "artifacts/game-assets/environment/floor_worn_128x64.png": "0bbd7817ef3f9f6b709610596b51b3391787399aa7ab5b9d4b6917d4d4a7f8ae",
+  "artifacts/game-assets/environment/prop_barrel_96x112.png": "cbdd7168c49c7a248eb0d47d08d1296abab666799f41e2fff4b178ebb49d5d74",
+  "artifacts/game-assets/environment/prop_crate_112x112.png": "6ba541cd0b752944b83b3293a3a5470c0938d42ffcd8f67f0ef702f7935d2a70",
+  "artifacts/game-assets/environment/prop_drain_128x80.png": "9aee6549c2245d7ec2e34bc0da87bf65ae9bc0ad0b4202e50ca3d3464fa9265b",
+  "artifacts/game-assets/environment/wall_corner_192x160.png": "e1c1a7120b502743f8b2de5636844d71de48f2ed42cc4a34bc9570b78b87ffba",
+  "artifacts/game-assets/environment/wall_straight_160x160.png": "1ad16285c47b1a0f2a4252bf93c291cee9a49977e192336dce4901789bc4de59",
+  "artifacts/game-assets/environment/water_center_128x64.png": "77ed0400ee1633ae78acc27e2b12997673b91e987a62194f65e46db1b2b8e856",
+  "artifacts/game-assets/environment/water_edge_128x96.png": "68e07398abb20dbc3707e09c9f609f98b7545ade98b08e52dc839ee2429db3a3",
+  "artifacts/game-assets/hud/hud_bar_frame_512x80.png": "ae2d2d7c83e56810a51c34f5e0a85bdf590e989f1b9b14e664b947de41c4d98c",
+  "artifacts/game-assets/hud/hud_health_fill_400x52.png": "a6dd11e243e2bb73fb2c42222d2c84147e3a5ec4327e0de8592c351d640e6367",
+  "artifacts/game-assets/hud/hud_immune_fill_400x52.png": "8bf6afca7f42b695ff7b1151c2e846426e18db1c7e85c3cad0d3bddf4a52f9ab",
+  "artifacts/game-assets/hud/hud_module-layout.json": "d194365113e52caa6ae68deb3a01fcccf66a8287ff5505a2ec14d2c66faadad4",
+  "artifacts/game-assets/hud/hud_portrait_frame_256.png": "5cbce1f4d52f0a300a9eb39b83aa09c122f009592b76009c88476292e504d073",
+  "artifacts/game-assets/hud/hud_rat_portrait_184.png": "76bc4a430fc170c24c704cf54b2fafc57eaed0cd2fe5da5a0f52521f28371908",
+  "artifacts/game-assets/rat/rat_side_contact_256x192.png": "54d119c4d25f6cd79a3a4d3ff287d5a2126cd877661768c14b8b48f828a950eb",
+  "artifacts/game-assets/rat/rat_side_neutral_256x192.png": "42ac472f8b1bbc1bd6ec8321ab46429b5c5df9fc3289a57aa2df94332129dab4",
+  "artifacts/game-assets/rat/rat_side_passing_256x192.png": "c0d019eac19b7031d90d2f39dbfb1d0df98e4f5a2c0f45cc24266aa021cf3bf1",
+  "artifacts/game-assets/rat/rat_side_walk_3f_frame-map.json": "65ec5aa82ef9f6c805c9cdccaa8621e7e73734c8383d9aac2308502d8bf494d0",
+  "artifacts/game-assets/rat/rat_side_walk_3f_sheet.png": "0bc6d3760f50a8462f1908ee2027513ea00bbfcc969d2b1cdcdb05b9d68435b4"
+}

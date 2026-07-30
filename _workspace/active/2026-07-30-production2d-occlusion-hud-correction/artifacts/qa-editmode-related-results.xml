@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="44" result="Passed" total="44" passed="44" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:19Z" duration="6.4588731">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="198" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:19Z" duration="6.458873" total="44" passed="44" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1124" name="LastHost.Prototype.TechnicalSample2D.Tests.dll" fullname="C:/tmp/LastHostQaOcclusion-20260730-1/Library/ScriptAssemblies/LastHost.Prototype.TechnicalSample2D.Tests.dll" runstate="Runnable" testcasecount="44" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:19Z" duration="6.445122" total="44" passed="44" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="37400" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1125" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="44" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:19Z" duration="6.443721" total="44" passed="44" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1126" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="44" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:19Z" duration="6.441924" total="44" passed="44" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1127" name="TechnicalSample2D" fullname="LastHost.Prototype.TechnicalSample2D" runstate="Runnable" testcasecount="44" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:19Z" duration="6.440936" total="44" passed="44" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1128" name="Tests" fullname="LastHost.Prototype.TechnicalSample2D.Tests" runstate="Runnable" testcasecount="44" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:19Z" duration="6.440031" total="44" passed="44" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1068" name="MovementAndDirection2DTests" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" testcasecount="24" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.064289" total="24" passed="24" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-suite type="ParameterizedMethod" id="1073" name="E02_ScreenAxisInputMatchesExpectedDirection" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E02_ScreenAxisInputMatchesExpectedDirection" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.030537" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1069" name="E02_ScreenAxisInputMatchesExpectedDirection(0.0f,1.0f,0.0f,1.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E02_ScreenAxisInputMatchesExpectedDirection(0.0f,1.0f,0.0f,1.0f)" methodname="E02_ScreenAxisInputMatchesExpectedDirection" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="45946903" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.020354" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1070" name="E02_ScreenAxisInputMatchesExpectedDirection(0.0f,-1.0f,0.0f,-1.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E02_ScreenAxisInputMatchesExpectedDirection(0.0f,-1.0f,0.0f,-1.0f)" methodname="E02_ScreenAxisInputMatchesExpectedDirection" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="111213609" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000242" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1071" name="E02_ScreenAxisInputMatchesExpectedDirection(-1.0f,0.0f,-1.0f,0.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E02_ScreenAxisInputMatchesExpectedDirection(-1.0f,0.0f,-1.0f,0.0f)" methodname="E02_ScreenAxisInputMatchesExpectedDirection" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1848730693" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000088" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1072" name="E02_ScreenAxisInputMatchesExpectedDirection(1.0f,0.0f,1.0f,0.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E02_ScreenAxisInputMatchesExpectedDirection(1.0f,0.0f,1.0f,0.0f)" methodname="E02_ScreenAxisInputMatchesExpectedDirection" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1542119019" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000065" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-suite type="ParameterizedMethod" id="1078" name="E03_DiagonalInputIsNormalized" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E03_DiagonalInputIsNormalized" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.008675" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1074" name="E03_DiagonalInputIsNormalized(1.0f,1.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E03_DiagonalInputIsNormalized(1.0f,1.0f)" methodname="E03_DiagonalInputIsNormalized" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1033782416" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.005945" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1075" name="E03_DiagonalInputIsNormalized(-1.0f,1.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E03_DiagonalInputIsNormalized(-1.0f,1.0f)" methodname="E03_DiagonalInputIsNormalized" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="473643684" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000162" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1076" name="E03_DiagonalInputIsNormalized(1.0f,-1.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E03_DiagonalInputIsNormalized(1.0f,-1.0f)" methodname="E03_DiagonalInputIsNormalized" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1950919973" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000087" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1077" name="E03_DiagonalInputIsNormalized(-1.0f,-1.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E03_DiagonalInputIsNormalized(-1.0f,-1.0f)" methodname="E03_DiagonalInputIsNormalized" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1214760825" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000078" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-case id="1079" name="E04_OppositeAndIdleInputsProduceZeroStep" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E04_OppositeAndIdleInputsProduceZeroStep" methodname="E04_OppositeAndIdleInputsProduceZeroStep" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1429539290" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.002749" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1080" name="E05_FixedStepDistanceIsEqualForCardinalAndDiagonalMovement" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E05_FixedStepDistanceIsEqualForCardinalAndDiagonalMovement" methodname="E05_FixedStepDistanceIsEqualForCardinalAndDiagonalMovement" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1208099968" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.001240" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1085" name="E06_ReversalNeverExceedsOneAllowedStep" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E06_ReversalNeverExceedsOneAllowedStep" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.003464" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1081" name="E06_ReversalNeverExceedsOneAllowedStep(1.0f,0.0f,-1.0f,0.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E06_ReversalNeverExceedsOneAllowedStep(1.0f,0.0f,-1.0f,0.0f)" methodname="E06_ReversalNeverExceedsOneAllowedStep" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="344169149" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000913" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1082" name="E06_ReversalNeverExceedsOneAllowedStep(-1.0f,0.0f,1.0f,0.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E06_ReversalNeverExceedsOneAllowedStep(-1.0f,0.0f,1.0f,0.0f)" methodname="E06_ReversalNeverExceedsOneAllowedStep" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="626539345" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000282" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1083" name="E06_ReversalNeverExceedsOneAllowedStep(0.0f,1.0f,0.0f,-1.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E06_ReversalNeverExceedsOneAllowedStep(0.0f,1.0f,0.0f,-1.0f)" methodname="E06_ReversalNeverExceedsOneAllowedStep" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1045619300" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000237" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1084" name="E06_ReversalNeverExceedsOneAllowedStep(0.0f,-1.0f,0.0f,1.0f)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E06_ReversalNeverExceedsOneAllowedStep(0.0f,-1.0f,0.0f,1.0f)" methodname="E06_ReversalNeverExceedsOneAllowedStep" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="525346206" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000227" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-case id="1086" name="E07_IdleForThreeHundredStepsHasNoDrift" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.E07_IdleForThreeHundredStepsHasNoDrift" methodname="E07_IdleForThreeHundredStepsHasNoDrift" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1643315949" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000353" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1095" name="EightDirectionsMapToStableSpriteSlots" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.EightDirectionsMapToStableSpriteSlots" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.004133" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1087" name="EightDirectionsMapToStableSpriteSlots(0.0f,-1.0f,South)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.EightDirectionsMapToStableSpriteSlots(0.0f,-1.0f,South)" methodname="EightDirectionsMapToStableSpriteSlots" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1669790864" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.001083" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1088" name="EightDirectionsMapToStableSpriteSlots(-1.0f,-1.0f,SouthWest)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.EightDirectionsMapToStableSpriteSlots(-1.0f,-1.0f,SouthWest)" methodname="EightDirectionsMapToStableSpriteSlots" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="808801117" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000161" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1089" name="EightDirectionsMapToStableSpriteSlots(-1.0f,0.0f,West)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.EightDirectionsMapToStableSpriteSlots(-1.0f,0.0f,West)" methodname="EightDirectionsMapToStableSpriteSlots" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="2019763352" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000106" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1090" name="EightDirectionsMapToStableSpriteSlots(-1.0f,1.0f,NorthWest)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.EightDirectionsMapToStableSpriteSlots(-1.0f,1.0f,NorthWest)" methodname="EightDirectionsMapToStableSpriteSlots" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="885740738" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000104" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1091" name="EightDirectionsMapToStableSpriteSlots(0.0f,1.0f,North)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.EightDirectionsMapToStableSpriteSlots(0.0f,1.0f,North)" methodname="EightDirectionsMapToStableSpriteSlots" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1230373588" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000099" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1092" name="EightDirectionsMapToStableSpriteSlots(1.0f,1.0f,NorthEast)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.EightDirectionsMapToStableSpriteSlots(1.0f,1.0f,NorthEast)" methodname="EightDirectionsMapToStableSpriteSlots" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1617733221" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000106" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1093" name="EightDirectionsMapToStableSpriteSlots(1.0f,0.0f,East)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.EightDirectionsMapToStableSpriteSlots(1.0f,0.0f,East)" methodname="EightDirectionsMapToStableSpriteSlots" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="12566878" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000116" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1094" name="EightDirectionsMapToStableSpriteSlots(1.0f,-1.0f,SouthEast)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.EightDirectionsMapToStableSpriteSlots(1.0f,-1.0f,SouthEast)" methodname="EightDirectionsMapToStableSpriteSlots" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="2141012503" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000098" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-case id="1096" name="IdleDirectionKeepsLastValidDirection" fullname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests.IdleDirectionKeepsLastValidDirection" methodname="IdleDirectionKeepsLastValidDirection" classname="LastHost.Prototype.TechnicalSample2D.Tests.MovementAndDirection2DTests" runstate="Runnable" seed="1990354042" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.000251" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1097" name="PhysicsCameraAndSort2DTests" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.030972" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1103" name="ControllerConfiguresZeroGravityAndFrozenRotation" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.ControllerConfiguresZeroGravityAndFrozenRotation" methodname="ControllerConfiguresZeroGravityAndFrozenRotation" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="515567921" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.004155" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1100" name="E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.008236" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1098" name="E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider(&quot;Wall&quot;)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider(&quot;Wall&quot;)" methodname="E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="1345768252" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.005786" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1099" name="E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider(&quot;WaterChannel&quot;)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider(&quot;WaterChannel&quot;)" methodname="E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="1597180137" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.001117" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-case id="1101" name="E09_CameraImmediatelyFollowsAbsoluteSnappedTargetForThreeHundredSamples" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.E09_CameraImmediatelyFollowsAbsoluteSnappedTargetForThreeHundredSamples" methodname="E09_CameraImmediatelyFollowsAbsoluteSnappedTargetForThreeHundredSamples" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="403231989" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.008662" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1102" name="E10_YSortUsesFootYChangesOnceAtCrossingAndRemainsStable" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.E10_YSortUsesFootYChangesOnceAtCrossingAndRemainsStable" methodname="E10_YSortUsesFootYChangesOnceAtCrossingAndRemainsStable" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="610820464" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:12Z" duration="0.004674" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1104" name="Production2DV1AssetAndSceneTests" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:15Z" duration="2.998824" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1105" name="ProductionV1_ContainsExactlyEighteenConfiguredRgbaSprites" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_ContainsExactlyEighteenConfiguredRgbaSprites" methodname="ProductionV1_ContainsExactlyEighteenConfiguredRgbaSprites" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="1080196243" result="Passed" start-time="2026-07-30 04:46:12Z" end-time="2026-07-30 04:46:13Z" duration="0.099904" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1109" name="ProductionV1_OccludersUseGroundPivotTransitionAndCorrectedFootprints" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_OccludersUseGroundPivotTransitionAndCorrectedFootprints" methodname="ProductionV1_OccludersUseGroundPivotTransitionAndCorrectedFootprints" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="434221324" result="Passed" start-time="2026-07-30 04:46:13Z" end-time="2026-07-30 04:46:13Z" duration="0.894485" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1106" name="ProductionV1_RatFramesShareCanvasPivotAndSideOnlyNaming" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_RatFramesShareCanvasPivotAndSideOnlyNaming" methodname="ProductionV1_RatFramesShareCanvasPivotAndSideOnlyNaming" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="478400640" result="Passed" start-time="2026-07-30 04:46:13Z" end-time="2026-07-30 04:46:14Z" duration="0.085914" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1107" name="ProductionV1_SampleSceneUsesActualEnvironmentRatHudAndTwoDimensionalContract" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_SampleSceneUsesActualEnvironmentRatHudAndTwoDimensionalContract" methodname="ProductionV1_SampleSceneUsesActualEnvironmentRatHudAndTwoDimensionalContract" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="754593019" result="Passed" start-time="2026-07-30 04:46:14Z" end-time="2026-07-30 04:46:14Z" duration="0.849181" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1110" name="ProductionV1_StationaryOccluderSortingDoesNotJitter" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_StationaryOccluderSortingDoesNotJitter" methodname="ProductionV1_StationaryOccluderSortingDoesNotJitter" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="1008034709" result="Passed" start-time="2026-07-30 04:46:14Z" end-time="2026-07-30 04:46:15Z" duration="0.978557" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1108" name="SideThreeFrameViewMirrorsOnlyTheSuppliedSideAndNeverMovesLogicalRoot" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.SideThreeFrameViewMirrorsOnlyTheSuppliedSideAndNeverMovesLogicalRoot" methodname="SideThreeFrameViewMirrorsOnlyTheSuppliedSideAndNeverMovesLogicalRoot" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="2129201774" result="Passed" start-time="2026-07-30 04:46:15Z" end-time="2026-07-30 04:46:15Z" duration="0.086907" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1111" name="RatHost2DTechnicalSampleSceneTests" fullname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests" classname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-30 04:46:15Z" end-time="2026-07-30 04:46:19Z" duration="3.332760" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1112" name="E01_SampleSceneContainsRequiredIsolatedTwoDimensionalContract" fullname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests.E01_SampleSceneContainsRequiredIsolatedTwoDimensionalContract" methodname="E01_SampleSceneContainsRequiredIsolatedTwoDimensionalContract" classname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests" runstate="Runnable" seed="2076270924" result="Passed" start-time="2026-07-30 04:46:15Z" end-time="2026-07-30 04:46:16Z" duration="0.754992" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1116" name="E11_HudInputAndLegacyProtectionContractsArePresent" fullname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests.E11_HudInputAndLegacyProtectionContractsArePresent" methodname="E11_HudInputAndLegacyProtectionContractsArePresent" classname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests" runstate="Runnable" seed="673488712" result="Passed" start-time="2026-07-30 04:46:16Z" end-time="2026-07-30 04:46:17Z" duration="0.836761" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1115" name="YSortPropFootprintBlocksRigidbodyMovementWithoutPenetration" fullname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests.YSortPropFootprintBlocksRigidbodyMovementWithoutPenetration" classname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-30 04:46:17Z" end-time="2026-07-30 04:46:19Z" duration="1.728676" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1113" name="YSortPropFootprintBlocksRigidbodyMovementWithoutPenetration(&quot;Barrel_A&quot;)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests.YSortPropFootprintBlocksRigidbodyMovementWithoutPenetration(&quot;Barrel_A&quot;)" methodname="YSortPropFootprintBlocksRigidbodyMovementWithoutPenetration" classname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests" runstate="Runnable" seed="1588882358" result="Passed" start-time="2026-07-30 04:46:17Z" end-time="2026-07-30 04:46:18Z" duration="0.769848" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1114" name="YSortPropFootprintBlocksRigidbodyMovementWithoutPenetration(&quot;Crate_A&quot;)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests.YSortPropFootprintBlocksRigidbodyMovementWithoutPenetration(&quot;Crate_A&quot;)" methodname="YSortPropFootprintBlocksRigidbodyMovementWithoutPenetration" classname="LastHost.Prototype.TechnicalSample2D.Tests.RatHost2DTechnicalSampleSceneTests" runstate="Runnable" seed="529310755" result="Passed" start-time="2026-07-30 04:46:18Z" end-time="2026-07-30 04:46:19Z" duration="0.956273" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+              </test-suite>
+              <test-suite type="TestFixture" id="1117" name="VisualAndGrid2DTests" fullname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests" classname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-30 04:46:19Z" end-time="2026-07-30 04:46:19Z" duration="0.010809" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1123" name="DirectionViewNeverMovesPhysicsRootAndIdleUsesFrameA" fullname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests.DirectionViewNeverMovesPhysicsRootAndIdleUsesFrameA" methodname="DirectionViewNeverMovesPhysicsRootAndIdleUsesFrameA" classname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests" runstate="Runnable" seed="1941733989" result="Passed" start-time="2026-07-30 04:46:19Z" end-time="2026-07-30 04:46:19Z" duration="0.002270" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1118" name="PixelGridUsesOneSixtyFourthWorldUnit" fullname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests.PixelGridUsesOneSixtyFourthWorldUnit" methodname="PixelGridUsesOneSixtyFourthWorldUnit" classname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests" runstate="Runnable" seed="388236757" result="Passed" start-time="2026-07-30 04:46:19Z" end-time="2026-07-30 04:46:19Z" duration="0.000319" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1122" name="VisualAbsoluteSnapDoesNotAccumulateOffset" fullname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests.VisualAbsoluteSnapDoesNotAccumulateOffset" methodname="VisualAbsoluteSnapDoesNotAccumulateOffset" classname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests" runstate="Runnable" seed="1650235623" result="Passed" start-time="2026-07-30 04:46:19Z" end-time="2026-07-30 04:46:19Z" duration="0.001988" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1121" name="WrongPixelsPerUnitIsRejected" fullname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests.WrongPixelsPerUnitIsRejected" classname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-30 04:46:19Z" end-time="2026-07-30 04:46:19Z" duration="0.003684" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1119" name="WrongPixelsPerUnitIsRejected(0)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests.WrongPixelsPerUnitIsRejected(0)" methodname="WrongPixelsPerUnitIsRejected" classname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests" runstate="Runnable" seed="1462020314" result="Passed" start-time="2026-07-30 04:46:19Z" end-time="2026-07-30 04:46:19Z" duration="0.002165" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1120" name="WrongPixelsPerUnitIsRejected(-64)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests.WrongPixelsPerUnitIsRejected(-64)" methodname="WrongPixelsPerUnitIsRejected" classname="LastHost.Prototype.TechnicalSample2D.Tests.VisualAndGrid2DTests" runstate="Runnable" seed="394431785" result="Passed" start-time="2026-07-30 04:46:19Z" end-time="2026-07-30 04:46:19Z" duration="0.000233" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                    <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                  </test-case>
+                </test-suite>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
