@@ -1,0 +1,5 @@
+capture,object,state,rat_x,rat_y,rat_order,object_order,whole_hidden,renderer_enabled,collider_distance,physical_overlap,hud_root,visual_audit,pass
+qa-wall-behind-final-v2.png,WallStraight_Occlusion,behind,0.000000,0.937813,-94,-74,1,0,0.007813,0,"(0.00,0.94)","rat absent; no detached body or tail fragment",PASS
+qa-wall-front-final-v2.png,WallStraight_Occlusion,front,0.000000,0.462188,-46,-74,0,1,0.007812,0,"(0.00,0.46)","one complete rat visible in front",PASS
+qa-barrel-behind-final-v2.png,Barrel_A,behind,-1.000000,-0.512188,51,76,1,0,0.007812,0,"(-1.00,-0.51)","rat fully occluded; no detached fragment",PASS
+qa-crate-behind-final-v2.png,Crate_A,behind,2.000000,0.507813,-51,-24,1,0,0.007813,0,"(2.00,0.51)","rat fully occluded; no detached fragment",PASS

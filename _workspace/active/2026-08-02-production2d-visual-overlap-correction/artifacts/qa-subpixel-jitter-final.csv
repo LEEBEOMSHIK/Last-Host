@@ -1,0 +1,4 @@
+object,entry_x,release_x,jitter_low,jitter_high,cycles,hidden_initialized_transition_delta,hidden_state_preserved,visible_initialized_transition_delta,visible_state_preserved,renderer_coherent,pass
+WallStraight_Occlusion,0.359375,0.375000,0.366188,0.368188,10,0,1,0,1,1,PASS
+Barrel_A,-0.375000,-0.359375,-0.368187,-0.366188,10,0,1,0,1,1,PASS
+Crate_A,2.531250,2.546875,2.538063,2.540062,10,0,1,0,1,1,PASS

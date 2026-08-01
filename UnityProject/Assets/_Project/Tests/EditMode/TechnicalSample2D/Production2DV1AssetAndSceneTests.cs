@@ -91,6 +91,9 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
                 FindObjectsInactive.Include);
             var hud = UnityEngine.Object.FindFirstObjectByType<Production2DSampleHud>(
                 FindObjectsInactive.Include);
+            var occlusionResolver =
+                UnityEngine.Object.FindFirstObjectByType<VisualOcclusionResolver2D>(
+                    FindObjectsInactive.Include);
             var tilemaps = UnityEngine.Object.FindObjectsByType<Tilemap>(
                 FindObjectsInactive.Include,
                 FindObjectsSortMode.None);
@@ -106,6 +109,13 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             Assert.That(follow.Target, Is.EqualTo(controller.transform));
             Assert.That(follow.TargetCamera.orthographic, Is.True);
             Assert.That(hud, Is.Not.Null);
+            Assert.That(occlusionResolver, Is.Not.Null);
+            Assert.That(
+                occlusionResolver.MinimumFragmentWidth,
+                Is.EqualTo(4f / 128f).Within(0.000001f));
+            Assert.That(
+                occlusionResolver.ReleaseHysteresis,
+                Is.EqualTo(2f / 128f).Within(0.000001f));
             Assert.That(tilemaps.Select(tilemap => tilemap.name),
                 Does.Contain("FloorTilemap"));
             Assert.That(tilemaps.Select(tilemap => tilemap.name),
@@ -153,6 +163,7 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
                 visual.transform.SetParent(root.transform, false);
                 var renderer = visual.AddComponent<SpriteRenderer>();
                 var view = visual.AddComponent<RatSide3FrameView>();
+                var bodyClearance = root.AddComponent<CapsuleCollider2D>();
                 for (var index = 0; index < sprites.Length; index++)
                 {
                     sprites[index] = Sprite.Create(
@@ -163,18 +174,24 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
                 }
 
                 view.Configure(null, renderer, sprites, 10f);
+                view.ConfigureBodyClearance(
+                    bodyClearance,
+                    new Vector2(1.28f, 0.26f),
+                    new Vector2(0.30f, 0.13f));
                 root.transform.position = new Vector3(2.25f, -1.5f, 0f);
                 var initialRoot = root.transform.position;
 
                 view.ApplyView(Vector2.left, true, 0.11f);
                 Assert.That(view.FacesRight, Is.False);
                 Assert.That(renderer.flipX, Is.True);
+                Assert.That(bodyClearance.offset.x, Is.EqualTo(-0.30f).Within(0.000001f));
                 Assert.That(view.CurrentFrameIndex, Is.EqualTo(1));
                 Assert.That(root.transform.position, Is.EqualTo(initialRoot));
 
                 view.ApplyView(Vector2.right, false, 0.1f);
                 Assert.That(view.FacesRight, Is.True);
                 Assert.That(renderer.flipX, Is.False);
+                Assert.That(bodyClearance.offset.x, Is.EqualTo(0.30f).Within(0.000001f));
                 Assert.That(view.CurrentFrameIndex, Is.Zero);
                 Assert.That(root.transform.position, Is.EqualTo(initialRoot));
             }
@@ -202,7 +219,8 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             Assert.That(rat, Is.Not.Null);
             var ratCollider = rat.GetComponent<CapsuleCollider2D>();
             Assert.That(ratCollider, Is.Not.Null);
-            Assert.That(ratCollider.size, Is.EqualTo(new Vector2(0.92f, 0.26f)));
+            Assert.That(ratCollider.size, Is.EqualTo(new Vector2(1.28f, 0.26f)));
+            Assert.That(ratCollider.offset, Is.EqualTo(new Vector2(0.30f, 0.13f)));
 
             AssertOccluderContract(
                 "TechnicalSample2D/Environment/YSortProps/Barrel_A",
@@ -213,6 +231,217 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             AssertOccluderContract(
                 "TechnicalSample2D/Environment/YSortWalls/WallStraight_Occlusion",
                 new Vector2(1.05f, 0.18f));
+        }
+
+        [Test]
+        public void ProductionV1_WholeCharacterOcclusionUsesFourPixelEntryAndTwoPixelRelease()
+        {
+            OpenSampleScene();
+
+            var rat = GameObject.Find("TechnicalSample2D/Actors/RatHost2D");
+            var wall = GameObject.Find(
+                "TechnicalSample2D/Environment/YSortWalls/WallStraight_Occlusion");
+            var view = rat.GetComponentInChildren<RatSide3FrameView>();
+            var resolver = rat.GetComponentInChildren<VisualOcclusionResolver2D>();
+
+            Assert.That(view, Is.Not.Null);
+            Assert.That(resolver, Is.Not.Null);
+            Assert.That(
+                view.TargetRenderer.enabled,
+                Is.False,
+                "The saved scene reproduces the builder-time serialized hide state.");
+
+            view.ApplyView(Vector2.right, false, 0f);
+            rat.transform.position = new Vector3(wall.transform.position.x, 0.90f, 0f);
+            Assert.That(resolver.ResolveNow(), Is.True);
+            Assert.That(view.TargetRenderer.enabled, Is.False);
+            Assert.That(resolver.VisibilityTransitionCount, Is.EqualTo(1));
+
+            for (var iteration = 0; iteration < 300; iteration++)
+            {
+                Assert.That(resolver.ResolveNow(), Is.True);
+            }
+
+            Assert.That(resolver.VisibilityTransitionCount, Is.EqualTo(1));
+
+            // At +0.37 world units the left fragment is below the four-pixel
+            // entry threshold but above the two-pixel release threshold.
+            rat.transform.position = new Vector3(
+                wall.transform.position.x + 0.37f,
+                0.90f,
+                0f);
+            Assert.That(resolver.ResolveNow(), Is.True);
+            Assert.That(resolver.VisibilityTransitionCount, Is.EqualTo(1));
+
+            rat.transform.position = new Vector3(
+                wall.transform.position.x + 0.38f,
+                0.90f,
+                0f);
+            Assert.That(resolver.ResolveNow(), Is.False);
+            Assert.That(view.TargetRenderer.enabled, Is.True);
+            Assert.That(resolver.VisibilityTransitionCount, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void WholeCharacterOcclusionRequiresTwoVisibleFragmentsAndCoreIntersection()
+        {
+            var visible = Rect.MinMaxRect(-0.93f, 0f, 0.93f, 0.59f);
+            var core = Rect.MinMaxRect(-0.33f, 0f, 0.90f, 0.59f);
+            var centeredOccluder = Rect.MinMaxRect(-0.27f, 0.02f, 0.27f, 0.84f);
+
+            Assert.That(
+                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
+                    visible,
+                    core,
+                    centeredOccluder,
+                    4f / 128f),
+                Is.True);
+            Assert.That(
+                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
+                    visible,
+                    core,
+                    Rect.MinMaxRect(-1.0f, 0.02f, -0.91f, 0.84f),
+                    4f / 128f),
+                Is.False);
+            Assert.That(
+                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
+                    visible,
+                    core,
+                    Rect.MinMaxRect(-0.27f, 0.70f, 0.27f, 0.90f),
+                    4f / 128f),
+                Is.False);
+
+            Assert.That(
+                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
+                    visible,
+                    core,
+                    Rect.MinMaxRect(-0.30f, 0.02f, 1.0f, 0.84f),
+                    4f / 128f),
+                Is.True,
+                "A detached tail-only fragment on one side must also be hidden.");
+
+            var flippedCore = Rect.MinMaxRect(-0.90f, 0f, 0.33f, 0.59f);
+            Assert.That(
+                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
+                    visible,
+                    flippedCore,
+                    Rect.MinMaxRect(-1.0f, 0.02f, 0.30f, 0.84f),
+                    4f / 128f),
+                Is.True,
+                "The mirrored tail-only fragment must follow the flipped core bounds.");
+        }
+
+        [Test]
+        public void WholeCharacterOcclusionPreservesAnExternallyDisabledRenderer()
+        {
+            var target = new GameObject("OcclusionTarget");
+            var texture = new Texture2D(8, 8);
+            var sprite = Sprite.Create(
+                texture,
+                new Rect(0f, 0f, 8f, 8f),
+                new Vector2(0.5f, 0.5f),
+                128f);
+
+            try
+            {
+                var renderer = target.AddComponent<SpriteRenderer>();
+                renderer.sprite = sprite;
+                renderer.enabled = false;
+                var resolver = target.AddComponent<VisualOcclusionResolver2D>();
+                resolver.Configure(
+                    renderer,
+                    null,
+                    new[]
+                    {
+                        new VisualOcclusionResolver2D.FrameAlphaContract(
+                            sprite,
+                            Rect.MinMaxRect(-0.03f, -0.03f, 0.03f, 0.03f),
+                            Rect.MinMaxRect(-0.02f, -0.02f, 0.02f, 0.02f))
+                    },
+                    Array.Empty<VisualOcclusionResolver2D.OccluderContract>(),
+                    4f / 128f,
+                    2f / 128f);
+
+                Assert.That(resolver.ResolveNow(), Is.False);
+                Assert.That(renderer.enabled, Is.False);
+            }
+            finally
+            {
+                UnityEngine.Object.DestroyImmediate(sprite);
+                UnityEngine.Object.DestroyImmediate(texture);
+                UnityEngine.Object.DestroyImmediate(target);
+            }
+        }
+
+        [Test]
+        public void WholeCharacterOcclusionReleaseHysteresisProtectsHorizontalCoreBoundary()
+        {
+            const float fragmentWidth = 4f / 128f;
+            const float hysteresis = 2f / 128f;
+            var occluder = Rect.MinMaxRect(-0.27f, 0.02f, 0.27f, 0.84f);
+
+            var entryVisible = Rect.MinMaxRect(-0.331f, 0f, 1.529f, 0.59f);
+            var entryCore = Rect.MinMaxRect(0.269f, 0f, 1.499f, 0.59f);
+            Assert.That(
+                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
+                    entryVisible,
+                    entryCore,
+                    occluder,
+                    fragmentWidth),
+                Is.True);
+
+            var subpixelVisible = Rect.MinMaxRect(-0.316f, 0f, 1.544f, 0.59f);
+            var subpixelCore = Rect.MinMaxRect(0.284f, 0f, 1.514f, 0.59f);
+            Assert.That(
+                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
+                    subpixelVisible,
+                    subpixelCore,
+                    occluder,
+                    fragmentWidth),
+                Is.False,
+                "The unexpanded character core loses horizontal barrel intersection.");
+            Assert.That(
+                VisualOcclusionResolver2D.WouldRemainOccludedDuringRelease(
+                    subpixelVisible,
+                    subpixelCore,
+                    occluder,
+                    fragmentWidth,
+                    hysteresis),
+                Is.True,
+                "Two-pixel core release hysteresis must protect the horizontal boundary.");
+
+            var releasedVisible = Rect.MinMaxRect(-0.313f, 0f, 1.547f, 0.59f);
+            var releasedCore = Rect.MinMaxRect(0.287f, 0f, 1.517f, 0.59f);
+            Assert.That(
+                VisualOcclusionResolver2D.WouldRemainOccludedDuringRelease(
+                    releasedVisible,
+                    releasedCore,
+                    occluder,
+                    fragmentWidth,
+                    hysteresis),
+                Is.False,
+                "Release must still occur after crossing the two-pixel horizontal band.");
+
+            var fragmentSensitiveVisible =
+                Rect.MinMaxRect(-0.2934375f, 0f, 1.50f, 0.59f);
+            var overlappingCore = Rect.MinMaxRect(-0.10f, 0f, 1.40f, 0.59f);
+            Assert.That(
+                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
+                    fragmentSensitiveVisible,
+                    overlappingCore,
+                    occluder,
+                    fragmentWidth),
+                Is.False,
+                "A three-pixel fragment must not meet the four-pixel entry contract.");
+            Assert.That(
+                VisualOcclusionResolver2D.WouldRemainOccludedDuringRelease(
+                    fragmentSensitiveVisible,
+                    overlappingCore,
+                    occluder,
+                    fragmentWidth,
+                    hysteresis),
+                Is.True,
+                "The existing two-pixel fragment release band must remain intact.");
         }
 
         [Test]

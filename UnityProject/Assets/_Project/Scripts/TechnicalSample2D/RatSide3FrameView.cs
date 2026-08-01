@@ -15,6 +15,8 @@ namespace LastHost.Prototype.TechnicalSample2D
         [SerializeField] private SpriteRenderer targetRenderer;
         [SerializeField] private Sprite[] frames = new Sprite[RequiredFrameCount];
         [SerializeField, Min(0.01f)] private float framesPerSecond = 7f;
+        [SerializeField] private CapsuleCollider2D bodyClearanceCollider;
+        [SerializeField] private Vector2 rightFacingColliderOffset = new Vector2(0.30f, 0.13f);
 
         private float _animationTime;
         private bool _facesRight = true;
@@ -24,6 +26,7 @@ namespace LastHost.Prototype.TechnicalSample2D
         public int CurrentFrameIndex => _currentFrameIndex;
         public bool FacesRight => _facesRight;
         public SpriteRenderer TargetRenderer => targetRenderer;
+        public CapsuleCollider2D BodyClearanceCollider => bodyClearanceCollider;
 
         public void Configure(
             RatHost2DController sourceController,
@@ -57,6 +60,24 @@ namespace LastHost.Prototype.TechnicalSample2D
             ApplyView(Vector2.zero, false, 0f);
         }
 
+        public void ConfigureBodyClearance(
+            CapsuleCollider2D targetCollider,
+            Vector2 colliderSize,
+            Vector2 rightFacingOffset)
+        {
+            bodyClearanceCollider = targetCollider;
+            this.rightFacingColliderOffset = new Vector2(
+                Mathf.Abs(rightFacingOffset.x),
+                rightFacingOffset.y);
+
+            if (bodyClearanceCollider != null)
+            {
+                bodyClearanceCollider.direction = CapsuleDirection2D.Horizontal;
+                bodyClearanceCollider.size = colliderSize;
+                ApplyBodyClearanceFacing();
+            }
+        }
+
         public void ApplyView(Vector2 move, bool isMoving, float deltaTime)
         {
             if (targetRenderer == null || frames == null ||
@@ -75,6 +96,7 @@ namespace LastHost.Prototype.TechnicalSample2D
             }
 
             targetRenderer.flipX = !_facesRight;
+            ApplyBodyClearanceFacing();
 
             if (!isMoving)
             {
@@ -105,6 +127,20 @@ namespace LastHost.Prototype.TechnicalSample2D
                 move,
                 controller != null && controller.IsMoving,
                 Time.deltaTime);
+        }
+
+        private void ApplyBodyClearanceFacing()
+        {
+            if (bodyClearanceCollider == null)
+            {
+                return;
+            }
+
+            bodyClearanceCollider.offset = new Vector2(
+                _facesRight
+                    ? rightFacingColliderOffset.x
+                    : -rightFacingColliderOffset.x,
+                rightFacingColliderOffset.y);
         }
     }
 }

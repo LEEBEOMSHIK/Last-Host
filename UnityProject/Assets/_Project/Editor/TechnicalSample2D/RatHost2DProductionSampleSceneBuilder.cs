@@ -28,6 +28,7 @@ namespace LastHost.Prototype.TechnicalSample2D.Editor
             "Assets/_Project/Settings/Input/RatHostPrototypeControls.inputactions";
         private const float TrialOrthographicSize = 4.21875f;
         private const int OccluderTieBreak = 1;
+        private const float LogicalPixel = 1f / CandidatePixelsPerUnit;
 
         [MenuItem("Last Host/Production 2D V1/Rebuild Technical Sample")]
         public static void RebuildTechnicalSample()
@@ -89,7 +90,7 @@ namespace LastHost.Prototype.TechnicalSample2D.Editor
             BuildProps(environment, grid);
 
             var actors = CreateChild(root.transform, "Actors");
-            var rat = BuildRatHost(actors, grid);
+            var rat = BuildRatHost(actors, grid, environment);
 
             var cameras = CreateChild(root.transform, "Cameras");
             var followCamera = BuildCamera(cameras, rat.Root);
@@ -283,7 +284,10 @@ namespace LastHost.Prototype.TechnicalSample2D.Editor
             sorter.ApplySorting();
         }
 
-        private static RatBuildResult BuildRatHost(Transform parent, Grid grid)
+        private static RatBuildResult BuildRatHost(
+            Transform parent,
+            Grid grid,
+            Transform environment)
         {
             var ratObject = new GameObject("RatHost2D");
             ratObject.transform.SetParent(parent, false);
@@ -299,8 +303,8 @@ namespace LastHost.Prototype.TechnicalSample2D.Editor
 
             var collider = ratObject.AddComponent<CapsuleCollider2D>();
             collider.direction = CapsuleDirection2D.Horizontal;
-            collider.size = new Vector2(0.92f, 0.26f);
-            collider.offset = new Vector2(0.08f, 0.13f);
+            collider.size = new Vector2(1.28f, 0.26f);
+            collider.offset = new Vector2(0.30f, 0.13f);
 
             var inputAsset = AssetDatabase.LoadAssetAtPath<InputActionAsset>(InputAssetPath);
             if (inputAsset == null ||
@@ -328,6 +332,10 @@ namespace LastHost.Prototype.TechnicalSample2D.Editor
 
             var sideView = visual.gameObject.AddComponent<RatSide3FrameView>();
             sideView.Configure(controller, renderer, frames, 7f);
+            sideView.ConfigureBodyClearance(
+                collider,
+                new Vector2(1.28f, 0.26f),
+                new Vector2(0.30f, 0.13f));
 
             var pixelSnap = visual.gameObject.AddComponent<VisualPixelSnap2D>();
             pixelSnap.Configure(ratObject.transform, CandidatePixelsPerUnit);
@@ -343,7 +351,62 @@ namespace LastHost.Prototype.TechnicalSample2D.Editor
                 TechnicalSample2DConstants.YSortScale);
             ySort.ApplySorting();
 
+            var occlusionResolver = visual.gameObject.AddComponent<VisualOcclusionResolver2D>();
+            occlusionResolver.Configure(
+                renderer,
+                ySort,
+                new[]
+                {
+                    new VisualOcclusionResolver2D.FrameAlphaContract(
+                        frames[0],
+                        Rect.MinMaxRect(-119f / 128f, 1f / 128f, 119f / 128f, 73f / 128f),
+                        Rect.MinMaxRect(-40f / 128f, 1f / 128f, 115f / 128f, 73f / 128f)),
+                    new VisualOcclusionResolver2D.FrameAlphaContract(
+                        frames[1],
+                        Rect.MinMaxRect(-119f / 128f, 1f / 128f, 119f / 128f, 75f / 128f),
+                        Rect.MinMaxRect(-39f / 128f, 1f / 128f, 115f / 128f, 75f / 128f)),
+                    new VisualOcclusionResolver2D.FrameAlphaContract(
+                        frames[2],
+                        Rect.MinMaxRect(-118f / 128f, 0f, 119f / 128f, 73f / 128f),
+                        Rect.MinMaxRect(-42f / 128f, 0f, 114f / 128f, 73f / 128f))
+                },
+                new[]
+                {
+                    CreateOccluderContract(
+                        environment,
+                        "YSortWalls/WallStraight_Occlusion",
+                        Rect.MinMaxRect(-69f / 128f, 4f / 128f, 68f / 128f, 154f / 128f)),
+                    CreateOccluderContract(
+                        environment,
+                        "YSortProps/Barrel_A",
+                        Rect.MinMaxRect(-35f / 128f, 2f / 128f, 34f / 128f, 108f / 128f)),
+                    CreateOccluderContract(
+                        environment,
+                        "YSortProps/Crate_A",
+                        Rect.MinMaxRect(-47f / 128f, 2f / 128f, 46f / 128f, 108f / 128f))
+                },
+                4f * LogicalPixel,
+                2f * LogicalPixel);
+
             return new RatBuildResult(ratObject.transform, controller, ySort);
+        }
+
+        private static VisualOcclusionResolver2D.OccluderContract CreateOccluderContract(
+            Transform environment,
+            string relativePath,
+            Rect visibleLocalBounds)
+        {
+            var target = environment.Find(relativePath);
+            if (target == null)
+            {
+                throw new InvalidOperationException(
+                    $"Production2D occluder is unavailable: {relativePath}");
+            }
+
+            return new VisualOcclusionResolver2D.OccluderContract(
+                target.GetComponent<SpriteRenderer>(),
+                target.GetComponent<YSortSprite2D>(),
+                visibleLocalBounds);
         }
 
         private static PixelFollowCamera2D BuildCamera(Transform parent, Transform target)

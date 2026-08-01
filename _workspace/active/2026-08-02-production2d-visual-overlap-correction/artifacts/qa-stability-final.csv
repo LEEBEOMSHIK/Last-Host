@@ -1,0 +1,9 @@
+object,stationary_calls,stationary_transition_delta,release_x,entry_x,hysteresis_gap,required_hysteresis,roundtrips,roundtrip_transition_delta,collider_distance,physical_overlap,renderer_coherent,pass
+WallStraight_Occlusion,300,0,0.375000,0.359375,0.015625,0.015625,10,20,0.007813,0,1,PASS
+Barrel_A,300,0,-0.359375,-0.375000,0.015625,0.015625,10,20,0.007812,0,1,PASS
+Crate_A,300,0,2.546875,2.531250,0.015625,0.015625,10,20,0.007813,0,1,PASS
+check,value
+multi_occluder_no_hysteresis_leak,PASS
+external_disabled_preserved,PASS
+tail_only_right,PASS
+tail_only_left,PASS
