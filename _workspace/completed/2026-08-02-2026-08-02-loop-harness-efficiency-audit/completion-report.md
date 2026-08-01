@@ -44,7 +44,7 @@
 - QA/검증 게이트: r6 PASS
 - 총괄 관리자 게이트: 내부 승인 가능
 - 작업 비용 중앙 현황판 동기화: 완료
-- 커밋 전 차단 조건: 선행 기능 커밋 `7ba12df`와 분리하고 보호 제외 파일을 유지한 운영 커밋만 허용
+- 커밋 전 차단 조건: 충족 — 기능 `7ba12df`와 운영 `533152e`를 분리하고 보호 제외 파일을 유지해 origin/main에 반영
 
 ## 최종 비용 요약
 
@@ -94,5 +94,5 @@
 
 ## 후속 작업
 
-- 기능 구현은 `7ba12df fix: correct production 2d visual occlusion`로 별도 선행 커밋됐다. 보호 대상과 rejected trial/previews를 제외하고 감사·운영 변경만 별도 커밋·푸시한다.
+- 기능 구현 `7ba12df fix: correct production 2d visual occlusion`와 감사·운영 `533152e chore: improve loop verification efficiency`는 분리된 커밋으로 origin/main에 반영됐다. 중앙 비용 현황판은 후속 작업에서도 지속 관리한다.
 - 다음 시각 교정부터 freeze 후보 전 고비용 전체 suite·matrix·capture 반복 금지 규칙을 적용한다.

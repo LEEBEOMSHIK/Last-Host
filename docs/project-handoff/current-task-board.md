@@ -20,8 +20,8 @@
 
 ## 현재 저장소 상태
 
-- 현재 Git 기준: `HEAD = 7ba12df fix: correct production 2d visual occlusion`
-- 현재 Git 작업 상태: overlap 구현 커밋은 완료했고, 루프 감사 완료 보관·비용 현황판·운영 도구는 별도 운영 커밋 준비 중이다.
+- 현재 Git 기준: 최근 기능 기준 `7ba12df`, 운영 기준 `533152e`가 `origin/main`에 반영됐다. 이후 본 상태 동기화 커밋도 별도로 반영한다.
+- 현재 Git 작업 상태: overlap 기능과 루프 감사·비용 현황판·운영 도구의 원격 반영을 완료했고 중앙 현황판 지속 관리를 시작한다.
 - 현재 로컬 작업: 사용자 화면에서 확인된 쥐·오브젝트 가시 실루엣 겹침을 whole-character occlusion과 방향별 core collider로 교정했다. 독립 QA에서 전체 EditMode `202/202`, 접촉 `72/72`, 단계 `432/432`, 물리 overlap·표시 상태 불일치 `0`, 벽·통·상자 2px hysteresis와 subpixel jitter `0`을 확인했고 총괄 `내부 승인 가능` 판정을 받았다. 사용자 실제 WASD와 작은 소품 뒤 완전 가림 수용을 기다린다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
@@ -37,7 +37,7 @@
 
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
-| Production2D 쥐·오브젝트 가시 실루엣 겹침 완전 교정 | 구현 커밋 `7ba12df` 완료 — 사용자 실제 WASD 수용 대기 | 방향별 core collider와 whole-character occlusion을 적용했다. 전체 EditMode `202/202`, 접촉 `72/72`, 단계 `432/432`, 물리 overlap·표시 불일치 `0`, 벽·통·상자 hysteresis `0.015625 world`, 정지·subpixel 불필요 전환 `0`, Console 0·scene clean을 확인했다. 구현은 `7ba12df`로 커밋했으며 실제 WASD와 작은 소품 뒤 완전 가림 체감은 사용자 확인 항목이다. | `_workspace/active/2026-08-02-production2d-visual-overlap-correction/` |
+| Production2D 쥐·오브젝트 가시 실루엣 겹침 완전 교정 | 기능 `7ba12df` push 완료 — 사용자 실제 WASD 수용 대기 | 방향별 core collider와 whole-character occlusion을 적용했다. 전체 EditMode `202/202`, 접촉 `72/72`, 단계 `432/432`, 물리 overlap·표시 불일치 `0`, 벽·통·상자 hysteresis `0.015625 world`, 정지·subpixel 불필요 전환 `0`, Console 0·scene clean을 확인했다. 기능 커밋 `7ba12df`는 origin/main에 반영됐으며 실제 WASD와 작은 소품 뒤 완전 가림 체감은 사용자 확인 항목이다. | `_workspace/active/2026-08-02-production2d-visual-overlap-correction/` |
 | Production2D V1 오브젝트 가림·HUD 초상 잔여 조각 수정 | 부분 수용 — HUD 통과, 가림 후속 교정으로 재개 | HUD 잔여 조각 제거는 유지한다. tieBreak 1 통일과 footprint 확대는 자동 검증을 통과했지만 사용자 실제 화면에서 가시 실루엣 관통이 남아, 가림 부분은 2026-08-02 후속 교정으로 넘겼다. | `_workspace/active/2026-07-30-production2d-occlusion-hud-correction/` |
 | 고품질 실제 에셋 Unity 한 방 반입 기술 샘플 | 내부 승인 완료 — 사용자 실제 WASD·PPU 수용 대기 | 실제 RGBA 환경·쥐·HUD를 독립 2D 기술 샘플 한 방에 반입했다. V1 HUD·프레이밍 문제를 V2에서 수정했고 비주얼 `PASS`, SHA `20/20`, Import `18/18`, 관련 `42/42`·전체 EditMode `196/196`, MCP Play·충돌·Y정렬·카메라·HUD·Console 0을 통과했다. 자동 직렬화 변경도 원복·QA 재대조했고 총괄 `내부 승인 가능`이다. 실제 Game View 포커스 네이티브 WASD와 PPU 128·상대 크기 수용은 사용자 확인 항목이다. | `_workspace/active/2026-07-30-rat-host-2d-production-assets-unity-sample/` |
 | 고품질 마스터 기준 실제 게임 에셋 1차 재제작 | 사용자 품질 수용 — Unity 반입으로 인계 | 반복 환경·투명 소품, 공통 캔버스·피벗의 쥐 측면 3프레임, 분리 HUD 모듈 20파일을 제작했다. HUD fill 문제를 수정했고 비주얼 PASS, QA `128/128`, 재생성 `20/20`, 총괄 내부 승인을 통과한 뒤 사용자가 Unity 반입을 승인했다. | `_workspace/active/2026-07-30-rat-host-2d-production-assets-v1/` |
@@ -52,7 +52,7 @@
 
 | 작업 | 상태 | 핵심 결과 | 확인 위치 |
 | --- | --- | --- | --- |
-| 루프 엔지니어링·검증 하네스 비용 효율 감사 | 완료 보관·운영 커밋 준비 중 | QA r6 PASS와 총괄 내부 승인을 통과했다. 비용은 `과다 — 부분 회피 가능`, 정확 token/금액은 `미집계`; Unity/MCP/빌드는 0회다. 기능 구현 커밋 `7ba12df`와 분리해 운영 문서·도구 커밋을 준비한다. | `_workspace/completed/2026-08-02-2026-08-02-loop-harness-efficiency-audit/` |
+| 루프 엔지니어링·검증 하네스 비용 효율 감사 | 완료 보관·운영 `533152e` push 완료 | QA r6 PASS와 총괄 내부 승인을 통과했다. 비용은 `과다 — 부분 회피 가능`, 정확 token/금액은 `미집계`; Unity/MCP/빌드는 0회다. 운영 문서·도구 커밋 `533152e`는 origin/main에 반영됐고 중앙 현황판 지속 관리를 시작한다. | `_workspace/completed/2026-08-02-2026-08-02-loop-harness-efficiency-audit/` |
 | 쥐 숙주 2D 통합 제작 기준 이미지 | 완료 보관·사용자 수용 | 환경·쥐 V2·HUD 통합 기준 3개를 제작했다. 쥐 V2는 뒤쪽 체형을 교정하고 비주얼·QA·총괄 재검토를 통과했으며, 사용자가 세 이미지를 모두 수용했다. 실제 에셋·8방향·Unity 반입은 후속 승인이다. | `_workspace/completed/2026-07-29-2026-07-29-rat-host-2d-integrated-art-targets/` |
 | 쥐 숙주 2D 첫 아트 샘플 후보 | 완료 보관·조합 선별 | 환경·소품 2안, 쥐 대표 3방향 2안, HUD 2안 총 6개를 생성·검토했고, 사용자 선별 조합을 후속 통합 기준에 반영했다. | `_workspace/completed/2026-07-29-2026-07-29-rat-host-2d-first-art-sample/` |
 | 쥐 숙주 핵심 루프 단계적 2D 이관 승인 브리프 | 완료 보관 | 사용자 전체 추천안 승인으로 3단계 이관, 별도 2D 프로토타입 씬, 상태 재사용·2D 어댑터, 오염 노출 자연 100%, 신호 억제 보류, 레거시 보존과 1단계 착수를 확정했다. | `_workspace/completed/2026-07-28-2026-07-27-rat-core-loop-2d-migration-brief/` |

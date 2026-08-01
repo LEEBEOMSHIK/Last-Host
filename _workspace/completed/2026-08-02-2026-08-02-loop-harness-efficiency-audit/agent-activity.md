@@ -4,7 +4,7 @@
 
 | 에이전트 | 역할 | 담당 업무 | 산출물 | 판정 |
 | --- | --- | --- | --- | --- |
-| 메인 조정자 | 범위·통합 | 작업 패킷, 사실 타임라인 통합, 보완 반영 조정 | 작업 패킷·현황판 | 완료 보관·운영 커밋 대기 |
+| 메인 조정자 | 범위·통합 | 작업 패킷, 사실 타임라인 통합, 보완 반영 조정 | 작업 패킷·현황판 | 완료 보관·운영 push 완료 |
 | 프로세스 감사 에이전트 | 운영 감사 | 현행 루프·역할·게이트의 중복과 누락 분석 | `artifacts/current-loop-gap-audit.md` | 감사 완료 — 내부 승인 가능 |
 | Unity 하네스 감사 에이전트 | 검증 설계 | 테스트·MCP·증거 생성 순서와 재현성 분석 | `artifacts/harness-improvement-design.md` | 감사 완료 — 내부 승인 가능 |
 | 운영 하네스 도구 구현 담당 | 검증 도구 구현 | 프로젝트 lease, EditMode XML 판정, candidate fingerprint 범용 도구 구현·자체 검증 | `tools/verification/`, `artifacts/verification-tools-report.md` | 독립 QA r2 PASS |
@@ -313,4 +313,4 @@
 - 수행 내용: 감사 패킷을 `_workspace/completed/2026-08-02-2026-08-02-loop-harness-efficiency-audit/`로 이동하고 완료 보고서와 중앙 현황판을 동기화했다.
 - 판정 유지: QA r6 PASS, 총괄 `내부 승인 가능`, 비용 `과다 — 부분 회피 가능`, 정확 token/금액 `미집계`.
 - 새 실행: QA 0, Unity 0, MCP 0, 빌드 0.
-- Git 상태: 기능 구현 `7ba12df` 선행 커밋 완료, 감사 완료 보관·운영 변경은 별도 커밋 대기로 전환.
+- Git 상태: 기능 `7ba12df`와 운영 `533152e`가 origin/main에 반영되어 완료 보관으로 종결.

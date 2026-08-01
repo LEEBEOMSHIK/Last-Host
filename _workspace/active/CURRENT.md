@@ -3,9 +3,9 @@
 ## 현재 이어받을 작업
 
 - 작업 ID: `2026-08-02-production2d-visual-overlap-correction`
-- 상태: 구현 커밋 `7ba12df` 완료 — 사용자 실제 WASD·작은 소품 완전 가림 확인 대기, 운영 커밋 준비 중
+- 상태: 기능 `7ba12df`·운영 `533152e` origin/main 반영 완료 — 사용자 실제 WASD·작은 소품 완전 가림 확인 대기
 - 작업 경로: `_workspace/active/2026-08-02-production2d-visual-overlap-correction/`
-- 최신 사용자 요청: 첫 기능 커밋 `7ba12df` 반영 상태를 동기화하고 완료 보관한 루프 감사를 별도 운영 커밋으로 준비한다.
+- 최신 사용자 요청: 기능 `7ba12df`와 운영 `533152e` 원격 반영 완료 상태를 동기화하고 중앙 현황판 지속 관리를 시작한다.
 
 ## 먼저 읽을 파일
 
@@ -15,9 +15,9 @@
 
 ## 바로 이어서 할 작업
 
-1. 완료 보관한 루프 감사·비용 현황판·운영 도구의 운영 커밋 범위를 대조한다.
-2. 구현 커밋 `7ba12df`와 운영 커밋 대상을 섞지 않는다.
-3. 사용자 실제 WASD와 작은 소품 뒤 완전 가림 수용은 별도 확인 항목으로 유지한다.
+1. 사용자 실제 WASD와 작은 소품 뒤 완전 가림 수용을 확인한다.
+2. 다음 작업 시작·blocker·correction·완료·커밋 전에 중앙 비용 현황판을 갱신한다.
+3. 본 상태 동기화는 별도 커밋으로 반영한다.
 
 ## 병행 차단 작업
 
@@ -41,8 +41,8 @@
 
 - `main` 푸시 완료: 구현 `e7220a7 feat: integrate production 2d art sample`, 1차 상태 동기화 `7adef75 docs: sync production 2d push state`
 - `e7220a7` 포함: 첫 아트 후보, 통합 기준, 아트 로드맵, 품질 마스터, 실제 에셋, Unity 기술 샘플 반입, 오브젝트 가림·HUD 수정과 관련 검증 기록.
-- 현재 HEAD: `7ba12df fix: correct production 2d visual occlusion` — overlap 구현 커밋 완료.
-- 현재: 루프 감사는 `_workspace/completed/2026-08-02-2026-08-02-loop-harness-efficiency-audit/`로 완료 보관했고 별도 운영 커밋 준비 중이다.
+- 원격 반영 완료: 기능 `7ba12df fix: correct production 2d visual occlusion`, 운영 `533152e chore: improve loop verification efficiency`.
+- 현재: 루프 감사는 `_workspace/completed/2026-08-02-2026-08-02-loop-harness-efficiency-audit/`로 완료 보관·원격 반영했고, 본 상태 동기화 커밋은 별도로 반영한다.
 - 제외 유지: Stage2 원본 씬 복구, Stage3 구현·검증, `APP_UI_EDITOR_ONLY`, 반려된 저품질 규격 시험 산출물, `_workspace/previews/`, `Builds/`.
 
 ## 갱신 정보
