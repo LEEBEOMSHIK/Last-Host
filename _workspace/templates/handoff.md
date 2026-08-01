@@ -36,12 +36,34 @@
 
 -
 
+## 현재 검증 후보
+
+- candidate fingerprint:
+- canonical run_id:
+- verification revision:
+- candidate frozen 여부:
+- superseded run:
+
+## Unity single-owner lease 인계
+
+- project key / lease owner:
+- run_id / editor PID / scene:
+- lease 상태: 미획득 / 보유 / 해제
+- Play / Pause / scene / dirty:
+- 임시 객체 유무:
+- heartbeat / 만료:
+- 인계 전 release와 복원 확인:
+
 ## 실패 또는 차단된 검증
 
 -
 
 ## 루프 게이트 상태
 
+- 위험 등급 / correction cycle:
+- S0 charter:
+- 마지막 통과 단계:
+- first blocker:
 - 작업 배정 게이트:
 - 담당 산출물 게이트:
 - QA/검증 게이트:
@@ -77,6 +99,8 @@
 ## 주의할 점
 
 -
+
+- production 소유권과 인계 조건:
 
 ## 사용자 승인 필요
 

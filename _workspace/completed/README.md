@@ -2,6 +2,10 @@
 
 이 폴더는 완료된 에이전트 작업의 추적 기록을 보관한다.
 
+## 최근 완료 보관
+
+- `2026-08-02-2026-08-02-loop-harness-efficiency-audit`: QA r6 PASS, 총괄 내부 승인, 비용 `과다 — 부분 회피 가능`, 정확 token/금액 미집계, 선별 커밋 대기
+
 ## 완료 폴더 규칙
 
 완료 폴더는 다음 형식을 사용한다.
@@ -18,7 +22,7 @@ _workspace/completed/2026-06-29-2026-06-29-agent-workspace/
 
 ## 완료 폴더 필수 파일
 
-- `task.md`: 최초 작업 배정 내용
+- `task.md` 또는 `task-r1-summary.md`: 위험 등급에 맞는 최초 작업 배정 내용
 - `work-log.md`: 진행 중 기록
 - `completion-report.md`: 무엇을 어떻게 완료했는지 정리
 - `verification.md`: 실행한 검증과 미검증 항목

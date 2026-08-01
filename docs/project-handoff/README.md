@@ -7,11 +7,13 @@
 ## 문서 역할
 
 - `current-task-board.md`: 현재 작업 후보, 미결 검증, 최근 작업 요약, 사용자 결정이 필요한 항목을 정리한다.
+- `task-cost-dashboard.md`: 작업별 계획·실제 비용 proxy, 중복·폐기, 필요한 비용·회피 가능 비용과 비용 판정을 중앙 관리한다.
 
 ## 운영 기준
 
 - 이 폴더의 문서는 누적 로그가 아니라 현재 상태판이다.
 - 작업 시작, 보류 전환, 완료/보관, 커밋 전에는 `current-task-board.md`의 상태, 후보, 보류, 최근 작업 요약, 완료 경로, Git 상태를 현재 사실로 갱신한다.
+- 작업 시작에는 `task-cost-dashboard.md` 계획 행을 만들고 blocker·correction 때 실제 실행 수를 갱신한다. 사용자 보고·완료·커밋 전에는 QA가 중복·폐기를 분류하고 총괄이 판정 충분성을 감사한다.
 - 다음 작업 발굴을 요청하면 `current-task-board.md`의 현재 후보와 우선순위를 갱신한다.
 - 완료 또는 커밋 전에는 QA/검증 에이전트가 실제 완료 경로, 후보·보류 중복, Git 상태를 독립 대조한다. 누락이나 불일치가 있으면 완료 또는 커밋 보고를 하지 않는다.
 - 최근 작업 요약은 3~5개 정도만 유지한다.
@@ -21,5 +23,6 @@
 ## 확인 순서
 
 1. `current-task-board.md`에서 현재 후보와 미결 결정을 확인한다.
-2. 상세 근거가 필요하면 문서 안의 `_workspace/active/` 또는 `_workspace/completed/` 경로를 확인한다.
-3. 작업 유형별 세부 규칙은 `docs/agents/agent-reference-map.md`를 따른다.
+2. `task-cost-dashboard.md`에서 해당 작업의 비용 판정과 필요한 비용·회피 가능 비용을 확인한다.
+3. 상세 근거가 필요하면 문서 안의 `_workspace/active/` 또는 `_workspace/completed/` 경로를 확인한다.
+4. 작업 유형별 세부 규칙은 `docs/agents/agent-reference-map.md`를 따른다.

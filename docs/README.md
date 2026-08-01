@@ -23,6 +23,8 @@
 
 - `agents/agent-reference-map.md`: 작업 유형별 필수/선택 참조 색인
 - `agents/agent-skill-plan.md`: 에이전트 역할, 루프 엔지니어링, 승인 흐름
+- `agents/loop-engineering-gates.md`: 위험 등급·실행 순서·검증·완료 차단의 유일 실행 기준
+- `agents/loop-engineering-user-guide.md`: 에이전트 배정, 검증 책임, 비용·중복 검증을 사용자가 한 파일로 확인하는 비실행 요약
 - `design/game-design-summary.md`: 게임 기획 요약
 - `design/README.md`: 상세 게임 기획 폴더 구조와 작성 기준
 - `design/visual/README.md`: 2D 아이소메트릭 도트 비주얼 제작 문서 색인
@@ -37,5 +39,6 @@
 - `prototype/plans/rat-host-ai-assisted-art-workflow.md`: ChatGPT 내장 이미지 생성의 승인·프롬프트·입력 출처·선별·2D 게임 에셋 재제작·Unity QA 작업 순서
 - `project/project-prep.md`: 현재 프로젝트 준비 상태
 - `project-handoff/current-task-board.md`: 현재 작업 후보, 미결 검증, 최근 작업 요약
+- `project-handoff/task-cost-dashboard.md`: 작업별 계획·실제 비용 proxy, 중복·폐기, 필요한 비용·회피 가능 비용과 판정 중앙 현황판
 - `unity/unity-baseline-report.md`: Unity 프로젝트 읽기 전용 기준 상태
 - `unity/unity-mcp-setup.md`: Unity MCP 설정과 운영 기준

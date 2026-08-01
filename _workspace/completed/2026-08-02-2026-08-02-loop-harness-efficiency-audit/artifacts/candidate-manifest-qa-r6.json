@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "run_id": "loop-harness-qa-r6-20260802",
+  "generated_utc": "2026-08-01T23:19:00.1567699Z",
+  "project_root": "C:\\project\\Last-Host",
+  "candidate_fingerprint": "b025ae893660252e737cde4e56893a76314f6990083f4dd61e727be4a1ceab34",
+  "algorithm": "sha256(category<TAB>relative-path<TAB>file-sha256<TAB>length; ordinal path order)",
+  "file_count": 17,
+  "inputs": {
+    "production": [
+      "docs/project-handoff/task-cost-dashboard.md",
+      "docs/agents/loop-engineering-gates.md",
+      "docs/agents/loop-engineering-user-guide.md",
+      "docs/project-handoff/README.md",
+      "docs/project-handoff/current-task-board.md",
+      "docs/README.md",
+      "docs/agents/agent-reference-map.md",
+      "_workspace/README.md",
+      "_workspace/templates/task-r1-summary.md",
+      "_workspace/templates/task.md",
+      "_workspace/templates/verification.md",
+      "_workspace/templates/completion-report.md",
+      "_workspace/active/2026-08-02-loop-harness-efficiency-audit/task.md",
+      "_workspace/active/2026-08-02-loop-harness-efficiency-audit/work-log.md",
+      "_workspace/active/2026-08-02-loop-harness-efficiency-audit/handoff.md",
+      "_workspace/active/2026-08-02-loop-harness-efficiency-audit/artifacts/task-cost-dashboard-change-report.md",
+      "_workspace/active/CURRENT.md"
+    ],
+    "test": [],
+    "scene": [],
+    "package": [],
+    "version": []
+  },
+  "files": [
+    {
+      "category": "production",
+      "path": "_workspace/active/2026-08-02-loop-harness-efficiency-audit/artifacts/task-cost-dashboard-change-report.md",
+      "length": 2725,
+      "sha256": "9d1390863532335cd460d2b3b85463e1456bfd258c98514d72033ac4e98a23fc"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/active/2026-08-02-loop-harness-efficiency-audit/handoff.md",
+      "length": 3243,
+      "sha256": "cc8ff3a8700dcff6c0a19c0d87569d145aa1ec7ec22fc94adfb4fa542c31ab64"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/active/2026-08-02-loop-harness-efficiency-audit/task.md",
+      "length": 4092,
+      "sha256": "898ea458d7e18505b2413ee6e20b897b68b865792d4396c2e85cbb113de3b2ff"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/active/2026-08-02-loop-harness-efficiency-audit/work-log.md",
+      "length": 13228,
+      "sha256": "eb57dd20ad0e6ee3e1b1c382815e6944b9568da060fe89dce928aae1fbf1f227"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/active/CURRENT.md",
+      "length": 3006,
+      "sha256": "ee297bb0b9177059d85d724bbab104855b3be17a34da2053b01a91685b4dca7e"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/README.md",
+      "length": 9098,
+      "sha256": "52c3deb810da8df378612184800457903d7b6d64f2f3a66526e9c0c4963bf967"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/completion-report.md",
+      "length": 1209,
+      "sha256": "53c907ed2af84b7167674ef323ef13ee7f3c2f1993b8e524824d2781e1bc073e"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/task-r1-summary.md",
+      "length": 1191,
+      "sha256": "7a067a3e28455cc884d62e4a82f8beec082c63b6ddd3448cc658f6c53ffc67b4"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/task.md",
+      "length": 2987,
+      "sha256": "8f8963f7d933cef86d39ab8bd29faeb75f1dfce0bc1db3563d09c8bca3c377e5"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/verification.md",
+      "length": 2824,
+      "sha256": "68522cec625a18429fba7fd1e3beaa2d68ff2aa758b79efd5d681a8ee097ab0d"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/agent-reference-map.md",
+      "length": 13250,
+      "sha256": "8750e134f427c1cb234ebeff3a10dae59b03ac61e3ed7d8f9749c2961ffc2c79"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/loop-engineering-gates.md",
+      "length": 17123,
+      "sha256": "cd28d62e624f1ba97e51defb30ec6a08350003a81964e4e9c4eb9b60987b469d"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/loop-engineering-user-guide.md",
+      "length": 14912,
+      "sha256": "ef77796924aee7452cb7455b803a5be641b9171fa3d6f6ea8313380b6e770f97"
+    },
+    {
+      "category": "production",
+      "path": "docs/project-handoff/current-task-board.md",
+      "length": 20315,
+      "sha256": "da2db489827619f439f3778bd87af7b8e9b2177ecbdc78520bdf6e805259b185"
+    },
+    {
+      "category": "production",
+      "path": "docs/project-handoff/README.md",
+      "length": 2300,
+      "sha256": "d0beecd313611581612c0428bf9cfbc1c9189ed0f921b2746956780f9d3ebb1c"
+    },
+    {
+      "category": "production",
+      "path": "docs/project-handoff/task-cost-dashboard.md",
+      "length": 8177,
+      "sha256": "24e0c9d2704eba022f2b4e7d602f09c63501302eb89bb55d605c3053ada22ce2"
+    },
+    {
+      "category": "production",
+      "path": "docs/README.md",
+      "length": 3680,
+      "sha256": "b23f513f41f7e4ac5706c507f27ecee678929f027aa807c14e7cda63c4ab8375"
+    }
+  ]
+}

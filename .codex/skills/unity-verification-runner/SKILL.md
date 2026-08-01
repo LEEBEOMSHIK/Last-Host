@@ -15,17 +15,20 @@ Unity 변경사항을 완료로 보고하기 전에 필요한 검증을 정의�
 2. 관련 구현 계획 또는 변경 diff
 3. `docs/prototype/official/rat-host-prototype.md`
 4. `_workspace/README.md`
-5. 필요 시 `docs/agents/agent-skill-plan.md`
+5. `docs/agents/loop-engineering-gates.md`
+6. 필요 시 `docs/agents/agent-skill-plan.md`
 
 ## 검증 절차
 
-1. 무엇을 완료했다고 주장하려는지 한 문장으로 쓴다.
-2. 그 주장을 증명하는 검증 방법을 고른다.
-3. 가능한 경우 테스트, 빌드, 플레이 확인을 실행한다.
-4. Unity 플레이어블 변경이면 사용자가 최종 확인하기 전에 가능한 범위의 Unity MCP 플레이 체크를 실행한다.
-5. 실행한 명령, 결과, 실패 여부를 기록한다.
-6. 검증 결과를 작업 폴더의 `verification.md`에 남긴다.
-7. 검증하지 못한 항목은 완료로 주장하지 않는다.
+1. 위험 등급과 무엇을 완료했다고 주장하는지 한 문장으로 쓴다.
+2. 구현 전에 사용자 원증상·합성 oracle과 성공/실패/경계/negative control을 S0 charter로 잠근다.
+3. candidate fingerprint, run_id, verification revision과 Unity lease owner를 기록한다.
+4. `loop-engineering-gates.md`의 S1~S7을 순서대로 실행한다. 첫 blocker에서 뒤의 고비용 검증을 중지한다.
+5. production·테스트·하네스가 바뀌면 영향받는 이전 PASS를 `SUPERSEDED`로 무효화하고 필요한 빠른 단계부터 재시작한다.
+6. 전체 suite와 대형 matrix는 S1~S5가 green인 freeze된 최종 후보에서 필요한 경우 각각 한 번만 실행한다.
+7. Unity 플레이어블 변경이면 single-owner lease 아래 가능한 범위의 MCP 플레이 체크와 원자적 증거 캡처를 실행한다.
+8. 실행한 명령, 결과, 첫 blocker, canonical evidence와 superseded run을 기록한다.
+9. 검증 결과를 작업 폴더의 `verification.md`에 남기고, 검증하지 못한 항목은 완료로 주장하지 않는다.
 
 ## Unity 검증 후보
 
@@ -44,11 +47,15 @@ Unity 변경사항을 완료로 보고하기 전에 필요한 검증을 정의�
 - 변경 기능의 핵심 상태 전환을 MCP 명령으로 재현하고 결과를 기록한다.
 - Unity 콘솔 Error/Warning을 확인한다.
 - MCP 플레이 체크는 사용자 최종 확인을 대체하지 않고, 사용자 확인 전 사전 검증으로 본다.
+- 캡처 전 대상 root가 하나인지, `QA_Temp*`와 중복 player/camera가 없는지 확인하고 같은 run/fingerprint의 sidecar를 함께 남긴다.
+- lease 없이 Unity Editor/MCP/같은 Library의 batch Unity를 조작하지 않는다.
 
 ## 산출물 형식
 
 ```text
 검증 대상:
+
+S0 charter / verification revision:
 
 실행한 검증:
 - 
@@ -59,13 +66,16 @@ Unity 변경사항을 완료로 보고하기 전에 필요한 검증을 정의�
 MCP 플레이 체크:
 -
 
+canonical run / 무효 증거:
+-
+
 검증하지 못한 항목:
 -
 
 남은 위험:
 - 
 
-완료 판단:
+완료 판단: 기술 검증 통과 / 기술 검증 통과 — 사용자 수용 대기 / 완료 불가
 ```
 
 ## 추가 기준

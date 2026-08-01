@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "run_id": "loop-harness-qa-r4-20260802",
+  "generated_utc": "2026-08-01T22:53:29.7124413+00:00",
+  "project_root": "C:\\project\\Last-Host",
+  "candidate_fingerprint": "28fe4a5d6ecb7aebc9f5db4c9283d00c51bdb859caa744d244c724d334d56896",
+  "algorithm": "sha256(category<TAB>relative-path<TAB>file-sha256<TAB>length; ordinal path order)",
+  "file_count": 10,
+  "inputs": {
+    "production": [
+      "docs/agents/loop-engineering-user-guide.md",
+      "docs/agents/loop-engineering-gates.md",
+      "docs/README.md",
+      "docs/agents/agent-reference-map.md",
+      "_workspace/active/2026-08-02-loop-harness-efficiency-audit/task.md",
+      "_workspace/active/2026-08-02-loop-harness-efficiency-audit/work-log.md",
+      "_workspace/active/2026-08-02-loop-harness-efficiency-audit/handoff.md",
+      "_workspace/active/2026-08-02-loop-harness-efficiency-audit/artifacts/operations-doc-change-report.md",
+      "_workspace/active/CURRENT.md",
+      "docs/project-handoff/current-task-board.md"
+    ],
+    "test": [],
+    "scene": [],
+    "package": [],
+    "version": []
+  },
+  "files": [
+    {
+      "category": "production",
+      "path": "_workspace/active/2026-08-02-loop-harness-efficiency-audit/artifacts/operations-doc-change-report.md",
+      "length": 8789,
+      "sha256": "30119b1e29da7ef34d701459e97835dcff1147395228a8f2b72eead104cb77c4"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/active/2026-08-02-loop-harness-efficiency-audit/handoff.md",
+      "length": 3258,
+      "sha256": "e0d8620585b45f2df7aa339804a5f18d088f887b5ef1e67e154140d70d699558"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/active/2026-08-02-loop-harness-efficiency-audit/task.md",
+      "length": 3811,
+      "sha256": "319e510e5ed99716c37ab9f52a0495966093c831f9a55dbb8aac0663fe9b50db"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/active/2026-08-02-loop-harness-efficiency-audit/work-log.md",
+      "length": 10363,
+      "sha256": "45bebe33db2f9991fd52ed01309324cc823b8a2032338412e1effc9e83123666"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/active/CURRENT.md",
+      "length": 2977,
+      "sha256": "eff036633013961ca3adb716e8c6cb9c93b2b8a0eacb80ed7ee177187c05844d"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/agent-reference-map.md",
+      "length": 12639,
+      "sha256": "811a9ccc296c259de32817fcc10987b67e33120b5ec7c67c0e1ea62ec8cbe4bd"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/loop-engineering-gates.md",
+      "length": 14803,
+      "sha256": "60daf48ccbc440b388dc91dfa6e575841479bdc6fcfcfea52af2aef8e6e7fa51"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/loop-engineering-user-guide.md",
+      "length": 14043,
+      "sha256": "744816446cad9f8ca87b4f73250eb2a3af7e1c2ae021b31e43f2a6713f370cd6"
+    },
+    {
+      "category": "production",
+      "path": "docs/project-handoff/current-task-board.md",
+      "length": 20213,
+      "sha256": "a22b997a970cb7875dc82129e2a95e3ba721b9cc95d7da4afe752c44828f77d5"
+    },
+    {
+      "category": "production",
+      "path": "docs/README.md",
+      "length": 3515,
+      "sha256": "ae5ee75ecf0348f360d9d5bf0522ca7a8a7363578455f58a10999b70346d7e05"
+    }
+  ]
+}

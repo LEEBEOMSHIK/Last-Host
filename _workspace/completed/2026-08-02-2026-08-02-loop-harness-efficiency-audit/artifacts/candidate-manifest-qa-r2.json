@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "run_id": "loop-harness-qa-r2-20260802",
+  "generated_utc": "2026-08-01T22:19:53.6472213+00:00",
+  "project_root": "C:\\project\\Last-Host",
+  "candidate_fingerprint": "92938ce9f246d5d6d263faecfca8e2f5449f220af2c788ec80b4039967e169a0",
+  "algorithm": "sha256(category<TAB>relative-path<TAB>file-sha256<TAB>length; ordinal path order)",
+  "file_count": 18,
+  "inputs": {
+    "production": [
+      "AGENTS.md",
+      "docs/agents/agent-reference-map.md",
+      "docs/agents/agent-skill-plan.md",
+      "docs/agents/loop-engineering-gates.md",
+      ".agents/project-coordinator-agent.md",
+      ".agents/qa-verification-agent.md",
+      ".agents/project-director-agent.md",
+      ".codex/skills/unity-verification-runner/SKILL.md",
+      ".codex/skills/unity-verification-runner/references/verification-rules.md",
+      "_workspace/README.md",
+      "_workspace/templates/task.md",
+      "_workspace/templates/verification.md",
+      "_workspace/templates/handoff.md",
+      "_workspace/templates/agent-activity.md",
+      "tools/verification/UnityMcpLease.ps1",
+      "tools/verification/Invoke-UnityEditModeTests.ps1",
+      "tools/verification/Get-VerificationFingerprint.ps1",
+      "tools/verification/README.md"
+    ],
+    "test": [],
+    "scene": [],
+    "package": [],
+    "version": []
+  },
+  "files": [
+    {
+      "category": "production",
+      "path": "_workspace/README.md",
+      "length": 7337,
+      "sha256": "c0e47494660c89b1f1d287a7b121b9d3ebbb8a657d42b2a78fb5a4a4c74fbfae"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/agent-activity.md",
+      "length": 1133,
+      "sha256": "f425ef25878704078f3efaf2e61cacee1a9f75bc472ffd785741881ebfa5a5a6"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/handoff.md",
+      "length": 1552,
+      "sha256": "289d694e3b5d9fceb83e3ba84696a0def55be1166a4a103cef951498357c7fa4"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/task.md",
+      "length": 2417,
+      "sha256": "57018ebbbc82089f16f5632a0402b5040731c30345d45bb3ab44a29dff123924"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/verification.md",
+      "length": 2153,
+      "sha256": "88eaff20036b21c609562aa16a3c8efae0e49a86146660ca34fc53dcc80b0c6b"
+    },
+    {
+      "category": "production",
+      "path": ".agents/project-coordinator-agent.md",
+      "length": 2218,
+      "sha256": "8438deb07285a948d750c026e4a045eeb3eae99de6f422086d9b3124cb98a820"
+    },
+    {
+      "category": "production",
+      "path": ".agents/project-director-agent.md",
+      "length": 3337,
+      "sha256": "307e3fc552af67cf13ac67a420e6ed72cdca350f6429c35f1846fd7e7dc3cb23"
+    },
+    {
+      "category": "production",
+      "path": ".agents/qa-verification-agent.md",
+      "length": 3779,
+      "sha256": "b5d0b242e55b19c7abca4915dc0d1c057c6749a0f788705dcb1af91b91518ca3"
+    },
+    {
+      "category": "production",
+      "path": ".codex/skills/unity-verification-runner/references/verification-rules.md",
+      "length": 1847,
+      "sha256": "b6281b7fe724a111edd40514e9bf31fd596f55fbe82c41a25f03912ee0f2adad"
+    },
+    {
+      "category": "production",
+      "path": ".codex/skills/unity-verification-runner/SKILL.md",
+      "length": 3328,
+      "sha256": "b99ab3a94eb7946e27a70192ad7acaeb36fad500da31a3f0a8900c43c8ed9da7"
+    },
+    {
+      "category": "production",
+      "path": "AGENTS.md",
+      "length": 11011,
+      "sha256": "6b359570f9aaed2de627faf06a315bff03496418737d2440827cb46c9b30281c"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/agent-reference-map.md",
+      "length": 11986,
+      "sha256": "ef020aaaefecce5b41a98c21506b81d678491f6591e46e64c53b44734ce628fa"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/agent-skill-plan.md",
+      "length": 32675,
+      "sha256": "90b083cab3a01c20665dc4377c23070b94a0496acbdb081b0fb92f0dfd690ad0"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/loop-engineering-gates.md",
+      "length": 12643,
+      "sha256": "723353ac025c9748d6104f7b3c6f8cc0f1130e5c0f3363d246ea5e1a904dde4b"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Get-VerificationFingerprint.ps1",
+      "length": 4854,
+      "sha256": "5917e1d96559d46a43b2f866ad03f2f941ec7284840dece9e253181ca73f050b"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Invoke-UnityEditModeTests.ps1",
+      "length": 5527,
+      "sha256": "3c0d7628d98681cc2f39cb8b1aa55ffe004f61f123a1a0ed9014144746d41be3"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/README.md",
+      "length": 6649,
+      "sha256": "fab2d6d56e7e9ca8a311ef3589c959daae6199855340dbb9907372e80d7130e3"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/UnityMcpLease.ps1",
+      "length": 7656,
+      "sha256": "da92c55dc12daaf4f9fce6396e967060d21bb8241e4d497d20e0fc445d832c1b"
+    }
+  ]
+}

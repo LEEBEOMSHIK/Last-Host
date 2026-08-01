@@ -1,6 +1,6 @@
 # 작업별 참조 문서 색인
 
-최종 수정일: 2026-07-27
+최종 수정일: 2026-08-02
 
 ## 목적
 
@@ -12,6 +12,9 @@
 - 세부 절차가 길어지면 이 문서 또는 작업별 참조 문서로 분리한다.
 - 새 작업 유형이 생기면 이 문서에 참조 위치를 추가한다.
 - 참조 문서를 추가할 때는 어떤 요청에서 읽어야 하는지 함께 적는다.
+- 프로젝트 변경의 위험 등급, 최소 역할, 검증 순서와 완료 차단 조건은 `docs/agents/loop-engineering-gates.md`만 실행 기준으로 사용한다.
+- 에이전트 배정, 검증 책임, 비용·중복 검증을 사용자 관점에서 설명하거나 문의받으면 `docs/agents/loop-engineering-user-guide.md`도 필수로 읽는다. 이 문서는 비실행 요약이다.
+- 작업별 비용 과다·불필요 비용, 실행 수, 폐기 증거와 판정 문의에는 `docs/project-handoff/task-cost-dashboard.md`를 공식 중앙 근거로 함께 읽는다.
 
 ## 공통 참조 순서
 
@@ -221,6 +224,8 @@
 
 - `docs/agents/agent-skill-plan.md`
 - `docs/agents/loop-engineering-gates.md`
+- `docs/agents/loop-engineering-user-guide.md` — 사용자·온보딩용 책임·비용·중복 검증 요약
+- `docs/project-handoff/task-cost-dashboard.md` — 작업별 계획·실제 비용과 판정 중앙 현황
 - `.agents/agent-roster.md`
 - `.agents/project-director-agent.md`
 
@@ -254,6 +259,7 @@
 
 선택 참조:
 
+- `_workspace/templates/task-r1-summary.md` — R1 국소 수정 요약형
 - `_workspace/templates/task.md`
 - `_workspace/templates/work-log.md`
 - `_workspace/templates/handoff.md`
@@ -274,11 +280,12 @@
 
 - `docs/project-handoff/README.md`
 - `docs/project-handoff/current-task-board.md`
+- `docs/project-handoff/task-cost-dashboard.md`
 - `docs/agents/loop-engineering-gates.md`
 
 필수 확인:
 
-- 상태판의 상태·후보·보류·최근 요약·완료 경로·Git 상태를 현재 사실과 맞추고, 완료 또는 커밋 전 QA/검증 에이전트가 실제 경로와 후보·보류 중복을 독립 대조한다.
+- 상태판의 상태·후보·보류·최근 요약·완료 경로·Git 상태를 현재 사실과 맞추고, 비용 현황판의 계획·실제·중복·폐기·판정을 작업 시작·blocker/correction·사용자 보고/커밋 전에 동기화한다. 완료 또는 커밋 전 QA/검증 에이전트가 실제 경로와 후보·보류 중복·비용 분류를 독립 대조한다.
 
 선택 참조:
 
@@ -309,6 +316,7 @@
 - `.agents/unity-architecture-agent.md`
 - `.agents/visual-tech-art-agent.md`
 - `.agents/qa-verification-agent.md`
+- `_workspace/templates/task-r1-summary.md` — 기존 계약 안의 1~3개 파일 국소 수정에만 사용
 - `_workspace/templates/task.md`
 - `_workspace/templates/agent-activity.md`
 
@@ -323,10 +331,17 @@
 필수 참조:
 
 - `docs/agents/loop-engineering-gates.md`
+- `docs/agents/loop-engineering-user-guide.md` — 사용자에게 검증 역할·비용·재실행 이유를 설명할 때 필수
+- `docs/project-handoff/task-cost-dashboard.md` — 실제 실행 수·중복·폐기와 비용 판정 대조
 - `.codex/skills/unity-verification-runner/SKILL.md`
 - `.agents/qa-verification-agent.md`
 - `.agents/project-director-agent.md`
 - `_workspace/templates/verification.md`
+
+필수 확인:
+
+- 구현 전 S0 사용자 원증상·합성 oracle, candidate fingerprint·run_id, Unity single-owner lease, 변경 후 PASS 무효화, canonical evidence를 `loop-engineering-gates.md` 기준으로 대조한다.
+- 기술 검증 통과와 사용자 수용 대기를 분리한다.
 
 선택 참조:
 

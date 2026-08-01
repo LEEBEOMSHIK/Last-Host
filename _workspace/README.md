@@ -19,7 +19,20 @@
 
 `_workspace`는 루프 엔지니어링의 상태 저장소다. 진행 중 작업은 `active/`에 두고, 루프가 검증과 보고까지 끝나면 `completed/`로 옮긴다. 루프 진행 중 승인 게이트, 범위 충돌, 검증 불가, 에이전트 산출물 충돌, 에이전트 수행 이력 누락, 작업 기록 누락이 생기면 완료 처리하지 않고 사용자에게 문제 사안으로 보고한다.
 
-코드, 씬, ProjectSettings, 승인 문서, 운영 문서 변경은 완료 처리 전에 `docs/agents/loop-engineering-gates.md`의 작업 배정, 담당 산출물, QA/검증, 총괄 관리자 게이트를 확인한다.
+위험 등급, 최소 역할, S0~S7 fail-fast, 검증 무효화, Unity lease, canonical evidence와 완료·커밋 차단 조건은 `docs/agents/loop-engineering-gates.md`가 유일 실행 기준이다. `_workspace` 문서는 그 실행 사실만 저장하며 별도 게이트를 만들지 않는다.
+
+- R0은 작업 패킷이 필요 없다. R1은 `_workspace/templates/task-r1-summary.md`를 사용하고, R2/R3는 `_workspace/templates/task.md`의 정식 S0 charter를 사용한다.
+- R1 요약형은 원증상·완료 주장·변경 파일과 owner·표적 테스트·금지 범위·correction cycle·QA·총괄만 기록한다. R2/R3의 상태 전이표·수명주기 matrix·전체 S0 표를 요구하지 않는다.
+- `task.md` 또는 `task-r1-summary.md`는 계획·oracle·production 소유권, `agent-activity.md`는 실제 수행·인계, `verification.md`는 현재 revision의 증거, `completion-report.md`는 최종 판정만 소유한다.
+- 중간 실패 산출물은 최소 반례와 핵심 로그 위치만 남기고, 최종 판정에는 canonical run_id 하나를 둔다.
+
+## 작업 비용 기록
+
+- 사용자 중앙 현황은 `docs/project-handoff/task-cost-dashboard.md`가 소유한다. `_workspace` 작업 문서는 각 행의 계획·실제 근거를 소유한다.
+- R1은 `task-r1-summary.md`의 5줄 이하 비용 기록을 사용한다. R2/R3는 `task.md`의 계획/실제 표를 사용하며 새 per-task 비용 파일을 만들지 않는다.
+- 작업 시작에는 계획 역할·검증 예산을 기록하고, blocker·correction에는 `agent-activity.md`·`verification.md`의 실제 실행 수와 무효·폐기를 갱신한다.
+- 사용자 보고·완료·커밋 전에는 `completion-report.md`와 중앙 현황판에 필요한 비용·회피 가능 비용, `정상 / 주의 / 과다 / 미집계` 판정을 동기화한다.
+- 정확한 토큰·금액은 플랫폼 계측값이 있을 때만 기록하며 추정하지 않는다. 근거가 없으면 `미집계`로 둔다.
 
 ## 폴더 구조
 
@@ -28,20 +41,21 @@ _workspace/
   active/
     CURRENT.md
     <작업ID>/
-      task.md
+      task.md 또는 task-r1-summary.md
       work-log.md
       agent-activity.md
       handoff.md
       artifacts/
   completed/
     <완료일>-<작업ID>/
-      task.md
+      task.md 또는 task-r1-summary.md
       work-log.md
       agent-activity.md
       completion-report.md
       verification.md
       artifacts/
   templates/
+    task-r1-summary.md
     task.md
     work-log.md
     agent-activity.md
@@ -77,6 +91,8 @@ _workspace/
 - 실패했거나 차단된 검증
 - 다음 세션이 바로 실행할 작업 3개 이하
 - 사용자 결정이 필요한 항목
+- candidate fingerprint, canonical run_id와 superseded run
+- Unity lease owner, Play/Pause/scene/dirty, 임시 객체와 release 상태
 
 ## 토큰 경계와 인수인계 우선순위
 
@@ -117,13 +133,14 @@ YYYY-MM-DD-short-topic
 ## 기본 흐름
 
 1. 작업을 시작할 때 `_workspace/active/<작업ID>/`를 만든다.
-2. `templates/task.md`를 복사해 작업 배정 내용을 기록한다.
+2. R1은 `templates/task-r1-summary.md`, R2/R3는 `templates/task.md`를 복사해 작업 배정 내용을 기록한다.
 3. `templates/agent-activity.md`를 복사해 참여 에이전트, 역할, 담당 업무, 산출물, 판정을 기록한다.
 4. 진행 중 `work-log.md`에 조사, 판단, 변경 내용을 누적한다.
 5. 다른 에이전트로 넘길 내용은 `handoff.md`에 정리한다.
-6. 작업 완료 시 `_workspace/completed/<완료일>-<작업ID>/`를 만든다.
-7. 완료 폴더에 작업 기록, 에이전트 수행 이력, 검증 기록, 완료 보고서를 남긴다.
-8. 완료 폴더 경로를 최종 보고와 필요 시 커밋 메시지에 포함한다.
+6. blocker·correction 때 실제 비용 proxy와 중앙 현황판 행을 갱신한다.
+7. 작업 완료 시 `_workspace/completed/<완료일>-<작업ID>/`를 만든다.
+8. 완료 폴더에 작업 기록, 에이전트 수행 이력, 검증 기록, 비용 요약과 완료 보고서를 남긴다.
+9. 사용자 보고·커밋 전 중앙 비용 판정과 완료 폴더 경로를 최종 보고에 포함한다.
 
 ## 금지 사항
 
@@ -132,12 +149,14 @@ YYYY-MM-DD-short-topic
 - 검증하지 않은 내용을 완료로 기록하지 않는다.
 - 어떤 에이전트가 어떤 일을 처리했는지 누락한 채 완료 처리하지 않는다.
 - 사용자 승인 대기 항목을 누락한 채 완료 처리하지 않는다.
+- 같은 criterion의 중복 전체 로그·PNG·CSV 세대를 canonical 증거처럼 보관하지 않는다.
+- production 변경 뒤 이전 PASS를 현재 검증으로 재사용하지 않는다.
 
 ## 완료 조건
 
 작업은 다음 문서가 완료 폴더에 있을 때 완료로 본다.
 
-- `task.md`
+- `task.md` 또는 R1의 `task-r1-summary.md`
 - `work-log.md`
 - `agent-activity.md`
 - `completion-report.md`
@@ -146,3 +165,5 @@ YYYY-MM-DD-short-topic
 작업 중 산출물이 있으면 `artifacts/` 아래에 보관한다.
 
 코드, 씬, ProjectSettings, 승인 문서, 운영 문서 변경은 `verification.md`에 QA/검증 에이전트 완료 판단이 있고, `completion-report.md`에 프로젝트 총괄 관리자 판정이 있어야 완료로 본다.
+
+또한 `docs/project-handoff/task-cost-dashboard.md`의 해당 행이 실제 실행 수·무효/폐기·필요한 비용/회피 가능 비용·최종 판정과 마지막 갱신을 현재 근거로 반영해야 한다.
