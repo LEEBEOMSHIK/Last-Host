@@ -10,13 +10,18 @@ namespace LastHost.Prototype.TechnicalSample2D
     public sealed class RatSide3FrameView : MonoBehaviour
     {
         private const int RequiredFrameCount = 3;
+        private static readonly Vector2 StableColliderSize =
+            new Vector2(1.2265625f, 0.25f);
+        private static readonly Vector2 StableRightFacingColliderOffset =
+            new Vector2(0.28515625f, 0.125f);
 
         [SerializeField] private RatHost2DController controller;
         [SerializeField] private SpriteRenderer targetRenderer;
         [SerializeField] private Sprite[] frames = new Sprite[RequiredFrameCount];
         [SerializeField, Min(0.01f)] private float framesPerSecond = 7f;
         [SerializeField] private CapsuleCollider2D bodyClearanceCollider;
-        [SerializeField] private Vector2 rightFacingColliderOffset = new Vector2(0.30f, 0.13f);
+        [SerializeField] private Vector2 rightFacingColliderOffset =
+            new Vector2(0.28515625f, 0.125f);
 
         private float _animationTime;
         private bool _facesRight = true;
@@ -27,6 +32,8 @@ namespace LastHost.Prototype.TechnicalSample2D
         public bool FacesRight => _facesRight;
         public SpriteRenderer TargetRenderer => targetRenderer;
         public CapsuleCollider2D BodyClearanceCollider => bodyClearanceCollider;
+        public Vector2 BodyClearanceSize => StableColliderSize;
+        public Vector2 RightFacingColliderOffset => StableRightFacingColliderOffset;
 
         public void Configure(
             RatHost2DController sourceController,
@@ -66,16 +73,10 @@ namespace LastHost.Prototype.TechnicalSample2D
             Vector2 rightFacingOffset)
         {
             bodyClearanceCollider = targetCollider;
-            this.rightFacingColliderOffset = new Vector2(
-                Mathf.Abs(rightFacingOffset.x),
-                rightFacingOffset.y);
-
-            if (bodyClearanceCollider != null)
-            {
-                bodyClearanceCollider.direction = CapsuleDirection2D.Horizontal;
-                bodyClearanceCollider.size = colliderSize;
-                ApplyBodyClearanceFacing();
-            }
+            // Keep the existing method signature for serialized scene/builder API
+            // compatibility, but the measured gameplay footprint is not configurable.
+            this.rightFacingColliderOffset = StableRightFacingColliderOffset;
+            ApplyBodyClearanceFacing();
         }
 
         public void ApplyView(Vector2 move, bool isMoving, float deltaTime)
@@ -118,6 +119,8 @@ namespace LastHost.Prototype.TechnicalSample2D
             {
                 targetRenderer = GetComponent<SpriteRenderer>();
             }
+
+            ApplyBodyClearanceFacing();
         }
 
         private void Update()
@@ -136,6 +139,9 @@ namespace LastHost.Prototype.TechnicalSample2D
                 return;
             }
 
+            rightFacingColliderOffset = StableRightFacingColliderOffset;
+            bodyClearanceCollider.direction = CapsuleDirection2D.Horizontal;
+            bodyClearanceCollider.size = StableColliderSize;
             bodyClearanceCollider.offset = new Vector2(
                 _facesRight
                     ? rightFacingColliderOffset.x

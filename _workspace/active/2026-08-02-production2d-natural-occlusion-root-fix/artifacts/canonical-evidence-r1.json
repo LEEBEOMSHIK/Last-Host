@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "canonical_run_id": "natural-occlusion-final-evidence-r1-20260802",
+  "candidate_fingerprint": "5cd81d7c836fb2561f9f416c20adeeec00f6ef960153b8380b32c7fafbef5db6",
+  "verification_revision": "natural-occlusion-final-evidence-r1",
+  "audit_type": "S6 evidence audit; no Unity, MCP, TestRunner, build, or test execution",
+  "current_candidate_manifest": {
+    "path": "artifacts/full-suite-stale-test-candidate-r1.json",
+    "sha256": "c8566c04609fa00966035e43eebb0bd3f440b636aa242cb4ab9bf4b972df111c",
+    "file_count": 9,
+    "current_file_mismatch_count": 0
+  },
+  "continuity": {
+    "scene_r2_shared_non_test_files": 6,
+    "scene_r2_shared_non_test_mismatch_count": 0,
+    "gameplay_shared_runtime_files": 2,
+    "gameplay_shared_runtime_mismatch_count": 0,
+    "test_only_correction": "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/RatHost2DTechnicalSampleSceneTests.cs"
+  },
+  "canonical_evidence": [
+    {
+      "path": "artifacts/stale-fixture-targeted-r1.xml",
+      "sha256": "2bdcb4096582d265edc46870ceac48ee4c281eb38ba33d240bcccd25952ea757",
+      "result": "PASS 4/4; failed/skipped/inconclusive 0; exit 0"
+    },
+    {
+      "path": "artifacts/full-editmode-r2.xml",
+      "sha256": "395215cae8cb0e2e269a68cdf00b7ca0fa707ea5e2d05bf0e4a1c17b1064d6a5",
+      "result": "PASS 203/203; failed/skipped/inconclusive 0; valid_pass true; exit 0"
+    },
+    {
+      "path": "artifacts/gameplay-targeted-r1.xml",
+      "sha256": "f430bb1722afd978818d4c638de10fb7800286f105350533b115919902469d89",
+      "result": "PASS 3/3; retained because shared runtime hashes are unchanged"
+    },
+    {
+      "path": "artifacts/scene-targeted-r2.xml",
+      "sha256": "dc4b862fe46b381794426f3905b072ee09b384c0194d5838e9975e7d4d69eda9",
+      "result": "PASS 8/8; retained because shared production/scene hashes are unchanged"
+    },
+    {
+      "path": "artifacts/independent-qa-r3.md",
+      "sha256": "2648407b75a4bf6821d458fc4848e0ebdfccfc17262ec54d5fb59d063ba6e0b0",
+      "result": "PASS; retained because the final correction changed only a test fixture"
+    },
+    {
+      "path": "artifacts/policy-update-r1.md",
+      "sha256": "6b0269b2f7e11f745dda1b2f0dd78ef431da134cc25956cdbc7f82e573abbf20",
+      "result": "PASS; no later policy change"
+    }
+  ],
+  "historical_superseded": [
+    {
+      "path": "artifacts/full-editmode-r1.xml",
+      "sha256": "a5daaf8516642b8f936f0efd8b8ffa7ba2ab663d4db3cc4e75f3170cc0ab3b3b",
+      "result": "FAIL 200/203; three stale BoxCollider2D fixture expectations; superseded by targeted 4/4 and full r2 203/203"
+    },
+    {
+      "path": "artifacts/independent-qa-r1.md",
+      "result": "historical FAIL; QA Y-sort harness synchronization error"
+    },
+    {
+      "path": "artifacts/independent-qa-r2.md",
+      "result": "historical FAIL; unauthorized reflection blocked execution"
+    }
+  ],
+  "protected_and_pending": {
+    "legacy_3d": "RatHostPrototype, PrototypeCameraController, and V toggle unchanged; legacy preservation test included in passing suite",
+    "user_acceptance_pending": [
+      "actual continuous WASD",
+      "final on-screen natural partial occlusion and no whole-character disappearance"
+    ]
+  },
+  "audit_execution_cost": {
+    "unity": 0,
+    "mcp": 0,
+    "testrunner": 0,
+    "build": 0,
+    "test_reexecution": 0,
+    "capture": 0
+  }
+}

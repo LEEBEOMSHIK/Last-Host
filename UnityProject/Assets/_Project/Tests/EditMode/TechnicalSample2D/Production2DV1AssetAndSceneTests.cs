@@ -16,6 +16,45 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             "Assets/_Project/Art/Production2D/V1";
         private const string SampleScenePath =
             "Assets/_Project/Scenes/RatHost2DTechnicalSample.unity";
+        private const string LegacyPrototypeScenePath =
+            "Assets/_Project/Scenes/RatHostPrototype.unity";
+        private const float GeometryTolerance = 0.000001f;
+
+        private static readonly Vector2[] WallStraightReferencePoints =
+        {
+            new(-67f / 128f, 71f / 128f),
+            new(54f / 128f, 4f / 128f),
+            new(66f / 128f, 12f / 128f),
+            new(-55f / 128f, 79f / 128f)
+        };
+
+        private static readonly Vector2[] BarrelReferencePoints =
+        {
+            new(-35f / 128f, 36f / 128f),
+            new(-27f / 128f, 12f / 128f),
+            new(-18f / 128f, 5f / 128f),
+            new(-6f / 128f, 2f / 128f),
+            new(5f / 128f, 2f / 128f),
+            new(22f / 128f, 9f / 128f),
+            new(27f / 128f, 14f / 128f),
+            new(33f / 128f, 35f / 128f),
+            new(33f / 128f, 36f / 128f),
+            new(25f / 128f, 60f / 128f),
+            new(16f / 128f, 67f / 128f),
+            new(4f / 128f, 70f / 128f),
+            new(-7f / 128f, 70f / 128f),
+            new(-24f / 128f, 63f / 128f),
+            new(-29f / 128f, 58f / 128f),
+            new(-35f / 128f, 37f / 128f)
+        };
+
+        private static readonly Vector2[] CrateReferencePoints =
+        {
+            new(-47f / 128f, 29f / 128f),
+            new(-1f / 128f, 2f / 128f),
+            new(45f / 128f, 28f / 128f),
+            new(-1f / 128f, 55f / 128f)
+        };
 
         [TearDown]
         public void TearDown()
@@ -91,9 +130,6 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
                 FindObjectsInactive.Include);
             var hud = UnityEngine.Object.FindFirstObjectByType<Production2DSampleHud>(
                 FindObjectsInactive.Include);
-            var occlusionResolver =
-                UnityEngine.Object.FindFirstObjectByType<VisualOcclusionResolver2D>(
-                    FindObjectsInactive.Include);
             var tilemaps = UnityEngine.Object.FindObjectsByType<Tilemap>(
                 FindObjectsInactive.Include,
                 FindObjectsSortMode.None);
@@ -105,17 +141,17 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             Assert.That(view.FrameCount, Is.EqualTo(3));
             Assert.That(view.transform.parent.name, Is.EqualTo("RatHost2D"));
             AssertProductionSprite(view.TargetRenderer.sprite);
+            Assert.That(view.TargetRenderer.enabled, Is.True);
+            Assert.That(view.TargetRenderer.color.a, Is.EqualTo(1f));
+            Assert.That(
+                UnityEngine.Object.FindObjectsByType<VisualOcclusionResolver2D>(
+                    FindObjectsInactive.Include,
+                    FindObjectsSortMode.None),
+                Is.Empty);
             Assert.That(follow, Is.Not.Null);
             Assert.That(follow.Target, Is.EqualTo(controller.transform));
             Assert.That(follow.TargetCamera.orthographic, Is.True);
             Assert.That(hud, Is.Not.Null);
-            Assert.That(occlusionResolver, Is.Not.Null);
-            Assert.That(
-                occlusionResolver.MinimumFragmentWidth,
-                Is.EqualTo(4f / 128f).Within(0.000001f));
-            Assert.That(
-                occlusionResolver.ReleaseHysteresis,
-                Is.EqualTo(2f / 128f).Within(0.000001f));
             Assert.That(tilemaps.Select(tilemap => tilemap.name),
                 Does.Contain("FloorTilemap"));
             Assert.That(tilemaps.Select(tilemap => tilemap.name),
@@ -184,14 +220,24 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
                 view.ApplyView(Vector2.left, true, 0.11f);
                 Assert.That(view.FacesRight, Is.False);
                 Assert.That(renderer.flipX, Is.True);
-                Assert.That(bodyClearance.offset.x, Is.EqualTo(-0.30f).Within(0.000001f));
+                Assert.That(
+                    bodyClearance.size,
+                    Is.EqualTo(new Vector2(1.2265625f, 0.25f)));
+                Assert.That(
+                    bodyClearance.offset,
+                    Is.EqualTo(new Vector2(-0.28515625f, 0.125f)));
                 Assert.That(view.CurrentFrameIndex, Is.EqualTo(1));
                 Assert.That(root.transform.position, Is.EqualTo(initialRoot));
 
                 view.ApplyView(Vector2.right, false, 0.1f);
                 Assert.That(view.FacesRight, Is.True);
                 Assert.That(renderer.flipX, Is.False);
-                Assert.That(bodyClearance.offset.x, Is.EqualTo(0.30f).Within(0.000001f));
+                Assert.That(
+                    bodyClearance.size,
+                    Is.EqualTo(new Vector2(1.2265625f, 0.25f)));
+                Assert.That(
+                    bodyClearance.offset,
+                    Is.EqualTo(new Vector2(0.28515625f, 0.125f)));
                 Assert.That(view.CurrentFrameIndex, Is.Zero);
                 Assert.That(root.transform.position, Is.EqualTo(initialRoot));
             }
@@ -211,7 +257,7 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
         }
 
         [Test]
-        public void ProductionV1_OccludersUseGroundPivotTransitionAndCorrectedFootprints()
+        public void ProductionV1_UsesMeasuredPolygonFootprintsAndStableRatCapsule()
         {
             OpenSampleScene();
 
@@ -219,229 +265,72 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             Assert.That(rat, Is.Not.Null);
             var ratCollider = rat.GetComponent<CapsuleCollider2D>();
             Assert.That(ratCollider, Is.Not.Null);
-            Assert.That(ratCollider.size, Is.EqualTo(new Vector2(1.28f, 0.26f)));
-            Assert.That(ratCollider.offset, Is.EqualTo(new Vector2(0.30f, 0.13f)));
+            Assert.That(ratCollider.direction, Is.EqualTo(CapsuleDirection2D.Horizontal));
+            Assert.That(ratCollider.size, Is.EqualTo(new Vector2(1.2265625f, 0.25f)));
+            Assert.That(ratCollider.offset, Is.EqualTo(new Vector2(0.28515625f, 0.125f)));
 
             AssertOccluderContract(
                 "TechnicalSample2D/Environment/YSortProps/Barrel_A",
-                new Vector2(0.60f, 0.22f));
+                BarrelReferencePoints,
+                CardinalAndDiagonalNormals());
             AssertOccluderContract(
                 "TechnicalSample2D/Environment/YSortProps/Crate_A",
-                new Vector2(0.70f, 0.24f));
+                CrateReferencePoints,
+                FaceAndBisectorNormals(CrateReferencePoints));
             AssertOccluderContract(
                 "TechnicalSample2D/Environment/YSortWalls/WallStraight_Occlusion",
-                new Vector2(1.05f, 0.18f));
+                WallStraightReferencePoints,
+                FaceAndBisectorNormals(WallStraightReferencePoints));
+
+            Physics2D.SyncTransforms();
+            foreach (var footprint in UnityEngine.Object.FindObjectsByType<PolygonCollider2D>(
+                         FindObjectsInactive.Include,
+                         FindObjectsSortMode.None))
+            {
+                Assert.That(
+                    ratCollider.Distance(footprint).isOverlapped,
+                    Is.False,
+                    footprint.name + " must not start overlapped by the rat capsule.");
+            }
         }
 
         [Test]
-        public void ProductionV1_WholeCharacterOcclusionUsesFourPixelEntryAndTwoPixelRelease()
+        public void ProductionV1_RatVisibilityLifecycleStaysEnabledWithoutResolver()
         {
             OpenSampleScene();
 
             var rat = GameObject.Find("TechnicalSample2D/Actors/RatHost2D");
-            var wall = GameObject.Find(
-                "TechnicalSample2D/Environment/YSortWalls/WallStraight_Occlusion");
             var view = rat.GetComponentInChildren<RatSide3FrameView>();
-            var resolver = rat.GetComponentInChildren<VisualOcclusionResolver2D>();
+            var renderer = view.TargetRenderer;
 
-            Assert.That(view, Is.Not.Null);
-            Assert.That(resolver, Is.Not.Null);
-            Assert.That(
-                view.TargetRenderer.enabled,
-                Is.False,
-                "The saved scene reproduces the builder-time serialized hide state.");
+            Assert.That(rat.activeSelf, Is.True);
+            Assert.That(renderer.enabled, Is.True);
+            Assert.That(renderer.color.a, Is.EqualTo(1f));
+            Assert.That(rat.GetComponentInChildren<VisualOcclusionResolver2D>(true), Is.Null);
 
-            view.ApplyView(Vector2.right, false, 0f);
-            rat.transform.position = new Vector3(wall.transform.position.x, 0.90f, 0f);
-            Assert.That(resolver.ResolveNow(), Is.True);
-            Assert.That(view.TargetRenderer.enabled, Is.False);
-            Assert.That(resolver.VisibilityTransitionCount, Is.EqualTo(1));
-
-            for (var iteration = 0; iteration < 300; iteration++)
+            foreach (var direction in new[] { Vector2.right, Vector2.left, Vector2.right })
             {
-                Assert.That(resolver.ResolveNow(), Is.True);
+                view.ApplyView(direction, true, 0.11f);
+                Assert.That(rat.activeSelf, Is.True);
+                Assert.That(renderer.enabled, Is.True);
+                Assert.That(renderer.color.a, Is.EqualTo(1f));
             }
 
-            Assert.That(resolver.VisibilityTransitionCount, Is.EqualTo(1));
-
-            // At +0.37 world units the left fragment is below the four-pixel
-            // entry threshold but above the two-pixel release threshold.
-            rat.transform.position = new Vector3(
-                wall.transform.position.x + 0.37f,
-                0.90f,
-                0f);
-            Assert.That(resolver.ResolveNow(), Is.True);
-            Assert.That(resolver.VisibilityTransitionCount, Is.EqualTo(1));
-
-            rat.transform.position = new Vector3(
-                wall.transform.position.x + 0.38f,
-                0.90f,
-                0f);
-            Assert.That(resolver.ResolveNow(), Is.False);
-            Assert.That(view.TargetRenderer.enabled, Is.True);
-            Assert.That(resolver.VisibilityTransitionCount, Is.EqualTo(2));
+            rat.SetActive(false);
+            Assert.That(renderer.enabled, Is.True);
+            rat.SetActive(true);
+            Assert.That(rat.activeSelf, Is.True);
+            Assert.That(renderer.enabled, Is.True);
+            Assert.That(renderer.color.a, Is.EqualTo(1f));
         }
 
         [Test]
-        public void WholeCharacterOcclusionRequiresTwoVisibleFragmentsAndCoreIntersection()
+        public void ProductionV1_PreservesLegacyThreeDimensionalPrototypeScene()
         {
-            var visible = Rect.MinMaxRect(-0.93f, 0f, 0.93f, 0.59f);
-            var core = Rect.MinMaxRect(-0.33f, 0f, 0.90f, 0.59f);
-            var centeredOccluder = Rect.MinMaxRect(-0.27f, 0.02f, 0.27f, 0.84f);
-
             Assert.That(
-                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
-                    visible,
-                    core,
-                    centeredOccluder,
-                    4f / 128f),
-                Is.True);
-            Assert.That(
-                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
-                    visible,
-                    core,
-                    Rect.MinMaxRect(-1.0f, 0.02f, -0.91f, 0.84f),
-                    4f / 128f),
-                Is.False);
-            Assert.That(
-                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
-                    visible,
-                    core,
-                    Rect.MinMaxRect(-0.27f, 0.70f, 0.27f, 0.90f),
-                    4f / 128f),
-                Is.False);
-
-            Assert.That(
-                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
-                    visible,
-                    core,
-                    Rect.MinMaxRect(-0.30f, 0.02f, 1.0f, 0.84f),
-                    4f / 128f),
-                Is.True,
-                "A detached tail-only fragment on one side must also be hidden.");
-
-            var flippedCore = Rect.MinMaxRect(-0.90f, 0f, 0.33f, 0.59f);
-            Assert.That(
-                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
-                    visible,
-                    flippedCore,
-                    Rect.MinMaxRect(-1.0f, 0.02f, 0.30f, 0.84f),
-                    4f / 128f),
-                Is.True,
-                "The mirrored tail-only fragment must follow the flipped core bounds.");
-        }
-
-        [Test]
-        public void WholeCharacterOcclusionPreservesAnExternallyDisabledRenderer()
-        {
-            var target = new GameObject("OcclusionTarget");
-            var texture = new Texture2D(8, 8);
-            var sprite = Sprite.Create(
-                texture,
-                new Rect(0f, 0f, 8f, 8f),
-                new Vector2(0.5f, 0.5f),
-                128f);
-
-            try
-            {
-                var renderer = target.AddComponent<SpriteRenderer>();
-                renderer.sprite = sprite;
-                renderer.enabled = false;
-                var resolver = target.AddComponent<VisualOcclusionResolver2D>();
-                resolver.Configure(
-                    renderer,
-                    null,
-                    new[]
-                    {
-                        new VisualOcclusionResolver2D.FrameAlphaContract(
-                            sprite,
-                            Rect.MinMaxRect(-0.03f, -0.03f, 0.03f, 0.03f),
-                            Rect.MinMaxRect(-0.02f, -0.02f, 0.02f, 0.02f))
-                    },
-                    Array.Empty<VisualOcclusionResolver2D.OccluderContract>(),
-                    4f / 128f,
-                    2f / 128f);
-
-                Assert.That(resolver.ResolveNow(), Is.False);
-                Assert.That(renderer.enabled, Is.False);
-            }
-            finally
-            {
-                UnityEngine.Object.DestroyImmediate(sprite);
-                UnityEngine.Object.DestroyImmediate(texture);
-                UnityEngine.Object.DestroyImmediate(target);
-            }
-        }
-
-        [Test]
-        public void WholeCharacterOcclusionReleaseHysteresisProtectsHorizontalCoreBoundary()
-        {
-            const float fragmentWidth = 4f / 128f;
-            const float hysteresis = 2f / 128f;
-            var occluder = Rect.MinMaxRect(-0.27f, 0.02f, 0.27f, 0.84f);
-
-            var entryVisible = Rect.MinMaxRect(-0.331f, 0f, 1.529f, 0.59f);
-            var entryCore = Rect.MinMaxRect(0.269f, 0f, 1.499f, 0.59f);
-            Assert.That(
-                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
-                    entryVisible,
-                    entryCore,
-                    occluder,
-                    fragmentWidth),
-                Is.True);
-
-            var subpixelVisible = Rect.MinMaxRect(-0.316f, 0f, 1.544f, 0.59f);
-            var subpixelCore = Rect.MinMaxRect(0.284f, 0f, 1.514f, 0.59f);
-            Assert.That(
-                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
-                    subpixelVisible,
-                    subpixelCore,
-                    occluder,
-                    fragmentWidth),
-                Is.False,
-                "The unexpanded character core loses horizontal barrel intersection.");
-            Assert.That(
-                VisualOcclusionResolver2D.WouldRemainOccludedDuringRelease(
-                    subpixelVisible,
-                    subpixelCore,
-                    occluder,
-                    fragmentWidth,
-                    hysteresis),
-                Is.True,
-                "Two-pixel core release hysteresis must protect the horizontal boundary.");
-
-            var releasedVisible = Rect.MinMaxRect(-0.313f, 0f, 1.547f, 0.59f);
-            var releasedCore = Rect.MinMaxRect(0.287f, 0f, 1.517f, 0.59f);
-            Assert.That(
-                VisualOcclusionResolver2D.WouldRemainOccludedDuringRelease(
-                    releasedVisible,
-                    releasedCore,
-                    occluder,
-                    fragmentWidth,
-                    hysteresis),
-                Is.False,
-                "Release must still occur after crossing the two-pixel horizontal band.");
-
-            var fragmentSensitiveVisible =
-                Rect.MinMaxRect(-0.2934375f, 0f, 1.50f, 0.59f);
-            var overlappingCore = Rect.MinMaxRect(-0.10f, 0f, 1.40f, 0.59f);
-            Assert.That(
-                VisualOcclusionResolver2D.WouldSplitIntoTwoVisibleFragments(
-                    fragmentSensitiveVisible,
-                    overlappingCore,
-                    occluder,
-                    fragmentWidth),
-                Is.False,
-                "A three-pixel fragment must not meet the four-pixel entry contract.");
-            Assert.That(
-                VisualOcclusionResolver2D.WouldRemainOccludedDuringRelease(
-                    fragmentSensitiveVisible,
-                    overlappingCore,
-                    occluder,
-                    fragmentWidth,
-                    hysteresis),
-                Is.True,
-                "The existing two-pixel fragment release band must remain intact.");
+                AssetDatabase.LoadAssetAtPath<SceneAsset>(LegacyPrototypeScenePath),
+                Is.Not.Null,
+                "The fixed 2D sample must not replace or delete the legacy 3D prototype scene.");
         }
 
         [Test]
@@ -476,16 +365,43 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             Assert.That(opened.isLoaded, Is.True);
         }
 
-        private static void AssertOccluderContract(string objectName, Vector2 expectedColliderSize)
+        private static void AssertOccluderContract(
+            string objectName,
+            Vector2[] expectedPoints,
+            Vector2[] contractNormals)
         {
             var target = GameObject.Find(objectName);
             Assert.That(target, Is.Not.Null, objectName);
 
-            var footprint = target.GetComponent<BoxCollider2D>();
+            var footprint = target.GetComponent<PolygonCollider2D>();
             var sorter = target.GetComponent<YSortSprite2D>();
             Assert.That(footprint, Is.Not.Null, objectName);
+            Assert.That(target.GetComponent<BoxCollider2D>(), Is.Null, objectName);
             Assert.That(sorter, Is.Not.Null, objectName);
-            Assert.That(footprint.size, Is.EqualTo(expectedColliderSize), objectName);
+            Assert.That(footprint.pathCount, Is.EqualTo(1), objectName);
+
+            var actualPoints = footprint.GetPath(0);
+            Assert.That(actualPoints, Has.Length.EqualTo(expectedPoints.Length), objectName);
+            for (var index = 0; index < expectedPoints.Length; index++)
+            {
+                Assert.That(
+                    actualPoints[index].x,
+                    Is.EqualTo(expectedPoints[index].x).Within(GeometryTolerance),
+                    objectName + $" point[{index}].x");
+                Assert.That(
+                    actualPoints[index].y,
+                    Is.EqualTo(expectedPoints[index].y).Within(GeometryTolerance),
+                    objectName + $" point[{index}].y");
+            }
+
+            foreach (var normal in contractNormals)
+            {
+                var supportDelta = Support(actualPoints, normal) - Support(expectedPoints, normal);
+                Assert.That(
+                    supportDelta,
+                    Is.InRange(-2f / 128f, 1f / 128f),
+                    objectName + $" support delta at normal {normal}");
+            }
 
             var groundY = target.transform.position.y;
             var objectOrder = sorter.ApplySorting();
@@ -505,6 +421,46 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
                 YSortOrder2D.Calculate(groundY + 0.02f),
                 Is.LessThan(objectOrder),
                 objectName + " behind");
+        }
+
+        private static Vector2[] CardinalAndDiagonalNormals()
+        {
+            return new[]
+            {
+                Vector2.right,
+                new Vector2(1f, 1f).normalized,
+                Vector2.up,
+                new Vector2(-1f, 1f).normalized,
+                Vector2.left,
+                new Vector2(-1f, -1f).normalized,
+                Vector2.down,
+                new Vector2(1f, -1f).normalized
+            };
+        }
+
+        private static Vector2[] FaceAndBisectorNormals(Vector2[] points)
+        {
+            var faceNormals = new Vector2[points.Length];
+            for (var index = 0; index < points.Length; index++)
+            {
+                var edge = points[(index + 1) % points.Length] - points[index];
+                faceNormals[index] = new Vector2(edge.y, -edge.x).normalized;
+            }
+
+            var normals = new Vector2[points.Length * 2];
+            for (var index = 0; index < points.Length; index++)
+            {
+                normals[index] = faceNormals[index];
+                normals[points.Length + index] =
+                    (faceNormals[index] + faceNormals[(index + 1) % points.Length]).normalized;
+            }
+
+            return normals;
+        }
+
+        private static float Support(Vector2[] points, Vector2 normal)
+        {
+            return points.Max(point => Vector2.Dot(point, normal));
         }
 
         private static void AssertProductionSprite(Sprite sprite)

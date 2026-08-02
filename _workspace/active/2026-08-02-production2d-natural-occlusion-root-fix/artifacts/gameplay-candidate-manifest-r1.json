@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "run_id": "natural-occlusion-gameplay-r1-20260802",
+  "generated_utc": "2026-08-02T04:14:01.3257745+00:00",
+  "project_root": "C:\\project\\Last-Host",
+  "candidate_fingerprint": "7cefea1d56632fd633a15d2574a0f56167607411a89ceb329f1c447bd037ca25",
+  "algorithm": "sha256(category<TAB>relative-path<TAB>file-sha256<TAB>length; ordinal path order)",
+  "file_count": 7,
+  "inputs": {
+    "production": [
+      "UnityProject/Assets/_Project/Scripts/TechnicalSample2D/VisualOcclusionResolver2D.cs",
+      "UnityProject/Assets/_Project/Scripts/TechnicalSample2D/RatSide3FrameView.cs"
+    ],
+    "test": [
+      "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/NaturalOcclusionGameplayContractTests.cs",
+      "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/NaturalOcclusionGameplayContractTests.cs.meta",
+      "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/LastHost.Prototype.TechnicalSample2D.Tests.asmdef"
+    ],
+    "scene": [],
+    "package": [
+      "UnityProject/Packages/packages-lock.json"
+    ],
+    "version": [
+      "UnityProject/ProjectSettings/ProjectVersion.txt"
+    ]
+  },
+  "files": [
+    {
+      "category": "package",
+      "path": "UnityProject/Packages/packages-lock.json",
+      "length": 13840,
+      "sha256": "943f92f1229c2a366fd42aa7180b73bdb8b6019ae21c1a6ce38c80a15d8c262e"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Scripts/TechnicalSample2D/RatSide3FrameView.cs",
+      "length": 5540,
+      "sha256": "cb54cd76ed1d4b446a279098e75631a3349a6715475ba0ad870704b31608b245"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Scripts/TechnicalSample2D/VisualOcclusionResolver2D.cs",
+      "length": 7978,
+      "sha256": "d17dee6c9ede51992f72bc8949c7aa2d7a1241482720a0a4c8287c9ed87255a3"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/LastHost.Prototype.TechnicalSample2D.Tests.asmdef",
+      "length": 571,
+      "sha256": "8d90de0bfc58c0df13cfdf309c75e64a78a09f416fe34a958886dfae79facb60"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/NaturalOcclusionGameplayContractTests.cs",
+      "length": 9062,
+      "sha256": "9825ffe9840f1b2262040777b765b08feaa4043941c30d0c056df3d6ac4eaeb4"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/NaturalOcclusionGameplayContractTests.cs.meta",
+      "length": 60,
+      "sha256": "2692015ab34805a8316773560f36a8c055f1eeb36591aaa883341b4fceef4090"
+    },
+    {
+      "category": "version",
+      "path": "UnityProject/ProjectSettings/ProjectVersion.txt",
+      "length": 83,
+      "sha256": "1be20560d82c800eb148ad13f75ba6641c123c025688f5dee19d0e0ec812db2b"
+    }
+  ]
+}

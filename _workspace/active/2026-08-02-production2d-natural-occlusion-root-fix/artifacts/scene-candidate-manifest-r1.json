@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "run_id": "natural-occlusion-scene-r1-20260802",
+  "generated_utc": "2026-08-02T04:41:35.0402224+00:00",
+  "project_root": "C:\\project\\Last-Host",
+  "candidate_fingerprint": "ed8e9caf5f0e0f38fd05fbd11ff3151e54caf1e5fe128232357d8759b1836f8d",
+  "algorithm": "sha256(category<TAB>relative-path<TAB>file-sha256<TAB>length; ordinal path order)",
+  "file_count": 8,
+  "inputs": {
+    "production": [
+      "UnityProject/Assets/_Project/Scripts/TechnicalSample2D/VisualOcclusionResolver2D.cs",
+      "UnityProject/Assets/_Project/Scripts/TechnicalSample2D/RatSide3FrameView.cs",
+      "UnityProject/Assets/_Project/Editor/TechnicalSample2D/RatHost2DProductionSampleSceneBuilder.cs"
+    ],
+    "test": [
+      "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/NaturalOcclusionGameplayContractTests.cs",
+      "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/Production2DV1AssetAndSceneTests.cs"
+    ],
+    "scene": [
+      "UnityProject/Assets/_Project/Scenes/RatHost2DTechnicalSample.unity"
+    ],
+    "package": [
+      "UnityProject/Packages/packages-lock.json"
+    ],
+    "version": [
+      "UnityProject/ProjectSettings/ProjectVersion.txt"
+    ]
+  },
+  "files": [
+    {
+      "category": "package",
+      "path": "UnityProject/Packages/packages-lock.json",
+      "length": 13840,
+      "sha256": "943f92f1229c2a366fd42aa7180b73bdb8b6019ae21c1a6ce38c80a15d8c262e"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/TechnicalSample2D/RatHost2DProductionSampleSceneBuilder.cs",
+      "length": 29293,
+      "sha256": "c4a13b1b3657a9f0a7ad9c6a4297dc347d27f76c09dae6630283a3ab8e699524"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Scripts/TechnicalSample2D/RatSide3FrameView.cs",
+      "length": 5540,
+      "sha256": "cb54cd76ed1d4b446a279098e75631a3349a6715475ba0ad870704b31608b245"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Scripts/TechnicalSample2D/VisualOcclusionResolver2D.cs",
+      "length": 7978,
+      "sha256": "d17dee6c9ede51992f72bc8949c7aa2d7a1241482720a0a4c8287c9ed87255a3"
+    },
+    {
+      "category": "scene",
+      "path": "UnityProject/Assets/_Project/Scenes/RatHost2DTechnicalSample.unity",
+      "length": 199748,
+      "sha256": "4731bd9aa858919613517fffdd2e961a715b13bbf156bb9e584681401d4f1f9e"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/NaturalOcclusionGameplayContractTests.cs",
+      "length": 9062,
+      "sha256": "9825ffe9840f1b2262040777b765b08feaa4043941c30d0c056df3d6ac4eaeb4"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/Production2DV1AssetAndSceneTests.cs",
+      "length": 20445,
+      "sha256": "3f82cb02996ace0dd93d95ffbd7e7e6ffc049217609fd438ec752d44607dae7b"
+    },
+    {
+      "category": "version",
+      "path": "UnityProject/ProjectSettings/ProjectVersion.txt",
+      "length": 83,
+      "sha256": "1be20560d82c800eb148ad13f75ba6641c123c025688f5dee19d0e0ec812db2b"
+    }
+  ]
+}

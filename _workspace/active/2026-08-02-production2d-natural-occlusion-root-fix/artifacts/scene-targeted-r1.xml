@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Failed(Child)" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:27Z" duration="2.9837045">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="203" result="Failed" site="Child" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:27Z" duration="2.983705" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1130" name="LastHost.Prototype.TechnicalSample2D.Tests.dll" fullname="C:/Users/User/AppData/Local/Temp/LastHost-natural-occlusion-scene-test-20260802-0500/Library/ScriptAssemblies/LastHost.Prototype.TechnicalSample2D.Tests.dll" runstate="Runnable" testcasecount="49" result="Failed" site="Child" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:27Z" duration="2.972094" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="31872" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1131" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="49" result="Failed" site="Child" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:27Z" duration="2.964741" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1132" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="49" result="Failed" site="Child" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:27Z" duration="2.962716" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1133" name="TechnicalSample2D" fullname="LastHost.Prototype.TechnicalSample2D" runstate="Runnable" testcasecount="49" result="Failed" site="Child" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:27Z" duration="2.960772" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestSuite" id="1134" name="Tests" fullname="LastHost.Prototype.TechnicalSample2D.Tests" runstate="Runnable" testcasecount="49" result="Failed" site="Child" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:27Z" duration="2.958570" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-suite type="TestFixture" id="1108" name="Production2DV1AssetAndSceneTests" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:27Z" duration="2.954942" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1109" name="ProductionV1_ContainsExactlyEighteenConfiguredRgbaSprites" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_ContainsExactlyEighteenConfiguredRgbaSprites" methodname="ProductionV1_ContainsExactlyEighteenConfiguredRgbaSprites" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="1063903411" result="Passed" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:24Z" duration="0.102733" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1115" name="ProductionV1_PreservesLegacyThreeDimensionalPrototypeScene" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_PreservesLegacyThreeDimensionalPrototypeScene" methodname="ProductionV1_PreservesLegacyThreeDimensionalPrototypeScene" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="434608567" result="Passed" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:24Z" duration="0.067871" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1110" name="ProductionV1_RatFramesShareCanvasPivotAndSideOnlyNaming" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_RatFramesShareCanvasPivotAndSideOnlyNaming" methodname="ProductionV1_RatFramesShareCanvasPivotAndSideOnlyNaming" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="1153021598" result="Passed" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:24Z" duration="0.088069" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1114" name="ProductionV1_RatVisibilityLifecycleStaysEnabledWithoutResolver" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_RatVisibilityLifecycleStaysEnabledWithoutResolver" methodname="ProductionV1_RatVisibilityLifecycleStaysEnabledWithoutResolver" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="1401335378" result="Passed" start-time="2026-08-02 04:49:24Z" end-time="2026-08-02 04:49:25Z" duration="0.682429" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1111" name="ProductionV1_SampleSceneUsesActualEnvironmentRatHudAndTwoDimensionalContract" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_SampleSceneUsesActualEnvironmentRatHudAndTwoDimensionalContract" methodname="ProductionV1_SampleSceneUsesActualEnvironmentRatHudAndTwoDimensionalContract" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="1283773329" result="Passed" start-time="2026-08-02 04:49:25Z" end-time="2026-08-02 04:49:26Z" duration="0.610570" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1116" name="ProductionV1_StationaryOccluderSortingDoesNotJitter" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_StationaryOccluderSortingDoesNotJitter" methodname="ProductionV1_StationaryOccluderSortingDoesNotJitter" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="1794607088" result="Passed" start-time="2026-08-02 04:49:26Z" end-time="2026-08-02 04:49:26Z" duration="0.662862" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1113" name="ProductionV1_UsesMeasuredPolygonFootprintsAndStableRatCapsule" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_UsesMeasuredPolygonFootprintsAndStableRatCapsule" methodname="ProductionV1_UsesMeasuredPolygonFootprintsAndStableRatCapsule" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="1302174800" result="Failed" start-time="2026-08-02 04:49:26Z" end-time="2026-08-02 04:49:27Z" duration="0.654548" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  Barrel_A must not start overlapped by the rat capsule.
+  Expected: False
+  But was:  True
+]]></message>
+                    <stack-trace><![CDATA[at LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.ProductionV1_UsesMeasuredPolygonFootprintsAndStableRatCapsule () [0x000ee] in C:\Users\User\AppData\Local\Temp\LastHost-natural-occlusion-scene-test-20260802-0500\Assets\_Project\Tests\EditMode\TechnicalSample2D\Production2DV1AssetAndSceneTests.cs:290
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1112" name="SideThreeFrameViewMirrorsOnlyTheSuppliedSideAndNeverMovesLogicalRoot" fullname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests.SideThreeFrameViewMirrorsOnlyTheSuppliedSideAndNeverMovesLogicalRoot" methodname="SideThreeFrameViewMirrorsOnlyTheSuppliedSideAndNeverMovesLogicalRoot" classname="LastHost.Prototype.TechnicalSample2D.Tests.Production2DV1AssetAndSceneTests" runstate="Runnable" seed="1737692681" result="Passed" start-time="2026-08-02 04:49:27Z" end-time="2026-08-02 04:49:27Z" duration="0.066019" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:/Users/User/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

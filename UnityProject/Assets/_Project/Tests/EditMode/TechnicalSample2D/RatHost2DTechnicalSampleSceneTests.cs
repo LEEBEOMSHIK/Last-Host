@@ -55,17 +55,21 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
                 "TechnicalSample2D/Environment/YSortProps");
             Assert.That(propsRoot, Is.Not.Null);
             Assert.That(propsRoot.transform.childCount, Is.GreaterThanOrEqualTo(3));
-            var propColliders = propsRoot.GetComponentsInChildren<BoxCollider2D>(true);
-            Assert.That(propColliders, Has.Length.EqualTo(2));
-            foreach (var propCollider in propColliders)
-            {
-                Assert.That(propCollider.isTrigger, Is.False);
-                Assert.That(propCollider.size.x, Is.GreaterThan(0f));
-                Assert.That(propCollider.size.y, Is.GreaterThan(0f));
-                Assert.That(propCollider.GetComponent<Rigidbody2D>(), Is.Null);
-                Assert.That(propCollider.GetComponent<SpriteRenderer>(), Is.Not.Null);
-                Assert.That(propCollider.GetComponent<YSortSprite2D>(), Is.Not.Null);
-            }
+            Assert.That(
+                propsRoot.GetComponentsInChildren<BoxCollider2D>(true),
+                Is.Empty,
+                "Measured prop footprints must not regress to rectangular colliders.");
+            Assert.That(
+                propsRoot.GetComponentsInChildren<PolygonCollider2D>(true),
+                Has.Length.EqualTo(2));
+            AssertPolygonPropContract(propsRoot, "Barrel_A", 16);
+            AssertPolygonPropContract(propsRoot, "Crate_A", 4);
+            Assert.That(
+                Object.FindObjectsByType<VisualOcclusionResolver2D>(
+                    FindObjectsInactive.Include,
+                    FindObjectsSortMode.None),
+                Is.Empty,
+                "The scene must not hide overlap through a visibility resolver.");
         }
 
         [TestCase("Barrel_A")]
@@ -77,7 +81,7 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             var prop = GameObject.Find(
                 $"TechnicalSample2D/Environment/YSortProps/{propName}");
             Assert.That(prop, Is.Not.Null);
-            var obstacle = prop.GetComponent<BoxCollider2D>();
+            var obstacle = prop.GetComponent<PolygonCollider2D>();
             Assert.That(obstacle, Is.Not.Null);
 
             VerifyCollisionClampAgainst(obstacle);
@@ -125,7 +129,35 @@ namespace LastHost.Prototype.TechnicalSample2D.Tests
             Assert.That(text.text, Is.Not.Null.And.Not.Empty);
         }
 
-        private static void VerifyCollisionClampAgainst(BoxCollider2D obstacle)
+        private static void AssertPolygonPropContract(
+            GameObject propsRoot,
+            string propName,
+            int expectedPointCount)
+        {
+            var prop = propsRoot.transform.Find(propName);
+            Assert.That(prop, Is.Not.Null, propName);
+
+            var colliders = prop.GetComponents<PolygonCollider2D>();
+            Assert.That(colliders, Has.Length.EqualTo(1), propName);
+            var footprint = colliders[0];
+            Assert.That(footprint.isTrigger, Is.False, propName);
+            Assert.That(footprint.pathCount, Is.EqualTo(1), propName);
+            Assert.That(
+                footprint.GetPath(0),
+                Has.Length.EqualTo(expectedPointCount),
+                propName);
+            Assert.That(prop.GetComponent<BoxCollider2D>(), Is.Null, propName);
+            Assert.That(prop.GetComponent<Rigidbody2D>(), Is.Null, propName);
+
+            var renderer = prop.GetComponent<SpriteRenderer>();
+            Assert.That(renderer, Is.Not.Null, propName);
+            Assert.That(renderer.enabled, Is.True, propName);
+            Assert.That(renderer.color.a, Is.EqualTo(1f), propName);
+            Assert.That(prop.GetComponent<YSortSprite2D>(), Is.Not.Null, propName);
+            Assert.That(prop.GetComponent<VisualOcclusionResolver2D>(), Is.Null, propName);
+        }
+
+        private static void VerifyCollisionClampAgainst(PolygonCollider2D obstacle)
         {
             var originalSimulationMode = Physics2D.simulationMode;
             var probe = new GameObject("PropCollisionProbe");

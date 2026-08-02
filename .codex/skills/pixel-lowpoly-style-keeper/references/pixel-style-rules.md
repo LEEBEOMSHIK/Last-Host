@@ -15,6 +15,9 @@
 - 걷기 가능 영역, 충돌, 가림은 장식 이미지와 분리한다.
 - 앞뒤 정렬은 발 접지점 Y 또는 명시적 Sorting Layer를 기준으로 한다.
 - 벽 뒤 이동과 큰 소품 앞뒤 통과를 실제 플레이에서 검증한다.
+- 가림·충돌 결함을 renderer/object disable, alpha 0, teleport·clamp, 입력 잠금, 가시 footprint보다 큰 invisible collider로 숨기지 않는다.
+- QA는 플레이어 active/enabled/alpha·transform·입력 보존과 가시 footprint 대비 collision tolerance를 사용자 화면 oracle과 함께 확인한다.
+- workaround는 사용자 명시 승인·임시 표시·제거 조건이 있을 때만 허용하며 완료가 아닌 `temporary` 또는 `blocked`로 남긴다. 실행 판정은 `docs/agents/loop-engineering-gates.md`를 따른다.
 
 ## 캐릭터
 
