@@ -91,3 +91,4 @@ Codex 메인 에이전트
   - `RatHost2DMammalPassageGate.Configure(session, collider, renderer)`
 - 독립 QA: 세 변이·실패 복귀·재진입·Console·보호 diff 조건부 통과
 - 남은 작업: 사용자 실제 키·버튼·가독성·체감 수용과 Stage2 Space 확인
+- 원격 보존: `8285bb0 feat: add 2d mutation return stage`로 `origin/main` 반영

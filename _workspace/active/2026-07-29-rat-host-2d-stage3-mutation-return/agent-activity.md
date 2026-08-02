@@ -117,3 +117,11 @@
 - 생성/수정 산출물: `director-review.md`, `agent-activity.md`,
   `work-log.md`, `handoff.md`
 - 다음 인계 대상: Codex 메인 에이전트, 사용자 수용 확인
+
+## 2026-08-03 다른 PC 작업용 원격 보존
+
+- 에이전트: Codex 메인 조정자
+- 수행 내용: 기존 QA·총괄 판정을 유지한 채 Stage2 복구 기록과 Stage3 코드·씬·테스트·작업 패킷을 선별 커밋했다.
+- 커밋·푸시: `8285bb0 feat: add 2d mutation return stage`, `origin/main` 반영 완료.
+- 추가 동적 검증: 0. 기존 `6/6`, `53/53`, 독립 원본 Play 증거를 재사용했다.
+- 경계: 실제 `1/2/3`, 마우스 버튼, HUD 가독성, 신경 조종·전용 통로 체감은 사용자 수용 대기다.

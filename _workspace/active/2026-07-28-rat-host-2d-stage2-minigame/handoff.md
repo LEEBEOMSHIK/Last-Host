@@ -21,6 +21,7 @@
 - 프로젝트 총괄 관리자 `내부 승인 가능`
 - 사용자 수동 확인: 검은 화면 해소·실제 이동 확인 완료
 - 남은 사용자 확인: Space 실패 확인·Internal 화면 전환과 가독성
+- 원격 보존: Stage3와 함께 `8285bb0 feat: add 2d mutation return stage`로 `origin/main` 반영
 
 ## 구현 경계
 

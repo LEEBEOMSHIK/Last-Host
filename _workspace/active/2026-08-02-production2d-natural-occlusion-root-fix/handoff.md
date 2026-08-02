@@ -175,3 +175,11 @@
 - 조정자는 격리 복제본에 `RatHost2DTechnicalSampleSceneTests.cs` 하나만 복사해 이 fixture targeted를 1회 실행한다. PASS 전 full suite 재실행·완료 주장은 금지한다.
 - 구현 소유권은 `2026-08-02T05:22:55.3384346Z` release했다.
 - 상세: `artifacts/full-suite-stale-test-correction-r1.md`.
+
+## 2026-08-03 다른 PC 작업용 원격 보존
+
+- 사용자 요청에 따라 사용자 수용 전 완료 선언 금지는 유지하되, 검증된 기술 후보를 다른 PC에서 이어받을 수 있도록 원격에 보존했다.
+- 커밋·푸시: `4cb578b fix: implement natural 2d object occlusion`, `origin/main` 반영 완료.
+- 추가 동적 검증: 0. 커밋 전 manifest 9개 현재 파일 SHA mismatch `0`, fingerprint `5cd81d7c...` 일치를 읽기 전용으로 재확인했다.
+- 제외 유지: ProjectSettings 로컬 변경, preview, 사용자 reference, 반려된 저품질 규격 시험 산출물.
+- 남은 게이트: 실제 연속 WASD, 자연 부분 가림, 쥐 전체 소실 `0` 사용자 수용.

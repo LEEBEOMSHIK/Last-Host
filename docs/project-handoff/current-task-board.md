@@ -20,9 +20,9 @@
 
 ## 현재 저장소 상태
 
-- 현재 Git 기준: 검증 하네스·상태 계약 운영 커밋 `a33164b`가 `origin/main`에 반영돼 있다.
-- 현재 Git 작업 상태: 자연 부분 가림 관련 구현·씬·테스트·정책·작업 기록 변경은 로컬 미커밋이며, Stage2·Stage3·ProjectSettings·preview·reference 등 현재 작업과 무관한 기존 dirty도 함께 존재한다.
-- 현재 커밋 경계: 검증 하네스·상태 계약만 `a33164b`로 선별 반영했다. 자연 부분 가림, Stage2·Stage3, ProjectSettings, preview, reference는 제외해 로컬에 보존했다.
+- 현재 Git 기준: Stage2·Stage3 `8285bb0`, 자연 부분 가림 `4cb578b`까지 `origin/main`에 반영돼 있다.
+- 현재 Git 작업 상태: 다른 PC에서 계속 작업하는 데 필요한 Stage2·Stage3와 자연 부분 가림 관련 소스·씬·테스트·작업 문서는 원격 반영 완료다.
+- 현재 커밋 경계: ProjectSettings 로컬 변경, preview, 사용자 reference, 사용자에게 반려된 저품질 규격 시험 산출물은 제외해 로컬에 보존한다.
 - 현재 로컬 작업: 자연 부분 가림 R2 최종 후보 `5cd81d7c…`가 gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, Console Error 0·scene dirty false를 통과했다. 3D legacy는 보존됐으며 실제 연속 WASD와 최종 화면 사용자 수용은 남아 있다. 정본은 `artifacts/canonical-evidence-r1.json`이다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
@@ -31,7 +31,8 @@
 - 로컬 제외 유지: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` unstaged 변경, `_workspace/previews/` untracked
 - 추가 보호 유지: 기존 `Physics2DSettings.asset` 로컬 변경과 사용자 소유 `docs/references/images/image.png`
 - `Builds/` 제외: 현재 완료 보관 동기화에 포함하지 않음
-- 이번 선별 커밋 제외: Stage2·Stage3 소유 변경, 사용자에게 반려된 저품질 규격 시험 산출물, `_workspace/previews/`
+- 이번 선별 커밋 포함: Stage2 원본 씬 복구 기록, Stage3 변이 선택·효과·복귀 구현, 자연 부분 가림·실제 충돌 후보와 관련 테스트·정책·작업 기록
+- 이번 선별 커밋 제외: 사용자에게 반려된 저품질 규격 시험 산출물, `_workspace/previews/`, ProjectSettings 로컬 변경, 사용자 reference
 - Stage2 임시 정리: QA 빌드 성공 기록은 문서로 남기고 `C:\tmp\LastHostRatHost2DStage2` 약 `205 MB`와 정적 컴파일 DLL/PDB는 사용자 요청으로 삭제
 
 ## 현재 진행 중
@@ -40,15 +41,15 @@
 | --- | --- | --- | --- |
 | 검증 current-state 상태 계약 교정 | 완료 보관·운영 `a33164b` push | 후보 `71e4dcdd…`: unknown/status-only stale 차단, route expected status와 `ready-for-verification`→`verification-running` 전이, 기존 G1~G8 회귀를 구현자·QA 각 1회 `24/24`로 확인했다. Unity/MCP/빌드 0. | `_workspace/completed/2026-08-03-2026-08-02-verification-current-state-contract/` |
 | 검증 하네스 비용·재시도 차단 보완 | 완료 보관·운영 `a33164b` push — 후속 R3로 SUPERSEDED | 미지원 route·Reflection·stale contract·실패 2회·cache·full-history·low-level 우회는 유지되고, status 값·전이 계약은 후속 최종 후보 `71e4dcdd…`로 대체됐다. | `_workspace/completed/2026-08-03-2026-08-02-verification-harness-cost-guards/` |
-| Production2D 자연 부분 가림·실제 충돌 루트 교정 | 기술 검증 통과 — 사용자 수용 대기 | 최종 `5cd81d7c…`: gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, Console Error 0·scene dirty false, 3D legacy 보존. 정본은 `artifacts/canonical-evidence-r1.json`; 실제 연속 WASD와 최종 화면 수용 전에는 완료·보관·커밋하지 않는다. 비용은 `과다 — 부분 회피 가능`이다. | `_workspace/active/2026-08-02-production2d-natural-occlusion-root-fix/` |
+| Production2D 자연 부분 가림·실제 충돌 루트 교정 | 기술 검증 통과·`4cb578b` 원격 보존 — 사용자 수용 대기 | 최종 `5cd81d7c…`: gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, Console Error 0·scene dirty false, 3D legacy 보존. 정본은 `artifacts/canonical-evidence-r1.json`; 다른 PC 작업을 위해 기술 후보는 원격에 보존했으나 실제 연속 WASD와 최종 화면 수용 전에는 완료·보관하지 않는다. 비용은 `과다 — 부분 회피 가능`이다. | `_workspace/active/2026-08-02-production2d-natural-occlusion-root-fix/` |
 | Production2D 쥐·오브젝트 가시 실루엣 겹침 완전 교정 | 기술 검증 PASS·사용자 acceptance FAIL — 새 작업으로 SUPERSEDED/수정 필요 | `7ba12df`는 자동 검증을 통과했지만 wall/barrel/crate 접촉 시 쥐 전체 renderer를 꺼 증상을 숨긴다는 사용자 판정을 받았다. 해당 방식은 재사용하지 않고 새 R2 자연 가림 루트 교정으로 대체한다. | `_workspace/active/2026-08-02-production2d-visual-overlap-correction/` |
 | Production2D V1 오브젝트 가림·HUD 초상 잔여 조각 수정 | 부분 수용 — HUD 통과, 가림 후속 교정으로 재개 | HUD 잔여 조각 제거는 유지한다. tieBreak 1 통일과 footprint 확대는 자동 검증을 통과했지만 사용자 실제 화면에서 가시 실루엣 관통이 남아, 가림 부분은 2026-08-02 후속 교정으로 넘겼다. | `_workspace/active/2026-07-30-production2d-occlusion-hud-correction/` |
 | 고품질 실제 에셋 Unity 한 방 반입 기술 샘플 | 내부 승인 완료 — 사용자 실제 WASD·PPU 수용 대기 | 실제 RGBA 환경·쥐·HUD를 독립 2D 기술 샘플 한 방에 반입했다. V1 HUD·프레이밍 문제를 V2에서 수정했고 비주얼 `PASS`, SHA `20/20`, Import `18/18`, 관련 `42/42`·전체 EditMode `196/196`, MCP Play·충돌·Y정렬·카메라·HUD·Console 0을 통과했다. 자동 직렬화 변경도 원복·QA 재대조했고 총괄 `내부 승인 가능`이다. 실제 Game View 포커스 네이티브 WASD와 PPU 128·상대 크기 수용은 사용자 확인 항목이다. | `_workspace/active/2026-07-30-rat-host-2d-production-assets-unity-sample/` |
 | 고품질 마스터 기준 실제 게임 에셋 1차 재제작 | 사용자 품질 수용 — Unity 반입으로 인계 | 반복 환경·투명 소품, 공통 캔버스·피벗의 쥐 측면 3프레임, 분리 HUD 모듈 20파일을 제작했다. HUD fill 문제를 수정했고 비주얼 PASS, QA `128/128`, 재생성 `20/20`, 총괄 내부 승인을 통과한 뒤 사용자가 Unity 반입을 승인했다. | `_workspace/active/2026-07-30-rat-host-2d-production-assets-v1/` |
 | 쥐 숙주 2D 품질 우선 고품질 수직 샘플 | 사용자 품질 수용 — 실제 에셋 재제작으로 인계 | 환경·자연형 쥐 측면 보행·HUD 고품질 제작 마스터 3종을 만들었다. 쥐 프레임 체형 불일치를 한 차례 반려·재생성했고 최종 비주얼 PASS, 원본 추적성 QA와 총괄 내부 승인 뒤 사용자가 품질을 수용했다. | `_workspace/active/2026-07-30-rat-host-2d-quality-first-vertical-slice/` |
 | 쥐 숙주 2D 실제 아트 제작 순서·기간 로드맵 | 고품질 대표 샘플 재제작 기준 보완 필요 | 기존 빠른 트랙과 통합 기준은 유지하되, 실제 아트 단계에서는 목표 목업에 가까운 묘사 밀도와 수작업 도트 페인트오버·정리를 필수 게이트로 추가해야 한다. | `_workspace/active/2026-07-29-rat-host-2d-art-production-roadmap/` |
-| 3단계 2D 변이 선택·효과·쥐 숙주 복귀 | 내부 승인 가능 — 사용자 실제 입력·화면 수용 대기 | 세 변이 단일 선택·효과·Host 복귀, 전용 통로·HUD를 구현했다. 구현 측 `6/6`·`53/53`, 독립 원본 Play·Console·보호 diff와 상태판 운영 게이트를 통과했다. 독립 전체 EditMode는 MCP TestRunner 오류로 미확인이다. | `_workspace/active/2026-07-29-rat-host-2d-stage3-mutation-return/` |
-| 2단계 2D 백혈구 회피 미니게임과 성공·실패 인계 | 사용자 부분 수용 — 검은 화면 해소·실제 이동 확인 | 원본 씬의 Floor `117`, Water `5`, Blocking `40` 셀과 13×9 맵 표시를 복구했다. 독립 QA 기술 게이트와 총괄 검토를 통과했고, 사용자가 화면 표시와 이동을 확인했다. Space 실패 확인과 내부 화면 체감은 남아 있다. | `_workspace/active/2026-07-28-rat-host-2d-stage2-minigame/` |
+| 3단계 2D 변이 선택·효과·쥐 숙주 복귀 | `8285bb0` 원격 보존·내부 승인 가능 — 사용자 실제 입력·화면 수용 대기 | 세 변이 단일 선택·효과·Host 복귀, 전용 통로·HUD를 구현했다. 구현 측 `6/6`·`53/53`, 독립 원본 Play·Console·보호 diff와 상태판 운영 게이트를 통과했다. 독립 전체 EditMode는 MCP TestRunner 오류로 미확인이다. | `_workspace/active/2026-07-29-rat-host-2d-stage3-mutation-return/` |
+| 2단계 2D 백혈구 회피 미니게임과 성공·실패 인계 | `8285bb0` 원격 보존·사용자 부분 수용 — 검은 화면 해소·실제 이동 확인 | 원본 씬의 Floor `117`, Water `5`, Blocking `40` 셀과 13×9 맵 표시를 복구했다. 독립 QA 기술 게이트와 총괄 검토를 통과했고, 사용자가 화면 표시와 이동을 확인했다. Space 실패 확인과 내부 화면 체감은 남아 있다. | `_workspace/active/2026-07-28-rat-host-2d-stage2-minigame/` |
 | 1단계 2D 쥐 숙주·면역 경계도·자연 100% 전환 통합 | 원본 Reload·MCP 차단 해소 — Stage2 사용자 확인에 통합 | Stage2 원본 씬 복구와 QA가 과거 Reload 차단을 해소했다. 별도 완료 보관은 Stage2 사용자 실제 WASD/Space 확인 뒤 함께 정리한다. | `_workspace/active/2026-07-28-rat-host-2d-stage1-integration/` |
 | 자연 경계도 100% Windows 빌드 성공 루프 엄격 검증 | 차단 — Computer Use 게임 창 캡처 오류 | `list_apps`와 새 빌드 실행·단일 창 식별은 복구됐지만 `get_window_state`가 `SetIsBorderRequired 0x80004002`로 최초·복구 1회 모두 실패했다. 화면 미확인 입력을 보내지 않아 자연 100% 이후 루프는 미검증이며, 실패 시도 로그와 정상 종료만 보존했다. | `_workspace/active/2026-07-16-natural-alert-build-loop-verification/` |
 
@@ -86,7 +87,7 @@
 
 ## 다음 작업 후보
 
-현재 최우선 작업은 검증 하네스 비용·재시도 차단 보완이다. 이 운영 보완의 독립 QA와 총괄 감사 전에는 새 기능 작업으로 전환하지 않는다. 자연 부분 가림 최종 후보 `5cd81d7c…`의 실제 연속 WASD·최종 화면 사용자 수용은 병행 보류로 유지한다.
+검증 하네스 보완과 Stage2·Stage3·자연 부분 가림 기술 후보의 원격 보존은 완료됐다. 현재 최우선은 자연 부분 가림 최종 후보 `5cd81d7c…`를 실제 연속 WASD·최종 화면으로 사용자 수용 확인하는 것이다.
 
 ## 최근 판단 항목
 

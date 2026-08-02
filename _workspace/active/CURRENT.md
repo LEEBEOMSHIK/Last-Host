@@ -5,7 +5,7 @@
 - 작업 ID: `2026-08-02-production2d-natural-occlusion-root-fix`
 - 상태: 기술 검증 통과·내부 승인 가능 — 사용자 실제 WASD·최종 화면 수용 대기
 - 작업 경로: `_workspace/active/2026-08-02-production2d-natural-occlusion-root-fix/`
-- 최신 사용자 요청: 검증 하네스·상태 계약 변경 커밋·푸시와 불필요한 원시 로그 정리를 완료했다.
+- 최신 사용자 요청: 다른 PC에서도 이어서 작업할 수 있도록 검증된 Stage2·Stage3와 자연 부분 가림 후보의 소스·씬·테스트·작업 문서를 선별 커밋·푸시했다.
 
 ## 먼저 읽을 파일
 
@@ -15,9 +15,9 @@
 
 ## 바로 이어서 할 작업
 
-1. 운영 커밋 `a33164b`와 후속 상태 동기화 커밋을 기준으로 사용한다.
-2. 자연 부분 가림 production·씬·테스트와 Stage2·Stage3 기존 dirty는 보존한다.
-3. 후속으로 사용자의 실제 연속 WASD·최종 화면 수용을 확인한다.
+1. Stage2·Stage3는 `8285bb0`, 자연 부분 가림 기술 후보는 `4cb578b`를 기준으로 이어받는다.
+2. ProjectSettings 로컬 변경, preview, 사용자 reference, 반려된 저품질 시험 산출물은 계속 커밋에서 제외해 보존한다.
+3. 사용자의 실제 연속 WASD·최종 화면 수용을 확인한다.
 
 ## 병행 차단 작업
 
@@ -36,15 +36,14 @@
 - `_workspace/previews/`를 보존한다.
 - 사용자 소유 `docs/references/images/image.png`를 입력 reference로만 사용하고 수정·이동하지 않는다.
 - 사용자에게 반려된 `_workspace/active/2026-07-29-rat-host-2d-game-spec-trial-assets/`는 이번 커밋에서 제외한다.
-- Stage2·Stage3 소유 코드·씬·문서는 이번 커밋에서 제외한다.
 - 저장소 `Builds/`는 건드리지 않고 Windows 검증 빌드는 임시 경로에 출력한다.
 
 ## Git 상태
 
-- 원격 반영 기준: `a33164b chore: harden verification execution guards`.
-- 검증 하네스·상태 계약 운영 변경과 완료 패킷은 `origin/main` 반영 완료다.
-- Stage2·Stage3·ProjectSettings·preview·reference 등 현재 작업과 무관한 기존 dirty도 함께 존재한다.
-- 자연 부분 가림 구현·씬·테스트는 사용자 실제 수용 대기라 운영 커밋에서 제외했고 로컬에 보존돼 있다.
+- 원격 반영 기준: `4cb578b fix: implement natural 2d object occlusion`.
+- Stage2·Stage3 커밋 `8285bb0`과 자연 부분 가림 커밋 `4cb578b`는 `origin/main` 반영 완료다.
+- 기능 후보는 기존 QA·총괄 판정을 근거로 원격에 보존했으며 완료·사용자 수용 판정은 별개다.
+- 사용자 실제 입력·화면 수용은 원격 반영과 별개로 대기 상태를 유지한다.
 
 ## 갱신 정보
 

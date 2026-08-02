@@ -258,3 +258,13 @@
 - 실행 비용: Unity/MCP/TestRunner/build/test/capture 0. 정적 read-only 재감사 1묶음.
 - 판정: `내부 승인 가능 — 사용자 실제 WASD·최종 화면 수용 대기`. 사용자 수용 전 완료·보관·커밋 승인 아님.
 - 상세: `director-review.md` 2차 재감사 섹션.
+
+### 2026-08-03 다른 PC 작업용 원격 보존
+
+- 에이전트: Codex 메인 조정자
+- 역할: 검증 완료 후보의 선별 릴리즈와 상태 동기화.
+- 수행 내용: candidate manifest 9개 SHA mismatch `0`과 `git diff --check`를 확인하고, production·scene·test·policy·작업 증거를 기능 커밋으로 분리했다.
+- 커밋·푸시: `4cb578b fix: implement natural 2d object occlusion`, `origin/main` 반영 완료.
+- 실행 비용: Unity/MCP/TestRunner/build/capture 재실행 `0`; 기존 정본 증거 재사용.
+- 제외: ProjectSettings 로컬 변경, preview, 사용자 reference, 반려된 저품질 규격 시험 산출물.
+- 판정 경계: 원격 보존은 완료·사용자 수용 승격이 아니며 실제 WASD·최종 화면 확인은 계속 대기한다.
