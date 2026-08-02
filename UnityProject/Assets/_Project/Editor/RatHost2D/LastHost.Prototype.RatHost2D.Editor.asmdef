@@ -2,6 +2,7 @@
   "name": "LastHost.Prototype.RatHost2D.Editor",
   "rootNamespace": "LastHost.Prototype.RatHost2D.Editor",
   "references": [
+    "LastHost.Prototype",
     "LastHost.Prototype.RatHost2D",
     "LastHost.Prototype.TechnicalSample2D",
     "Unity.InputSystem",

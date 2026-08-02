@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using LastHost.Prototype.Mutations;
 using LastHost.Prototype.TechnicalSample2D;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -33,13 +36,13 @@ namespace LastHost.Prototype.RatHost2D.Editor
             "ProjectSettings/UnityConnectSettings.asset"
         };
 
-        [MenuItem("Last Host/Rat Host 2D/Stage 2/Rebuild Scene")]
+        [MenuItem("Last Host/Rat Host 2D/Stage 3/Rebuild Scene")]
         public static void RebuildScene()
         {
             BuildAndSaveScene();
         }
 
-        [MenuItem("Last Host/Rat Host 2D/Stage 2/Build Windows Temporary")]
+        [MenuItem("Last Host/Rat Host 2D/Stage 3/Build Windows Temporary")]
         public static void BuildWindowsTemporary()
         {
             BuildTemporaryWindowsPlayer();
@@ -49,6 +52,9 @@ namespace LastHost.Prototype.RatHost2D.Editor
         {
             ValidateReadOnlyDependencies();
 
+            var scene = EditorSceneManager.NewScene(
+                NewSceneSetup.EmptyScene,
+                NewSceneMode.Single);
             var floorTile = LoadAsset<TileBase>(TileRoot + "/FloorTile.asset");
             var waterTile = LoadAsset<TileBase>(TileRoot + "/WaterTile.asset");
             var wallTile = LoadAsset<TileBase>(TileRoot + "/WallTile.asset");
@@ -62,9 +68,6 @@ namespace LastHost.Prototype.RatHost2D.Editor
                     $"'{TechnicalSample2DConstants.MoveActionPath}' is missing.");
             }
 
-            var scene = EditorSceneManager.NewScene(
-                NewSceneSetup.EmptyScene,
-                NewSceneMode.Single);
             var root = new GameObject("RatHost2DPrototype");
 
             var core = CreateChild(root.transform, "Core2D");
@@ -94,6 +97,7 @@ namespace LastHost.Prototype.RatHost2D.Editor
 
             var rat = BuildRatHost(hostMode, grid, session, inputAsset);
             var zone = BuildContaminationZone(world, session, rat.Movement);
+            BuildMammalAdaptationPassage(world, grid, session);
 
             var cameraRoot = CreateChild(root.transform, "HostCamera2D");
             BuildCamera(
@@ -104,12 +108,15 @@ namespace LastHost.Prototype.RatHost2D.Editor
                 TechnicalSample2DConstants.TrialOrthographicSize);
 
             var ui = CreateChild(root.transform, "UI2D");
-            var hostHud = BuildHostHud(ui);
+            BuildEventSystem(root.transform);
+            var hostHud = BuildHostHud(ui, session);
             var internalMode = BuildInternalMinigame(
                 root.transform,
                 session,
                 inputAsset);
-            var mutationShell = BuildMutationSelectionShell(root.transform);
+            var mutationShell = BuildMutationSelectionShell(
+                root.transform,
+                session);
 
             session.Configure(
                 hostMode.gameObject,
@@ -125,7 +132,7 @@ namespace LastHost.Prototype.RatHost2D.Editor
                 cameraRoot.gameObject,
                 internalMode.CameraRoot,
                 internalMode.FailurePanelRoot,
-                mutationShell,
+                mutationShell.Root,
                 internalMode.Virus,
                 internalMode.WhiteBloodCells,
                 internalMode.Fragments,
@@ -154,6 +161,7 @@ namespace LastHost.Prototype.RatHost2D.Editor
             internalMode.Hud.Presenter.ConfigureStabilitySlider(
                 internalMode.Hud.StabilitySlider);
 
+            ValidateHostTilemapCells(grid, "before save");
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene, ScenePath))
             {
@@ -161,17 +169,7 @@ namespace LastHost.Prototype.RatHost2D.Editor
                     $"Failed to save 2D stage 2 scene: {ScenePath}");
             }
 
-            AssetDatabase.ImportAsset(
-                ScenePath,
-                ImportAssetOptions.ForceSynchronousImport
-                | ImportAssetOptions.ForceUpdate);
-            if (scene.isDirty
-                && !EditorSceneManager.SaveScene(scene, ScenePath))
-            {
-                throw new InvalidOperationException(
-                    $"Failed to finalize 2D stage 2 scene: {ScenePath}");
-            }
-
+            ValidateHostTilemapCells(grid, "after save");
             if (scene.isDirty)
             {
                 throw new InvalidOperationException(
@@ -180,7 +178,7 @@ namespace LastHost.Prototype.RatHost2D.Editor
 
             Selection.activeGameObject = root;
             Debug.Log(
-                $"Rebuilt isolated 2D stage 2 prototype scene at '{ScenePath}'. " +
+                $"Rebuilt isolated 2D stage 3 prototype scene at '{ScenePath}'. " +
                 "TechnicalSample2D assets are referenced read-only and remain trial placeholders.");
         }
 
@@ -366,7 +364,40 @@ namespace LastHost.Prototype.RatHost2D.Editor
             floor.RefreshAllTiles();
             water.RefreshAllTiles();
             walls.RefreshAllTiles();
+            EditorUtility.SetDirty(floor);
+            EditorUtility.SetDirty(water);
+            EditorUtility.SetDirty(walls);
             return grid;
+        }
+
+        private static void ValidateHostTilemapCells(Grid grid, string stage)
+        {
+            var floor = grid.transform.Find("FloorTilemap").GetComponent<Tilemap>();
+            var water = grid.transform.Find("WaterTilemap").GetComponent<Tilemap>();
+            var walls = grid.transform.Find("BlockingTilemap").GetComponent<Tilemap>();
+            var floorCount = CountTiles(floor);
+            var waterCount = CountTiles(water);
+            var wallCount = CountTiles(walls);
+            if (floorCount != 117 || waterCount != 5 || wallCount != 40)
+            {
+                throw new InvalidOperationException(
+                    $"2D host tilemap population is invalid {stage}: " +
+                    $"floor={floorCount}, water={waterCount}, walls={wallCount}.");
+            }
+        }
+
+        private static int CountTiles(Tilemap tilemap)
+        {
+            var count = 0;
+            foreach (var position in tilemap.cellBounds.allPositionsWithin)
+            {
+                if (tilemap.HasTile(position))
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
 
         private static Tilemap CreateTilemap(
@@ -493,6 +524,53 @@ namespace LastHost.Prototype.RatHost2D.Editor
             return new ZoneBuildResult(zone, collider);
         }
 
+        private static void BuildMammalAdaptationPassage(
+            Transform parent,
+            Grid grid,
+            RatHost2DSessionController session)
+        {
+            var passageRoot = new GameObject("MammalAdaptationPassage2D");
+            passageRoot.transform.SetParent(parent, false);
+            passageRoot.transform.position =
+                grid.GetCellCenterWorld(new Vector3Int(4, 1, 0));
+
+            var openingMarker = CreateChild(
+                passageRoot.transform,
+                "PassageOpeningMarker");
+            var openingRenderer =
+                openingMarker.gameObject.AddComponent<SpriteRenderer>();
+            openingRenderer.sprite =
+                LoadAsset<Sprite>(TextureRoot + "/tile-floor.png");
+            openingRenderer.color = new Color32(96, 154, 124, 210);
+            openingRenderer.sortingOrder = -840;
+            SetSpriteWorldSize(
+                openingMarker,
+                openingRenderer.sprite,
+                new Vector2(1.35f, 0.7f));
+
+            var gateObject = new GameObject("PassageGate");
+            gateObject.transform.SetParent(passageRoot.transform, false);
+            var gateRenderer = gateObject.AddComponent<SpriteRenderer>();
+            gateRenderer.sprite =
+                LoadAsset<Sprite>(TextureRoot + "/tile-wall.png");
+            gateRenderer.sortingOrder = -80;
+            SetSpriteWorldSize(
+                gateObject.transform,
+                gateRenderer.sprite,
+                new Vector2(0.85f, 0.42f));
+
+            var gateCollider = gateObject.AddComponent<BoxCollider2D>();
+            gateCollider.isTrigger = false;
+            gateCollider.size = new Vector2(0.68f, 0.2f);
+            gateCollider.offset = new Vector2(0f, 0.02f);
+
+            var gate = gateObject.AddComponent<RatHost2DMammalPassageGate>();
+            gate.Configure(session, gateCollider, gateRenderer);
+            gate.ConfigureColors(
+                new Color32(174, 82, 67, 255),
+                new Color32(72, 178, 105, 115));
+        }
+
         private static void BuildYSortProp(
             Transform parent,
             string name,
@@ -556,7 +634,18 @@ namespace LastHost.Prototype.RatHost2D.Editor
             return follow;
         }
 
-        private static HostHudBuildResult BuildHostHud(Transform parent)
+        private static void BuildEventSystem(Transform parent)
+        {
+            var eventSystemObject = new GameObject(
+                "EventSystem2D",
+                typeof(EventSystem),
+                typeof(InputSystemUIInputModule));
+            eventSystemObject.transform.SetParent(parent, false);
+        }
+
+        private static HostHudBuildResult BuildHostHud(
+            Transform parent,
+            RatHost2DSessionController session)
         {
             var hudRoot = CreateCanvasRoot(parent, "HostHud2D", 10);
 
@@ -624,6 +713,21 @@ namespace LastHost.Prototype.RatHost2D.Editor
                 new Vector2(-16f, -46f),
                 new Vector2(380f, 28f));
             feedbackText.color = new Color32(246, 190, 117, 255);
+
+            var mutationStatusText = CreateText(
+                hudRoot.transform,
+                "AppliedMutationText",
+                "적용 변이 없음",
+                15,
+                TextAnchor.UpperRight,
+                new Vector2(1f, 1f),
+                new Vector2(-16f, -78f),
+                new Vector2(520f, 28f));
+            mutationStatusText.color = new Color32(138, 244, 204, 255);
+            var mutationStatus =
+                mutationStatusText.gameObject
+                    .AddComponent<RatHost2DMutationStatusDisplay>();
+            mutationStatus.Configure(session, mutationStatusText);
 
             CreateText(
                 hudRoot.transform,
@@ -1041,7 +1145,9 @@ namespace LastHost.Prototype.RatHost2D.Editor
             return panelRoot;
         }
 
-        private static GameObject BuildMutationSelectionShell(Transform parent)
+        private static MutationSelectionBuildResult BuildMutationSelectionShell(
+            Transform parent,
+            RatHost2DSessionController session)
         {
             var shellRoot = CreateCanvasRoot(
                 parent,
@@ -1056,33 +1162,124 @@ namespace LastHost.Prototype.RatHost2D.Editor
             var title = CreateText(
                 backdrop.transform,
                 "SuccessTitle",
-                "변이 조각 수집 완료",
+                "변이 선택",
                 34,
                 TextAnchor.MiddleCenter,
                 new Vector2(0.5f, 0.5f),
-                new Vector2(0f, 55f),
+                new Vector2(0f, 180f),
                 new Vector2(720f, 50f));
             title.color = new Color32(138, 244, 204, 255);
             CreateText(
                 backdrop.transform,
-                "MutationHandoff",
-                "MutationSelection 인계 성공",
-                22,
+                "MutationSelectionInstruction",
+                "숫자키 1 / 2 / 3 또는 아래 버튼으로 한 변이를 선택하세요",
+                18,
                 TextAnchor.MiddleCenter,
                 new Vector2(0.5f, 0.5f),
-                new Vector2(0f, 4f),
-                new Vector2(720f, 38f));
-            CreateText(
+                new Vector2(0f, 132f),
+                new Vector2(820f, 34f));
+
+            var dormancy = CreateMutationOptionButton(
                 backdrop.transform,
-                "Stage3BoundaryNotice",
-                "실제 변이 선택·효과 적용·성공 후 숙주 복귀는 3단계 범위",
+                "MutationOption1_Dormancy",
+                session,
+                MutationType.Dormancy,
+                "1",
+                new Vector2(0f, 65f),
+                new Color32(63, 112, 91, 255));
+            var neuralControl = CreateMutationOptionButton(
+                backdrop.transform,
+                "MutationOption2_NeuralControl",
+                session,
+                MutationType.NeuralControl,
+                "2",
+                new Vector2(0f, -15f),
+                new Color32(70, 91, 125, 255));
+            var mammalAdaptation = CreateMutationOptionButton(
+                backdrop.transform,
+                "MutationOption3_MammalAdaptation",
+                session,
+                MutationType.MammalAdaptation,
+                "3",
+                new Vector2(0f, -95f),
+                new Color32(111, 86, 63, 255));
+
+            var returnNotice = CreateText(
+                backdrop.transform,
+                "MutationReturnNotice",
+                "선택 즉시 변이가 적용되고 쥐 숙주 화면으로 복귀합니다",
                 16,
                 TextAnchor.MiddleCenter,
                 new Vector2(0.5f, 0.5f),
-                new Vector2(0f, -42f),
-                new Vector2(760f, 32f));
+                new Vector2(0f, -170f),
+                new Vector2(780f, 32f));
+            returnNotice.color = new Color32(203, 218, 205, 255);
+
             shellRoot.SetActive(false);
-            return shellRoot;
+            return new MutationSelectionBuildResult(
+                shellRoot,
+                dormancy,
+                neuralControl,
+                mammalAdaptation);
+        }
+
+        private static RatHost2DMutationOptionButton
+            CreateMutationOptionButton(
+                Transform parent,
+                string name,
+                RatHost2DSessionController session,
+                MutationType mutationType,
+                string numericKey,
+                Vector2 anchoredPosition,
+                Color backgroundColor)
+        {
+            var buttonObject = CreateRectChild(parent, name);
+            var rect = buttonObject.GetComponent<RectTransform>();
+            rect.anchorMin = new Vector2(0.5f, 0.5f);
+            rect.anchorMax = new Vector2(0.5f, 0.5f);
+            rect.pivot = new Vector2(0.5f, 0.5f);
+            rect.anchoredPosition = anchoredPosition;
+            rect.sizeDelta = new Vector2(700f, 64f);
+
+            var image = buttonObject.AddComponent<Image>();
+            image.color = backgroundColor;
+
+            var button = buttonObject.AddComponent<Button>();
+            button.targetGraphic = image;
+            var colors = button.colors;
+            colors.normalColor = Color.white;
+            colors.highlightedColor = new Color(1.15f, 1.15f, 1.15f, 1f);
+            colors.pressedColor = new Color(0.78f, 0.86f, 0.8f, 1f);
+            colors.selectedColor = colors.highlightedColor;
+            button.colors = colors;
+
+            var label = CreateText(
+                buttonObject.transform,
+                "Label",
+                string.Empty,
+                17,
+                TextAnchor.MiddleLeft,
+                new Vector2(0f, 0.5f),
+                new Vector2(72f, 0f),
+                new Vector2(590f, 54f));
+            label.horizontalOverflow = HorizontalWrapMode.Wrap;
+            label.verticalOverflow = VerticalWrapMode.Truncate;
+
+            var keyLabel = CreateText(
+                buttonObject.transform,
+                "NumericKey",
+                numericKey,
+                28,
+                TextAnchor.MiddleCenter,
+                new Vector2(0f, 0.5f),
+                new Vector2(18f, 0f),
+                new Vector2(48f, 48f));
+            keyLabel.color = new Color32(246, 221, 147, 255);
+
+            var option =
+                buttonObject.AddComponent<RatHost2DMutationOptionButton>();
+            option.Configure(session, mutationType, label);
+            return option;
         }
 
         private static void SetSpriteWorldSize(
@@ -1351,6 +1548,26 @@ namespace LastHost.Prototype.RatHost2D.Editor
 
             public RatHost2DMutationFragment Fragment { get; }
             public CircleCollider2D Collider { get; }
+        }
+
+        private readonly struct MutationSelectionBuildResult
+        {
+            public MutationSelectionBuildResult(
+                GameObject root,
+                RatHost2DMutationOptionButton dormancy,
+                RatHost2DMutationOptionButton neuralControl,
+                RatHost2DMutationOptionButton mammalAdaptation)
+            {
+                Root = root;
+                Dormancy = dormancy;
+                NeuralControl = neuralControl;
+                MammalAdaptation = mammalAdaptation;
+            }
+
+            public GameObject Root { get; }
+            public RatHost2DMutationOptionButton Dormancy { get; }
+            public RatHost2DMutationOptionButton NeuralControl { get; }
+            public RatHost2DMutationOptionButton MammalAdaptation { get; }
         }
 
         private readonly struct InternalModeBuildResult

@@ -1,5 +1,106 @@
 # 프로젝트 총괄 관리자 검토
 
+## 2026-07-29 원본 복구 재검토 — 최신 판정
+
+검토 대상:
+
+- 원본 `RatHost2DPrototype.unity`의 빈 Tilemap·검은 배경 복구
+- Stage2 Rebuild·Save 결과와 독립 QA
+- `task.md`, `work-log.md`, `agent-activity.md`, `handoff.md`
+- `artifacts/original-scene-restore.md`, `artifacts/original-scene-qa.md`,
+  `verification.md`
+- 현재 Git diff와 보호 경로
+
+판정:
+
+`내부 승인 가능 — 원본 씬 표시·Stage2 런타임 기술 게이트 통과, 사용자 실제 WASD/Space 확인 대기`
+
+근거:
+
+- 사용자 승인 범위인 2D 바이러스 이동, 백혈구 1종, 조각 3개,
+  성공 시 `MutationSelection` 인계, 실패 시 무보상 `RatHost` 60% 복귀와
+  재진입 초기화 안에서만 복구·검증됐다.
+- 원본 씬의 Floor `117`, Water `5`, Blocking `40` 셀과
+  `(-6,-4)..(6,4)` 경계가 저장·재Load 뒤 유지됐다.
+- Host 캡처에서 `13×9` 바닥·외곽 벽·수로·오염 구역·쥐·소품이
+  식별되어 black-only 원래 증상이 해소됐다.
+- Stage2 계층, Host/Internal 카메라 target, 외곽·수로·아레나 4벽
+  Physics2D 질의, missing script `0`을 독립 QA가 확인했다.
+- 실제 변이 선택·효과·성공 후 쥐 복귀, 최종 아트·규격, 새 패키지,
+  ProjectSettings 변경과 레거시 삭제는 포함하지 않았다.
+
+QA/검증 기록 확인:
+
+- 기존 신규 Stage2 EditMode `10/10`, 전체 EditMode `186/186`
+- 원본 MCP Play 대체 경로:
+  `RatHost → InternalVirus → VirusFailed → RatHost → InternalVirus → MutationSelection`
+- Host/Internal root·HUD·카메라·입력 활성 배타 통과
+- 최종 Console Error `0`, Warning `0`
+- Play 종료 뒤 씬 `dirty=false`
+
+MCP 플레이 체크 확인:
+
+- QA/검증 에이전트가 원본 Unity에서 Play 진입·종료, 카메라,
+  충돌, 실패·복귀·재진입·성공을 공개 런타임 API로 재현했다.
+- 실제 OS 키보드 WASD/Space 주입은 MCP가 지원하지 않으므로
+  `MCP 직접 상태 전환 대체 검증`으로만 인정한다.
+- 따라서 실제 키 수신과 손 감각, 화면 가독성은 사용자 Game View
+  확인 전까지 완료로 승격하지 않는다.
+
+수정 필요:
+
+- 총괄 판정을 막는 구현·QA 수정은 없다.
+- 공유 현황판과 `CURRENT.md`의 과거 `진행 중` 상태는 메인 조정자가
+  최신 판정과 사용자 확인 대기로 동기화해야 한다.
+- 승인 브리프·구현 계획의 과거 Reload 대기 문구는 후속 문서
+  동기화 시 현재 결과로 갱신해야 한다.
+
+문제 사안:
+
+- 없음. 과거 Reload 모달과 원본 Stage1 차단은 해소됐다.
+- 반복 Rebuild의 Unity local fileID/YAML byte 비결정성은 남은
+  유지보수 위험이지만 현재 셀·계층·런타임 계약 실패는 아니다.
+
+Windows 빌드 판단:
+
+- 이번 변경은 런타임 게임플레이 코드가 아니라 Editor 씬 빌더의
+  asset 로드 순서·Tilemap 저장 후조건과 생성 씬 복구다.
+- 원본 Unity에서 저장 영속화, 화면, 충돌, 카메라, 전체 Stage2 런타임
+  전환과 Console을 직접 확인했으므로 이번 복구 판정에 Windows 빌드
+  재실행은 필수 증거가 아니다.
+- 기존 빌드 성공 기록은 보존하되 삭제된 실행본이나 이번 미실행 빌드를
+  최신 Windows 실행 검증으로 주장하지 않는다. 새 빌드는 사용자가
+  실행본 확인을 요청할 때만 만든다.
+
+보호 변경 확인:
+
+- `ProjectSettings.asset`에는 기존 사용자 변경
+  `SENTIS_ANALYTICS_ENABLED;APP_UI_EDITOR_ONLY` 한 줄만 유지됐다.
+- `_workspace/previews/`는 untracked 상태로 보존됐다.
+- Packages, 입력 asset, 기존 3D 씬과 `RatHost2DTechnicalSample`의
+  tracked diff는 없다.
+
+사용자 결정 필요:
+
+- 구현 방향 결정은 없다.
+- 사용자는 Game View에서 실제 WASD 이동, Space 실패 확인,
+  카메라 중심 유지와 두 화면의 가독성만 최종 확인한다.
+
+사용자에게 올릴 확인 파일:
+
+- 사용자가 직접 확인할 것은 Unity의 `RatHost2DPrototype` Game View다.
+- 세부 기술 근거가 필요할 때만 `artifacts/original-scene-qa.md`를
+  보조 자료로 제시한다.
+
+다음 단계:
+
+1. 메인 조정자가 현황판·CURRENT를 최신 판정으로 동기화한다.
+2. 사용자가 원본 Game View에서 실제 WASD/Space와 화면 가독성을 확인한다.
+3. 사용자 수용 뒤 Stage2를 닫고, 별도 승인에 따라 Stage3 후보를 진행한다.
+
+아래 `사용자 결정 필요` 판정은 2026-07-28 Reload 차단 당시의
+이력이다. 현재 판정에는 위 2026-07-29 재검토를 우선 적용한다.
+
 ## 검토 대상
 
 - 사용자 요청 `2단계 2D 백혈구 회피 미니게임과 성공·실패 복귀 작업 진행해`
@@ -112,3 +213,10 @@ Stage2 구현 후보와 자동 기술 게이트는 승인된 범위에 맞지만
 `사용자 결정 필요` 유지
 
 문서·수행 이력 정합성 보완은 완료됐다. 그러나 원본 Unity Reload 승인, 원본 Stage2 씬 적용, MCP Play·Console과 사용자 수동 플레이가 아직 남았으므로 `내부 승인 가능`으로 변경하지 않는다. 기존 `수정 필요` 항목 중 문서 동기화와 수행 주체 정합화는 해소된 것으로 닫고, 남은 차단은 사용자 Reload 결정과 후속 원본 검증뿐이다.
+
+## 현재 유효 판정
+
+위 `사용자 결정 필요`는 2026-07-28 차단 이력이며 2026-07-29 원본
+복구와 독립 QA로 해소됐다.
+
+`내부 승인 가능 — 원본 씬 표시·Stage2 런타임 기술 게이트 통과, 사용자 실제 WASD/Space 확인 대기`

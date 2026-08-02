@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using LastHost.Prototype.Core;
 using LastHost.Prototype.Input;
+using LastHost.Prototype.Mutations;
 using LastHost.Prototype.VirusMinigame;
 using UnityEngine;
 
@@ -70,6 +71,8 @@ namespace LastHost.Prototype.RatHost2D
         public bool IsMutationSelectionHandoff =>
             State.Mode == PrototypeGameMode.MutationSelection;
         public bool IsHostHudVisible => CanProcessHostGameplay;
+        public bool CanUseMammalPassage =>
+            State.Mutations.CanUseMammalPassage;
         public int InternalShellEntryCount => _internalShellEntryCount;
 
         public void Configure(
@@ -158,7 +161,9 @@ namespace LastHost.Prototype.RatHost2D
             var previousMode = _state.Mode;
             _state.DamageHost(Mathf.Max(0f, healthDamagePerSecond) * duration);
             _state.AddImmuneAlertAmount(
-                Mathf.Max(0f, alertPerSecond) * duration,
+                Mathf.Max(0f, alertPerSecond)
+                    * duration
+                    * _state.Mutations.ImmuneAlertRateMultiplier,
                 new ImmuneAlertEvent(
                     ImmuneAlertCauseType.ContaminationExposure,
                     string.IsNullOrWhiteSpace(feedbackLabel)
@@ -308,6 +313,35 @@ namespace LastHost.Prototype.RatHost2D
             return true;
         }
 
+        public bool TrySelectMutation(MutationType mutationType)
+        {
+            EnsureInitialized();
+            if (!Enum.IsDefined(typeof(MutationType), mutationType))
+            {
+                return false;
+            }
+
+            var previousMode = _state.Mode;
+            if (!_state.SelectMutation(mutationType))
+            {
+                return false;
+            }
+
+            HandleModeChange(previousMode);
+            PublishHud();
+            PublishVirusHud();
+            return true;
+        }
+
+        public bool ProcessMutationSelectionInput(PrototypeInputState inputState)
+        {
+            return IsMutationSelectionHandoff
+                && PrototypeKeyboardInput.TryGetSelectedMutation(
+                    inputState,
+                    out var mutationType)
+                && TrySelectMutation(mutationType);
+        }
+
         public bool ProcessFailureConfirmationInput(bool confirmPressed)
         {
             return confirmPressed
@@ -344,6 +378,13 @@ namespace LastHost.Prototype.RatHost2D
                 && PrototypeKeyboardInput.WasInteractPressed())
             {
                 ProcessFailureConfirmationInput(true);
+                return;
+            }
+
+            if (IsMutationSelectionHandoff)
+            {
+                ProcessMutationSelectionInput(
+                    PrototypeKeyboardInput.ReadCurrent());
             }
         }
 
@@ -372,6 +413,11 @@ namespace LastHost.Prototype.RatHost2D
                 && _state.Mode == PrototypeGameMode.InternalVirus)
             {
                 _internalShellEntryCount++;
+                ResetVirusRuntime();
+            }
+            else if (previousMode == PrototypeGameMode.MutationSelection
+                && _state.Mode == PrototypeGameMode.RatHost)
+            {
                 ResetVirusRuntime();
             }
 

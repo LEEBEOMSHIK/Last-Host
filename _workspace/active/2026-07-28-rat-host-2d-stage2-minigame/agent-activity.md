@@ -9,10 +9,10 @@
 | 에이전트 | 역할 | 담당 업무 | 산출물 | 판정 |
 | --- | --- | --- | --- | --- |
 | 게임플레이 구현 에이전트 | 코드·테스트 구현 | 2D 내부 미니게임 로직과 테스트 | `artifacts/gameplay-implementation.md` | 구현 완료, 신규·전체 EditMode 통과 |
-| Unity 씬/통합 구현 에이전트 | 씬·HUD·빌드 통합 | 아레나·충돌·표시·결과 셸 빌더 통합 | `artifacts/scene-integration-plan.md`, `artifacts/scene-integration.md` | 복제본 씬 계약·Windows 빌드 통과, 원본 적용 대기 |
-| QA/검증 에이전트 | 독립 검증 | 회귀·씬 계약·보호 diff·Windows 빌드, 원본 MCP 차단 기록 | `verification.md`, `artifacts/qa-verification.md` | 자동 기술 게이트 통과, 원본 Stage2 Play·Console 차단 |
-| 프로젝트 총괄 관리자 에이전트 | 내부 승인 | 범위·QA 기록·Git 보호 경계·원본 적용 상태 판정 | `director-review.md` | 사용자 결정 필요 |
-| Codex 메인 에이전트 | 조정·통합 | 승인 기록·작업 패킷·현황판 | `task.md`, `work-log.md`, `handoff.md` | 진행 중 |
+| Unity 씬/통합 구현 에이전트 | 씬·HUD·빌드 통합 | 아레나·충돌·표시·결과 셸 빌더 통합과 원본 씬 복구 | `artifacts/scene-integration-plan.md`, `artifacts/scene-integration.md`, `artifacts/original-scene-restore.md` | 원본 `117/5/40` 셀 영속화와 Stage2 적용 완료 |
+| QA/검증 에이전트 | 독립 검증 | 회귀·씬 계약·보호 diff·원본 MCP Play·Console | `verification.md`, `artifacts/qa-verification.md`, `artifacts/original-scene-qa.md` | 원본 기술 게이트 통과, 사용자 실제 키보드 확인 대기 |
+| 프로젝트 총괄 관리자 에이전트 | 내부 승인 | 범위·QA 기록·Git 보호 경계·원본 적용 상태 판정 | `director-review.md` | 내부 승인 가능 — 사용자 WASD/Space 확인 대기 |
+| Codex 메인 에이전트 | 조정·통합 | 승인 기록·작업 패킷·현황판 | `task.md`, `work-log.md`, `handoff.md` | 현황판 동기화·사용자 확인 인계 진행 |
 
 ## 위임 기록
 
@@ -22,6 +22,8 @@
 | 2026-07-28 | Codex 메인 에이전트 | 게임플레이 구현 에이전트 | Stage2 이동·추적·접촉·조각·성공/실패/재진입 코드와 테스트 | 구현 및 Roslyn 정적 컴파일 완료, Unity 실행 QA 대기 | `artifacts/gameplay-implementation.md` |
 | 2026-07-28 | Codex 메인 에이전트 | QA/검증 에이전트 | 단일 최소 복제본의 신규·전체 테스트, Stage2 Rebuild·씬 계약·Windows 빌드·보호 감사 | 신규 `10/10`, 전체 최종 `186/186`, 씬 계약 2회 PASS, Windows 빌드 성공; 원본 Unity 모달로 MCP Play·Console 차단 | `verification.md`, `artifacts/qa-verification.md` |
 | 2026-07-28 | Codex 메인 에이전트 | 프로젝트 총괄 관리자 에이전트 | 승인 범위·담당 산출물·QA 기록·Git 보호 경계·원본 적용 상태 독립 검토 | 자동 기술 게이트 통과를 확인했으나 원본 씬 Stage1과 MCP 차단으로 `사용자 결정 필요` 판정 | `director-review.md` |
+| 2026-07-29 | Codex 메인 에이전트 | Unity 씬/통합 구현 에이전트 | 원본 빈 Tilemap·검은 배경 복구, Stage2 Rebuild·Save와 기본 MCP Play 확인 | asset 로드 순서 버그 수정, 원본 씬 `117/5/40` 셀 영속화와 기본 모드·카메라 전환 확인 | `artifacts/original-scene-restore.md` |
+| 2026-07-29 | Codex 메인 에이전트 | QA/검증 에이전트 | 원본 씬 Tilemap·화면·Stage2 실패/복귀/재진입/성공·카메라·충돌·Console 독립 검증 | 원본 기술 게이트 통과, 실제 OS 키보드 체감만 사용자 확인 대기 | `verification.md`, `artifacts/original-scene-qa.md` |
 
 ## 게임플레이 구현 에이전트 기록
 
@@ -43,6 +45,17 @@
 - Reload 모달을 우회하지 않았고 Unity 씬 Rebuild/Save/컴파일/빌드/테스트는 실행하지 않았다.
 - 구현자 판정: 빌더 정적 통합 완료, 모달 해제 후 독립 QA 필요.
 
+### 2026-07-29 원본 씬 복구 추가 기록
+
+- Rebuild 전 원본 씬의 세 Tilemap이 모두 `0`셀이고 Host 카메라에서 맵 범위가 보이지 않는 증상을 재현했다.
+- `NewScene(Single)` 전에 로드한 기존 Tile·Input asset 참조가 씬 교체 중 무효화되는 원인을 수정했다.
+- 빌더에 저장 전·후 Floor `117`, Water `5`, Blocking wall `40` 후조건을 추가했다.
+- Rebuild·Save·디스크 재Load 뒤 동일 셀 수와 `(-6,-4)..(6,4)` 범위를 확인했다.
+- Host 카메라는 쥐, Internal 카메라는 Virus 논리 root를 추적하고, Stage2 아레나·4벽·Virus·WBC·조각 3개·결과 셸 연결이 유지됐다.
+- 기본 Play 직접 상태 전환에서 Host/Internal root와 카메라의 상호 배타를 확인했다.
+- 최종 Console Error/Warning은 `0`이다. 실제 키 입력과 성공·실패·재진입은 독립 QA 인계 항목이다.
+- 구현자 판정: 원본 씬 표시·Stage2 적용 복구 완료, 독립 QA 필요.
+
 ## QA/검증 에이전트 기록
 
 - `C:\tmp\LastHostQAStage2-20260728-1` 단일 복제본만 사용했고 원본 Library·Temp·Logs·UserSettings·Builds는 복사하지 않았다.
@@ -58,11 +71,29 @@
 - 원본 Unity Reload 모달에는 손대지 않았고 원본 씬은 Stage1이므로 MCP Play·Console은 차단으로 기록했다.
 - 반복 Rebuild는 local fileID 재할당으로 byte hash가 달랐지만 논리 계약은 반복 통과했다.
 
+### 2026-07-29 원본 씬 독립 QA 추가 기록
+
+- 원본 활성 씬 `RatHost2DPrototype`, loaded `true`, dirty `false`를 확인했다.
+- Tilemap을 직접 열거해 Floor `117`, Water `5`, Blocking `40`과
+  Floor/Blocking 범위 `(-6,-4)..(6,4)`를 확인했다.
+- Host 카메라 캡처에서 13×9 맵·외곽 경계·수로가 보여 black-only
+  증상이 해소됐다고 판정했다.
+- Arena 4벽, Virus 1, WBC 1, 조각 3, HUD, 실패 패널,
+  MutationSelection 셸과 missing script `0`을 확인했다.
+- Play에서 런타임 API 대체 입력으로 WBC 실패, 확인 복귀, 재진입,
+  조각 3개 성공과 Host/Internal root·카메라 활성 배타를 확인했다.
+- Physics2D 네 방향 질의에서 Host 외곽·수로와 Internal 4벽을 검출했다.
+- 실제 OS 키보드 주입은 MCP 미지원이므로 사용자 Game View 확인으로
+  남기고 제한을 문서화했다.
+- 카메라 캡처 도구 경고를 분리한 뒤 최종 Console Error/Warning `0`이다.
+- ProjectSettings 사용자 diff, previews, Packages, 입력, 레거시 씬을
+  변경하지 않았고 Windows 빌드는 실행하지 않았다.
+
 ## 판정
 
 - 사용자 승인: 2단계 착수 승인
-- QA/검증 에이전트 판정: `차단 — 자동 기술 게이트 통과, 원본 Stage2 씬·MCP Play·Console 미검증`
-- 프로젝트 총괄 관리자 판정: `사용자 결정 필요`
+- QA/검증 에이전트 판정: `통과 — 원본 씬 표시·Stage2 런타임 기술 게이트 통과, 사용자 키보드 체감 확인 대기`
+- 프로젝트 총괄 관리자 판정: `내부 승인 가능 — 원본 씬 표시·Stage2 런타임 기술 게이트 통과, 사용자 실제 WASD/Space 확인 대기`
 - 사용자 수동 플레이: 대기
 
 ## 프로젝트 총괄 관리자 기록
@@ -72,3 +103,16 @@
 - 원본 `RatHost2DPrototype.unity`는 `InternalVirusShell2D`가 남은 Stage1 씬이며 원본 MCP Play·Console은 Reload 모달로 미검증이다.
 - 원본 Unity Reload 실행 여부를 사용자 결정 사안으로 판정했다.
 - 현황판·세션 포인터·승인/계획 문서를 최종 QA 상태로 동기화했고 기존 테스트 최소 수정 수행 주체를 게임플레이 구현 에이전트로 정합화했다.
+
+### 2026-07-29 원본 복구 재검토
+
+- 과거 Reload 모달과 원본 Stage1 차단이 해소됐음을 확인했다.
+- 독립 QA의 원본 `117/5/40` 셀 영속화, 13×9 화면 식별,
+  카메라·Physics2D·Stage2 실패/복귀/재진입/성공 대체 경로,
+  Console Error/Warning `0`과 `dirty=false`를 대조했다.
+- 사용자 `ProjectSettings.asset` 한 줄과 `_workspace/previews/`가
+  보존되고 Packages·입력·레거시 씬 diff가 없음을 확인했다.
+- 이번 복구에서 Windows 빌드를 재실행하지 않은 것은 사용자 요청과
+  변경 위험에 비례한 검증으로 타당하다. 빌드 성공을 새로 주장하지 않는다.
+- 판정: `내부 승인 가능 — 원본 씬 표시·Stage2 런타임 기술 게이트 통과,
+  사용자 실제 WASD/Space 확인 대기`.

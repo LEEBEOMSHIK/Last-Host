@@ -17,9 +17,25 @@
 
 ## QA 판정
 
-`차단 — 독립 자동 기술 게이트 통과, 원본 Unity Stage2 적용·MCP Play·Console 미검증`
+`통과 — 원본 씬 표시·Stage2 런타임 기술 게이트 통과, 사용자 부분 수용`
 
-단일 임시 복제본에서 신규 테스트, 전체 회귀, 씬 Rebuild, 논리 계약 검사, Windows 빌드와 보호 diff는 통과했다. 그러나 원본 Unity는 외부 씬 변경 Reload 모달에 막혀 있고 원본 `RatHost2DPrototype.unity`도 아직 Stage1 구조다. 따라서 현재 저장소 상태를 Stage2 플레이어블 완료로 판정하지 않는다.
+2026-07-29 사용자 수동 확인:
+
+- 검은 화면 해소 확인
+- 실제 이동 확인
+- Space 실패 확인과 Internal 화면 체감은 아직 별도 확인이 필요함
+
+2026-07-29 원본 Unity 차단 해제 뒤 Stage2 씬을 다시 생성해 Floor `117`,
+Water `5`, Blocking `40` 셀의 영속화와 `dirty=false`를 확인했다.
+Host 화면은 `13×9` 맵·외곽 경계·수로가 식별되어 black-only 증상이
+해소됐다. 원본 MCP Play에서 실패·복귀·재진입·성공, 카메라·입력 활성
+배타와 최종 Console Error/Warning `0`을 독립 확인했다.
+
+실제 OS 키보드 주입은 MCP에 없으므로 공개 런타임 API와 Physics2D
+질의를 대체 경로로 사용했다. 상세 증거는
+`artifacts/original-scene-qa.md`에 기록한다.
+
+Windows 빌드는 사용자 요청에 따라 다시 만들지 않았다.
 
 ## 단일 임시 복제본
 
@@ -220,24 +236,56 @@ LastHost.Prototype.RatHost2D.Editor
   - `SENTIS_ANALYTICS_ENABLED;APP_UI_EDITOR_ONLY`
 - `_workspace/previews/`는 사용자 untracked 경계로 유지
 
-## 원본 Unity/MCP 차단
+## 2026-07-28 원본 Unity/MCP 차단 이력
 
-- 원본 Unity PID `42724`에는 외부 씬 Reload 모달이 남아 있다.
+- 당시 원본 Unity PID `42724`에는 외부 씬 Reload 모달이 남아 있었다.
 - 지시대로 Reload, Ignore, 강제 종료, 원본 씬 저장 우회를 실행하지 않았다.
-- 원본 `RatHost2DPrototype.unity`는 현재:
+- 당시 원본 `RatHost2DPrototype.unity`는:
   - `InternalVirusMode2D` 없음
   - `InternalVirusShell2D` 있음
   - 즉 Stage1 씬 유지
-- 원본 MCP Play와 Unity Console Error/Warning 확인은 수행하지 못했다.
+- 당시 원본 MCP Play와 Unity Console Error/Warning 확인은 수행하지 못했다.
+
+## 2026-07-29 원본 씬 재검증
+
+- 활성 씬: `RatHost2DPrototype`, loaded `true`, dirty `false`
+- Tilemap:
+  - Floor `117`, `(-6,-4)..(6,4)`
+  - Water `5`, `(3,-2)..(3,2)`
+  - Blocking `40`, `(-6,-4)..(6,4)`
+- Host 캡처:
+  - 13×9 바닥·외곽 벽·수로·오염 구역·쥐·소품 식별
+  - black-only 증상 해소
+- 카메라:
+  - Main Camera → `RatHost2D`, 중심 오차 0
+  - Internal Camera → `Virus2D`, 중심 오차 0
+- Play:
+  - WBC 접촉 3회 → `VirusFailed`
+  - 확인 입력 대체 API → `RatHost`
+  - 재진입 count `2`
+  - 조각 3개 → `MutationSelection`
+  - 각 단계 Host/Internal root·HUD·카메라 활성 배타 통과
+- Physics2D 질의:
+  - Host 네 방향 외곽 `BlockingTilemap` 검출
+  - 수로 `WaterTilemap` 검출
+  - Internal 네 방향에서 4벽 각각 검출
+- missing script `0`
+- 최종 Console Error `0`, Warning `0`
+- 보호 diff 통과
+- Windows 빌드 미실행
 
 ## 남은 위험
 
-- 원본 씬에 Stage2 생성 결과가 아직 적용되지 않았다.
-- 원본 MCP Play에서 Virus 입력·벽 충돌·Trigger·카메라 활성 배타·Space 실패 확인을 실제 확인하지 못했다.
-- 원본 Unity Console Error/Warning `0`을 주장할 수 없다.
-- 빌드 실행본 플레이와 사용자 조작감·가독성·난이도 확인이 남았다.
+- MCP는 실제 OS 키보드 키다운을 주입하지 못한다. 사용자가 실제 이동과
+  검은 화면 해소는 확인했으며, Space 실패 확인과 Internal 화면 체감이 남았다.
+- 현재 Host와 내부 화면은 기술 플레이스홀더이며 최종 아트 수용이 아니다.
+- 성공 뒤 실제 변이 선택·효과·쥐 복귀는 Stage3 범위다.
 - 반복 Rebuild의 byte-level YAML/local fileID 안정성이 없다.
 
 ## 완료 판단 근거
 
-자동 테스트·씬 논리 계약·Windows 빌드만 보면 기술 구현 후보는 통과했다. 하지만 현재 repo 원본 씬은 Stage1이고 원본 MCP Play·Console이 차단되어 있으므로 작업 전체는 완료가 아니다. Reload 모달을 사용자가 안전하게 해제한 뒤 원본 Unity에서 Stage2 Rebuild·Play·Console을 검증하고 사용자 수동 플레이로 이어가야 한다.
+기존 신규 `10/10`, 전체 `186/186`, Windows 빌드 성공 기록에 더해
+원본 씬의 Tilemap 영속화, 카메라 캡처, Physics2D 충돌 질의,
+실패·복귀·재진입·성공 Play 경로와 최종 Console을 독립 확인했다.
+원본 씬 표시와 Stage2 런타임 기술 게이트는 통과다.
+사용자에게는 Space 실패 확인과 Internal 화면 가독성 확인만 남긴다.

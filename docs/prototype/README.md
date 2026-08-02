@@ -16,6 +16,7 @@
 - `plans/rat-host-implementation-plan.md`: 승인된 Unity 구현 계획과 검증 기준
 - `plans/rat-host-immune-alert-work-direction.md`: 면역 경계도 상세 기획을 기준으로 한 다음 작업 방향과 우선순위
 - `plans/rat-host-ai-assisted-art-workflow.md`: ChatGPT 이미지 생성 후보의 승인·출처 기록·사람 선별·2D 게임 규격 재제작·Unity 적용·QA 순서
+- `plans/rat-host-2d-art-production-roadmap.md`: 목표 목업을 실제 2D 타일·쥐 스프라이트·UI·효과로 재제작하는 순서, 기간 가정, 병렬 구간과 사용자 승인 게이트
 
 ## 확인 순서
 
@@ -27,3 +28,4 @@
 4. `plans/rat-host-implementation-plan.md`
 5. `plans/rat-host-immune-alert-work-direction.md`
 6. `plans/rat-host-ai-assisted-art-workflow.md` (실제 AI 보조 아트 작업을 검토할 때)
+7. `plans/rat-host-2d-art-production-roadmap.md` (첫 실제 아트 묶음과 제작 일정을 결정할 때)

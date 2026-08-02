@@ -1,8 +1,8 @@
 # 작업 인계
 
-## 최신 사용자 요청
+## 최신 사용자 확인
 
-2단계 2D 백혈구 회피 미니게임과 성공·실패 복귀 작업을 진행한다.
+원본 Game View가 검은 화면이 아니며 실제 이동하는 것을 확인했다.
 
 ## 현재 상태
 
@@ -11,7 +11,16 @@
 - 전체 EditMode 최종 `186/186`
 - 임시 복제본 Stage2 씬 논리 계약 2회 PASS
 - Windows Development 빌드 성공 기록 완료, 사용자 정리 요청으로 임시 실행본 삭제
-- 원본 Unity 외부 씬 변경 모달과 Stage1 씬 유지로 MCP Play·Console 차단
+- 원본 Unity Reload 차단 해제
+- 원본 Stage2 씬 Rebuild·Save·디스크 재Load 완료
+- Host Tilemap Floor `117`, Water `5`, Blocking wall `40`, 범위 `(-6,-4)..(6,4)`
+- Host 카메라에서 바닥·외곽 경계·수로가 표시되어 맵 범위 식별 가능
+- 독립 QA 원본 MCP Play에서 실패·복귀·재진입·성공 전체 대체 경로 통과
+- Host 외곽·수로와 Internal 4벽 Physics2D 질의 통과
+- 최종 Console Error/Warning `0`
+- 프로젝트 총괄 관리자 `내부 승인 가능`
+- 사용자 수동 확인: 검은 화면 해소·실제 이동 확인 완료
+- 남은 사용자 확인: Space 실패 확인·Internal 화면 전환과 가독성
 
 ## 구현 경계
 
@@ -28,7 +37,6 @@
 
 ## 다음 작업
 
-1. 사용자가 원본 Unity 외부 변경 모달을 안전하게 해제한다.
-2. 원본 Unity에서 Stage2 Rebuild를 실행하고 `sceneDirty=false`를 확인한다.
-3. MCP Play로 Host/Virus 입력 배타, 벽·Trigger, 카메라, 성공·실패·재진입과 Console을 확인한다.
-4. 원본 검증 통과 후 필요할 때만 새 임시 빌드를 생성해 사용자 수동 플레이에 인계한다.
+1. 사용자가 Game View에서 Space 실패 확인과 Internal 화면 가독성을
+   확인한다. Windows 빌드는 사용자가 필요하다고 요청할 때만 만든다.
+2. 사용자 수용 뒤 Stage1·Stage2를 닫고 Stage3 후보를 별도 승인에 따라 진행한다.

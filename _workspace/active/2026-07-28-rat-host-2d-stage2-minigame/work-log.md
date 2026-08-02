@@ -40,3 +40,44 @@
 - 사용자 요청에 따라 `C:\tmp\LastHostRatHost2DStage2`의 임시 Windows 빌드 `205,441,545 bytes`와 `C:\tmp\LastHost.Prototype.RatHost2D.Stage2*` 정적 컴파일 DLL/PDB를 삭제했다. 저장소 파일, `ProjectSettings.asset` 사용자 변경과 `_workspace/previews/`는 보존했다.
 - 커밋 요청에 따라 Stage1/Stage2 구현·테스트·승인/QA 기록만 선별 스테이징하려 했으나 `.git/index.lock` 쓰기 권한이 필요했다. 권한 승인 사용량 한도 도달로 `git add`가 거부되어 staged 파일 없이 커밋·푸시를 중단했다. 사용자 `ProjectSettings.asset` 변경과 `_workspace/previews/`는 계속 제외한다.
 - 2026-07-29 사용자가 Git 쓰기 실행을 다시 명시 승인했다. 같은 선별 범위로 스테이징하고 Markdown 공백 형식 경고를 정리한 뒤 `d12146f feat: add staged 2d rat host core loop` 커밋을 생성했다. `ProjectSettings.asset`, `_workspace/previews/`, 현황판·CURRENT는 첫 커밋에서 제외했다.
+- 2026-07-29 사용자가 현황판의 최우선 작업부터 진행하도록 지시했다. 이를 원본 `RatHost2DPrototype`의 빈 Tilemap·검은 배경 복구, Stage2 Rebuild·Save와 MCP Play·Console 검증 승인으로 기록했다.
+- Unity MCP가 다시 응답했고 활성 씬은 `RatHost2DPrototype`, `isDirty=false`, Play 정지 상태임을 확인했다. Computer Use 네이티브 pipe는 사용할 수 없었지만 Reload 차단은 이미 해제된 상태다.
+- Unity 씬/통합 구현 에이전트가 원본 Stage1 계층과 Tilemap `0/0/0`, Host 카메라의 검은 바탕 증상을 Unity API와 카메라 캡처로 재현했다.
+- Stage2 Rebuild 자체는 계층을 만들었지만 저장 전부터 Tilemap 셀이 `0`임을 새 후조건으로 확인했다. 기존 Tile·Input asset을 `NewScene(Single)` 전에 로드해 씬 교체 과정에서 native asset 참조가 무효화되는 순서가 원인이었다.
+- 새 씬 생성 뒤 dependency를 로드하도록 빌더 순서를 최소 수정하고, 현재 씬 asset 강제 재임포트를 제거했으며, Tilemap dirty 처리와 저장 전·후 `117/5/40` 셀 검증을 추가했다.
+- 원본 Stage2 Rebuild·Save 후 Unity API에서 Floor `117` `(-6,-4)..(6,4)`, Water `5`, Blocking wall `40`과 `sceneDirty=false`를 확인했다. 디스크에서 씬을 다시 Load한 뒤에도 같은 셀 수·범위가 유지됐다.
+- Host 카메라 캡처에서 `13×9` 바닥·외곽 벽·수로·오염 구역·쥐·소품이 함께 보여 맵 범위를 식별할 수 있음을 확인했다.
+- 기본 MCP Play에서 `RatHost`의 Host/HostCamera 활성과 Internal 비활성을 확인하고, 직접 면역 경계도 전환 후 `InternalVirus`의 Host 비활성, Internal/InternalCamera·Virus·WBC·4벽 활성화를 확인했다.
+- 카메라 캡처 도구의 일시적 RenderTexture 경고를 분리한 뒤 캡처 없이 Play 전환·Stop을 반복했고 최종 Console Error/Warning `0`을 확인했다. 실제 WASD/Space와 성공·실패·재진입 전체 흐름은 독립 QA에 인계한다.
+- 게임플레이 코드, Packages, ProjectSettings, 입력 asset, 기존 3D/TechnicalSample 씬은 변경하지 않았고 Windows 빌드는 생성하지 않았다.
+- QA/검증 에이전트가 원본 활성 씬 `RatHost2DPrototype`, `dirty=false`를
+  독립 대조하고 Tilemap Floor `117`, Water `5`, Blocking `40`,
+  Floor/Blocking 범위 `(-6,-4)..(6,4)`를 재확인했다.
+- Host 카메라 캡처에서 13×9 바닥·외곽 경계·수로·오염 구역·쥐·소품이
+  보여 black-only 증상 해소를 독립 판정했다. 내부 진입 캡처에서는
+  아레나 경계·Virus·WBC·조각 3개가 식별됐다.
+- 원본 MCP Play에서 실제 키보드 대신 저장 비변경 공개 런타임 API를
+  사용해 WBC 접촉 3회 실패, 확인 복귀, 재진입 count 2, 조각 3개 성공과
+  MutationSelection 인계를 확인했다.
+- Physics2D 네 방향 질의에서 Host 외곽 Blocking, 수로 Water와
+  Internal 4벽을 각각 검출했다.
+- Main Camera target=RatHost, Internal Camera target=Virus와 각 모드의
+  root·HUD·카메라·입력 활성 배타를 확인했다.
+- 카메라 캡처 도구 기인 RenderTexture 경고를 분리하고 콘솔을 비운 뒤
+  캡처 없이 Play·전환·Stop을 재실행해 최종 Error/Warning `0`을 확인했다.
+- 기존 EditMode `10/10`, 전체 `186/186` 기록과 이번 변경 범위를
+  대조해 테스트를 중복 재실행하지 않았으며 Windows 빌드도 만들지 않았다.
+- 보호 diff는 ProjectSettings 사용자 한 줄과 `_workspace/previews/`를
+  그대로 유지했고 Packages·입력·레거시 씬 tracked diff `0`이다.
+- 프로젝트 총괄 관리자가 원본 복구·독립 QA·Git 보호 경계를 재검토했다.
+  Reload/Stage1 차단은 해소됐고 원본 씬 표시·Stage2 런타임 기술 게이트를
+  `내부 승인 가능`으로 판정했다. 실제 OS WASD/Space 손 감각과 화면
+  가독성은 사용자 확인으로 남겼으며, 이번 복구에서 Windows 빌드를
+  재실행하지 않은 것은 변경 위험과 사용자 요청에 비례해 타당하다고
+  기록했다.
+- 메인 조정자가 `current-task-board.md`와 `CURRENT.md`를 원본 기술 게이트
+  통과·사용자 실제 키보드 확인 대기 상태로 동기화했다. Stage3는 사용자
+  수용과 별도 승인 뒤 진행하도록 유지했다.
+- 2026-07-29 사용자가 원본 Game View에서 검은 화면이 해소됐고 실제
+  이동하는 것을 확인했다. 이를 사용자 수동 QA 부분 수용으로 기록하고,
+  남은 확인을 Space 실패 확인과 Internal 화면 전환·가독성으로 좁혔다.
