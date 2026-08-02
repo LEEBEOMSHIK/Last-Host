@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "run_id": "cost-guards-selftest-correction-002",
+  "generated_utc": "2026-08-02T13:53:45.0557219+00:00",
+  "project_root": "C:\\project\\Last-Host",
+  "candidate_fingerprint": "2711e9f5cb5e10de24c9f563bbac4e264f752db69e7afc3df8fded592276a663",
+  "algorithm": "sha256(category<TAB>relative-path<TAB>file-sha256<TAB>length; ordinal path order)",
+  "file_count": 22,
+  "inputs": {
+    "production": [
+      "tools/verification",
+      "AGENTS.md",
+      "docs/agents/loop-engineering-gates.md",
+      "docs/agents/loop-engineering-user-guide.md",
+      "docs/agents/agent-reference-map.md",
+      "_workspace/templates/task.md",
+      "_workspace/templates/handoff.md",
+      "_workspace/templates/agent-activity.md",
+      "_workspace/templates/verification.md",
+      ".codex/skills/unity-verification-runner/references/verification-rules.md"
+    ],
+    "test": [],
+    "scene": [],
+    "package": [],
+    "version": []
+  },
+  "files": [
+    {
+      "category": "production",
+      "path": "_workspace/templates/agent-activity.md",
+      "length": 1243,
+      "sha256": "aabfbd1cbfd2eb76c4f590f71cbf80c1365941b835f809ae6f4b1c664a1d30fc"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/handoff.md",
+      "length": 1712,
+      "sha256": "a5433d591499904366294a26cbc198a09572c8d289df493f5ee2b178212e4011"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/task.md",
+      "length": 3412,
+      "sha256": "3eb364e2b7b342717c2c5932c39bbda209916a690ae8fd22f6b43c9ed72fdb1f"
+    },
+    {
+      "category": "production",
+      "path": "_workspace/templates/verification.md",
+      "length": 3058,
+      "sha256": "49182d96648b907052616ac5119fd983dc9bb80770891bba09ec9c9e1bdb0e42"
+    },
+    {
+      "category": "production",
+      "path": ".codex/skills/unity-verification-runner/references/verification-rules.md",
+      "length": 2926,
+      "sha256": "4ffa4f71081338857c8a445a47fe840e4ca0e42d3e8970d68a0c5f851aabce58"
+    },
+    {
+      "category": "production",
+      "path": "AGENTS.md",
+      "length": 11439,
+      "sha256": "68fc300f03bb8768fb9d50141d0acfc5fecd68417d37ed0a21a4fdcf4ca47a3e"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/agent-reference-map.md",
+      "length": 13445,
+      "sha256": "e7587698c523c32c9b62b2981b111eeeca4c28eb14bdcef87636adcd8b0db60a"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/loop-engineering-gates.md",
+      "length": 21429,
+      "sha256": "7d9980c8790f8882dfa4b4771869808c661d847c5a291a295130853f854eb376"
+    },
+    {
+      "category": "production",
+      "path": "docs/agents/loop-engineering-user-guide.md",
+      "length": 16879,
+      "sha256": "fc75e73a1abe1c12c132f7cf685e7658f7f586ce39f3aed4acc0974e6f624c0d"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Get-VerificationFingerprint.ps1",
+      "length": 4854,
+      "sha256": "5917e1d96559d46a43b2f866ad03f2f941ec7284840dece9e253181ca73f050b"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Invoke-HighCostVerification.ps1",
+      "length": 12932,
+      "sha256": "40848972943e24993f38cceafe17aeff6483056d388630a8c68b2472825d13d3"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Invoke-UnityEditModeTests.ps1",
+      "length": 7656,
+      "sha256": "7bdd4690cd2a79c7ba011858412df6f470f10b6a42db89f1fb8de003fc1a59fa"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Invoke-VerificationGuardSelfTest.ps1",
+      "length": 17998,
+      "sha256": "d6c17129bee644e4234f98da6ed17063494caabd8670aa7eaa88fb4564bf8b26"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/README.md",
+      "length": 10583,
+      "sha256": "2dcc42d79f9e271580db0aa69d54838a26a8763938b0394c7e38629c1bb47bd5"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Sync-IsolatedUnityProject.ps1",
+      "length": 5805,
+      "sha256": "042ec84c3f849185bd6b6fb1bab5529693db802d57d80c88b605e7f3dc62738f"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Test-AgentBrief.ps1",
+      "length": 2143,
+      "sha256": "ca119ef4958bd5c4a6955b612fe1727d08d74fa12693cac4faa0c69bc897c4db"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Test-ComponentContractImpact.ps1",
+      "length": 2151,
+      "sha256": "5a35d3edaed6d9bfd010b1f6a5fd00a03fe71d62968bf01f87797fdf81280ee6"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Test-QaHarnessSafety.ps1",
+      "length": 2064,
+      "sha256": "f2f980056ca8adbd54376b5d5f0bc2b4d849ecaeb93bca18bcee1fd1a1e0747e"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/Test-VerificationCurrentState.ps1",
+      "length": 2715,
+      "sha256": "59291d0281e82dd38f5286c7495a056d2343f717468f6e193828387c7f61e5ab"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/UnityMcpLease.ps1",
+      "length": 7656,
+      "sha256": "da92c55dc12daaf4f9fce6396e967060d21bb8241e4d497d20e0fc445d832c1b"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/verification-capabilities.json",
+      "length": 1490,
+      "sha256": "79b93a2b9e88f6425524955c050e5bcd3faa28791fc52a4e59cc20b498a2652e"
+    },
+    {
+      "category": "production",
+      "path": "tools/verification/VerificationGuard.Common.ps1",
+      "length": 3322,
+      "sha256": "de536a303d129d7ff02020109930e4a5b3bd4e7b5f6a32c1737f6527727817c4"
+    }
+  ]
+}

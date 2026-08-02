@@ -43,6 +43,8 @@
 - verification revision:
 - candidate frozen 여부:
 - superseded run:
+- verification current-state JSON:
+- attempt ledger / 연속 실패 수 / reclassification ID:
 
 ## Unity single-owner lease 인계
 
@@ -53,6 +55,7 @@
 - 임시 객체 유무:
 - heartbeat / 만료:
 - 인계 전 release와 복원 확인:
+- isolated cache path / marker / Library reuse / cleanup 상태:
 
 ## 실패 또는 차단된 검증
 

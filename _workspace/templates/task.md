@@ -33,6 +33,8 @@
 - 총괄 관리자 판정 필요: 예 / 아니오
 - 커밋 전 차단 조건 확인 필요: 예 / 아니오
 - correction cycle: 0/2
+- capability profile / 요청 route:
+- attempt ledger 경로 / 같은 criterion 연속 실패 수:
 
 ## S0 사용자 원증상·검증 charter
 
@@ -48,6 +50,15 @@
 |  |  |  |  |  |
 
 - QA S0 사전 검토:
+
+## 고비용 preflight 입력
+
+- agent brief JSON (`packet-only`, `fork_turns:none`, 필수 파일 3개 이하):
+- verification current-state JSON:
+- QA C# harness lint 경로:
+- component contract baseline / candidate / test 경로:
+- isolated Unity cache root / work ID marker:
+- low-level runner 직접 Run 금지 확인:
 
 ## 목적
 

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "max_consecutive_failures": 2,
+  "agent_brief": {
+    "required_context_mode": "packet-only",
+    "required_fork_turns": "none",
+    "max_required_files": 3,
+    "max_message_characters": 5000
+  },
+  "current_state_contract": {
+    "allowed_statuses": [
+      "implementation-in-progress",
+      "ready-for-verification",
+      "verification-running",
+      "technical-pass",
+      "ready-for-independent-qa",
+      "independent-qa-pass-awaiting-director",
+      "blocked",
+      "superseded"
+    ]
+  },
+  "routes": {
+    "UnityEditMode": {
+      "available": true,
+      "cost_class": "high",
+      "executor": "Invoke-UnityEditModeTests.ps1",
+      "fallback": "ValidateResultsOnly for an already-produced NUnit3 XML, or reclassify the task",
+      "current_state": {
+        "expected_status": "ready-for-verification",
+        "allowed_transitions": [
+          { "from": "ready-for-verification", "to": "verification-running" }
+        ]
+      }
+    },
+    "McpTestRunner": {
+      "available": false,
+      "cost_class": "high",
+      "failure_reason": "No supported result-bearing MCP TestRunner route is installed for this project",
+      "fallback": "Use UnityEditMode through Invoke-HighCostVerification.ps1",
+      "current_state": {
+        "expected_status": "ready-for-verification",
+        "allowed_transitions": [
+          { "from": "ready-for-verification", "to": "verification-running" }
+        ]
+      }
+    },
+    "McpRunTests": {
+      "available": false,
+      "cost_class": "high",
+      "failure_reason": "This route previously produced no canonical test result",
+      "fallback": "Use UnityEditMode through Invoke-HighCostVerification.ps1",
+      "current_state": {
+        "expected_status": "ready-for-verification",
+        "allowed_transitions": [
+          { "from": "ready-for-verification", "to": "verification-running" }
+        ]
+      }
+    },
+    "UnityBuild": {
+      "available": false,
+      "cost_class": "high",
+      "failure_reason": "The common wrapper does not yet own a build executor",
+      "fallback": "Add and independently verify a build capability before requesting it",
+      "current_state": {
+        "expected_status": "ready-for-verification",
+        "allowed_transitions": [
+          { "from": "ready-for-verification", "to": "verification-running" }
+        ]
+      }
+    },
+    "McpPlay": {
+      "available": false,
+      "cost_class": "high",
+      "failure_reason": "MCP Play requires a task-specific lease and evidence harness",
+      "fallback": "Use the task-specific QA route after its capability is registered",
+      "current_state": {
+        "expected_status": "ready-for-verification",
+        "allowed_transitions": [
+          { "from": "ready-for-verification", "to": "verification-running" }
+        ]
+      }
+    }
+  }
+}

@@ -342,6 +342,7 @@
 
 - 구현 전 S0 사용자 원증상·합성 oracle, candidate fingerprint·run_id, Unity single-owner lease, 변경 후 PASS 무효화, canonical evidence를 `loop-engineering-gates.md` 기준으로 대조한다.
 - 기술 검증 통과와 사용자 수용 대기를 분리한다.
+- 고비용 Unity/MCP/build 전 `tools/verification/verification-capabilities.json`과 `Invoke-HighCostVerification.ps1` preflight를 사용하고 low-level runner를 직접 Run하지 않는다.
 
 선택 참조:
 

@@ -1,0 +1,12 @@
+{
+  "work_id": "2026-08-02-verification-harness-cost-guards",
+  "context_mode": "packet-only",
+  "fork_turns": "none",
+  "required_files": [
+    "_workspace/completed/2026-08-03-2026-08-02-verification-harness-cost-guards/task.md",
+    "tools/verification/README.md",
+    "docs/agents/loop-engineering-gates.md"
+  ],
+  "message": "Implement G1-G8 within the assigned harness/document/template scope. Do not run Unity, MCP, or builds. Stop at the first blocker and record a correction plan before retrying.",
+  "include_conversation_history": false
+}

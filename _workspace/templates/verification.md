@@ -33,6 +33,9 @@
 - candidate frozen 여부:
 - 마지막 production 변경 시각/식별값:
 - 이 검증이 마지막 production 변경 이후 실행됐는지:
+- current-state JSON 대조:
+- capability route / wrapper preflight:
+- attempt ledger 연속 실패 / reclassification ID:
 
 ## Unity single-owner lease
 
@@ -77,6 +80,8 @@
 - S1~S5 한 revision 통과 여부:
 - S6 전체 suite 실행 허용/실행 횟수:
 - S7 대형 matrix 실행 허용/실행 횟수:
+- low-level runner token / 직접 Run 차단 확인:
+- isolated cache marker / Library reuse / cleanup 확인:
 
 ## 비용 실행 대조
 

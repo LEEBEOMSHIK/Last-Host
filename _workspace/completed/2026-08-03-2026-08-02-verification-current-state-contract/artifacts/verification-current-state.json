@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "work_id": "2026-08-02-verification-current-state-contract",
+  "status": "technical-pass",
+  "run_id": "state-contract-independent-qa-001",
+  "candidate_fingerprint": "71e4dcdd173ebe2211ec57856dc35d1069a7170a343d33b2d2a2c395e6ebbdda",
+  "cost": {
+    "unity_starts": 0,
+    "mcp_starts": 0,
+    "build_starts": 0,
+    "recorded_high_cost_attempts": 0
+  },
+  "evidence": [
+    {
+      "run_id": "state-contract-independent-qa-001",
+      "candidate_fingerprint": "71e4dcdd173ebe2211ec57856dc35d1069a7170a343d33b2d2a2c395e6ebbdda",
+      "path": "_workspace/completed/2026-08-03-2026-08-02-verification-current-state-contract/artifacts/independent-qa-report.md"
+    },
+    {
+      "run_id": "state-contract-independent-qa-001",
+      "candidate_fingerprint": "71e4dcdd173ebe2211ec57856dc35d1069a7170a343d33b2d2a2c395e6ebbdda",
+      "path": "_workspace/completed/2026-08-03-2026-08-02-verification-current-state-contract/director-review.md"
+    }
+  ]
+}

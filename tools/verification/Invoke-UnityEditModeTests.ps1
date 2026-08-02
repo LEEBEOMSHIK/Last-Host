@@ -21,12 +21,53 @@ param(
     [ValidateRange(1, 86400)]
     [int]$TimeoutSeconds = 1800,
 
+    [Parameter(Mandatory = $true, ParameterSetName = 'Run')]
+    [string]$GuardTokenPath,
+
     [Parameter(Mandatory = $true, ParameterSetName = 'Validate')]
     [switch]$ValidateResultsOnly
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'VerificationGuard.Common.ps1')
+
+function Assert-AndConsumeGuardToken {
+    param(
+        [Parameter(Mandatory = $true)][string]$TokenPath,
+        [Parameter(Mandatory = $true)][string]$RequestedProjectPath
+    )
+
+    $projectFull = Get-CanonicalPath -Path $RequestedProjectPath
+    $instanceRoot = Split-Path -Parent $projectFull
+    $tokenDirectory = Join-Path $instanceRoot 'tokens'
+    $tokenFull = Assert-StrictChildPath -Parent $tokenDirectory -Child $TokenPath
+    $markerPath = Join-Path $instanceRoot '.last-host-isolated-unity-cache.json'
+    $marker = Read-GuardJson -Path $markerPath
+    $token = Read-GuardJson -Path $tokenFull
+
+    if ([int]$marker.schema_version -ne 1 -or [string]$marker.kind -cne 'last-host-isolated-unity-cache') {
+        throw 'Guard token parent does not have a valid isolated-cache marker.'
+    }
+    if ([int]$token.schema_version -ne 1 -or
+        [string]$token.issued_by -cne 'Invoke-HighCostVerification.ps1' -or
+        [string]$token.target -cne 'Invoke-UnityEditModeTests.ps1') {
+        throw 'Run mode requires a token issued by Invoke-HighCostVerification.ps1.'
+    }
+    if ((Get-CanonicalPath -Path ([string]$token.project_path)) -cne $projectFull) {
+        throw 'Guard token project path mismatch.'
+    }
+    if ([DateTimeOffset]::Parse([string]$token.expires_utc) -le [DateTimeOffset]::UtcNow) {
+        throw 'Guard token has expired.'
+    }
+    $expectedSignature = Get-GuardTokenSignature -WorkId ([string]$token.work_id) -RunId ([string]$token.run_id) `
+        -CandidateFingerprint ([string]$token.candidate_fingerprint) -ProjectPath $projectFull `
+        -Nonce ([string]$token.nonce) -MarkerCreatedUtc ([string]$marker.created_utc)
+    if ([string]$token.signature -cne $expectedSignature) { throw 'Guard token signature mismatch.' }
+
+    # One-shot token: consume before any Unity process can start.
+    Remove-Item -LiteralPath $tokenFull -Force
+}
 
 function Get-TestResultSummary {
     param([string]$Path)
@@ -83,6 +124,7 @@ function Get-TestResultSummary {
 
 $unityExitCode = $null
 if (-not $ValidateResultsOnly) {
+    Assert-AndConsumeGuardToken -TokenPath $GuardTokenPath -RequestedProjectPath $ProjectPath
     if (-not (Test-Path -LiteralPath $ProjectPath -PathType Container)) {
         throw "Unity project directory does not exist: $ProjectPath"
     }

@@ -30,6 +30,8 @@
 - production 파일/불변식 소유권:
 - Unity lease 인계 상태:
 - candidate fingerprint / run_id:
+- agent brief lint / context mode / 필수 파일 수:
+- high-cost wrapper preflight / route / ledger 결과:
 
 ## 위임 기록
 

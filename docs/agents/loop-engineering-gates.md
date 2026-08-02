@@ -66,6 +66,26 @@ R2/R3는 `_workspace/templates/task.md`를 사용하고 구현 전 다음을 잠
 
 QA는 R2/R3의 정식 S0 charter에서 위 항목을 검토한다. 원증상을 재현하지 못했거나 합성 oracle이 잠기지 않으면 추정 구현을 시작하지 않고 `재현 불가` 또는 사용자 질문으로 중단한다. 구현자가 만든 테스트 이름이나 내부 수치로 사용자 원증상을 대체하지 않는다.
 
+## 원인 교정과 증상 은폐 금지
+
+사용자 화면에서 증상이 사라졌다는 사실만으로 원인이 교정됐다고 판정하지 않는다. 다음처럼 관찰 대상을 없애거나 실패 경로를 우회하는 변경은 원인 레이어가 따로 증명되지 않는 한 `증상 은폐`다.
+
+- renderer·대상 object 비활성화, alpha `0`
+- 정상 좌표를 바꾸는 teleport·clamp, 입력 잠금
+- 오류를 삼키거나 결과를 성공처럼 반환하는 error swallow
+- 가시 footprint보다 큰 invisible collider로 접근 자체를 막는 방식
+- hidden output이나 우회된 상태를 기대하도록 테스트를 바꾸는 방식
+
+workaround는 사용자가 명시적으로 승인하고, 플레이 화면·로그에 임시임을 표시하며, 제거 조건·기한 또는 후속 작업을 기록했을 때만 허용한다. 승인된 workaround도 근본 수정의 `완료`가 아니며 `temporary` 또는 `blocked` 상태로 관리한다.
+
+QA는 원인 레이어의 변경과 함께 다음 negative control을 직접 증명한다.
+
+1. 플레이어 root·renderer의 active/enabled/alpha, transform, 정상 입력 경로가 보존된다.
+2. collision이 가시 footprint와 S0에 고정한 tolerance 안에서 일치하며, 보이지 않는 과대 collider가 없다.
+3. 사용자가 실제로 보는 화면·동작 oracle이 통과하고, 실패를 숨긴 출력이 canonical 증거에 포함되지 않는다.
+
+원인 레이어를 증명하지 못하고 증상만 바꾼 후보는 기술 검증 통과나 완료가 아니라 `temporary` 또는 `blocked`다. 2026-08-02 `7ba12df`의 whole-character hide가 자동 검증 뒤 사용자 수용에서 실패한 사례는 이 규칙을 도입한 교훈으로만 남긴다. 특정 커밋이나 구현 방식 자체를 영구 정책의 전제로 삼지 않는다.
+
 ## production 소유권
 
 - production 파일 하나와 그 불변식에는 한 correction cycle 동안 구현 소유자 한 명만 둔다.
@@ -157,6 +177,20 @@ baseline_play, baseline_pause, baseline_scene, baseline_dirty
 - 상태를 `수정 필요 — 재분류`로 바꾸고 root cause, 상태 전이표, 위험 등급, production 소유권, 대안 구조를 다시 검토한다.
 - 재분류는 실패 통과, 독립 QA 또는 총괄 생략을 허용하지 않는다.
 
+## 고비용 검증 실행 전 자동 차단
+
+Unity TestRunner, MCP Play/TestRunner, build와 같은 고비용 경로는 `tools/verification/Invoke-HighCostVerification.ps1`를 유일 공용 진입점으로 사용한다. 실행 문서의 권고만으로 통과 처리하지 않으며 wrapper preflight가 nonzero이면 Unity/MCP/build를 시작하지 않는다.
+
+preflight는 machine-readable capability profile, criterion별 attempt ledger, packet-only agent brief, current-state run/fingerprint/status/cost, QA C# 안전성, component contract 영향, task-scoped isolated cache marker를 대조한다. profile 허용 목록 밖의 status와 route 기대 상태가 아닌 status를 차단하고, 실제 실행 전 profile에 허용된 `ready-for-verification` → `verification-running` 전이만 적용한다. 알려진 실패·미지원 route, Reflection/private reflection QA 코드, Rigidbody 위치 변경과 Y-sort 사이 sync 누락, collider/resolver 과거 타입 기대, full-history 위임, 필수 파일 3개 초과, stale 상태는 실행 전에 차단한다.
+
+route/capability와 각 preflight guard의 실제 실패는 high-cost 시작 전에 criterion, run ID, fingerprint, route, 원인과 함께 attempt ledger에 원자 기록한다. 같은 run identity의 중복 failure는 추가하지 않는다. 같은 criterion의 연속 실패는 최대 2회이며 세 번째 호출은 retry-budget guard에서 차단하되 이 차단 자체를 새 failure로 기록하지 않는다.
+
+재분류는 실제 failure 2회 뒤에만 허용하고 `root_cause`, `change_plan`, 새 위험 등급, reclassification ID를 별도 원장 필드로 기록한다. 재분류 기록은 실패 이력을 삭제하지 않고 새 분류 경계를 남긴다.
+
+격리 Unity cache는 work ID별 marker가 있는 canonical cache root의 엄격한 하위 경로만 사용한다. `Assets`, `Packages`, `ProjectSettings`는 SHA-256 내용 기준으로 증분 동기화해 같은 크기·timestamp의 변경도 반영하고 `Library`는 재사용한다. cleanup은 work ID, source, instance canonical path가 marker와 일치할 때만 허용한다.
+
+`Invoke-UnityEditModeTests.ps1` Run은 low-level이며 wrapper가 격리 cache 아래 발급한 만료형 one-shot token 없이는 시작할 수 없다. token 누락·만료·소비 후 재사용은 Unity process 시작 전에 차단한다. `-ValidateResultsOnly`만 token 없는 저비용 호환 경로로 유지한다.
+
 ## artifact budget와 canonical evidence
 
 - criterion 하나당 기본 canonical 증거 1개를 둔다. 여러 파일이 필요하면 manifest 하나가 묶음을 소유한다.
@@ -195,6 +229,7 @@ Unity 플레이어블 변경은 QA가 가능한 범위의 MCP Play를 수행하�
 
 - R1~R3 작업 패킷, production 소유자, 독립 QA 또는 총괄 최종 판정이 없다.
 - 사용자 원증상·합성 oracle·criterion→evidence 연결이 없다.
+- 원인 레이어와 negative control 증명 없이 renderer/object disable, alpha 0, 이동·입력 우회, error swallow, 과대 invisible collider 또는 hidden-output 기대 테스트로 증상만 가렸다.
 - 첫 blocker 뒤 고비용 검증을 계속했거나, 수정 뒤 이전 PASS를 유효하게 재사용했다.
 - 현재 후보와 증거 fingerprint가 다르거나 canonical run_id가 둘 이상이다.
 - Unity 증거에 lease owner가 없거나 stale/중복 객체가 포함됐다.

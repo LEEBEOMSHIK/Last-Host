@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "work_id": "2026-08-02-verification-harness-cost-guards",
+  "status": "superseded",
+  "run_id": "cost-guards-independent-qa-correction-002",
+  "candidate_fingerprint": "2711e9f5cb5e10de24c9f563bbac4e264f752db69e7afc3df8fded592276a663",
+  "cost": {
+    "unity_starts": 0,
+    "mcp_starts": 0,
+    "build_starts": 0,
+    "recorded_high_cost_attempts": 0
+  },
+  "evidence": [
+    {
+      "run_id": "cost-guards-independent-qa-correction-002",
+      "candidate_fingerprint": "2711e9f5cb5e10de24c9f563bbac4e264f752db69e7afc3df8fded592276a663",
+      "path": "_workspace/completed/2026-08-03-2026-08-02-verification-harness-cost-guards/artifacts/independent-qa-report-correction-002.md"
+    }
+  ]
+}

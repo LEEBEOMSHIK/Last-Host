@@ -44,16 +44,61 @@ pwsh tools/verification/UnityMcpLease.ps1 Release `
 - 기본 파일은 `<ProjectPath>/Temp/last-host-unity-mcp-lease.json`이며 추적 대상이 아니다.
 - lease 획득 뒤 60초 간격 heartbeat를 권장하고, Play 종료·임시 객체 제거·scene dirty 확인 뒤 반납한다.
 
-## 2. EditMode 테스트 실행과 XML 판정
+## 2. 고비용 검증 preflight와 EditMode 실행
 
 ```powershell
-pwsh tools/verification/Invoke-UnityEditModeTests.ps1 `
-  -ProjectPath UnityProject `
+pwsh tools/verification/Invoke-HighCostVerification.ps1 `
+  -WorkId 2026-08-02-example `
+  -CriterionId G-example `
+  -Route UnityEditMode `
+  -RunId example-run-001 `
+  -CandidateFingerprint '<sha256>' `
+  -LedgerPath '_workspace/active/2026-08-02-example/artifacts/verification-attempt-ledger.json' `
+  -AgentBriefPath '_workspace/active/2026-08-02-example/artifacts/agent-brief.json' `
+  -CurrentStatePath '_workspace/active/2026-08-02-example/artifacts/verification-current-state.json' `
+  -QaHarnessPath 'UnityProject/Assets/_Project/Tests' `
+  -ContractBaselinePath '_workspace/active/2026-08-02-example/artifacts/contract-baseline' `
+  -ProductionPath 'UnityProject/Assets/_Project/Scripts' `
+  -TestPath 'UnityProject/Assets/_Project/Tests' `
+  -SourceProjectPath UnityProject `
+  -CacheRoot (Join-Path $env:TEMP 'last-host-unity-cache') `
   -UnityPath 'C:/Program Files/Unity/Hub/Editor/6000.4.6f1/Editor/Unity.exe' `
   -ResultsPath (Join-Path $env:TEMP 'last-host-editmode/results.xml') `
   -LogPath (Join-Path $env:TEMP 'last-host-editmode/unity.log') `
   -TimeoutSeconds 1800
 ```
+
+`Invoke-HighCostVerification.ps1`는 유일한 공용 고비용 진입점이다. 실행 전에 다음을 순서대로 차단한다.
+
+- `verification-capabilities.json`에 없거나 `available: false`인 route
+- 같은 criterion의 연속 실패 2회와 재분류 없는 세 번째 시도
+- full-history/3개 초과 필수 파일/과대 brief
+- profile 허용 목록 밖의 status 또는 route 기대 status(`ready-for-verification`)와 run·fingerprint·cost가 맞지 않는 current-state JSON
+- Reflection/private member 접근, Rigidbody 이동 후 sync 없는 Y-sort를 포함한 QA C# harness
+- collider/resolver 계약 변경 뒤 과거 타입을 기대하는 stale test
+- marker가 없는 cache 재사용·cleanup
+
+preflight가 모두 통과하면 작업별 격리 프로젝트의 `Assets`, `Packages`, `ProjectSettings`만 SHA-256 내용 기준으로 증분 동기화하고 `Library`는 보존한다. 크기와 timestamp가 같아도 내용이 다르면 다시 복사한다. 실제 실행 분기는 profile에 허용된 `ready-for-verification` → `verification-running` 전이를 확인하고, wrapper는 5분짜리 one-shot token을 발급해 low-level runner가 token을 소비한 뒤에만 Unity를 시작할 수 있다. 실제 실행 없이 점검할 때는 wrapper의 `-PreflightOnly`를 사용한다.
+
+route/capability와 각 preflight lint의 실제 실패는 high-cost 시작 전에 attempt ledger에 원자적으로 기록한다. entry identity는 criterion, outcome, run ID, fingerprint, route이며 같은 run 재호출은 중복 failure를 만들지 않는다. 연속 실패 2회 뒤 세 번째 호출은 retry-budget guard에서 차단되고 이 guard 차단 자체는 새 failure로 기록하지 않는다.
+
+재분류는 같은 criterion의 실제 failure가 2회 쌓인 뒤에만 허용한다. 원장에는 root cause와 change plan을 합친 메모가 아니라 별도 필드로 보존한다.
+
+```powershell
+pwsh tools/verification/Invoke-HighCostVerification.ps1 `
+  -WorkId 2026-08-02-example `
+  -CriterionId G-example `
+  -LedgerPath '_workspace/active/2026-08-02-example/artifacts/verification-attempt-ledger.json' `
+  -RegisterReclassification `
+  -ReclassificationId reclass-001 `
+  -NewRiskClass R2 `
+  -RootCause '미지원 route 선택이 두 번 반복된 원인을 확인함' `
+  -ChangePlan '지원 route로 변경하고 영향받는 최소 검증부터 재개함'
+```
+
+### low-level runner 경계
+
+`Invoke-UnityEditModeTests.ps1`의 Run parameter set은 low-level 구현 상세다. wrapper가 만든 marker-scoped one-shot `-GuardTokenPath` 없이는 parameter binding 또는 token 검증에서 Unity 시작 전에 실패한다. token은 만료를 검사하고 실제 Unity 경로 확인보다 먼저 한 번 소비되므로 누락·만료·재사용이 모두 차단된다. 에이전트가 직접 Run으로 호출하지 않는다.
 
 기존 XML만 검증할 수도 있다.
 
@@ -70,8 +115,17 @@ pwsh tools/verification/Invoke-UnityEditModeTests.ps1 `
 - `total > 0`, `passed == total`, 나머지 결과 0, 루트 결과 `Passed`일 때만 종료 코드 0이다.
 - skipped/inconclusive도 미검증이므로 최종 PASS에서는 실패로 취급한다.
 - 같은 프로젝트를 연 Unity/MCP와 배치 Unity를 동시에 실행하지 않는다. 먼저 lease를 획득한다.
+- `-ValidateResultsOnly`는 기존 결과의 저비용 판정 호환 경로라 token 없이 유지한다. 새 Unity 실행 권한을 주지 않는다.
 
-## 3. verification candidate fingerprint
+## 3. dummy negative-control self-test
+
+```powershell
+pwsh tools/verification/Invoke-VerificationGuardSelfTest.ps1
+```
+
+G1~G8의 차단과 정상 preflight를 임시 dummy 파일로 한 묶음 검증한다. G7에는 unknown status와 허용되지만 route 기대값과 다른 status-only stale 반례가 포함된다. 실제 Unity/MCP/build는 시작하지 않으며 임시 루트는 canonical temp 경로와 고정 prefix를 확인한 뒤 정리한다.
+
+## 4. verification candidate fingerprint
 
 ```powershell
 pwsh tools/verification/Get-VerificationFingerprint.ps1 `

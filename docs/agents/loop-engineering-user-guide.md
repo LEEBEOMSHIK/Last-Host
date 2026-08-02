@@ -22,6 +22,12 @@
 
 즉, 결함을 없다고 약속하는 체계가 아니라 결함을 더 이르고 싸게 찾고, 무엇을 검증했는지 추적하며, 미검증을 완료로 포장하지 못하게 하는 체계다.
 
+## “안 보임”과 “고쳐짐”은 다르다
+
+캐릭터나 오브젝트를 끄거나 투명하게 만들기, 순간이동·좌표 고정·입력 잠금으로 문제 구간을 피하기, 오류를 숨기기, 보이는 물체보다 큰 투명 충돌체로 접근을 막기, 숨겨진 결과에 맞춰 테스트를 바꾸기는 증상을 없앤 것이지 원인을 고친 것이 아니다. 이런 후보는 원인 레이어와 사용자 화면을 함께 증명하기 전까지 `temporary` 또는 `blocked`다.
+
+workaround는 사용자가 명시적으로 승인하고 화면·기록에 임시임을 표시하며 제거 조건을 남긴 경우에만 쓸 수 있다. QA는 플레이어 active/enabled/alpha·transform·입력이 보존되는 negative control, 가시 footprint와 collision tolerance, 사용자가 보는 최종 화면 oracle을 확인한다. 상세 실행 규칙은 [`loop-engineering-gates.md`](loop-engineering-gates.md)의 `원인 교정과 증상 은폐 금지`를 따른다.
+
 ## R0~R3: 작업 크기별 필요한 범위
 
 | 등급 | 대표 작업 | 필요한 역할 | 기본 문서 | 예상 검증·실행 범위 |
@@ -111,6 +117,10 @@ Unity Editor, MCP, TestRunner, 같은 `Library`를 쓰는 batch Unity는 프로�
 
 현재 한계도 함께 봐야 한다.
 
+- 고비용 검증은 공용 wrapper가 capability, 연속 실패, 위험 QA 코드, stale contract, brief/state, 격리 cache를 먼저 검사한다. preflight 실패면 Unity/MCP/build를 시작하지 않는다.
+- EditMode low-level runner의 Run은 wrapper one-shot token이 필요하다. 기존 XML을 읽는 `ValidateResultsOnly`만 직접 사용할 수 있다.
+- 같은 criterion이 2회 연속 실패하면 root cause와 위험 등급을 재분류하기 전 세 번째 실행이 차단된다.
+
 - lease는 협력적 잠금이다. 규칙을 무시한 외부 MCP·Editor 조작을 운영체제 수준에서 완전히 차단하지 못한다.
 - 이번 감사에서 새 EditMode runner로 실제 Unity live batch와 실제 Editor PID/MCP lease 결합을 실행하지 않았다.
 - 범용 atomic GameView capture 도구는 없다. 시각 작업마다 scene·root·상태를 아는 저장소 소유의 task-specific Editor harness가 필요하다.
@@ -125,6 +135,7 @@ Unity Editor, MCP, TestRunner, 같은 `Library`를 쓰는 batch Unity는 프로�
 
 - [ ] 작업이 R0~R3 중 무엇이며 그 이유가 한 문장으로 적혀 있는가?
 - [ ] 내가 말한 원증상과 완료 화면·동작이 criterion에 직접 연결됐는가?
+- [ ] 캐릭터·오브젝트·입력·오류를 숨긴 것이 아니라 원인 레이어와 negative control을 증명했는가?
 - [ ] 구현자, 독립 QA, 총괄이 서로 다른 책임으로 기록됐는가?
 - [ ] 구현자는 표적 검증, QA는 수용 핵심과 freeze 후 canonical 검증, 총괄은 증거 감사만 했는가?
 - [ ] 첫 실패 뒤 전체 suite·대형 matrix·캡처가 계속 실행되지 않았는가?
@@ -141,6 +152,7 @@ Unity Editor, MCP, TestRunner, 같은 `Library`를 쓰는 batch Unity는 프로�
 
 - 작업 등급과 owner 없이 여러 에이전트가 같은 production 파일을 번갈아 수정한다.
 - 사용자 원증상 대신 테스트 개수나 내부 수치만 완료 근거로 제시한다.
+- renderer/object disable, alpha 0, teleport·clamp, 입력 잠금, error swallow, 과대 invisible collider 또는 hidden-output 기대 테스트로 화면만 조용하게 만든다.
 - 후보가 고정되기 전에 전체 suite·72/432 같은 대형 matrix·대량 PNG를 반복한다.
 - 첫 blocker가 있는데 뒤 단계 결과까지 함께 보고한다.
 - 같은 후보·criterion에 canonical run이 둘 이상이다.
@@ -167,3 +179,4 @@ Unity Editor, MCP, TestRunner, 같은 `Library`를 쓰는 batch Unity는 프로�
 | --- | --- | --- |
 | 2026-08-02 | 최초 작성. R0~R3, 역할별 검증 소유권, 중복 재실행 제한, S0~S7, correction cycle, 증거 예산·revision, Unity 한계, 사용자 체크리스트 통합 | QA r4 PASS, 총괄 내부 승인 가능, 사용자 확인 가능, active·미커밋 |
 | 2026-08-02 | 작업 비용 중앙 현황판 확인 경로와 사용자 점검 항목 연결 | 작업 비용 중앙 현황판 보완 진행 중, active·미커밋 |
+| 2026-08-02 | 증상 은폐와 원인 교정 구분, workaround 조건, 사용자 확인용 negative control 추가 | 문서 후보·독립 QA 대기 |

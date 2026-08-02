@@ -83,6 +83,8 @@
 - 프로젝트 방향, 범위, 승인 게이트에 영향을 주는 주요 산출물은 사용자에게 올리기 전 총괄 관리자 검토를 거친다.
 - 프로젝트 작업은 루프 엔지니어링 방식으로 운영하며, 목표 접수부터 다음 작업 발굴까지 반복 가능한 절차로 관리한다.
 - 루프의 위험 등급, 최소 역할, S0~S7 실행 순서, 검증 무효화와 완료·커밋 차단 조건은 `docs/agents/loop-engineering-gates.md`를 유일 실행 기준으로 따른다.
+- Unity/MCP/build 같은 고비용 검증은 `tools/verification/Invoke-HighCostVerification.ps1` preflight를 통과해야 하며 low-level runner 직접 Run은 금지한다.
+- renderer/object disable·alpha 0·이동/입력 우회·오류 숨김·과대 invisible collider·hidden-output 기대 테스트 같은 증상 은폐는 근본 수정 완료로 인정하지 않으며, 세부 판정은 위 실행 기준을 따른다.
 - 모든 역할을 관성적으로 호출하지 않는다. R0~R3 위험 등급에 필요한 최소 역할만 배정하되, R1~R3 변경의 독립 QA와 총괄 최종 판정은 유지한다.
 - 루프 적용 중 범위 충돌, 승인 게이트, 검증 불가, 에이전트 산출물 충돌, 작업 기록 누락이 생기면 사용자에게 문제 사안으로 보고한다.
 - 코드, 씬, ProjectSettings, 승인 문서, 운영 문서 변경은 완료 또는 커밋 보고 전 `_workspace` 작업 패킷, QA/검증 에이전트 기록, 총괄 관리자 판정이 있어야 한다.
