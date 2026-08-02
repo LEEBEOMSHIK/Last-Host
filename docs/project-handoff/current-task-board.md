@@ -20,9 +20,9 @@
 
 ## 현재 저장소 상태
 
-- 현재 Git 기준: `2eff18d`가 `origin/main`에 반영돼 있다.
+- 현재 Git 기준: 검증 하네스·상태 계약 운영 커밋 `a33164b`가 `origin/main`에 반영돼 있다.
 - 현재 Git 작업 상태: 자연 부분 가림 관련 구현·씬·테스트·정책·작업 기록 변경은 로컬 미커밋이며, Stage2·Stage3·ProjectSettings·preview·reference 등 현재 작업과 무관한 기존 dirty도 함께 존재한다.
-- 현재 커밋 경계: 2026-08-03 사용자 요청에 따라 검증 하네스·상태 계약 운영 변경만 선별 커밋·푸시한다. 자연 부분 가림, Stage2·Stage3, ProjectSettings, preview, reference는 제외한다.
+- 현재 커밋 경계: 검증 하네스·상태 계약만 `a33164b`로 선별 반영했다. 자연 부분 가림, Stage2·Stage3, ProjectSettings, preview, reference는 제외해 로컬에 보존했다.
 - 현재 로컬 작업: 자연 부분 가림 R2 최종 후보 `5cd81d7c…`가 gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, Console Error 0·scene dirty false를 통과했다. 3D legacy는 보존됐으며 실제 연속 WASD와 최종 화면 사용자 수용은 남아 있다. 정본은 `artifacts/canonical-evidence-r1.json`이다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
@@ -38,8 +38,8 @@
 
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
-| 검증 current-state 상태 계약 교정 | 완료 보관 — 총괄 내부 승인 가능, 선별 커밋 준비 | 후보 `71e4dcdd…`: unknown/status-only stale 차단, route expected status와 `ready-for-verification`→`verification-running` 전이, 기존 G1~G8 회귀를 구현자·QA 각 1회 `24/24`로 확인했다. Unity/MCP/빌드 0. | `_workspace/completed/2026-08-03-2026-08-02-verification-current-state-contract/` |
-| 검증 하네스 비용·재시도 차단 보완 | 완료 보관 — 후속 R3로 SUPERSEDED | 미지원 route·Reflection·stale contract·실패 2회·cache·full-history·low-level 우회는 유지되고, status 값·전이 계약은 후속 최종 후보 `71e4dcdd…`로 대체됐다. | `_workspace/completed/2026-08-03-2026-08-02-verification-harness-cost-guards/` |
+| 검증 current-state 상태 계약 교정 | 완료 보관·운영 `a33164b` push | 후보 `71e4dcdd…`: unknown/status-only stale 차단, route expected status와 `ready-for-verification`→`verification-running` 전이, 기존 G1~G8 회귀를 구현자·QA 각 1회 `24/24`로 확인했다. Unity/MCP/빌드 0. | `_workspace/completed/2026-08-03-2026-08-02-verification-current-state-contract/` |
+| 검증 하네스 비용·재시도 차단 보완 | 완료 보관·운영 `a33164b` push — 후속 R3로 SUPERSEDED | 미지원 route·Reflection·stale contract·실패 2회·cache·full-history·low-level 우회는 유지되고, status 값·전이 계약은 후속 최종 후보 `71e4dcdd…`로 대체됐다. | `_workspace/completed/2026-08-03-2026-08-02-verification-harness-cost-guards/` |
 | Production2D 자연 부분 가림·실제 충돌 루트 교정 | 기술 검증 통과 — 사용자 수용 대기 | 최종 `5cd81d7c…`: gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, Console Error 0·scene dirty false, 3D legacy 보존. 정본은 `artifacts/canonical-evidence-r1.json`; 실제 연속 WASD와 최종 화면 수용 전에는 완료·보관·커밋하지 않는다. 비용은 `과다 — 부분 회피 가능`이다. | `_workspace/active/2026-08-02-production2d-natural-occlusion-root-fix/` |
 | Production2D 쥐·오브젝트 가시 실루엣 겹침 완전 교정 | 기술 검증 PASS·사용자 acceptance FAIL — 새 작업으로 SUPERSEDED/수정 필요 | `7ba12df`는 자동 검증을 통과했지만 wall/barrel/crate 접촉 시 쥐 전체 renderer를 꺼 증상을 숨긴다는 사용자 판정을 받았다. 해당 방식은 재사용하지 않고 새 R2 자연 가림 루트 교정으로 대체한다. | `_workspace/active/2026-08-02-production2d-visual-overlap-correction/` |
 | Production2D V1 오브젝트 가림·HUD 초상 잔여 조각 수정 | 부분 수용 — HUD 통과, 가림 후속 교정으로 재개 | HUD 잔여 조각 제거는 유지한다. tieBreak 1 통일과 footprint 확대는 자동 검증을 통과했지만 사용자 실제 화면에서 가시 실루엣 관통이 남아, 가림 부분은 2026-08-02 후속 교정으로 넘겼다. | `_workspace/active/2026-07-30-production2d-occlusion-hud-correction/` |

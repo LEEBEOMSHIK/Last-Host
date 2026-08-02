@@ -5,7 +5,7 @@
 - 작업 ID: `2026-08-02-production2d-natural-occlusion-root-fix`
 - 상태: 기술 검증 통과·내부 승인 가능 — 사용자 실제 WASD·최종 화면 수용 대기
 - 작업 경로: `_workspace/active/2026-08-02-production2d-natural-occlusion-root-fix/`
-- 최신 사용자 요청: 검증 하네스·상태 계약 변경을 선별 커밋·푸시하고 불필요한 원시 로그를 정리한다.
+- 최신 사용자 요청: 검증 하네스·상태 계약 변경 커밋·푸시와 불필요한 원시 로그 정리를 완료했다.
 
 ## 먼저 읽을 파일
 
@@ -15,8 +15,8 @@
 
 ## 바로 이어서 할 작업
 
-1. 검증 하네스·상태 계약 작업은 완료 보관 경로에서 선별 커밋·푸시한다.
-2. 자연 부분 가림 production·씬·테스트는 이번 운영 커밋에서 제외한다.
+1. 운영 커밋 `a33164b`와 후속 상태 동기화 커밋을 기준으로 사용한다.
+2. 자연 부분 가림 production·씬·테스트와 Stage2·Stage3 기존 dirty는 보존한다.
 3. 후속으로 사용자의 실제 연속 WASD·최종 화면 수용을 확인한다.
 
 ## 병행 차단 작업
@@ -41,10 +41,10 @@
 
 ## Git 상태
 
-- 원격 반영 기준: `2eff18d docs: sync verification cost push state`.
-- 검증 하네스·상태 계약 운영 변경은 사용자 커밋 요청을 받아 선별 커밋 준비 중이다.
+- 원격 반영 기준: `a33164b chore: harden verification execution guards`.
+- 검증 하네스·상태 계약 운영 변경과 완료 패킷은 `origin/main` 반영 완료다.
 - Stage2·Stage3·ProjectSettings·preview·reference 등 현재 작업과 무관한 기존 dirty도 함께 존재한다.
-- 자연 부분 가림 구현·씬·테스트는 사용자 실제 수용 대기라 이번 운영 커밋에서 제외한다.
+- 자연 부분 가림 구현·씬·테스트는 사용자 실제 수용 대기라 운영 커밋에서 제외했고 로컬에 보존돼 있다.
 
 ## 갱신 정보
 

@@ -8,5 +8,6 @@
 - Unity/MCP/TestRunner/build: 0회
 - 비용 판정: 과다 — 부분 회피 가능
 - 커밋 승인: 2026-08-03 사용자 요청
+- 반영 커밋: `a33164b chore: harden verification execution guards` (`origin/main`)
 
 이 작업 단독 후보는 G7 status 계약 누락 때문에 완료하지 않고, 해당 공백을 해소한 후속 R3 작업과 함께 운영 기준으로 반영한다.

@@ -4,7 +4,7 @@
 
 ## 최근 완료 보관
 
-- `2026-08-03-2026-08-02-verification-current-state-contract`: 독립 QA `24/24`, 총괄 r2 내부 승인, 비용 `주의`, Unity/MCP/build 0, 선별 커밋 준비
+- `2026-08-03-2026-08-02-verification-current-state-contract`: 독립 QA `24/24`, 총괄 r2 내부 승인, 비용 `주의`, Unity/MCP/build 0, 운영 `a33164b` 원격 반영
 - `2026-08-03-2026-08-02-verification-harness-cost-guards`: 후속 R3로 superseded, G1~G8 차단 유지, 비용 `과다 — 부분 회피 가능`
 - `2026-08-02-2026-08-02-loop-harness-efficiency-audit`: QA r6 PASS, 총괄 내부 승인, 비용 `과다 — 부분 회피 가능`, 운영 `533152e`·상태 동기화 `2eff18d` 원격 반영
 
