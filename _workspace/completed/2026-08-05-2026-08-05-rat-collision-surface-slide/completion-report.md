@@ -111,4 +111,4 @@
 ## 후속 작업
 
 - 동일 증상이 재발하면 공식 구현 계획의 `2D 이동·충돌 표면 슬라이드 계약`과 C1~C7/E08를 새 작업 charter로 재사용한다.
-- 커밋은 사용자가 요청할 때 다른 dirty 변경과 경계를 확인한 뒤 별도로 수행한다.
+- Git 반영: `4de3975 fix: complete surface slide and verification updates`로 `origin/main`에 푸시 완료.

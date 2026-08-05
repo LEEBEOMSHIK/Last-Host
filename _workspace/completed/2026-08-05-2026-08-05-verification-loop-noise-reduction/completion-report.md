@@ -67,7 +67,7 @@
 - 독립 QA 기록: 충족 — 본문 PASS, metadata blocker와 exact 해소 이력 보존
 - 프로젝트 총괄 판정: 충족
 - 사용자 승인 방향: 충족
-- board/cost/CURRENT와 completed 경로 최종 동기화: 조정자 상태-only 후속 대기
+- board/cost/CURRENT와 completed 경로 최종 동기화: 완료
 
 ## 완료일
 
@@ -75,4 +75,4 @@
 
 ## 다음 단계
 
-조정자가 board/cost/CURRENT와 완료 경로를 자체 대조해 동기화한 뒤 completed로 이동한다. 이 순수 최종 status sync에는 새 QA·총괄 라운드를 만들지 않는다.
+board/cost/CURRENT와 completed 경로를 상태-only로 동기화했고, `4de3975 fix: complete surface slide and verification updates`로 `origin/main`에 푸시 완료했다. 추가 QA·총괄 라운드는 실행하지 않았다.

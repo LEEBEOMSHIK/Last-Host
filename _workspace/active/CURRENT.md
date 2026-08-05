@@ -39,11 +39,12 @@
 
 ## Git 상태
 
-- 원격 반영 기준: `4cb578b fix: implement natural 2d object occlusion`.
-- Stage2·Stage3 커밋 `8285bb0`과 자연 부분 가림 커밋 `4cb578b`는 `origin/main` 반영 완료다.
+- 기능·완료 기록 원격 반영 기준: `4de3975 fix: complete surface slide and verification updates`.
+- Stage2·Stage3 `8285bb0`, 자연 부분 가림 `4cb578b`, surface slide·검증 반복 축소·Unity MCP 경로 교정 `4de3975`는 `origin/main` 반영 완료다.
 - 기능 후보는 기존 QA·총괄 판정을 근거로 원격에 보존했으며 완료·사용자 수용 판정은 별개다.
 - 사용자 실제 입력·화면 수용은 원격 반영과 별개로 대기 상태를 유지한다.
-- 대각선 충돌 표면 slide 작업은 사용자 수용·closeout QA·총괄을 통과해 `_workspace/completed/2026-08-05-2026-08-05-rat-collision-surface-slide/`로 보관했으며 커밋은 아직 수행하지 않았다.
+- 대각선 충돌 표면 slide 작업은 사용자 수용·closeout QA·총괄을 통과해 완료 보관·원격 반영됐다.
+- 사용자 소유 `docs/references/images/image.png`는 untracked 상태로 커밋에서 제외해 보존한다.
 
 ## 갱신 정보
 

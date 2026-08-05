@@ -83,3 +83,4 @@ Unity 아키텍처 에이전트
 ## 후속 작업
 
 - Codex 데스크톱 완전 재시작 후 새 세션에서 Unity MCP 도구 노출과 읽기 호출 확인
+- Git 반영: `4de3975 fix: complete surface slide and verification updates`로 `origin/main`에 푸시 완료.

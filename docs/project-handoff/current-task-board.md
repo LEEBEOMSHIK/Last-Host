@@ -20,19 +20,17 @@
 
 ## 현재 저장소 상태
 
-- 현재 Git 기준: Stage2·Stage3 `8285bb0`, 자연 부분 가림 `4cb578b`까지 `origin/main`에 반영돼 있다.
-- 현재 Git 작업 상태: 다른 PC에서 계속 작업하는 데 필요한 Stage2·Stage3와 자연 부분 가림 관련 소스·씬·테스트·작업 문서는 원격 반영 완료다.
-- 현재 커밋 경계: ProjectSettings 로컬 변경, preview, 사용자 reference, 사용자에게 반려된 저품질 규격 시험 산출물은 제외해 로컬에 보존한다.
+- 현재 기능·완료 기록 Git 기준: `4de3975 fix: complete surface slide and verification updates`가 `origin/main`에 반영돼 있다.
+- 현재 Git 작업 상태: 대각선 충돌 표면 slide, 검증 반복 축소 운영 규칙, Unity MCP 로컬 relay 경로 교정과 세 완료 패킷은 원격 반영 완료다. 사용자 소유 `docs/references/images/image.png`만 untracked로 남겨 커밋에서 제외했다.
+- 현재 커밋 경계: ProjectSettings·preview·`Builds/`·사용자 reference 보호 원칙은 유지하며, 이번 실제 제외 대상은 사용자 reference다.
 - 현재 로컬 작업: 자연 부분 가림 R2 최종 후보 `5cd81d7c…`가 gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, Console Error 0·scene dirty false를 통과했다. 3D legacy는 보존됐으며 최종 가림 화면과 쥐 본체 보존의 사용자 수용만 남아 있다. 정본은 `artifacts/canonical-evidence-r1.json`이다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
 - 정리 반영: 사용자 요청에 따라 r1~r5·r6 임시 preview 중간 바이너리 `1.38 MiB`를 삭제·커밋 제외하고 반려 사유만 문서로 보존
 - 기술 샘플 경계: 신규 패키지·최종 아트·기존 3D 교체 없이 별도 씬에서 시험 규격을 검증한다.
-- 로컬 제외 유지: `UnityProject/ProjectSettings/ProjectSettings.asset`의 `APP_UI_EDITOR_ONLY` unstaged 변경, `_workspace/previews/` untracked
-- 추가 보호 유지: 기존 `Physics2DSettings.asset` 로컬 변경과 사용자 소유 `docs/references/images/image.png`
-- `Builds/` 제외: 현재 완료 보관 동기화에 포함하지 않음
-- 이번 선별 커밋 포함: Stage2 원본 씬 복구 기록, Stage3 변이 선택·효과·복귀 구현, 자연 부분 가림·실제 충돌 후보와 관련 테스트·정책·작업 기록
-- 이번 선별 커밋 제외: 사용자에게 반려된 저품질 규격 시험 산출물, `_workspace/previews/`, ProjectSettings 로컬 변경, 사용자 reference
+- 보호 유지: ProjectSettings·`_workspace/previews/`·`Builds/`는 관련 변경이 다시 나타나도 별도 승인·검증 없이 후속 커밋에 섞지 않는다.
+- 이번 선별 커밋 포함: surface slide production·테스트·canonical/SUPERSEDED 증거, 재발 방지 계약, 검증 반복 축소 운영 규칙, Unity MCP 로컬 경로 교정, 완료 보관·현황 동기화.
+- 이번 선별 커밋 제외: 사용자 소유 `docs/references/images/image.png`.
 - Stage2 임시 정리: QA 빌드 성공 기록은 문서로 남기고 `C:\tmp\LastHostRatHost2DStage2` 약 `205 MB`와 정적 컴파일 DLL/PDB는 사용자 요청으로 삭제
 
 ## 현재 진행 중
