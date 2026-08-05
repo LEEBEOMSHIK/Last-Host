@@ -15,13 +15,13 @@
 
 | 에이전트 | 역할 | 담당 업무 | 산출물 | 판정 |
 | --- | --- | --- | --- | --- |
-| 프로젝트 조정 에이전트 | 범위·상태·비용 | 작업 패킷과 final 상태·비용 동기화 | 본 패킷·현황판 | 기술 검증 통과·사용자 수용 대기 |
+| 프로젝트 조정 에이전트 | 범위·상태·비용 | 작업 패킷과 final 상태·비용 동기화 | 본 패킷·현황판 | 사용자 수용 반영·완료 보관 |
 | visual footprint analyst | 읽기 전용 정적 계측 | alpha>64 object polygon·rat capsule·현 box 오차 측정 | `artifacts/visual-footprint-measurement.md` | 계획 외 필요 역할·완료 |
 | 게임플레이 구현 에이전트 | runtime production owner | whole-hide 제거/대체, collider·방향·footpoint, helper·순수/단위 테스트 | gameplay 후보·새 표적 테스트·구현 보고 | 공식 targeted `3/3` PASS·release 완료 |
 | Unity 씬/통합 구현 에이전트 | scene production owner | builder·scene·serialized wiring·씬 계약 테스트 | 인계 반영·rebuild·targeted PASS | scene `8/8` PASS·release 완료 |
 | 문서/릴리즈 에이전트 | 후속 문서 owner | 증상 은폐 방지 전역·시각·검증 정책 정합 | 정책 diff·`artifacts/policy-update-r1.md` | canonical policy evidence PASS |
 | QA/검증 에이전트 | 독립 검증 | S0 사전 검토와 freeze 후보·최종 증거 감사 | verification·canonical evidence | QA Play r3 PASS·r4 evidence audit PASS |
-| 프로젝트 총괄 관리자 | 최종 승인 | 증거·비용·수용 대기 감사 | `director-review.md` | 2차 `내부 승인 가능`·사용자 수용 대기 |
+| 프로젝트 총괄 관리자 | 최종 승인 | 증거·비용·수용 대기 감사 | `director-review.md` | 2차 `내부 승인 가능`; 후속 사용자 수용 완료 |
 
 ## 상세 기록
 
@@ -268,3 +268,11 @@
 - 실행 비용: Unity/MCP/TestRunner/build/capture 재실행 `0`; 기존 정본 증거 재사용.
 - 제외: ProjectSettings 로컬 변경, preview, 사용자 reference, 반려된 저품질 규격 시험 산출물.
 - 판정 경계: 원격 보존은 완료·사용자 수용 승격이 아니며 실제 WASD·최종 화면 확인은 계속 대기한다.
+
+### 2026-08-05 사용자 수용·상태-only 완료 보관
+
+- 에이전트: 프로젝트 조정 에이전트
+- 사용자 확인: 자연 부분 가림 화면과 쥐 본체 보존은 이미 수용한 내용임을 재확인했다.
+- 수행 내용: 사용자 수용 게이트를 닫고 작업 패킷·공유 현황판·CURRENT·비용 현황·완료 색인을 동기화했다.
+- 실행 비용: Unity/MCP/TestRunner/build/QA/총괄 재실행 `0`.
+- 판정: 기존 QA PASS와 총괄 `내부 승인 가능`을 유지해 완료 보관한다.

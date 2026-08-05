@@ -4,7 +4,7 @@
 
 - 작업 ID: `2026-08-02-production2d-natural-occlusion-root-fix`
 - 작업명: Production2D 자연 부분 가림·실제 충돌 루트 교정
-- 상태: 기술 검증 통과 — 사용자 실제 WASD·최종 화면 수용 대기
+- 상태: 완료 — 사용자 자연 부분 가림 화면·쥐 본체 보존 수용
 - 생성일: 2026-08-02 KST
 - 담당 에이전트: 프로젝트 조정 에이전트
 - 보조 에이전트: 게임플레이 구현 에이전트, Unity 씬/통합 구현 에이전트, 문서/릴리즈 에이전트, QA/검증 에이전트, 프로젝트 총괄 관리자 에이전트
@@ -185,3 +185,9 @@
 - C1~C7이 같은 freeze candidate에서 canonical evidence로 통과한다.
 - whole-character hide·alpha 0·teleport·입력 잠금·과도한 collider 확장이 없다.
 - QA PASS와 총괄 내부 승인 뒤 사용자가 실제 WASD와 자연 부분 가림을 수용한다.
+
+## 2026-08-05 사용자 수용·완료
+
+- 사용자 확인: 다음 작업 후보로 남아 있던 자연 부분 가림 화면과 쥐 본체 보존은 이미 수용한 내용임을 재확인했다.
+- 완료 판정: final candidate `5cd81d7c...`의 기존 기술 검증 PASS와 총괄 `내부 승인 가능`에 사용자 수용이 더해져 완료한다.
+- 검증 경계: 상태-only 종결이므로 Unity·MCP·TestRunner·빌드·QA·총괄 재실행은 `0`이다.

@@ -4,6 +4,7 @@
 
 ## 최근 완료 보관
 
+- `2026-08-05-2026-08-02-production2d-natural-occlusion-root-fix`: final `5cd81d7c…`, 전체 EditMode `203/203`, QA Play r3 PASS, 총괄 내부 승인, 사용자 자연 부분 가림 화면·쥐 본체 보존 수용, 상태-only 종결 Unity/QA 0
 - `2026-08-05-2026-08-05-verification-loop-noise-reduction`: preflight/S0와 실제 run 구분, 구현·QA 반복 상한, 상태-only 최종 sync·보고 압축 운영 계약 반영, 정적 QA1·총괄1, Unity/MCP/build 0
 - `2026-08-05-2026-08-05-rat-collision-surface-slide`: 구현자·독립 QA 각각 `16/16`, 사용자 C6 실제 WASD 수용, closeout QA·총괄 PASS, 비용 `주의`, Unity/MCP/build `5/0/0`
 - `2026-08-03-2026-08-02-verification-current-state-contract`: 독립 QA `24/24`, 총괄 r2 내부 승인, 비용 `주의`, Unity/MCP/build 0, 운영 `a33164b` 원격 반영

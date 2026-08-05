@@ -2,22 +2,22 @@
 
 ## 현재 이어받을 작업
 
-- 작업 ID: `2026-08-02-production2d-natural-occlusion-root-fix`
-- 상태: 기술 검증 통과 — 사용자 최종 가림 화면 수용 대기
-- 작업 경로: `_workspace/active/2026-08-02-production2d-natural-occlusion-root-fix/`
-- 최신 사용자 요청: 대각선 충돌 표면 slide 수정 결과를 수용했으므로 추가 이동 QA를 반복하지 않고, 다음 후보는 자연 부분 가림 최종 화면 수용으로 구분한다.
+- 작업 ID: 신규 작업 후보 미선정
+- 상태: 자연 부분 가림·쥐 본체 보존 사용자 수용 완료 및 보관
+- 작업 경로: `_workspace/completed/2026-08-05-2026-08-02-production2d-natural-occlusion-root-fix/`
+- 최신 사용자 요청: 다음 후보로 표시된 자연 부분 가림 화면과 쥐 본체 보존은 이미 수용한 내용이므로 완료 상태로 바로잡는다.
 
 ## 먼저 읽을 파일
 
-1. `_workspace/active/2026-08-02-production2d-natural-occlusion-root-fix/artifacts/canonical-evidence-r1.json`
-2. `_workspace/active/2026-08-02-production2d-natural-occlusion-root-fix/artifacts/independent-qa-r4-s6-audit.md`
-3. `_workspace/active/2026-08-02-production2d-natural-occlusion-root-fix/verification.md`
+1. `docs/project-handoff/current-task-board.md`
+2. `_workspace/completed/2026-08-05-2026-08-02-production2d-natural-occlusion-root-fix/completion-report.md`
+3. `_workspace/completed/2026-08-05-2026-08-02-production2d-natural-occlusion-root-fix/verification.md`
 
 ## 바로 이어서 할 작업
 
-1. 완료 보관된 대각선 충돌 표면 slide의 이동 QA는 반복하지 않는다.
-2. 자연 부분 가림 최종 화면과 쥐 전체 소실 0만 사용자 수용 확인한다.
-3. 해당 화면 수용 뒤 자연 부분 가림 작업의 완료·보관 여부를 결정한다.
+1. 완료된 대각선 충돌 표면 slide와 자연 부분 가림·쥐 본체 보존 QA는 반복하지 않는다.
+2. 남아 있는 active 항목의 실제 미충족 게이트를 상태판과 대조한다.
+3. 새 작업 후보는 사용자와 선택한 뒤 별도 작업 패킷으로 시작한다.
 
 ## 병행 차단 작업
 
@@ -41,8 +41,8 @@
 
 - 기능·완료 기록 원격 반영 기준: `4de3975 fix: complete surface slide and verification updates`.
 - Stage2·Stage3 `8285bb0`, 자연 부분 가림 `4cb578b`, surface slide·검증 반복 축소·Unity MCP 경로 교정 `4de3975`는 `origin/main` 반영 완료다.
-- 기능 후보는 기존 QA·총괄 판정을 근거로 원격에 보존했으며 완료·사용자 수용 판정은 별개다.
-- 사용자 실제 입력·화면 수용은 원격 반영과 별개로 대기 상태를 유지한다.
+- 자연 부분 가림 기능 후보는 기존 QA·총괄 판정과 후속 사용자 수용을 근거로 완료 보관했다.
+- 자연 부분 가림 실제 입력·화면 수용 대기는 2026-08-05 사용자 재확인으로 종료됐다.
 - 대각선 충돌 표면 slide 작업은 사용자 수용·closeout QA·총괄을 통과해 완료 보관·원격 반영됐다.
 - 사용자 소유 `docs/references/images/image.png`는 untracked 상태로 커밋에서 제외해 보존한다.
 

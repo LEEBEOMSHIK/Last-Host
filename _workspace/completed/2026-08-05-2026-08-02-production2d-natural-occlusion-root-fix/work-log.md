@@ -216,3 +216,9 @@
 - manifest/current mismatch 0·fingerprint 일치, canonical evidence SHA mismatch 0, legacy scene/camera diff 0, HEAD `2eff18d`, staged 0을 확인했다.
 - 판정: `내부 승인 가능 — 사용자 실제 WASD·최종 화면 수용 대기`. 사용자 수용 전 완료·보관·커밋 금지는 유지한다.
 - 본 재감사 실행: Unity/MCP/TestRunner/build/test/capture 0, commit/push 0.
+
+### 2026-08-05 사용자 수용·완료 보관
+
+- 사용자가 자연 부분 가림 화면과 쥐 본체 보존을 이미 수용한 내용임을 재확인했다.
+- 기존 QA PASS·총괄 내부 승인 가능 상태에서 남은 사용자 게이트만 닫았다.
+- 상태-only 동기화로 Unity/MCP/TestRunner/build/QA/총괄 재실행은 `0`이다.

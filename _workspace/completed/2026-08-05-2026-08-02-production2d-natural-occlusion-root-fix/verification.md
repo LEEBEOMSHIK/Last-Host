@@ -182,3 +182,10 @@
 - canonical run/manifest: `natural-occlusion-final-evidence-r1-20260802` / `artifacts/canonical-evidence-r1.json`.
 - S6 audit 실행 비용: Unity/MCP/TestRunner/build/test/capture 0. 정적 manifest/diff/XML 감사만 수행했다.
 - 최종 판정: `기술 검증 통과 — 사용자 실제 WASD·최종 화면 수용 대기`. 3D legacy 보존 유지.
+
+## 2026-08-05 사용자 수용 종결
+
+- 사용자가 자연 부분 가림 최종 화면과 쥐 본체 보존을 수용한 내용임을 재확인했다.
+- 기존 canonical candidate `5cd81d7c...`, gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, 총괄 2차 `내부 승인 가능`을 완료 근거로 유지한다.
+- 이번 변경은 수용 상태·경로 동기화뿐이므로 새 Unity/MCP/TestRunner/build/QA 실행은 `0`이다.
+- 완료 판단: **PASS — 사용자 수용 완료·보관 가능**.
