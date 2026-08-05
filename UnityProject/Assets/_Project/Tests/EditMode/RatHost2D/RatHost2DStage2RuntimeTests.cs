@@ -7,6 +7,8 @@ namespace LastHost.Prototype.RatHost2D.Tests
 {
     public sealed class RatHost2DStage2RuntimeTests
     {
+        private const float FixedDeltaTime = 0.02f;
+
         [Test]
         public void VirusUsesOneLogicalRootAndTechnicalCollisionMotor()
         {
@@ -28,6 +30,61 @@ namespace LastHost.Prototype.RatHost2D.Tests
             }
             finally
             {
+                Object.DestroyImmediate(virus);
+            }
+        }
+
+        [Test]
+        public void C7_VirusSharesSurfaceSlideWithoutChangingStateInputOrSpeedContracts()
+        {
+            var originalSimulationMode = Physics2D.simulationMode;
+            var virus = CreateVirus(Vector2.zero, out var movement);
+            var obstacle = new GameObject("VirusArenaWall");
+            obstacle.transform.position = new Vector2(0f, -0.65f);
+            var obstacleCollider = obstacle.AddComponent<BoxCollider2D>();
+            obstacleCollider.size = new Vector2(8f, 0.2f);
+
+            try
+            {
+                Physics2D.simulationMode = SimulationMode2D.Script;
+                movement.Configure(null, null, 3f);
+                movement.SetVirusGameplayEnabled(true);
+                movement.CachePlayerInput(new Vector2(1f, -1f));
+                Physics2D.SyncTransforms();
+
+                for (var index = 0; index < 30; index++)
+                {
+                    movement.SimulateFixedStep(FixedDeltaTime);
+                    Assert.That(Physics2D.Simulate(FixedDeltaTime), Is.True);
+                }
+
+                var virusCollider = virus.GetComponent<BoxCollider2D>();
+                Assert.That(movement.Body.position.x, Is.GreaterThan(1f));
+                Assert.That(movement.Body.position.y, Is.GreaterThan(-0.06f));
+                Assert.That(Physics2D.Distance(virusCollider, obstacleCollider).distance,
+                    Is.GreaterThanOrEqualTo(-0.001f));
+                Assert.That(movement.IsVirusGameplayEnabled, Is.True);
+                Assert.That(movement.CachedMove,
+                    Is.EqualTo(new Vector2(1f, -1f).normalized));
+                Assert.That(movement.Motor.MoveSpeed, Is.EqualTo(3f));
+                Assert.That(movement.FacingDirection, Is.EqualTo(Direction8.SouthEast));
+                Assert.That(movement.Motor.enabled, Is.False);
+
+                movement.SetVirusGameplayEnabled(false);
+                movement.CachePlayerInput(Vector2.right);
+                var disabledPosition = movement.Body.position;
+                movement.SimulateFixedStep(FixedDeltaTime);
+                Assert.That(Physics2D.Simulate(FixedDeltaTime), Is.True);
+
+                Assert.That(movement.Body.position, Is.EqualTo(disabledPosition));
+                Assert.That(movement.CachedMove, Is.EqualTo(Vector2.zero));
+                Assert.That(movement.Motor.CachedMove, Is.EqualTo(Vector2.zero));
+                Assert.That(movement.IsVirusGameplayEnabled, Is.False);
+            }
+            finally
+            {
+                Physics2D.simulationMode = originalSimulationMode;
+                Object.DestroyImmediate(obstacle);
                 Object.DestroyImmediate(virus);
             }
         }

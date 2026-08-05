@@ -1,0 +1,12 @@
+{
+  "work_id": "2026-08-05-rat-collision-surface-slide",
+  "context_mode": "packet-only",
+  "fork_turns": "none",
+  "required_files": [
+    "_workspace/active/2026-08-05-rat-collision-surface-slide/task.md",
+    "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/PhysicsCameraAndSort2DTests.cs",
+    "UnityProject/Assets/_Project/Tests/EditMode/RatHost2D/RatHost2DStage2RuntimeTests.cs"
+  ],
+  "message": "Independently run the single frozen EditMode target bundle for C1-C5, C7, and E08. Verify flat-wall slide, front stop, true-corner stop, symmetry, unobstructed/idle movement, virus state/input/speed preservation, and legacy non-penetration. Stop at the first blocker. Do not run full suite, MCP Play, build, or the low-level runner directly.",
+  "include_conversation_history": false
+}

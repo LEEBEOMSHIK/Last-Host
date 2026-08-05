@@ -4,6 +4,8 @@
 
 ## 최근 완료 보관
 
+- `2026-08-05-2026-08-05-verification-loop-noise-reduction`: preflight/S0와 실제 run 구분, 구현·QA 반복 상한, 상태-only 최종 sync·보고 압축 운영 계약 반영, 정적 QA1·총괄1, Unity/MCP/build 0
+- `2026-08-05-2026-08-05-rat-collision-surface-slide`: 구현자·독립 QA 각각 `16/16`, 사용자 C6 실제 WASD 수용, closeout QA·총괄 PASS, 비용 `주의`, Unity/MCP/build `5/0/0`
 - `2026-08-03-2026-08-02-verification-current-state-contract`: 독립 QA `24/24`, 총괄 r2 내부 승인, 비용 `주의`, Unity/MCP/build 0, 운영 `a33164b` 원격 반영
 - `2026-08-03-2026-08-02-verification-harness-cost-guards`: 후속 R3로 superseded, G1~G8 차단 유지, 비용 `과다 — 부분 회피 가능`
 - `2026-08-02-2026-08-02-loop-harness-efficiency-audit`: QA r6 PASS, 총괄 내부 승인, 비용 `과다 — 부분 회피 가능`, 운영 `533152e`·상태 동기화 `2eff18d` 원격 반영

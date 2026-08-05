@@ -1,6 +1,6 @@
 # 작업별 참조 문서 색인
 
-최종 수정일: 2026-08-02
+최종 수정일: 2026-08-05
 
 ## 목적
 
@@ -116,6 +116,7 @@
 사용 요청 예시:
 
 - 쥐 조종 설계
+- 벽·통·상자에 대각선으로 충돌할 때 제자리 보행하거나 표면 slide가 되지 않는 문제 정리
 - 면역 경계도 설계
 - 내부 바이러스 미니게임 설계
 - 변이 선택 루프 설계
@@ -131,6 +132,10 @@
 - `docs/prototype/approvals/rat-host-approval-packet.md`
 - `docs/design/progression/host-experience-traits.md`
 - `.codex/skills/rat-host-loop-builder/references/rat-loop-rules.md`
+
+특수 적용:
+
+- 대각선 충돌·제자리 보행·표면 slide 요청은 `docs/prototype/plans/rat-host-implementation-plan.md`의 `2D 이동·충돌 표면 슬라이드 계약`을 원증상·금지 방식·수용 기준·재발 처리 절차로 사용한다.
 
 ### 2D 아이소메트릭 도트 / 비주얼
 
@@ -301,6 +306,7 @@
 - EditMode 테스트 작성 또는 수정
 - Unity 씬, 프리팹, 입력, 카메라, UI 연결
 - 승인된 범위의 Build Settings 또는 ProjectSettings 변경
+- 2D 이동 중 대각선 충돌·제자리 보행·표면 slide 회귀 수정
 
 필수 참조:
 
@@ -319,6 +325,10 @@
 - `_workspace/templates/task-r1-summary.md` — 기존 계약 안의 1~3개 파일 국소 수정에만 사용
 - `_workspace/templates/task.md`
 - `_workspace/templates/agent-activity.md`
+
+특수 적용:
+
+- 2D 이동·충돌 surface slide 수정은 `docs/prototype/plans/rat-host-implementation-plan.md`의 동명 계약을 읽고, 평면 slide·정면 정지·실제 코너 정지·좌우 대칭·공용 motor consumer·사용자 실제 WASD 수용을 작업 charter에 연결한다.
 
 ### 검증 / 완료 판단
 

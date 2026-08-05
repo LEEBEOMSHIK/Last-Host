@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="16" result="Failed(Child)" total="16" passed="13" failed="3" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:43Z" duration="0.2747514">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="209" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:43Z" duration="0.274751" total="16" passed="13" failed="3" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1064" name="LastHost.Prototype.RatHost2D.Tests.dll" fullname="C:/Users/bumci/AppData/Local/Temp/last-host-unity-cache/2026-08-05-rat-collision-surface-slide/project/Library/ScriptAssemblies/LastHost.Prototype.RatHost2D.Tests.dll" runstate="Runnable" testcasecount="54" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.167647" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="31480" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1065" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="54" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.162960" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1066" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="54" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.159758" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1067" name="RatHost2D" fullname="LastHost.Prototype.RatHost2D" runstate="Runnable" testcasecount="54" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.156132" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestSuite" id="1068" name="Tests" fullname="LastHost.Prototype.RatHost2D.Tests" runstate="Runnable" testcasecount="54" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.150730" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-suite type="TestFixture" id="1044" name="RatHost2DStage2RuntimeTests" fullname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests" classname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.141325" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1046" name="C7_VirusSharesSurfaceSlideWithoutChangingStateInputOrSpeedContracts" fullname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests.C7_VirusSharesSurfaceSlideWithoutChangingStateInputOrSpeedContracts" methodname="C7_VirusSharesSurfaceSlideWithoutChangingStateInputOrSpeedContracts" classname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests" runstate="Runnable" seed="215982078" result="Failed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.054003" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  Expected: greater than or equal to -0.00100000005f
+  But was:  -0.00395148993f
+]]></message>
+                    <stack-trace><![CDATA[at LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests.C7_VirusSharesSurfaceSlideWithoutChangingStateInputOrSpeedContracts () [0x0010d] in C:\Users\bumci\AppData\Local\Temp\last-host-unity-cache\2026-08-05-rat-collision-surface-slide\project\Assets\_Project\Tests\EditMode\RatHost2D\RatHost2DStage2RuntimeTests.cs:64
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1047" name="ContactCooldownRejectsRepeatedStayUntilWindowExpires" fullname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests.ContactCooldownRejectsRepeatedStayUntilWindowExpires" methodname="ContactCooldownRejectsRepeatedStayUntilWindowExpires" classname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests" runstate="Runnable" seed="1038391229" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.004937" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1049" name="FailureReturnAndNextEntryResetAllRuntimeObjects" fullname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests.FailureReturnAndNextEntryResetAllRuntimeObjects" methodname="FailureReturnAndNextEntryResetAllRuntimeObjects" classname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests" runstate="Runnable" seed="501975125" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.037783" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1048" name="FragmentCanQueueOnlyOncePerRun" fullname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests.FragmentCanQueueOnlyOncePerRun" methodname="FragmentCanQueueOnlyOncePerRun" classname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests" runstate="Runnable" seed="1102506836" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.001685" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1045" name="VirusUsesOneLogicalRootAndTechnicalCollisionMotor" fullname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests.VirusUsesOneLogicalRootAndTechnicalCollisionMotor" methodname="VirusUsesOneLogicalRootAndTechnicalCollisionMotor" classname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests" runstate="Runnable" seed="1742382824" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.003712" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1050" name="WhiteBloodCellCooldownQueuesOneDamagePerWindow" fullname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests.WhiteBloodCellCooldownQueuesOneDamagePerWindow" methodname="WhiteBloodCellCooldownQueuesOneDamagePerWindow" classname="LastHost.Prototype.RatHost2D.Tests.RatHost2DStage2RuntimeTests" runstate="Runnable" seed="557057673" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.002016" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1136" name="LastHost.Prototype.TechnicalSample2D.Tests.dll" fullname="C:/Users/bumci/AppData/Local/Temp/last-host-unity-cache/2026-08-05-rat-collision-surface-slide/project/Library/ScriptAssemblies/LastHost.Prototype.TechnicalSample2D.Tests.dll" runstate="Runnable" testcasecount="54" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:43Z" duration="0.077058" total="10" passed="8" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="31480" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1137" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="54" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:43Z" duration="0.073643" total="10" passed="8" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1138" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="54" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:43Z" duration="0.071982" total="10" passed="8" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1139" name="TechnicalSample2D" fullname="LastHost.Prototype.TechnicalSample2D" runstate="Runnable" testcasecount="54" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:43Z" duration="0.070464" total="10" passed="8" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestSuite" id="1140" name="Tests" fullname="LastHost.Prototype.TechnicalSample2D.Tests" runstate="Runnable" testcasecount="54" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:43Z" duration="0.068926" total="10" passed="8" failed="2" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-suite type="TestFixture" id="1102" name="PhysicsCameraAndSort2DTests" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" testcasecount="10" result="Failed" site="Child" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:43Z" duration="0.065481" total="10" passed="8" failed="2" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1106" name="C1_DiagonalInputSlidesAlongFlatWallWithoutPenetrating" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.C1_DiagonalInputSlidesAlongFlatWallWithoutPenetrating" methodname="C1_DiagonalInputSlidesAlongFlatWallWithoutPenetrating" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="1251093111" result="Failed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.006854" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  Expected: greater than or equal to -0.00100000005f
+  But was:  -0.00395143032f
+]]></message>
+                    <stack-trace><![CDATA[at LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.C1_DiagonalInputSlidesAlongFlatWallWithoutPenetrating () [0x000ab] in C:\Users\bumci\AppData\Local\Temp\last-host-unity-cache\2026-08-05-rat-collision-surface-slide\project\Assets\_Project\Tests\EditMode\TechnicalSample2D\PhysicsCameraAndSort2DTests.cs:85
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1107" name="C2_FrontInputStopsAtFlatWall" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.C2_FrontInputStopsAtFlatWall" methodname="C2_FrontInputStopsAtFlatWall" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="1758012984" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.005608" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1108" name="C3_DiagonalInputStopsAtTrueCornerWithoutPenetrating" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.C3_DiagonalInputStopsAtTrueCornerWithoutPenetrating" methodname="C3_DiagonalInputStopsAtTrueCornerWithoutPenetrating" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="236282461" result="Failed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.004341" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  Expected: greater than or equal to -0.00100000005f
+  But was:  -0.00395143032f
+]]></message>
+                    <stack-trace><![CDATA[at LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.C3_DiagonalInputStopsAtTrueCornerWithoutPenetrating () [0x000c7] in C:\Users\bumci\AppData\Local\Temp\last-host-unity-cache\2026-08-05-rat-collision-surface-slide\project\Assets\_Project\Tests\EditMode\TechnicalSample2D\PhysicsCameraAndSort2DTests.cs:153
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1109" name="C4_LeftAndRightSurfaceSlidesAreSymmetric" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.C4_LeftAndRightSurfaceSlidesAreSymmetric" methodname="C4_LeftAndRightSurfaceSlidesAreSymmetric" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="2144755425" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.007713" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1110" name="C5_UnobstructedAndIdleStepsPreserveSpeedContract" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.C5_UnobstructedAndIdleStepsPreserveSpeedContract" methodname="C5_UnobstructedAndIdleStepsPreserveSpeedContract" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="857183477" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.002262" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1113" name="ControllerConfiguresZeroGravityAndFrozenRotation" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.ControllerConfiguresZeroGravityAndFrozenRotation" methodname="ControllerConfiguresZeroGravityAndFrozenRotation" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="961796863" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.004223" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1105" name="E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.007996" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1103" name="E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider(&quot;Wall&quot;)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider(&quot;Wall&quot;)" methodname="E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="1928089248" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.003188" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1104" name="E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider(&quot;WaterChannel&quot;)" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider(&quot;WaterChannel&quot;)" methodname="E08_RigidbodyMovePositionDoesNotPenetrateBlockingCollider" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="2049014146" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:42Z" duration="0.001223" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-case id="1111" name="E09_CameraImmediatelyFollowsAbsoluteSnappedTargetForThreeHundredSamples" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.E09_CameraImmediatelyFollowsAbsoluteSnappedTargetForThreeHundredSamples" methodname="E09_CameraImmediatelyFollowsAbsoluteSnappedTargetForThreeHundredSamples" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="983463403" result="Passed" start-time="2026-08-05 05:40:42Z" end-time="2026-08-05 05:40:43Z" duration="0.010532" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1112" name="E10_YSortUsesFootYChangesOnceAtCrossingAndRemainsStable" fullname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests.E10_YSortUsesFootYChangesOnceAtCrossingAndRemainsStable" methodname="E10_YSortUsesFootYChangesOnceAtCrossingAndRemainsStable" classname="LastHost.Prototype.TechnicalSample2D.Tests.PhysicsCameraAndSort2DTests" runstate="Runnable" seed="1169474718" result="Passed" start-time="2026-08-05 05:40:43Z" end-time="2026-08-05 05:40:43Z" duration="0.004853" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:/Users/bumci/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

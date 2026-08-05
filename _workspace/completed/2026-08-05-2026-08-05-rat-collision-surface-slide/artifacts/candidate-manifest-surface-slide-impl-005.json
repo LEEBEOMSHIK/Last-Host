@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-slide-impl-005",
+  "generated_utc": "2026-08-05T05:55:45.1838521+00:00",
+  "project_root": "C:\\projects\\Last-Host",
+  "candidate_fingerprint": "394f827fe7ed9e768adf0c625bd1bc457ee663ca9a5911fc151699f02f73b145",
+  "algorithm": "sha256(category<TAB>relative-path<TAB>file-sha256<TAB>length; ordinal path order)",
+  "file_count": 5,
+  "inputs": {
+    "production": [
+      "UnityProject/Assets/_Project/Scripts/TechnicalSample2D/RatHost2DController.cs"
+    ],
+    "test": [
+      "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/PhysicsCameraAndSort2DTests.cs",
+      "UnityProject/Assets/_Project/Tests/EditMode/RatHost2D/RatHost2DStage2RuntimeTests.cs"
+    ],
+    "scene": [],
+    "package": [
+      "UnityProject/Packages/packages-lock.json"
+    ],
+    "version": [
+      "UnityProject/ProjectSettings/ProjectVersion.txt"
+    ]
+  },
+  "files": [
+    {
+      "category": "package",
+      "path": "UnityProject/Packages/packages-lock.json",
+      "length": 13840,
+      "sha256": "943f92f1229c2a366fd42aa7180b73bdb8b6019ae21c1a6ce38c80a15d8c262e"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Scripts/TechnicalSample2D/RatHost2DController.cs",
+      "length": 3604,
+      "sha256": "45f5198def4d7680984f9f3b125a0f4920b5685d229c923b1e0be1464051e5f0"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/RatHost2D/RatHost2DStage2RuntimeTests.cs",
+      "length": 11770,
+      "sha256": "a5f4a3ef4ab89b530fb27172236b773754181faa537475a8491680e74f305575"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/PhysicsCameraAndSort2DTests.cs",
+      "length": 15073,
+      "sha256": "35229a9958ffa72f02d44798302f45d95c46df35755065d19c1815eead01e3b2"
+    },
+    {
+      "category": "version",
+      "path": "UnityProject/ProjectSettings/ProjectVersion.txt",
+      "length": 85,
+      "sha256": "a4c019742eee085b4370e52572387e523b7b50aa66e8815fa7cd68fa06486637"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "work_id": "2026-08-05-rat-collision-surface-slide",
+  "entries": [
+    {
+      "criterion_id": "C1-C5-C7-implementer-target",
+      "outcome": "failure",
+      "run_id": "surface-slide-impl-001",
+      "candidate_fingerprint": "e1f913892900281050a714f7e4fcbc698b833ba7b85f6bbafa3c1111fdd30304",
+      "route": "UnityEditMode",
+      "note": "Test-QaHarnessSafety.ps1 blocked preflight (exit 1): \u001b[31;1mTest-QaHarnessSafety.ps1: \u001b[31;1mA positional parameter cannot be found that accepts argument 'UnityProject/Assets/_Project/Tests/EditMode/RatHost2D/RatHost2DStage2RuntimeTests.cs'.\u001b[0m",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-05T14:15:45.7716447+09:00"
+    },
+    {
+      "criterion_id": "C1-C5-C7-implementer-target",
+      "outcome": "failure",
+      "run_id": "surface-slide-impl-002",
+      "candidate_fingerprint": "e1f913892900281050a714f7e4fcbc698b833ba7b85f6bbafa3c1111fdd30304",
+      "route": "UnityEditMode",
+      "note": "Test-QaHarnessSafety.ps1 blocked preflight (exit 1): {\r\n  \"schema_version\": 1,\r\n  \"check\": \"qa-harness-safety\",\r\n  \"passed\": false,\r\n  \"details\": [\r\n    \"C:\\\\projects\\\\Last-Host\\\\UnityProject\\\\Assets\\\\_Project\\\\Tests\\\\EditMode\\\\RatHostPrototypeCoreTests.cs: forbidden System.Reflection\",\r\n    \"C:\\\\projects\\\\Last-Host\\\\UnityProject\\\\Assets\\\\_Project\\\\Tests\\\\EditMode\\\\RatHostPrototypeCoreTests.cs: forbidden private reflection\",\r\n    \"C:\\\\projects\\\\Last-Host\\\\UnityProject\\\\Assets\\\\_Project\\\\Tests\\\\EditMode\\\\RatHostPrototypeCoreTests.cs: forbidden reflection member lookup\"\r\n  ]\r\n}",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-05T14:24:41.0677384+09:00"
+    },
+    {
+      "criterion_id": "C1-C5-C7-implementer-target",
+      "outcome": "reclassified",
+      "run_id": "surface-slide-r2-harness-scope-20260805",
+      "candidate_fingerprint": "",
+      "route": "",
+      "note": "risk/root-cause reclassification",
+      "root_cause": "ordinary RatHost2DStage2RuntimeTests.cs was classified as QA harness; multi-path binding failed, then the common EditMode directory overexpanded lint into unrelated legacy reflection tests",
+      "change_plan": "use only PhysicsCameraAndSort2DTests.cs as the exact QA harness path; keep RatHost2DStage2RuntimeTests.cs in TestPath for component contract regression without changing wrapper, production, or tests",
+      "risk_class": "R2",
+      "recorded_utc": "2026-08-05T14:28:08.6548628+09:00"
+    },
+    {
+      "criterion_id": "C1-C5-C7-implementer-target",
+      "outcome": "failure",
+      "run_id": "surface-slide-impl-003",
+      "candidate_fingerprint": "e1f913892900281050a714f7e4fcbc698b833ba7b85f6bbafa3c1111fdd30304",
+      "route": "UnityEditMode",
+      "note": "Test-ComponentContractImpact.ps1 blocked preflight (exit 1): \u001b[31;1mTest-ComponentContractImpact.ps1: \u001b[31;1mA positional parameter cannot be found that accepts argument 'UnityProject/Assets/_Project/Tests/EditMode/RatHost2D/RatHost2DStage2RuntimeTests.cs'.\u001b[0m",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-05T14:29:47.0884382+09:00"
+    },
+    {
+      "criterion_id": "C1-C5-C7-implementer-target",
+      "outcome": "failure",
+      "run_id": "surface-slide-impl-004",
+      "candidate_fingerprint": "e1f913892900281050a714f7e4fcbc698b833ba7b85f6bbafa3c1111fdd30304",
+      "route": "UnityEditMode",
+      "note": "low-level exit 1",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-05T14:40:46.2642523+09:00"
+    },
+    {
+      "criterion_id": "C1-C5-C7-implementer-target",
+      "outcome": "reclassified",
+      "run_id": "surface-slide-r2-product-path-20260805",
+      "candidate_fingerprint": "",
+      "route": "",
+      "note": "risk/root-cause reclassification",
+      "root_cause": "run003 exposed dynamic multi-TestPath binding and run004 exposed approximately 0.003951 penetration because a calculated approach plus tangent delta was reapplied as one diagonal MovePosition",
+      "change_plan": "keep the single component-contract test root and replace the composite manual cast path with Unity 6000.4.6f1 Rigidbody2D.Slide, then verify the new production fingerprint with the same two target suites",
+      "risk_class": "R2",
+      "recorded_utc": "2026-08-05T14:56:33.6304334+09:00"
+    },
+    {
+      "criterion_id": "C1-C5-C7-implementer-target",
+      "outcome": "failure",
+      "run_id": "surface-slide-impl-005",
+      "candidate_fingerprint": "394f827fe7ed9e768adf0c625bd1bc457ee663ca9a5911fc151699f02f73b145",
+      "route": "UnityEditMode",
+      "note": "low-level exit 1",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-05T14:59:08.419908+09:00"
+    },
+    {
+      "criterion_id": "C1-C5-C7-implementer-target",
+      "outcome": "failure",
+      "run_id": "surface-slide-impl-006",
+      "candidate_fingerprint": "c5d349c7269cfc6ef2dc159905a0f4000400ee61ddb03f6d2e757ae60aa30581",
+      "route": "UnityEditMode",
+      "note": "low-level exit 1",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-05T15:16:27.0172371+09:00"
+    },
+    {
+      "criterion_id": "C1-C5-C7-implementer-target",
+      "outcome": "reclassified",
+      "run_id": "surface-slide-r2-single-displacement-20260805",
+      "candidate_fingerprint": "",
+      "route": "",
+      "note": "risk/root-cause reclassification",
+      "root_cause": "run005 and run006 proved Rigidbody2D.Slide contact targets for a Dynamic body allow solver overlap from 0.005 to 0.012426 and do not satisfy the strict non-penetration oracle in C1 C2 C3 C7 and E08",
+      "change_plan": "replace Slide with a private nonalloc cast solver that projects one candidate displacement against each hit normal using directional hit distance and CollisionSkin, repeatedly recasts the final straight sweep, and conservatively reduces unsafe movement before one Dynamic MovePosition",
+      "risk_class": "R2",
+      "recorded_utc": "2026-08-05T15:21:35.705467+09:00"
+    },
+    {
+      "criterion_id": "C1-C5-C7-implementer-target",
+      "outcome": "success",
+      "run_id": "surface-slide-impl-007",
+      "candidate_fingerprint": "2286f04110addaa6d5fa9d67e0b269a8c6d800094e40a118339c1ae327e67414",
+      "route": "UnityEditMode",
+      "note": "low-level exit 0",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-05T15:28:25.652123+09:00"
+    },
+    {
+      "criterion_id": "C1-C5-C7-E08-independent-qa",
+      "outcome": "success",
+      "run_id": "surface-slide-qa-001",
+      "candidate_fingerprint": "2286f04110addaa6d5fa9d67e0b269a8c6d800094e40a118339c1ae327e67414",
+      "route": "UnityEditMode",
+      "note": "low-level exit 0",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-05T06:46:09.6584957+00:00"
+    }
+  ]
+}

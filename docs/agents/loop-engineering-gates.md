@@ -1,6 +1,6 @@
 # 루프 엔지니어링 게이트
 
-최종 수정일: 2026-08-02
+최종 수정일: 2026-08-05
 
 ## 목적과 규칙 소유권
 
@@ -102,6 +102,17 @@ QA는 원인 레이어의 변경과 함께 다음 negative control을 직접 증
 - 동일 criterion이나 suite 재실행은 후보 변경으로 기존 PASS가 무효화됐을 때, 첫 실패의 최소 반례를 재현·해소할 때, 구현자 자체 검증 뒤 독립성을 확보할 때만 허용한다.
 - 재실행에는 새 `run_id`, `candidate_fingerprint`, 사유와 대체되는 run을 기록한다. 같은 후보·목적의 반복 실행, 인원수만 늘린 복제 검증, 불안정 후보의 전체 suite·대형 matrix 반복은 금지한다.
 
+### 공통 실행·보고 계약
+
+1. **preflight 차단**: 내부 attempt ledger와 진단용 `run_id`는 보존한다. 다만 실제 Unity/MCP/build가 시작되지 않은 차단은 고비용 실행이나 사용자-facing run 횟수·번호로 표현하지 않는다.
+2. **구현 고비용 표적 상한**: 같은 원인 분류에서는 최초 1회와 correction 1회까지만 허용한다. 두 번째 실패 뒤에는 `수정 필요 — 재분류`로 중지하고, 원인·위험 등급을 재분류해 사용자에게 `문제 / 선택지 / 추천`을 보고하기 전 새 고비용 후보를 시작하지 않는다.
+3. **독립 QA 상한**: 구현자의 current fingerprint가 green이 된 뒤 독립 QA가 1회 진입한다. QA 실패를 소유자가 보정한 뒤 QA 재진입은 1회까지만 허용하며, 두 번째 QA 실패에서는 중지·재분류·사용자 보고한다. 이 상한은 독립 QA 생략을 허용하지 않는다.
+4. **S0 표현**: 내부 검토 담당이 QA여도 사용자에게는 `S0 계약 검토`로 표현하고 `QA run`이나 고비용 실행 횟수로 세지 않는다.
+5. **상태-only 최종 동기화**: 독립 QA와 총괄 판정 뒤 board·cost·CURRENT·completed 경로·상태만 바꾸는 최종 동기화는 새 QA·총괄 라운드 없이 조정자가 source/target path·status·diff를 자체 대조하고 끝낸다. 운영 규칙, acceptance contract, production, 테스트·하네스 변경은 상태-only가 아니며 기존 QA·총괄·증거 무효화 게이트를 그대로 적용한다.
+6. **사용자 진행 보고**: 최초 blocker, 재분류·사용자 결정 필요, 기술 PASS·최종 결과를 중심으로 압축한다. 내부 run label과 30초 단위 세부 상태는 사용자가 요청하지 않으면 노출하지 않는다.
+
+이 계약은 내부 추적성을 줄이지 않는다. attempt ledger, candidate fingerprint, canonical run, `SUPERSEDED`, lease와 비용 기록은 기존 규칙대로 유지한다.
+
 ## S1~S7 fail-fast 실행 순서
 
 한 단계가 실패하면 즉시 중단하고 뒤의 고비용 단계로 가지 않는다.
@@ -183,7 +194,7 @@ Unity TestRunner, MCP Play/TestRunner, build와 같은 고비용 경로는 `tool
 
 preflight는 machine-readable capability profile, criterion별 attempt ledger, packet-only agent brief, current-state run/fingerprint/status/cost, QA C# 안전성, component contract 영향, task-scoped isolated cache marker를 대조한다. profile 허용 목록 밖의 status와 route 기대 상태가 아닌 status를 차단하고, 실제 실행 전 profile에 허용된 `ready-for-verification` → `verification-running` 전이만 적용한다. 알려진 실패·미지원 route, Reflection/private reflection QA 코드, Rigidbody 위치 변경과 Y-sort 사이 sync 누락, collider/resolver 과거 타입 기대, full-history 위임, 필수 파일 3개 초과, stale 상태는 실행 전에 차단한다.
 
-route/capability와 각 preflight guard의 실제 실패는 high-cost 시작 전에 criterion, run ID, fingerprint, route, 원인과 함께 attempt ledger에 원자 기록한다. 같은 run identity의 중복 failure는 추가하지 않는다. 같은 criterion의 연속 실패는 최대 2회이며 세 번째 호출은 retry-budget guard에서 차단하되 이 차단 자체를 새 failure로 기록하지 않는다.
+route/capability와 각 preflight guard의 실제 실패는 high-cost 시작 전에 criterion, 내부 run ID, fingerprint, route, 원인과 함께 attempt ledger에 원자 기록한다. 같은 run identity의 중복 failure는 추가하지 않는다. preflight 차단은 실제 Unity/MCP/build 시작이나 사용자-facing run 번호가 아니다. 같은 criterion의 연속 실패는 최대 2회이며 세 번째 호출은 retry-budget guard에서 차단하되 이 차단 자체를 새 failure로 기록하지 않는다.
 
 재분류는 실제 failure 2회 뒤에만 허용하고 `root_cause`, `change_plan`, 새 위험 등급, reclassification ID를 별도 원장 필드로 기록한다. 재분류 기록은 실패 이력을 삭제하지 않고 새 분류 경계를 남긴다.
 

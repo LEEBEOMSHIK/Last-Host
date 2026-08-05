@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "work_id": "2026-08-05-rat-collision-surface-slide",
+  "status": "independent-qa-pass-awaiting-director",
+  "run_id": "surface-slide-qa-001",
+  "candidate_fingerprint": "2286f04110addaa6d5fa9d67e0b269a8c6d800094e40a118339c1ae327e67414",
+  "cost": {
+    "unity_starts": 5,
+    "mcp_starts": 0,
+    "build_starts": 0,
+    "recorded_high_cost_attempts": 5
+  },
+  "evidence": [
+    {
+      "run_id": "surface-slide-qa-001",
+      "candidate_fingerprint": "2286f04110addaa6d5fa9d67e0b269a8c6d800094e40a118339c1ae327e67414",
+      "path": "_workspace/active/2026-08-05-rat-collision-surface-slide/artifacts/qa-target-results-r1.xml"
+    }
+  ]
+}

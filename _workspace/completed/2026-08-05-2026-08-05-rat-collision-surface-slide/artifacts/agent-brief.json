@@ -1,0 +1,12 @@
+{
+  "work_id": "2026-08-05-rat-collision-surface-slide",
+  "context_mode": "packet-only",
+  "fork_turns": "none",
+  "required_files": [
+    "_workspace/active/2026-08-05-rat-collision-surface-slide/task.md",
+    "UnityProject/Assets/_Project/Tests/EditMode/TechnicalSample2D/PhysicsCameraAndSort2DTests.cs",
+    "UnityProject/Assets/_Project/Tests/EditMode/RatHost2D/RatHost2DStage2RuntimeTests.cs"
+  ],
+  "message": "Run the single implementer-owned EditMode target bundle for C1-C5 and C7. Verify flat-wall surface slide, front stop, true-corner stop, left/right symmetry, unobstructed speed and idle, plus the shared virus movement state/input/speed contract. Stop at the first blocker and do not run a full suite, build, MCP Play, or low-level runner directly.",
+  "include_conversation_history": false
+}
