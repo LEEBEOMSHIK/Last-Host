@@ -27,7 +27,7 @@
 7. 최종 캡처는 실제 root 단일성, 임시 객체 0, 동일 run/fingerprint를 확인한 원자적 증거만 채택한다.
 8. 전체 suite와 대형 matrix는 freeze된 최종 후보에서 필요한 경우 각각 한 번만 실행한다.
 9. 미검증 항목은 완료로 판단하지 않고 기술 검증 통과와 사용자 수용 대기를 구분한다.
-10. 결과와 canonical run_id를 작업 폴더의 `verification.md`에 남긴다.
+10. 위험 production R1 결과는 `record.md`, R2/R3 결과와 canonical run_id는 `verification.md`에 남긴다. 실행 결과에 영향 없는 R1은 독립 QA 대상이 아니다.
 
 ## Unity MCP 플레이 체크
 

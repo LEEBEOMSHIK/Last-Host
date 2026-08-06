@@ -8,7 +8,7 @@
 
 세부 실행 로그는 `_workspace/active/`와 `_workspace/completed/`에 남긴다. 이 문서는 누적 이력 파일이 아니며, 다음 작업 발굴 시 현재 후보와 우선순위를 갱신하고 오래된 항목은 정리한다.
 
-작업별 비용 과다·불필요 비용은 `docs/project-handoff/task-cost-dashboard.md`에서 확인한다. 작업 시작, blocker·correction, 사용자 보고·완료·커밋 전에 해당 행을 현재 근거로 동기화한다.
+R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/task-cost-dashboard.md`에서 확인한다. 이 상태판은 active와 next 후보를 중심으로 갱신하며 완료 상세는 `_workspace/completed/`에 둔다.
 
 ## 운영 기준
 
@@ -17,6 +17,7 @@
 - 완료된 상세 이력은 `_workspace/completed/`를 참조한다.
 - 진행 중 상세 이력은 `_workspace/active/`를 참조한다.
 - 판단이 끝난 미결 항목은 결과만 짧게 남기고 제거한다.
+- 2026-08-06 이후 R0과 고비용 실행 없는 R1은 상태판 항목을 만들지 않는다. 기존 항목은 이력으로 소급 정리하지 않는다.
 
 ## 현재 저장소 상태
 
@@ -37,6 +38,8 @@
 
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
+| 바이러스 주인공 기본 외형 기준 반영 | 완료 보관 — correction 1 QA PASS·총괄 내부 승인 가능 | 사용자 제공 박테리오파지 원본과 canonical reference의 `1036×1248`·bytes·SHA-256, 기준 문서·색인·2D production 경계·금지 문구·비반입을 검증했다. 기존 A/B/C는 `SUPERSEDED` 이력이며 실제 턴어라운드·시트·Unity 적용은 별도 승인이다. | `_workspace/completed/2026-08-06-2026-08-06-virus-character-concept-v1/` |
+| 작업 기록·검증 운영 경량 구조 개편 | 완료 보관 — 독립 QA PASS·총괄 내부 승인 가능 | R0 무폴더, R1 단일 `record.md`, R2/R3 기본 두 파일, 조건부 분리 기록·artifact, completed 동일 폴더 이동과 기존 안전 게이트를 27파일 revision에서 검증했다. | `_workspace/completed/2026-08-06-2026-08-06-workspace-recording-lightweight/` |
 | Unity MCP 프로젝트 로컬 relay 경로 교정 | 완료 보관 — 실제 연결 재검증 대기 | `.codex/config.toml`의 `unity_mcp.command`를 `C:\Users\bumci\.unity\relay\relay_win.exe`로 교정했다. QA 기술 검증 통과·총괄 내부 승인 가능; 실제 MCP 연결은 Codex 재시작 후 확인한다. | `_workspace/completed/2026-08-04-2026-08-04-unity-mcp-local-path-fix/` |
 | 검증 current-state 상태 계약 교정 | 완료 보관·운영 `a33164b` push | 후보 `71e4dcdd…`: unknown/status-only stale 차단, route expected status와 `ready-for-verification`→`verification-running` 전이, 기존 G1~G8 회귀를 구현자·QA 각 1회 `24/24`로 확인했다. Unity/MCP/빌드 0. | `_workspace/completed/2026-08-03-2026-08-02-verification-current-state-contract/` |
 | 검증 하네스 비용·재시도 차단 보완 | 완료 보관·운영 `a33164b` push — 후속 R3로 SUPERSEDED | 미지원 route·Reflection·stale contract·실패 2회·cache·full-history·low-level 우회는 유지되고, status 값·전이 계약은 후속 최종 후보 `71e4dcdd…`로 대체됐다. | `_workspace/completed/2026-08-03-2026-08-02-verification-harness-cost-guards/` |

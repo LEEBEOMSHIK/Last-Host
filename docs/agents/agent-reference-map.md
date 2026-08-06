@@ -253,7 +253,7 @@
 
 - 에이전트 작업 폴더 생성
 - 진행 중 작업 기록
-- 완료 작업 보고서 작성
+- 완료 상태 기록과 최소 작업 폴더 보관
 - 핸드오프 기록 작성
 
 필수 참조:
@@ -264,12 +264,11 @@
 
 선택 참조:
 
-- `_workspace/templates/task-r1-summary.md` — R1 국소 수정 요약형
-- `_workspace/templates/task.md`
-- `_workspace/templates/work-log.md`
-- `_workspace/templates/handoff.md`
-- `_workspace/templates/completion-report.md`
-- `_workspace/templates/verification.md`
+- `_workspace/templates/record.md` — 2026-08-06 이후 신규 R1 통합 기록
+- `_workspace/templates/task.md`, `_workspace/templates/verification.md` — 신규 R2/R3
+- `_workspace/templates/work-log.md`, `_workspace/templates/agent-activity.md`, `_workspace/templates/completion-report.md` — 신규 R3 조건부. 기본 두 파일에 안전하게 통합할 수 없는 실제 추적 필요가 있을 때만 생성
+- `_workspace/templates/handoff.md` — 세션 중단·외부 차단·실제 인계 때만
+- `_workspace/templates/task-r1-summary.md` — 기존 이력 호환용
 
 ### 프로젝트 핸드오프 / 다음 작업 후보 현황
 
@@ -277,7 +276,7 @@
 
 - 현재 작업 후보를 한곳에서 확인
 - 다음 작업 발굴 결과의 사용자 확인용 상태판 갱신
-- 작업 시작·보류 전환·완료/보관·커밋 전 상태판 동기화와 QA 대조
+- 현재 active·next 후보나 Git 상태가 실제로 바뀐 시점의 상태판 동기화
 - 최근 작업 요약과 미결 검증 항목 정리
 - Codex와 사용자가 함께 보는 handoff 문서 확인
 
@@ -290,7 +289,7 @@
 
 필수 확인:
 
-- 상태판의 상태·후보·보류·최근 요약·완료 경로·Git 상태를 현재 사실과 맞추고, 비용 현황판의 계획·실제·중복·폐기·판정을 작업 시작·blocker/correction·사용자 보고/커밋 전에 동기화한다. 완료 또는 커밋 전 QA/검증 에이전트가 실제 경로와 후보·보류 중복·비용 분류를 독립 대조한다.
+- 상태판은 active·next 후보 또는 실제 Git 상태가 바뀔 때만 현재 사실에 맞춘다. 비용 현황판은 R2/R3 또는 실제 Unity/MCP/build/full suite/matrix/capture가 있는 작업만 시작·blocker/correction·사용자 보고/커밋 전 실제값을 동기화한다. 위험 등급상 독립 QA가 필요한 후보는 QA가 기능·증거와 비용 분류를 대조하되, QA·총괄 판정 뒤 path/status/diff만 바꾸는 상태-only 최종 동기화는 새 QA·총괄 라운드를 만들지 않는다.
 
 선택 참조:
 
@@ -322,9 +321,9 @@
 - `.agents/unity-architecture-agent.md`
 - `.agents/visual-tech-art-agent.md`
 - `.agents/qa-verification-agent.md`
-- `_workspace/templates/task-r1-summary.md` — 기존 계약 안의 1~3개 파일 국소 수정에만 사용
+- `_workspace/templates/record.md` — 기존 계약 안의 1~3개 파일 신규 R1 국소 수정
 - `_workspace/templates/task.md`
-- `_workspace/templates/agent-activity.md`
+- `_workspace/templates/verification.md`
 
 특수 적용:
 
@@ -372,7 +371,8 @@
 
 - `docs/README.md`
 - `.agents/documentation-release-agent.md`
-- `_workspace/templates/completion-report.md`
+- `_workspace/templates/record.md` — R1 최종 상태 포함
+- `_workspace/templates/completion-report.md` — R3 조건부. 완료 상태를 `verification.md`에 통합할 수 없을 때만 사용
 
 선택 참조:
 

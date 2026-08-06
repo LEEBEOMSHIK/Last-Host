@@ -21,17 +21,18 @@
 
 위험 등급, 최소 역할, S0~S7 fail-fast, 검증 무효화, Unity lease, canonical evidence와 완료·커밋 차단 조건은 `docs/agents/loop-engineering-gates.md`가 유일 실행 기준이다. `_workspace` 문서는 그 실행 사실만 저장하며 별도 게이트를 만들지 않는다.
 
-- R0은 작업 패킷이 필요 없다. R1은 `_workspace/templates/task-r1-summary.md`를 사용하고, R2/R3는 `_workspace/templates/task.md`의 정식 S0 charter를 사용한다.
-- R1 요약형은 원증상·완료 주장·변경 파일과 owner·표적 테스트·금지 범위·correction cycle·QA·총괄만 기록한다. R2/R3의 상태 전이표·수명주기 matrix·전체 S0 표를 요구하지 않는다.
-- `task.md` 또는 `task-r1-summary.md`는 계획·oracle·production 소유권, `agent-activity.md`는 실제 수행·인계, `verification.md`는 현재 revision의 증거, `completion-report.md`는 최종 판정만 소유한다.
+- 2026-08-06 이후 신규 작업은 R0 무기록, R1 `record.md` 1개, R2/R3 `task.md`+`verification.md`를 기본으로 사용한다. 기존 active/completed 이력은 소급 변환하지 않는다.
+- R1 `record.md`는 원증상·완료 주장·등급 근거·owner와 변경 파일·금지 범위·표적 검증·correction·QA/총괄 적용 여부와 최종 상태를 통합한다.
+- R2/R3 `verification.md`는 실제 수행·독립 QA·총괄 판정·canonical evidence·최종 상태를 통합한다. R3 분리 파일은 기본 두 파일에 안전하게 통합할 수 없는 실제 책임 분리·규제/릴리즈 추적이 있을 때만 만든다.
 - 중간 실패 산출물은 최소 반례와 핵심 로그 위치만 남기고, 최종 판정에는 canonical run_id 하나를 둔다.
 
 ## 작업 비용 기록
 
-- 사용자 중앙 현황은 `docs/project-handoff/task-cost-dashboard.md`가 소유한다. `_workspace` 작업 문서는 각 행의 계획·실제 근거를 소유한다.
-- R1은 `task-r1-summary.md`의 5줄 이하 비용 기록을 사용한다. R2/R3는 `task.md`의 계획/실제 표를 사용하며 새 per-task 비용 파일을 만들지 않는다.
-- 작업 시작에는 계획 역할·검증 예산을 기록하고, blocker·correction에는 `agent-activity.md`·`verification.md`의 실제 실행 수와 무효·폐기를 갱신한다.
-- 사용자 보고·완료·커밋 전에는 `completion-report.md`와 중앙 현황판에 필요한 비용·회피 가능 비용, `정상 / 주의 / 과다 / 미집계` 판정을 동기화한다.
+- 대상 작업의 사용자 중앙 현황은 `docs/project-handoff/task-cost-dashboard.md`가 소유한다. `_workspace` canonical 기록은 각 행의 계획·실제 근거를 소유한다.
+- R1은 `record.md`에 필요한 비용만 짧게 기록한다. R2/R3는 `task.md` 계획과 `verification.md` 실제 근거를 사용하며 새 per-task 비용 파일을 만들지 않는다.
+- 중앙 비용 현황판은 R2/R3 또는 실제 고비용 실행이 발생한 작업만 대상으로 한다.
+- 대상 작업은 시작 시 계획 역할·검증 예산을 기록하고 blocker·correction에는 등급별 canonical 기록과 중앙 행의 실제 실행 수·무효·폐기를 갱신한다.
+- 대상 작업만 사용자 보고·완료·커밋 전에 필요한 비용·회피 가능 비용과 판정을 동기화한다.
 - 정확한 토큰·금액은 플랫폼 계측값이 있을 때만 기록하며 추정하지 않는다. 근거가 없으면 `미집계`로 둔다.
 
 ## 폴더 구조
@@ -41,21 +42,18 @@ _workspace/
   active/
     CURRENT.md
     <작업ID>/
-      task.md 또는 task-r1-summary.md
-      work-log.md
-      agent-activity.md
-      handoff.md
-      artifacts/
+      record.md                         # R1
+      task.md + verification.md         # R2/R3 기본
+      work-log.md / agent-activity.md / completion-report.md # R3 조건부
+      handoff.md                        # 실제 인계·중단 시
+      artifacts/                        # 실제 증거가 있을 때
   completed/
     <완료일>-<작업ID>/
-      task.md 또는 task-r1-summary.md
-      work-log.md
-      agent-activity.md
-      completion-report.md
-      verification.md
-      artifacts/
+      위험 등급별 canonical 기록
+      handoff.md / artifacts/           # 조건부
   templates/
-    task-r1-summary.md
+    record.md
+    task-r1-summary.md                  # 2026-08-06 이전 호환
     task.md
     work-log.md
     agent-activity.md
@@ -67,7 +65,7 @@ _workspace/
 
 ## 세션 연속성 기준
 
-토큰 압박, 세션 종료, 외부 도구 차단, 긴 작업 전환이 예상되면 먼저 `_workspace/active/CURRENT.md`와 현재 작업 폴더의 `handoff.md`를 갱신한다. 이 두 파일은 다음 세션의 첫 진입점이다.
+세션 종료, 외부 도구 차단 또는 실제 담당 인계가 예상될 때만 `_workspace/active/CURRENT.md`와 현재 작업 폴더의 `handoff.md`를 갱신한다. 연속된 같은 세션의 단계 전환만으로 `handoff.md`를 만들지 않는다.
 
 `CURRENT.md`는 긴 기록 파일이 아니라 포인터다. 다음 항목만 짧게 둔다.
 
@@ -108,9 +106,9 @@ _workspace/
 
 토큰 사용량을 체감 기준으로 병행한다.
 
-- 약 60~70%: 다음 큰 단계로 넘어가기 전에 `handoff.md` 갱신
+- 약 60~70%: 세션 중단 가능성이 실제로 있으면 다음 큰 단계 전 `handoff.md` 생성·갱신
 - 약 80% 이상: 새 구현을 시작하지 않고 검증, 정리, 인수인계 우선
-- 약 90% 근처: 최종 답변보다 먼저 `CURRENT.md`와 `handoff.md` 갱신
+- 약 90% 근처: 세션 인계가 필요하면 최종 답변보다 먼저 `CURRENT.md`와 `handoff.md` 갱신
 
 가장 위험한 끊김 지점은 `구현 완료 후 검증 전`, `검증 실패 원인 분석 중`, `커밋 직전 staged/unstaged가 섞인 상태`다. 이 상태에서는 다음 세션이 다시 조사하지 않도록 반드시 현재 상태와 제외 파일을 적는다.
 
@@ -132,15 +130,11 @@ YYYY-MM-DD-short-topic
 
 ## 기본 흐름
 
-1. 작업을 시작할 때 `_workspace/active/<작업ID>/`를 만든다.
-2. R1은 `templates/task-r1-summary.md`, R2/R3는 `templates/task.md`를 복사해 작업 배정 내용을 기록한다.
-3. `templates/agent-activity.md`를 복사해 참여 에이전트, 역할, 담당 업무, 산출물, 판정을 기록한다.
-4. 진행 중 `work-log.md`에 조사, 판단, 변경 내용을 누적한다.
-5. 다른 에이전트로 넘길 내용은 `handoff.md`에 정리한다.
-6. blocker·correction 때 실제 비용 proxy와 중앙 현황판 행을 갱신한다.
-7. 작업 완료 시 `_workspace/completed/<완료일>-<작업ID>/`를 만든다.
-8. 완료 폴더에 작업 기록, 에이전트 수행 이력, 검증 기록, 비용 요약과 완료 보고서를 남긴다.
-9. 사용자 보고·커밋 전 중앙 비용 판정과 완료 폴더 경로를 최종 보고에 포함한다.
+1. R0은 폴더를 만들지 않는다. R1~R3은 `_workspace/active/<작업ID>/`를 만든다.
+2. R1은 `record.md`, R2/R3는 `task.md`+`verification.md`를 기본 배치한다. R3 분리 파일은 실제 필요 조건을 기록한 경우에만 추가한다.
+3. 실제 인계·세션 중단·외부 차단 때만 `handoff.md`, 원래 production/test/docs 위치 참조로 부족한 indispensable canonical 증거가 있을 때만 `artifacts/`를 추가한다. 빈 폴더·빈 템플릿·중복 복사·에이전트별 원문 보고·상태별 세대 파일은 만들지 않는다.
+4. 대상 작업의 blocker·correction 때만 중앙 비용 현황판을 갱신한다.
+5. 완료 시 같은 최소 작업 폴더를 `_workspace/completed/<완료일>-<작업ID>/`로 이동한다. 완료용 패킷이나 보고서를 새로 복제하지 않고 최종 상태를 `record.md` 또는 `verification.md`에 통합한다.
 
 ## 금지 사항
 
@@ -154,16 +148,4 @@ YYYY-MM-DD-short-topic
 
 ## 완료 조건
 
-작업은 다음 문서가 완료 폴더에 있을 때 완료로 본다.
-
-- `task.md` 또는 R1의 `task-r1-summary.md`
-- `work-log.md`
-- `agent-activity.md`
-- `completion-report.md`
-- `verification.md`
-
-작업 중 산출물이 있으면 `artifacts/` 아래에 보관한다.
-
-코드, 씬, ProjectSettings, 승인 문서, 운영 문서 변경은 `verification.md`에 QA/검증 에이전트 완료 판단이 있고, `completion-report.md`에 프로젝트 총괄 관리자 판정이 있어야 완료로 본다.
-
-또한 `docs/project-handoff/task-cost-dashboard.md`의 해당 행이 실제 실행 수·무효/폐기·필요한 비용/회피 가능 비용·최종 판정과 마지막 갱신을 현재 근거로 반영해야 한다.
+완료 조건은 위험 등급별 canonical 기록과 `docs/agents/loop-engineering-gates.md`를 따른다. R1의 필요한 QA·총괄 판정은 `record.md`, R2/R3의 수행·QA·총괄 판정은 `verification.md`에 둔다. 조건부 R3 분리 파일은 실제 생성 사유와 현재 상태만 보조한다. 중앙 비용 현황판 대상인 작업만 해당 행을 현재 근거로 갱신한다.

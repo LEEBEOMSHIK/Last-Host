@@ -1,5 +1,7 @@
 # 작업 배정서
 
+2026-08-06 이후 신규 R2/R3 작업의 계획·S0·소유권 문서다. 실제 수행·QA·총괄·최종 상태는 `verification.md`가 소유한다. R3 분리 이력·활동·완료 보고는 기본 두 파일에 안전하게 통합할 수 없는 실제 추적 필요가 있을 때만 추가한다.
+
 ## 기본 정보
 
 - 작업 ID:
@@ -89,25 +91,18 @@
 - 대형 matrix 실행 필요·근거:
 - artifact budget / criterion별 canonical 증거:
 
-## 비용 계획·실제
+## 비용 계획
 
-정확한 토큰·금액은 플랫폼 계측값이 있을 때만 기록하고, 없으면 관찰 가능한 실행 비용만 기록한다. 실제값은 blocker·correction과 사용자 보고·커밋 전에 같은 표에 갱신한다.
+정확한 토큰·금액은 플랫폼 계측값이 있을 때만 기록한다. 실제 실행 근거와 비용 판정은 `verification.md`에 둔다.
 
-| 비용 항목 | 계획 | 실제·근거 |
-| --- | --- | --- |
-| 역할·인계 |  |  |
-| 표적 검증 |  |  |
-| Unity/MCP/빌드·full suite |  |  |
-| matrix/capture·artifact |  |  |
-| correction·무효/폐기·비용 판정 |  |  |
+| 비용 항목 | 계획 |
+| --- | --- |
+| 역할·인계 |  |
+| 표적 검증 |  |
+| Unity/MCP/빌드·full suite |  |
+| matrix/capture·artifact |  |
 
-- 중앙 현황판 행: `docs/project-handoff/task-cost-dashboard.md`
-
-## 에이전트 수행 이력 기록
-
-- `agent-activity.md` 생성 여부:
-- 담당 에이전트별 수행 내용 기록 여부:
-- 위임/검토/승인 판정 기록 여부:
+- 중앙 현황판 대상 여부·행: R2/R3이므로 대상 / `docs/project-handoff/task-cost-dashboard.md`
 
 ## 금지 범위
 

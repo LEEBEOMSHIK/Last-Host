@@ -10,15 +10,13 @@
 
 ## 새 작업 생성 절차
 
-1. `_workspace/active/<작업ID>/` 폴더를 만든다.
-2. R1은 `_workspace/templates/task-r1-summary.md`, R2/R3는 `_workspace/templates/task.md`를 복사해 둔다.
-3. `_workspace/templates/work-log.md`를 복사해 `work-log.md`로 둔다.
-4. `_workspace/templates/handoff.md`를 복사해 `handoff.md`로 둔다.
-5. 필요한 산출물을 보관할 `artifacts/` 폴더를 만든다.
+1. R0은 작업 폴더를 만들지 않는다.
+2. R1은 `record.md`, R2/R3는 `task.md`+`verification.md`를 기본 배치한다.
+3. R3 분리 기록은 기본 파일에 안전하게 통합할 수 없는 실제 추적 필요가 있을 때만, `handoff.md`는 세션 중단·외부 차단·실제 인계 때만, `artifacts/`는 원래 위치 참조로 부족한 indispensable canonical 증거가 있을 때만 만든다. 빈 폴더·빈 템플릿은 만들지 않는다.
 
 ## 진행 중 기록 원칙
 
-- 중요한 판단은 `work-log.md`에 남긴다.
-- 다른 에이전트가 이어받아야 하는 내용은 `handoff.md`에 남긴다.
+- 중요한 판단은 등급별 canonical 기록에 통합한다. R3 `work-log.md`도 장기 순서 이력을 기본 파일에 안전하게 합칠 수 없을 때만 쓴다.
+- 다른 에이전트가 실제로 이어받아야 하는 내용만 `handoff.md`에 남긴다.
 - 승인 필요 항목은 작업 중에도 계속 갱신한다.
-- 완료된 작업은 이 폴더에 방치하지 않고 `completed/` 아래로 별도 완료 폴더를 만든다.
+- 완료된 작업은 새 완료 패킷을 만들지 않고 같은 최소 작업 폴더를 `completed/` 아래로 이동한다.

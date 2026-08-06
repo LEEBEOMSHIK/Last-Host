@@ -30,6 +30,8 @@
 - `progression/host-experience-traits.md`: 바이러스 변이와 별개로, 숙주 경험을 통해 얻는 장기 특성 구조.
 - `visual/references/README.md`: 목표 reference의 용도, 한계, 출처와 사용 규칙.
 - `visual/references/rat-host-2d-isometric-gameplay-mockup-v1.png`: 2D 아이소메트릭 도트 하수도 화면의 목표 분위기·구도 reference. 실제 타일셋이나 최종 에셋이 아니다.
+- `visual/references/bacteriophage-base-character-reference-v1.png`: 사용자 채택 기본 박테리오파지 외형 reference. 3D voxel 표현을 그대로 사용하는 production 에셋이 아니다.
+- `visual/characters/base-bacteriophage-character.md`: 기본 박테리오파지의 외형·성격·업그레이드 불변식과 2D 재설계 경계.
 - `visual/pixel-lowpoly-3d-production-guide.md`: 2026-07-27에 대체된 하이브리드 2.5D 제작 기준. 신규 제작 기준이 아니라 레거시 이력으로만 참조한다.
 - `../prototype/plans/rat-host-ai-assisted-art-workflow.md`: ChatGPT 이미지 생성을 포함한 AI 보조 래스터 초안의 생성·기록·사람 선별·게임 규격 재제작·QA 순서. 실제 생성·적용 계획은 `prototype/`에 둔다.
 

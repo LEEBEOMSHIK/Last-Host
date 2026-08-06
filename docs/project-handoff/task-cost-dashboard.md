@@ -4,9 +4,11 @@
 
 > 정확한 토큰 수와 금액은 플랫폼이 작업별 계측값을 제공할 때만 기록한다. 계측값이 없으면 절대 추정하거나 절감률을 만들어내지 않는다. 이 저장소에서는 역할·인계, Unity/MCP/빌드 시작, 테스트·matrix·capture 실행, correction, 무효·폐기 증거와 산출물 크기처럼 작업 기록에서 직접 관찰 가능한 비용 proxy만 기록한다.
 
+2026-08-06 이후 신규 행은 R2/R3 또는 실제 Unity/MCP/build/full suite/matrix/capture 같은 고비용 실행이 발생한 작업만 만든다. R0과 고비용 실행 없는 R1은 제외하며 기존 행은 이력으로 보존한다.
+
 ## 목적과 관리 책임
 
-이 문서는 사용자가 작업마다 필요했던 비용과 회피 가능했던 비용을 한곳에서 비교하는 공식 중앙 현황판이다. 상세 근거는 각 작업의 `task.md` 또는 `task-r1-summary.md`, `agent-activity.md`, `verification.md`, `completion-report.md`와 artifact에 남긴다. 현황판은 그 근거를 요약하며 새로운 실행 기록을 만들어내지 않는다.
+이 문서는 대상 작업에 필요했던 비용과 회피 가능했던 비용을 한곳에서 비교하는 공식 중앙 현황판이다. 상세 근거는 위험 등급별 canonical 기록과 필요한 artifact에 남긴다. 현황판은 그 근거를 요약하며 새로운 실행 기록을 만들어내지 않는다.
 
 - 조정자: 작업 시작 시 행을 만들고 계획 예산을 기록하며 blocker·correction·보고·커밋 전에 실제값과 상태를 갱신한다.
 - 구현자와 QA: 실제 역할·인계, 표적 검증, Unity/MCP/빌드, full suite, matrix/capture 실행 수와 `run_id` 근거를 제공한다.
@@ -28,6 +30,8 @@
 
 | 작업 ID / 작업명 | R등급 | 계획 역할·검증 예산 | 실제 역할·인계 | 표적 검증 | Unity/MCP/빌드 시작 | full suite | matrix/capture | correction cycle | 무효·폐기 실행/증거 | 비용 판정 | 필요한 비용 | 회피 가능 비용 | 근거 작업 경로 | 마지막 갱신 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `2026-08-06-virus-character-concept-v1`<br>바이러스 주인공 기본 외형 기준 반영 | R2 — 사용자 가시 래스터 선택·기준 문서 | 기존 조정·이미지 아트·비주얼·QA·총괄 + correction 문서/릴리즈1→독립 QA1→총괄1. 해시·정적 대조2묶음 | 기존 조정1·이미지 아트1·비주얼1·독립 QA1·총괄1 + correction 문서/릴리즈1·독립 QA 재대조·총괄 재감사1 | 기존 후보 검토 완료; correction 원본/복사본 SHA·크기1 + 링크·금지 문구·2D 경계1, `qa-selected-bacteriophage-static-20260806T124010Z` PASS | **0/0/0** | 0 | 0 | **1/2** | 기존 A/B/C는 `SUPERSEDED` 이력, 폐기·고비용 실행 0 | **완료 보관 — 주의, correction 1** | canonical reference1, 기준·색인 문서, correction 문서 owner·독립 QA·총괄 재감사 | 새 이미지 생성·Unity/MCP/build/full/matrix/capture 0 | `_workspace/completed/2026-08-06-2026-08-06-virus-character-concept-v1/` | 2026-08-06 KST |
+| `2026-08-06-workspace-recording-lightweight`<br>작업 기록·검증 운영 경량 구조 개편 | R3 — 전역 운영 계약·역할·템플릿 변경 | 기존 S0/문서/QA 이력 + 사용자 C9/C10 확장 문서 구현1→독립 QA1→총괄1, 정적 검사만 | 조정1, 기존 문서·QA 이력, 추가 문서 owner 시도1+조정자 승인 예외1, 독립 QA correction 2회 FAIL 뒤 재분류 QA PASS, 총괄 내부 승인1 | 구현 정적 검사 PASS; 이전 blocker 3건 교정 후 `qa-workspace-minimal-reclassified-20260806T215802+09:00` C1~C10 PASS | **0/0/0** | 0 | 0 | 기존 **2/2 FAIL→사용자 승인 재분류 0/2** | 이전 QA evidence SUPERSEDED, 새 이미지·동적 증거 0 | **완료 보관 — 필요한 안전 비용** | 27파일 정책·역할·템플릿 정합성 독립 QA와 총괄 provenance 감사 | Unity/MCP/build/full/matrix/capture 0, 사용자 확장용 새 작업 폴더0 | `_workspace/completed/2026-08-06-2026-08-06-workspace-recording-lightweight/` | 2026-08-06 KST |
 | `2026-08-05-verification-loop-noise-reduction`<br>검증 반복 체감과 사용자 보고 소음 축소 | R1 — 기존 운영 계약 명확화 | 조정1→문서/릴리즈1→독립 정적 QA1→총괄 read-only1 | 조정1, 문서/릴리즈1, 독립 정적 QA1, 총괄 read-only1 | owner r0 literal FAIL→correction r1 PASS, QA 본문 PASS·metadata blocker 1, 상태-only 자체 해소·재QA 0 | **0/0/0** | 0 | 0 | **1/2** | 첫 부분 patch context mismatch, activity cycle stale 1; 기능/운영 본문 폐기 0 | **완료 보관 — 주의** | 운영 문서 3개 단일 owner, 정적 QA1, 총괄1 | Unity/MCP/build/full/matrix/capture 0, QA 재실행 0, 최종 status sync 재QA 0 | `_workspace/completed/2026-08-05-2026-08-05-verification-loop-noise-reduction/` | 2026-08-05 KST |
 | `2026-08-05-rat-collision-surface-slide`<br>쥐 대각선 충돌 표면 미끄러짐 교정 | R2 — 사용자 가시 2D 물리 응답 | 조정1→QA S0→gameplay1→QA1→총괄1. 구현자/QA 표적 각 1묶음, build 0, full 최대1 | 조정1, QA S0 r0 FAIL+r1 PASS, gameplay1, 독립 QA1, 총괄 read-only 1, 문서/릴리즈1, closeout QA1·총괄1; lease CLI no-result 1 후 same-run correction | 구현자 표적 4회, QA 표적 1회(qa-001 16/16), closeout 정적 QA PASS | **5/0/0** | 0 | 0 | S0 correction **1/2**, run005·006 연속 실패 2회 뒤 R2 재분류 | run004~run006 SUPERSEDED, run007 구현자 PASS, qa-001 독립 QA PASS, C6·closeout QA·총괄 완료 | **완료 보관 — 사용자 수용 반영 / 주의** | run007·qa-001 canonical 검증, C6 실제 WASD 수용, 재발 계약, closeout 독립 QA·총괄 | run001~003 preflight binding, run004~006 product 실패, QA lease 첫 호출은 회피 가능 비용; full/MCP/build/capture는 회피 | `_workspace/completed/2026-08-05-2026-08-05-rat-collision-surface-slide/` | 2026-08-05 KST |
 | `2026-08-04-unity-mcp-local-path-fix`<br>Unity MCP 프로젝트 로컬 relay 경로 교정 | R1 — 기존 설정 값 국소 교정 | 조정1→Unity 아키텍처 구현1→QA1→총괄1, diff·TOML·경로 존재 정적 검증 | 조정1, 구현1, QA1, 총괄1 | 구현자 1회, QA 1회 `QA-20260804T142903+0900-b28584a8` | **0/0/0** | 0 | 0 | 0/2 | 0 | **완료 보관 — 정상** | 단일 설정 owner, 독립 정적 QA, 총괄 감사 | Unity/MCP/빌드·full suite·capture 생략 | `_workspace/completed/2026-08-04-2026-08-04-unity-mcp-local-path-fix/` | 2026-08-04 KST |

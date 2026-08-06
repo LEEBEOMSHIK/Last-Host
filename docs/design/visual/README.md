@@ -4,17 +4,20 @@
 
 ## 확인 순서
 
-1. `references/README.md`와 `references/rat-host-2d-isometric-gameplay-mockup-v1.png`에서 목표 화면의 용도와 한계를 확인한다.
-2. `graphics-direction-management.md`에서 현재 그래픽 방향과 수용 경계를 확인한다.
-3. `pixel-isometric-2d-production-guide.md`에서 타일, 스프라이트, 픽셀 격자, 정렬, 카메라와 기술 샘플 기준을 확인한다.
-4. ChatGPT 이미지 생성이 필요하면 `../../prototype/plans/rat-host-ai-assisted-art-workflow.md`와 `.agents/chatgpt-image-art-agent.md`를 따른다.
-5. 기존 구현이나 과거 산출물을 해석할 때만 `pixel-lowpoly-3d-production-guide.md`를 레거시 문서로 확인한다.
+1. `references/README.md`에서 목표 화면·캐릭터 reference의 용도와 한계를 확인한다.
+2. 캐릭터 작업이면 `characters/README.md`와 해당 캐릭터 기준 문서의 불변식을 확인한다.
+3. `graphics-direction-management.md`에서 현재 그래픽 방향과 수용 경계를 확인한다.
+4. `pixel-isometric-2d-production-guide.md`에서 타일, 스프라이트, 픽셀 격자, 정렬, 카메라와 기술 샘플 기준을 확인한다.
+5. ChatGPT 이미지 생성이 필요하면 `../../prototype/plans/rat-host-ai-assisted-art-workflow.md`와 `.agents/chatgpt-image-art-agent.md`를 따른다.
+6. 기존 구현이나 과거 산출물을 해석할 때만 `pixel-lowpoly-3d-production-guide.md`를 레거시 문서로 확인한다.
 
 ## 현재 문서
 
 - `graphics-direction-management.md`: 현재 2D 아이소메트릭 도트 그래픽 방향과 reference·수용 관리 기준.
 - `pixel-isometric-2d-production-guide.md`: 2D 타일·캐릭터 스프라이트·깊이 정렬·픽셀 출력·QA 제작 기준.
 - `references/`: 승인된 목표 화면 reference와 출처·용도·한계.
+- `characters/`: 캐릭터별 승인 외형·성격·업그레이드 불변식과 production 경계.
+- `characters/base-bacteriophage-character.md`: 가장 기본 바이러스인 박테리오파지의 기준 캐릭터 계약.
 - `../../prototype/plans/rat-host-ai-assisted-art-workflow.md`: OpenAI 내장 `imagegen`을 이용한 후보 생성, 기록, 선별, 후속 제작·Unity 적용 분리 절차.
 - `pixel-lowpoly-3d-production-guide.md`: 2026-07-27 이전 하이브리드 2.5D/Blender 프리렌더 제작 이력. 신규 제작 기본 경로가 아니다.
 
