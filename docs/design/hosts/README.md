@@ -5,12 +5,15 @@
 ## 포함 문서
 
 - `host-instinct-control.md`: 숙주 본능, AI 행동 패턴, 플레이어 강제 조종, 면역 경계도 연결 기준
+- `host-map-transfer-route.md`: 장기 캠페인의 숙주 범위, 동물별 생활권 맵, 혼합형 전이 경로와 조건부 이전 맵 복귀 기준
 - 숙주별 고유 특성과 바이러스가 배울 수 있는 숙주 경험 특성은 `../progression/host-experience-traits.md`와 함께 참조한다.
 - 쥐 숙주
 - 벌레 숙주
 - 인간 숙주
 - 숙주 전이 조건
 - 숙주별 이동, 감각, 위험 회피 방식
+
+`host-map-transfer-route.md`는 전체 캠페인 장기 제안이며 현재 쥐 숙주 프로토타입 구현 승인으로 해석하지 않는다.
 
 ## 제외 문서
 
