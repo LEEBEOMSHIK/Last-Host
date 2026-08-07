@@ -2,22 +2,22 @@
 
 ## 현재 이어받을 작업
 
-- 작업 ID: 신규 작업 후보 미선정
-- 상태: 자연 부분 가림·쥐 본체 보존 사용자 수용 완료 및 보관
-- 작업 경로: `_workspace/completed/2026-08-05-2026-08-02-production2d-natural-occlusion-root-fix/`
-- 최신 사용자 요청: 다음 후보로 표시된 자연 부분 가림 화면과 쥐 본체 보존은 이미 수용한 내용이므로 완료 상태로 바로잡는다.
+- 작업 ID: `2026-08-05-startup-settings-localization-ui`
+- 상태: 내부 승인 가능 — Play 진입·언어별 폰트 UnityEditMode 38/38 PASS, 사용자 실제 화면 수용 대기
+- 작업 경로: `_workspace/active/2026-08-05-startup-settings-localization-ui/`
+- 최신 사용자 요청: 게임 실행 초기 화면·설정 UI를 진행하고, 계속 보정할 수 있도록 다국어 확장 가능성을 처음부터 반영한다.
 
 ## 먼저 읽을 파일
 
-1. `docs/project-handoff/current-task-board.md`
-2. `_workspace/completed/2026-08-05-2026-08-02-production2d-natural-occlusion-root-fix/completion-report.md`
-3. `_workspace/completed/2026-08-05-2026-08-02-production2d-natural-occlusion-root-fix/verification.md`
+1. `_workspace/active/2026-08-05-startup-settings-localization-ui/task.md`
+2. `_workspace/active/2026-08-05-startup-settings-localization-ui/handoff.md`
+3. `docs/agents/loop-engineering-gates.md`
 
 ## 바로 이어서 할 작업
 
-1. 완료된 대각선 충돌 표면 slide와 자연 부분 가림·쥐 본체 보존 QA는 반복하지 않는다.
-2. 남아 있는 active 항목의 실제 미충족 게이트를 상태판과 대조한다.
-3. 새 작업 후보는 사용자와 선택한 뒤 별도 작업 패킷으로 시작한다.
+1. 사용자가 시작 화면 첫인상, 한·영 전환·취소, 설정 UI 가독성을 확인한다.
+2. 사용자가 `프로토타입 시작`의 2D 핵심 루프 진입을 확인한다.
+3. 확인 결과에 따라 UI 배치·문구를 후속 보정한다.
 
 ## 병행 차단 작업
 

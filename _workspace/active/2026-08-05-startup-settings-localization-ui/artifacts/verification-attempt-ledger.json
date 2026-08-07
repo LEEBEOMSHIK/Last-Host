@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "work_id": "2026-08-05-startup-settings-localization-ui",
+  "entries": [
+    {
+      "criterion_id": "C2-C6-C9-implementer-targeted",
+      "outcome": "failure",
+      "run_id": "startup-settings-impl-20260805-001",
+      "candidate_fingerprint": "2cc42f372ccfbba0643fbc43b3207cd097523f7640975c8a85e80902134cc552",
+      "route": "UnityEditMode",
+      "note": "Invoke-HighCostVerification.ps1 preflight could not start: the only discovered pwsh command resolved to a WindowsApps alias that the system could not execute. No wrapper guard, isolated sync, Unity process, MCP, build, or low-level runner started.",
+      "root_cause": "PowerShell 7 runtime unavailable to the current process",
+      "change_plan": "Run the existing wrapper once after an executable PowerShell 7 runtime is available; do not bypass the wrapper.",
+      "risk_class": "R3",
+      "recorded_utc": "2026-08-05T22:09:01.7969695+09:00"
+    },
+    {
+      "criterion_id": "C1-C9-qa-target",
+      "outcome": "failure",
+      "run_id": "startup-settings-qa-20260805-001",
+      "candidate_fingerprint": "d10c8cae0d0908828c038c5f2e689e32c765bf09659360cbe5a3915f33b8eb57",
+      "route": "UnityEditMode",
+      "note": "Test-VerificationCurrentState.ps1 blocked preflight (exit 1): {\r\n  \"schema_version\": 1,\r\n  \"check\": \"verification-current-state\",\r\n  \"passed\": false,\r\n  \"details\": [\r\n    \"evidence run_id is stale\",\r\n    \"evidence run_id is stale\",\r\n    \"evidence run_id is stale\"\r\n  ]\r\n}",
+      "root_cause": "current-state evidence entries retained stale integration/static run IDs after the QA run ID was assigned",
+      "change_plan": "Synchronize evidence metadata to the same QA run ID and unchanged candidate fingerprint, then re-enter preflight once without changing production.",
+      "risk_class": "R3",
+      "recorded_utc": "2026-08-05T22:32:28.5884697+09:00"
+    },
+    {
+      "criterion_id": "C1-C9-qa-target",
+      "outcome": "success",
+      "run_id": "startup-settings-qa-20260805-001",
+      "candidate_fingerprint": "d10c8cae0d0908828c038c5f2e689e32c765bf09659360cbe5a3915f33b8eb57",
+      "route": "UnityEditMode",
+      "note": "low-level exit 0",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-05T22:36:33.3415629+09:00"
+    },
+    {
+      "criterion_id": "BG1-BG6-qa-target",
+      "outcome": "failure",
+      "run_id": "startup-background-qa-20260807-001",
+      "candidate_fingerprint": "be3e9ce5a76ff6951272a6a191a89018a7f28eeef182b30df878495c750d3649",
+      "route": "UnityEditMode",
+      "note": "Test-QaHarnessSafety.ps1 blocked preflight (exit 1): \u001b[31;1mTest-QaHarnessSafety.ps1: \u001b[31;1mA positional parameter cannot be found that accepts argument 'UnityProject/Assets/_Project/Tests/EditMode/Startup/StartupSceneContractTests.cs'.\u001b[0m",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-07T11:17:19.2414319+09:00"
+    },
+    {
+      "criterion_id": "BG1-BG6-qa-target",
+      "outcome": "success",
+      "run_id": "startup-background-qa-20260807-002",
+      "candidate_fingerprint": "be3e9ce5a76ff6951272a6a191a89018a7f28eeef182b30df878495c750d3649",
+      "route": "UnityEditMode",
+      "note": "low-level exit 0",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-07T11:22:53.8772607+09:00"
+    },
+    {
+      "criterion_id": "PFC1-PFC8-C1-C9-qa-target",
+      "outcome": "success",
+      "run_id": "startup-play-font-qa-20260807-001",
+      "candidate_fingerprint": "22eef3ed82cb72848ad3d7d78eefd5bf16b9d73815a7a03d8a5d7ac48798531a",
+      "route": "UnityEditMode",
+      "note": "low-level exit 0",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-07T04:44:42.3069144+00:00"
+    }
+  ]
+}

@@ -21,7 +21,7 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 
 ## 현재 저장소 상태
 
-- 현재 기능·완료 기록 Git 기준: `4de3975 fix: complete surface slide and verification updates`가 `origin/main`에 반영돼 있다.
+- 현재 기능·완료 기록 Git 기준: `f1f5094 docs: close natural occlusion acceptance`가 `origin/main`에 반영돼 있다.
 - 현재 Git 작업 상태: 대각선 충돌 표면 slide, 검증 반복 축소 운영 규칙, Unity MCP 로컬 relay 경로 교정과 세 완료 패킷은 원격 반영 완료다. 사용자 소유 `docs/references/images/image.png`만 untracked로 남겨 커밋에서 제외했다.
 - 현재 커밋 경계: ProjectSettings·preview·`Builds/`·사용자 reference 보호 원칙은 유지하며, 이번 실제 제외 대상은 사용자 reference다.
 - 최근 완료: 자연 부분 가림 R2 최종 후보 `5cd81d7c…`는 gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, Console Error 0·scene dirty false와 총괄 내부 승인을 통과했다. 사용자가 최종 가림 화면과 쥐 본체 보존을 수용한 내용임을 재확인해 완료 보관했다.
@@ -39,7 +39,10 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
 | 바이러스 주인공 기본 외형 기준 반영 | 완료 보관 — correction 1 QA PASS·총괄 내부 승인 가능 | 사용자 제공 박테리오파지 원본과 canonical reference의 `1036×1248`·bytes·SHA-256, 기준 문서·색인·2D production 경계·금지 문구·비반입을 검증했다. 기존 A/B/C는 `SUPERSEDED` 이력이며 실제 턴어라운드·시트·Unity 적용은 별도 승인이다. | `_workspace/completed/2026-08-06-2026-08-06-virus-character-concept-v1/` |
+| 시작 화면 V2 비주얼 후보 제작 | 방향 재검토 — 바이러스 콘셉트 선택 전 보류 | 기존 후보는 먹이사슬과 숙주 사이 바이러스 이동감이 부족해 선별하지 않는다. 바이러스 캐릭터 기준을 먼저 선택한 뒤 새 시작 화면 브리프로 재개한다. | `_workspace/active/2026-08-06-startup-ui-visual-v2/` |
 | 작업 기록·검증 운영 경량 구조 개편 | 완료 보관 — 독립 QA PASS·총괄 내부 승인 가능 | R0 무폴더, R1 단일 `record.md`, R2/R3 기본 두 파일, 조건부 분리 기록·artifact, completed 동일 폴더 이동과 기존 안전 게이트를 27파일 revision에서 검증했다. | `_workspace/completed/2026-08-06-2026-08-06-workspace-recording-lightweight/` |
+| Unity MCP client relay 일괄 정리 전역 스킬 | 완료 보관 — 전역 설치·QA PASS·총괄 승인 | Codex-owned `relay_win.exe --mcp`만 정리하는 전역 스킬을 설치했다. 실제 relay 종료는 별도 요청 전까지 수행하지 않았다. | `_workspace/completed/2026-08-06-2026-08-06-unity-mcp-relay-resetter/` |
+| PC 시작 화면·설정 UI와 다국어 준비 구조 | 내부 승인 가능 — Play 진입·언어별 폰트 `38/38` PASS, 사용자 실제 화면 수용 대기 | Editor Play를 저장된 Startup 씬으로 고정하고 선택 배경을 연결했다. 한국어 Galmuri11·영어 Silkscreen profile과 라이선스·누락 진단을 추가했다. canonical UnityEditMode `38/38` PASS; McpPlay unavailable로 실제 960×540 화면·입력·가독성은 사용자 확인 대상으로 남긴다. | `_workspace/active/2026-08-05-startup-settings-localization-ui/` |
 | Unity MCP 프로젝트 로컬 relay 경로 교정 | 완료 보관 — 실제 연결 재검증 대기 | `.codex/config.toml`의 `unity_mcp.command`를 `C:\Users\bumci\.unity\relay\relay_win.exe`로 교정했다. QA 기술 검증 통과·총괄 내부 승인 가능; 실제 MCP 연결은 Codex 재시작 후 확인한다. | `_workspace/completed/2026-08-04-2026-08-04-unity-mcp-local-path-fix/` |
 | 검증 current-state 상태 계약 교정 | 완료 보관·운영 `a33164b` push | 후보 `71e4dcdd…`: unknown/status-only stale 차단, route expected status와 `ready-for-verification`→`verification-running` 전이, 기존 G1~G8 회귀를 구현자·QA 각 1회 `24/24`로 확인했다. Unity/MCP/빌드 0. | `_workspace/completed/2026-08-03-2026-08-02-verification-current-state-contract/` |
 | 검증 하네스 비용·재시도 차단 보완 | 완료 보관·운영 `a33164b` push — 후속 R3로 SUPERSEDED | 미지원 route·Reflection·stale contract·실패 2회·cache·full-history·low-level 우회는 유지되고, status 값·전이 계약은 후속 최종 후보 `71e4dcdd…`로 대체됐다. | `_workspace/completed/2026-08-03-2026-08-02-verification-harness-cost-guards/` |
@@ -91,7 +94,7 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 
 ## 다음 작업 후보
 
-대각선 충돌 표면 slide와 자연 부분 가림·쥐 본체 보존은 모두 사용자 수용까지 완료했으며 추가 이동·가림 QA 대상이 아니다. 현재 새 작업 후보는 미선정 상태다. 다음 작업은 남아 있는 active 항목의 실제 미충족 게이트를 다시 대조한 뒤 사용자와 선택한다.
+`PC 시작 화면·설정 UI와 다국어 준비 구조`는 Play 진입·언어별 폰트 후보의 표적 UnityEditMode `38/38`와 독립 QA를 통과했다. 다음은 재실행이 아니라 사용자 Startup 첫 프레임·한영 폰트 전환·설정 가독성·2D 진입 수용 확인이다. 대각선 충돌 표면 slide와 자연 부분 가림·쥐 본체 보존은 완료 상태를 유지하고 재검증하지 않는다.
 
 ## 최근 판단 항목
 

@@ -1,0 +1,12 @@
+{
+  "work_id": "2026-08-05-startup-settings-localization-ui",
+  "context_mode": "packet-only",
+  "fork_turns": "none",
+  "required_files": [
+    "_workspace/active/2026-08-05-startup-settings-localization-ui/task.md",
+    "_workspace/active/2026-08-05-startup-settings-localization-ui/artifacts/architecture-review.md",
+    "UnityProject/Assets/_Project/Tests/EditMode/Startup/StartupSettingsTests.cs"
+  ],
+  "message": "Implement the Startup settings and localization runtime boundary, then run one implementer-owned targeted UnityEditMode bundle through Invoke-HighCostVerification.ps1. Verify draft preview/cancel, deterministic defaults and fallback, apply ordering, persistence corruption handling, Korean/English key completeness, exact RatHost2DPrototype start command, and safe quit command. Stop at the first blocker and do not run a full suite, build, MCP Play, or the low-level runner directly.",
+  "include_conversation_history": false
+}

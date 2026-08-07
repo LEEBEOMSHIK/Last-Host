@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "work_id": "2026-08-05-startup-settings-localization-ui",
+  "status": "independent-qa-pass-awaiting-director",
+  "run_id": "startup-play-font-qa-20260807-001",
+  "candidate_fingerprint": "22eef3ed82cb72848ad3d7d78eefd5bf16b9d73815a7a03d8a5d7ac48798531a",
+  "preflight_correction": "0/2",
+  "cost": {
+    "unity_starts": 3,
+    "mcp_starts": 0,
+    "build_starts": 0,
+    "recorded_high_cost_attempts": 3
+  },
+  "evidence": [
+    {
+      "run_id": "startup-play-font-qa-20260807-001",
+      "candidate_fingerprint": "22eef3ed82cb72848ad3d7d78eefd5bf16b9d73815a7a03d8a5d7ac48798531a",
+      "kind": "independent-static-qa",
+      "result": "Passed",
+      "summary": "PFC1-PFC8 source/scene/font import and serialized mapping, exact pinned binary/license/source hashes, localized glyph coverage contract, contrast thresholds, background/raycast/diagnostic fallback, protected hashes, and git diff --check passed."
+    },
+    {
+      "run_id": "startup-play-font-qa-20260807-001",
+      "candidate_fingerprint": "22eef3ed82cb72848ad3d7d78eefd5bf16b9d73815a7a03d8a5d7ac48798531a",
+      "kind": "unity-editmode-targeted",
+      "result": "Passed",
+      "total": 38,
+      "passed": 38,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "unity_exit_code": 0,
+      "results": "artifacts/qa-target-results.xml",
+      "summary": "Saved Startup playModeStartScene, language font mappings/glyphs/source/hash/license, selected background, diagnostics, Build Settings, and Startup settings/localization regressions passed 38/38. McpPlay remained unavailable, so post-correction rendered Play acceptance is pending."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "work_id": "2026-08-05-startup-settings-localization-ui",
+  "context_mode": "packet-only",
+  "fork_turns": "none",
+  "required_files": [
+    "_workspace/active/2026-08-05-startup-settings-localization-ui/task.md",
+    "UnityProject/Assets/_Project/Tests/EditMode/Startup/StartupSettingsTests.cs",
+    "UnityProject/Assets/_Project/Tests/EditMode/Startup/StartupSceneContractTests.cs"
+  ],
+  "message": "Independently verify frozen revision startup-play-entry-font-profiles-r2-20260807 for PFC1-PFC8 and C1-C9 through one targeted UnityEditMode bundle after static S1 is green. Confirm saved Startup playModeStartScene, selected background, exact Korean/English serialized font mapping and glyph coverage, pinned source/hash/license, diagnostic fallback IDs, all active/inactive Text font synchronization, settings/localization regressions, exact scene transition, Build Settings, and protected gameplay/package paths. Record that rendered play/capture acceptance remains pending when McpPlay is unavailable. Stop at the first blocker; do not run build, full suite, large matrix, or low-level runner directly.",
+  "include_conversation_history": false
+}

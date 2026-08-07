@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="33" result="Passed" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.26672">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="242" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.266720" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1282" name="LastHost.Prototype.Tests.dll" fullname="C:/Users/bumci/AppData/Local/Temp/last-host-unity-cache/2026-08-05-startup-settings-localization-ui/project/Library/ScriptAssemblies/LastHost.Prototype.Tests.dll" runstate="Runnable" testcasecount="134" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.242412" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="22896" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1283" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="134" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.236722" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1284" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="134" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.229043" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1285" name="Tests" fullname="LastHost.Prototype.Tests" runstate="Runnable" testcasecount="134" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.224865" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1287" name="EditMode" fullname="LastHost.Prototype.Tests.EditMode" runstate="Runnable" testcasecount="129" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.165799" total="28" passed="28" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestSuite" id="1288" name="Startup" fullname="LastHost.Prototype.Tests.EditMode.Startup" runstate="Runnable" testcasecount="28" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.160593" total="28" passed="28" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-suite type="TestFixture" id="1251" name="StartupSettingsTests" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" testcasecount="28" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.157667" total="28" passed="28" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1269" name="Controller_ApplyValidatesThenAppliesScreenThenSavesWholeBundle" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_ApplyValidatesThenAppliesScreenThenSavesWholeBundle" methodname="Controller_ApplyValidatesThenAppliesScreenThenSavesWholeBundle" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="393237584" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.054208" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-suite type="ParameterizedMethod" id="1279" name="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.011388" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                    <properties />
+                    <test-case id="1274" name="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile(LastHost.Prototype.UI.Startup.StartupSettings)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile(LastHost.Prototype.UI.Startup.StartupSettings)" methodname="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1972393943" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.003711" asserts="0">
+                      <properties>
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                    <test-case id="1275" name="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile(LastHost.Prototype.UI.Startup.StartupSettings)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile(LastHost.Prototype.UI.Startup.StartupSettings)" methodname="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1268825076" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000446" asserts="0">
+                      <properties>
+                        <property name="childIndex" value="2" />
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                    <test-case id="1276" name="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile(LastHost.Prototype.UI.Startup.StartupSettings)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile(LastHost.Prototype.UI.Startup.StartupSettings)" methodname="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="404569977" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000193" asserts="0">
+                      <properties>
+                        <property name="childIndex" value="3" />
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                    <test-case id="1277" name="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile(LastHost.Prototype.UI.Startup.StartupSettings)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile(LastHost.Prototype.UI.Startup.StartupSettings)" methodname="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1133281970" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000190" asserts="0">
+                      <properties>
+                        <property name="childIndex" value="4" />
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                    <test-case id="1278" name="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile(LastHost.Prototype.UI.Startup.StartupSettings)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile(LastHost.Prototype.UI.Startup.StartupSettings)" methodname="Controller_DamagedOrUnsupportedStoredBundleRecoversAsOneDefaultProfile" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1844172416" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000168" asserts="0">
+                      <properties>
+                        <property name="childIndex" value="5" />
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                  </test-suite>
+                  <test-case id="1268" name="Controller_DefaultsChangesOnlyDraft" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_DefaultsChangesOnlyDraft" methodname="Controller_DefaultsChangesOnlyDraft" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="279997133" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.001781" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1281" name="Controller_EscapeCancelsSettingsButDoesNothingOnMainMenu" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_EscapeCancelsSettingsButDoesNothingOnMainMenu" methodname="Controller_EscapeCancelsSettingsButDoesNothingOnMainMenu" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="119367626" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.001069" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1270" name="Controller_InvalidDraftDoesNotApplyOrSave" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_InvalidDraftDoesNotApplyOrSave" methodname="Controller_InvalidDraftDoesNotApplyOrSave" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="493774757" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.005071" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1267" name="Controller_LanguageDraftPreviewsEveryStringWithoutSavingOrApplying_ThenCancelRestoresAll" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_LanguageDraftPreviewsEveryStringWithoutSavingOrApplying_ThenCancelRestoresAll" methodname="Controller_LanguageDraftPreviewsEveryStringWithoutSavingOrApplying_ThenCancelRestoresAll" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="705496416" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.004539" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1273" name="Controller_MissingStoredBundleRecoversAndPersistsWholeDefaultProfile" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_MissingStoredBundleRecoversAndPersistsWholeDefaultProfile" methodname="Controller_MissingStoredBundleRecoversAndPersistsWholeDefaultProfile" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1335434203" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000846" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1271" name="Controller_ScreenApplyFailureDoesNotSave" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_ScreenApplyFailureDoesNotSave" methodname="Controller_ScreenApplyFailureDoesNotSave" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1335967748" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.001298" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1280" name="Controller_StartUsesExact2DPrototypePath_AndQuitUsesPlatformBoundary" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_StartUsesExact2DPrototypePath_AndQuitUsesPlatformBoundary" methodname="Controller_StartUsesExact2DPrototypePath_AndQuitUsesPlatformBoundary" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1176340871" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.001505" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1272" name="Controller_ValidStoredBundleIsRestoredWithoutRewrite" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Controller_ValidStoredBundleIsRestoredWithoutRewrite" methodname="Controller_ValidStoredBundleIsRestoredWithoutRewrite" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1850928416" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000508" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1254" name="Defaults_Prefers1920By1080WhenSupported" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Defaults_Prefers1920By1080WhenSupported" methodname="Defaults_Prefers1920By1080WhenSupported" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1730765830" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000410" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1256" name="Defaults_WhenNoSixteenByNineExists_SelectsHighestSupportedResolution" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Defaults_WhenNoSixteenByNineExists_SelectsHighestSupportedResolution" methodname="Defaults_WhenNoSixteenByNineExists_SelectsHighestSupportedResolution" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1421936769" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.006447" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1255" name="Defaults_WhenPreferredIsMissing_SelectsHighestSupportedSixteenByNine" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Defaults_WhenPreferredIsMissing_SelectsHighestSupportedSixteenByNine" methodname="Defaults_WhenPreferredIsMissing_SelectsHighestSupportedSixteenByNine" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="246968022" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.001652" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1257" name="Defaults_WhenSupportedListIsEmpty_UsesCurrentResolution" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Defaults_WhenSupportedListIsEmpty_UsesCurrentResolution" methodname="Defaults_WhenSupportedListIsEmpty_UsesCurrentResolution" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1622307067" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000621" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1252" name="LocalizationCatalog_HasEveryKeyForKoreanAndEnglish" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.LocalizationCatalog_HasEveryKeyForKoreanAndEnglish" methodname="LocalizationCatalog_HasEveryKeyForKoreanAndEnglish" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1306382741" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.006370" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1253" name="Localizer_MissingRequestedTextFallsBackToKoreanThenMarker" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.Localizer_MissingRequestedTextFallsBackToKoreanThenMarker" methodname="Localizer_MissingRequestedTextFallsBackToKoreanThenMarker" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1398933018" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.001679" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-suite type="ParameterizedMethod" id="1266" name="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.PlayerPrefsRepository_CorruptFieldRejectsWholeBundle" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.016402" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                    <properties />
+                    <test-case id="1260" name="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;schema&quot;,&quot;2&quot;)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;schema&quot;,&quot;2&quot;)" methodname="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="822075344" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.008846" asserts="0">
+                      <properties>
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                    <test-case id="1261" name="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;language&quot;,&quot;99&quot;)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;language&quot;,&quot;99&quot;)" methodname="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="2002363477" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.001217" asserts="0">
+                      <properties>
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                    <test-case id="1262" name="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;displayMode&quot;,&quot;99&quot;)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;displayMode&quot;,&quot;99&quot;)" methodname="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1679005377" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000562" asserts="0">
+                      <properties>
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                    <test-case id="1263" name="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;width&quot;,&quot;broken&quot;)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;width&quot;,&quot;broken&quot;)" methodname="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1023919794" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000934" asserts="0">
+                      <properties>
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                    <test-case id="1264" name="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;height&quot;,&quot;-1&quot;)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;height&quot;,&quot;-1&quot;)" methodname="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="1442046077" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000744" asserts="0">
+                      <properties>
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                    <test-case id="1265" name="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;vSync&quot;,&quot;2&quot;)" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.PlayerPrefsRepository_CorruptFieldRejectsWholeBundle(&quot;vSync&quot;,&quot;2&quot;)" methodname="PlayerPrefsRepository_CorruptFieldRejectsWholeBundle" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="811408415" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000503" asserts="0">
+                      <properties>
+                        <property name="retryIteration" value="0" />
+                        <property name="repeatIteration" value="0" />
+                      </properties>
+                    </test-case>
+                  </test-suite>
+                  <test-case id="1259" name="PlayerPrefsRepository_PartialBundleIsRejected" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.PlayerPrefsRepository_PartialBundleIsRejected" methodname="PlayerPrefsRepository_PartialBundleIsRejected" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="960234709" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.000837" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1258" name="PlayerPrefsRepository_RoundTripsOnlyACompleteBundle" fullname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests.PlayerPrefsRepository_RoundTripsOnlyACompleteBundle" methodname="PlayerPrefsRepository_RoundTripsOnlyACompleteBundle" classname="LastHost.Prototype.Tests.EditMode.Startup.StartupSettingsTests" runstate="Runnable" seed="105887932" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.001028" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1286" name="Startup" fullname="LastHost.Prototype.Tests.Startup" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.054404" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1141" name="StartupSceneContractTests" fullname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests" classname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.052664" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1143" name="BuildSettings_PreserveLegacyAndSampleEntriesAsDisabled" fullname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests.BuildSettings_PreserveLegacyAndSampleEntriesAsDisabled" methodname="BuildSettings_PreserveLegacyAndSampleEntriesAsDisabled" classname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests" runstate="Runnable" seed="1089322551" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.002534" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1142" name="BuildSettings_StartWithStartupThenExact2DPrototype" fullname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests.BuildSettings_StartWithStartupThenExact2DPrototype" methodname="BuildSettings_StartWithStartupThenExact2DPrototype" classname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests" runstate="Runnable" seed="107663658" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.006673" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1145" name="ProtectedSceneAssets_AndExact2DTargetExist" fullname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests.ProtectedSceneAssets_AndExact2DTargetExist" methodname="ProtectedSceneAssets_AndExact2DTargetExist" classname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests" runstate="Runnable" seed="426265831" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.001885" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1144" name="StartupScene_IsLoadableAndContainsSingleStartupMenuView" fullname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests.StartupScene_IsLoadableAndContainsSingleStartupMenuView" methodname="StartupScene_IsLoadableAndContainsSingleStartupMenuView" classname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests" runstate="Runnable" seed="1327037556" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.023100" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1146" name="StartupScene_ReferencesSelectedSpriteBackgroundWithUiImportSettings" fullname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests.StartupScene_ReferencesSelectedSpriteBackgroundWithUiImportSettings" methodname="StartupScene_ReferencesSelectedSpriteBackgroundWithUiImportSettings" classname="LastHost.Prototype.Tests.Startup.StartupSceneContractTests" runstate="Runnable" seed="1896910978" result="Passed" start-time="2026-08-07 02:22:50Z" end-time="2026-08-07 02:22:50Z" duration="0.013722" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: C:/Users/bumci/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

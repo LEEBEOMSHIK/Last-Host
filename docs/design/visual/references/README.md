@@ -23,6 +23,17 @@
 - 상태: 사용자 채택 canonical character reference; 실제 2D 스프라이트나 Unity 에셋이 아님
 - 상세 기준: `../characters/base-bacteriophage-character.md`
 
+### `startup-bacteriophage-food-chain-background-v1.png`
+
+- 채택일: 2026-08-07 KST
+- 입력 출처: 사용자 제공·선택 `image.png`
+- 해상도·크기: `1672×941`, `2,812,443 bytes`
+- SHA-256: `5ED62B0BE9E0FC68FED15135C8BEDB3F08639CD020E914EF420FE73831B17C8D`
+- 용도: 박테리오파지가 여러 숙주와 먹이사슬을 따라 이동하는 게임 콘셉트를 전달하는 PC 시작 화면 배경
+- 상태: 사용자 선택 시작 화면 배경. Unity 적용 승인됨
+- Unity import copy: `../../../../UnityProject/Assets/_Project/Art/Production2D/V1/UI/Startup/startup-bacteriophage-food-chain-background-v1.png`
+- 한계: 시작 화면 전용이며 반복 타일·방향별 스프라이트·최종 게임플레이 아트로 확대 해석하지 않는다.
+
 ## 해석 한계
 
 - 이 이미지는 반복 가능한 타일셋, 방향별 캐릭터 스프라이트 시트, 애니메이션 프레임, 충돌 맵, 깊이 정렬 데이터가 아니다.
