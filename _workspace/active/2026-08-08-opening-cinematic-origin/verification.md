@@ -13,9 +13,9 @@
 
 ## 검증 담당
 
-- 작성자 검증: v11 correction 2/2 메인 시나리오 디렉터 `author-opening-edit-beats-contract-correction-029` PASS — Task 5 기존 파일 Modify 수명주기, 단일 비상호작용 러닝타임 산식·breakdown 비재가산·건너뛰기 분리·입력 이벤트, C1~C14, fingerprint, 링크, diff, placeholder 대조
-- 독립 QA: correction 2/2 `qa-opening-edit-beats-contract-correction-030` PASS — C1~C14, blocker 없음. 이전 QA-027은 총괄 028 blocker 뒤 SUPERSEDED
-- 프로젝트 총괄 판정: `director-opening-edit-beats-final-audit-031` 내부 승인 가능·최소 수정 0
+- 작성자 검증: v12 Gate S 메인 시나리오 디렉터 `author-opening-gate-s-editorial-contract-032` PASS — C1~C15, 33 ID·15필드, 승인 그룹·내부 경계, master/axis/scale/layer 매핑, 시간·placeholder·링크·SHA256·diff 대조
+- 독립 QA: `qa-opening-gate-s-editorial-contract-033` PASS — C1~C15, blocker 0. 이전 QA-030은 사용자 Gate S 결정 뒤 SUPERSEDED
+- 프로젝트 총괄 판정: `director-opening-gate-s-final-audit-034` 내부 승인 가능·최소 수정 0
 
 ## 실제 수행·검증 이력
 
@@ -57,6 +57,9 @@
 | 메인 시나리오 디렉터 | Task 5를 기존 shot spec Modify로 교정하고, 첫 프레임~T01 입력 해제 실제 경과에서 커스터마이징 체류만 빼는 단일 산식·breakdown 비재가산·건너뛰기 별도 보고·입력 이벤트를 동기화 | `author-opening-edit-beats-contract-correction-029` PASS |
 | QA/검증 | correction 2/2 C1~C14, 기존 shot spec Modify 수명주기, 단일 비상호작용 러닝타임 산식·breakdown 비재가산·건너뛰기 분리·입력 이벤트, production fingerprint, task·verification 기록 정합, diff·placeholder·Unity 비변경을 독립 재대조 | `qa-opening-edit-beats-contract-correction-030` PASS, blocker 없음 |
 | 프로젝트 총괄 | QA-030 canonical 증거와 v11 production fingerprint를 read-only 최종 감사 | `director-opening-edit-beats-final-audit-031` 내부 승인 가능, 최소 수정 0 |
+| 메인 시나리오 디렉터 | 사용자 Gate S 보호형 압축 편집 그룹, 내부 beat boundary, master composition·camera axis·scale band·layer delta와 접근성·입력 경계를 기존 shot spec Modify 방식으로 반영 | `author-opening-gate-s-editorial-contract-032` PASS |
+| QA/검증 | v12 C1~C15, 33 ID·15필드, 승인 그룹·내부 경계와 master/axis/scale/layer 전수 매핑, 시간·placeholder·링크·SHA256·diff·Unity 비변경을 독립 재대조 | `qa-opening-gate-s-editorial-contract-033` PASS, blocker 0 |
+| 프로젝트 총괄 | QA-033 canonical 증거와 v12 Gate S fingerprint·승인 경계·후속 Step 6 상태를 read-only 최종 감사 | `director-opening-gate-s-final-audit-034` 내부 승인 가능, 최소 수정 0 |
 
 ## 원래 증상 또는 완료 주장
 
@@ -65,18 +68,21 @@
 ## 현재 검증 revision
 
 - 위험 등급: R2
-- verification revision: `opening-origin-r2-v11-edit-beats-contract-correction2`
-- candidate fingerprint: README `4DFC6600FFA3C93AE20D8BFC807B7C0BDDCB45B540BCC721ECAE9015B8514DC6`; origin `1A998992C1881C008A14775282B02EFADC8E029CC82D0FC168A12203C2629110`; plan `37247AE7930AEAACA6743DF05560E00C29E0C1EFED8542B1197E82E1D1BE90C6`; shot spec `0480ED9B183B99E2A046E44F7D81C5E7AD2D63CBBE230EA5B2FB2260CBCB57EC`
-- canonical run_id: `qa-opening-edit-beats-contract-correction-030`
-- candidate frozen 여부: 예 — correction 2/2 canonical QA PASS와 총괄 031 내부 승인 가능 상태로 동결하며, Task 5 사용자 결정 전 production 의미 변경 금지
+- verification revision: `opening-origin-r2-v12-gate-s-editorial-contract`
+- candidate fingerprint: README `61DC1AFE3E5CF856FB053356514D46A90785A25A9E5318A73BFDB74C9759FF3B`; origin `1A998992C1881C008A14775282B02EFADC8E029CC82D0FC168A12203C2629110`; plan `A50BB54AA049510D687EFF45509230424A2744541E73C455F349A37C4C625B08`; shot spec `2A1854340F09975C62F8683F0F3A9E42991D15494BD5B628DC25908FD0DFD9B6`
+- author run_id: `author-opening-gate-s-editorial-contract-032`
+- canonical run_id: `qa-opening-gate-s-editorial-contract-033`
+- candidate frozen 여부: 예 — v12 canonical QA PASS와 총괄 034 내부 승인 가능 상태로 precommit 동결하며 production 의미 변경 금지
 - capability route / wrapper preflight: Markdown 정적 검증 / Unity preflight 불필요
 
 ## 독립 검증 여부
 
-- 구현 주체와 검증 주체 분리 여부: 예 — correction 작성자 029와 독립 QA 030 분리
+- 구현 주체와 검증 주체 분리 여부: 예 — v12 작성자 032와 독립 QA 033 분리
 - 이전 독립 검증 항목: C1~C13, 회사원 점심·학생 등교·어머니 점심 준비, 무기 제작 구체 정보 금지, 자리표시자·모순·diff
 - correction 전 v11 독립 검증 항목: C1~C14, 33개 ID·15필드·병합/분리 경계·시간 비확정·실제 측정 산식·공개 장부·링크·SHA256·Unity 비변경 — QA-027 PASS 뒤 총괄 028로 SUPERSEDED
 - correction 2/2 독립 재검증 항목: 기존 shot spec Modify 수명주기, 단일 비상호작용 러닝타임 산식과 breakdown 비재가산·건너뛰기/입력 경계, C1~C14·링크·SHA256·Unity 비변경 — PASS, blocker 없음
+- v12 독립 검증 예정 항목: C1~C15, 33 ID·15필드, 승인 그룹·내부 경계와 master/axis/scale/layer 전수 매핑, scale band bitmap zoom 금지, 접근성·재시청·건너뛰기·입력, 시간·placeholder·링크·SHA256·diff·Unity 비변경
+- v12 독립 검증 결과: `qa-opening-gate-s-editorial-contract-033` C1~C15 PASS, blocker 0
 
 ## 실행한 검증
 
@@ -113,19 +119,21 @@
 | C1~C14·기록 정합 | v11 production fingerprint, 33개 ID·15필드·병합/분리·시간·공개 장부 계약, README·plan·task·verification 상태, correction 1/2, 링크·diff·placeholder·SHA256·Unity 비변경·안전/승인 경계 독립 재대조 | `qa-opening-edit-beats-reveal-ledger-027` | PASS, blocker 없음 | 이전 v11 fingerprint와 QA 회신 | SUPERSEDED — 총괄 028 계약 blocker 발견 |
 | C14·총괄 계약 감사 | Task 5의 canonical shot spec 수명주기와 총 비상호작용 러닝타임 산식의 중복·이중 계산 가능성 대조 | `director-opening-edit-beats-contract-audit-028` | FAIL — 기존 파일을 다시 Create, 실제 타임라인 구성요소를 재가산 | 총괄 회신과 correction 전 plan·shot spec | SUPERSEDED — author 029 correction 적용 전 blocker |
 | C1~C14·계약 correction 2/2 | Task 5 기존 shot spec Modify, 첫 프레임~T01 입력 해제 실제 경과-커스터마이징 체류 단일 산식, hold·전환·입력 잠금 breakdown 비재가산, 건너뛰기 별도 보고·입력 경계 이벤트, 33개 ID·15필드·시간·공개 장부·링크·diff·placeholder·SHA256 대조 | `author-opening-edit-beats-contract-correction-029` | PASS | 위 correction 2/2 candidate fingerprint와 작성자 정적 검사 | 유효 — canonical QA 대조 완료 |
-| C1~C14·correction 기록 정합 | correction 2/2 production fingerprint, 파일 수명주기·단일 산식·비재가산·건너뛰기/입력 이벤트, 33개 ID·15필드·시간·공개 장부, task·verification 상태, 링크·diff·placeholder·SHA256·Unity 비변경·안전/승인 경계 독립 재대조 | `qa-opening-edit-beats-contract-correction-030` | PASS, blocker 없음 | 위 correction 2/2 fingerprint와 QA 회신 | 유효·canonical |
+| C1~C14·correction 기록 정합 | correction 2/2 production fingerprint, 파일 수명주기·단일 산식·비재가산·건너뛰기/입력 이벤트, 33개 ID·15필드·시간·공개 장부, task·verification 상태, 링크·diff·placeholder·SHA256·Unity 비변경·안전/승인 경계 독립 재대조 | `qa-opening-edit-beats-contract-correction-030` | PASS, blocker 없음 | 이전 correction 2/2 fingerprint와 QA 회신 | SUPERSEDED — 사용자 Gate S 승인으로 production 의미 변경 |
+| C1~C15·Gate S 작성자 검증 | 33개 추적 ID·15필드, 승인 편집 그룹과 내부 beat boundary, 모든 그룹의 master composition·camera axis·scale band·layer delta, band 간 bitmap zoom 금지와 scale-correct redraw·mask-match cut, 접근성·자막·건너뛰기·재시청·입력 경계, Task 4 Step 6·Task 5 Step 1~6, 시간·placeholder·링크·SHA256·diff 대조 | `author-opening-gate-s-editorial-contract-032` | PASS | 위 v12 fingerprint와 작성자 정적 검사 | 유효 — canonical QA 대조 완료 |
+| C1~C15·Gate S 기록 정합 | v12 production fingerprint, 33 ID·15필드, 승인 그룹·내부 경계와 master/axis/scale/layer 전수 매핑, 시간·placeholder·링크·SHA256·diff·Unity 비변경·안전/승인 경계 독립 재대조 | `qa-opening-gate-s-editorial-contract-033` | PASS, blocker 0 | 위 v12 fingerprint와 QA 회신 | 유효·canonical |
 
 ## 검증하지 못한 항목
 
 - 이미지·애니매틱·오디오·Unity 재생은 이번 작업 범위 밖이다.
-- 가확정 문구의 실제 화면 흐름·톤·가독성 적합성과 편집 비트 후보의 최종 스토리보드·카메라·레이어·타이밍은 아직 검증하지 않았다.
+- 가확정 문구의 실제 화면 흐름·톤·가독성 적합성과 승인 편집 그룹을 실제 배치한 최종 스토리보드·패널·숏 수·카메라 수치·타이밍은 아직 검증하지 않았다.
 - 최소 내레이션의 정확한 화자·최종 대사량·언어별 녹음은 후속 결정 대상이다.
 - 실제 폰트 크기·해상도·접근성 환경과 언어별 fallback의 화면 가독성은 후속 숏·구현 단계 검증 대상이다.
 - 심야 환승시설 장면의 정확한 숏·러닝타임·에셋과 Unity 적용은 후속 승인·검증 대상이다.
 - Step 2 제작 기준 가안의 실제 스토리보드·결과물 적합성은 후속 사용자 검토 대상이다.
 - 커스터마이징 UI, 저장 형식, 방향별 스프라이트·초상·모션 코믹 에셋과 Unity 적용은 후속 승인·검증 대상이다.
 - 세균 감염 접속형의 실제 숏·에셋·팝업 UI·도감·저장·실습·코드와 Unity 적용은 후속 승인·검증 대상이다.
-- 33개 편집 비트 후보의 유지·병합·분할 결과, 최종 스토리보드 패널·구도·레이어·카메라와 실제 측정 타이밍은 Task 5 후속 승인·검증 대상이다.
+- Task 5 Step 1~5의 문서 계약은 반영했지만 실제 스토리보드·이미지·에셋·애니매틱·오디오·코드·Unity는 만들지 않았고, 실제 연결 측정 Step 6은 미완료다.
 - 총 러닝타임은 승인된 패널·비최종 애니매틱을 실제 연결하기 전에는 산정하지 않으며, 커스터마이징 체류 시간은 별도 측정 대상이다.
 - `main-scenario-outline.md`의 기존 숲 바닥 도입과 새 오프닝 요약·공개 장부 링크 동기화는 별도 작업으로 남아 있다.
 
@@ -145,6 +153,7 @@
 - `qa-opening-customization-continuity-021` blocker는 production 의미 변경이 아니라 확정·미결정 목록의 clerical sync 결함이므로 v7 재분류 correction cycle을 `1/2`로 증가시킨다.
 - v10은 새 사용자 결정 반영 revision이며 v7 재분류 correction cycle `1/2`를 계승하고 추가 증가시키지 않는다.
 - v11은 새 사용자 Task 4 승인 반영 revision으로 v7 재분류 correction cycle `1/2`를 계승했다. 총괄 028이 Task 5의 기존 파일 재생성 선언과 러닝타임 구성요소 재가산을 blocker로 판정해 단일 correction으로 `2/2`가 됐다. QA-027은 correction 전 fingerprint이므로 SUPERSEDED다.
+- v12는 새 사용자 Gate S 승인 반영 revision이므로 correction cycle `2/2`를 추가 증가시키지 않는다. production 의미가 변경돼 QA-030과 총괄 031은 이전 fingerprint 이력으로 SUPERSEDED이며 새 독립 QA가 필요하다.
 - 비적용 설계 이력: 사용자 피드백 전 `커스터마이징 전 비식별 미시 실루엣·빛·시점만 사용` 제안은 최종 승인과 달라 폐기했으며 production에 적용하지 않았다.
 - S6 전체 suite 실행 허용/실행 횟수: 해당 없음 / 0
 - S7 대형 matrix 실행 허용/실행 횟수: 해당 없음 / 0
@@ -153,33 +162,33 @@
 
 | 비용 항목 | 계획 예산 | 실제 수·run_id/근거 | 정상/초과/미집계 | 필요한 비용/회피 가능 비용 |
 | --- | --- | --- | --- | --- |
-| 실제 역할·인계 | 연출1·조정1·QA1·총괄1 | v1~v10 이력 유지, v11 작성자 026·QA 027·총괄 028 blocker·correction 작성자 029·독립 QA 030·최종 총괄 031 | 주의 | 승인된 의미 변경, 독립 검증과 총괄 계약 감사에 필요한 역할 |
-| 표적 검증 | 작성자1·QA1 | v11 작성자 026 PASS·QA 027 PASS→총괄 028 수정 필요→correction 작성자 029 PASS→QA 030 PASS→총괄 031 내부 승인 가능·최소 수정 0 | 주의 | C1~C14 correction 작성자·독립 QA·최종 총괄 감사 완료 |
+| 실제 역할·인계 | 연출1·조정1·QA1·총괄1 | v1~v11 이력 유지, v12 작성자 032 PASS→독립 QA 033 PASS→최종 총괄 034 내부 승인 가능·최소 수정 0 | 주의 | 사용자 승인 의미 변경의 작성자·독립 QA·총괄 감사 완료 |
+| 표적 검증 | 작성자1·QA1 | v12 작성자 032 C1~C15 PASS, 독립 QA 033 C1~C15 PASS·blocker 0, 총괄 034 내부 승인 가능 | 주의 | 정적 검증만 수행, 동적 실행 0 |
 | Unity/MCP/빌드 시작 | 0 | 0 | 정상 | 전부 회피 |
 | full suite | 0 | 0 | 정상 | 전부 회피 |
 | matrix/capture·artifact | 0 | 0 | 정상 | 전부 회피 |
 
-- 비용 판정: 주의 — 총괄 028 blocker 2건을 단일 correction 2/2로 보정했으며 Unity/MCP/build 실행은 0
+- 비용 판정: 주의 — correction 2/2 유지, v12 작성자 032·독립 QA 033 각 1회, Unity/MCP/build 실행은 0
 - 중앙 비용 현황판 갱신: 기존 다른 작업의 미커밋 변경과 충돌 방지를 위해 사용자 검토 전 보류, 본 파일에 단일 기록
 
 ## 게이트 판정
 
-- QA/검증 게이트 통과 여부: PASS — correction 2/2 `qa-opening-edit-beats-contract-correction-030`, C1~C14, blocker 없음
-- 총괄 관리자 검토로 넘길 수 있는지: 예 — correction 2/2 canonical QA와 최종 감사 완료
+- QA/검증 게이트 통과 여부: PASS — `qa-opening-gate-s-editorial-contract-033` C1~C15, blocker 0
+- 총괄 관리자 검토로 넘길 수 있는지: 예 — v12 최종 감사 완료
 
 ## 프로젝트 총괄 관리자 판정
 
-- 판정: 내부 승인 가능 — `director-opening-edit-beats-final-audit-031`
-- 근거: `qa-opening-edit-beats-contract-correction-030` C1~C14 PASS, blocker 없음, production fingerprint 일치
+- 판정: 내부 승인 가능 — `director-opening-gate-s-final-audit-034`
+- 근거: `qa-opening-gate-s-editorial-contract-033` C1~C15 PASS·blocker 0, production fingerprint 일치, 후속 제작·측정 경계 유지
 - 최소 수정사항: 없음(0)
 - 이전 판정: v10 `내부 승인 가능`은 이전 fingerprint 이력이며 새 production 문서의 승인으로 확대하지 않는다.
-- 현재 근거: `qa-opening-edit-beats-contract-correction-030` C1~C14 PASS, blocker 없음
+- 현재 근거: QA-033 canonical PASS와 총괄 034 최종 감사
 - 승인 범위·사용자 수용 대기: 최종 스토리보드·러닝타임·이미지·애니매틱·오디오·Unity 구현은 별도 승인
 
 ## 완료 판단
 
-- Task 4의 33개 편집 비트 후보·병합 경계·기원 공개 장부는 유지했다. 총괄 028 blocker를 correction 2/2 author 029로 보정했고 canonical QA-030 C1~C14 PASS와 총괄 031 내부 승인 가능·최소 수정 0까지 확인했다. 이는 Task 4 상세 숏 명세의 내부 승인이지 오프닝 제작 전체 완료가 아니다.
-- Task 5의 최종 스토리보드·카메라·레이어·타이밍은 미완료이며, 총 러닝타임은 승인된 패널·비최종 애니매틱 실제 연결 뒤 산정한다.
+- Task 5 Gate S의 보호형 압축 편집 그룹과 구도·축·스케일·레이어·접근성·입력 계약은 작성자 032, canonical QA-033, 총괄 034 최종 감사를 통과했다. 33개 추적 ID는 유지되며 최종 숏·패널 수·시간은 확정하지 않았다.
+- Task 5 Step 1~5 문서 계약은 완료, Step 6 실제 스토리보드·비최종 애니매틱 연결 측정은 미완료다. Task 4 Step 6도 `main-scenario-outline.md`의 숲 바닥 도입 충돌 때문에 미완료다.
 
 ## 사용자 수용 상태
 
@@ -191,11 +200,13 @@
 - 사용자 결정 반영: Task 3 Step 3은 레이어형 혼합 커스터마이징과 기본형→실제 선택 외형 연속성
 - 사용자 결정 반영: Task 3 Step 4는 세균 감염 접속형과 안전 시점 강제 큐·항목별 확인/실습 신규 콘텐츠 알림
 - 사용자 결정 반영: Task 4는 최종 숏 수가 아닌 33개 편집 비트 후보와 기원 공개 장부로 상세화하고 시간은 실제 연결 뒤 산정
-- 다음 사용자 결정: Task 5에서 유지·병합·분할할 비트와 최종 스토리보드·카메라·레이어 명세
-- 프로젝트 총괄 재감사 전 작업 전체 `완료` 표현 금지 여부: 아니오 — v11 최종 감사 완료. 단, Task 5 사용자 결정과 후속 제작 승인 전 오프닝 제작 전체 `완료` 표현은 금지
-- Task 5 사용자 승인 전 이미지·에셋·애니매틱·오디오·UI·저장·코드·Unity 제작 완료 표현 금지 여부: 예
+- 사용자 결정 반영: Task 5 Gate S 보호형 압축 편집 그룹, 내부 분할, 마스터 구도·카메라 축·스케일·레이어 delta와 접근성·입력 경계 승인
+- 다음 작업: Task 4 Step 6에서 `main-scenario-outline.md`의 숲 바닥 도입을 승인된 오프닝으로 동기화
+- 이후 사용자 결정: Gate S 계약을 적용한 실제 스토리보드 후보·결과 패널/숏 수와 이미지 후보 생성 여부
+- v12 프로젝트 총괄 재감사 전 작업 전체 `완료` 표현 금지 여부: 아니오 — 최종 감사 완료. 단, Task 4 Step 6 전파와 Task 5 Step 6 실제 측정은 미완료
+- 실제 이미지·에셋·스토리보드·애니매틱·오디오·UI·저장·코드·Unity 제작 완료 표현 금지 여부: 예
 
 ## 최종 상태
 
-- 완료/보류/승인 대기: v11 correction 2/2 canonical QA `qa-opening-edit-beats-contract-correction-030` C1~C14 PASS·blocker 없음, 총괄 031 내부 승인 가능·최소 수정 0 — Task 4 상세 숏 명세 `c50f71a` origin/main 반영 완료, Task 5 사용자 결정 대기
-- 완료 경로와 Git 상태: `_workspace/active/2026-08-08-opening-cinematic-origin/`; `c50f71a docs: define opening edit beats` origin/main 반영 완료
+- 완료/보류/승인 대기: v12 QA-033 C1~C15 PASS·blocker 0, 총괄 034 내부 승인 가능·최소 수정 0 — Gate S 계약 커밋 대기, Task 4 Step 6 메인 시나리오 전파 다음, Task 5 Step 6 실제 연결 측정 대기
+- 완료 경로와 Git 상태: `_workspace/active/2026-08-08-opening-cinematic-origin/`; 현재 HEAD `a20d4f7`, v12 production·R2 상태 변경 pending
