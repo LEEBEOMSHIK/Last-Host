@@ -159,7 +159,7 @@
 ## 완료 판단
 
 - Task 3 Step 4 세균 감염 접속형과 신규 콘텐츠 알림 계약은 v10 canonical QA와 프로젝트 총괄 최종 감사를 통과했다. 다음은 Task 4 숏·비트 분해의 사용자 결정 대기다.
-- 이번 최종 감사 결과를 반영하는 상태-only 동기화는 production 의미와 canonical fingerprint를 바꾸지 않으므로 새 QA·총괄 라운드가 필요하지 않다.
+- 이번 최종 감사와 `592dd4b` origin/main 반영 완료를 기록하는 상태-only 동기화는 production 의미와 canonical fingerprint를 바꾸지 않으므로 새 QA·총괄 라운드가 필요하지 않다.
 
 ## 사용자 수용 상태
 
@@ -176,5 +176,5 @@
 
 ## 최종 상태
 
-- 완료/보류/승인 대기: v10 canonical QA PASS·프로젝트 총괄 내부 승인 가능 — Task 3 완료, Task 4 숏·비트 분해 사용자 결정 및 승인 문서 선별 커밋 대기
-- 완료 경로와 Git 상태: `_workspace/active/2026-08-08-opening-cinematic-origin/`, 사용자 검토용 선별 커밋 대상
+- 완료/보류/승인 대기: v10 canonical QA PASS·프로젝트 총괄 내부 승인 통과 — Task 3 완료, 승인 문서 `592dd4b` origin/main 반영 완료, Task 4 숏·비트 분해 결정 단계 진행 중·사용자 결정 대기
+- 완료 경로와 Git 상태: `_workspace/active/2026-08-08-opening-cinematic-origin/`, `592dd4b docs: expand narrative and cinematic workflow` 원격 반영 완료
