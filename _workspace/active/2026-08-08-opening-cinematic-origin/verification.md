@@ -68,7 +68,7 @@
 - verification revision: `opening-origin-r2-v11-edit-beats-contract-correction2`
 - candidate fingerprint: README `4DFC6600FFA3C93AE20D8BFC807B7C0BDDCB45B540BCC721ECAE9015B8514DC6`; origin `1A998992C1881C008A14775282B02EFADC8E029CC82D0FC168A12203C2629110`; plan `37247AE7930AEAACA6743DF05560E00C29E0C1EFED8542B1197E82E1D1BE90C6`; shot spec `0480ED9B183B99E2A046E44F7D81C5E7AD2D63CBBE230EA5B2FB2260CBCB57EC`
 - canonical run_id: `qa-opening-edit-beats-contract-correction-030`
-- candidate frozen 여부: 예 — correction 2/2 canonical QA PASS와 총괄 031 내부 승인 가능 상태로 동결하며, Task 5 사용자 결정 또는 선별 커밋 전 production 의미 변경 금지
+- candidate frozen 여부: 예 — correction 2/2 canonical QA PASS와 총괄 031 내부 승인 가능 상태로 동결하며, Task 5 사용자 결정 전 production 의미 변경 금지
 - capability route / wrapper preflight: Markdown 정적 검증 / Unity preflight 불필요
 
 ## 독립 검증 여부
@@ -197,5 +197,5 @@
 
 ## 최종 상태
 
-- 완료/보류/승인 대기: v11 correction 2/2 canonical QA `qa-opening-edit-beats-contract-correction-030` C1~C14 PASS·blocker 없음, 총괄 031 내부 승인 가능·최소 수정 0 — Task 4 상세 숏 명세 내부 승인 통과, 선별 커밋 및 Task 5 사용자 결정 대기
-- 완료 경로와 Git 상태: `_workspace/active/2026-08-08-opening-cinematic-origin/`; 현재 Git HEAD `b06c80d`, v11 production·R2 상태 동기화는 pending
+- 완료/보류/승인 대기: v11 correction 2/2 canonical QA `qa-opening-edit-beats-contract-correction-030` C1~C14 PASS·blocker 없음, 총괄 031 내부 승인 가능·최소 수정 0 — Task 4 상세 숏 명세 `c50f71a` origin/main 반영 완료, Task 5 사용자 결정 대기
+- 완료 경로와 Git 상태: `_workspace/active/2026-08-08-opening-cinematic-origin/`; `c50f71a docs: define opening edit beats` origin/main 반영 완료

@@ -21,9 +21,9 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 
 ## 현재 저장소 상태
 
-- 현재 로컬 Git HEAD: `b06c80d docs: sync narrative push state`.
-- 현재 Git 작업 상태: Task 4 v11 상세 숏 명세와 R2·공유 상태 문서는 선별 커밋 대기다. 최종 감사 fingerprint는 동결하며 production 의미는 변경하지 않는다.
-- 현재 커밋 경계: Task 4 v11 production 문서와 직접 상태 기록만 이번 pending 후보로 다룬다. ProjectSettings·preview·`Builds/` 보호 원칙은 유지한다.
+- 현재 로컬 Git HEAD와 `origin/main`: `c50f71a docs: define opening edit beats` 반영 완료.
+- 현재 Git 작업 상태: Task 4 v11 상세 숏 명세와 R2·공유 상태 문서는 원격 반영 완료다. 최종 감사 fingerprint는 동결하며 production 의미는 변경하지 않는다.
+- 현재 커밋 경계: Task 4 v11 production 문서와 직접 상태 기록은 `c50f71a`에 반영됐다. ProjectSettings·preview·`Builds/` 보호 원칙은 유지한다.
 - 최근 완료: 자연 부분 가림 R2 최종 후보 `5cd81d7c…`는 gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, Console Error 0·scene dirty false와 총괄 내부 승인을 통과했다. 사용자가 최종 가림 화면과 쥐 본체 보존을 수용한 내용임을 재확인해 완료 보관했다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
@@ -38,7 +38,7 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
-| 오프닝 시네마틱·세균 감염 접속형 첫 튜토리얼 설계 | Task 4 상세 숏 명세 내부 승인 통과·커밋 대기 — Task 5 편집 비트 유지·병합·분할 결정 대기 | Task 4를 최종 숏 수가 아닌 `A01~T01` 33개 편집 비트 후보와 15필드·병합/분리 경계·기원 공개 장부로 상세화했다. canonical QA `qa-opening-edit-beats-contract-correction-030` C1~C14 PASS, 총괄 `director-opening-edit-beats-final-audit-031` 내부 승인 가능·최소 수정 0이다. 실제 스토리보드·카메라·레이어·이미지·에셋·오디오·UI·저장·코드·Unity는 후속 승인이다. | `_workspace/active/2026-08-08-opening-cinematic-origin/` |
+| 오프닝 시네마틱·세균 감염 접속형 첫 튜토리얼 설계 | Task 4 상세 숏 명세 내부 승인 통과·`c50f71a` 원격 반영 완료 — Task 5 편집 비트 유지·병합·분할 결정 대기 | Task 4를 최종 숏 수가 아닌 `A01~T01` 33개 편집 비트 후보와 15필드·병합/분리 경계·기원 공개 장부로 상세화했다. canonical QA `qa-opening-edit-beats-contract-correction-030` C1~C14 PASS, 총괄 `director-opening-edit-beats-final-audit-031` 내부 승인 가능·최소 수정 0이다. 실제 스토리보드·카메라·레이어·이미지·에셋·오디오·UI·저장·코드·Unity는 후속 승인이다. | `_workspace/active/2026-08-08-opening-cinematic-origin/` |
 | 메인 시나리오 디렉터 역할과 오프닝 구조 동기화 | 내부 승인 가능 — 사용자 문서 확인 대기 | 전체 서사·숙주/맵·성장·기원 미스터리의 연속성을 맡는 역할을 추가했다. 독립 QA C1~C6 PASS와 총괄 내부 승인을 통과했으며, 평온한 독립 3씬 뒤 혼합형 감염 확산을 두고 러닝타임은 숏 구성 뒤 산정한다. | `_workspace/active/2026-08-08-main-scenario-director-agent/` |
 | 픽셀아트 모션 코믹형 시네마틱 기준·전담 역할 | 내부 승인 가능 — 사용자 가이드 수용 대기 | 컷신 기본 형식과 숏·스토리보드·레이어 명세·비최종 애니매틱 계획·Unity 인계 전담 역할을 추가했다. 독립 QA C1~C7 PASS와 총괄 내부 승인을 통과했으며 이미지·실제 애니매틱·Unity 구현은 후속 승인으로 분리한다. | `_workspace/active/2026-08-08-pixel-motion-comic-cinematics/` |
 | 전체 게임 시나리오·화면 흐름·튜토리얼 초안 | 내부 승인 가능 — 사용자 내용 보완·수용 대기 | 시작 화면부터 튜토리얼, 숙주 탐험·내부 바이러스·변이·실패·숙주 전이·5엔딩까지 17구간으로 연결했다. 독립 QA correction 1에서 C1~C5 PASS, 총괄 내부 승인 가능이며 쥐 프로토타입만 현재 확정 범위다. | `_workspace/active/2026-08-07-main-scenario-outline/` |
@@ -98,7 +98,7 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 
 ## 다음 작업 후보
 
-`오프닝 시네마틱·세균 감염 접속형 첫 튜토리얼 설계`의 Task 4 상세 숏 명세(33개 편집 비트 후보)는 canonical QA C1~C14와 총괄 최종 감사를 통과했고 선별 커밋 대기다. 다음 사용자 결정은 Task 5에서 각 편집 비트를 유지·병합·분할할지 정하는 것이다. 총 러닝타임은 실제 연결 타임라인 뒤 산정하며, 실제 스토리보드·카메라·레이어·이미지·에셋·오디오·UI·저장·코드·Unity는 사용자 승인 전 시작하지 않는다. `PC 시작 화면·설정 UI와 다국어 준비 구조`는 Play 진입·언어별 폰트 후보의 표적 UnityEditMode `38/38`와 독립 QA를 통과했으며, 다음은 재실행이 아니라 사용자 Startup 첫 프레임·한영 폰트 전환·설정 가독성·2D 진입 수용 확인이다. 대각선 충돌 표면 slide와 자연 부분 가림·쥐 본체 보존은 완료 상태를 유지하고 재검증하지 않는다.
+`오프닝 시네마틱·세균 감염 접속형 첫 튜토리얼 설계`의 Task 4 상세 숏 명세(33개 편집 비트 후보)는 canonical QA C1~C14와 총괄 최종 감사를 통과해 `c50f71a`로 origin/main에 반영 완료됐다. 다음 사용자 결정은 Task 5에서 각 편집 비트를 유지·병합·분할할지 정하는 것이다. 총 러닝타임은 실제 연결 타임라인 뒤 산정하며, 실제 스토리보드·카메라·레이어·이미지·에셋·오디오·UI·저장·코드·Unity는 사용자 승인 전 시작하지 않는다. `PC 시작 화면·설정 UI와 다국어 준비 구조`는 Play 진입·언어별 폰트 후보의 표적 UnityEditMode `38/38`와 독립 QA를 통과했으며, 다음은 재실행이 아니라 사용자 Startup 첫 프레임·한영 폰트 전환·설정 가독성·2D 진입 수용 확인이다. 대각선 충돌 표면 slide와 자연 부분 가림·쥐 본체 보존은 완료 상태를 유지하고 재검증하지 않는다.
 
 ## 최근 판단 항목
 
