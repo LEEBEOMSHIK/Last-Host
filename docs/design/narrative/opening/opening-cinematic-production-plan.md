@@ -28,8 +28,7 @@
 | `docs/design/narrative/opening/opening-cinematic-production-plan.md` | 승인 게이트별 제작 태스크와 역할 인계 |
 | `docs/design/narrative/opening/README.md` | 오프닝 하위 문서 색인과 효력 경계 |
 | `docs/design/narrative/main-scenario-outline.md` | 후속 동기화 시 오프닝 요약과 전체 캠페인 위치 반영 |
-| 향후 `docs/design/narrative/opening/opening-shot-spec.md` | 사용자 승인 뒤 최종 숏 후보·레이어·타이밍 명세 |
-| 향후 `docs/design/narrative/opening/opening-reveal-ledger.md` | 구간별 기원 공개·비공개 정보와 단서 추적 |
+| `docs/design/narrative/opening/opening-shot-spec.md` | 승인된 33개 편집 비트 후보, 병합 경계, 시간 산식과 구간별 기원 공개·비공개 장부. 최종 숏·레이어·타이밍 명세는 아님 |
 
 ## Task 1: 오프닝 사건·기원 계약 고정
 
@@ -70,14 +69,14 @@
 - [x] **Step 4:** 현재 시작 문구와 후반 반전 문구를 제작 진행 기준으로 가확정한다. 실제 연출·편집에서 화면 흐름·톤·가독성 문제가 확인되면 사용자 재검토 후 수정한다. 마지막 질문은 후속 선택 대상으로 유지한다.
 - [x] **Step 5:** `최소 내레이션`으로 진행한다. 환경음·행동·화면 문구를 기본 전달 수단으로 삼고, 시각 정보만으로 의미가 불명확하거나 핵심 전환을 보조할 때만 내레이션을 사용한다. 시작·반전 중앙 문구를 모두 음성으로 중복 낭독하지 않으며, 기침 직후 무음과 미시 세계 진입 리듬을 보호한다. 정확한 화자·대사량·언어별 녹음은 후속 결정한다.
 - [x] **Step 6:** 시작·반전 중앙 문구의 한국어 제작 기준을 문구 블록당 최대 2줄·완전 가독 시간 최소 5초로 가확정한다. 페이드 인·아웃은 5초에 포함하지 않거나 전체 노출을 늘리고, 폰트 크기·해상도·접근성 테스트에 따른 연장은 허용하되 5초 미만 축소는 사용자 재검토 대상으로 둔다. 다른 언어는 2줄을 강제하지 않고 의미·읽기 속도·폰트 fallback에 따라 재조정한다.
-- [ ] **Step 7:** 확정 결과를 `opening-shot-spec.md`의 입력 계약으로 기록한다.
+- [x] **Step 7:** 확정 결과를 `opening-shot-spec.md`의 입력 계약으로 기록한다.
 
 ## Task 3: 노동자 공간·커스터마이징·튜토리얼 인계 확정
 
 **Files:**
 
 - Modify: `docs/design/narrative/opening/opening-cinematic-origin.md`
-- Create after approval: `docs/design/narrative/opening/opening-reveal-ledger.md`
+- Modify after approval: `docs/design/narrative/opening/opening-shot-spec.md`
 
 **Interfaces:**
 
@@ -94,39 +93,38 @@
 
 **Files:**
 
-- Create after approval: `docs/design/narrative/opening/opening-reveal-ledger.md`
-- Create after Gate S approval: `docs/design/narrative/opening/opening-shot-spec.md`
-- Modify after concurrent task resolution: `docs/design/narrative/main-scenario-outline.md`
+- Create: `docs/design/narrative/opening/opening-shot-spec.md`
+- Modify after separate synchronization approval: `docs/design/narrative/main-scenario-outline.md`
 
 **Interfaces:**
 
 - Consumes: Task 2~3의 승인된 사건·커스터마이징·튜토리얼과 오프닝·초반·중반·병원·연구소·마지막 선택의 공개 단계
-- Produces: 실제 숏 후보의 시작·종료 비트와 각 캠페인 구간이 사용할 새 사실, 단서와 금지 스포일러
+- Produces: 최종 숏 수가 아닌 33개 편집 비트 후보의 시작·종료 상태와 각 캠페인 구간이 사용할 새 사실, 단서와 금지 스포일러
 
-- [ ] **Step 1:** 승인된 사건 비트를 실제 숏 후보로 나누고 각 숏의 시작·종료 상태와 서사 목적 하나를 기록한다.
-- [ ] **Step 2:** 각 구간의 `새로 아는 사실`, `공개 수단`, `아직 감출 정보`를 한 행씩 기록한다.
-- [ ] **Step 3:** 군사화 책임을 한 개인·직업·국가에 단순 귀속하지 않는지 확인한다.
-- [ ] **Step 4:** 치료 목적을 지키거나 군사화에 반대한 인물의 기록 위치를 지정한다.
-- [ ] **Step 5:** 무기 제작에 활용 가능한 구체 정보가 포함되지 않았는지 검사한다.
-- [ ] **Step 6:** 기존 메인 시나리오 작업이 커밋·동결된 뒤 오프닝 요약과 공개 장부 링크를 동기화한다.
+- [x] **Step 1:** 승인된 사건을 최종 숏 수가 아닌 `A01~T01` 33개 편집 비트 후보로 나누고 각 후보의 시작·종료 상태와 서사 목적 하나를 기록한다.
+- [x] **Step 2:** 각 공개 단계의 `새로 아는 사실`, `공개 수단`, `아직 감출 정보`를 `opening-shot-spec.md`의 기원 공개 장부에 기록한다.
+- [x] **Step 3:** 군사화 책임을 한 개인·직업·국가에 단순 귀속하지 않는 경계를 기록한다.
+- [x] **Step 4:** 치료 목적을 지킨 인물은 병원 구간 후보, 군사화에 반대한 인물은 연구소 구간 후보의 기록 위치로 지정한다.
+- [x] **Step 5:** 무기 제작에 활용 가능한 물질·유전자·배양·제조·전달·최적화 정보를 금지하고 작성자 정적 검사를 수행한다.
+- [ ] **Step 6:** `592dd4b` 이후에도 `main-scenario-outline.md`에는 기존 숲 바닥 도입이 남아 있다. 별도 동기화 승인을 받은 뒤 오프닝 요약과 공개 장부 링크를 반영한다.
 
 ## Task 5: 최종 숏·스토리보드 명세
 
 **Files:**
 
-- Create after Gate S approval: `docs/design/narrative/opening/opening-shot-spec.md`
+- Modify after Gate S approval: 기존 `docs/design/narrative/opening/opening-shot-spec.md`
 
 **Interfaces:**
 
 - Consumes: Task 2~4의 사용자 선택 결과
 - Produces: 이미지 후보와 애니매틱 작업이 사용할 숏 ID, 구도, 레이어, 타이밍, 자막·오디오 큐
 
-- [ ] **Step 1:** 사건 비트를 실제 숏 후보로 나누고 각 숏의 시작·종료 상태와 서사 목적 하나를 기록한다.
+- [ ] **Step 1:** Task 4의 33개 편집 비트 후보 중 유지·병합·분할할 항목을 사용자와 결정하고 최종 숏 ID·패널 수를 부여한다.
 - [ ] **Step 2:** 배경·중경·전경·인물·파지·효과·마스크·자막 안전 영역을 숏별로 나눈다.
 - [ ] **Step 3:** 카메라 패닝·줌·패럴랙스·제한 프레임과 전환 시간을 지정한다.
 - [ ] **Step 4:** 노동자 원인 오인, 파지의 인간 세포 감염 오인과 기원 조기 폭로를 negative control로 점검한다.
 - [ ] **Step 5:** 사용자에게 숏 후보 승인을 받고 이미지 생성 여부를 별도로 묻는다.
-- [ ] **Step 6:** 승인된 숏의 정보량·감정 호흡·자막·전환 시간을 합산해 총 러닝타임과 첫 조작 도달 시간을 산정한다.
+- [ ] **Step 6:** `총 비상호작용 러닝타임 = 오프닝 첫 프레임부터 T01 입력 해제까지 실제 연결 타임라인의 경과 시간 - 커스터마이징 상호작용 체류 시간`으로 산정한다. 중앙 문구 hold·전환·입력 잠금은 실제 타임라인 구성요소로 breakdown에 별도 표시하되 다시 더하지 않고, 건너뛰기 경로 시간은 정상 러닝타임과 별도 보고하며 입력 경계는 이벤트로 기록한다.
 
 ## Task 6: 스토리보드·이미지 후보
 
@@ -198,10 +196,11 @@
 
 ## 다음 사용자 승인 순서
 
-1. Task 4 숏·비트 분해와 그 결과에 따른 총 러닝타임
-2. 이미지 후보 생성 수량
-3. 비최종 애니매틱 제작
-4. 오디오 제작
-5. Unity 재생과 튜토리얼 연결
+1. Task 5에서 유지·병합·분할할 편집 비트와 최종 스토리보드·카메라·레이어 명세
+2. 승인된 패널·비최종 애니매틱을 실제 연결한 뒤 측정하는 총 러닝타임
+3. 이미지 후보 생성 여부와 수량
+4. 비최종 애니매틱 제작
+5. 오디오 제작
+6. Unity 재생과 튜토리얼 연결
 
 각 항목은 이전 항목의 승인이 다음 항목 전체를 자동 승인하지 않는다.
