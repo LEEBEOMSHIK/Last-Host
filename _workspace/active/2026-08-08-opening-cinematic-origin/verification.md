@@ -81,7 +81,7 @@
 - 이전 독립 검증 항목: C1~C13, 회사원 점심·학생 등교·어머니 점심 준비, 무기 제작 구체 정보 금지, 자리표시자·모순·diff
 - correction 전 v11 독립 검증 항목: C1~C14, 33개 ID·15필드·병합/분리 경계·시간 비확정·실제 측정 산식·공개 장부·링크·SHA256·Unity 비변경 — QA-027 PASS 뒤 총괄 028로 SUPERSEDED
 - correction 2/2 독립 재검증 항목: 기존 shot spec Modify 수명주기, 단일 비상호작용 러닝타임 산식과 breakdown 비재가산·건너뛰기/입력 경계, C1~C14·링크·SHA256·Unity 비변경 — PASS, blocker 없음
-- v12 독립 검증 예정 항목: C1~C15, 33 ID·15필드, 승인 그룹·내부 경계와 master/axis/scale/layer 전수 매핑, scale band bitmap zoom 금지, 접근성·재시청·건너뛰기·입력, 시간·placeholder·링크·SHA256·diff·Unity 비변경
+- v12 독립 검증 대조 항목: C1~C15, 33 ID·15필드, 승인 그룹·내부 경계와 master/axis/scale/layer 전수 매핑, scale band bitmap zoom 금지, 접근성·재시청·건너뛰기·입력, 시간·placeholder·링크·SHA256·diff·Unity 비변경
 - v12 독립 검증 결과: `qa-opening-gate-s-editorial-contract-033` C1~C15 PASS, blocker 0
 
 ## 실행한 검증
@@ -208,5 +208,5 @@
 
 ## 최종 상태
 
-- 완료/보류/승인 대기: v12 QA-033 C1~C15 PASS·blocker 0, 총괄 034 내부 승인 가능·최소 수정 0 — Gate S 계약 커밋 대기, Task 4 Step 6 메인 시나리오 전파 다음, Task 5 Step 6 실제 연결 측정 대기
-- 완료 경로와 Git 상태: `_workspace/active/2026-08-08-opening-cinematic-origin/`; 현재 HEAD `a20d4f7`, v12 production·R2 상태 변경 pending
+- 완료/보류/승인 대기: v12 QA-033 C1~C15 PASS·blocker 0, 총괄 034 내부 승인 가능·최소 수정 0 — Gate S 계약 `f9e8bd0` origin/main 반영 완료, Task 4 Step 6 메인 시나리오 전파 다음, Task 5 Step 6 실제 연결 측정 대기
+- 완료 경로와 Git 상태: `_workspace/active/2026-08-08-opening-cinematic-origin/`; 현재 HEAD `f9e8bd0`, v12 production·R2 상태 변경 origin/main 반영 완료
