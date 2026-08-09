@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unity MCP Relay Resetter"
+  short_description: "Safely clear Codex Unity MCP client relays"
+  default_prompt: "Use $unity-mcp-relay-resetter to inspect and safely reset Codex Unity MCP client relays."

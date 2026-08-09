@@ -1,6 +1,6 @@
 # 작업별 참조 문서 색인
 
-최종 수정일: 2026-08-05
+최종 수정일: 2026-08-08
 
 ## 목적
 
@@ -72,6 +72,39 @@
 - `docs/design/ui-feedback/README.md`
 - `docs/design/ui-feedback/immune-alert-feedback.md`
 - `docs/prototype/official/rat-host-prototype.md`
+
+### 메인 시나리오 / 캠페인 흐름 설계
+
+사용 요청 예시:
+
+- 게임 시작부터 엔딩 후보까지 전체 시나리오를 차근차근 설계
+- 숙주·먹이사슬·맵 이동과 사건·성장을 연결
+- 돌연변이 기원 미스터리, 단서와 반전 공개 순서를 관리
+- 시네마틱·튜토리얼·탐험·미니게임이 이야기에서 맡는 기능을 정리
+
+필수 참조:
+
+- `.agents/main-scenario-director-agent.md`
+- `docs/design/game-design-summary.md`
+- `docs/design/narrative/README.md`
+- `docs/design/narrative/main-scenario-outline.md`
+- `docs/design/hosts/host-map-transfer-route.md`
+- `.codex/skills/last-host-design-keeper/SKILL.md`
+- 해당 `_workspace/active/<작업ID>/task.md`
+
+선택 참조:
+
+- `docs/design/narrative/opening/README.md`
+- `docs/design/narrative/pixel-art-motion-comic-cinematic-guide.md`
+- `docs/prototype/official/rat-host-prototype.md`
+- `.agents/pixel-cinematic-director-agent.md`
+- `.agents/gameplay-loop-agent.md`
+
+운영 경계:
+
+- 메인 시나리오 디렉터는 이야기의 의미·순서·공개 정보·게임플레이 연결을 소유한다.
+- 세부 숏 연출은 픽셀아트 시네마틱 연출, 구현은 게임플레이 또는 Unity 통합, 검증과 내부 승인은 QA와 프로젝트 총괄로 분리한다.
+- 장기 캠페인 문서화는 쥐 숙주 프로토타입 밖의 구현 승인이 아니다.
 
 ### Unity 프로젝트 준비 / 아키텍처
 
@@ -190,6 +223,38 @@
 - 프롬프트, 도구·날짜, 입력 reference 출처, 출력 경로와 선별 결과를 기록한다.
 - 방향·프레임 일관성, 게임 규격 재제작, Unity 적용과 QA는 후속 역할로 분리한다.
 
+### 픽셀아트 모션 코믹형 시네마틱 / 컷신 연출 설계
+
+사용 요청 예시:
+
+- 도입, 중요 숙주 전이, 세계 변화와 엔딩의 컷신 구성
+- 픽셀아트 모션 코믹형 시네마틱의 숏·스토리보드·레이어 설계
+- 비최종 애니매틱 계획, 자막·오디오 큐와 Unity 인계 명세 작성
+
+필수 참조:
+
+- `docs/design/narrative/main-scenario-outline.md`
+- `docs/design/narrative/pixel-art-motion-comic-cinematic-guide.md`
+- `docs/design/visual/graphics-direction-management.md`
+- `.agents/pixel-cinematic-director-agent.md`
+- 해당 `_workspace/active/<작업ID>/task.md`
+
+선택 참조:
+
+- `docs/design/visual/pixel-isometric-2d-production-guide.md`
+- `docs/design/visual/references/README.md`
+- `.agents/chatgpt-image-art-agent.md`
+- `.agents/visual-tech-art-agent.md`
+- `.agents/unity-scene-integration-agent.md`
+- `.agents/qa-verification-agent.md`
+
+운영 경계:
+
+- 시네마틱 연출 역할은 숏·스토리보드·레이어 명세·비최종 애니매틱 계획·Unity 인계 명세만 담당한다.
+- 실제 이미지·영상·애니매틱·오디오 제작과 Unity 구현은 각각 별도 승인·담당 작업으로 분리한다.
+- 생성 후보는 사용자 선택과 픽셀 검토·QA 없이 최종 에셋이나 완성 컷신으로 선언하지 않는다.
+- 전체 캠페인 장면의 문서화는 벌레·인간·병원·연구소·백신·엔딩 구현 승인이 아니다.
+
 ### 레거시 Blender 원본 / 리깅 / 프리렌더 조사
 
 사용 요청 예시:
@@ -244,6 +309,8 @@
 - `.agents/unity-scene-integration-agent.md`
 - `.agents/visual-tech-art-agent.md`
 - `.agents/chatgpt-image-art-agent.md`
+- `.agents/pixel-cinematic-director-agent.md`
+- `.agents/main-scenario-director-agent.md`
 - `.agents/qa-verification-agent.md`
 - `.agents/documentation-release-agent.md`
 

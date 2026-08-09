@@ -40,6 +40,7 @@
   - 고정 아이소메트릭/쿼터뷰 카메라와 2D 충돌·가림·Y축 깊이 정렬 사용
   - 제한 팔레트, 명확한 실루엣, 실제 플레이 해상도에서의 가독성 우선
 - `docs/design/visual/references/rat-host-2d-isometric-gameplay-mockup-v1.png`는 목표 분위기와 화면 구성을 판단하는 reference다. 반복 가능한 타일셋, 스프라이트 시트, 애니메이션 프레임 또는 최종 게임 에셋으로 간주하지 않는다.
+- 주요 서사 컷신은 제한 애니메이션 기반 `픽셀아트 모션 코믹형 시네마틱`을 기본 형식으로 하며, 숏·레이어·자막·오디오 큐·Unity 인계 기준은 `docs/design/narrative/pixel-art-motion-comic-cinematic-guide.md`를 따른다. 개별 장면 제작과 Unity 적용은 별도 승인 대상이다.
 - 핵심 구조:
   - 숙주 조종 2D 아이소메트릭 탐험
   - 숙주 내부 바이러스 면역 미니게임
@@ -93,6 +94,7 @@
 - 메인 에이전트는 기본적으로 조정자/통합자다. 코드, 씬, 테스트, ProjectSettings 변경은 `게임플레이 구현 에이전트` 또는 `Unity 씬/통합 구현 에이전트`에 배정한다.
 - 메인 에이전트가 직접 구현해야 하는 예외는 사용자 명시 승인과 해당 등급의 canonical 기록에 남긴 예외 사유가 있을 때만 허용한다.
 - 프로젝트 종속 에이전트 파일은 `.agents/*-agent.md`에 둔다.
+- 픽셀아트 시네마틱의 숏·스토리보드·레이어 명세·비최종 애니매틱 계획·Unity 인계는 `.agents/pixel-cinematic-director-agent.md`가 담당하며 생성·픽셀 검토·Unity 구현·QA·선택·승인은 기존 역할과 분리한다.
 - 프로젝트 종속 Codex 스킬은 `.codex/skills/`에 둔다.
 - 에이전트 간 작업 배정, 진행 기록, 완료 추적은 `_workspace/`를 사용한다.
 - `docs/project-handoff/current-task-board.md`는 active·next 중심 공유 현황판이다. 현재 후보나 Git 상태가 바뀌는 시점에만 동기화한다.

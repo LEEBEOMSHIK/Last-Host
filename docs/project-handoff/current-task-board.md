@@ -1,6 +1,6 @@
 # 현재 작업 후보와 핸드오프 현황
 
-최종 갱신: 2026-08-05 KST
+최종 갱신: 2026-08-09 KST
 
 ## 목적
 
@@ -21,23 +21,27 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 
 ## 현재 저장소 상태
 
-- 현재 기능·완료 기록 Git 기준: `f1f5094 docs: close natural occlusion acceptance`가 `origin/main`에 반영돼 있다.
-- 현재 Git 작업 상태: 대각선 충돌 표면 slide, 검증 반복 축소 운영 규칙, Unity MCP 로컬 relay 경로 교정과 세 완료 패킷은 원격 반영 완료다. 사용자 소유 `docs/references/images/image.png`만 untracked로 남겨 커밋에서 제외했다.
-- 현재 커밋 경계: ProjectSettings·preview·`Builds/`·사용자 reference 보호 원칙은 유지하며, 이번 실제 제외 대상은 사용자 reference다.
+- 현재 로컬 Git HEAD: `f36102c`.
+- 현재 Git 작업 상태: 승인 문서·에이전트/가이드·작업 패킷을 포함한 여러 미커밋 변경이 있으며 선별 커밋 대기다. 관련성이나 소유권이 확정되지 않은 파일은 임의로 분류하거나 포함하지 않는다.
+- 현재 커밋 경계: ProjectSettings·preview·`Builds/` 보호 원칙을 유지하고, 승인된 오프닝 시네마틱·세균 튜토리얼 문서와 그 R2 기록·상태 현황만 선별 대상으로 검토한다.
 - 최근 완료: 자연 부분 가림 R2 최종 후보 `5cd81d7c…`는 gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, Console Error 0·scene dirty false와 총괄 내부 승인을 통과했다. 사용자가 최종 가림 화면과 쥐 본체 보존을 수용한 내용임을 재확인해 완료 보관했다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
 - 정리 반영: 사용자 요청에 따라 r1~r5·r6 임시 preview 중간 바이너리 `1.38 MiB`를 삭제·커밋 제외하고 반려 사유만 문서로 보존
 - 기술 샘플 경계: 신규 패키지·최종 아트·기존 3D 교체 없이 별도 씬에서 시험 규격을 검증한다.
 - 보호 유지: ProjectSettings·`_workspace/previews/`·`Builds/`는 관련 변경이 다시 나타나도 별도 승인·검증 없이 후속 커밋에 섞지 않는다.
-- 이번 선별 커밋 포함: surface slide production·테스트·canonical/SUPERSEDED 증거, 재발 방지 계약, 검증 반복 축소 운영 규칙, Unity MCP 로컬 경로 교정, 완료 보관·현황 동기화.
-- 이번 선별 커밋 제외: 사용자 소유 `docs/references/images/image.png`.
+- 이번 선별 커밋 후보: 오프닝 시네마틱·세균 감염 접속형·신규 콘텐츠 알림 승인 문서, canonical QA·총괄 감사 R2 기록과 현황판·비용 행.
+- 이번 선별 커밋 제외 원칙: 위 후보와 관련성 또는 소유권이 확정되지 않은 변경은 자동 포함하지 않는다.
 - Stage2 임시 정리: QA 빌드 성공 기록은 문서로 남기고 `C:\tmp\LastHostRatHost2DStage2` 약 `205 MB`와 정적 컴파일 DLL/PDB는 사용자 요청으로 삭제
 
 ## 현재 진행 중
 
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
+| 오프닝 시네마틱·세균 감염 접속형 첫 튜토리얼 설계 | 내부 승인 가능 — Task 4 숏·비트 분해 사용자 결정·선별 커밋 대기 | 평온한 일상과 혼합형 확산부터 마감 청소 동선, 기본형→커스터마이징, 세균 감염 접속형과 신규 콘텐츠 중앙 알림까지 승인 계약을 연결했다. canonical QA `qa-opening-bacterial-tutorial-notice-025` C1~C13 PASS, 총괄 v10 내부 승인 가능이며 실제 숏·에셋·UI·저장·코드·Unity는 후속 승인이다. | `_workspace/active/2026-08-08-opening-cinematic-origin/` |
+| 메인 시나리오 디렉터 역할과 오프닝 구조 동기화 | 내부 승인 가능 — 사용자 문서 확인 대기 | 전체 서사·숙주/맵·성장·기원 미스터리의 연속성을 맡는 역할을 추가했다. 독립 QA C1~C6 PASS와 총괄 내부 승인을 통과했으며, 평온한 독립 3씬 뒤 혼합형 감염 확산을 두고 러닝타임은 숏 구성 뒤 산정한다. | `_workspace/active/2026-08-08-main-scenario-director-agent/` |
+| 픽셀아트 모션 코믹형 시네마틱 기준·전담 역할 | 내부 승인 가능 — 사용자 가이드 수용 대기 | 컷신 기본 형식과 숏·스토리보드·레이어 명세·비최종 애니매틱 계획·Unity 인계 전담 역할을 추가했다. 독립 QA C1~C7 PASS와 총괄 내부 승인을 통과했으며 이미지·실제 애니매틱·Unity 구현은 후속 승인으로 분리한다. | `_workspace/active/2026-08-08-pixel-motion-comic-cinematics/` |
+| 전체 게임 시나리오·화면 흐름·튜토리얼 초안 | 내부 승인 가능 — 사용자 내용 보완·수용 대기 | 시작 화면부터 튜토리얼, 숙주 탐험·내부 바이러스·변이·실패·숙주 전이·5엔딩까지 17구간으로 연결했다. 독립 QA correction 1에서 C1~C5 PASS, 총괄 내부 승인 가능이며 쥐 프로토타입만 현재 확정 범위다. | `_workspace/active/2026-08-07-main-scenario-outline/` |
 | 바이러스 주인공 기본 외형 기준 반영 | 완료 보관 — correction 1 QA PASS·총괄 내부 승인 가능 | 사용자 제공 박테리오파지 원본과 canonical reference의 `1036×1248`·bytes·SHA-256, 기준 문서·색인·2D production 경계·금지 문구·비반입을 검증했다. 기존 A/B/C는 `SUPERSEDED` 이력이며 실제 턴어라운드·시트·Unity 적용은 별도 승인이다. | `_workspace/completed/2026-08-06-2026-08-06-virus-character-concept-v1/` |
 | 시작 화면 V2 비주얼 후보 제작 | 방향 재검토 — 바이러스 콘셉트 선택 전 보류 | 기존 후보는 먹이사슬과 숙주 사이 바이러스 이동감이 부족해 선별하지 않는다. 바이러스 캐릭터 기준을 먼저 선택한 뒤 새 시작 화면 브리프로 재개한다. | `_workspace/active/2026-08-06-startup-ui-visual-v2/` |
 | 작업 기록·검증 운영 경량 구조 개편 | 완료 보관 — 독립 QA PASS·총괄 내부 승인 가능 | R0 무폴더, R1 단일 `record.md`, R2/R3 기본 두 파일, 조건부 분리 기록·artifact, completed 동일 폴더 이동과 기존 안전 게이트를 27파일 revision에서 검증했다. | `_workspace/completed/2026-08-06-2026-08-06-workspace-recording-lightweight/` |
@@ -94,7 +98,7 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 
 ## 다음 작업 후보
 
-`PC 시작 화면·설정 UI와 다국어 준비 구조`는 Play 진입·언어별 폰트 후보의 표적 UnityEditMode `38/38`와 독립 QA를 통과했다. 다음은 재실행이 아니라 사용자 Startup 첫 프레임·한영 폰트 전환·설정 가독성·2D 진입 수용 확인이다. 대각선 충돌 표면 slide와 자연 부분 가림·쥐 본체 보존은 완료 상태를 유지하고 재검증하지 않는다.
+`오프닝 시네마틱·세균 감염 접속형 첫 튜토리얼 설계`의 다음 결정은 Task 4 숏·비트 분해와 그 결과에 따른 총 러닝타임이다. 실제 숏·에셋·UI·저장·코드·Unity는 사용자 승인 전 시작하지 않는다. `PC 시작 화면·설정 UI와 다국어 준비 구조`는 Play 진입·언어별 폰트 후보의 표적 UnityEditMode `38/38`와 독립 QA를 통과했으며, 다음은 재실행이 아니라 사용자 Startup 첫 프레임·한영 폰트 전환·설정 가독성·2D 진입 수용 확인이다. 대각선 충돌 표면 slide와 자연 부분 가림·쥐 본체 보존은 완료 상태를 유지하고 재검증하지 않는다.
 
 ## 최근 판단 항목
 
