@@ -4,7 +4,7 @@
 
 - 작업 ID: `2026-08-07-main-scenario-outline`
 - 작업명: 전체 게임 시나리오·화면 흐름·튜토리얼 초안
-- 상태: Task 4 Step 6 내부 승인·커밋 대기
+- 상태: Task 4 Step 6 content `6867b98` origin/main 반영 완료
 - 생성일: 2026-08-07
 - 담당 에이전트: 메인 시나리오 디렉터 에이전트
 - 보조 에이전트: 프로젝트 조정 에이전트, 프로젝트 총괄 관리자 에이전트
@@ -73,9 +73,11 @@
 | C15 | 원자성 | production revision | author run 뒤 SHA-256와 diff check를 같은 candidate에 기록 | SHA256·diff check |
 
 - QA 재진입 전 상태: `qa-main-scenario-opening-sync-20260810-001` FAIL — production 의미·SHA는 유효하나 HEAD 상태 증거는 SUPERSEDED.
-- 상태 교정 작성자 run: `author-main-scenario-opening-sync-state-correction-20260810-r2` PASS — Task 4 Step 6 기준 baseline `6347445`(origin/main), candidate 미커밋.
+- 상태 교정 작성자 run: `author-main-scenario-opening-sync-state-correction-20260810-r2` PASS — Task 4 Step 6 작업 시작 baseline `6347445`(origin/main)의 precommit candidate를 검증했다.
 - canonical QA: `qa-main-scenario-opening-sync-20260810-002` C1~C15 PASS·blocker 0·수정 0. QA-001은 SUPERSEDED이며 프로젝트 총괄 감사 전 완료 표현을 금지한다.
-- 최종 총괄: `director-main-scenario-opening-sync-final-audit-20260810-003` 내부 승인 가능·blocker 0·최소 수정 0. 판정 범위는 Task 4 Step 6 상위 시나리오 전파에 한정하며 완료가 아니라 커밋 대기다.
+- 최종 총괄: `director-main-scenario-opening-sync-final-audit-20260810-003` 내부 승인 가능·blocker 0·최소 수정 0. 판정 범위는 Task 4 Step 6 상위 시나리오 전파에 한정한다.
+- push 결과: content commit `6867b98` (`docs: sync opening into main scenario`)을 origin/main에 반영했다. 새 QA·총괄 run은 0이다.
+- 다음 승인 게이트: Gate S를 실제 배치한 스토리보드 후보와 결과 패널·숏 수, 이미지 후보 생성 여부. Task 5 Step 6 실제 연결 측정은 스토리보드·비최종 애니매틱 연결 뒤 수행한다.
 
 - QA S0 사전 검토: 최초 C2 승인 표기와 C5 증거 부족으로 FAIL, correction 1에서 C1~C5 PASS
 

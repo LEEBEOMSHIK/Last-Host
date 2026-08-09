@@ -28,6 +28,7 @@
 | 메인 시나리오 디렉터 | QA-001 first blocker 상태-only 교정 | `author-main-scenario-opening-sync-state-correction-20260810-r2` PASS — QA 재진입 대기 |
 | 독립 정적 QA | correction 2 candidate C1~C15 재진입 검증 | `qa-main-scenario-opening-sync-20260810-002` PASS·blocker 0·수정 0 |
 | 프로젝트 총괄 관리자 | Task 4 Step 6 최종 read-only 감사 | `director-main-scenario-opening-sync-final-audit-20260810-003` 내부 승인 가능·blocker 0·최소 수정 0 |
+| 프로젝트 조정 | 승인 candidate 선별 커밋·push | content `6867b98` (`docs: sync opening into main scenario`) origin/main 반영, 신규 QA·총괄 0 |
 
 - 검증 에이전트: 이전 revision `main_scenario_qa`; 현재 canonical `qa-main-scenario-opening-sync-20260810-002` PASS
 - 검증 요청자: 프로젝트 조정 에이전트
@@ -95,14 +96,14 @@
 | C14 | 수명주기 | 상대 링크 대상·placeholder 대조 | `author-main-scenario-opening-sync-20260810-r2` | PASS | opening 2종·host route 대상 존재, TODO/TBD/FIXME 0 | 작성자 증거 — QA 대기 |
 | C15 | 원자성 | SHA-256·`git diff --check` | `author-main-scenario-opening-sync-20260810-r2` | 부분 유효 | scenario `8316E5BA...81B0` production 의미 유효, 당시 HEAD 상태 증거 stale | 상태 증거 SUPERSEDED |
 | STATE-HEAD | 상태 증거 | 실제 HEAD/origin-main과 상태 문서 대조 | `qa-main-scenario-opening-sync-20260810-001` | FAIL | 실제 `6347445`; board·verification·cost가 `f9e8bd0`을 현재값으로 표기 | SUPERSEDED by QA-002 |
-| STATE-HEAD | 상태 증거 | baseline 문구·production SHA·5파일 scope·diff·Unity0 대조 | `author-main-scenario-opening-sync-state-correction-20260810-r2` | PASS | Task 4 Step 6 baseline `6347445` origin/main, candidate 미커밋; production SHA 불변 | QA-002에서 확인 |
+| STATE-HEAD | 상태 증거 | baseline 문구·production SHA·5파일 scope·diff·Unity0 대조 | `author-main-scenario-opening-sync-state-correction-20260810-r2` | PASS | Task 4 Step 6 작업 시작 baseline `6347445` origin/main의 precommit candidate; production SHA 불변 | QA-002에서 확인 |
 | C1~C15 | canonical 독립 QA | production 의미·구조·상태·수명주기 전체 대조 | `qa-main-scenario-opening-sync-20260810-002` | PASS | full SHA `8316E5BA83A5D8FB7C880E895FAD895AF3E5C9EB706123534B0D8CC430BF81B0`; 17구간·23×5·6장 baseline 동일·self-reference 0·links 5/5·placeholder/diff 0·existing md 5·untracked/Unity/code/asset 0 | 유효 canonical, blocker 0 |
 | FINAL-AUDIT | 총괄 최종 감사 | QA-002 canonical·범위·미완료 후속 작업 대조 | `director-main-scenario-opening-sync-final-audit-20260810-003` | 내부 승인 가능 | 17구간·쥐 범위·생물학·조류·공개·시간·범위 적합, blocker 0·최소 수정 0 | 유효, Task 4 Step 6 한정 |
 
 ```text
 명령 또는 확인 방법: PowerShell token-order·section equality·링크·placeholder·diff scope 검사, Get-FileHash SHA-256, git diff --check
 결과: C6~C15 작성자 PASS, Segments 17, 쥐 프로토타입 6장 불변, UnityDiffCount 0, UntrackedCount 0, 링크 대상 존재, placeholder 0, diff check exit 0
-해석: production 의미와 bytes를 유지한 correction 2 candidate가 canonical QA-002와 총괄 003 최종 감사를 통과했다. Task 4 Step 6은 내부 승인·커밋 대기이며 후속 제작 완료를 뜻하지 않는다.
+해석: production 의미와 bytes를 유지한 correction 2 candidate가 canonical QA-002와 총괄 003 최종 감사를 통과한 뒤 content `6867b98`로 origin/main에 반영됐다. 후속 제작 완료를 뜻하지 않는다.
 ```
 
 ## 검증하지 못한 항목
@@ -170,18 +171,18 @@
 
 ## 완료 판단
 
-- Task 4 Step 6 내부 승인·커밋 대기
+- Task 4 Step 6 content `6867b98` origin/main 반영 완료
 
 ## 사용자 수용 상태
 
 - 사용자 직접 확인 필요: 예
-- 확인 전 `완료` 표현 금지 여부: 예 — Task 4 Step 6은 내부 승인·커밋 대기로만 표현하고 후속 제작 완료로 확대하지 않음
+- 확인 전 `완료` 표현 금지 여부: Task 4 Step 6 content 반영은 완료됐으나 Task 5 Step 6과 후속 제작 완료로 확대하지 않음
 
 ## 완료 판단 근거
 
-- current candidate `8316E5BA...81B0`은 canonical QA-002 C1~C15 PASS·blocker 0·수정 0과 총괄 003 내부 승인 가능·blocker 0·최소 수정 0을 충족했다. 커밋은 아직 수행하지 않았다.
+- candidate `8316E5BA...81B0`은 canonical QA-002 C1~C15 PASS·blocker 0·수정 0과 총괄 003 내부 승인 가능·blocker 0·최소 수정 0을 충족했고 content `6867b98`로 origin/main에 반영됐다.
 
 ## 최종 상태
 
-- 완료/보류/승인 대기: Task 4 Step 6 내부 승인·커밋 대기
-- 완료 경로와 Git 상태: `_workspace/active/2026-08-07-main-scenario-outline/`; Task 4 Step 6 기준 baseline `6347445`(origin/main), candidate 미커밋
+- 완료/보류/승인 대기: Task 4 Step 6 content `6867b98` origin/main 반영 완료 — 다음 승인 게이트 대기
+- 완료 경로와 Git 상태: `_workspace/active/2026-08-07-main-scenario-outline/`; 작업 시작 baseline `6347445`, content `6867b98` origin/main 반영
