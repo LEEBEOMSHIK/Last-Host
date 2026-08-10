@@ -10,12 +10,13 @@
 - 승인 게이트별 제작 태스크 계획
 - 오프닝 편집 비트 후보·기원 공개 장부
 - 오프닝 하위 문서 색인
+- `A01` 회사 일상 혼합형 모션 설계와 생성 후보·Unity 구현 경계
 
 ## 검증 담당
 
-- 작성자 검증: v12 Gate S 메인 시나리오 디렉터 `author-opening-gate-s-editorial-contract-032` PASS — C1~C15, 33 ID·15필드, 승인 그룹·내부 경계, master/axis/scale/layer 매핑, 시간·placeholder·링크·SHA256·diff 대조
-- 독립 QA: `qa-opening-gate-s-editorial-contract-033` PASS — C1~C15, blocker 0. 이전 QA-030은 사용자 Gate S 결정 뒤 SUPERSEDED
-- 프로젝트 총괄 판정: `director-opening-gate-s-final-audit-034` 내부 승인 가능·최소 수정 0
+- 작성자 검증: v13 `author-a01-hybrid-motion-design-035` PASS — C16 필수 섹션 6개, 숫자 고정 초·placeholder·제3자 스타일 참조 0, 링크·패키지·후보 3개·Unity 비변경·diff·SHA256 대조
+- 독립 QA: `qa-a01-hybrid-motion-design-036` PASS — blocker 0, 문서 설계 단계 한정. 실제 무음 프리비즈·P1 공백 비교·픽셀 안정성은 재생 검증 대기
+- 프로젝트 총괄 판정: `director-a01-hybrid-motion-design-final-audit-037` 내부 승인 가능·최소 수정 0. 실제 프리비즈 수용은 사용자 검토 대기
 
 ## 실제 수행·검증 이력
 
@@ -60,6 +61,9 @@
 | 메인 시나리오 디렉터 | 사용자 Gate S 보호형 압축 편집 그룹, 내부 beat boundary, master composition·camera axis·scale band·layer delta와 접근성·입력 경계를 기존 shot spec Modify 방식으로 반영 | `author-opening-gate-s-editorial-contract-032` PASS |
 | QA/검증 | v12 C1~C15, 33 ID·15필드, 승인 그룹·내부 경계와 master/axis/scale/layer 전수 매핑, 시간·placeholder·링크·SHA256·diff·Unity 비변경을 독립 재대조 | `qa-opening-gate-s-editorial-contract-033` PASS, blocker 0 |
 | 프로젝트 총괄 | QA-033 canonical 증거와 v12 Gate S fingerprint·승인 경계·후속 Step 6 상태를 read-only 최종 감사 | `director-opening-gate-s-final-audit-034` 내부 승인 가능, 최소 수정 0 |
+| 프로젝트 조정 | 사용자 승인 혼합형을 후보 03 공간+후보 02 연기, 6개 비트·레이어·무음·시간 후측정·후속 구현 경계로 명세하고 정적 검사 | `author-a01-hybrid-motion-design-035` PASS |
+| 픽셀아트 시네마틱 연출 QA | 권고 반영 뒤 C16의 A01/A02·B08·시간·오독·제작 경계를 읽기 전용 재검토 | `qa-a01-hybrid-motion-design-036` PASS, blocker 0 |
+| 프로젝트 총괄 | QA-036과 v13 설계·승인 범위·미검증 표현을 읽기 전용 최종 감사 | `director-a01-hybrid-motion-design-final-audit-037` 내부 승인 가능, 최소 수정 0 |
 
 ## 원래 증상 또는 완료 주장
 
@@ -68,11 +72,11 @@
 ## 현재 검증 revision
 
 - 위험 등급: R2
-- verification revision: `opening-origin-r2-v12-gate-s-editorial-contract`
-- candidate fingerprint: README `61DC1AFE3E5CF856FB053356514D46A90785A25A9E5318A73BFDB74C9759FF3B`; origin `1A998992C1881C008A14775282B02EFADC8E029CC82D0FC168A12203C2629110`; plan `A50BB54AA049510D687EFF45509230424A2744541E73C455F349A37C4C625B08`; shot spec `2A1854340F09975C62F8683F0F3A9E42991D15494BD5B628DC25908FD0DFD9B6`
-- author run_id: `author-opening-gate-s-editorial-contract-032`
-- canonical run_id: `qa-opening-gate-s-editorial-contract-033`
-- candidate frozen 여부: 예 — v12 canonical QA PASS와 총괄 034 내부 승인 가능 상태로 precommit 동결하며 production 의미 변경 금지
+- verification revision: `opening-origin-r2-v13-a01-hybrid-motion-design`
+- candidate fingerprint: README `AE94BA269E29D940288A57FB31AD0E0D97249EE82F54AD2877A19112579E4592`; origin `1A998992C1881C008A14775282B02EFADC8E029CC82D0FC168A12203C2629110`; plan `B2D5541B2571239AC458C27B58628754B1758161042E71F7935F0E2218AF0F2E`; shot spec `2A1854340F09975C62F8683F0F3A9E42991D15494BD5B628DC25908FD0DFD9B6`; A01 motion `BA18B45C33AA260109F4A9CEC0E695E8FC34ADAA10F2017E04ED2292F0989B8E`; manifest `B07DD4E37BA1336B93D763B23E3480BE7943EF4C56DBFDA7EE191FF87B0AF298`
+- author run_id: `author-a01-hybrid-motion-design-035`
+- canonical run_id: `qa-a01-hybrid-motion-design-036`
+- candidate frozen 여부: 예 — v13 canonical QA PASS 뒤 프로젝트 총괄 감사 전 precommit 동결. production 의미 변경 시 QA-036을 무효화한다.
 - capability route / wrapper preflight: Markdown 정적 검증 / Unity preflight 불필요
 
 ## 독립 검증 여부
@@ -83,6 +87,8 @@
 - correction 2/2 독립 재검증 항목: 기존 shot spec Modify 수명주기, 단일 비상호작용 러닝타임 산식과 breakdown 비재가산·건너뛰기/입력 경계, C1~C14·링크·SHA256·Unity 비변경 — PASS, blocker 없음
 - v12 독립 검증 대조 항목: C1~C15, 33 ID·15필드, 승인 그룹·내부 경계와 master/axis/scale/layer 전수 매핑, scale band bitmap zoom 금지, 접근성·재시청·건너뛰기·입력, 시간·placeholder·링크·SHA256·diff·Unity 비변경
 - v12 독립 검증 결과: `qa-opening-gate-s-editorial-contract-033` C1~C15 PASS, blocker 0
+- v13 독립 검증 대조 항목: C16의 후보 03 공간+후보 02 연기, `P1`·`B08` 연속성, 6개 비트·레이어·무음 가독성·시간 후측정, `A01`/`A02`·오디오·Unity·패키지 경계, 비입자성 FX와 의자 윤곽
+- v13 독립 검증 결과: `qa-a01-hybrid-motion-design-036` PASS, blocker 0. 실제 재생 기반 세 항목은 미검증으로 유지
 
 ## 실행한 검증
 
@@ -210,3 +216,59 @@
 
 - 완료/보류/승인 대기: v12 QA-033 C1~C15 PASS·blocker 0, 총괄 034 내부 승인 가능·최소 수정 0 — Gate S 계약 `f9e8bd0` origin/main 반영 완료, Task 4 Step 6 메인 시나리오 전파 다음, Task 5 Step 6 실제 연결 측정 대기
 - 완료 경로와 Git 상태: `_workspace/active/2026-08-08-opening-cinematic-origin/`; 현재 HEAD `f9e8bd0`, v12 production·R2 상태 변경 origin/main 반영 완료
+## 2026-08-10 Task 6 `A01` 이미지 후보 생성
+
+- 상태 갱신: 위의 `실제 이미지 제작 완료 표현 금지`는 최종·선택 에셋과 나머지 숏에 계속 적용한다. 이 섹션에 기록된 `A01` 미선별 후보 3개의 생성 사실만 예외로 갱신한다.
+- 사용자 승인 범위: 회사 씬의 첫 기준 숏 `A01`, 16:9 후보 3개만 생성
+- 생성 도구: OpenAI 내장 `imagegen`
+- 출력 경로: `artifacts/task6/a01-office-base/`
+- 정적 확인: PNG 3개 모두 `1672×941`, SHA-256 기록 완료
+- 범위 확인: `A02`·학교·가정·확산·미시 장면·애니매틱·오디오·Unity는 생성·수정하지 않음
+- 내용 확인: 감염 징후·기침·마스크·보라색 파지 모티프·공포·텍스트·UI 없음
+- 후보 경계: 전부 `미선별`; 사용자 선택과 비주얼/테크아트 검토 전 최종 에셋 아님
+- 알려진 문제: `A01-C01` 노트북의 작은 표식이 로고처럼 보일 수 있어 선택 시 제거 또는 재생성 필요
+
+## 2026-08-10 Task 7 `A01` 혼합형 모션 설계 검증
+
+- 위험 등급: R2 문서·비최종 제작 인계 계약
+- 사용자 승인: 회사원들이 웃고 대화하는 장면을 권장 혼합형으로 진행
+- production: `docs/design/narrative/opening/a01-office-hybrid-motion-design.md`
+- 작성자 run_id: `author-a01-hybrid-motion-design-035`
+- canonical QA run_id: `qa-a01-hybrid-motion-design-036`
+
+### 작성자 정적 결과
+
+- 필수 설계 섹션: 6/6 존재
+- 숫자로 고정한 초 단위: 0건
+- `TODO`·`TBD`·`PLACEHOLDER`: 0건
+- 상대 Markdown 링크: 검사 파일 4개, 깨진 링크 0건
+- 제3자 작품·회사 스타일 직접 참조: 0건
+- 생성 후보 PNG: 3개 유지
+- Unity Timeline manifest 존재: 확인
+- Cinemachine·2D Animation 신규 패키지: manifest에 없음, 추가 변경 0건
+- `UnityProject/` 변경: 0건
+- `git diff --check`: exit 0
+
+### C16 판정
+
+| 항목 | 결과 | 증거 |
+| --- | --- | --- |
+| 후보 03 공간 + 후보 02 연기 경계 | PASS | 공간 기준·연기 참고·직접 합성 금지·후보 02 음식/빈자리 제외 명시 |
+| `P1`·`B08` 연속성 | PASS | 자리·모니터·머그·의자 고정, 의자 윤곽 가시성, `A01-1` 동일 축 비교 기준 |
+| 움직임 구조 | PASS | 발화→지연 반응→웃음 정점→점심 전환의 6개 가독성 비트와 제한 프레임·레이어 계약 |
+| 범위·시간 | PASS | `A01`은 일어서기 시작까지, 보행은 `A02`; 프레임·초·총 길이 후측정 |
+| 오독 방지 | PASS | 감염 징후·부유 입자·불길한 모티프·추모/사망 확정 금지 |
+| 구현 경계 | PASS | 무음 우선, 오디오는 Gate AU, Unity·신규 패키지·시작 흐름 연결은 후속 계획 |
+
+### 독립 QA 판정
+
+- `qa-a01-hybrid-motion-design-036`: PASS — blocker 0
+- 권고 반영 뒤 재검토: 후보 02의 음식·빈 의자 제외, 비입자성 FX, `P1` 의자 가시성, `A01-1`의 `B08` 기준 프레임 지정은 기존 계약을 깨지 않고 오독 방지를 강화함
+- 미검증: 실제 무음 프리비즈의 대화·웃음 가독성, `P1` 좌석 공백 비교와 픽셀 안정성. Unity 프리비즈 재생 뒤 사용자 수용과 함께 검증한다.
+
+### 현재 게이트
+
+- QA/검증: PASS — 문서 설계 단계 한정
+- 프로젝트 총괄: `director-a01-hybrid-motion-design-final-audit-037` 내부 승인 가능·최소 수정 0
+- 사용자 수용: 본 명세 검토 대기
+- 실제 레이어 에셋·애니매틱·오디오·Unity 구현: 미착수

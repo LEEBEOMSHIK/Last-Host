@@ -17,7 +17,7 @@
 | 픽셀아트 시네마틱 연출 | 기획·연출 설계 | 승인된 오프닝 사건을 시퀀스·전환·후속 제작 태스크로 구조화 | 오프닝 설계 초안과 제작 계획 |
 | 메인 시나리오 디렉터 | 서사 연속성 설계 | 승인된 독립 3씬과 복합 환승 노드형 확산의 사건·감정 회수 구조를 구체화 | 시퀀스 B와 다음 결정 순서 개정 |
 | 프로젝트 조정 | 통합 | 기존 설정·승인 경계 대조, 문서 배치, 기록 통합 | production 문서와 R2 기록 |
-| QA/검증 | 독립 정적 QA | 아래 C1~C15 및 변경 범위 확인 | `verification.md` QA 판정 |
+| QA/검증 | 독립 정적 QA | 아래 C1~C16 및 변경 범위 확인 | `verification.md` QA 판정 |
 | 프로젝트 총괄 | 내부 감사 | 인간·파지 설정, 장기 캠페인 승인 경계 판정 | 내부 승인 가능 여부 |
 
 ## 구현 담당 확인
@@ -78,6 +78,7 @@
 | C13 | 성공·negative control | Task 3 Step 4 세균 감염 접속형·신규 콘텐츠 알림 | 승인 튜토리얼 비트, 세균 표면 부착·캡시드 외부·동물 세포 직접 감염 금지, 5개 용어, 무손실 재시도·3회 보조, 안전 시점 강제 큐·항목별 중앙 팝업·정지·명시적 확인·1/N·무손실 실습, 알림 대상/제외·필드·도감·4단계 저장 상태·중복/버전·입력/접근성/다국어, 쥐 프로토타입과 실제 제작 승인 분리 | 첫 튜토리얼·신규 콘텐츠 알림 절, Task 3 Step 4·5 완료, Task 4 숏·비트 다음 승인 순서 대조 |
 | C14 | 성공·negative control | Task 4 편집 비트·기원 공개 장부 | `A01~T01` 33개 후보 ID와 15개 필드, 병합·분리 경계, 중앙 문구 완전 가독 최소 5초 외 시간 선확정 금지, 첫 프레임~T01 입력 해제 실제 경과에서 커스터마이징 체류를 빼는 단일 산식, hold·전환·입력 잠금 재가산 금지, 건너뛰기 별도 보고·입력 경계 이벤트 기록, 기존 shot spec을 Task 5에서 Modify, 오프닝 공개/비공개 장부, 군사화 단순 귀속·무기 제작 구체 정보 금지, 후속 제작 승인 분리 | `opening-shot-spec.md`, README·plan·task·verification 링크·상태·SHA256·placeholder·diff 대조 |
 | C15 | 성공·negative control | Task 5 Gate S 편집·구도·스케일·레이어 계약 | 승인 그룹과 내부 beat boundary, 33개 추적 ID 보존, 모든 그룹의 master composition·camera axis·scale band·layer delta 매핑, band 간 bitmap zoom 금지와 scale-correct redraw·mask-match cut, 접근성·자막·건너뛰기·재시청·입력 경계 유지, 최종 숏·패널 수·시간 및 실제 제작 미확정 | `opening-shot-spec.md` Gate S 표·매핑, plan Task 5 Step 1~6, 33 ID·15필드·시간·placeholder·링크·SHA256·diff 대조 |
+| C16 | 성공·negative control | `A01` 혼합형 모션 설계 | 후보 03 공간+후보 02 연기, `P1`·`B08` 자리 연속성, 6개 가독성 비트, 제한 프레임·분리 레이어·절제 카메라, 무음 가독성, 시간 후측정, `A02`·오디오·Unity·신규 패키지 후속 분리 | `a01-office-hybrid-motion-design.md`, plan Task 7, manifest·후보·범위·placeholder·링크·SHA256·diff 대조 |
 
 - QA S0 사전 검토: production 작성 후 요청
 
@@ -124,6 +125,7 @@
 - `docs/design/narrative/opening/opening-cinematic-origin.md`
 - `docs/design/narrative/opening/opening-cinematic-production-plan.md`
 - `docs/design/narrative/opening/opening-shot-spec.md`
+- `docs/design/narrative/opening/a01-office-hybrid-motion-design.md`
 - `_workspace/active/2026-08-08-opening-cinematic-origin/verification.md`
 
 ## production 소유권과 검증 예산
@@ -137,10 +139,33 @@
 | 문서 구조·기존 설정 정합성 | 프로젝트 조정 에이전트 | 기존 미커밋 메인 시나리오 파일 수정 금지 |
 
 - Unity session lease 예정 소유자: 없음
-- 관련 suite: C1~C15 Markdown 정적 대조
+- 관련 suite: C1~C16 Markdown 정적 대조
 - 전체 suite 실행 조건: 해당 없음
 - 대형 matrix 실행 필요·근거: 없음
-- artifact budget / criterion별 canonical 증거: production Markdown 4개와 `verification.md`
+- artifact budget / criterion별 canonical 증거: production Markdown 5개와 `verification.md`
+
+## 2026-08-10 Task 6 Gate A 제작 부록
+
+- 사용자 승인: 목업 비교를 종료하고 `1번 씬`의 실제 제작 결과에서 방향을 확인한다.
+- 이번 생성 범위: `A01` 회사 기준 숏 3개. `A02`와 다른 장면은 사용자 선별 뒤 별도 진행한다.
+- 후보 비율: PC 시네마틱용 16:9 가로 구도.
+- 출력 경로: `artifacts/task6/a01-office-base/`.
+- 후보 상태: 전부 `미선별`; 최종 게임 에셋이나 Unity 반입본이 아니다.
+- 공통 금지: 감염 징후, 기침, 마스크, 보라색·파지 모티프, 공포·재난 조명, 텍스트, 로고, 제3자 캐릭터·상표, 특정 작품·회사 스타일 복제.
+- 카메라 정정: 게임플레이의 고정 아이소메트릭/쿼터뷰를 강제하지 않는다. 자유로운 2D 픽셀 시네마틱 구도를 사용하되 `B08`에서 되돌아올 공간 기준물을 남긴다.
+- 산출물 예산: 래스터 후보 3개와 생성 로그 1개. Unity/MCP/build 검증 0회.
+
+## 2026-08-10 Task 7 Gate M 설계 부록
+
+- 사용자 승인: 회사원들이 웃고 대화하는 `A01`을 권장 혼합형 모션으로 진행한다.
+- 이번 범위: 후보 03의 공간 연속성과 후보 02의 연기를 결합한 `A01` 장면별 제작 명세 작성과 정적 검토.
+- production 문서: `docs/design/narrative/opening/a01-office-hybrid-motion-design.md`.
+- 혼합 구조: 제한 프레임 표정·몸짓 + 분리 인물·소품 레이어 + 절제된 카메라·환경 시차.
+- 시간 원칙: 초 단위·총 길이 미확정. 비트별 가독성 종료 조건을 먼저 두고 비최종 애니매틱 재생 뒤 측정한다.
+- 연속성 앵커: `P1`의 중앙 자리, 왼쪽 창, 중앙 책상 섬, 오른쪽 출입문과 카메라 축을 이후 `B08` 재방문까지 보존한다.
+- 구현 경계: 이번 문서 단계에서는 Unity 씬·Timeline·코드·패키지와 실제 애니매틱 파일을 만들지 않는다. 사용자 명세 검토 뒤 구현 계획과 담당 에이전트를 확정한다.
+- 오디오 경계: 내레이션·자막 없음. 환경음·웃음·의자·발걸음은 후속 `Gate AU` 대상이며 현재 검증은 무음 가독성을 우선한다.
+- 비용: production 문서 1개와 기존 색인·계획·작업 기록의 최소 동기화, Unity/MCP/build 0회.
 
 ## 비용 계획
 
@@ -155,7 +180,7 @@
 
 ## 금지 범위
 
-- 이미지·영상·애니매틱·오디오 생성
+- 위 Task 6 Gate A 부록에서 승인된 `A01` 래스터 후보 3개를 제외한 이미지·영상·애니매틱·오디오 생성
 - Unity 코드·씬·프리팹·Timeline·패키지·ProjectSettings 변경
 - 생화학 무기의 구체적 제작 절차·물질·유전자·배양 조건 설계
 - 기존 미커밋 `main-scenario-outline.md`, `pixel-art-motion-comic-cinematic-guide.md`, 상위 narrative README 수정
@@ -168,12 +193,12 @@
 - 승인된 패널·비최종 애니매틱 실제 연결 뒤 측정하는 총 러닝타임
 - 정확한 화자·대사량·언어별 녹음과 필요 시 가확정 시작·반전 문구·5초 미만 표시의 재검토
 - 오프닝 숏·스토리보드 후보
-- 생성 이미지 후보 제작
+- 생성 이미지 후보 제작 (`A01` 3개만 2026-08-10 승인 완료, 나머지는 별도 승인)
 - 비최종 애니매틱 제작
 - Unity 재생 구현과 튜토리얼 연결
 
 ## 완료 기준
 
-- C1~C15 독립 정적 QA PASS
+- C1~C16 독립 정적 QA PASS
 - 프로젝트 총괄 `내부 승인 가능`
 - 사용자가 오프닝·기원 문서와 제작 태스크를 검토할 수 있음
