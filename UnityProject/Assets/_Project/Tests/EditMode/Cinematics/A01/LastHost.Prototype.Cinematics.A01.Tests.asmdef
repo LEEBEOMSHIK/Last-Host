@@ -1,0 +1,1 @@
+{"name":"LastHost.Prototype.Cinematics.A01.Tests","rootNamespace":"LastHost.Prototype.Cinematics.A01.Tests","references":["LastHost.Prototype","LastHost.Prototype.Cinematics.A01.Editor","Unity.Timeline","UnityEngine.TestRunner","UnityEditor.TestRunner"],"includePlatforms":["Editor"],"autoReferenced":false,"defineConstraints":["UNITY_INCLUDE_TESTS"]}

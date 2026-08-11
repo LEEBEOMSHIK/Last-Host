@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "sha256": "24A143D7344DAC8358CD496C6AD03718AADB492D67B96E7CCCF0E46DA08A090D",
+    "width": 1122,
+    "height": 1402,
+    "byteLength": 1648495
+  },
+  "sourceCuts": {
+    "x": [0, 281, 561, 842, 1122],
+    "y": [0, 318, 591, 847, 1107, 1402]
+  },
+  "sourceAxesX": [140, 421, 701, 982],
+  "output": {
+    "width": 1280,
+    "height": 1600,
+    "grid": {
+      "columns": 4,
+      "rows": 5,
+      "cellWidth": 320,
+      "cellHeight": 320
+    }
+  },
+  "matte": {
+    "keyColor": [255, 0, 255],
+    "distanceMetric": "chebyshev",
+    "tolerance": 96,
+    "connectivity": 8
+  },
+  "boundaryBand": 6,
+  "coverage": {
+    "minimum": 0.05,
+    "maximum": 0.60
+  },
+  "targetAnchor": {
+    "x": 160,
+    "y": 306
+  },
+  "poses": [
+    { "id": "p1_idle", "sourceRect": { "x": 0, "y": 0, "width": 281, "height": 318 }, "sourceAxisX": 140, "sourceGroundY": "maxRetainedY", "target": { "row": 0, "column": 0 } },
+    { "id": "p1_speak", "sourceRect": { "x": 281, "y": 0, "width": 280, "height": 318 }, "sourceAxisX": 421, "sourceGroundY": "maxRetainedY", "target": { "row": 0, "column": 1 } },
+    { "id": "p1_laugh", "sourceRect": { "x": 561, "y": 0, "width": 281, "height": 318 }, "sourceAxisX": 701, "sourceGroundY": "maxRetainedY", "target": { "row": 0, "column": 2 } },
+    { "id": "p1_rise", "sourceRect": { "x": 842, "y": 0, "width": 280, "height": 318 }, "sourceAxisX": 982, "sourceGroundY": "maxRetainedY", "target": { "row": 0, "column": 3 } },
+    { "id": "p2_idle", "sourceRect": { "x": 0, "y": 318, "width": 281, "height": 273 }, "sourceAxisX": 140, "sourceGroundY": "maxRetainedY", "target": { "row": 1, "column": 0 } },
+    { "id": "p2_nod", "sourceRect": { "x": 281, "y": 318, "width": 280, "height": 273 }, "sourceAxisX": 421, "sourceGroundY": "maxRetainedY", "target": { "row": 1, "column": 1 } },
+    { "id": "p2_laugh", "sourceRect": { "x": 561, "y": 318, "width": 281, "height": 273 }, "sourceAxisX": 701, "sourceGroundY": "maxRetainedY", "target": { "row": 1, "column": 2 } },
+    { "id": "p2_hold", "sourceRect": { "x": 842, "y": 318, "width": 280, "height": 273 }, "sourceAxisX": 982, "sourceGroundY": "maxRetainedY", "target": { "row": 1, "column": 3 } },
+    { "id": "p3_work", "sourceRect": { "x": 0, "y": 591, "width": 281, "height": 256 }, "sourceAxisX": 140, "sourceGroundY": "maxRetainedY", "target": { "row": 2, "column": 0 } },
+    { "id": "p3_shoulder_laugh", "sourceRect": { "x": 281, "y": 591, "width": 280, "height": 256 }, "sourceAxisX": 421, "sourceGroundY": "maxRetainedY", "target": { "row": 2, "column": 1 } },
+    { "id": "p3_head_turn", "sourceRect": { "x": 561, "y": 591, "width": 281, "height": 256 }, "sourceAxisX": 701, "sourceGroundY": "maxRetainedY", "target": { "row": 2, "column": 2 } },
+    { "id": "p3_hold", "sourceRect": { "x": 842, "y": 591, "width": 280, "height": 256 }, "sourceAxisX": 982, "sourceGroundY": "maxRetainedY", "target": { "row": 2, "column": 3 } },
+    { "id": "p4_idle", "sourceRect": { "x": 0, "y": 847, "width": 281, "height": 260 }, "sourceAxisX": 140, "sourceGroundY": "maxRetainedY", "target": { "row": 3, "column": 0 } },
+    { "id": "p4_gesture", "sourceRect": { "x": 281, "y": 847, "width": 280, "height": 260 }, "sourceAxisX": 421, "sourceGroundY": "maxRetainedY", "target": { "row": 3, "column": 1 } },
+    { "id": "p4_exit_turn", "sourceRect": { "x": 561, "y": 847, "width": 281, "height": 260 }, "sourceAxisX": 701, "sourceGroundY": "maxRetainedY", "target": { "row": 3, "column": 2 } },
+    { "id": "p4_hold", "sourceRect": { "x": 842, "y": 847, "width": 280, "height": 260 }, "sourceAxisX": 982, "sourceGroundY": "maxRetainedY", "target": { "row": 3, "column": 3 } },
+    { "id": "p5_idle", "sourceRect": { "x": 0, "y": 1107, "width": 281, "height": 295 }, "sourceAxisX": 140, "sourceGroundY": "maxRetainedY", "target": { "row": 4, "column": 0 } },
+    { "id": "p5_laugh", "sourceRect": { "x": 281, "y": 1107, "width": 280, "height": 295 }, "sourceAxisX": 421, "sourceGroundY": "maxRetainedY", "target": { "row": 4, "column": 1 } },
+    { "id": "p5_step_ready", "sourceRect": { "x": 561, "y": 1107, "width": 281, "height": 295 }, "sourceAxisX": 701, "sourceGroundY": "maxRetainedY", "target": { "row": 4, "column": 2 } },
+    { "id": "p5_hold", "sourceRect": { "x": 842, "y": 1107, "width": 280, "height": 295 }, "sourceAxisX": 982, "sourceGroundY": "maxRetainedY", "target": { "row": 4, "column": 3 } }
+  ]
+}

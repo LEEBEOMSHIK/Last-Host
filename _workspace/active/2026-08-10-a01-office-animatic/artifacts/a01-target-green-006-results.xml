@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="18" result="Passed" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:39Z" duration="17.554983">
+  <test-suite type="TestSuite" id="1000" name="Last Host" fullname="Last Host" runstate="Runnable" testcasecount="268" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:39Z" duration="17.554983" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1020" name="LastHost.Prototype.Cinematics.A01.Tests.dll" fullname="C:/Users/bumci/AppData/Local/Temp/lh-a01g6/2026-08-10-a01-office-animatic/project/Library/ScriptAssemblies/LastHost.Prototype.Cinematics.A01.Tests.dll" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:39Z" duration="17.533317" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="60660" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1021" name="LastHost" fullname="LastHost" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:39Z" duration="17.530919" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1022" name="Prototype" fullname="LastHost.Prototype" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:39Z" duration="17.529285" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1023" name="Cinematics" fullname="LastHost.Prototype.Cinematics" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:39Z" duration="17.527102" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1024" name="A01" fullname="LastHost.Prototype.Cinematics.A01" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:39Z" duration="17.525274" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestSuite" id="1025" name="Tests" fullname="LastHost.Prototype.Cinematics.A01.Tests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:39Z" duration="17.523779" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-suite type="TestFixture" id="1001" name="A01OfficeAnimaticContractTests" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:39Z" duration="17.519395" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1018" name="A01_is_absent_first_two_startup_entries_and_five_protected_lf_baselines_are_unchanged" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.A01_is_absent_first_two_startup_entries_and_five_protected_lf_baselines_are_unchanged" methodname="A01_is_absent_first_two_startup_entries_and_five_protected_lf_baselines_are_unchanged" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="899779394" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:21Z" duration="0.037574" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1010" name="All_five_cast_sprite_sequences_match_the_seven_approved_beat_frames" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.All_five_cast_sprite_sequences_match_the_seven_approved_beat_frames" methodname="All_five_cast_sprite_sequences_match_the_seven_approved_beat_frames" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="861310231" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:21Z" duration="0.013425" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1015" name="All_position_keys_use_exact_even_frames_centimetre_values_and_constant_tangents" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.All_position_keys_use_exact_even_frames_centimetre_values_and_constant_tangents" methodname="All_position_keys_use_exact_even_frames_centimetre_values_and_constant_tangents" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1214208141" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:21Z" duration="0.018334" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1006" name="Camera_is_orthographic_unrotated_and_has_position_only_animation_without_zoom" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Camera_is_orthographic_unrotated_and_has_position_only_animation_without_zoom" methodname="Camera_is_orthographic_unrotated_and_has_position_only_animation_without_zoom" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1051020596" result="Passed" start-time="2026-08-11 02:50:21Z" end-time="2026-08-11 02:50:25Z" duration="4.017428" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1008" name="Director_uses_the_timeline_none_wrap_play_on_awake_and_exact_animator_bindings" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Director_uses_the_timeline_none_wrap_play_on_awake_and_exact_animator_bindings" methodname="Director_uses_the_timeline_none_wrap_play_on_awake_and_exact_animator_bindings" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="239332474" result="Passed" start-time="2026-08-11 02:50:25Z" end-time="2026-08-11 02:50:26Z" duration="0.548509" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1009" name="Every_timeline_track_has_one_persistent_named_8_5_second_animation_clip" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Every_timeline_track_has_one_persistent_named_8_5_second_animation_clip" methodname="Every_timeline_track_has_one_persistent_named_8_5_second_animation_clip" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1254052145" result="Passed" start-time="2026-08-11 02:50:26Z" end-time="2026-08-11 02:50:26Z" duration="0.008358" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1014" name="Launcher_restore_interrupted_preview_restores_setup_active_scene_and_start_scene" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Launcher_restore_interrupted_preview_restores_setup_active_scene_and_start_scene" methodname="Launcher_restore_interrupted_preview_restores_setup_active_scene_and_start_scene" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1573276186" result="Passed" start-time="2026-08-11 02:50:26Z" end-time="2026-08-11 02:50:28Z" duration="2.250314" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1016" name="P3_position_response_is_exactly_0_04_units_and_weaker_than_every_primary_actor" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.P3_position_response_is_exactly_0_04_units_and_weaker_than_every_primary_actor" methodname="P3_position_response_is_exactly_0_04_units_and_weaker_than_every_primary_actor" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1386135207" result="Passed" start-time="2026-08-11 02:50:28Z" end-time="2026-08-11 02:50:28Z" duration="0.024189" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1019" name="Public_launcher_session_apis_and_both_menus_exist_without_mutating_editor_setup" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Public_launcher_session_apis_and_both_menus_exist_without_mutating_editor_setup" methodname="Public_launcher_session_apis_and_both_menus_exist_without_mutating_editor_setup" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1794628948" result="Passed" start-time="2026-08-11 02:50:28Z" end-time="2026-08-11 02:50:28Z" duration="0.009330" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1002" name="Rebuild_twice_preserves_the_nine_generated_assets_guids_and_dependency_hashes" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Rebuild_twice_preserves_the_nine_generated_assets_guids_and_dependency_hashes" methodname="Rebuild_twice_preserves_the_nine_generated_assets_guids_and_dependency_hashes" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1345150464" result="Passed" start-time="2026-08-11 02:50:28Z" end-time="2026-08-11 02:50:30Z" duration="2.394293" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1017" name="Scene_contains_no_audio_source_particle_system_canvas_or_text_component" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Scene_contains_no_audio_source_particle_system_canvas_or_text_component" methodname="Scene_contains_no_audio_source_particle_system_canvas_or_text_component" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="636614281" result="Passed" start-time="2026-08-11 02:50:30Z" end-time="2026-08-11 02:50:31Z" duration="0.821465" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1003" name="Scene_has_the_exact_hierarchy_one_camera_one_director_and_five_positioned_cast_roots" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Scene_has_the_exact_hierarchy_one_camera_one_director_and_five_positioned_cast_roots" methodname="Scene_has_the_exact_hierarchy_one_camera_one_director_and_five_positioned_cast_roots" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1465288170" result="Passed" start-time="2026-08-11 02:50:31Z" end-time="2026-08-11 02:50:32Z" duration="0.602204" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1004" name="Scene_references_only_the_exact_approved_background_cast_and_mask_bytes" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Scene_references_only_the_exact_approved_background_cast_and_mask_bytes" methodname="Scene_references_only_the_exact_approved_background_cast_and_mask_bytes" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1791476530" result="Passed" start-time="2026-08-11 02:50:32Z" end-time="2026-08-11 02:50:32Z" duration="0.619830" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1012" name="Session_capture_restore_round_trips_previous_play_mode_start_scene" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Session_capture_restore_round_trips_previous_play_mode_start_scene" methodname="Session_capture_restore_round_trips_previous_play_mode_start_scene" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1902771767" result="Passed" start-time="2026-08-11 02:50:32Z" end-time="2026-08-11 02:50:34Z" duration="1.297184" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1011" name="Session_capture_restore_round_trips_scene_setup_and_active_scene" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Session_capture_restore_round_trips_scene_setup_and_active_scene" methodname="Session_capture_restore_round_trips_scene_setup_and_active_scene" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="779032094" result="Passed" start-time="2026-08-11 02:50:34Z" end-time="2026-08-11 02:50:37Z" duration="3.043618" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1013" name="Session_restore_consumes_snapshot_and_a_second_restore_returns_false" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Session_restore_consumes_snapshot_and_a_second_restore_returns_false" methodname="Session_restore_consumes_snapshot_and_a_second_restore_returns_false" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="821166184" result="Passed" start-time="2026-08-11 02:50:37Z" end-time="2026-08-11 02:50:38Z" duration="1.184998" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1005" name="Sorting_and_custom_mask_range_target_only_order_200_background_repeat" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Sorting_and_custom_mask_range_target_only_order_200_background_repeat" methodname="Sorting_and_custom_mask_range_target_only_order_200_background_repeat" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="2019666250" result="Passed" start-time="2026-08-11 02:50:38Z" end-time="2026-08-11 02:50:39Z" duration="0.521067" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1007" name="Timeline_is_24fps_204_frames_with_exactly_seven_animation_tracks_and_no_audio_or_signal" fullname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests.Timeline_is_24fps_204_frames_with_exactly_seven_animation_tracks_and_no_audio_or_signal" methodname="Timeline_is_24fps_204_frames_with_exactly_seven_animation_tracks_and_no_audio_or_signal" classname="LastHost.Prototype.Cinematics.A01.Tests.A01OfficeAnimaticContractTests" runstate="Runnable" seed="1399792456" result="Passed" start-time="2026-08-11 02:50:39Z" end-time="2026-08-11 02:50:39Z" duration="0.008749" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                    <output><![CDATA[Saving results to: C:/Users/bumci/AppData/LocalLow/DefaultCompany/Last Host\TestResults.xml
+]]></output>
+                  </test-case>
+                </test-suite>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

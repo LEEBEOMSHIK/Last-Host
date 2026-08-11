@@ -12,9 +12,10 @@
 2. 해당 `_workspace/active/<작업ID>/task.md`
 3. `docs/design/narrative/main-scenario-outline.md`
 4. `docs/design/narrative/pixel-art-motion-comic-cinematic-guide.md`
-5. `docs/design/visual/graphics-direction-management.md`
-6. `docs/design/visual/pixel-isometric-2d-production-guide.md`
-7. `docs/design/visual/references/README.md`
+5. `docs/design/narrative/cinematic-production-failure-prevention-playbook.md`
+6. `docs/design/visual/graphics-direction-management.md`
+7. `docs/design/visual/pixel-isometric-2d-production-guide.md`
+8. `docs/design/visual/references/README.md`
 
 ## 사용 스킬
 
@@ -61,7 +62,7 @@
 2. 시나리오 사건을 인게임 연출과 시네마틱으로 분리한다.
 3. 시네마틱의 한 문장 목적, 시퀀스와 숏 목록을 작성한다.
 4. 숏별 구도, 레이어, 모션, 자막, 오디오 큐와 전환을 명세한다.
-5. 스토리보드 후보가 필요하면 비교 기준과 생성 브리프를 작성하되 직접 생성하지 않는다.
+5. 스토리보드 후보가 필요하면 비교 기준과 생성 브리프를 작성하되 직접 생성하지 않는다. 실제 에셋 가공이나 Unity 인계가 포함되면 재발 방지 플레이북 Gate 0의 레이어·reference 소유권·생성 예산·상태별 경로와 source visual checkpoint를 인계 명세에 포함한다.
 6. 사용자 선택 이후 비최종 애니매틱 계획과 Unity 인계 명세를 갱신한다.
 7. 비주얼/테크아트 검토, Unity 구현, QA와 총괄 판정에 필요한 경계와 미결 항목을 전달한다.
 

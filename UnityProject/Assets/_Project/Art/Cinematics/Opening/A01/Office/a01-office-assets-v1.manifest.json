@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "asset_status": "preview-only-candidate",
+  "provenance": {
+    "work_id": "2026-08-10-a01-office-animatic",
+    "source_commit": "88fd9b6",
+    "derived_by": "tools/art/Repack-ChromaPoseGrid.ps1",
+    "derivative_contract": "A01-RP-07 nonlinear bright-key RGB cleanup",
+    "image_generation": "not invoked; historical attempt-07 raw only"
+  },
+  "sources": {
+    "raw": {
+      "path": "_workspace/active/2026-08-10-a01-office-animatic/artifacts/imagegen/a01-office-cast-pose-grid-attempt-07-raw.png",
+      "sha256": "24A143D7344DAC8358CD496C6AD03718AADB492D67B96E7CCCF0E46DA08A090D"
+    },
+    "derived": {
+      "path": "_workspace/active/2026-08-10-a01-office-animatic/artifacts/imagegen/a01-office-cast-pose-grid-attempt-07-repacked-alpha.png",
+      "sha256": "71F6542C8DD6229F40DB8E1CD1DF9A1C7B293FFDB28B172A3C87900465BD365D",
+      "byte_length": 1131247
+    },
+    "background": {
+      "path": "_workspace/active/2026-08-10-a01-office-animatic/artifacts/imagegen/a01-office-bg-room-source.png",
+      "sha256": "DA5F22DE7D1C9BDBABE2A8887640085142D23E02CF3BF94B21E217A7EC98AA0C"
+    },
+    "foreground_source": {
+      "path": "_workspace/active/2026-08-10-a01-office-animatic/artifacts/imagegen/a01-office-foreground-mask-source.png",
+      "sha256": "D782D38E4D510E1D13680C21D6642F86647DF53662B8D94150376EC73770F1E1",
+      "byte_length": 1097398
+    },
+    "foreground_derived": {
+      "path": "_workspace/active/2026-08-10-a01-office-animatic/artifacts/imagegen/a01-office-occlusion-mask-alpha.png",
+      "sha256": "F59EBC810A943DB76C17691AD364237F473BAB6A97EF3A8966321BAEF8400D95",
+      "byte_length": 15067
+    }
+  },
+  "foreground_status": "mask-only-candidate",
+  "import": {
+    "cast": {
+      "sprite_mode": "Multiple",
+      "grid_columns": 4,
+      "grid_rows": 5,
+      "cell_width": 320,
+      "cell_height": 320,
+      "pixels_per_unit": 100,
+      "filter_mode": "Point",
+      "mipmap_enabled": false,
+      "compression": "Uncompressed",
+      "alpha_transparency": true,
+      "fallback_physics_shape": false,
+      "pivot": { "x": 0.5, "y": 0.04375 }
+    },
+    "background": {
+      "sprite_mode": "Single",
+      "pixels_per_unit": 100,
+      "filter_mode": "Point",
+      "mipmap_enabled": false,
+      "compression": "Uncompressed",
+      "alpha_transparency": true,
+      "fallback_physics_shape": false
+    },
+    "occlusion_mask": {
+      "sprite_mode": "Single",
+      "pixels_per_unit": 100,
+      "filter_mode": "Point",
+      "mipmap_enabled": false,
+      "compression": "Uncompressed",
+      "alpha_transparency": true,
+      "fallback_physics_shape": false
+    }
+  },
+  "frames": [
+    { "name": "p1_seated_idle", "rect": { "x": 0, "y": 1280, "width": 320, "height": 320 } },
+    { "name": "p1_speaking", "rect": { "x": 320, "y": 1280, "width": 320, "height": 320 } },
+    { "name": "p1_laugh", "rect": { "x": 640, "y": 1280, "width": 320, "height": 320 } },
+    { "name": "p1_rise_start", "rect": { "x": 960, "y": 1280, "width": 320, "height": 320 } },
+    { "name": "p2_seated_idle", "rect": { "x": 0, "y": 960, "width": 320, "height": 320 } },
+    { "name": "p2_nod_smile", "rect": { "x": 320, "y": 960, "width": 320, "height": 320 } },
+    { "name": "p2_laugh", "rect": { "x": 640, "y": 960, "width": 320, "height": 320 } },
+    { "name": "p2_neutral", "rect": { "x": 960, "y": 960, "width": 320, "height": 320 } },
+    { "name": "p3_seated_work", "rect": { "x": 0, "y": 640, "width": 320, "height": 320 } },
+    { "name": "p3_shoulder_laugh", "rect": { "x": 320, "y": 640, "width": 320, "height": 320 } },
+    { "name": "p3_head_turn", "rect": { "x": 640, "y": 640, "width": 320, "height": 320 } },
+    { "name": "p3_neutral", "rect": { "x": 960, "y": 640, "width": 320, "height": 320 } },
+    { "name": "p4_standing_idle", "rect": { "x": 0, "y": 320, "width": 320, "height": 320 } },
+    { "name": "p4_conversation", "rect": { "x": 320, "y": 320, "width": 320, "height": 320 } },
+    { "name": "p4_exit_turn", "rect": { "x": 640, "y": 320, "width": 320, "height": 320 } },
+    { "name": "p4_neutral", "rect": { "x": 960, "y": 320, "width": 320, "height": 320 } },
+    { "name": "p5_standing_idle", "rect": { "x": 0, "y": 0, "width": 320, "height": 320 } },
+    { "name": "p5_laugh", "rect": { "x": 320, "y": 0, "width": 320, "height": 320 } },
+    { "name": "p5_exit_step", "rect": { "x": 640, "y": 0, "width": 320, "height": 320 } },
+    { "name": "p5_neutral", "rect": { "x": 960, "y": 0, "width": 320, "height": 320 } }
+  ]
+}

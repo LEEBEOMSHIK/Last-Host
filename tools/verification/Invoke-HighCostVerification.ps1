@@ -129,9 +129,39 @@ function Get-ConsecutiveFailures($Ledger) {
     return $count
 }
 
-function Invoke-Guard([string]$ScriptName, [string[]]$Arguments) {
+function Invoke-Guard([string]$ScriptName, [System.Collections.IDictionary]$Parameters) {
     $scriptPath = Join-Path $PSScriptRoot $ScriptName
-    $output = & (Get-Process -Id $PID).Path -NoProfile -File $scriptPath @Arguments 2>&1
+    $payload = [ordered]@{
+        script_path = $scriptPath
+        parameters = $Parameters
+    }
+    $payloadBase64 = [Convert]::ToBase64String([System.Text.UTF8Encoding]::new($false).GetBytes(($payload | ConvertTo-Json -Depth 20)))
+    $command = @'
+$payload = [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('__PAYLOAD__')) | ConvertFrom-Json -Depth 20
+$invocation = @{}
+foreach ($property in $payload.parameters.PSObject.Properties) {
+    $entry = $property.Value
+    $values = @($entry.values | ForEach-Object { $_ })
+    switch ([string]$entry.kind) {
+        'scalar' {
+            if ($values.Count -ne 1) { throw "Scalar payload '$($property.Name)' must contain exactly one value." }
+            $invocation[$property.Name] = [string]$values[0]
+        }
+        'array' {
+            $invocation[$property.Name] = [string[]]$values
+        }
+        'switch' {
+            if ($values.Count -ne 1 -or -not [bool]$values[0]) { throw "Switch payload '$($property.Name)' must contain true." }
+            $invocation[$property.Name] = $true
+        }
+        default { throw "Unsupported payload kind '$([string]$entry.kind)' for '$($property.Name)'." }
+    }
+}
+& ([string]$payload.script_path) @invocation
+exit $LASTEXITCODE
+'@.Replace('__PAYLOAD__', $payloadBase64)
+    $encodedCommand = [Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($command))
+    $output = & (Get-Process -Id $PID).Path -NoProfile -EncodedCommand $encodedCommand 2>&1
     $exitCode = $LASTEXITCODE
     if ($exitCode -ne 0) {
         throw "$ScriptName blocked preflight (exit $exitCode): $($output -join [Environment]::NewLine)"
@@ -209,23 +239,33 @@ try {
     $allowedStatuses = @($profile.current_state_contract.allowed_statuses | ForEach-Object { [string]$_ })
     $routeStateContract = Get-RouteCurrentStateContract -RouteCapability $routeCapability -AllowedStatuses $allowedStatuses
 
-    [void](Invoke-Guard -ScriptName 'Test-AgentBrief.ps1' -Arguments @('-BriefPath', $AgentBriefPath, '-CapabilityProfilePath', $CapabilityProfilePath))
-    [void](Invoke-Guard -ScriptName 'Test-VerificationCurrentState.ps1' -Arguments @(
-        '-StatePath', $CurrentStatePath,
-        '-ExpectedWorkId', $WorkId,
-        '-ExpectedRunId', $RunId,
-        '-ExpectedCandidateFingerprint', $CandidateFingerprint,
-        '-ExpectedStatus', [string]$routeStateContract.expected_status,
-        '-CapabilityProfilePath', $CapabilityProfilePath
-    ))
-    $qaArguments = @('-Path') + $QaHarnessPath
-    [void](Invoke-Guard -ScriptName 'Test-QaHarnessSafety.ps1' -Arguments $qaArguments)
-    $contractArguments = @('-BaselinePath') + $ContractBaselinePath + @('-CandidatePath') + $ProductionPath + @('-TestPath') + $TestPath
-    [void](Invoke-Guard -ScriptName 'Test-ComponentContractImpact.ps1' -Arguments $contractArguments)
+    [void](Invoke-Guard -ScriptName 'Test-AgentBrief.ps1' -Parameters ([ordered]@{
+        BriefPath = [ordered]@{ kind = 'scalar'; values = @($AgentBriefPath) }
+        CapabilityProfilePath = [ordered]@{ kind = 'scalar'; values = @($CapabilityProfilePath) }
+    }))
+    [void](Invoke-Guard -ScriptName 'Test-VerificationCurrentState.ps1' -Parameters ([ordered]@{
+        StatePath = [ordered]@{ kind = 'scalar'; values = @($CurrentStatePath) }
+        ExpectedWorkId = [ordered]@{ kind = 'scalar'; values = @($WorkId) }
+        ExpectedRunId = [ordered]@{ kind = 'scalar'; values = @($RunId) }
+        ExpectedCandidateFingerprint = [ordered]@{ kind = 'scalar'; values = @($CandidateFingerprint) }
+        ExpectedStatus = [ordered]@{ kind = 'scalar'; values = @([string]$routeStateContract.expected_status) }
+        CapabilityProfilePath = [ordered]@{ kind = 'scalar'; values = @($CapabilityProfilePath) }
+    }))
+    [void](Invoke-Guard -ScriptName 'Test-QaHarnessSafety.ps1' -Parameters ([ordered]@{
+        Path = [ordered]@{ kind = 'array'; values = @($QaHarnessPath) }
+    }))
+    [void](Invoke-Guard -ScriptName 'Test-ComponentContractImpact.ps1' -Parameters ([ordered]@{
+        BaselinePath = [ordered]@{ kind = 'array'; values = @($ContractBaselinePath) }
+        CandidatePath = [ordered]@{ kind = 'array'; values = @($ProductionPath) }
+        TestPath = [ordered]@{ kind = 'array'; values = @($TestPath) }
+    }))
 
-    $syncOutput = Invoke-Guard -ScriptName 'Sync-IsolatedUnityProject.ps1' -Arguments @(
-        '-WorkId', $WorkId, '-CacheRoot', $CacheRoot, '-SourceProjectPath', $SourceProjectPath, '-Sync'
-    )
+    $syncOutput = Invoke-Guard -ScriptName 'Sync-IsolatedUnityProject.ps1' -Parameters ([ordered]@{
+        WorkId = [ordered]@{ kind = 'scalar'; values = @($WorkId) }
+        CacheRoot = [ordered]@{ kind = 'scalar'; values = @($CacheRoot) }
+        SourceProjectPath = [ordered]@{ kind = 'scalar'; values = @($SourceProjectPath) }
+        Sync = [ordered]@{ kind = 'switch'; values = @($true) }
+    })
     $syncResult = $syncOutput | ConvertFrom-Json -Depth 10
 }
 catch {
@@ -258,14 +298,14 @@ try {
         if ([string]::IsNullOrWhiteSpace($requiredPath)) { throw 'UnityPath, ResultsPath, and LogPath are required for execution.' }
     }
 
-    [void](Invoke-Guard -ScriptName 'Test-VerificationCurrentState.ps1' -Arguments @(
-        '-StatePath', $CurrentStatePath,
-        '-ExpectedWorkId', $WorkId,
-        '-ExpectedRunId', $RunId,
-        '-ExpectedCandidateFingerprint', $CandidateFingerprint,
-        '-ExpectedStatus', [string]$routeStateContract.expected_status,
-        '-CapabilityProfilePath', $CapabilityProfilePath
-    ))
+    [void](Invoke-Guard -ScriptName 'Test-VerificationCurrentState.ps1' -Parameters ([ordered]@{
+        StatePath = [ordered]@{ kind = 'scalar'; values = @($CurrentStatePath) }
+        ExpectedWorkId = [ordered]@{ kind = 'scalar'; values = @($WorkId) }
+        ExpectedRunId = [ordered]@{ kind = 'scalar'; values = @($RunId) }
+        ExpectedCandidateFingerprint = [ordered]@{ kind = 'scalar'; values = @($CandidateFingerprint) }
+        ExpectedStatus = [ordered]@{ kind = 'scalar'; values = @([string]$routeStateContract.expected_status) }
+        CapabilityProfilePath = [ordered]@{ kind = 'scalar'; values = @($CapabilityProfilePath) }
+    }))
     $state = Read-GuardJson -Path $CurrentStatePath
     $runningStatus = 'verification-running'
     Assert-RouteStatusTransition -RouteContract $routeStateContract -From ([string]$state.status) -To $runningStatus

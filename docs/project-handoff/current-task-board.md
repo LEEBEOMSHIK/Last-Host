@@ -1,6 +1,6 @@
 # 현재 작업 후보와 핸드오프 현황
 
-최종 갱신: 2026-08-09 KST
+최종 갱신: 2026-08-11 KST
 
 ## 목적
 
@@ -21,9 +21,9 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 
 ## 현재 저장소 상태
 
-- Task 4 Step 6 작업 시작 기준 로컬 Git HEAD와 `origin/main`: `6347445`.
-- 현재 Git 작업 상태: Task 5 v12 Gate S production·R2·공유 상태 문서는 최종 감사와 선별 커밋을 통과해 `f9e8bd0`으로 origin/main에 반영 완료됐다. fingerprint는 동결하며 production 의미는 변경하지 않는다.
-- 현재 커밋 경계: Task 5 v12 production 문서와 직접 상태 기록은 `f9e8bd0`, Task 4 Step 6 content는 `6867b98`로 origin/main에 반영됐다. Task 4 작업 시작 baseline `6347445` 이력과 ProjectSettings·preview·`Builds/` 보호 원칙은 유지한다.
+- A01 통합 직전 기준 로컬 Git: `main` HEAD `a5a4cf8`, `origin/main` `cf8951b`. 최종 통합 커밋은 결과 보고에서 식별한다.
+- A01 구현은 **기술 검증 통과 — 사용자 시각 수용 대기**다. Mask-only Scene·Timeline·Animation·전용 Preview를 구현했고 canonical `a01-target-green-006`은 `18/18` PASS, 독립 QA CLEAN이다. rejected foreground RGB와 Startup 연결은 계속 금지한다.
+- 기존 커밋 경계: Task 5 v12 production 문서와 직접 상태 기록은 `f9e8bd0`, Task 4 Step 6 content는 `6867b98`로 반영 이력을 유지한다. ProjectSettings·preview·`Builds/` 보호 원칙도 유지한다.
 - 최근 완료: 자연 부분 가림 R2 최종 후보 `5cd81d7c…`는 gameplay `3/3`, scene `8/8`, stale fixture `4/4`, 전체 EditMode `203/203`, QA Play r3 PASS, Console Error 0·scene dirty false와 총괄 내부 승인을 통과했다. 사용자가 최종 가림 화면과 쥐 본체 보존을 수용한 내용임을 재확인해 완료 보관했다.
 - 이전 쥐 외형 반영 기준: `ba883a2 art: integrate rat appearance candidate and visual gates`, 후속 현황판 동기화 `350d520 docs: sync rat appearance push state`
 - 기존 반영 범위: A2/r6 최종 외형 후보, neutral idle 수정, QA staged 감사 통과, 총괄 내부 승인, 작업 패킷과 시각 게이트
@@ -39,6 +39,7 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 | 작업 | 상태 | 목적 | 상세 기록 |
 | --- | --- | --- | --- |
 | 오프닝 시네마틱·세균 감염 접속형 첫 튜토리얼 설계 | Task 5 v12 Gate S `f9e8bd0`·Task 4 Step 6 content `6867b98` origin/main 반영 완료 | Task 4 Step 6은 canonical QA-002 C1~C15 PASS·blocker 0과 총괄 003 내부 승인 가능·blocker 0·최소 수정 0이다. 다음 승인 게이트는 Gate S를 실제 배치한 스토리보드 후보·결과 패널/숏 수와 이미지 후보 생성 여부다. Task 5 Step 6 실제 연결 측정과 실제 image·asset·animatic·audio·code·Unity는 미완료·별도 승인이다. | `_workspace/active/2026-08-08-opening-cinematic-origin/` |
+| A01 회사 일상 혼합형 모션 독립 무음 애니매틱 | **기술 검증 통과 — 사용자 시각 수용 대기** | mask-only Scene·24fps/204f Timeline·Animation 7개·Preview launcher 구현, canonical run006 `18/18` PASS·독립 QA CLEAN | `_workspace/active/2026-08-10-a01-office-animatic/` |
 | 메인 시나리오 디렉터 역할과 오프닝 구조 동기화 | 내부 승인 가능 — 사용자 문서 확인 대기 | 전체 서사·숙주/맵·성장·기원 미스터리의 연속성을 맡는 역할을 추가했다. 독립 QA C1~C6 PASS와 총괄 내부 승인을 통과했으며, 평온한 독립 3씬 뒤 혼합형 감염 확산을 두고 러닝타임은 숏 구성 뒤 산정한다. | `_workspace/active/2026-08-08-main-scenario-director-agent/` |
 | 픽셀아트 모션 코믹형 시네마틱 기준·전담 역할 | 내부 승인 가능 — 사용자 가이드 수용 대기 | 컷신 기본 형식과 숏·스토리보드·레이어 명세·비최종 애니매틱 계획·Unity 인계 전담 역할을 추가했다. 독립 QA C1~C7 PASS와 총괄 내부 승인을 통과했으며 이미지·실제 애니매틱·Unity 구현은 후속 승인으로 분리한다. | `_workspace/active/2026-08-08-pixel-motion-comic-cinematics/` |
 | 전체 게임 시나리오·화면 흐름·튜토리얼 초안 | Task 4 Step 6 content `6867b98` origin/main 반영 완료 | production SHA `8316E5BA...81B0`, canonical QA-002 C1~C15 PASS·blocker 0·수정 0, 총괄 003 내부 승인 가능·blocker 0·최소 수정 0을 유지한다. 작업 시작 baseline은 `6347445`이며 Task 5 Step 6과 실제 storyboard·image·asset·animatic·audio·UI·save·code·Unity는 미완료·별도 승인이다. | `_workspace/active/2026-08-07-main-scenario-outline/` |
@@ -98,7 +99,9 @@ R2/R3 또는 실제 고비용 실행 작업의 비용은 `docs/project-handoff/t
 
 ## 다음 작업 후보
 
-`오프닝 시네마틱·세균 감염 접속형 첫 튜토리얼 설계`의 Task 5 v12 Gate S 계약은 `f9e8bd0`, Task 4 Step 6 상위 시나리오 전파는 `6867b98`로 origin/main에 반영 완료됐다. 다음 승인 게이트는 Gate S를 실제 배치한 스토리보드 후보와 결과 패널·숏 수, 이미지 후보 생성 여부다. Task 5 Step 6 총 러닝타임은 실제 스토리보드·비최종 애니매틱 연결 뒤 측정하며 storyboard·image·asset·animatic·audio·UI·save·code·Unity는 미완료·별도 승인이다. `PC 시작 화면·설정 UI와 다국어 준비 구조`는 Play 진입·언어별 폰트 후보의 표적 UnityEditMode `38/38`와 독립 QA를 통과했으며, 다음은 재실행이 아니라 사용자 Startup 첫 프레임·한영 폰트 전환·설정 가독성·2D 진입 수용 확인이다. 대각선 충돌 표면 slide와 자연 부분 가림·쥐 본체 보존은 완료 상태를 유지하고 재검증하지 않는다.
+`A01 회사 일상 혼합형 모션 독립 무음 애니매틱`은 canonical run006 `18/18`과 독립 QA CLEAN으로 기술 검증을 통과했다. 다음 단계는 기존 main Unity의 `Last Host/Cinematics/A01/Play Preview`에서 사용자가 실제 모션·구도·호흡을 확인하는 일뿐이다.
+
+> **A01 현재 상태 정정:** 기술 검증 통과 — 사용자 시각 수용 대기. rejected color foreground·Startup 연결·A02·오디오는 포함하지 않는다.
 
 ## 최근 판단 항목
 

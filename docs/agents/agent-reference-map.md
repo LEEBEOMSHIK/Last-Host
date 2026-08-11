@@ -235,6 +235,7 @@
 
 - `docs/design/narrative/main-scenario-outline.md`
 - `docs/design/narrative/pixel-art-motion-comic-cinematic-guide.md`
+- `docs/design/narrative/cinematic-production-failure-prevention-playbook.md`
 - `docs/design/visual/graphics-direction-management.md`
 - `.agents/pixel-cinematic-director-agent.md`
 - 해당 `_workspace/active/<작업ID>/task.md`
@@ -253,6 +254,7 @@
 - 시네마틱 연출 역할은 숏·스토리보드·레이어 명세·비최종 애니매틱 계획·Unity 인계 명세만 담당한다.
 - 실제 이미지·영상·애니매틱·오디오 제작과 Unity 구현은 각각 별도 승인·담당 작업으로 분리한다.
 - 생성 후보는 사용자 선택과 픽셀 검토·QA 없이 최종 에셋이나 완성 컷신으로 선언하지 않는다.
+- 생성 후보의 실제 가공·Unity Import가 포함되면 재발 방지 플레이북의 상태 구분과 Gate 0~7을 적용하되, 역할 분리와 상위 루프 엔지니어링 게이트는 그대로 유지한다.
 - 전체 캠페인 장면의 문서화는 벌레·인간·병원·연구소·백신·엔딩 구현 승인이 아니다.
 
 ### 레거시 Blender 원본 / 리깅 / 프리렌더 조사

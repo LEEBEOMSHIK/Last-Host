@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "work_id": "2026-08-10-a01-office-animatic",
+  "entries": [
+    {
+      "criterion_id": "A01-TDD-CONTRACT",
+      "outcome": "failure",
+      "run_id": "a01-contract-red-001",
+      "candidate_fingerprint": "ffa21a964d54197252926e886d3e4b65a90ab24bd51d4f9d526b8f825875f094",
+      "route": "UnityEditMode",
+      "note": "low-level exit 1",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-11T03:28:02.8194972+09:00"
+    },
+    {
+      "criterion_id": "A01-TARGET-GREEN",
+      "outcome": "failure",
+      "run_id": "a01-target-green-001",
+      "candidate_fingerprint": "bc475b9fdd3b20b4e4fd82432b3bbb0dbbd3342e73e0983ec4cbaf53d11ea4af",
+      "route": "UnityEditMode",
+      "note": "Test-QaHarnessSafety.ps1 blocked preflight (exit 1): {\r\n  \"schema_version\": 1,\r\n  \"check\": \"qa-harness-safety\",\r\n  \"passed\": false,\r\n  \"details\": [\r\n    \"C:\\\\projects\\\\Last-Host\\\\.worktrees\\\\a01-office-animatic\\\\UnityProject\\\\Assets\\\\_Project\\\\Tests\\\\EditMode\\\\Cinematics\\\\A01\\\\A01OfficeAnimaticContractTests.cs: forbidden System.Reflection\",\r\n    \"C:\\\\projects\\\\Last-Host\\\\.worktrees\\\\a01-office-animatic\\\\UnityProject\\\\Assets\\\\_Project\\\\Tests\\\\EditMode\\\\Cinematics\\\\A01\\\\A01OfficeAnimaticContractTests.cs: forbidden reflection member lookup\"\r\n  ]\r\n}",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-11T10:26:20.8123317+09:00"
+    },
+    {
+      "criterion_id": "A01-TARGET-GREEN",
+      "outcome": "failure",
+      "run_id": "a01-target-green-002",
+      "candidate_fingerprint": "e3b3bb4cb5343f82a711363a9f2d84ae689e681bdbf36ff9958fcc5ca562548f",
+      "route": "UnityEditMode",
+      "note": "low-level exit 1; NUnit 18 total, 16 passed, 2 failed; XML/log complete and Unity exited, but the idle outer wrapper had to be terminated before ledger finalization",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-11T01:43:42.1051108Z"
+    },
+    {
+      "criterion_id": "A01-TARGET-GREEN",
+      "outcome": "reclassified",
+      "run_id": "a01-scene-builder-idempotence-reclass-001",
+      "candidate_fingerprint": "",
+      "route": "",
+      "note": "risk/root-cause reclassification",
+      "root_cause": "GREEN preflight reflection use consumed correction one; the scene builder recreated the Scene on every run and assigned SpriteMask back order before front order, causing unstable scene dependency hashes and a back order clamp to zero.",
+      "change_plan": "Keep direct public API test bindings; open and update the existing A01 Scene objects and components in place, set front order before back order, regenerate once, then fingerprint a new candidate before one GREEN run.",
+      "risk_class": "R3",
+      "recorded_utc": "2026-08-11T10:47:00.4249023+09:00"
+    },
+    {
+      "criterion_id": "A01-TARGET-GREEN",
+      "outcome": "failure",
+      "run_id": "a01-target-green-003",
+      "candidate_fingerprint": "8fdfc7e25a4d07e07f39eca5ab6c63766ebdfaed602a765160bdb676d77a9821",
+      "route": "UnityEditMode",
+      "note": "low-level exit 1",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-11T11:07:54.7768082+09:00"
+    },
+    {
+      "criterion_id": "A01-TARGET-GREEN",
+      "outcome": "failure",
+      "run_id": "a01-target-green-004",
+      "candidate_fingerprint": "8fdfc7e25a4d07e07f39eca5ab6c63766ebdfaed602a765160bdb676d77a9821",
+      "route": "UnityEditMode",
+      "note": "low-level exit 1",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-11T11:19:19.7349461+09:00"
+    },
+    {
+      "criterion_id": "A01-TARGET-GREEN",
+      "outcome": "reclassified",
+      "run_id": "a01-isolated-cache-path-reclass-001",
+      "candidate_fingerprint": "",
+      "route": "",
+      "note": "risk/root-cause reclassification",
+      "root_cause": "Run003 reused an isolated cache with an orphan bee_backend lock; run004 used a fresh but overlong cache path whose PackageCache file path reached 263 characters, causing incomplete Unity package imports and invalid test environment state.",
+      "change_plan": "Use a new short cache root under TEMP whose measured longest failing package path is 237 characters, verify the root is absent and no cache processes exist, pass wrapper preflight, then run the unchanged candidate once under a new run ID.",
+      "risk_class": "R3",
+      "recorded_utc": "2026-08-11T11:20:53.9034744+09:00"
+    },
+    {
+      "criterion_id": "A01-TARGET-GREEN",
+      "outcome": "failure",
+      "run_id": "a01-target-green-005",
+      "candidate_fingerprint": "8fdfc7e25a4d07e07f39eca5ab6c63766ebdfaed602a765160bdb676d77a9821",
+      "route": "UnityEditMode",
+      "note": "low-level exit 1",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-11T11:28:43.5066424+09:00"
+    },
+    {
+      "criterion_id": "A01-TARGET-GREEN",
+      "outcome": "success",
+      "run_id": "a01-target-green-006",
+      "candidate_fingerprint": "de4f3d9b147b1a44722bea6021389569b46694214f8c6034cd47491bf8fbaa50",
+      "route": "UnityEditMode",
+      "note": "low-level exit 0",
+      "root_cause": "",
+      "change_plan": "",
+      "risk_class": "",
+      "recorded_utc": "2026-08-11T02:51:06.1927683+00:00"
+    }
+  ]
+}

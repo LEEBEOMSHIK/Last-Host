@@ -1,7 +1,10 @@
 #Requires -Version 7.0
 
 [CmdletBinding()]
-param([switch]$IntegrationOnly)
+param(
+    [switch]$IntegrationOnly,
+    [switch]$MultiPathOnly
+)
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
@@ -22,7 +25,13 @@ function Write-Json([string]$Path, $Value) {
     Write-Utf8 -Path $Path -Text (($Value | ConvertTo-Json -Depth 30) + [Environment]::NewLine)
 }
 
-function Invoke-Case([string]$Id, [bool]$ExpectPass, [string]$Script, [string[]]$Arguments) {
+function Invoke-Case(
+    [string]$Id,
+    [bool]$ExpectPass,
+    [string]$Script,
+    [string[]]$Arguments,
+    [string]$ExpectedOutput = ''
+) {
     $output = & $pwsh -NoProfile -File $Script @Arguments 2>&1
     $exitCode = $LASTEXITCODE
     $passed = if ($ExpectPass) { $exitCode -eq 0 } else { $exitCode -ne 0 }
@@ -35,6 +44,69 @@ function Invoke-Case([string]$Id, [bool]$ExpectPass, [string]$Script, [string[]]
     })
     if (-not $passed) {
         throw "Self-test case $Id produced unexpected exit code $exitCode. Child output: $($output -join [Environment]::NewLine)"
+    }
+    $normalizedOutput = (($output -join [Environment]::NewLine) -replace '\s+', ' ')
+    if (-not [string]::IsNullOrWhiteSpace($ExpectedOutput) -and ($normalizedOutput -notlike "*$ExpectedOutput*")) {
+        throw "Self-test case $Id did not report the expected child behavior '$ExpectedOutput'. Child output: $($output -join [Environment]::NewLine)"
+    }
+}
+
+function Invoke-WrapperCase(
+    [string]$Id,
+    [bool]$ExpectPass,
+    [string]$Script,
+    [hashtable]$Parameters,
+    [string]$ExpectedOutput = ''
+) {
+    $payload = [ordered]@{
+        script_path = $Script
+        parameters = [ordered]@{}
+    }
+    foreach ($name in $Parameters.Keys) {
+        $payload.parameters[$name] = $Parameters[$name]
+    }
+    $payloadBase64 = [Convert]::ToBase64String([System.Text.UTF8Encoding]::new($false).GetBytes(($payload | ConvertTo-Json -Depth 20)))
+    $command = @'
+$payload = [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('__PAYLOAD__')) | ConvertFrom-Json -Depth 20
+$invocation = @{}
+foreach ($property in $payload.parameters.PSObject.Properties) {
+    $entry = $property.Value
+    $values = @($entry.values | ForEach-Object { $_ })
+    switch ([string]$entry.kind) {
+        'scalar' {
+            if ($values.Count -ne 1) { throw "Scalar payload '$($property.Name)' must contain exactly one value." }
+            $invocation[$property.Name] = [string]$values[0]
+        }
+        'array' {
+            $invocation[$property.Name] = [string[]]$values
+        }
+        'switch' {
+            if ($values.Count -ne 1 -or -not [bool]$values[0]) { throw "Switch payload '$($property.Name)' must contain true." }
+            $invocation[$property.Name] = $true
+        }
+        default { throw "Unsupported payload kind '$([string]$entry.kind)' for '$($property.Name)'." }
+    }
+}
+& ([string]$payload.script_path) @invocation
+exit $LASTEXITCODE
+'@.Replace('__PAYLOAD__', $payloadBase64)
+    $encodedCommand = [Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($command))
+    $output = & $pwsh -NoProfile -EncodedCommand $encodedCommand 2>&1
+    $exitCode = $LASTEXITCODE
+    $passed = if ($ExpectPass) { $exitCode -eq 0 } else { $exitCode -ne 0 }
+    $results.Add([pscustomobject]@{
+        id = $Id
+        expected = if ($ExpectPass) { 'pass' } else { 'blocked' }
+        observed_exit_code = $exitCode
+        passed = $passed
+        output = (($output | ForEach-Object { [string]$_ }) -join "`n")
+    })
+    if (-not $passed) {
+        throw "Self-test case $Id produced unexpected exit code $exitCode. Child output: $($output -join [Environment]::NewLine)"
+    }
+    $normalizedOutput = (($output -join [Environment]::NewLine) -replace '\s+', ' ')
+    if (-not [string]::IsNullOrWhiteSpace($ExpectedOutput) -and ($normalizedOutput -notlike "*$ExpectedOutput*")) {
+        throw "Self-test case $Id did not report the expected child behavior '$ExpectedOutput'. Child output: $($output -join [Environment]::NewLine)"
     }
 }
 
@@ -82,6 +154,25 @@ try {
     Write-Utf8 (Join-Path $tests 'PlayerTests.cs') 'public class PlayerTests { BoxCollider2D expected; }'
     Write-Utf8 (Join-Path $qaGood 'SafeHarness.cs') 'public class SafeHarness { public void Run() {} }'
     Write-Utf8 (Join-Path $qaBad 'UnsafeHarness.cs') 'using System.Reflection; public class UnsafeHarness { Rigidbody2D body; void Run(){ body.position = default; RefreshYSort(); } void RefreshYSort(){} }'
+
+    $multiBaseline = @(
+        (Join-Path $temporaryRoot 'baseline one'),
+        (Join-Path $temporaryRoot 'baseline two')
+    )
+    $multiCandidate = @(
+        (Join-Path $temporaryRoot 'candidate one'),
+        (Join-Path $temporaryRoot 'candidate two')
+    )
+    $multiTests = @(
+        (Join-Path $temporaryRoot 'tests one'),
+        (Join-Path $temporaryRoot 'tests two')
+    )
+    Write-Utf8 (Join-Path $multiBaseline[0] 'Box.cs') 'public class BoxCollider2D {}'
+    Write-Utf8 (Join-Path $multiBaseline[1] 'Capsule.cs') 'public class CapsuleCollider2D {}'
+    Write-Utf8 (Join-Path $multiCandidate[0] 'Capsule.cs') 'public class CapsuleCollider2D {}'
+    Write-Utf8 (Join-Path $multiCandidate[1] 'Box.cs') 'public class BoxCollider2D {}'
+    Write-Utf8 (Join-Path $multiTests[0] 'BoxTests.cs') 'public class BoxTests { BoxCollider2D expected; }'
+    Write-Utf8 (Join-Path $multiTests[1] 'CapsuleTests.cs') 'public class CapsuleTests { CapsuleCollider2D expected; }'
 
     $goodBrief = Join-Path $temporaryRoot 'brief-good.json'
     $badBrief = Join-Path $temporaryRoot 'brief-bad.json'
@@ -137,9 +228,52 @@ try {
         '-SourceProjectPath', $sourceProject, '-CacheRoot', (Join-Path $temporaryRoot 'wrapper-cache'), '-PreflightOnly'
     )
 
+    $newMultiPathParameters = {
+        param([string]$CriterionId, [string[]]$BaselinePaths, [string[]]$CandidatePaths, [string[]]$TestPaths)
+        return [ordered]@{
+            WorkId = [ordered]@{ kind = 'scalar'; values = @('guard-selftest') }
+            CriterionId = [ordered]@{ kind = 'scalar'; values = @($CriterionId) }
+            LedgerPath = [ordered]@{ kind = 'scalar'; values = @($ledger) }
+            Route = [ordered]@{ kind = 'scalar'; values = @('UnityEditMode') }
+            RunId = [ordered]@{ kind = 'scalar'; values = @('run-001') }
+            CandidateFingerprint = [ordered]@{ kind = 'scalar'; values = @('fingerprint-001') }
+            AgentBriefPath = [ordered]@{ kind = 'scalar'; values = @($goodBrief) }
+            CurrentStatePath = [ordered]@{ kind = 'scalar'; values = @($goodState) }
+            QaHarnessPath = [ordered]@{ kind = 'array'; values = @($qaGood) }
+            ContractBaselinePath = [ordered]@{ kind = 'array'; values = @($BaselinePaths) }
+            ProductionPath = [ordered]@{ kind = 'array'; values = @($CandidatePaths) }
+            TestPath = [ordered]@{ kind = 'array'; values = @($TestPaths) }
+            SourceProjectPath = [ordered]@{ kind = 'scalar'; values = @($sourceProject) }
+            CacheRoot = [ordered]@{ kind = 'scalar'; values = @((Join-Path $temporaryRoot 'multipath-wrapper-cache')) }
+            PreflightOnly = [ordered]@{ kind = 'switch'; values = @($true) }
+        }
+    }
+    $invokeMultiPathCases = {
+        $multiSuccessParameters = & $newMultiPathParameters 'G3-multipath-pass' $multiBaseline $multiCandidate $multiTests
+        Invoke-WrapperCase 'G3-multipath-pass' $true $wrapper $multiSuccessParameters
+
+        $missingBaselinePath = Join-Path $temporaryRoot 'missing baseline second path'
+        $missingBaselineParameters = & $newMultiPathParameters 'G3-multipath-missing-baseline' @($multiBaseline[0], $missingBaselinePath) $multiCandidate $multiTests
+        Invoke-WrapperCase 'G3-multipath-missing-baseline-blocked' $false $wrapper $missingBaselineParameters 'missing baseline second path'
+
+        $missingCandidatePath = Join-Path $temporaryRoot 'missing candidate second path'
+        $missingCandidateParameters = & $newMultiPathParameters 'G3-multipath-missing-candidate' $multiBaseline @($multiCandidate[0], $missingCandidatePath) $multiTests
+        Invoke-WrapperCase 'G3-multipath-missing-candidate-blocked' $false $wrapper $missingCandidateParameters 'missing candidate second path'
+
+        $missingTestPath = Join-Path $temporaryRoot 'missing test second path'
+        $missingTestParameters = & $newMultiPathParameters 'G3-multipath-missing-test' $multiBaseline $multiCandidate @($multiTests[0], $missingTestPath)
+        Invoke-WrapperCase 'G3-multipath-missing-test-blocked' $false $wrapper $missingTestParameters 'missing test second path'
+    }
+
     if ($IntegrationOnly) {
         Invoke-Case 'integration-valid-preflight-diagnostic' $true $wrapper (@('-CriterionId', 'integration', '-Route', 'UnityEditMode', '-LedgerPath', $ledger) + $common)
         [pscustomobject]@{ passed = $true; diagnostic_only = $true; cases = $results; unity_starts = 0 } | ConvertTo-Json -Depth 20
+        return
+    }
+
+    if ($MultiPathOnly) {
+        & $invokeMultiPathCases
+        [pscustomobject]@{ passed = $true; targeted = 'multipath'; cases = $results; unity_starts = 0 } | ConvertTo-Json -Depth 20
         return
     }
 
@@ -148,6 +282,7 @@ try {
     Invoke-Case 'G2-forbidden-qa-harness' $false $wrapper $g2Args
     $g3Args = @('-WorkId', 'guard-selftest', '-CriterionId', 'G3', '-LedgerPath', $ledger, '-Route', 'UnityEditMode', '-RunId', 'run-001', '-CandidateFingerprint', 'fingerprint-001', '-AgentBriefPath', $goodBrief, '-CurrentStatePath', $goodState, '-QaHarnessPath', $qaGood, '-ContractBaselinePath', $baseline, '-ProductionPath', $candidateStale, '-TestPath', $tests, '-SourceProjectPath', $sourceProject, '-CacheRoot', (Join-Path $temporaryRoot 'wrapper-cache'), '-PreflightOnly')
     Invoke-Case 'G3-stale-component-contract' $false $wrapper $g3Args
+    & $invokeMultiPathCases
     Invoke-Case 'G4-early-reclassification-blocked' $false $wrapper @(
         '-WorkId', 'guard-selftest', '-CriterionId', 'G4-natural', '-LedgerPath', $earlyReclassLedger,
         '-RegisterReclassification', '-ReclassificationId', 'too-early', '-NewRiskClass', 'R2',

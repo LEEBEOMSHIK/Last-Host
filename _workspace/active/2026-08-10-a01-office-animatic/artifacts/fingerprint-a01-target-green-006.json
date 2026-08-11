@@ -1,0 +1,439 @@
+{
+  "schema_version": 1,
+  "run_id": "a01-target-green-006",
+  "generated_utc": "2026-08-11T02:45:24.7062455+00:00",
+  "project_root": "C:\\projects\\Last-Host\\.worktrees\\a01-office-animatic",
+  "candidate_fingerprint": "de4f3d9b147b1a44722bea6021389569b46694214f8c6034cd47491bf8fbaa50",
+  "algorithm": "sha256(category<TAB>relative-path<TAB>file-sha256<TAB>length; ordinal path order)",
+  "file_count": 63,
+  "inputs": {
+    "production": [
+      "tools/art/Repack-ChromaPoseGrid.ps1",
+      "tools/art/Test-RepackChromaPoseGrid.ps1",
+      "tools/art/Remove-ConnectedChromaMatte.ps1",
+      "tools/art/Test-RemoveConnectedChromaMatte.ps1",
+      "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01",
+      "UnityProject/Assets/_Project/Art/Cinematics/Opening/A01/Preview",
+      "UnityProject/Assets/_Project/Timelines/Cinematics/Opening/A01",
+      "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview",
+      "UnityProject/Assets/_Project/Scenes/Cinematics/Opening/A01OfficeAnimatic.unity.meta",
+      "UnityProject/Assets/_Project/Editor/Startup/StartupPlayModeBootstrap.cs",
+      "UnityProject/Assets/_Project/Scripts/UI/Startup/StartupController.cs",
+      "UnityProject/Assets/_Project/Art/Cinematics.meta",
+      "UnityProject/Assets/_Project/Art/Cinematics/Opening.meta",
+      "UnityProject/Assets/_Project/Art/Cinematics/Opening/A01.meta",
+      "UnityProject/Assets/_Project/Art/Cinematics/Opening/A01/Preview.meta",
+      "UnityProject/Assets/_Project/Editor/Cinematics.meta",
+      "UnityProject/Assets/_Project/Editor/Cinematics/Opening.meta",
+      "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01.meta",
+      "UnityProject/Assets/_Project/Tests/EditMode/Cinematics.meta",
+      "UnityProject/Assets/_Project/Tests/EditMode/Cinematics/A01.meta",
+      "UnityProject/Assets/_Project/Scenes/Cinematics.meta",
+      "UnityProject/Assets/_Project/Scenes/Cinematics/Opening.meta",
+      "UnityProject/Assets/_Project/Timelines.meta",
+      "UnityProject/Assets/_Project/Timelines/Cinematics.meta",
+      "UnityProject/Assets/_Project/Timelines/Cinematics/Opening.meta",
+      "UnityProject/Assets/_Project/Timelines/Cinematics/Opening/A01.meta",
+      "UnityProject/Assets/_Project/Animations.meta",
+      "UnityProject/Assets/_Project/Animations/Cinematics.meta",
+      "UnityProject/Assets/_Project/Animations/Cinematics/Opening.meta",
+      "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01.meta",
+      "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview.meta"
+    ],
+    "test": [
+      "UnityProject/Assets/_Project/Tests/EditMode/Cinematics/A01"
+    ],
+    "scene": [
+      "UnityProject/Assets/_Project/Scenes/Cinematics/Opening/A01OfficeAnimatic.unity",
+      "UnityProject/Assets/_Project/Scenes/Startup.unity",
+      "UnityProject/ProjectSettings/EditorBuildSettings.asset"
+    ],
+    "package": [
+      "UnityProject/Packages/manifest.json",
+      "UnityProject/Packages/packages-lock.json"
+    ],
+    "version": [
+      "UnityProject/ProjectSettings/ProjectVersion.txt"
+    ]
+  },
+  "files": [
+    {
+      "category": "package",
+      "path": "UnityProject/Packages/manifest.json",
+      "length": 2069,
+      "sha256": "b07dd4e37ba1336b93d763b23e3480be7943ef4c56dbfda7ee191ff87b0af298"
+    },
+    {
+      "category": "package",
+      "path": "UnityProject/Packages/packages-lock.json",
+      "length": 13840,
+      "sha256": "943f92f1229c2a366fd42aa7180b73bdb8b6019ae21c1a6ce38c80a15d8c262e"
+    },
+    {
+      "category": "production",
+      "path": "tools/art/Remove-ConnectedChromaMatte.ps1",
+      "length": 15611,
+      "sha256": "10e3ae2aff6f355a5c11bb34b5ebc554d549e0d7d977c48464f6ad9b77915a24"
+    },
+    {
+      "category": "production",
+      "path": "tools/art/Repack-ChromaPoseGrid.ps1",
+      "length": 28185,
+      "sha256": "957f386cf1d478088c2350553b2ede3ab76edfe522995b1c08cc17136b2a326d"
+    },
+    {
+      "category": "production",
+      "path": "tools/art/Test-RemoveConnectedChromaMatte.ps1",
+      "length": 16008,
+      "sha256": "055bce8ba474729a32aeb58d2adb5d4ae6220796cf602f29fa0388bac9420522"
+    },
+    {
+      "category": "production",
+      "path": "tools/art/Test-RepackChromaPoseGrid.ps1",
+      "length": 51278,
+      "sha256": "6d723a25941b5808204610baa22aaa6fc4a47cf17544ae1b188863a6ce3fac94"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations.meta",
+      "length": 172,
+      "sha256": "939c20bdfa5c6a654c8c92c99e22660fc0aad3a75e4982cae222afc34b53bf67"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics.meta",
+      "length": 172,
+      "sha256": "163ee77b62de9fa0d2ff697c6f401e49e36d1fa81cbb7d5c412aa09e437a3fdc"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening.meta",
+      "length": 172,
+      "sha256": "b9c74c36f63decf0f0841c0f3b9faac18b58db524199aea94b638e9dbb678216"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01.meta",
+      "length": 172,
+      "sha256": "85d18276860b9f012ae89003e9d04dda1b68ea3b8823a7bea07dfb3d1028ae78"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview.meta",
+      "length": 172,
+      "sha256": "970526702bda06be9bd970ece16302f7c0b88af4cb1ab105a478182db7b6a433"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_Background_Preview.anim",
+      "length": 8939,
+      "sha256": "8373444b53eaa8dd6efe6b919aa528d907842fdefbd81e79ca51e8647fc0085d"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_Background_Preview.anim.meta",
+      "length": 188,
+      "sha256": "e56a278e0f3ba63d552f2403d3151e50f317b1fdadc35bc0191492c63bb9bf3b"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_Camera_Preview.anim",
+      "length": 8989,
+      "sha256": "5ca4b176db9f9a0e2b19792198f03984865a9225a475eac4182914d7c0503ec1"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_Camera_Preview.anim.meta",
+      "length": 188,
+      "sha256": "b3540ee0e71e7d42898791cc031b159b5f421a533dfa1a5f01b8cd8cd5b42013"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_P1_Preview.anim",
+      "length": 10534,
+      "sha256": "ab6f7dd79207aecb1540a69b143b83e50eeb1b4265719104fa90190384d1cf3f"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_P1_Preview.anim.meta",
+      "length": 188,
+      "sha256": "c1051d4574dfcfe50d64ac81b4732c6b9a8c9d332686291de4f3ed1a688b0223"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_P2_Preview.anim",
+      "length": 10554,
+      "sha256": "b70a8a338cc1b8cc070851e5d6d389dcab3f478266bb4b51c7512af00fe2c9a2"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_P2_Preview.anim.meta",
+      "length": 188,
+      "sha256": "b9651654b02773edcc26d4657e0a496370738dea556be4a351fb61c4a76d19fc"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_P3_Preview.anim",
+      "length": 10536,
+      "sha256": "4d282a1e7451211d81923a3ef682187874f443419e70812c7aaacc55bbb8f485"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_P3_Preview.anim.meta",
+      "length": 188,
+      "sha256": "b628568d8b6227c3704711c9c4a9f280954b71c3235d285f83c895034ec62d99"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_P4_Preview.anim",
+      "length": 10524,
+      "sha256": "10900200ee0efa14826120c2456bee3ba822ed906902272c8f17c3fec2f302b4"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_P4_Preview.anim.meta",
+      "length": 188,
+      "sha256": "c41d341baee052286c0340fcf97e4b29f9e60820c7997d9efcd7e72883251855"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_P5_Preview.anim",
+      "length": 10522,
+      "sha256": "a3c19d2b7f8ef1ebcb8a5be899b1eb00ffaea1105840afe67c28366dd21a7b31"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Animations/Cinematics/Opening/A01/Preview/A01_P5_Preview.anim.meta",
+      "length": 188,
+      "sha256": "d2233ce3862c0f257e36c1f51e877e7306ba9509686a5a70ae55325431a0422c"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Art/Cinematics.meta",
+      "length": 172,
+      "sha256": "5aee7d5f2ddffc3b8292268a9ee0500234e46e07210073ee0be29a38a6172b4d"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Art/Cinematics/Opening.meta",
+      "length": 172,
+      "sha256": "cbea8e8c9da11a7742ee8a969dd5f8e4a6cede0712a7aad5c7a439b34694471f"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Art/Cinematics/Opening/A01.meta",
+      "length": 172,
+      "sha256": "3066c2c4ebe095f471227e32d26d6126291c5ad36837ab1406e513be07041be5"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Art/Cinematics/Opening/A01/Preview.meta",
+      "length": 172,
+      "sha256": "8aa58de00911aa02386f610daf29b6fccb9d01af7fb720c1b5a58d7235dcb6d9"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics.meta",
+      "length": 172,
+      "sha256": "922c96b7a6aa75406fea0ef925eaf0c855092a22721b1a53d8c0a1fd62e688db"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening.meta",
+      "length": 172,
+      "sha256": "a708ba1cefee361773466267e25e4fc5f4c3faf11d8d6e1cddeed33cbc765fe7"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01.meta",
+      "length": 172,
+      "sha256": "6ab9fb2bedb1fab4f316a0b42380c1da28808b32bf409bfe5e04b4f3252f07f8"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01/A01OfficeAnimaticContract.cs",
+      "length": 1366,
+      "sha256": "4a5146de98134454c61bf7b6b2c03b1c2dd33bcdf75815b74fa772dee37cee3d"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01/A01OfficeAnimaticContract.cs.meta",
+      "length": 59,
+      "sha256": "94a9be17be113908a77024f094d5e6e4e6fbbc381aa0acfcf1387ee8817f4b33"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01/A01OfficeAnimaticSceneBuilder.cs",
+      "length": 32418,
+      "sha256": "058b572f26d48f3838830730388387862d5733b8375fa18ed611d3e4a9c95a4d"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01/A01OfficeAnimaticSceneBuilder.cs.meta",
+      "length": 59,
+      "sha256": "14218b80f89d685b06e718fae38af20af97deabbf1124e15ed87cf25cfc6c3d6"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01/A01OfficePreviewLauncher.cs",
+      "length": 2496,
+      "sha256": "382e4c851508174b1205d49e1bb84ac3a75077c603774cff958f3eda12fae6bd"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01/A01OfficePreviewLauncher.cs.meta",
+      "length": 59,
+      "sha256": "b36414ffa00bca707d944c34406a1b43ce0d4196554b27928aa6d250329763ab"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01/A01OfficePreviewSession.cs",
+      "length": 1340,
+      "sha256": "7206b30e2158d4947d8be7cb9a837e89eb38dc919391bc6a2056ad075f374421"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01/A01OfficePreviewSession.cs.meta",
+      "length": 59,
+      "sha256": "206365a55a0062183dcff8fe2226d0aa3948381b6dc0ed6a2db3aaa698e879f9"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01/LastHost.Prototype.Cinematics.A01.Editor.asmdef",
+      "length": 216,
+      "sha256": "a219e92daa11f8db58b58b0de47c5e2f860731af6ea68ebbf150f69f3d8b24c1"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Cinematics/Opening/A01/LastHost.Prototype.Cinematics.A01.Editor.asmdef.meta",
+      "length": 166,
+      "sha256": "cf7545873673e8d11214ee557756f6feb796c7d32136bdd4b6b5a07a6d4be7a2"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Editor/Startup/StartupPlayModeBootstrap.cs",
+      "length": 1390,
+      "sha256": "b2158d49fe9ec1e8069bd3c7924299164869d3f94d4db6766dd3d155cc581ef9"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Scenes/Cinematics.meta",
+      "length": 172,
+      "sha256": "ca77ac4532173f1d8589599c4c6e75f36cc616ae4d3a3ced122de368ad91d1b8"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Scenes/Cinematics/Opening.meta",
+      "length": 172,
+      "sha256": "eeb28d440bf09631363c02d6a54a09deb9531322ca839949ddc2908893e2ec65"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Scenes/Cinematics/Opening/A01OfficeAnimatic.unity.meta",
+      "length": 155,
+      "sha256": "4d99c891255d19dba8287b8066b63300885d41f41e07b3b7fde494a1483cfa76"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Scripts/UI/Startup/StartupController.cs",
+      "length": 15511,
+      "sha256": "58faef9d089a7dbdf3b0ff60ec31b1cc6f5f5729e737e55fd4b3977f7881a6b3"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/Cinematics.meta",
+      "length": 172,
+      "sha256": "aecc56c57b3928bc972af1a228b105dc387b2f01249b60c9bd170fdbc7325f34"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/Cinematics/A01.meta",
+      "length": 172,
+      "sha256": "fb3ced7fab316a62c77b4051e653ff7a9090a79f12fee11c6f154854c06583b8"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Timelines.meta",
+      "length": 172,
+      "sha256": "b93914846aae92998ed763e5fd442c3b3df04003390d6a200f40c7ad0dd2ef86"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Timelines/Cinematics.meta",
+      "length": 172,
+      "sha256": "a6935b4ce41a3e5f636e1deb5f9f3fd9962836f699a4146a497f6071755a5dc0"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Timelines/Cinematics/Opening.meta",
+      "length": 172,
+      "sha256": "1c93fd86ebe9979a42cca958782041932b6315b13b378d26e313c726e8ecc55b"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Timelines/Cinematics/Opening/A01.meta",
+      "length": 172,
+      "sha256": "540321b021a8ebdcb6651e50b6a39a6af84618e22c34b4515d75cc1bf110138f"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Timelines/Cinematics/Opening/A01/A01OfficeAnimatic.playable",
+      "length": 26015,
+      "sha256": "8b1114e2487d206c52bf1a137f2c14f60f54fc03a5c50cc66c081cb308c94620"
+    },
+    {
+      "category": "production",
+      "path": "UnityProject/Assets/_Project/Timelines/Cinematics/Opening/A01/A01OfficeAnimatic.playable.meta",
+      "length": 189,
+      "sha256": "b6508df765f086623780c2dc0330410257961cd273e54b99cf207740e459e425"
+    },
+    {
+      "category": "scene",
+      "path": "UnityProject/Assets/_Project/Scenes/Cinematics/Opening/A01OfficeAnimatic.unity",
+      "length": 35600,
+      "sha256": "a55775f37e5ac7e1946a8dc2aac12a8bcd8a3f27da0f8d71322b2cfab02e6852"
+    },
+    {
+      "category": "scene",
+      "path": "UnityProject/Assets/_Project/Scenes/Startup.unity",
+      "length": 5028,
+      "sha256": "2022a0cfeeea273bb49e1c1146e0ba57089b948f61535a531907b1b6eb54672a"
+    },
+    {
+      "category": "scene",
+      "path": "UnityProject/ProjectSettings/EditorBuildSettings.asset",
+      "length": 799,
+      "sha256": "67b153f8c73c6c9e7f8c60d47d03a837dfec207e757ac65feb6619f58be28755"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/Cinematics/A01/A01OfficeAnimaticContractTests.cs",
+      "length": 37848,
+      "sha256": "0e602e0745602bc9132b9667198b3fd89b35f5974b5442752dc196f6c7792830"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/Cinematics/A01/A01OfficeAnimaticContractTests.cs.meta",
+      "length": 59,
+      "sha256": "f1753751c5a283a735c8ccb0e5e274d8acc0f27023c32326a08112e18bfe8ca0"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/Cinematics/A01/LastHost.Prototype.Cinematics.A01.Tests.asmdef",
+      "length": 352,
+      "sha256": "1e03ab80bd467b962b7d90bea41aea17d2ad554e2a6e32872771760a48d858c3"
+    },
+    {
+      "category": "test",
+      "path": "UnityProject/Assets/_Project/Tests/EditMode/Cinematics/A01/LastHost.Prototype.Cinematics.A01.Tests.asmdef.meta",
+      "length": 166,
+      "sha256": "a4f0634cd4d0b82553d4dcfa47b81947b144181020ef4a7ad5ddfa6e92d9db6a"
+    },
+    {
+      "category": "version",
+      "path": "UnityProject/ProjectSettings/ProjectVersion.txt",
+      "length": 85,
+      "sha256": "a4c019742eee085b4370e52572387e523b7b50aa66e8815fa7cd68fa06486637"
+    }
+  ]
+}

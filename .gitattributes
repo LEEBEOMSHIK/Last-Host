@@ -36,3 +36,6 @@ UnityProject/**/*.psd binary
 UnityProject/**/*.fbx binary
 UnityProject/**/*.wav binary
 UnityProject/**/*.ogg binary
+
+# Preserve canonical verification logs byte-for-byte; their manifests track exact hashes.
+_workspace/**/artifacts/**/*.log -whitespace

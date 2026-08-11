@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "work_id": "2026-08-10-a01-office-animatic",
+  "status": "technical-pass",
+  "run_id": "a01-target-green-006",
+  "candidate_fingerprint": "de4f3d9b147b1a44722bea6021389569b46694214f8c6034cd47491bf8fbaa50",
+  "cost": {
+    "unity_starts": 6,
+    "mcp_starts": 0,
+    "build_starts": 0,
+    "recorded_high_cost_attempts": 6
+  },
+  "evidence": [
+    {
+      "run_id": "a01-target-green-006",
+      "candidate_fingerprint": "de4f3d9b147b1a44722bea6021389569b46694214f8c6034cd47491bf8fbaa50",
+      "kind": "nunit3",
+      "path": "_workspace/active/2026-08-10-a01-office-animatic/artifacts/a01-target-green-006-results.xml",
+      "sha256": "187EA51263638010ECB0E22B44C04CAE323A620EC0939D99B4674CAC8059610D",
+      "total": 18,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    }
+  ]
+}
